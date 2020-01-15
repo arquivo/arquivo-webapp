@@ -8,9 +8,11 @@ StringBuilder and = new StringBuilder();
 StringBuilder phrase = new StringBuilder();
 StringBuilder not = new StringBuilder();
 int hitsPerPage = request.getParameter("hitsPerPage") != null ? Integer.parseInt(request.getParameter("hitsPerPage")) : 10;
-String format = null;
-String imagesSize = null;
-String site = "";
+String format = request.getParameter("format") != null ? request.getParameter("format") : "";
+String imagesSize = request.getParameter("size") != null ? request.getParameter("size") : "";
+String site = request.getParameter("site") != null ? request.getParameter("site") : "";
+String safeSearch = request.getParameter("safeSearch") != null ? request.getParameter("safeSearch") : "";
+
 String sortType = request.getParameter("sort") != null ? request.getParameter("sort") : null;
 boolean sortReverse = "true".equals(request.getParameter("reverse")) ? true : false;
 
@@ -35,11 +37,11 @@ if (queryString != null) {
 					}
 					not.append( parcel.substring(1));
 				}
-			} else if ( parcel.contains(" ")) {					//check for phrase
+			} else if ( parcel.contains("\"")) {					//check for phrase
 				if (phrase.length() != 0) {
 					phrase.append(" ");
 				}
-				parcel = parcel.replaceAll("&quot;", "");
+				parcel = parcel.replaceAll("\"", "");
 				phrase.append(parcel);
 			} else if (parcel.contains(":")) {				//check for option
 				if (parcel.startsWith("site:")) {
@@ -48,6 +50,8 @@ if (queryString != null) {
 					format += parcel.substring(parcel.indexOf(':')+1) + " ";
 				} else if (parcel.startsWith("size:")) {
 					imagesSize += parcel.substring(parcel.indexOf(':')+1) + " ";
+				} else if (parcel.startsWith("safe:")) {
+					safeSearch = parcel.substring(parcel.indexOf(':')+1);
 				}
 				// TODO - handle
 			} else {								//words
