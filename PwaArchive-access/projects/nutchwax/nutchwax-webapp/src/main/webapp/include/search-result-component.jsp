@@ -32,7 +32,7 @@
 
 <div id="resultados">
   <!-- starts shows estimated results -->
-  <p id="estimated-results">About $NRESULTS results since $OLDEST_DATE</p>
+  <p id="estimated-results">About <%= hitsTotal %> results since <%= dateStartYear %></p>
   <!-- ends shows estimated results -->
 <%--- TODO: updates this values --%>
 <!--<fmt:message key='search.results'>
