@@ -29,15 +29,30 @@
 
 %>
 
+
 <div id="resultados">
   <!-- starts shows estimated results -->
   <p id="estimated-results">About $NRESULTS results since $OLDEST_DATE</p>
   <!-- ends shows estimated results -->
-  <span  class="search-span"><em><fmt:message key='tabs.pages'/></em></span>
-  <script type="text/javascript">
-    document.write('<a href="/images.jsp?l=<%=language%>&query='+"<c:out value = "${htmlQueryString}"/>"+'&dateStart='+$('#dateStart_top').attr("value")+'&dateEnd='+$('#dateEnd_top').attr("value")+'" class="image-anchor"><fmt:message key='images.images'/></a>')
-  </script>
+<%--- TODO: updates this values --%>
+<!--<fmt:message key='search.results'>
+        <fmt:param value='<%=new Long((end==0)?0:(start+1))%>'/>
+        <fmt:param value='<%=new Long(end)%>'/>
+        <fmt:param value='<%=new Long(hitsTotal)%>'/></fmt:message>
 </div>
+-->
+
+<%-- Show tip if present --%>
+<%--
+        <% if (showTip != null) { %>
+                <p class="info">
+                        <i18n:message key="seeUrlTip">
+                                <i18n:messageArg value="<%=allVersions%>"/>
+                                <i18n:messageArg value="<%=showTip%>"/>
+                        </i18n:message>
+                </p>
+        <% } %>
+--%>
 
 <div class="spell hidden"><fmt:message key="search.spellchecker"/> <span class="suggestion"></span></div>
 
@@ -90,7 +105,9 @@
 <%-- TODO: spellchecker + suggestion --%>
 <%
           // Saves information about the previous result's host so same-host results can be grouped.
+          String previous_url="";
           String previous_host = "";
+
           //Format the results
           for (int i = 0; i < length; i++) {      // display the hits
             Hit hit = show[ positionIndex[i] ];
@@ -109,13 +126,15 @@
             Date archiveDate = new Date(Long.valueOf(detail.getValue("date")).longValue()*1000);
             String archiveCollection = detail.getValue("collection");
             String url = detail.getValue("url");
+            if(previous_url.equals(url)) continue; /*If URL exactly the same do not show result*/
+            previous_url = url;
             SimpleDateFormat ft = new SimpleDateFormat ("yyyyMMddHHmmss");
             TimeZone zone = TimeZone.getTimeZone("GMT");
             ft.setTimeZone(zone);
-	    // If the collectionsHost includes a path do not add archiveCollection.
+      // If the collectionsHost includes a path do not add archiveCollection.
             // See http://sourceforge.net/tracker/index.php?func=detail&aid=1288990&group_id=118427&atid=681140.
             //String target = "http://"+ collectionsHost +"/id"+ hit.getIndexDocNo() +"index"+ hit.getIndexNo();
-	    // Changed to return in wayback query format
+      // Changed to return in wayback query format
               String target = "//"+ collectionsHost +"/"+ ft.format(archiveDate)  +"/"+ url;
             pageContext.setAttribute("target", target);
             allVersions = "search.jsp?query="+ URLEncoder.encode(url, "UTF-8") +"&dateStart="+ dateStartString + "&dateEnd="+ dateEndString +"&pos="+ String.valueOf(position);
@@ -141,7 +160,7 @@
             final int TITLE_MAX_LENGTH = 60;
             int tagLengthCount = 0;
 
-	    outerLoop: // JN: spaghetti-code!!!
+      outerLoop: // JN: spaghetti-code!!!
             for ( String s : splittedTitle ) {
 
                 if (newTitle.length() > 0) {
@@ -176,21 +195,32 @@
 
             title = newTitle.toString();
 
-	    // Cut the title if it is too long
+      // Cut the title if it is too long
             if ( title.length() - tagLengthCount >= TITLE_MAX_LENGTH ) {
                 title = title.substring(0, TITLE_MAX_LENGTH + tagLengthCount) + "<b>...</b>";
             }
-
-            if ( url.length() > 80) {
-                String newUrl = url.substring(0, 40) + "..."+ url.substring((url.length()-37),url.length());
+            String untruncatedURL = url;
+            if ( url.length() > 55) {
+                String newUrl = url.substring(0, 52) + "..."/*+ url.substring((url.length()-12),url.length())*/;
                 url = newUrl;
+
+            }
+            String displayURL = url;
+            if(displayURL.startsWith("https://")){
+              displayURL = displayURL.substring(8, displayURL.length());
+            }else if(displayURL.startsWith("http://")){
+              displayURL = displayURL.substring(7, displayURL.length());
+            }
+
+            if(displayURL.startsWith("www.")){
+              displayURL = displayURL.substring(4, displayURL.length());
             }
 
             // Build the summary
             StringBuffer sum = new StringBuffer();
             if(summaries[ positionIndex[i] ] == null){
               break;
-            }
+            }            
             Fragment[] fragments = summaries[ positionIndex[i] ].getFragments();
             for (int j=0; j<fragments.length; j++) {
               if (fragments[j].isHighlight()) {
@@ -199,6 +229,7 @@
                    .append("</em>");
               } else if (fragments[j].isEllipsis()) {
                 sum.append("<span class=\"ellipsis\"> ... </span>");
+                break; /*Only show first sentence*/
               } else {
                 sum.append(Entities.encode(fragments[j].getText()));
               }
@@ -206,7 +237,7 @@
 
             String summary = sum.toString();
 
-	    // do not show unless we have something
+      // do not show unless we have something
             boolean showMore = false;
 
             // Content-Type
@@ -236,36 +267,50 @@
               lastModified = "";
             }
 
-	    %>
+      %>
                 <% if (hitsPerDup > 0 && current_host.equals( previous_host )) {%>
-			<%-- TODO: check if "grouped" style exist --%>
-                        <li class="grouped">
+                <%-- TODO: check if "grouped" style exist --%>
+                        <li class="grouped" onclick="redirecPage('<c:url value='${target}'></c:url>');"> 
                 <% } else { %>
-                        <li>
+                          <li onclick="redirecPage('<c:url value='${target}'></c:url>');" >
+
+                            <!--<a onclick="ga('send', 'event', 'Full-text search', 'Click on version', '<c:url value='${target}'></c:url>');" href="<c:url value='${target}'></c:url>">-->
                 <% previous_host = current_host; } %>
 
-                <% if (showMore) {
-                        if (!"text".equalsIgnoreCase(primaryType)) {
-                                if ( contentType.lastIndexOf('-') != -1) {
-                                        contentType = "[" + contentType.substring( contentType.lastIndexOf('-') + 1);
-                                }
-                                contentType = contentType.toUpperCase(); %>
-                                <span class="mime"><%=contentType%></span>
-                <%} }%>
-
-
-            <!-- <h2><a href="<c:url value='${target}'><c:param name='pos' value='${position}'/><c:param name='l' value='${language}'/><c:param name='sid' value='${pageContext.session.id}'/></c:url>"><%=title%></a></h2> -->
+            <a href="<c:url value='${target}'></c:url>">
             <!-- Changed to return in wayback query format -->
+              <div class="urlBlock">
+                 <div class="url">&#x2192; <%= displayURL %></div>
+                <div class="border-bottom"></div>
+                <h2>
+                  <% if (showMore) {
+                          if (!"text".equalsIgnoreCase(primaryType)) {
+                                  if ( contentType.lastIndexOf('-') != -1) {
+                                          contentType = "[" + contentType.substring( contentType.lastIndexOf('-') + 1);
+                                  }
+                                  contentType = contentType.toUpperCase(); %>
+                                  <span class="mime"><%=contentType%></span>
+                  <%} }%>                
+                  <%=title%>
+                </h2>
+                </a>
+                <!-- New position for list versions -->
+                <div class="list-versions-div">
+                <span class="date"><fmt:message key='search.result.date'><fmt:param value='<%= archiveDate%>'/></fmt:message></span>              
+                </div>             
+
+              </div>  
+
+              <%-- TODO: don't use "archiveDisplayDate" delegate to FMT --%>
+              <% showSummary=true; //to show always summaries %>            
+              <div class="summary"> 
+                <% if (!"".equals(summary) && showSummary) { %>
+                    <span class="resumo"><%=summary%></span>
+              <% } %>  
+             
+              </div>    
+         
             
-            <h2><a href="<c:url value='${target}'></c:url>"><%=title%></a></h2>
-	    <br />
-		<%-- TODO: don't use "archiveDisplayDate" delegate to FMT --%>
-		<span class="date"><fmt:message key='search.result.date'><fmt:param value='<%= archiveDate%>'/></fmt:message></span> - <a class="outras-datas" href="<%=allVersions%>"><fmt:message key='search.result.history'/></a>
-            <% showSummary=true; //to show always summaries %>
-            <% if (!"".equals(summary) && showSummary) { %>
-            <br /><span class="resumo"><%=summary%></span>
-            <% } %>
-            <span class="url"><%= url %></span>
 <%--
             -
             <a class="history" href="<%=allVersions%>"><fmt:message key="otherVersions"/></a>
@@ -275,3 +320,19 @@
         <% } %>
 </ul>
 </div> <!-- FIM #resultados-lista  --> 
+<script type="text/javascript">
+  /*$('.urlBlock').on('click', function(e){
+    window.location = $(this).find('h2 > a').attr('href');
+  });*/
+  $('.date').on('click', function(e){
+    e.preventDefault(); return false;
+  });
+  /*
+  $('.list-versions-div').on('click', function(e){
+    window.location = $(this).find('a').attr('href');
+  });
+  */    
+  function redirecPage( _url ){
+    window.location.href = _url;
+  }
+</script>

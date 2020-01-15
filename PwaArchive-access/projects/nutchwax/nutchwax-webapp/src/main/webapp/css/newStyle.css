@@ -66,6 +66,21 @@ body#home-search .urlBlock a:visited {
   border: none;
   background-color: transparent;
 }
+/* Estimated results */
+p#estimated-results {
+  font-family: arial, sans-serif;
+  font-size: 14px;
+  color: #70757a;
+  line-height: 43px;
+  margin-top: -4px;
+  position: relative;
+  top: 0;
+  -webkit-transition: all 220ms ease-in-out;
+  padding-bottom: 0px;
+  margin-left: 25px;
+  position: relative;
+  top: -22px;
+}
 input {
   -webkit-user-select: text;
 }
@@ -826,12 +841,12 @@ input[type=text] {
   border-radius: 0px !important;
 }
 .my-alert-images {
-  border-radius: 0px !important; 
+  border-radius: 0px !important;
 }
 #sugerimos-que .text-bold {
-   padding: 0 5.1%;
-    font-size: 1.3em;
-    margin-top: 21px;
+  padding: 0 5.1%;
+  font-size: 1.3em;
+  margin-top: 21px;
 }
 .suggestions-no-results {
   padding-bottom: 3px;
@@ -1052,31 +1067,31 @@ body#home-search #conteudo-pesquisa-erro {
 }
 body#homeImages #conteudo-pesquisa-erro {}
 #conteudo-pesquisa-erro .alert-danger {
-color: #9C27B0;
-    font-size: 1.2em;
-    width: 100%;   
-    display: block;  
-    padding-left: -3px !important;  
+  color: #9C27B0;
+  font-size: 1.2em;
+  width: 100%;
+  display: block;
+  padding-left: -3px !important;
 }
 #sugerimos-que {
   margin-top: -12px;
 }
 body#home-search .spell {
-    color: #9C27B0;
-    font-size: 1.2em;
-    width: 91%;
-    margin: 6px auto 11px auto;
-    max-width: 914px;
-    position: relative;
-    top: -25px;
-    left: -14px;
-   }
+  color: #9C27B0;
+  font-size: 1.2em;
+  width: 91%;
+  margin: 6px auto 11px auto;
+  max-width: 914px;
+  position: relative;
+  top: -25px;
+  left: -14px;
+}
 body#homeImages .spell {
-color: #9C27B0;
-    font-size: 1.2em;
-    width: 91%;
-    margin: 9px auto 11px auto;
-    max-width: 914px;   
+  color: #9C27B0;
+  font-size: 1.2em;
+  width: 91%;
+  margin: 9px auto 11px auto;
+  max-width: 914px;
 }
 #years {
   padding-bottom: 40px;
@@ -1303,6 +1318,7 @@ div.call-to-actions span {
   margin-top: /*7px*/ 0 !important;
   margin-left: -11px !important;
   margin-right: -11px !important;
+  margin-bottom: 40px;
 }
 #photos {
   line-height: 0;
@@ -1320,7 +1336,6 @@ div.call-to-actions span {
   margin-left: auto;
   margin-right: auto;
   display: flex;
-  height: auto !important;
 }
 .image-display-url {
   padding-top: 21px;
@@ -1368,8 +1383,8 @@ div.call-to-actions span {
   box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0);
   break-inside: avoid-column;
   -webkit-column-break-inside: avoid;
-  padding: 15px 19px 25px 15px;  
-  flex: auto;  
+  padding: 15px 19px 25px 15px;
+  flex: auto;
 }
 .imageContent:hover {
   cursor: pointer;
