@@ -329,3 +329,12 @@ body#advanced .myButtonStyle:active, body#advanced-images .myButtonStyle:active 
 body#advanced .glyphicon-search:before, body#advanced-images .glyphicon-search:before {
 	display: none !important
 }
+
+@media screen and (min-device-width:769px) and (max-device-width:3000px) {
+.menu h4 {  
+    font-size: 13px;    
+}
+}
+.submenu:hover {
+background-color: #134874ba !important;
+}
