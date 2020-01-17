@@ -38,11 +38,12 @@ body#adavanced .swiper-container {
 	/*min-width: 100px;*/
 	/*width: /*70%
 	max-width: 320px;*/
-	width: 100% /*100%*/;
+	width: 12vw /*100%*/;
 	min-height: 100vh;
 	overflow-y: auto;			
 	color: #fff;
     display: initial;   
+    min-width: 200px;
 }
 
 .content {
@@ -113,9 +114,13 @@ body#adavanced .swiper-container {
 	padding-bottom: /*15px*/20px;
 	margin-top: 0px;
 	padding-left: 20px;
-	font-size: 17px;
+	font-size: /*17px*/15px;
 	cursor: pointer;
 	text-decoration: none;
+}
+
+.menu h4:hover {
+background-color:#1a5f97ba;
 }
 
 #menuSwiperSlide #cp-link {
@@ -126,8 +131,8 @@ body#adavanced .swiper-container {
 	border-top: none !important;
 }
 
-font-size: 1.6em !important;
-color: #ccc !important;
+/*font-size: 1.6em !important;
+color: #ccc !important;*/
 
 .menu h4:hover, .menu h4:visited, .menu h4:link, .menu h4:active
 {
@@ -139,6 +144,9 @@ color: #ccc !important;
     padding-left: 30px!important;
 }
 
+#menuSwiperSlide button h4.submenu:hover{	
+    background-color: #1f5788 !important;
+}
 
 .menu a{
 	color:white;
@@ -322,4 +330,11 @@ body#advanced .glyphicon-search:before, body#advanced-images .glyphicon-search:b
 	display: none !important
 }
 
-
+@media screen and (min-device-width:769px) and (max-device-width:3000px) {
+.menu h4 {  
+    font-size: 13px;    
+}
+}
+.submenu:hover {
+background-color: #134874ba !important;
+}

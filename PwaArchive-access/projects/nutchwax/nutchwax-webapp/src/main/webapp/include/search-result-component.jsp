@@ -29,10 +29,13 @@
 
 %>
 
-<!--
+
 <div id="resultados">
+  <!-- starts shows estimated results -->
+  <p id="estimated-results">About <%= hitsTotal %> results since <%= dateStartYear %></p>
+  <!-- ends shows estimated results -->
 <%--- TODO: updates this values --%>
-<fmt:message key='search.results'>
+<!--<fmt:message key='search.results'>
         <fmt:param value='<%=new Long((end==0)?0:(start+1))%>'/>
         <fmt:param value='<%=new Long(end)%>'/>
         <fmt:param value='<%=new Long(hitsTotal)%>'/></fmt:message>
