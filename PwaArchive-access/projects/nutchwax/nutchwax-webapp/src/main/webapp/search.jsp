@@ -462,6 +462,7 @@ String[] queryString_splitted=null;
 
     start = <%=start%>;
     hitsPerPage = <%=hitsPerPage%>;
+    dateStartYear = <%=dateStartYear%>;
   </script>
 
   <script type="text/javascript">
@@ -625,6 +626,7 @@ String[] queryString_splitted=null;
 
   <div id="conteudo-resultado" class="container-fluid display-none col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8 col-lg-offset-3 col-lg-6 col-xl-offset-4 col-xl-4"> <%-- START OF: conteudo-resultado --%>
     <div id="second-column">
+      <p id="estimated-results" style="display: none;"><fmt:message key="search.results.estimated.results.1"/> <span id="estimated-results-value"></span> <fmt:message key="search.results.estimated.results.2"/> <%= dateStartYear %></p>
 
       <div class="spell hidden"><fmt:message key="search.spellchecker"/> <span class="suggestion"></span></div>
 

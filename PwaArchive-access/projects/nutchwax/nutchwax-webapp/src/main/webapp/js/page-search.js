@@ -182,6 +182,9 @@ function searchPages(startIndex){
 	        if ( typeof(previousPageSearch) != 'undefined' && previousPageSearch != null ) {
 	        	previousPageSearch.style.display = start > 0 ? 'block' : 'none';
 	        }
+
+	        document.getElementById("estimated-results-value").innerHTML = totalResults.toLocaleString(language);
+	        document.getElementById("estimated-results").style.display = 'block';
 		}
 	});
 }
