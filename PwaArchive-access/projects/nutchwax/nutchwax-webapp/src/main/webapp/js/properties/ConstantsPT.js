@@ -56,6 +56,11 @@ Content = {
     embargo:"Embargo",
     embargoUrl:"http://sobre.arquivo.pt/ajuda/acesso-a-conteudos-arquivados#section-6",
     notArchived:"N&#227;o Arquivado",
-    otherLanguage: "EN"  ,
-    preservedByArquivo: " - preservado pelo Arquivo.pt"     
+    otherLanguage: "EN",
+    preservedByArquivo: " - preservado pelo Arquivo.pt",
+    searchVersion: "vers&atilde;o",
+    searchVersions: "vers&otilde;es",
+    table: "Tabela",
+    list: "Lista"
+
 };
