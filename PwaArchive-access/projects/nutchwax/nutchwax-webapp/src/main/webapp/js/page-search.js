@@ -128,7 +128,7 @@ function searchPages(startIndex){
 	                var originalURL = currentDocument.originalURL;
 	                var url = new URL(originalURL);
 	                var hostname = url.hostname;
-	                var urlPresentation = currentDocument.originalURL.replace(/^(https?\:\/\/(www\.))?/,'');
+	                var urlPresentation = currentDocument.originalURL.replace(/^(http(s)?\:\/\/(www\.)?)?/,'');
 	                var linkToArchive = currentDocument.linkToArchive;
 	                var snippet = currentDocument.snippet;
 	                var mimeType = currentDocument.mimeType;
