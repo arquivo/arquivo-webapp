@@ -75,6 +75,10 @@ function extractQuerySpecialParameters(inputQuery) {
 	};
 }
 
+function formatURLForPresentation(originalURL) {
+	return originalURL.replace(/^(http(s)?\:\/\/(www\.)?)?/,'').replace(/\/$/,'');
+}
+
 function searchPages(startIndex){
     var input = $('#txtSearch').val();
 
@@ -140,7 +144,7 @@ function searchPages(startIndex){
 	                var originalURL = currentDocument.originalURL;
 	                var url = new URL(originalURL);
 	                var hostname = url.hostname;
-	                var urlPresentation = currentDocument.originalURL.replace(/^(http(s)?\:\/\/(www\.)?)?/,'');
+	                var urlPresentation = formatURLForPresentation(currentDocument.originalURL);
 	                var linkToArchive = currentDocument.linkToArchive;
 	                var snippet = currentDocument.snippet;
 	                var mimeType = currentDocument.mimeType;
