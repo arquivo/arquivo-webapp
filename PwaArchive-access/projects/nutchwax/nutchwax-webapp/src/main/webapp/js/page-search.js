@@ -110,7 +110,7 @@ function searchPages(startIndex){
 
 			var responseJson = $.parseJSON(data);
 
-			totalResults = parseInt(responseJson.total_items);
+			totalResults = parseInt(responseJson.estimated_nr_results);
 			var showNextPageButton = ((parseInt(startIndex) + hitsPerPage) >= totalResults) ? false: true;    
 
 			if ( totalResults === 0){
