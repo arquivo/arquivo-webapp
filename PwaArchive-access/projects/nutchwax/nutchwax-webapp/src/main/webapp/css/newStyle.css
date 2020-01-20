@@ -334,6 +334,11 @@ ion-item {
   max-width: 952px !important;
   margin: 0 auto !important;
 }
+
+body#homeImages .pagesNextPrevious {
+  width: 100% !important;
+}
+
 .pagesNextPrevious a {
   background-color: #1c75c0 !important;
   color: white !important;
@@ -348,11 +353,12 @@ ion-item {
   width: 100%;
   margin-bottom: 10px !important;
 }
-.pagesNextPrevious a:hover {
-  background-color: #1c75c0 !important;
-  border: 1px solid #1c75c0 !important;
-  color: white !important;
+
+.pagesNextPrevious a:hover { 
+  border: 1px solid #1c75c0 !important;  
   text-decoration: none !important;
+  background-color: white !important;
+  color: #1c75c0 !important;  
 }
 .pagesNextPrevious > ul {
   list-style-type: none;
@@ -1735,6 +1741,7 @@ a#advancedSearchButton {
   color: #1c75c0;
   margin-right: 0 !important;
   border: 1px solid #1c75c0;
+  transition: background-color 0.5s ease 0s;
   color: #1c75c0;
   font-size: 1.25em;
 }
@@ -1771,6 +1778,7 @@ a#PageButton {
   margin-right: 6px !important;
   color: #1c75c0 !important;
   background-color: none !important;
+  transition: background-color 0.5s ease 0s;
   border: 1px solid #1c75c0;
 }
 .selected-button {
@@ -1801,6 +1809,7 @@ body#homeImages a#PageButton:active {
   background-color: #ffffff !important;
   border: none !important;
   border: 1px solid #1c75c0 !important;
+  transition: background-color 0.5s ease 0s;
   color: #1c75c0 !important;
 }
 body#homeImages a#ImageButton, body#homeImages a#ImageButton:active {
@@ -1822,6 +1831,7 @@ a#ImageButton, a#ImageButton:active {
   margin-right: 0 !important;
   font-size: 1.25em;
   background-color: none !important;
+  transition: background-color 0.5s ease 0s;
 }
 a#ImageButton:hover {
   background-color: #1c75c0 !important;
@@ -2941,7 +2951,7 @@ h4.modalTitle {
     /*max-width: 960px !important;*/
   }
   .pagesNextPrevious a {
-    margin-bottom: 5px !important;
+    margin-bottom: 0px !important;
   }
   .pagesNextPrevious a:second-child {
     margin-bottom: 50px !important;
@@ -2976,6 +2986,105 @@ h4.modalTitle {
     margin-right: 8px !important;
   }
 }
+
+
+@media (min-width:769px) and (max-width:3000px) {
+.pagesNextPrevious a {
+    background-color: #1c75c0 !important;
+    color: white !important;
+    border: 1px solid #1c75c0 !important;
+    border-radius: 5px !important;
+    text-decoration: none !important;
+    padding: 6px 0 !important;
+    transition: background-color 0.5s ease 0s;
+    color: #007AFF;
+    border: 1px solid #007AFF;
+    float: left;
+    width: 100px;
+    margin-bottom: 35px !important;
+    margin-right: 10px;
+    text-decoration: none !important;
+    font-size: 1.05em;
+    margin-right: 6px !important;
+    color: white !important;
+    background-color: #1c75c0 !important;
+    border: 1px solid #1c75c0;
+    cursor: pointer;
+}
+
+body#home-search #resultados-lista ul li .resumo {
+    line-height: 1.6em !important;   
+}
+
+body#home-search a#advancedSearchButton, body#homeImages a#advancedSearchButton, body#homeImages a#ImageButton, body#homeImages a#PageButton {
+    font-size: 13px !important;
+}
+
+body#home-search a#ImageButton:hover, a#ImageButton:active {
+    color: white !important;
+    background-color: #1c75c0 !important;
+}
+
+#resultados-lista {
+    margin-bottom: 31px;
+}
+
+#resultados-lista > ul > li:nth-child(odd) {
+    background: white !important;
+    box-shadow: none !important;
+    transition: background-color 0.5s;
+}
+
+
+#resultados-lista > ul > li:nth-child(even) {
+    background: white !important;
+    box-shadow: none;
+    transition: background-color 0.5s;
+}
+
+body#home-search a#PageButton {
+   font-size: 13px;
+}
+
+body#home-search a#ImageButton, a#ImageButton:active {
+    font-size: 13px;
+}
+
+
+body#home-search #resultados-lista  ul li:hover a {
+background-color: red;
+}
+
+body#home-search .next-previous-ul, body#homeImages .next-previous-ul {
+display: flow-root;
+    border-radius: 5px;
+    border: 1px solid lightgray;
+    padding: 10px;
+}
+
+.next a {
+float: right;
+margin-right: 0 !important;
+cursor: pointer;
+display: block;
+width:104px;
+}
+
+#resultados-lista ul li .resumo {
+    line-height: 20px !important;
+    font-size: 14px !important;
+    white-space: normal !important;
+}
+
+#resultados-lista ul li h2 {
+    font-size: 18px;
+    margin-bottom: 0px;
+    padding-top: 0px;
+    margin-top: 0px;
+    font-weight: 400;
+
+}
+
 /* iPad Portrait */
 @media (device-width: 768px) and (device-height:1024px) {
   body#homeImages span#buttonSearch button span {
