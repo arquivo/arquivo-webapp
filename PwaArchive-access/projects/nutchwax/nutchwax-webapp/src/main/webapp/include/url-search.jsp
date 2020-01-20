@@ -143,7 +143,7 @@
                '  </div>' +
                '</div>' +
          '<div id="conteudo-versoes" class="swiper-no-swiping">'+
-               '  <div id="resultados-lista" class="swiper-no-swiping" style="overflow: auto; min-height: 200px!important;">'+
+               '  <div id="resultados-lista" class="swiper-no-swiping" style="overflow: hidden; min-height: 200px!important;">'+
                '    <table id="resultsTable" class="tabela-principal swiper-no-swiping">'+
                '      <tbody id="tableBody" class="swiper-no-swiping">'+
                       '<tr id="years" class="swiper-no-swiping trTV"></tr>'+
