@@ -223,7 +223,7 @@
 
 										for (int i=0; i < mimeList.length; i++) {
 											if (mimeList[i].trim().equals(format.trim())) {
-												out.print("<ion-select-option value=\""+ mimeList[i] +"\" selected>"+ mimeListDetail[i] +"</ion-select-option");
+												out.print("<ion-select-option value=\""+ mimeList[i] +"\" selected>"+ mimeListDetail[i] +"</ion-select-option>");
 											} else {
 												out.print("<ion-select-option value=\""+ mimeList[i] +"\">"+ mimeListDetail[i] +"</ion-select-option>");
 											}
