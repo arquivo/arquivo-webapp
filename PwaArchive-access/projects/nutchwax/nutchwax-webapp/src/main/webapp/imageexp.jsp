@@ -4,7 +4,7 @@
 <%@ page
   session="true"
   contentType="text/html; charset=UTF-8"
-  pageEncoding="UTF-8"  
+  pageEncoding="UTF-8"
 
   import="java.io.File"
   import="java.io.IOException"
@@ -19,22 +19,6 @@
   import="java.util.TimeZone"
   import="java.util.regex.Matcher"
   import="java.util.regex.Pattern"
-  import="org.apache.hadoop.conf.Configuration"
-  import="org.apache.lucene.search.PwaFunctionsWritable"
-  import="org.apache.nutch.global.Global"
-  import="org.apache.nutch.html.Entities"
-  import="org.apache.nutch.metadata.Nutch"
-  import="org.apache.nutch.searcher.Hit"
-  import="org.apache.nutch.searcher.HitDetails"
-  import="org.apache.nutch.searcher.Hits"
-  import="org.apache.nutch.searcher.Query"
-  import="org.apache.nutch.searcher.Query.Clause"
-  import="org.apache.nutch.searcher.NutchBean"
-  import="org.apache.nutch.searcher.Summary"
-  import="org.apache.nutch.searcher.Summary.Fragment"
-  import="org.archive.access.nutch.NutchwaxBean"
-  import="org.archive.access.nutch.NutchwaxQuery"
-  import="org.archive.access.nutch.NutchwaxConfiguration"
   import="org.apache.commons.lang.StringEscapeUtils"
   import="java.util.Properties"
 %>
@@ -51,7 +35,7 @@ response.setHeader("Cache-Control","public, max-age=600");
 <%@ include file="include/i18n.jsp" %>
 <fmt:setLocale value="<%=language%>"/>
 
-<%! //To please the compiler since logging need those 
+<%! //To please the compiler since logging need those
   private static Calendar DATE_START = new GregorianCalendar(1996, 1-1, 1);
   private static final DateFormat FORMAT = new SimpleDateFormat("yyyyMMddHHmmss");
   //TODO: remove dateStart & dateEnd ???
@@ -59,7 +43,7 @@ response.setHeader("Cache-Control","public, max-age=600");
   //private static Calendar dateEnd = new GregorianCalendar();
   private static final DateFormat OFFSET_FORMAT = new SimpleDateFormat("yyyy-MM-dd");
   private static final Pattern OFFSET_PARAMETER = Pattern.compile("(\\d{4})-(\\d{2})-(\\d{2})");
-  
+
 %>
 
 <%
@@ -69,11 +53,6 @@ response.setHeader("Cache-Control","public, max-age=600");
   String tlds[] = tldsLine.split("\t");
 %>
 
-<%-- Get the application beans --%>
-<%
-  Configuration nutchConf = NutchwaxConfiguration.getConfiguration(application);
-  NutchBean bean = NutchwaxBean.get(application, nutchConf);
-%>
 <%-- Define the default end date --%>
 <%
 String imgSrc = "";
@@ -142,14 +121,14 @@ String shareImage = "https://arquivo.pt/wayback/"+imgTstamp+"/"+imgSrc;
   <!-- Windows Phone -->
   <meta name="msapplication-navbutton-color" content="#252525">
   <!-- iOS Safari -->
-  <meta name="apple-mobile-web-app-status-bar-style" content="#252525">  
+  <meta name="apple-mobile-web-app-status-bar-style" content="#252525">
 
   <link rel="shortcut icon" href="img/logo-16.png" type="image/x-icon"/>
-  <link href="css/csspin.css" rel="stylesheet" type="text/css"/>
+  <link href="/css/csspin.css" rel="stylesheet" type="text/css"/>
 
-  <link rel="stylesheet" title="Estilo principal" type="text/css" href="css/newStyle.css?build=<c:out value='${initParam.buildTimeStamp}'/>"  media="all" />
+  <link rel="stylesheet" title="Estilo principal" type="text/css" href="/css/newStyle.css?build=<c:out value='${initParam.buildTimeStamp}'/>"  media="all" />
     <!-- font awesome -->
-    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/font-awesome.min.css">
     <!-- bootstrap -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
     <script src="/js/jquery-latest.min.js"></script>
@@ -159,10 +138,10 @@ String shareImage = "https://arquivo.pt/wayback/"+imgTstamp+"/"+imgSrc;
     <link rel="stylesheet" href="/css/nouislider.min.css">
     <script type="text/javascript" src="/js/wNumb.js"></script>
     <!-- CSS loading spiner -->
-    <link href="css/csspin.css" rel="stylesheet" type="text/css">
-    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5645cdb2e22ca317"></script> 
-    <!-- end addthis for sharing on social media --> 
-    <script type="text/javascript" src="js/configs.js"></script>
+    <link href="/css/csspin.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5645cdb2e22ca317"></script>
+    <!-- end addthis for sharing on social media -->
+    <script type="text/javascript" src="/js/configs.js"></script>
 
 
   <meta property="og:title" content="<%=shareTitle%>" />
@@ -170,12 +149,12 @@ String shareImage = "https://arquivo.pt/wayback/"+imgTstamp+"/"+imgSrc;
   <meta property="og:image" content="<%=shareImage%>" />
 
 
-  <link rel="stylesheet" type="text/css" href="css/jquery-ui-1.7.2.custom.css"/>
+  <link rel="stylesheet" type="text/css" href="/css/jquery-ui-1.7.2.custom.css"/>
 
   <script src="https://apis.google.com/js/client.js" type="text/javascript"> </script>
-  <script type="text/javascript" src="js/ui.datepicker.js"></script>
-  <script type="text/javascript" src="js/ui.datepicker-pt-BR.js"></script>
-  <!--<script type="text/javascript" src="js/imageConfigs.js"></script>-->
+  <script type="text/javascript" src="/js/ui.datepicker.js"></script>
+  <script type="text/javascript" src="/js/ui.datepicker-pt-BR.js"></script>
+  <!--<script type="text/javascript" src="/js/imageConfigs.js"></script>-->
 
 
   <script type="text/javascript">
@@ -205,9 +184,9 @@ String shareImage = "https://arquivo.pt/wayback/"+imgTstamp+"/"+imgSrc;
       imgMimeType: '<%=imgMimeType%>',
       timestamp: '<%=imgTstamp%>',
       backURL: decodeURIComponent('<%=backURL%>')
-    } 
+    }
     Content = {
-        months: 
+        months:
         {  '01': "<fmt:message key="month.0" />",
            '02': "<fmt:message key="month.1" />",
            '03': "<fmt:message key="month.2" />",
@@ -221,7 +200,7 @@ String shareImage = "https://arquivo.pt/wayback/"+imgTstamp+"/"+imgSrc;
            '11': "<fmt:message key="month.10" />",
            '12': "<fmt:message key="month.11" />",
         },
-    };         
+    };
     console.log(imageObj.currentImageURL);
     console.log(imageObj.expandedWidth);
     console.log(imageObj.expandedHeight);
@@ -230,7 +209,7 @@ String shareImage = "https://arquivo.pt/wayback/"+imgTstamp+"/"+imgSrc;
     console.log(imageObj.title);
     console.log(imageObj.imgAlt);
     console.log(imageObj.imgMimeType);
-    
+
   </script>
   <script src="/js/imageexp.js"></script>
 
@@ -240,11 +219,11 @@ String shareImage = "https://arquivo.pt/wayback/"+imgTstamp+"/"+imgSrc;
        // Do something
        e.stopPropagation();
        console.log("button clicked");
-    });    
+    });
   </script>
 
   <script src="@ionic/core/dist/ionic.js"></script>
- 
+
 
   <script type="text/javascript">
   /*Addthis options share on facebook and twitter*/
@@ -258,7 +237,7 @@ String shareImage = "https://arquivo.pt/wayback/"+imgTstamp+"/"+imgSrc;
 <body>
 
   <%@ include file="include/topbar.jsp" %>
-  <div id="expandedImageViewers"></div>  
+  <div id="expandedImageViewers"></div>
 
 
 </div></div></div>

@@ -35,7 +35,7 @@
 	<meta name="Keywords" content="<fmt:message key='terms-conditions.meta.keywords'/>" />
 	<meta name="Description" content="<fmt:message key='terms-conditions.meta.description'/>" />
 	<link rel="shortcut icon" href="img/logo-16.png" type="image/x-icon" />
-	<link rel="stylesheet" title="Estilo principal" type="text/css" href="css/style.css"  media="all" />
+	<link rel="stylesheet" title="Estilo principal" type="text/css" href="/css/style.css"  media="all" />
 </head>
 <body>
 	<%@ include file="include/topbar.jsp" %>

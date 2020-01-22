@@ -1,4 +1,3 @@
-
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd" >
 <%@page import="java.net.URL"%>
@@ -19,22 +18,6 @@
   import="java.util.regex.Matcher"
   import="java.util.regex.Pattern"
   import="java.util.GregorianCalendar"
-  import="org.apache.hadoop.conf.Configuration"
-  import="org.apache.lucene.search.PwaFunctionsWritable"
-  import="org.apache.nutch.global.Global"
-  import="org.apache.nutch.html.Entities"
-  import="org.apache.nutch.metadata.Nutch"
-  import="org.apache.nutch.searcher.Hit"
-  import="org.apache.nutch.searcher.HitDetails"
-  import="org.apache.nutch.searcher.Hits"
-  import="org.apache.nutch.searcher.Query"
-  import="org.apache.nutch.searcher.Query.Clause"
-  import="org.apache.nutch.searcher.NutchBean"
-  import="org.apache.nutch.searcher.Summary"
-  import="org.apache.nutch.searcher.Summary.Fragment"
-  import="org.archive.access.nutch.NutchwaxBean"
-  import="org.archive.access.nutch.NutchwaxQuery"
-  import="org.archive.access.nutch.NutchwaxConfiguration"
   import="org.apache.commons.lang.StringEscapeUtils"
   import="java.util.Properties"
 %>
@@ -74,13 +57,10 @@ response.setHeader("Cache-Control","public, max-age=600");
 
 <%-- Get the application beans --%>
 <%
-  Configuration nutchConf = NutchwaxConfiguration.getConfiguration(application);
-  NutchBean bean = NutchwaxBean.get(application, nutchConf);
-
   // configurations
-  String collectionsHost = nutchConf.get("wax.host", "examples.com");
+  String collectionsHost = pt.arquivo.webapp.Configuration.get("wax.host", "examples.com");
   pageContext.setAttribute("collectionsHost", collectionsHost);
-  String hostArquivo = nutchConf.get("wax.webhost", "arquivo.pt");
+  String hostArquivo = pt.arquivo.webapp.Configuration.get("wax.webhost", "arquivo.pt");
 %>
 <%-- Define the default end date --%>
 <%
@@ -109,11 +89,11 @@ response.setHeader("Cache-Control","public, max-age=600");
   } catch(IllegalStateException e) {
         // Set the default embargo period to: 1 year
         DATE_END.set( Calendar.YEAR, DATE_END.get(Calendar.YEAR) - 1);
-        bean.LOG.error("Embargo offset parameter isn't in a valid format");
+        pt.arquivo.webapp.LOG.error("Embargo offset parameter isn't in a valid format");
   } catch(NullPointerException e) {
         // Set the default embargo period to: 1 year
         DATE_END.set( Calendar.YEAR, DATE_END.get(Calendar.YEAR) - 1);
-        bean.LOG.error("Embargo offset parameter isn't present");
+        pt.arquivo.webapp.LOG.error("Embargo offset parameter isn't present");
   }
 %>
 <%-- Handle the url parameters --%>
@@ -179,11 +159,11 @@ String[] queryString_splitted=null;
                        // queryString += "exacturlexpand:http://"+siteParameter;
                 }
                 String aux = request.getParameter("site");
-                bean.LOG.debug("\nQueryString : "+ queryString+"\n*****************************\n");
+                pt.arquivo.webapp.LOG.debug("\nQueryString : "+ queryString+"\n*****************************\n");
                 String aux_ ="exacturlexpand:http://"+aux;
                 aux = NutchwaxQuery.encodeExacturl(aux_);*/
 
-                bean.LOG.debug("\nQueryString exactExpand URL: "+ siteParameter+"\n*****************************\n");
+                pt.arquivo.webapp.LOG.debug("\nQueryString exactExpand URL: "+ siteParameter+"\n*****************************\n");
                 queryString += " ";
         }
         if (request.getParameter("format") != null && request.getParameter("format") != "" && !request.getParameter("format").equals("all")) {
@@ -277,7 +257,7 @@ String[] queryString_splitted=null;
         try {
                 dateStart.setTime( inputDateFormatter.parse(request.getParameter("dateStart")) );
         } catch (NullPointerException e) {
-                bean.LOG.debug("Invalid Start Date:"+ request.getParameter("dateStart") +"|");
+                pt.arquivo.webapp.LOG.debug("Invalid Start Date:"+ request.getParameter("dateStart") +"|");
         }
   }
 
@@ -298,7 +278,7 @@ String[] queryString_splitted=null;
                 dateEnd.set( Calendar.MINUTE, 59 );
                 dateEnd.set( Calendar.SECOND, 59 );
         } catch (NullPointerException e) {
-                bean.LOG.debug("Invalid End Date:"+ request.getParameter("dateEnd") +"|");
+                pt.arquivo.webapp.LOG.debug("Invalid End Date:"+ request.getParameter("dateEnd") +"|");
         }
   }
 
@@ -355,7 +335,7 @@ String[] queryString_splitted=null;
         try {
                 hitsPerPage = Integer.parseInt(hitsString);
         } catch (NumberFormatException e) {
-                bean.LOG.debug("WRONG VALUE of hitsPerPage:"+ hitsString +"|");
+                pt.arquivo.webapp.LOG.debug("WRONG VALUE of hitsPerPage:"+ hitsString +"|");
         }
   }
 
@@ -400,7 +380,7 @@ String[] queryString_splitted=null;
 
     <meta property="og:title" content="<fmt:message key='home.meta.title'/>"/>
     <meta property="og:description" content="<fmt:message key='home.meta.description'/>"/>
-    <% String arquivoHostName = nutchConf.get("wax.webhost", "arquivo.pt"); %>
+    <% String arquivoHostName = pt.arquivo.webapp.Configuration.get("wax.webhost", "arquivo.pt"); %>
     <meta property="og:image" content="//<%=arquivoHostName%>/img/logoFace.png"/>
     <meta name="theme-color" content="#1a73ba">
     <!-- Windows Phone -->
@@ -414,9 +394,9 @@ String[] queryString_splitted=null;
       var maxYear = maxDate.getFullYear();
     </script>
   <link rel="shortcut icon" href="img/logo-16.png" type="image/x-icon" />
-  <link rel="stylesheet" title="Estilo principal" type="text/css" href="css/newStyle.css?build=<c:out value='${initParam.buildTimeStamp}'/>"  media="all" />
+  <link rel="stylesheet" title="Estilo principal" type="text/css" href="/css/newStyle.css?build=<c:out value='${initParam.buildTimeStamp}'/>"  media="all" />
     <!-- font awesome -->
-    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/font-awesome.min.css">
     <!-- bootstrap -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
     <script src="/js/jquery-latest.min.js"></script>
@@ -429,16 +409,16 @@ String[] queryString_splitted=null;
     <link rel="stylesheet" href="/css/nouislider.min.css">
     <script type="text/javascript" src="/js/wNumb.js"></script>
     <!-- CSS loading spiner -->
-  <link href="css/csspin.css" rel="stylesheet" type="text/css">
+  <link href="/css/csspin.css" rel="stylesheet" type="text/css">
   <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5645cdb2e22ca317"></script>
   <!-- end addthis for sharing on soc
     ial media -->
-  <% if (nutchConf.get("wax.query.suggestion.API") != null) { %>
+  <% if (pt.arquivo.webapp.Configuration.get("wax.query.suggestion.API").isPresent()) { %>
   <script type="text/javascript">
-    querySuggestionAPI = "<%= nutchConf.get("wax.query.suggestion.API") %>";
+    querySuggestionAPI = "<%= pt.arquivo.webapp.Configuration.get("wax.query.suggestion.API").get() %>";
   </script>
   <% } %>
-  <script type="text/javascript" src="js/configs.js"></script>
+  <script type="text/javascript" src="/js/configs.js"></script>
   <script type="text/javascript" src="/js/js.cookie.js"></script>
   <!-- swiper main menu -->
   <script type="text/javascript" src="/js/swiper.min.js"></script>
@@ -447,11 +427,11 @@ String[] queryString_splitted=null;
   <link rel="stylesheet" href="../@ionic/core/css/ionic.bundle.css">
 
   <script src="/js/uglipop.min.js"></script>
-  
+
   <script type="text/javascript">
-    textSearchAPI = "<%= nutchConf.get("wax.text.search.API", "https://arquivo.pt/textsearch") %>";
+    textSearchAPI = "<%= pt.arquivo.webapp.Configuration.get("wax.text.search.API", "https://arquivo.pt/textsearch") %>";
   </script>
-  
+
   <script type="text/javascript">
     notFoundTitle = '<fmt:message key="search.no-results.title"/>';
     noResultsSuggestions = '<fmt:message key="search.no-results.suggestions"/>';
@@ -477,7 +457,7 @@ String[] queryString_splitted=null;
 </head>
 
 <body id="home-search">
-    <%@ include file="include/topbar.jsp" %>
+    <%@ include file="/include/topbar.jsp" %>
     <div class="container-fluid topcontainer" id="headerSearchDiv">
     <script type="text/javascript">
       var language = localStorage.language;
@@ -537,11 +517,9 @@ String[] queryString_splitted=null;
         String showTip = null;                  // tip to show
         String allVersions = null;
         int end = -1;
-        Hits hits = null;
         int hitsLength = 0;
         long hitsTotal = 0;
         boolean hitsTotalIsExact = false;
-        Query query = null;
         String queryExactExpand=null;
         String typeShowParam="";
 

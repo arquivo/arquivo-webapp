@@ -1,4 +1,4 @@
-<script src="js/swiper.min.js"></script>
+<script src="/js/swiper.min.js"></script>
 <script type="text/javascript">MENU.close()</script>
 <script type="text/javascript">
 	<!-- Initialize Swiper -->
@@ -7,8 +7,8 @@
       console.log('open');
       $('.logo-main-div').css("position:fixed!important; width:initial;");
       $('#menuWrapper').removeClass('transform-none');
-      $('#menuSwiperSlide').removeClass('hidden');           
-	    swiper.allowSlidePrev = true;    	
+      $('#menuSwiperSlide').removeClass('hidden');
+	    swiper.allowSlidePrev = true;
       swiper.slidePrev();
     };
     var swiper = new Swiper('.swiper-container', {
@@ -16,9 +16,9 @@
       initialSlide: 1,
       resistanceRatio: 0,
       slideToClickedSlide: true,
-      draggable: false,      
+      draggable: false,
       on: {
-        slideChangeTransitionStart: function () {    
+        slideChangeTransitionStart: function () {
           var slider = this;
           if (slider.activeIndex === 0) { /*open menu*/
           	this.allowSlidePrev = true;

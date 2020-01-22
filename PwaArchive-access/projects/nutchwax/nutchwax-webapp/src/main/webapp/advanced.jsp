@@ -3,7 +3,7 @@
 <%@ page
 	session="true"
 	contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"	
+	pageEncoding="UTF-8"
 
 	import="java.io.File"
 	import="java.net.URLDecoder"
@@ -62,7 +62,7 @@
         DATE_END.set( Calendar.YEAR, DATE_END.get(Calendar.YEAR) - 1);
   }
 
-  
+
   String dateStartDay = dateStartString.substring(0,2);
 
   String dateStartMonth = dateStartString.substring(3,5);
@@ -98,19 +98,19 @@
     <!-- Windows Phone -->
     <meta name="msapplication-navbutton-color" content="#1a73ba">
     <!-- iOS Safari -->
-    <meta name="apple-mobile-web-app-status-bar-style" content="#1a73ba">  	
+    <meta name="apple-mobile-web-app-status-bar-style" content="#1a73ba">
 	<script type="text/javascript">
 		var minDate = new Date(<%=DATE_START.getTimeInMillis()%>);
 		var maxDate = new Date(<%=DATE_END.getTimeInMillis()%>);
 		var minYear = minDate.getFullYear();
-		var maxYear = maxDate.getFullYear();		
+		var maxYear = maxDate.getFullYear();
 	</script>
     <!-- starts google fonts links -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet">
     <!-- ends google fonts links -->
-	<link rel="stylesheet" title="Estilo principal" type="text/css" href="css/newStyle.css?build=<c:out value='${initParam.buildTimeStamp}'/>"  media="all" />
+	<link rel="stylesheet" title="Estilo principal" type="text/css" href="/css/newStyle.css?build=<c:out value='${initParam.buildTimeStamp}'/>"  media="all" />
     <!-- font awesome -->
-    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/font-awesome.min.css">
     <!-- bootstrap -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
     <script src="/js/jquery-latest.min.js"></script>
@@ -120,16 +120,16 @@
 
     <script type="text/javascript" src="/js/wNumb.js"></script>
     <!-- left menu dependencies -->
-    <link rel="stylesheet" href="css/leftmenu.css">
-    <!-- end left menu dependencies -->    
-	<script type="text/javascript" src="js/configs.js"></script>
+    <link rel="stylesheet" href="/css/leftmenu.css">
+    <!-- end left menu dependencies -->
+	<script type="text/javascript" src="/js/configs.js"></script>
     <script type="text/javascript" src="/js/swiper.min.js"></script>
   	<!-- NEW - 23.07.19: Call ionic -->
   	<script src="../@ionic/core/dist/ionic.js"></script>
-  	<link rel="stylesheet" href="../@ionic/core/css/ionic.bundle.css">    
-    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5645cdb2e22ca317"></script> 
-	<!-- end addthis for sharing on social media --> 
-	
+  	<link rel="stylesheet" href="../@ionic/core/css/ionic.bundle.css">
+    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5645cdb2e22ca317"></script>
+	<!-- end addthis for sharing on social media -->
+
 	<script src="/js/uglipop.min.js"></script>
 
 </head>
@@ -138,17 +138,17 @@
 	<div class="wrap">
     <div class="container-fluid topcontainer col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8 col-lg-offset-3 col-lg-6 col-xl-offset-4 col-xl-4 " id="headerSearchDiv" >
 		<div id="info-texto-termos" class="row">
-		</div>  
+		</div>
 		<!-- Formulario -->
 		<div id="main" class="main-form-advanced">
 			<div id="conteudo-pesquisa">
                 <script type="text/javascript">
                   document.write('<ion-datetime id="ionDateStart" class="display-none" display-format="D/MMM/YYYY" min="'+minYear+'-01-01" max="'+maxYear+'-12-31" value="<%=dateStartStringIonic%>"></ion-datetime>');
-                  document.write('<ion-datetime id="ionDateEnd" class="display-none" display-format="D/MMM/YYYY" min="'+minYear+'-01-01" max="'+maxYear+'-12-31" value="<%=dateEndStringIonic%>"></ion-datetime>');                 
-                </script>   
+                  document.write('<ion-datetime id="ionDateEnd" class="display-none" display-format="D/MMM/YYYY" min="'+minYear+'-01-01" max="'+maxYear+'-12-31" value="<%=dateEndStringIonic%>"></ion-datetime>');
+                </script>
 				<form  id="searchForm" method="get" action="search.jsp">
 					<input type="hidden" name="l" value="<%= language %>" />
-		            <div class="expandable-div">   
+		            <div class="expandable-div">
 						<fieldset id="words">
 							<legend><fmt:message key='advanced.terms'/><i class="fa iCarret yearCarret fa-caret-down pull-right right-15" aria-hidden="true"></i></legend>
 							<div class="box-content container-fluid" style="display: block">
@@ -158,7 +158,7 @@
 										<input type="text" id="adv_and" class="row  col-xs-10" name="adv_and" value="<%= (request.getParameter("adv_and") != null && !(request.getParameter("adv_and").equals(""))) ? request.getParameter("adv_and") : and.toString()%>" />
 										<div class="row  col-xs-10 no-padding-left">
 											<span class="tip"><fmt:message key='advanced.terms.all.hint'/></span>
-										</div>										
+										</div>
 									</div>
 								</div>
 
@@ -168,7 +168,7 @@
 										<input type="text" class="row  col-xs-10" id="adv_phr" name="adv_phr" value="<%= (request.getParameter("adv_phr") != null && !(request.getParameter("adv_phr").equals(""))) ? request.getParameter("adv_phr") : phrase.toString()%>" />
 										<div class="row  col-xs-10 no-padding-left">
 											<span class="tip"><fmt:message key='advanced.terms.phrase.hint'/></span>
-										</div>											
+										</div>
 									</div>
 								</div>
 
@@ -178,12 +178,12 @@
 										<input type="text" class="row  col-xs-10" id="adv_not" name="adv_not" value="<%= (request.getParameter("adv_not") != null && !(request.getParameter("adv_not").equals(""))) ? request.getParameter("adv_not") : not.toString()%>" />
 										<div class="row  col-xs-10 no-padding-left">
 											<span class="tip"><fmt:message key='advanced.terms.not.hint'/></span>
-										</div>	
+										</div>
 									</div>
 								</div>
 							</div>
 						</fieldset>
-					</div>	
+					</div>
 
 					<div class="expandable-div">
 						<fieldset id="date">
@@ -203,7 +203,7 @@
 
 							</div>
 						</fieldset>
-					</div>	
+					</div>
 					<div class="expandable-div">
 						<fieldset id="format">
 							<legend><fmt:message key='advanced.format'/><i class="fa iCarret yearCarret fa-caret-down pull-right right-15" aria-hidden="true"></i></legend>
@@ -228,12 +228,12 @@
 												out.print("<ion-select-option value=\""+ mimeList[i] +"\">"+ mimeListDetail[i] +"</ion-select-option>");
 											}
 										}
-									%>										
+									%>
 									</ion-select>
 								</div>
 							</div>
 						</fieldset>
-					</div>	
+					</div>
 
 					<div class="expandable-div">
 						<fieldset id="domains">
@@ -248,7 +248,7 @@
 								</div>
 							</div>
 						</fieldset>
-					</div>	
+					</div>
 
 					<div class="expandable-div">
 						<fieldset id="num_result_fieldset">
@@ -267,13 +267,13 @@
 												out.print("<ion-select-option>"+ hitsPerPageValues[i] +"</ion-select-option>");
 											}
 										}%>
-										</ion-select >										
-									</div>	
+										</ion-select >
+									</div>
 									<label class="row  col-xs-12 no-padding-left"><fmt:message key='advanced.results.label2'/></label>
 								</div>
 							</div>
 						</fieldset>
-					</div>	
+					</div>
 
 					<div id="bottom-submit" class="text-center button-advanced">
 						<button type="submit" value="<fmt:message key='advanced.submit'/>" alt="<fmt:message key='advanced.submit'/>" class="myButtonStyle col-xs-offset-3 col-xs-6" name="btnSubmitBottom" id="btnSubmitBottom" accesskey="e" >
@@ -285,25 +285,25 @@
 
 				</form>
                         </div>
-                </div>		
-		<!-- Fim formulário -->      
-    </div>    
+                </div>
+		<!-- Fim formulário -->
+    </div>
 
 <script type="text/javascript">
 $(".expandable-div legend").click(function() {
 	$('fieldset > legend > i').removeClass('fa-caret-up').addClass('fa-caret-down')
 
     var isVisible =  $(this).next().is(':visible');
-    
+
 	$('fieldset > .box-content').slideUp('fast');
 
-	if (isVisible){		
+	if (isVisible){
 		$(this).next().slideUp('fast');
 		$(this).children("i").removeClass('fa-caret-up').addClass('fa-caret-down');
 	}
 	else{
 		$(this).next().slideDown('fast').show().slideDown('fast');
-		$(this).children("i").removeClass('fa-caret-down').addClass('fa-caret-up');		
+		$(this).children("i").removeClass('fa-caret-down').addClass('fa-caret-up');
 	}
 });
 </script>
@@ -314,27 +314,27 @@ $(".expandable-div legend").click(function() {
 <script type="text/javascript">
 	$('#dateStart_top').click( function(e) {
 	  e.preventDefault();
-	  $('#ionDateStart').trigger('click');	  
-	}); 
+	  $('#ionDateStart').trigger('click');
+	});
 	$('#dateEnd_top').click( function(e) {
 	  e.preventDefault();
-	  $('#ionDateEnd').trigger('click');	  
-	}); 	
+	  $('#ionDateEnd').trigger('click');
+	});
 
 	$('#ionDateStart').on("ionChange", function() {
 		var newStartDate = $('#ionDateStart').val();
 		var newStartDateTokens = newStartDate.split('-');
-		var newStartDateFormated =  newStartDateTokens[2].split('T')[0] + "/" + newStartDateTokens[1]+ "/"+ newStartDateTokens[0]; 
+		var newStartDateFormated =  newStartDateTokens[2].split('T')[0] + "/" + newStartDateTokens[1]+ "/"+ newStartDateTokens[0];
 		/*ionic uses the date format 1996-01-31T00:00:00+01:00  , we need to convert the date to our own date format i.e.  31/01/1996 */
 		$('#dateStart_top').val(newStartDateFormated);
-	});   
+	});
 	$('#ionDateEnd').on("ionChange", function() {
 		var newEndDate = $('#ionDateEnd').val();
 		var newEndDateTokens = newEndDate.split('-');
-		var newEndDateFormated =  newEndDateTokens[2].split('T')[0] + "/" + newEndDateTokens[1]+ "/"+ newEndDateTokens[0]; 
+		var newEndDateFormated =  newEndDateTokens[2].split('T')[0] + "/" + newEndDateTokens[1]+ "/"+ newEndDateTokens[0];
 		/*ionic uses the date format 1996-01-31T00:00:00+01:00  , we need to convert the date to our own date format i.e.  31/01/1996 */
 		$('#dateEnd_top').val(newEndDateFormated);
-	});  
+	});
 
 
 	/** Validade dates**/
@@ -345,12 +345,12 @@ $(".expandable-div legend").click(function() {
 	    startTime.setHours(0,0,0,0);
 	    var endTime = new Date( createDateJsFormat( dateEndInput ) );
 	    endTime.setHours(0,0,0,0);
-	    
+
 	    if(startTime > endTime) {
 	      modalErrorDates();
 	      return false;
 	    }
-	  
+
 	    return true;
 	});
 
@@ -375,19 +375,19 @@ $(".expandable-div legend").click(function() {
 		$('#uglipop_overlay').fadeOut('fast');
 	}
 
- 	
-</script>	
+
+</script>
 <script type="text/javascript">
 	$('#startDateCalendarAnchor').click( function(e) {
 	  e.preventDefault();
 	  $('#dateStart_top').trigger('click');
-	});    
-</script>		
+	});
+</script>
 <script type="text/javascript">
 	$('#endDateCalendarAnchor').click( function(e) {
 	  e.preventDefault();
 	  $('#dateEnd_top').trigger('click');
-	});    
+	});
 </script>
 <script type="text/javascript">
   monthShortNamesArray = ["<fmt:message key='smonth.0'/>",'<fmt:message key='smonth.1'/>','<fmt:message key='smonth.2'/>','<fmt:message key='smonth.3'/>','<fmt:message key='smonth.4'/>','<fmt:message key='smonth.5'/>','<fmt:message key='smonth.6'/>','<fmt:message key='smonth.7'/>','<fmt:message key='smonth.8'/>','<fmt:message key='smonth.9'/>','<fmt:message key='smonth.10'/>','<fmt:message key='smonth.11'/>'];
@@ -411,8 +411,8 @@ $(".expandable-div legend").click(function() {
 
    $('#formatType')[0].cancelText =  "<fmt:message key='picker.cancel'/>";
    $('#num-result')[0].cancelText =  "<fmt:message key='picker.cancel'/>";
-   
-</script>   
+
+</script>
 
 <%@ include file="include/footer.jsp" %>
 <%@include file="include/analytics.jsp" %>
