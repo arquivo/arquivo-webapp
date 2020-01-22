@@ -69,7 +69,7 @@ body#home-search .urlBlock a:visited {
 /* Estimated results */
 p#estimated-results {
   font-family: arial, sans-serif;
-  font-size: 14px;
+  font-size: 13px;
   color: #70757a;
   line-height: 43px;
   margin-top: -4px;
@@ -309,9 +309,10 @@ ion-item {
   background-color: #efefef !important;
 }
 #conteudo-resultado {
+  padding-bottom: 35px;
   padding-left: 9px;
-  padding-right: 9px;
-  margin-top: 30px;
+  padding-right: 9px;  
+  margin-top: 30px;  
   margin-left: -15px;
   margin-right: -15px;
 }
@@ -1559,8 +1560,10 @@ body#home-landing.hydrated h3 {
   color: rgb(28, 117, 192) !important;
   background: rgba(255, 255, 255, 0.7);
   border-radius: 25px;
-  top: 6px;
-  right: calc(5vw + 8px);
+  /*top: 6px;
+  right: calc(5vw + 8px);*/
+  top: 12px;
+  right: calc(5vw + 14px);
   z-index: 2;
 }
 h1, h2, h3, h4, h5 {
@@ -2041,6 +2044,9 @@ tr.trTV:nth-child(even) {
   background-color: rgba(255, 255, 255, 0.4);
   color: #1c75c0 !important;
 }
+
+
+
 .tdTV a {
   color: #1c75c0 !important;
   text-decoration: none !important;
@@ -2276,6 +2282,45 @@ h4.modalTitle {
   margin: 0 auto !important;
   float: none !important;
 }
+
+
+.left-icon {
+  font-size: 2.5em !important;
+  position: absolute;
+  color: #fff;
+  top: 0;
+  bottom: 0;
+  left: -4px;
+  bottom: 0;
+  border-radius: 50px;
+  z-index: 2;
+  border-radius: 50px;
+  padding: 1px;
+  background-color: rgba(0, 0, 0, 0);
+  margin: 0 !important;
+  height: 100vh;
+  padding: 20px 15px 20px 0;
+  display: block;
+}
+.right-icon {
+  font-size: 2.5em !important;
+  position: absolute;
+  color: #fff !important;
+  z-index: 2;
+  top: 0;
+  bottom: 0;
+  margin: 50% 0 !important;
+  right: -4px;
+  border-radius: 50px;
+  padding: 1px;
+  background-color: rgba(0, 0, 0, 0);
+  margin: 0 !important;
+  height: 100vh;
+  padding: 20px 0px 20px 10px;
+  display: block;
+}
+
+
 /***************************************************************************/
 /***************************************************************************/
 /**************          MEDIA   QUERIES          **************************/
@@ -3001,7 +3046,7 @@ h4.modalTitle {
     border: 1px solid #007AFF;
     float: left;
     width: 100px;
-    margin-bottom: 35px !important;
+    /*margin-bottom: 35px !important;*/
     margin-right: 10px;
     text-decoration: none !important;
     font-size: 1.05em;
@@ -3056,10 +3101,39 @@ background-color: red;
 }
 
 body#home-search .next-previous-ul, body#homeImages .next-previous-ul {
-display: flow-root;
-    border-radius: 5px;
-    border: 1px solid lightgray;
-    padding: 10px;
+display: flow-root;   
+   
+}
+
+#homeImages .image-container {
+    margin-bottom: 0px;
+}
+
+.next-previous-ul {
+    margin-top: 21px;
+    margin-bottom: 35px;
+}
+
+.card-height { 
+  width: 50vw;
+}
+
+.closeItAbsolute, .closeIt { 
+    top: 8px;
+    right: calc(25vw + 0px);
+}
+
+.closeIt { 
+     top: 2px;
+    right: calc(25vw + -6px);
+}
+
+body#homeImages .hydrated h4 {
+    font-size: 1.1em !important;   
+}
+
+.hydrated h3 {   
+    font-size: 1.3em;
 }
 
 .next a {
@@ -3083,6 +3157,43 @@ width:104px;
     margin-top: 0px;
     font-weight: 400;
 
+}
+
+.left-icon {
+    font-size: 2.5em !important;
+    position: absolute;
+    color: #fff;
+    top: 0;
+    bottom: 0;
+    left: -4px;
+    bottom: 0;
+    border-radius: 50px;
+    z-index: 2;
+    border-radius: 50px;
+    padding: 1px;
+    background-color: rgba(0, 0, 0, 0);
+    margin: 0 !important;
+    height: 100vh;
+    padding: 20px 15px 20px 0;
+    display: block;
+}
+
+.right-icon {
+    font-size: 2.5em !important;
+    position: absolute;
+    color: #fff !important;
+    z-index: 2;
+    top: 0;
+    bottom: 0;
+    margin: 50% 0 !important;
+    right: -4px;
+    border-radius: 50px;
+    padding: 1px;
+    background-color: rgba(0, 0, 0, 0);
+    margin: 0 !important;
+    height: 100vh;
+    padding: 20px 0px 20px 10px;
+    display: block;
 }
 
 /* iPad Portrait */
@@ -3237,41 +3348,7 @@ width:104px;
     padding: 1% 1.4% 1% 1.75% !important;
   }
 }
-.left-icon {
-  font-size: 2.5em !important;
-  position: absolute;
-  color: #fff;
-  top: 0;
-  bottom: 0;
-  left: -4px;
-  bottom: 0;
-  border-radius: 50px;
-  z-index: 2;
-  border-radius: 50px;
-  padding: 1px;
-  background-color: rgba(0, 0, 0, 0);
-  margin: 0 !important;
-  height: 100vh;
-  padding: 20px 15px 20px 0;
-  display: block;
-}
-.right-icon {
-  font-size: 2.5em !important;
-  position: absolute;
-  color: #fff !important;
-  z-index: 2;
-  top: 0;
-  bottom: 0;
-  margin: 50% 0 !important;
-  right: -4px;
-  border-radius: 50px;
-  padding: 1px;
-  background-color: rgba(0, 0, 0, 0);
-  margin: 0 !important;
-  height: 100vh;
-  padding: 20px 0px 20px 10px;
-  display: block;
-}
+
 /* iPad Pro 10 Portrait */
 @media (device-width: 834px) and (device-height:834px) {
   body#homeImages span#buttonSearch button span {
