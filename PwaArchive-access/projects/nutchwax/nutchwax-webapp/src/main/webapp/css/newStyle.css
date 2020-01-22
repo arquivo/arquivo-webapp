@@ -1071,6 +1071,7 @@ body#home-search #conteudo-pesquisa-erro {
 body#home-search #conteudo-pesquisa-erro {
   float: left !important;
   padding-left: none !important;
+  width: 100%;
 }
 body#homeImages #conteudo-pesquisa-erro {}
 #conteudo-pesquisa-erro .alert-danger {
@@ -3033,7 +3034,7 @@ h4.modalTitle {
 }
 
 
-@media (min-width:769px) and (max-width:3000px) {
+@media (min-width:  769px) and (max-width:3000px) {
 .pagesNextPrevious a {
     background-color: #1c75c0 !important;
     color: white !important;
@@ -3136,6 +3137,96 @@ body#homeImages .hydrated h4 {
     font-size: 1.3em;
 }
 
+div#flex-container {  
+    padding-bottom: 7px;
+    background-color: white !important;
+    width: 100% !important;
+    max-width: 960px !important;
+    min-width: 320px !important;
+    margin: 0 auto 50px auto !important;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    /*align-items: stretch; */   
+    /*align-items: center;*/
+    justify-content: space-between;
+}
+
+div#flex-container div:first-child {
+    margin-bottom: 12px !important;
+    float: none;
+    width: 98% !important;
+    margin: 9px auto 12px auto !important;
+}
+
+div#flex-container h3 {
+display: none;
+}
+
+div#flex-container div:nth-child(2), div#flex-container div:nth-child(3), div#flex-container div:nth-child(4), div#flex-container div:nth-child(5) {        
+    width:47.8%;
+    height: 300px;
+    margin-bottom: 10px !important;
+}
+
+div#flex-container div:nth-child(2) div, div#flex-container div:nth-child(3) div, div#flex-container div:nth-child(4) div, div#flex-container div:nth-child(5) div {      
+    width:96.6% !important;
+    max-height: 95.2% !important;
+}
+
+div#flex-container div#intro-award{ 
+   height: 380px;
+   width:100%;
+ 
+}
+div#flex-container div#intro-award div{ 
+   width: 98.3% !important;
+   max-height: 96.3% !important;
+ 
+  
+}
+
+#award-pt {
+    background: transparent url(../img/homepage-premio-card-pt-desktop.jpg) no-repeat center center;
+    background-size: cover;
+}
+
+#award-en {
+    background: transparent url(../img/homepage-premio-card-en-desktop.jpg) no-repeat center center;
+    background-size: cover;
+}
+
+body#home-search .spell { 
+    top: -25px;
+    left: -19px;
+}
+
+body#home-search #conteudo-pesquisa-erro {
+    margin-top: -12px !important;
+}
+
+#sugerimos-que {
+    margin-top: 0px;
+}
+
+.alert>p, .alert>ul {  
+    margin-left: 4px;
+}
+
+body#home-search .alert>p, body#home-search .alert>ul {  
+    margin-left: 7px !important;
+}
+
+#sugerimos-que {
+    font-size: 0.9em;
+}
+
+div#flex-container div:intro-award {
+    width: 100% !important;
+    margin: 0 auto; 
+}
+
+
 .next a {
 float: right;
 margin-right: 0 !important;
@@ -3195,6 +3286,8 @@ width:104px;
     padding: 20px 0px 20px 10px;
     display: block;
 }
+
+
 
 /* iPad Portrait */
 @media (device-width: 768px) and (device-height:1024px) {
@@ -3335,6 +3428,12 @@ width:104px;
     max-width: 940px !important;
     margin: 0 auto !important;
   }
+  
+  div#flex-container div:nth-child(2), div#flex-container div:nth-child(3), div#flex-container div:nth-child(4), div#flex-container div:nth-child(5) {
+    width: 46%;
+    height: 300px;
+    margin-bottom: 10px !important;    
+}
   body#home-search span#buttonSearch button span {
     top: 11px !important;
     right: 22px !important;
@@ -3388,7 +3487,7 @@ width:104px;
     right: 0px !important;
   }
   div#flex-container div:first-child {
-    width: 97% !important;
+    width: 98.3% !important;
   }
 }
 /* iPhone XR landscape */

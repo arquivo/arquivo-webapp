@@ -39,21 +39,7 @@
 		   <h3><fmt:message key='home.intro.testimonials'/></h3>
 		   <div id="testimonials-<%=language%>" class="call-to-actions">
 		   		<iframe title="<fmt:message key='home.intro.testimonials'/>" src="https://www.youtube.com/embed/<fmt:message key='home.intro.testimonials.youtube'/>?controls=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; " allowfullscreen></iframe>
-	   	   </div>
-	   <div>   	   
-   </div>     
-<!-- starts The closing of the welcome blue box -->
-<script type="text/javascript">
-	if (typeof(Storage) !== "undefined") {
-	  // Code for localStorage/sessionStorage.
-	  if(localStorage.getItem('welcomeMessage') == null){
-	  	/*User is new show welcomeMessage*/
-	  	$('#welcomeMessage').removeClass('hidden');
-	  }	  
-	} else {
-	  // Sorry! No Web Storage support..
-	  $('#welcomeMessage').removeClass('hidden');
-	} 
-</script>  
-<!-- starts The closing of the welcome blue box -->
+      </div>
+	     	   
+
 <!-- ends NEW block of code: home landing page -->
