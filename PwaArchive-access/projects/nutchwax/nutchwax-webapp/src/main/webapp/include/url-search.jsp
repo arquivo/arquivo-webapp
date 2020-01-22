@@ -143,7 +143,7 @@
                '  </div>' +
                '</div>' +
          '<div id="conteudo-versoes" class="swiper-no-swiping">'+
-               '  <div id="resultados-lista" class="swiper-no-swiping" style="overflow: auto; min-height: 200px!important;">'+
+               '  <div id="resultados-lista" class="swiper-no-swiping" style="overflow: hidden; min-height: 200px!important;">'+
                '    <table id="resultsTable" class="tabela-principal swiper-no-swiping">'+
                '      <tbody id="tableBody" class="swiper-no-swiping">'+
                       '<tr id="years" class="swiper-no-swiping trTV"></tr>'+
@@ -379,7 +379,7 @@
               $.each(tokens, function(e){
                   if(this != ""){
                       var version = JSON.parse(this);
-                      if( !version || version.status[0] === '4' || version.status[0] === '5'){ /*Ignore 400's and 500's*/
+                      if( !version.status || version.status[0] === '4' || version.status[0] === '5'){ /*Ignore 400's and 500's*/
                         /*empty on purpose*/
                       }
                       else{

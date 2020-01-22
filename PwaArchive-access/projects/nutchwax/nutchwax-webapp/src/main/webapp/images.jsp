@@ -19,22 +19,6 @@
   import="java.util.TimeZone"
   import="java.util.regex.Matcher"
   import="java.util.regex.Pattern"
-  import="org.apache.hadoop.conf.Configuration"
-  import="org.apache.lucene.search.PwaFunctionsWritable"
-  import="org.apache.nutch.global.Global"
-  import="org.apache.nutch.html.Entities"
-  import="org.apache.nutch.metadata.Nutch"
-  import="org.apache.nutch.searcher.Hit"
-  import="org.apache.nutch.searcher.HitDetails"
-  import="org.apache.nutch.searcher.Hits"
-  import="org.apache.nutch.searcher.Query"
-  import="org.apache.nutch.searcher.Query.Clause"
-  import="org.apache.nutch.searcher.NutchBean"
-  import="org.apache.nutch.searcher.Summary"
-  import="org.apache.nutch.searcher.Summary.Fragment"
-  import="org.archive.access.nutch.NutchwaxBean"
-  import="org.archive.access.nutch.NutchwaxQuery"
-  import="org.archive.access.nutch.NutchwaxConfiguration"
   import="org.apache.commons.lang.StringEscapeUtils"
   import="java.util.Properties"
   import="java.util.HashSet"
@@ -78,11 +62,6 @@ response.setHeader("Cache-Control","public, max-age=600");
   }
 %>
 
-<%-- Get the application beans --%>
-<%
-  Configuration nutchConf = NutchwaxConfiguration.getConfiguration(application);
-  NutchBean bean = NutchwaxBean.get(application, nutchConf);
-%>
 <%-- Define the default end date --%>
 <%
   Calendar DATE_END = new GregorianCalendar();
@@ -135,11 +114,11 @@ response.setHeader("Cache-Control","public, max-age=600");
   } catch(IllegalStateException e) {
         // Set the default embargo period to: 1 year
         DATE_END.set( Calendar.YEAR, DATE_END.get(Calendar.YEAR) - 1);
-        bean.LOG.error("Embargo offset parameter isn't in a valid format");
+        pt.arquivo.webapp.LOG.error("Embargo offset parameter isn't in a valid format");
   } catch(NullPointerException e) {
         // Set the default embargo period to: 1 year
         DATE_END.set( Calendar.YEAR, DATE_END.get(Calendar.YEAR) - 1);
-        bean.LOG.error("Embargo offset parameter isn't present");
+        pt.arquivo.webapp.LOG.error("Embargo offset parameter isn't present");
   }
 
 
@@ -229,7 +208,7 @@ response.setHeader("Cache-Control","public, max-age=600");
         try {
                 dateStart.setTime( inputDateFormatter.parse(request.getParameter("dateStart")) );
         } catch (NullPointerException e) {
-                bean.LOG.debug("Invalid Start Date:"+ request.getParameter("dateStart") +"|");
+                pt.arquivo.webapp.LOG.debug("Invalid Start Date:"+ request.getParameter("dateStart") +"|");
         }
   }
   /*** End date ***/
@@ -249,7 +228,7 @@ response.setHeader("Cache-Control","public, max-age=600");
                 dateEnd.set( Calendar.MINUTE, 59 );
                 dateEnd.set( Calendar.SECOND, 59 );
         } catch (NullPointerException e) {
-                bean.LOG.debug("Invalid End Date:"+ request.getParameter("dateEnd") +"|");
+                pt.arquivo.webapp.LOG.debug("Invalid End Date:"+ request.getParameter("dateEnd") +"|");
         }
   }
   String dateStartString = inputDateFormatter.format( dateStart.getTime() );
@@ -276,13 +255,13 @@ response.setHeader("Cache-Control","public, max-age=600");
   //htmlQueryString = "";
 
   if ( request.getParameter("query") != null ) {
-        bean.LOG.debug("Received Query input");
+        pt.arquivo.webapp.LOG.debug("Received Query input");
         //htmlQueryString = request.getParameter("query").toString();
         String [] inputWords = htmlQueryString.split("\\s+");
         StringBuilder reconstructedInputString = new StringBuilder();
 
         for (String word: inputWords){
-          bean.LOG.debug("WORD: "+ word);
+          pt.arquivo.webapp.LOG.debug("WORD: "+ word);
           if( word.startsWith("https://")){
             word= word.substring(8, word.length());
           }else if (word.startsWith("http://")){
@@ -294,17 +273,17 @@ response.setHeader("Cache-Control","public, max-age=600");
           if (matcher.find()) {
 
             try {
-              bean.LOG.debug("Attempting URL "+ word);
+              pt.arquivo.webapp.LOG.debug("Attempting URL "+ word);
               URL myURL = new URL("http://" + word);
               String host = myURL.getHost();
               String[] domainNameParts = host.split("\\.");
               String tldString ="."+domainNameParts[domainNameParts.length-1].toUpperCase();
-              bean.LOG.debug("TLD:"+ tldString);
+              pt.arquivo.webapp.LOG.debug("TLD:"+ tldString);
               if(validTlds.contains(tldString)){
                 word = "site:" + host.toLowerCase();
               }
               else{
-                bean.LOG.debug("Invalid tld in word:"+ word);
+                pt.arquivo.webapp.LOG.debug("Invalid tld in word:"+ word);
               }
             } catch (MalformedURLException e) {
 
@@ -339,7 +318,7 @@ response.setHeader("Cache-Control","public, max-age=600");
   <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
   <!-- ends google fonts links -->
   <link rel="shortcut icon" href="img/logo-16.png" type="image/x-icon"/>
-  <link href="css/csspin.css" rel="stylesheet" type="text/css"/>
+  <link href="/css/csspin.css" rel="stylesheet" type="text/css"/>
   <script type="text/javascript">
       var minDate = new Date(820450800000);
       var maxDate = new Date(<%=DATE_END.getTimeInMillis()%>);
@@ -363,9 +342,9 @@ response.setHeader("Cache-Control","public, max-age=600");
     };
   </script>
 
-  <link rel="stylesheet" title="Estilo principal" type="text/css" href="css/newStyle.css?build=<c:out value='${initParam.buildTimeStamp}'/>"  media="all" />
+  <link rel="stylesheet" title="Estilo principal" type="text/css" href="/css/newStyle.css?build=<c:out value='${initParam.buildTimeStamp}'/>"  media="all" />
     <!-- font awesome -->
-    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/font-awesome.min.css">
     <!-- bootstrap -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
     <script src="/js/jquery-latest.min.js"></script>
@@ -375,24 +354,24 @@ response.setHeader("Cache-Control","public, max-age=600");
     <link rel="stylesheet" href="/css/nouislider.min.css">
     <script type="text/javascript" src="/js/wNumb.js"></script>
     <!-- CSS loading spiner -->
-    <link href="css/csspin.css" rel="stylesheet" type="text/css">
+    <link href="/css/csspin.css" rel="stylesheet" type="text/css">
     <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5645cdb2e22ca317"></script>
     <!-- end addthis for sharing on social media -->
 	<script type="text/javascript">
-		imageSearchAPI = "<%= nutchConf.get("wax.image.search.API", "https://arquivo.pt/imagesearch") %>";
+		imageSearchAPI = "<%= pt.arquivo.webapp.Configuration.get("wax.image.search.API", "https://arquivo.pt/imagesearch") %>";
 	</script>
-	<% if (nutchConf.get("wax.query.suggestion.API") != null) { %>
+	<% if (pt.arquivo.webapp.Configuration.get("wax.query.suggestion.API") != null) { %>
       <script type="text/javascript">
-        querySuggestionAPI = "<%= nutchConf.get("wax.query.suggestion.API") %>";
+        querySuggestionAPI = "<%= pt.arquivo.webapp.Configuration.get("wax.query.suggestion.API") %>";
       </script>
     <% } %>
-    <script type="text/javascript" src="js/configs.js"></script>
+    <script type="text/javascript" src="/js/configs.js"></script>
 
   <script src="https://apis.google.com/js/client.js" type="text/javascript"> </script>
-  <script type="text/javascript" src="js/ui.datepicker.js"></script>
-  <script type="text/javascript" src="js/ui.datepicker-pt-BR.js"></script>
-  <!--<script type="text/javascript" src="js/imageConfigs.js"></script>-->
-  <script type="text/javascript" src="js/images2.js?build=<c:out value='${initParam.buildTimeStamp}'/>"></script>
+  <script type="text/javascript" src="/js/ui.datepicker.js"></script>
+  <script type="text/javascript" src="/js/ui.datepicker-pt-BR.js"></script>
+  <!--<script type="text/javascript" src="/js/imageConfigs.js"></script>-->
+  <script type="text/javascript" src="/js/images2.js?build=<c:out value='${initParam.buildTimeStamp}'/>"></script>
   <script type="text/javascript">
     $(".border-mobile").click(function(e) {
        // Do something
@@ -485,7 +464,7 @@ Content = {
 <script type="text/javascript" src="/js/js.cookie.js"></script>
 
 
-  <%@ include file="include/topbar.jsp" %>
+  <%@ include file="/include/topbar.jsp" %>
   <div class="container-fluid topcontainer" id="headerSearchDiv">
   <script type="text/javascript">
     imagesHref = window.location.href;

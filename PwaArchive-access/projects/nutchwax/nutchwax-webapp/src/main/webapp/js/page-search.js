@@ -37,32 +37,27 @@ function createErrorPage(){
     //$( window ).resize(function() {$('#conteudo-pesquisa-erro').css('margin-left', $('#search-dateStart_top').offset().left)}); /*dirty hack to keep message aligned with not responsive searchbox*/$( window ).resize(function() {$('.spell').css('margin-left', $('#search-dateStart_top').offset().left)}); /*dirty hack to keep message aligned with not responsive searchbox*/ 
 }
 
-function searchPages(startIndex){
-    var input = $('#txtSearch').val();
-
-    var dateStart=$('#dateStart_top').val().substring($('#dateStart_top').val().length - 4) +''+  $('#dateStart_top').val().substring(3,5) +''+ $('#dateStart_top').val().substring(0,2)+ '000000' ;
-    
-    var dateEnd= $('#dateEnd_top').val().substring($('#dateEnd_top').val().length - 4) +''+  $('#dateEnd_top').val().substring(3,5) +''+ $('#dateEnd_top').val().substring(0,2)+'235959';
-
-    var site = '';
-    var type = '';
-    var collection = '';
-
+// returns an object with query and the extracted special parameters
+function extractQuerySpecialParameters(inputQuery) {
     var words = [];
-	input.split(' ').forEach(function(item) {
+    var collection = [];
+    var site = [];
+    var type = [];
+
+	inputQuery.split(' ').forEach(function(item) {
 		var special = false;
 		var pair = item.split(':');
 		if (pair.length == 2) {
 			var key = pair[0];
 		    var value = pair[1];
 		    if (key === 'site') {
-		    	site = value;
+		    	site.push(value);
 		    	special = true;
 		    } else if (key === 'type') {
-		    	type = value;
+		    	type.push(value);
 		    	special = true;
 		    } else if (key === 'collection') {
-		    	collection = value;
+		    	collection.push(value);
 		    	special = true;
 		    } 
 		}
@@ -70,7 +65,28 @@ function searchPages(startIndex){
 	    	words.push(item);
 	    }
 	});
-	var query = words.join(' ');
+	const query = words.join(' ');
+
+	return { 
+		query: query,
+		site: site.join(','),
+		type: type.join(','),
+		collection: collection.join(',')
+	};
+}
+
+function formatURLForPresentation(originalURL) {
+	return originalURL.replace(/^(http(s)?\:\/\/(www\.)?)?/,'').replace(/\/$/,'');
+}
+
+function searchPages(startIndex){
+    var input = $('#txtSearch').val();
+
+    var dateStart=$('#dateStart_top').val().substring($('#dateStart_top').val().length - 4) +''+  $('#dateStart_top').val().substring(3,5) +''+ $('#dateStart_top').val().substring(0,2)+ '000000' ;
+    
+    var dateEnd= $('#dateEnd_top').val().substring($('#dateEnd_top').val().length - 4) +''+  $('#dateEnd_top').val().substring(3,5) +''+ $('#dateEnd_top').val().substring(0,2)+'235959';
+
+    var extractedQuery = extractQuerySpecialParameters(input);
 
     $.ajax({
 		url: textSearchAPI,
@@ -78,14 +94,14 @@ function searchPages(startIndex){
     	type: 'GET',
 		timeout: 300000,
 		data: {
-			q: query,
+			q: extractedQuery.query,
 			from: dateStart,
 			to: dateEnd,
 			offset: startIndex,
 			maxItems: hitsPerPage,
-			siteSearch: site,
-			type: type,
-			collection: collection
+			siteSearch: extractedQuery.site,
+			type: extractedQuery.type,
+			collection: extractedQuery.collection
 		},
 
 		error: function() {         
@@ -98,7 +114,7 @@ function searchPages(startIndex){
 
 			var responseJson = $.parseJSON(data);
 
-			totalResults = parseInt(responseJson.total_items);
+			totalResults = parseInt(responseJson.estimated_nr_results);
 			var showNextPageButton = ((parseInt(startIndex) + hitsPerPage) >= totalResults) ? false: true;    
 
 			if ( totalResults === 0){
@@ -128,7 +144,7 @@ function searchPages(startIndex){
 	                var originalURL = currentDocument.originalURL;
 	                var url = new URL(originalURL);
 	                var hostname = url.hostname;
-	                var urlPresentation = currentDocument.originalURL.replace(/^(https?\:\/\/(www\.))?/,'');
+	                var urlPresentation = formatURLForPresentation(currentDocument.originalURL);
 	                var linkToArchive = currentDocument.linkToArchive;
 	                var snippet = currentDocument.snippet;
 	                var mimeType = currentDocument.mimeType;

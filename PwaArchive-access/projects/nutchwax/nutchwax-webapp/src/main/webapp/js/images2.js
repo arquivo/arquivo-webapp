@@ -703,6 +703,44 @@ function initClipboard(linkCopied){
     return;    
 }
 
+// returns an object with query and the extracted special parameters
+function extractQuerySpecialParameters(inputQuery) {
+    var words = [];
+    var collection = [];
+    var site = [];
+    var type = [];
+
+  inputQuery.split(' ').forEach(function(item) {
+    var special = false;
+    var pair = item.split(':');
+    if (pair.length == 2) {
+      var key = pair[0];
+        var value = pair[1];
+        if (key === 'site') {
+          site.push(value);
+          special = true;
+        } else if (key === 'type') {
+          type.push(value);
+          special = true;
+        } else if (key === 'collection') {
+          collection.push(value);
+          special = true;
+        } 
+    }
+      if (!special) {
+        words.push(item);
+      }
+  });
+  const query = words.join(' ');
+
+  return { 
+    query: query,
+    site: site.join(','),
+    type: type.join(','),
+    collection: collection.join(',')
+  };
+}
+
 function searchImagesJS(dateStartWithSlashes, dateEndWithSlashes, safeSearchOption,startIndex){
   //TODO:: Decide if we just send the API query in the form of 
   // /imagesearch?q=sapo%20site:sapo.pt%20type:jpeg      
@@ -720,16 +758,20 @@ function searchImagesJS(dateStartWithSlashes, dateEndWithSlashes, safeSearchOpti
     var dateEnd= $('#dateEnd_top').val().substring($('#dateEnd_top').val().length - 4) +''+  $('#dateEnd_top').val().substring(3,5) +''+ $('#dateEnd_top').val().substring(0,2)+'235959';
     currentStart = startIndex;
     
+    var extractedQuery = extractQuerySpecialParameters(input);
 
     $.ajax({
        url: imageSearchAPI,      
        data: {
-          q: input,
+          q: extractedQuery.query,
           from: dateStart,
           to: dateEnd,
           offset: startIndex,
           maxItems: numrows,
           more: "imgThumbnailBase64,imgSrcURLDigest,imgDigest,pageProtocol,pageHost,pageImages,safe",
+          siteSearch: extractedQuery.site,
+          type: extractedQuery.type,
+          collection: extractedQuery.collection
        },
            
        timeout: 300000,

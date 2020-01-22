@@ -3,7 +3,7 @@
 <%@ page
 	session="true"
 	contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"	
+	pageEncoding="UTF-8"
 
 	import="java.io.File"
 	import="java.util.Calendar"
@@ -11,7 +11,7 @@
 	import="java.util.GregorianCalendar"
 	import="java.net.URLEncoder"
 	import= "java.net.*"
-	import= "java.io.*"	
+	import= "java.io.*"
 	import="java.text.DateFormat"
 	import="java.util.Calendar"
 	import="java.util.TimeZone"
@@ -19,22 +19,6 @@
 	import="java.util.regex.Matcher"
 	import="java.util.regex.Pattern"
 	import="java.util.GregorianCalendar"
-  import="org.apache.hadoop.conf.Configuration"
-  import="org.apache.lucene.search.PwaFunctionsWritable"
-  import="org.apache.nutch.global.Global"
-  import="org.apache.nutch.html.Entities"
-  import="org.apache.nutch.metadata.Nutch"
-  import="org.apache.nutch.searcher.Hit"
-  import="org.apache.nutch.searcher.HitDetails"
-  import="org.apache.nutch.searcher.Hits"
-  import="org.apache.nutch.searcher.Query"
-  import="org.apache.nutch.searcher.Query.Clause"
-  import="org.apache.nutch.searcher.NutchBean"
-  import="org.apache.nutch.searcher.Summary"
-  import="org.apache.nutch.searcher.Summary.Fragment"
-  import="org.archive.access.nutch.NutchwaxBean"
-  import="org.archive.access.nutch.NutchwaxQuery"
-  import="org.archive.access.nutch.NutchwaxConfiguration"
 %>
 <% // Set the character encoding to use when interpreting request values.
   request.setCharacterEncoding("UTF-8");
@@ -50,12 +34,6 @@
 	private static Calendar DATE_START = new GregorianCalendar(1996, 1-1, 1);
 	private static Calendar dateStart = new GregorianCalendar();
 	private static Calendar dateEnd = new GregorianCalendar();
-%>
-
-<%-- Get the application beans --%>
-<%
-  Configuration nutchConf = NutchwaxConfiguration.getConfiguration(application);
-  NutchBean bean = NutchwaxBean.get(application, nutchConf);
 %>
 
 <%
@@ -134,9 +112,9 @@
                 dateEnd.set( Calendar.MINUTE, 59 );
                 dateEnd.set( Calendar.SECOND, 59 );
         } catch (NullPointerException e) {
-                bean.LOG.debug("Invalid End Date:"+ request.getParameter("dateEnd") +"|");
+                pt.arquivo.webapp.LOG.debug("Invalid End Date:"+ request.getParameter("dateEnd") +"|");
         }
-  }  
+  }
   String dateStartString = inputDateFormatter.format( dateStart.getTime() );
 
   String dateEndString = inputDateFormatter.format( dateEnd.getTime() );
@@ -147,19 +125,19 @@
 %>
 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="pt-PT" lang="pt-PT"><head>
-  <% if (htmlQueryString.length() > 0) { %>	
+  <% if (htmlQueryString.length() > 0) { %>
 	  <title><fmt:message key='shareImage.image'/> <%=imageTitle%> — Arquivo.pt</title>
   <% } else { %>
   	  <title><fmt:message key='shareImage.image'/> — Arquivo.pt</title>
   <% } %>
   <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8"/>
-  
+
   <meta http-equiv="Content-Language" content="pt-PT"/>
   <meta name="Keywords" content="resultado, pesquisa, buscar, arquivo, Web, português, portuguesa, Portugal"/>
   <meta name="Description" content="Página de resultados de uma pesquisa de imagens feita no Arquivo.pt."/>
   <link rel="shortcut icon" href="img/logo-16.png" type="image/x-icon"/>
-  <link rel="stylesheet" title="Estilo principal" type="text/css" href="css/style.css" media="all"/>
-  <link href="css/csspin.css" rel="stylesheet" type="text/css"/>
+  <link rel="stylesheet" title="Estilo principal" type="text/css" href="/css/style.css" media="all"/>
+  <link href="/css/csspin.css" rel="stylesheet" type="text/css"/>
 
   <meta property="og:title" content="<fmt:message key='shareImage.image'/> <%=imageTitle%> — Arquivo.pt" />
   <meta property="og:description" content="<fmt:message key='shareImage.foundInArquivo' />" />
@@ -170,11 +148,11 @@
   <!-- Windows Phone -->
   <meta name="msapplication-navbutton-color" content="#252525">
   <!-- iOS Safari -->
-  <meta name="apple-mobile-web-app-status-bar-style" content="#252525">    
+  <meta name="apple-mobile-web-app-status-bar-style" content="#252525">
 
   <script type="text/javascript">
   Content = {
-      months: 
+      months:
       {  '01': "<fmt:message key="month.0" />",
          '02': "<fmt:message key="month.1" />",
          '03': "<fmt:message key="month.2" />",
@@ -188,7 +166,7 @@
          '11': "<fmt:message key="month.10" />",
          '12': "<fmt:message key="month.11" />",
       },
-  };  
+  };
 
   </script>
   <script src="https://apis.google.com/js/client.js" type="text/javascript"> </script>
@@ -201,9 +179,9 @@
   <link rel="stylesheet" type="text/css" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"/>
   <script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   <script src='http://rawgit.com/jasonday/jQuery-UI-Dialog-extended/master/jquery.dialogOptions.js'></script>
-  <script type="text/javascript" src="js/shareImages.js"></script>
-  <script type="text/javascript" src="js/ui.datepicker.js"></script>    
-  <script type="text/javascript" src="js/ui.datepicker-pt-BR.js"></script>
+  <script type="text/javascript" src="/js/shareImages.js"></script>
+  <script type="text/javascript" src="/js/ui.datepicker.js"></script>
+  <script type="text/javascript" src="/js/ui.datepicker-pt-BR.js"></script>
   <script type="text/javascript">
     var addthis_config = addthis_config||{};
         addthis_config.data_track_addressbar = false;
@@ -218,7 +196,7 @@
 <!--?xml version="1.0" encoding="UTF-8"?-->
 <a href="/images.jsp" class="expand__close" title="<fmt:message key="images.close"/>"></a>
 
-  <div style="width: 60%; float: left; height:100vh;">  
+  <div style="width: 60%; float: left; height:100vh;">
     <div class="img-container" style="width: 60%">
       <script type="text/javascript">
         document.write ('<a target="_blank" href="'+decodeURIComponent("<%=imgRefURL%>")+'">' );
@@ -226,15 +204,15 @@
         document.write('</a>');
       </script>
     </div>
-  </div>  
+  </div>
   <div style="width: 37%; padding-left: 2%; float: left; border-left: solid 1px #454545; height: 100vh; display: table;">
-      <div id="imageInfo" style="display: table-cell; vertical-align: middle;"> 
+      <div id="imageInfo" style="display: table-cell; vertical-align: middle;">
        <h2 style="color:white; word-wrap: break-word;">
         <script type="text/javascript">
           document.write(''+ decodeURIComponent("<%=previousURL%>") );
         </script>
        </h2>
-       <br> 
+       <br>
        <h2 style="color:white; font-weight:bold;word-wrap: break-word;">
          <script type="text/javascript">
            document.write(''+ getDateSpaceFormated("<%=imgRefTs%>"));
@@ -259,8 +237,8 @@
          <button class="imageViewerAnchor" id="dButton" style="margin-left: 20px" >
           <span class="imageViewerButton" style="line-height:25px;"><fmt:message key='shareImage.share'/></span>
          </button>
-       </div> 
-      </div>  
+       </div>
+      </div>
   </div>
   <div id="dialog"  class="content_dialog">
           <h1 style="color:black; padding-top: 10px;"><fmt:message key='shareImage.share'/></h1>
@@ -272,12 +250,12 @@
           <button data-clipboard-target="#shortURL" id="btnCopy"><h2 style="color:grey; padding-top: 40px;" id="h2Copy"  > <fmt:message key='shareImage.clickToCopy'/></h2></button>
           <h2 id="shortURL" style="padding-top: 10px;padding-bottom: 30px;"> <script> shortenCurrentURL();</script> </h2>
   </div>
-  
+
   <script  src="/js/clipboard.min.js" type="text/javascript"></script>
    <script type="text/javascript">
     var linkCopied =   '<fmt:message key="shareImage.linkCopied"/>';
     initClipboard(linkCopied);
-  </script>     
+  </script>
 </body>
 </html>
 <%@include file="include/logging.jsp" %>
