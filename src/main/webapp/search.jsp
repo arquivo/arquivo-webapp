@@ -60,7 +60,6 @@ response.setHeader("Cache-Control","public, max-age=600");
   // configurations
   String collectionsHost = pt.arquivo.webapp.Configuration.get("wax.host", "examples.com");
   pageContext.setAttribute("collectionsHost", collectionsHost);
-  String hostArquivo = pt.arquivo.webapp.Configuration.get("wax.webhost", "arquivo.pt");
 %>
 <%-- Define the default end date --%>
 <%
@@ -380,8 +379,7 @@ String[] queryString_splitted=null;
 
     <meta property="og:title" content="<fmt:message key='home.meta.title'/>"/>
     <meta property="og:description" content="<fmt:message key='home.meta.description'/>"/>
-    <% String arquivoHostName = pt.arquivo.webapp.Configuration.get("wax.webhost", "arquivo.pt"); %>
-    <meta property="og:image" content="//<%=arquivoHostName%>/img/logoFace.png"/>
+    <meta property="og:image" content="<%=request.getContextPath()%>/img/logoFace.png"/>
     <meta name="theme-color" content="#1a73ba">
     <!-- Windows Phone -->
     <meta name="msapplication-navbutton-color" content="#1a73ba">
@@ -448,10 +446,10 @@ String[] queryString_splitted=null;
   <script type="text/javascript">
     var language = localStorage.language;
     if( language == 'EN'){
-      document.write('<script type="text/javascript" language="JavaScript" src="//<%=hostArquivo%>/js/properties/ConstantsEN.js?build=<c:out value='${initParam.buildTimeStamp}' />"><\/script>');
+      document.write('<script type="text/javascript" language="JavaScript" src="<%=request.getContextPath()%>/js/properties/ConstantsEN.js?build=<c:out value='${initParam.buildTimeStamp}' />"><\/script>');
     }
     else{
-      document.write('<script type="text/javascript" language="JavaScript" src="//<%=hostArquivo%>/js/properties/ConstantsPT.js?build=<c:out value='${initParam.buildTimeStamp}' />"><\/script>');
+      document.write('<script type="text/javascript" language="JavaScript" src="<%=request.getContextPath()%>/js/properties/ConstantsPT.js?build=<c:out value='${initParam.buildTimeStamp}' />"><\/script>');
     }
   </script>
 </head>

@@ -109,8 +109,7 @@
 
   <meta property="og:title" content="<fmt:message key='home.meta.title'/>"/>
   <meta property="og:description" content="<fmt:message key='home.meta.description'/>"/>
-    <% String arquivoHostName = pt.arquivo.webapp.Configuration.get("wax.webhost", "arquivo.pt"); %>
-  <meta property="og:image" content="//<%=arquivoHostName%>/img/logoFace.png"/>
+  <meta property="og:image" content="<%=request.getContextPath()%>/img/logoFace.png"/>
   <meta name="theme-color" content="#1a73ba" />
   <!-- Windows Phone -->
   <meta name="msapplication-navbutton-color" content="#1a73ba" />

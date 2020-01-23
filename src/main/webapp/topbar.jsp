@@ -18,7 +18,6 @@
 	import="java.util.GregorianCalendar"
 %>
 
-<%String arquivoHost = pt.arquivo.webapp.Configuration.get("wax.webhost", "arquivo.pt"); %>
 <!-- Main Menu Dependencies -->
 <link rel="stylesheet" href="/css/swiper.min.css" />
 <link rel="stylesheet" href="/css/MainMenu.css?build=<c:out value='${initParam.buildTimeStamp}'/>" />
