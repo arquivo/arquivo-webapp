@@ -65,7 +65,7 @@
 
 	</dependencies>
 	<build>
-		<finalName>nutchwax-webapp-0.11.0-SNAPSHOT</finalName>
+		<finalName>${artifactId}</finalName>
 		<plugins>
 			<!-- Force download dependencies javadocs and sources when generating
 				eclipse's classpath -->
