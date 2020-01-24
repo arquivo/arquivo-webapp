@@ -75,7 +75,7 @@
       var pos = getYearPosition(timestampStr);
       var dateFormated = getDateSpaceFormated(timestampStr);
       var shortDateFormated= getShortDateSpaceFormated(timestampStr);
-      var tdtoInsert = '<td class="tdTV"><a href="//<%=collectionsHost%>/'+timestampStr+'/'+url+'" title="'+dateFormated+'">'+shortDateFormated+'</a></td>';
+      var tdtoInsert = '<td class="tdTV"><a href="<%=waybackURL%>/'+timestampStr+'/'+url+'" title="'+dateFormated+'">'+shortDateFormated+'</a></td>';
       matrix[pos].push(tdtoInsert);
     }
 
@@ -223,7 +223,7 @@
 
       var dateFormated = getDateSpaceFormated(timestampStr);
 
-      var tdtoInsert = '<a onclick="ga(\'send\', \'event\', \'Versions List\', \'Version Click\', \'//<%=collectionsHost%>/'+timestampStr+'/'+url+'\');" class="day-version-div text-center" id="'+timestampStr+'" href="//<%=collectionsHost%>/'+timestampStr+'/'+url+'" title="'+dateFormated+'">'+getDateSpaceFormatedWithoutYear(timestampStr)+'</a>';
+      var tdtoInsert = '<a onclick="ga(\'send\', \'event\', \'Versions List\', \'Version Click\', \'<%=waybackURL%>/'+timestampStr+'/'+url+'\');" class="day-version-div text-center" id="'+timestampStr+'" href="<%=waybackURL%>/'+timestampStr+'/'+url+'" title="'+dateFormated+'">'+getDateSpaceFormatedWithoutYear(timestampStr)+'</a>';
 
        if(! $('#'+currentYear+'_'+currentMonth).length )  /*Add month if it doesn't exist already*/
       {
@@ -333,7 +333,7 @@
       var endDay = endDate.substring(0,2);
       var endTs = endYear+endMonth+endDay+'000000';
 
-      var requestURL = "//<%=collectionsHost%>/" + "cdx";
+      var requestURL = "<%=waybackURL%>/" + "cdx";
       var versionsArray = [];
       var versionsURL = [];
 

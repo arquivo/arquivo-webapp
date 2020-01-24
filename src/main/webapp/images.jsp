@@ -358,11 +358,11 @@ response.setHeader("Cache-Control","public, max-age=600");
     <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5645cdb2e22ca317"></script>
     <!-- end addthis for sharing on social media -->
 	<script type="text/javascript">
-		imageSearchAPI = "<%= pt.arquivo.webapp.Configuration.get("wax.image.search.API", "https://arquivo.pt/imagesearch") %>";
+		imageSearchAPI = "<%= pt.arquivo.webapp.Configuration.get("image.search.api", "https://arquivo.pt/imagesearch") %>";
 	</script>
-	<% if (pt.arquivo.webapp.Configuration.get("wax.query.suggestion.API") != null) { %>
+	<% if (pt.arquivo.webapp.Configuration.get("query.suggestion.api") != null) { %>
       <script type="text/javascript">
-        querySuggestionAPI = "<%= pt.arquivo.webapp.Configuration.get("wax.query.suggestion.API") %>";
+        querySuggestionAPI = "<%= pt.arquivo.webapp.Configuration.get("query.suggestion.api") %>";
       </script>
     <% } %>
     <script type="text/javascript" src="/js/configs.js"></script>

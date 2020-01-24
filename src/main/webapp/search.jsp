@@ -58,8 +58,8 @@ response.setHeader("Cache-Control","public, max-age=600");
 <%-- Get the application beans --%>
 <%
   // configurations
-  String collectionsHost = pt.arquivo.webapp.Configuration.get("wax.host", "examples.com");
-  pageContext.setAttribute("collectionsHost", collectionsHost);
+  String waybackURL = pt.arquivo.webapp.Configuration.get("wayback.url", "examples.com");
+  pageContext.setAttribute("waybackURL", waybackURL);
 %>
 <%-- Define the default end date --%>
 <%
@@ -411,9 +411,9 @@ String[] queryString_splitted=null;
   <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5645cdb2e22ca317"></script>
   <!-- end addthis for sharing on soc
     ial media -->
-  <% if (pt.arquivo.webapp.Configuration.get("wax.query.suggestion.API").isPresent()) { %>
+  <% if (pt.arquivo.webapp.Configuration.get("query.suggestion.api").isPresent()) { %>
   <script type="text/javascript">
-    querySuggestionAPI = "<%= pt.arquivo.webapp.Configuration.get("wax.query.suggestion.API").get() %>";
+    querySuggestionAPI = "<%= pt.arquivo.webapp.Configuration.get("query.suggestion.api").get() %>";
   </script>
   <% } %>
   <script type="text/javascript" src="/js/configs.js"></script>
@@ -427,7 +427,7 @@ String[] queryString_splitted=null;
   <script src="/js/uglipop.min.js"></script>
 
   <script type="text/javascript">
-    textSearchAPI = "<%= pt.arquivo.webapp.Configuration.get("wax.text.search.API", "https://arquivo.pt/textsearch") %>";
+    textSearchAPI = "<%= pt.arquivo.webapp.Configuration.get("text.search.api", "https://arquivo.pt/textsearch") %>";
   </script>
 
   <script type="text/javascript">
