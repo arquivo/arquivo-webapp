@@ -83,7 +83,7 @@
 	</dependencies>
 	<build>
 		<!-- Change war name -->
-		<finalName>${artifactId}</finalName>
+		<finalName>${project.artifactId}</finalName>
 
 		<!-- Filter maven variables when building the project -->
 		<resources>
@@ -104,12 +104,6 @@
 					<downloadSources>true</downloadSources>
 				</configuration>
 			</plugin>
-			<plugin>
-				<groupId>org.apache.tomcat.maven</groupId>
-				<artifactId>tomcat8-maven-plugin</artifactId>
-				<version>3.0-r1756463</version>
-			</plugin>
-
 		</plugins>
 	</build>
 	<repositories>
@@ -118,58 +112,4 @@
 			<url>file://${project.basedir}/mvn-repo</url>
 		</repository>
 	</repositories>
-	<profiles>
-		<profile>
-			<id>tomcat.run</id>
-			<properties>
-				<tomcat.version>8.0.30</tomcat.version>
-				<cargo.maven.containerId>tomcat8x</cargo.maven.containerId>
-				<cargo.maven.containerUrl>https://repo1.maven.org/maven2/org/apache/tomcat/tomcat/${tomcat.version}/tomcat-${tomcat.version}.zip</cargo.maven.containerUrl>
-			</properties>
-			<build>
-				<defaultGoal>org.codehaus.cargo:cargo-maven2-plugin:run</defaultGoal>
-				<plugins>
-					<plugin>
-						<groupId>org.codehaus.cargo</groupId>
-						<artifactId>cargo-maven2-plugin</artifactId>
-						<version>1.7.9</version>
-						<configuration>
-							<container>
-								<!-- <containerId>${cargo.maven.containerId}</containerId> -->
-								<!-- <zipUrlInstaller> -->
-								<!-- <url>https://repo1.maven.org/maven2/org/apache/tomcat/tomcat/8.0.30/tomcat-8.0.30.zip</url> -->
-								<!-- </zipUrlInstaller> -->
-								<systemProperties>
-									<!-- on tomcat 9 replaced with Connector relaxedPathChars and relaxedQueryChars
-										configuration -->
-									<tomcat.util.http.parser.HttpParser.requestTargetAllow>{}</tomcat.util.http.parser.HttpParser.requestTargetAllow>
-								</systemProperties>
-							</container>
-							<configuration>
-								<properties>
-									<!-- <cargo.jvmargs>-Xmx2048m -Xms512m</cargo.jvmargs> -->
-									<!-- <cargo.start.jvmargs>-Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=8000</cargo.start.jvmargs> -->
-								</properties>
-								<files>
-									<copy>
-										<file>${project.basedir}/src/development/tomcat/conf/server.xml</file>
-										<tofile>conf/server.xml</tofile>
-										<configfile>true</configfile>
-										<overwrite>true</overwrite>
-									</copy>
-								</files>
-							</configuration>
-							<deployables>
-								<deployable>
-									<properties>
-										<context>/ROOT</context>
-									</properties>
-								</deployable>
-							</deployables>
-						</configuration>
-					</plugin>
-				</plugins>
-			</build>
-		</profile>
-	</profiles>
 </project>
