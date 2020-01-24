@@ -17,6 +17,7 @@
 
 		<maven.build.timestamp.format>yyyyMMddHHmm</maven.build.timestamp.format>
 		<timestamp>${maven.build.timestamp}</timestamp>
+		<backend.host>p25.arquivo.pt</backend.host>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -65,7 +66,16 @@
 
 	</dependencies>
 	<build>
+		<!-- Change war name -->
 		<finalName>${artifactId}</finalName>
+
+		<!-- Filter maven variables when building the project -->
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+			</resource>
+		</resources>
 		<plugins>
 			<!-- Force download dependencies javadocs and sources when generating
 				eclipse's classpath -->
@@ -109,12 +119,13 @@
 						<version>1.7.9</version>
 						<configuration>
 							<container>
-<!-- 								<containerId>${cargo.maven.containerId}</containerId> -->
+								<!-- <containerId>${cargo.maven.containerId}</containerId> -->
 								<!-- <zipUrlInstaller> -->
 								<!-- <url>https://repo1.maven.org/maven2/org/apache/tomcat/tomcat/8.0.30/tomcat-8.0.30.zip</url> -->
 								<!-- </zipUrlInstaller> -->
 								<systemProperties>
-									<!-- on tomcat 9 replaced with Connector relaxedPathChars and relaxedQueryChars configuration -->
+									<!-- on tomcat 9 replaced with Connector relaxedPathChars and relaxedQueryChars
+										configuration -->
 									<tomcat.util.http.parser.HttpParser.requestTargetAllow>{}</tomcat.util.http.parser.HttpParser.requestTargetAllow>
 								</systemProperties>
 							</container>
