@@ -34,9 +34,8 @@
 	<meta http-equiv="Content-Language" content="pt-PT" />
 	<meta name="Keywords" content="<fmt:message key='404.meta.keywords'/>" />
 	<meta name="Description" content="<fmt:message key='404.meta.description'/>" />
-	<%String serverName = request.getServerName(); %>
-	<link rel="shortcut icon" href="img/logo-16.png" type="//<%=serverName%>/image/x-icon" />
-	<link rel="stylesheet" title="Estilo principal" type="text/css" href="//<%=serverName%>/css/style.css"  media="all" />
+	<link rel="shortcut icon" href="img/logo-16.png" type="<%=request.getContextPath()%>/image/x-icon" />
+	<link rel="stylesheet" title="Estilo principal" type="text/css" href="<%=request.getContextPath()%>/css/style.css"  media="all" />
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
@@ -60,7 +59,7 @@
 							contactUrl = "//sobre.arquivo.pt/contacto";
 					%>
                     <li><fmt:message key='404.suggestions.feedback'><fmt:param value='<%=contactUrl%>'/></fmt:message> </a></li>	
-                    <li><a href="//<%=serverName%>"><fmt:message key='404.suggestions.go-home'/></a></li>
+                    <li><a href="/"><fmt:message key='404.suggestions.go-home'/></a></li>
 				</ul>
 			</div>
 		</div>
