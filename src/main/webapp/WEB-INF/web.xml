@@ -23,6 +23,26 @@
   <url-pattern>/timemap</url-pattern>
 </servlet-mapping>
 
+<!--
+Uncomment this to start serve this jsp's without .jsp
+<servlet>
+    <servlet-name>search</servlet-name>
+    <jsp-file>/search.jsp</jsp-file>
+</servlet>
+<servlet-mapping>
+    <servlet-name>search</servlet-name>
+    <url-pattern>/search</url-pattern>
+</servlet-mapping>
+
+<servlet>
+    <servlet-name>images</servlet-name>
+    <jsp-file>/images.jsp</jsp-file>
+</servlet>
+<servlet-mapping>
+    <servlet-name>images</servlet-name>
+    <url-pattern>/images</url-pattern>
+</servlet-mapping>
+-->
 <welcome-file-list>
   <welcome-file>index.jsp</welcome-file>
   <welcome-file>index.html</welcome-file>
