@@ -45,7 +45,8 @@ response.setHeader("Cache-Control","public, max-age=600");
 
   private static final String COLLECTION_KEY = "collection";
   private static final String COLLECTION_QUERY_PARAM_KEY = COLLECTION_KEY + ":";
-  private static final Pattern URL_PATTERN = Pattern.compile("^.*? ?((https?:\\/\\/)?([a-zA-Z\\d][-\\w\\.]+)\\.([a-zA-Z\\.]{2,6})([-\\/\\w\\p{L}\\.~,;:%&=?+$#*]*)*\\/?) ?.*$");
+  private static final Pattern URL_PATTERN = Pattern.compile("^.*? ?((https?:\\/\\/)?([a-zA-Z\\d][-\\w\\.]+)\\.([a-zA-Z\\.]{2,6})([-\\/\\w\\p{L}\\.~,;:%&=?+$#*\\(?\\)?]*)*\\/?) ?.*$");
+
 %>
 
 <%
