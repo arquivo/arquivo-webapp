@@ -12,37 +12,19 @@ mvn clean verify
 
 ## Development
 
-To start an apache tomcat on the fly locally, you need to add the following to your hosts, explaining bellow:
-/etc/hosts
+To make development more rapid there is a docker-compose.yml file that runs the web application inside a docker.
 
-```
-127.0.0.1 localdev.arquivo.pt
-```
-
-Because probably you are going to use the Arquivo.pt APIs that are pubically available and the latest browsers doesn't allow the requests from http://localhost:8080 to the https://arquivo.pt APIs because of the CORS event when Arquivo.pt API is returning the following HTTP response header.
-
-```
-Access-Control-Allow-Origin: *
-```
-
-Run using the default 8.0.xx tomcat version:
+Example run
 
 ```bash
-mvn -P tomcat.run
-```
-
-Run it using a tomcat 9 version:
-
-```bash
-mvn clean verify && mvn -P tomcat.run -Dtomcat.version=9.0.30 -Dcargo.maven.containerId=tomcat9x
+mvn clean verify -Dbackend.url=https://preprod.arquivo.pt && docker-compose up
 ```
 
 Example that use a development environment for the majority of the services, but for query suggestion service use production environment.
 
 ```bash
-mvn clean verify && mvn -P tomcat.run -Dbackend.url=http://p25.arquivo.pt -Dquery.suggestion.server=https://arquivo.pt
+mvn clean verify -Dbackend.url=http://p25.arquivo.pt -Dquery.suggestion.server=https://arquivo.pt && docker-compose up
 ```
-
 
 ## Dependencies
 Some specific dependencies haven't been found on the central maven repository. The solution, for now, is to install locally on **my-repo** folder.

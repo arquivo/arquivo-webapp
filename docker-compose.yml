@@ -1,0 +1,14 @@
+version: "3.3"
+services:
+  tomcat:
+    image: tomcat:latest
+    restart: always
+    ports:
+      - "8080:8080"
+    environment:
+      CATALINA_OPTS: 
+    volumes:
+      - ./src/main/webapp:/usr/local/tomcat/webapps/ROOT
+      - ./target/arquivo-webapp/WEB-INF/classes:/usr/local/tomcat/webapps/ROOT/WEB-INF/classes
+      - ./target/arquivo-webapp/WEB-INF/lib:/usr/local/tomcat/webapps/ROOT/WEB-INF/lib
+      - ./src/development/tomcat/conf/server.xml:/usr/local/tomcat/conf/server.xml
