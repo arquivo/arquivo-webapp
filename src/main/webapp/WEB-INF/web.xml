@@ -5,23 +5,6 @@
     "http://java.sun.com/dtd/web-app_2_3.dtd">
 
 <web-app>
-<servlet>
-  <servlet-name>NutchwaxOpenSearch</servlet-name>
-  <servlet-class>org.archive.access.nutch.NutchwaxOpenSearchServlet</servlet-class>
-</servlet>
-<servlet-mapping>
-  <servlet-name>NutchwaxOpenSearch</servlet-name>
-  <url-pattern>/opensearch</url-pattern>
-</servlet-mapping>
-
-<servlet>
-  <servlet-name>NutchwaxTimemap</servlet-name>
-  <servlet-class>org.archive.access.nutch.NutchwaxTimemapServlet</servlet-class>
-</servlet>
-<servlet-mapping>
-  <servlet-name>NutchwaxTimemap</servlet-name>
-  <url-pattern>/timemap</url-pattern>
-</servlet-mapping>
 
 <!--
 Uncomment this to start serve this jsp's without .jsp
