@@ -250,6 +250,9 @@ ion-item {
   margin-bottom: -4px;
   font-size: 14px;
   font-family: 'Roboto', sans-serif;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 }
 #resultados-lista ul li h2 {
   font-size: 20px;
@@ -2991,7 +2994,8 @@ h4.modalTitle {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: space-between
+    justify-content: space-between;
+    /*align-items: stretch;*/
   }
   #photos {
     /*max-width: 960px !important;*/
@@ -3226,6 +3230,17 @@ div#flex-container div:intro-award {
     margin: 0 auto; 
 }
 
+a#PageButton {
+    font-size: 13px;
+}
+
+#ImageButton {  
+    font-size: 13px !important;
+}
+
+a#advancedSearchButton {
+    font-size: 13px;
+}
 
 .next a {
 float: right;
