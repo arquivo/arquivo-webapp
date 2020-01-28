@@ -8,12 +8,12 @@
     }
 })();
 
-$(document).ajaxStart(function(){ 
+$(document).ajaxStart(function(){
     $('#loadingDiv').show();
 });
 
 $(document).ajaxStop(function(){
- $('#loadingDiv').hide();  
+ $('#loadingDiv').hide();
 });
 
 
@@ -33,8 +33,8 @@ function createErrorPage(){
           '</ul>'+
         '</div>'+
     '</div>'+
-    '').insertBefore("#resultados-lista");    
-    //$( window ).resize(function() {$('#conteudo-pesquisa-erro').css('margin-left', $('#search-dateStart_top').offset().left)}); /*dirty hack to keep message aligned with not responsive searchbox*/$( window ).resize(function() {$('.spell').css('margin-left', $('#search-dateStart_top').offset().left)}); /*dirty hack to keep message aligned with not responsive searchbox*/ 
+    '').insertBefore("#resultados-lista");
+    //$( window ).resize(function() {$('#conteudo-pesquisa-erro').css('margin-left', $('#search-dateStart_top').offset().left)}); /*dirty hack to keep message aligned with not responsive searchbox*/$( window ).resize(function() {$('.spell').css('margin-left', $('#search-dateStart_top').offset().left)}); /*dirty hack to keep message aligned with not responsive searchbox*/
 }
 
 // returns an object with query and the extracted special parameters
@@ -59,7 +59,7 @@ function extractQuerySpecialParameters(inputQuery) {
 		    } else if (key === 'collection') {
 		    	collection.push(value);
 		    	special = true;
-		    } 
+		    }
 		}
 	    if (!special) {
 	    	words.push(item);
@@ -67,7 +67,7 @@ function extractQuerySpecialParameters(inputQuery) {
 	});
 	const query = words.join(' ');
 
-	return { 
+	return {
 		query: query,
 		site: site.join(','),
 		type: type.join(','),
@@ -83,7 +83,7 @@ function searchPages(startIndex){
     var input = $('#txtSearch').val();
 
     var dateStart=$('#dateStart_top').val().substring($('#dateStart_top').val().length - 4) +''+  $('#dateStart_top').val().substring(3,5) +''+ $('#dateStart_top').val().substring(0,2)+ '000000' ;
-    
+
     var dateEnd= $('#dateEnd_top').val().substring($('#dateEnd_top').val().length - 4) +''+  $('#dateEnd_top').val().substring(3,5) +''+ $('#dateEnd_top').val().substring(0,2)+'235959';
 
     var extractedQuery = extractQuerySpecialParameters(input);
@@ -104,10 +104,10 @@ function searchPages(startIndex){
 			collection: extractedQuery.collection
 		},
 
-		error: function() {         
+		error: function() {
 			console.log("Error when calling text search API");
 		},
-		
+
 		success: function(data) {
 			console.log("Processing page search API result...");
 			$('#imagesDefaultTextDiv').hide(); /*Hiding default message*/
@@ -115,7 +115,7 @@ function searchPages(startIndex){
 			var responseJson = $.parseJSON(data);
 
 			totalResults = parseInt(responseJson.estimated_nr_results);
-			var showNextPageButton = ((parseInt(startIndex) + hitsPerPage) >= totalResults) ? false: true;    
+			var showNextPageButton = ((parseInt(startIndex) + hitsPerPage) >= totalResults) ? false: true;
 
 			if ( totalResults === 0){
 	            createErrorPage();
@@ -123,7 +123,7 @@ function searchPages(startIndex){
 	            //loadingFinished(showNextPageButton);
 	        }
 	        else{
-	            
+
 	            var currentResults
 	            if(totalResults > hitsPerPage){
 	              currentResults = responseJson.response_items.length;
@@ -177,7 +177,7 @@ function searchPages(startIndex){
 							    </a>
 				                <div class="list-versions-div">
 				                	<span class="date"> ${day} ${month}, ${year} </span>
-				                </div>             
+				                </div>
 							</div>
 							<div class="summary">
 								<span class="resumo">
@@ -193,14 +193,14 @@ function searchPages(startIndex){
 	        }
 
 	        document.getElementById("nextPageSearch").style.display = totalResults > (start + hitsPerPage) ? 'block' : 'none';
-	        
+
 	        var previousPageSearch = document.getElementById("previousPageSearch");
 	        if ( typeof(previousPageSearch) != 'undefined' && previousPageSearch != null ) {
 	        	previousPageSearch.style.display = start > 0 ? 'block' : 'none';
 	        }
 
 	        document.getElementById("estimated-results-value").innerHTML = totalResults.toLocaleString(language);
-	        document.getElementById("estimated-results").style.display = 'block';
+	        document.getElementById("estimated-results").style.display = totalResults > 0 ? 'block' : 'hidden';
 		}
 	});
 }
