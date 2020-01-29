@@ -983,16 +983,39 @@ function createErrorPage(){
     $( window ).resize(function() {$('#conteudo-pesquisa-erro').css('margin-left', $('#search-dateStart_top').offset().left)}); /*dirty hack to keep message aligned with not responsive searchbox*/$( window ).resize(function() {$('.spell').css('margin-left', $('#search-dateStart_top').offset().left)}); /*dirty hack to keep message aligned with not responsive searchbox*/ 
 }
 
-// When pressing escape key close image
 document.onkeydown = function(evt) {
-    evt = evt || window.event;
-    var isEscape = false;
-    if ("key" in evt) {
-        isEscape = (evt.key === "Escape" || evt.key === "Esc");
-    } else {
-        isEscape = (evt.keyCode === 27);
-    }
-    if (isEscape) {
-        closeImage();
-    }
+  evt = evt || window.event;
+  
+  // When pressing escape key close image
+  var isEscape = false;
+  if ("key" in evt) {
+      isEscape = (evt.key === "Escape" || evt.key === "Esc");
+  } else {
+      isEscape = (evt.keyCode === 27);
+  }
+  if (isEscape) {
+      closeImage();
+  }
+
+  // When pressing left key go to previous image
+  var isArrowLeft = false;
+  if ("key" in evt) {
+      isArrowLeft = (evt.key === "Left" || evt.key === "ArrowLeft");
+  } else {
+      isArrowLeft = (evt.keyCode === 37);
+  }
+  if (isArrowLeft) {
+      previousImage();
+  }
+
+  // When pressing rigth image go to next image
+  var isArrowRigth = false;
+  if ("key" in evt) {
+      isArrowRigth = (evt.key === "Right" || evt.key === "ArrowRight");
+  } else {
+      isArrowRigth = (evt.keyCode === 39);
+  }
+  if (isArrowRigth) {
+      nextImage();
+  }
 };
