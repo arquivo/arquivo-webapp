@@ -105,13 +105,6 @@ function encodeHtmlEntity(str) {
              .replaceAll(' ','+');
     return str;
 }
-async function getCurrentImageHref(){   
-    var result = await document.querySelector('ion-slides').getActiveIndex().then(function(result){
-        console.log('index: ' + result);
-        return $('ion-slide:nth-child('+(result+1)).find('.imageHref').attr('href');
-    });
-    return result;
-}
 function getSlidePosition(){
     console.log('slides length:' + $('ion-slide').length);
     for(i=0; i< $('ion-slide').length; i++){

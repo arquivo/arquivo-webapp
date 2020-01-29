@@ -203,9 +203,9 @@ var MENU = MENU || (function(){
         copyLink: function(){
 			var dummy = document.createElement('input')			    
 			var urlToCopy;
-			if( window.location.pathname.startsWith("/images.jsp") && lastPosition != -1 ){ /*Image expanded OR details expanded*/
-				imageObj = imageObjs[lastPosition];
-				if($('#card'+lastPosition).is(":visible")){ /*share a custom link to the image expanded*/					 
+			if( window.location.pathname.startsWith("/images.jsp") && lastImageViewedByUser != -1 ){ /*Image expanded OR details expanded*/
+				imageObj = imageObjs[lastImageViewedByUser];
+				if($('#card'+lastImageViewedByUser).is(":visible")){ /*share a custom link to the image expanded*/					 
 					 urlToCopy =  window.location.origin+"/imageexp.jsp?"+
 					 			"imgSrc="+ encodeURIComponent(imageObj.imgSrc)+"&"+
 					 			"imgTstamp="+ imageObj.timestamp+"&"+

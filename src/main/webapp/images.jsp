@@ -623,17 +623,14 @@ Content = {
     $('<div id="showSlides"><button onclick="previousImage()" class="left-image-viewer-arrow clean-button-no-fill"> <ion-icon name="ios-arrow-back" class="left-icon"></ion-icon></button><button onclick="nextImage()" class="right-image-viewer-arrow clean-button-no-fill"><ion-icon name="ios-arrow-forward" class="right-icon"></ion-icon></button><ion-slides id="expandedImageViewers" onload=slidesLoaded();></ion-slides></div>').insertBefore('.curve-background');
 
     checkElement('#expandedImageViewers > .swiper-wrapper')
-    .then((element) => {
-      if($('#txtSearch').val().length){doInitialSearch();}
-    });
+      .then((element) => {
+        if($('#txtSearch').val().length){doInitialSearch();}
+      });
   </script>
-
 
   <script type="text/javascript">
     $('#showSlides').hide();
   </script>
-
-
 
 <%@include file="include/analytics.jsp" %>
 <%@include file="include/footer.jsp" %>

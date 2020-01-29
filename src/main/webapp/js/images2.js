@@ -155,7 +155,6 @@ function truncateUrlRemoveProtocol(url, maxSize)
         return url
 }
 
-
 function truncateUrlMiddleRemoveProtocol(url, maxSize)
 {    
     url = url.replace(/(^\w+:|^)\/\//, ''); //remove all possible protocols
@@ -167,71 +166,8 @@ function truncateUrlMiddleRemoveProtocol(url, maxSize)
         return url
 }
 
-
-lastPosition = -1; /*Global var refers to the lastImage the user*/
+lastImageViewedByUser = -1; /*Global var refers to the lastImage the user*/
 lastPress= -1; /*Global var refers to last time user pressed arrow in image viewer*/
-
-function openImage(position, animate){
-
-  openImageViewer = true;
-  imageHref = getCurrentImageHref();
-    //var arrowWidth = 16; //width of the arrow
-    if(lastPosition != -1){
-        $('#testViewer'+lastPosition).hide();
-    //    $('#arrowWrapper'+lastPosition).hide();
-    }
-    if(lastPosition === position){
-        //you clicked twice in the same image, image closed no image selected
-        $('body').css('overflow', 'auto');
-        window.scrollTo( 0 , $("#imageResults"+lastPosition).offset().top);
-        lastPosition = -1;
-        return false;
-    }
-    
-    //(position == 0) ? $('.left__arrow').hide() : $('.left__arrow').show();
-    
-    //var arrowMarginLeft = $('#imageResults'+position).width()/2 - arrowWidth/2;
-
-    //$('#arrow'+position).css('margin-left', arrowMarginLeft+'px');
-    $('#testViewer'+position).show();
-    $('#card'+position).show();
-    if($('#detailsCard'+position).length >= 0){
-      $('#detailsCard'+position).hide();
-    }
-
-    $('body').css('overflow', 'hidden');
-    
-    //$('#arrowWrapper'+position).show();
-    lastPosition = position;
-
-    //$('#testViewer'+lastPosition +' ion-card').animate({ scrollTop: 0 }, "fast");
-
-    window.scrollTo( 0 , 0);
-
-    //$(window).scrollTop( $('#testViewer'+lastPosition +' ion-card').offset().top );
-
-    //$('#testViewer'+position).focus();
- 
- /*$('#testViewer'+position).bind('keydown', function(event) {
-   var now = Date.now();
-   var minimumTime= 100;
-
-   if(event.keyCode == 37 && position > 0 ) {
-        if(lastPress < 0 || (now - lastPress) > minimumTime ){
-    previousImage(''+position);
-    lastPress = Date.now();
-  }
-    } 
-   else if (event.keyCode == 39 && position >= 0){
-  if(lastPress < 0 || (now - lastPress) > minimumTime ){
-    nextImage(''+position);
-    lastPress = Date.now();
-  }
-   }
- });*/
-return false;
-}
-
 
 function generateHash( position ){
   window.location.hash = "card";
@@ -246,73 +182,40 @@ const sleep = (milliseconds) => {
   return new Promise(resolve => setTimeout(resolve, milliseconds))
 }
 
-async function getCurrentImageHref(){
-  var result = await document.querySelector('ion-slides').getActiveIndex().then(function(result){
-      console.log('index: ' + result);
-    return $('ion-slide:nth-child('+(result+1)).find('.imageHref').attr('href');
-  });
-  return result;
+function getCurrentOpenImagePosition() {
+  return document.querySelector('ion-slides').getActiveIndex().resolve() +1;
 }
-
-
 
 function openImage(position){
-    console.log('opening position: ' + position);
-    openImageViewer = true;
-    imageHref = getCurrentImageHref();
-    $('#showSlides').show();
-    var slides = document.querySelector('ion-slides');
-    // Optional parameters to pass to the swiper instance. See http://idangero.us/swiper/api/ for valid options.
-    slides.options = {
-      initialSlide: 1,
-      speed: 400,
-      noSwipingClass: 'hide-me-class-swiper'
-    }       
-   $('ion-slides')[0].slideTo($('ion-slides')[0].slideTo($('#testViewer'+position).prevAll().length));
-   
-   sleep(500).then(() => {
-     document.body.scrollTop = document.documentElement.scrollTop = 0;
-  });
-
-var slides = document.getElementById('expandedImageViewers');
+  lastImageViewedByUser = position;
+  openImageViewer = true;
+  //imageHref = getCurrentImageHref();
+  $('#showSlides').show();
+  var slides = document.querySelector('ion-slides');
+  // Optional parameters to pass to the swiper instance. See http://idangero.us/swiper/api/ for valid options.
+  slides.options = {
+    initialSlide: 1,
+    speed: 400,
+    noSwipingClass: 'hide-me-class-swiper'
+  }       
+  $('ion-slides')[0].slideTo($('ion-slides')[0].slideTo($('#testViewer'+position).prevAll().length));
  
-
- console.log('active index: ' + slides.getActiveIndex());
-
-   
-    /*checkElement('#close'+position) 
-    .then((element) => {      
-                 $('#close'+position).css('right',  parseInt($(window).width() - ($("#card"+position).offset().left + $("#card"+position).outerWidth())) + 8+'px' );
-                  console.log('position: ' + position);
-                  console.log('window width: ' + $(window).width());
-                  console.log('card offset left: ' + $("#card"+position).offset().left) % $(window).width();
-                  console.log('card outer width: ' + $("#card"+position).outerWidth());           
-    }); */
-  
+  sleep(500).then(() => {
+    document.body.scrollTop = document.documentElement.scrollTop = 0;
+  });
+  var slides = document.getElementById('expandedImageViewers');
 }
-
 
 function closeImage(position){  
   openImageViewer = false;
   $('#showSlides').hide();
 }
 
-
-function previousImage(position){
-    var previousImageLi = $('#imageResults'+position).prev();
-    if( previousImageLi.attr('position') != undefined){
-        openImage(parseInt(position), false); /*Close current image*/
-        openImage(parseInt(previousImageLi.attr('position')), false);
-    }
-    return;
+function previousImage(){
+    openImage(lastImageViewedByUser-1);
 }
-function nextImage(position){
-    var nextImageLi = $('#imageResults'+position).next();
-    if( nextImageLi.attr('position') != undefined){
-        openImage(parseInt(position), false); /*Close current image*/
-        openImage(parseInt(nextImageLi.attr('position')), false);            
-    }
-    return;
+function nextImage(){
+    openImage(lastImageViewedByUser+1);
 }
 
 function rafAsync() {
@@ -395,8 +298,6 @@ function insertInPosition(position, imageObj, imageHeight, maxImageHeight, expan
       }
     }
 }    
-
-
 
 function  insertImageViewer(imageObj, position){
   /*this If should be removed in production*/
@@ -1082,30 +983,16 @@ function createErrorPage(){
     $( window ).resize(function() {$('#conteudo-pesquisa-erro').css('margin-left', $('#search-dateStart_top').offset().left)}); /*dirty hack to keep message aligned with not responsive searchbox*/$( window ).resize(function() {$('.spell').css('margin-left', $('#search-dateStart_top').offset().left)}); /*dirty hack to keep message aligned with not responsive searchbox*/ 
 }
 
-
-
-/* TODO:: logic for shareable link
-window.addEventListener("load", function(event) {
-    if( hashBase64Img !== "") {
-      sleep(1000).then(() => {
-      console.log(document.getElementsByClassName('imageContent').length);
-
-      var imageContentDivs = document.getElementsByClassName('imageContent'),
-          arr = [ ];
-
-      for (var i = 0; i < imageContentDivs.length; i++) {
-          var imgTag = imageContentDivs[ i ].getElementsByTagName( "img" )[ 0 ];
-          //console.log(imgTag.src);
-          console.log( "hashBase64Img => " + hashBase64Img );
-          if( imgTag.src === hashBase64Img) {
-            console.log("Position =>" + imageContentDivs.position);
-          //openImage(imageContentDivs.position,false);
-          }
-      }
-
-      });  
+// When pressing escape key close image
+document.onkeydown = function(evt) {
+    evt = evt || window.event;
+    var isEscape = false;
+    if ("key" in evt) {
+        isEscape = (evt.key === "Escape" || evt.key === "Esc");
+    } else {
+        isEscape = (evt.keyCode === 27);
     }
-
-});*/
-
-
+    if (isEscape) {
+        closeImage();
+    }
+};
