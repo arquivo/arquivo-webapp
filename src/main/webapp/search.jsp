@@ -442,6 +442,7 @@ String[] queryString_splitted=null;
     start = <%=start%>;
     hitsPerPage = <%=hitsPerPage%>;
     dateStartYear = <%=dateStartYear%>;
+    waybackURL = "<%=waybackURL%>";
   </script>
 
   <script type="text/javascript">

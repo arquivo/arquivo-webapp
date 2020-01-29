@@ -60,6 +60,10 @@ response.setHeader("Cache-Control","public, max-age=600");
   for(String tld:tlds){
     validTlds.add(tld);
   }
+
+  // configurations
+  String waybackURL = pt.arquivo.webapp.Configuration.get("wayback.url", "examples.com");
+  pageContext.setAttribute("waybackURL", waybackURL);
 %>
 
 <%-- Define the default end date --%>
@@ -459,6 +463,7 @@ Content = {
   noResultsGenericWords = '<fmt:message key="search.no-results.suggestions.generic-words"/>';
   startPosition = "<%=startPosition%>";
   numrows ="<%=numrows%>"; /*Number of Images to show by default*/
+  waybackURL = "<%=waybackURL%>";
 </script>
 
 <script type="text/javascript" src="/js/js.cookie.js"></script>
