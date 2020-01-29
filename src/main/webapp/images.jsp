@@ -305,7 +305,8 @@ response.setHeader("Cache-Control","public, max-age=600");
   String loaderDefaultClass = (homeMessageClass.equals("")) ? "hidden" : "";
 %>
 
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="pt-PT" lang="pt-PT"><head>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="pt-PT" lang="pt-PT">
+<head>
   <title><fmt:message key='images.imageTitle'/>:&nbsp; <c:out value = "${htmlQueryString}"/> &nbsp;  &mdash; Arquivo.pt</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8"/>
@@ -408,7 +409,6 @@ response.setHeader("Cache-Control","public, max-age=600");
 
 </head>
 <body id="homeImages">
-<!--?xml version="1.0" encoding="UTF-8"?-->
 <script type="text/javascript">
 function searchImages(startIndex){
     var dateStartWithSlashes = '<%=dateStartString%>';
