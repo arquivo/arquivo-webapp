@@ -626,6 +626,8 @@ Content = {
       .then((element) => {
         if($('#txtSearch').val().length){doInitialSearch();}
       });
+
+      document.querySelector('ion-slides').addEventListener("ionSlideDidChange", slideChanged);
   </script>
 
   <script type="text/javascript">

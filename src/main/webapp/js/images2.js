@@ -182,12 +182,12 @@ const sleep = (milliseconds) => {
   return new Promise(resolve => setTimeout(resolve, milliseconds))
 }
 
-function getCurrentOpenImagePosition() {
-  return document.querySelector('ion-slides').getActiveIndex().resolve() +1;
-}
+//async function getCurrentOpenImagePosition() {
+//  return parseInt( await document.querySelector('ion-slides').getActiveIndex() );
+//}
 
 function openImage(position){
-  lastImageViewedByUser = position;
+  lastImageViewedByUser = parseInt(position);
   openImageViewer = true;
   //imageHref = getCurrentImageHref();
   $('#showSlides').show();
@@ -216,6 +216,13 @@ function previousImage(){
 }
 function nextImage(){
     openImage(lastImageViewedByUser+1);
+}
+
+async function slideChanged() {
+  const idx = await document.querySelector('ion-slides').getActiveIndex();
+  if (Number.isInteger(idx)) {
+    lastImageViewedByUser = idx;
+  }
 }
 
 function rafAsync() {
@@ -254,7 +261,7 @@ function insertInPosition(position, imageObj, imageHeight, maxImageHeight, expan
     var liMarginTop = maxImageHeight - imageHeight;
     var contentToInsert = ''+
 
-        '<div  class="imageContent" position='+position+' id="imageResults'+position+'" onclick = "openImage('+position+',false); generateHash(\''+position+'\');">'+
+        '<div  class="imageContent" position='+position+' id="imageResults'+position+'" onclick = "openImage('+position+'); generateHash(\''+position+'\');">'+
         '   <img  height="'+imageHeight.toString()+'" src="'+imageObj.src+'"/>'+
         '   <p class="green image-display-url" >→ '+removeWWW(truncateUrl(imageObj.pageURL, 20))+'</p>'+
         '   <p class="date image-display-date" id="date'+position+'">'+getDateSpaceFormated(imageObj.timestamp)+'</p>'+
