@@ -109,31 +109,8 @@ function getDateSpaceFormated(ts){
     return day + " "+ month + ", " +year;
 }
 
-/*Truncates large URL in the replay bar*/
-function truncateUrl(url, maxSize)
-{   /*remove https and http*/
-    if(url.substring(0, "https://".length) === "https://"){
-      url = url.substring(8,url.length);
-    }else if (url.substring(0, "http://".length) === "http://"){
-      url = url.substring(7,url.length);
-    }       
-    if (url.length > maxSize){
-            url = url.substring(0, maxSize-3) + "...";
-            return url;
-    }
-    else
-        return url
-}
-
-function removeProtocol(url) {
-  return url.replace(/(^\w+:|^)\/\//, '')
-}
-
-function removeWWW(url){
-    if(url.startsWith('www.')){
-      return url.substring(4, url.length);
-    }
-    return url;
+function formatURLForPresentation(originalURL) {
+  return originalURL.replace(/^(http(s)?\:\/\/(www\.)?)?/,'').replace(/\/$/,'');
 }
 
 lastImageViewedByUser = -1; /*Global var refers to the lastImage the user*/
@@ -236,7 +213,7 @@ function insertInPosition(position, imageObj, imageHeight, expandedImageHeight, 
   var contentToInsert = ''+
   '<div  class="imageContent" position='+position+' id="imageResults'+position+'" onclick = "openImage('+position+'); generateHash(\''+position+'\');">'+
   '   <img  height="'+realImageHeight.toString()+'" src="'+imageObj.src+'"/>'+
-  '   <p class="green image-display-url" style="width: '+displayUrlMaxWidth+'px">→ '+removeProtocol(imageObj.pageURL)+'</p>'+
+  '   <p class="green image-display-url" style="width: '+displayUrlMaxWidth+'px">→ '+formatURLForPresentation(imageObj.pageURL)+'</p>'+
   '   <p class="date image-display-date" id="date'+position+'">'+getDateSpaceFormated(imageObj.timestamp)+'</p>'+
   '   <div id="arrowWrapper'+position+'" class="arrowWrapper" >'+
   '       <div id="arrow'+position+'" class="arrow"/></div>' +
@@ -306,7 +283,7 @@ return ''+
                       '<ion-list class="imageList selected">'+
       ( imageObj.title !== ""  ? ' <ion-item class="item-borderless image-viewer-img-title" lines="none" ><a class="imageHref" target="_blank" href="'+imageObj.currentImageURL+'">' +imageObj.title+'</a></ion-item>':'') +
       ( imageObj.imgAlt !== "" &&  imageObj.title == ""  ? ' <ion-item id="imgTitleLabel'+position+'" lines="none"><a class="imageHref" target="_blank" href="'+imageObj.currentImageURL+'">' +imageObj.imgAlt+'</a></ion-item>':'') +  
-                          '<ion-item lines="none" class="image-viewer-img-src">' +removeProtocol(imageObj.imgSrc)+'</ion-item>'+
+                          '<ion-item lines="none" class="image-viewer-img-src">' +formatURLForPresentation(imageObj.imgSrc)+'</ion-item>'+
                           '<ion-item lines="none" class="image-viewer-img-mime-type-resolution">'+imageObj.imgMimeType+' '+parseInt(imageObj.expandedWidth)+' x '+parseInt(imageObj.expandedHeight)+'</ion-item>'+
                           '<ion-item lines="none" class="image-viewer-img-timestamp">'+getDateSpaceFormated(imageObj.timestamp)+'</ion-item>'+             
                       '</ion-list>'+
@@ -317,7 +294,7 @@ return ''+
                   '<ion-card-content>'+                
                       '<ion-list>'+
       '                       <ion-item class="item-borderless image-viewer-page-title" lines="none" ><a target="_blank" href="'+waybackURL+'/'+imageObj.pageTstamp+'/'+imageObj.pageURL+'">'+imageObj.pageTitle+'</a></ion-item>'+
-      '                       <ion-item lines="none" class="image-viewer-page-url">'+removeProtocol(imageObj.pageURL)+'</ion-item>'+
+      '                       <ion-item lines="none" class="image-viewer-page-url">'+formatURLForPresentation(imageObj.pageURL)+'</ion-item>'+
       '                       <ion-item lines="none" class="image-viewer-page-timestamp">'+getDateSpaceFormated(imageObj.pageTstamp)+'</ion-item>'+          
                       '</ion-list>'+
                   '</ion-card-content>'+                                
