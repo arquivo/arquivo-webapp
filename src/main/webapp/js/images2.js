@@ -213,24 +213,30 @@ function checkElement(selector) {
     }
 }
 
-function insertInPosition(position, imageObj, imageHeight, maxImageHeight, expandedImageHeight, expandedImageWidth){
+function insertInPosition(position, imageObj, imageHeight, expandedImageHeight, expandedImageWidth){
+  const maxImageHeight = 200;
+  const realImageHeight = imageHeight <= maxImageHeight ? imageHeight : maxImageHeight;
 
-  var maxImageExpandHeight = 400;
-  var maxImageDivWidth =  ( ($(window).width() * 0.6) -70 ) * 0.95 ;
+  const maxImageExpandHeight = 400;
+  const maxImageDivWidth =  ( ($(window).width() * 0.6) -70 ) * 0.95 ;
+
+  var ratio = 1;
 
   if( expandedImageHeight > maxImageExpandHeight ) {
     expandedImageHeight = maxImageExpandHeight;
   } 
   else if ( expandedImageWidth > maxImageDivWidth ) {
     //resize height in porportion to resized width
-    var ratio = maxImageDivWidth/expandedImageWidth;
+    ratio = maxImageDivWidth/expandedImageWidth;
     expandedImageHeight = expandedImageHeight * ratio;
   }
 
+  var displayUrlMaxWidth = expandedImageWidth * ratio;
+
   var contentToInsert = ''+
   '<div  class="imageContent" position='+position+' id="imageResults'+position+'" onclick = "openImage('+position+'); generateHash(\''+position+'\');">'+
-  '   <img  height="'+imageHeight.toString()+'" src="'+imageObj.src+'"/>'+
-  '   <p class="green image-display-url" >→ '+removeWWW(truncateUrl(imageObj.pageURL, 20))+'</p>'+
+  '   <img  height="'+realImageHeight.toString()+'" src="'+imageObj.src+'"/>'+
+  '   <p class="green image-display-url" style="width: '+displayUrlMaxWidth+'px">→ '+removeProtocol(imageObj.pageURL)+'</p>'+
   '   <p class="date image-display-date" id="date'+position+'">'+getDateSpaceFormated(imageObj.timestamp)+'</p>'+
   '   <div id="arrowWrapper'+position+'" class="arrowWrapper" >'+
   '       <div id="arrow'+position+'" class="arrow"/></div>' +
@@ -730,8 +736,6 @@ function searchImagesJS(dateStartWithSlashes, dateEndWithSlashes, safeSearchOpti
 
                 imageObj.src = "data:"+currentDocument.imgMimeType+";base64," + currentDocument.imgThumbnailBase64;
 
-                var resizeImageHeight = 200;
-
                 imageObj.onload = function() {
                             
                     if( startIndex != 0 &&  totalResults == responseJson.totalResults){
@@ -742,12 +746,7 @@ function searchImagesJS(dateStartWithSlashes, dateEndWithSlashes, safeSearchOpti
                                
                             var insertPosition = (parseInt(this.position)+parseInt(currentStart));   
 
-                            if(this.height <= resizeImageHeight){
-                            insertInPosition(insertPosition, this, this.height, resizeImageHeight, this.expandedHeight, this.expandedWidth);
-                            }
-                            else{
-                            insertInPosition(insertPosition, this, resizeImageHeight, resizeImageHeight, this.expandedHeight, this.expandedWidth);
-                            }
+                            insertInPosition(insertPosition, this, this.height, this.expandedHeight, this.expandedWidth);
                        
                             if(resultsToLoad <= 0){
                                 loadingFinished(showNextPageButton);
