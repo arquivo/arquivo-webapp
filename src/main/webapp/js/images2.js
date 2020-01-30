@@ -125,6 +125,10 @@ function truncateUrl(url, maxSize)
         return url
 }
 
+function removeProtocol(url) {
+  return url.replace(/(^\w+:|^)\/\//, '')
+}
+
 function removeWWW(url){
     if(url.startsWith('www.')){
       return url.substring(4, url.length);
@@ -132,42 +136,7 @@ function removeWWW(url){
     return url;
 }
 
-/*Truncates large URL in the replay bar*/
-function truncateUrlKeepProtocol(url, maxSize)
-{    
-    if (url.length > maxSize){
-            url = url.substring(0, maxSize-3) + "...";
-            return url;
-    }
-    else
-        return url
-}
-
-/*Truncates large URL in the replay bar*/
-function truncateUrlRemoveProtocol(url, maxSize)
-{    
-    url = url.replace(/(^\w+:|^)\/\//, ''); //remove all possible protocols
-    if (url.length > maxSize){
-            url = url.substring(0, maxSize-3) + "...";
-            return url;
-    }
-    else
-        return url
-}
-
-function truncateUrlMiddleRemoveProtocol(url, maxSize)
-{    
-    url = url.replace(/(^\w+:|^)\/\//, ''); //remove all possible protocols
-    if (url.length > maxSize){
-            url = url.substring(0, parseInt(maxSize*0.75) -3) + "..." + url.substring(url.length - (parseInt(maxSize*0.25)) , url.length) ;
-            return url;
-    }
-    else
-        return url
-}
-
 lastImageViewedByUser = -1; /*Global var refers to the lastImage the user*/
-lastPress= -1; /*Global var refers to last time user pressed arrow in image viewer*/
 
 function generateHash( position ){
   window.location.hash = "card";
@@ -339,11 +308,11 @@ return ''+
                   '</ion-row>'+
                   '<ion-card-content>'+                
                       '<ion-list class="imageList selected">'+
-      ( imageObj.title !== ""  ? ' <ion-item class="item-borderless" lines="none" ><a class="imageHref" target="_blank" href="'+imageObj.currentImageURL+'"><h5>' +imageObj.title+'</a></h5></ion-item>':'') +
-      ( imageObj.imgAlt !== "" &&  imageObj.title == ""  ? ' <ion-item id="imgTitleLabel'+position+'" lines="none"><h5><a class="imageHref" target="_blank" href="'+imageObj.currentImageURL+'">' +imageObj.imgAlt+'</a></h5></ion-item>':'') +  
-                          '<ion-item lines="none"><h5>' +truncateUrlMiddleRemoveProtocol(imageObj.imgSrc, 40)+'</h5></ion-item>'+
-                          '<ion-item lines="none"><h5>'+imageObj.imgMimeType+' '+parseInt(imageObj.expandedWidth)+' x '+parseInt(imageObj.expandedHeight)+'</h5></ion-item>'+
-                          '<ion-item lines="none"><h5>'+getDateSpaceFormated(imageObj.timestamp)+'</h5></ion-item>'+             
+      ( imageObj.title !== ""  ? ' <ion-item class="item-borderless image-viewer-img-title" lines="none" ><a class="imageHref" target="_blank" href="'+imageObj.currentImageURL+'">' +imageObj.title+'</a></ion-item>':'') +
+      ( imageObj.imgAlt !== "" &&  imageObj.title == ""  ? ' <ion-item id="imgTitleLabel'+position+'" lines="none"><a class="imageHref" target="_blank" href="'+imageObj.currentImageURL+'">' +imageObj.imgAlt+'</a></ion-item>':'') +  
+                          '<ion-item lines="none" class="image-viewer-img-src">' +removeProtocol(imageObj.imgSrc)+'</ion-item>'+
+                          '<ion-item lines="none" class="image-viewer-img-mime-type-resolution">'+imageObj.imgMimeType+' '+parseInt(imageObj.expandedWidth)+' x '+parseInt(imageObj.expandedHeight)+'</ion-item>'+
+                          '<ion-item lines="none" class="image-viewer-img-timestamp">'+getDateSpaceFormated(imageObj.timestamp)+'</ion-item>'+             
                       '</ion-list>'+
                   '</ion-card-content>'+  
                   '<ion-row>'+
@@ -351,9 +320,9 @@ return ''+
                   '</ion-row>'+
                   '<ion-card-content>'+                
                       '<ion-list>'+
-      '                       <ion-item class="item-borderless" lines="none" ><a target="_blank" href="'+waybackURL+'/'+imageObj.pageTstamp+'/'+imageObj.pageURL+'"><h5>'+imageObj.pageTitle+'</h5></a></ion-item>'+
-      '                       <ion-item lines="none" "><h5>'+truncateUrlRemoveProtocol(imageObj.pageURL, 60)+'</h5></ion-item>'+
-      '                       <ion-item lines="none" "><h5>'+getDateSpaceFormated(imageObj.pageTstamp)+'</h5></ion-item>'+          
+      '                       <ion-item class="item-borderless image-viewer-page-title" lines="none" ><a target="_blank" href="'+waybackURL+'/'+imageObj.pageTstamp+'/'+imageObj.pageURL+'">'+imageObj.pageTitle+'</a></ion-item>'+
+      '                       <ion-item lines="none" class="image-viewer-page-url">'+removeProtocol(imageObj.pageURL)+'</ion-item>'+
+      '                       <ion-item lines="none" class="image-viewer-page-timestamp">'+getDateSpaceFormated(imageObj.pageTstamp)+'</ion-item>'+          
                       '</ion-list>'+
                   '</ion-card-content>'+                                
               '</ion-card> '+
@@ -381,7 +350,7 @@ function viewDetails(position){
         '<ion-list>'+
          '<ion-item class="item-borderless" lines="none" ><h5><em>url:</em>&nbsp;<a href="'+waybackURL+'/'+imageObj.pageTstamp+'/'+imageObj.pageURL+'">'+imageObj.pageURL+'</a></h5></ion-item>'+
           '<ion-item lines="none" ><h5><em>timestamp:</em> '+imageObj.pageTstamp+'</h5></ion-item>'+
-          '<ion-item lines="none" ><h5><em>'+details.title+'</em> '+imageObj.pageTitleFull+'</h5></ion-item>'+
+          '<ion-item lines="none" ><h5><em>'+details.title+'</em> '+imageObj.pageTitle+'</h5></ion-item>'+
         '</ion-list>'+
       '</ion-card-content>'+
       '<ion-row>'+      
@@ -763,10 +732,7 @@ function searchImagesJS(dateStartWithSlashes, dateEndWithSlashes, safeSearchOpti
                 imageObj.safe = currentDocument.safe;
                 imageObj.pageTstamp = currentDocument.pageTstamp.toString();
                 imageObj.pageTitle = currentDocument.pageTitle;
-                imageObj.pageTitleFull = currentDocument.pageTitle;
                 if (typeof imageObj.pageTitle === 'undefined' || imageObj.pageTitle == 'undefined' ){imageObj.pageTitle ='';}
-                if(imageObj.pageTitle.length > 40) {imageObj.pageTitle = imageObj.pageTitle.substring(0,37) + "...";}
-                if (typeof imageObj.pageTitleFull === 'undefined' || imageObj.pageTitleFull == 'undefined' ){imageObj.pageTitleFull ='';}               
                 imageObj.collection = currentDocument.collection;
                 imageObj.imgSrc = currentDocument.imgSrc;
 
