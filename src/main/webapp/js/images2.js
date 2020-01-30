@@ -203,12 +203,17 @@ function openImage(position){
   sleep(500).then(() => {
     document.body.scrollTop = document.documentElement.scrollTop = 0;
   });
-  var slides = document.getElementById('expandedImageViewers');
+  
+  // hide search results
+  document.getElementById("headerSearchDiv").style.display = "none";
 }
 
 function closeImage(position){  
   openImageViewer = false;
   $('#showSlides').hide();
+
+  // show again the search results
+  document.getElementById("headerSearchDiv").style.display = "block";
 }
 
 function previousImage(){
