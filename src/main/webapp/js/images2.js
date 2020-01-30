@@ -215,69 +215,59 @@ function checkElement(selector) {
 
 function insertInPosition(position, imageObj, imageHeight, maxImageHeight, expandedImageHeight, expandedImageWidth){
 
-    var maxImageExpandHeight = 400;
-    var maxImageDivWidth =  ( ($(window).width() * 0.6) -70 ) * 0.95 ;
+  var maxImageExpandHeight = 400;
+  var maxImageDivWidth =  ( ($(window).width() * 0.6) -70 ) * 0.95 ;
 
-    if( expandedImageHeight > maxImageExpandHeight ) {
-        expandedImageHeight = maxImageExpandHeight;
-    } 
-    else if ( expandedImageWidth > maxImageDivWidth ) {
-        //resize height in porportion to resized width
-        var ratio = maxImageDivWidth/expandedImageWidth;
-        expandedImageHeight = expandedImageHeight * ratio;
-    }
-  
-    if(imageObj.currentImageURL.startsWith("http://m.p18") || imageObj.currentImageURL.startsWith("http://m.p51")){ //TODO wtf?! it's dangerous!
-      imageObj.currentImageURL = "https://"+imageObj.currentImageURL.substr(13,imageObj.currentImageURL.length);
-    }
+  if( expandedImageHeight > maxImageExpandHeight ) {
+    expandedImageHeight = maxImageExpandHeight;
+  } 
+  else if ( expandedImageWidth > maxImageDivWidth ) {
+    //resize height in porportion to resized width
+    var ratio = maxImageDivWidth/expandedImageWidth;
+    expandedImageHeight = expandedImageHeight * ratio;
+  }
 
-    var centerImage = maxImageExpandHeight/2 - expandedImageHeight/2 ;
-    var liMarginTop = maxImageHeight - imageHeight;
-    var contentToInsert = ''+
+  var contentToInsert = ''+
+  '<div  class="imageContent" position='+position+' id="imageResults'+position+'" onclick = "openImage('+position+'); generateHash(\''+position+'\');">'+
+  '   <img  height="'+imageHeight.toString()+'" src="'+imageObj.src+'"/>'+
+  '   <p class="green image-display-url" >→ '+removeWWW(truncateUrl(imageObj.pageURL, 20))+'</p>'+
+  '   <p class="date image-display-date" id="date'+position+'">'+getDateSpaceFormated(imageObj.timestamp)+'</p>'+
+  '   <div id="arrowWrapper'+position+'" class="arrowWrapper" >'+
+  '       <div id="arrow'+position+'" class="arrow"/></div>' +
+  '   </div>'+ 
+  '</div>';
 
-        '<div  class="imageContent" position='+position+' id="imageResults'+position+'" onclick = "openImage('+position+'); generateHash(\''+position+'\');">'+
-        '   <img  height="'+imageHeight.toString()+'" src="'+imageObj.src+'"/>'+
-        '   <p class="green image-display-url" >→ '+removeWWW(truncateUrl(imageObj.pageURL, 20))+'</p>'+
-        '   <p class="date image-display-date" id="date'+position+'">'+getDateSpaceFormated(imageObj.timestamp)+'</p>'+
-        '   <div id="arrowWrapper'+position+'" class="arrowWrapper" >'+
-        '       <div id="arrow'+position+'" class="arrow"/></div>' +
-        '   </div>'+ 
-        '</div>';
+  if($("#expandedImageViewers > .swiper-wrapper") !== null){
+    $('#expandedImageViewers > .swiper-wrapper').append(insertImageViewer(imageObj, position));  
+  }
+  else{
+    console.log('unexpected error loading image viewer');      
+  }
 
-        if($("#expandedImageViewers > .swiper-wrapper") !== null)
-        {
-                  $('#expandedImageViewers > .swiper-wrapper').append(insertImageViewer(imageObj, position));  
+  imageObj.expandedImageWidth = expandedImageWidth;
+  imageObj.expandedImageHeight = expandedImageHeight;
+  imageObjs[position] = imageObj;
 
-        }
-        else{
-            console.log('unexpected error loading image viewer');      
-        }
+  var lengthofUL = $('#photos .imageContent').length;
+  if(lengthofUL === 0){ /*list is empty only the hidden li*/
+    $('#photos').prepend(contentToInsert);
+  }
+  else{
+    var inserted = false;
 
-
-      imageObj.expandedImageWidth = expandedImageWidth;
-      imageObj.expandedImageHeight = expandedImageHeight;
-      imageObjs[position] = imageObj;
-
-    var lengthofUL = $('#photos .imageContent').length;
-    if(lengthofUL === 0){ /*list is empty only the hidden li*/
-      $('#photos').prepend(contentToInsert);
-    }
-    else{
-      var inserted = false;
-
-      $('#photos .imageContent').each(function(i, obj) {
-        if( position < i ){
-          $( obj ).insertBefore(contentToInsert);
-          /*add logic to new column layout*/
-          inserted = true;
-          return;
-        }
-      });
-
-      if(inserted === false){
-        $('#photos').append(contentToInsert);
+    $('#photos .imageContent').each(function(i, obj) {
+      if( position < i ){
+        $( obj ).insertBefore(contentToInsert);
+        /*add logic to new column layout*/
+        inserted = true;
+        return;
       }
+    });
+
+    if(inserted === false){
+      $('#photos').append(contentToInsert);
     }
+  }
 }    
 
 function  insertImageViewer(imageObj, position){
