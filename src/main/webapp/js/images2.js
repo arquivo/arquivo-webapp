@@ -193,22 +193,18 @@ function checkElement(selector) {
 function insertInPosition(position, imageObj, imageHeight, expandedImageHeight, expandedImageWidth){
   const maxImageHeight = 200;
   const realImageHeight = imageHeight <= maxImageHeight ? imageHeight : maxImageHeight;
-
+  const displayUrlMaxWidth = expandedImageWidth * realImageHeight / expandedImageHeight;
   const maxImageExpandHeight = 400;
   const maxImageDivWidth =  ( ($(window).width() * 0.6) -70 ) * 0.95 ;
-
-  var ratio = 1;
 
   if( expandedImageHeight > maxImageExpandHeight ) {
     expandedImageHeight = maxImageExpandHeight;
   } 
   else if ( expandedImageWidth > maxImageDivWidth ) {
     //resize height in porportion to resized width
-    ratio = maxImageDivWidth/expandedImageWidth;
+    const ratio = maxImageDivWidth/expandedImageWidth;
     expandedImageHeight = expandedImageHeight * ratio;
   }
-
-  var displayUrlMaxWidth = expandedImageWidth * ratio;
 
   var contentToInsert = ''+
   '<div  class="imageContent" position='+position+' id="imageResults'+position+'" onclick = "openImage('+position+'); generateHash(\''+position+'\');">'+
