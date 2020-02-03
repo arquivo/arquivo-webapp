@@ -1360,8 +1360,6 @@ div.call-to-actions span {
   overflow: hidden;
   text-overflow: ellipsis;
   color: #009688 !important;
-  margin-left: auto;
-  margin-right: auto;
 }
 .image-display-date {
   font-weight: normal;
@@ -1424,44 +1422,6 @@ div.call-to-actions span {
 .middle {
   vertical-align: middle;
 }
-.image-viewer-img-title {
-  font-size: 14px;
-  font-weight: 400;
-}
-.image-viewer-img-src {
-  font-size: 14px;
-  font-weight: 400;
-  text-overflow: ellipsis;
-  overflow: hidden; 
-  white-space: nowrap;
-}
-.image-viewer-img-mime-type-resolution {
-  font-size: 14px;
-  font-weight: 400;
-}
-.image-viewer-img-timestamp {
-  font-size: 14px;
-  font-weight: 400; 
-}
-.image-viewer-page-title{
-  font-size: 14px;
-  font-weight: 400;
-  text-overflow: ellipsis;
-  overflow: hidden; 
-  white-space: nowrap;
-}
-.image-viewer-page-url {
-  font-size: 14px;
-  font-weight: 400;
-  text-overflow: ellipsis;
-  overflow: hidden; 
-  white-space: nowrap;
-}
-.image-viewer-page-timestamp {
-  font-size: 14px;
-  font-weight: 400;
-}
-
 .image-expanded-viewer {
   padding-bottom: 0px !important;
   max-height: 50vh !important;
@@ -2343,7 +2303,7 @@ h4.modalTitle {
   background-color: rgba(0, 0, 0, 0);
   margin: 0 !important;
   height: 100vh;
-  padding: 20px 15px 20px 0;
+  padding: 0px 20px 40px 0;
   display: block;
 }
 .right-icon {
@@ -2360,7 +2320,7 @@ h4.modalTitle {
   background-color: rgba(0, 0, 0, 0);
   margin: 0 !important;
   height: 100vh;
-  padding: 20px 0px 20px 10px;
+  padding: 0px 0px 40px 20px;
   display: block;
 }
 
