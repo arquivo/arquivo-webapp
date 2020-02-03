@@ -19,6 +19,7 @@ body#advanced-images .swiper-container #menuWrapper {
 	height: 100%;	
 	padding:0;
 	margin:0;
+	max-width:2044px !important;
 	margin: 0 auto !important;
 }
 
@@ -37,7 +38,7 @@ body#adavanced .swiper-container {
 	/*min-width: 100px;*/
 	/*width: /*70%
 	max-width: 320px;*/
-	width: 12vw /*100%*/;
+	width: 100%;
 	min-height: 100vh;
 	overflow-y: auto;			
 	color: #fff;
@@ -332,6 +333,14 @@ body#advanced .glyphicon-search:before, body#advanced-images .glyphicon-search:b
 @media screen and (min-device-width:769px) and (max-device-width:3000px) {
 .menu h4 {  
     font-size: 13px;    
+}
+.menu {
+	width: 12vw;
+	min-height: 100vh;
+	overflow-y: auto;			
+	color: #fff;
+    display: initial;   
+    min-width: 200px;
 }
 }
 .submenu:hover {
