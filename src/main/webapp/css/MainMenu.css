@@ -17,8 +17,7 @@ body#advanced-images .swiper-container #menuWrapper {
 	background-color: #1c75c0 !important;
 	width: 100%;
 	height: 100%;	
-	padding:0;
-	margin:0;
+	padding:0;	
 	max-width:2044px !important;
 	margin: 0 auto !important;
 }
@@ -33,18 +32,16 @@ body#adavanced .swiper-container {
 	/*width: 100% !important/*100%*/;
 }
 .menu {
-	/* New code */	
-	margin-top: /*52px*/0px;
-	/*min-width: 100px;*/
-	/*width: /*70%
-	max-width: 320px;*/
-	width: 100%;
-	min-height: 100vh;
-	overflow-y: auto;			
-	color: #fff;
-    display: initial;   
+    margin-top: /*52px*/0px;
+    /* min-width: 100px; */
+    width: 69vw;
+    min-height: 100vh;
+    overflow-y: auto;
+    color: #fff;
+    display: initial;
     min-width: 200px;
-}
+    max-width: 320px;
+    }
 
 .content {
 	width: 100%;
