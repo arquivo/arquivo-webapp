@@ -482,9 +482,8 @@ Content = {
   <%@ include file="include/imageHeaderMobile.jsp" %>
   <script type="text/javascript">$('#imagesTab').addClass('selected');$('#imagesTab').addClass('primary-underline');</script>
 
-  <div class="row">
-  	<div class="spell hidden"><fmt:message key="search.spellchecker"/> <span class="suggestion"></span></div>
-  </div>
+  <p id="estimated-results" style="display: none;"><fmt:message key="search.results.estimated.results.1"/> <span id="estimated-results-value"></span> <fmt:message key="search.results.estimated.results.2"/> <%= dateStartYear %></p>
+  <div class="spell hidden"><fmt:message key="search.spellchecker"/> <span class="suggestion"></span></div>
 
   <div class="row image-container">
     <script type="text/javascript">

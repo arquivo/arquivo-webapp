@@ -726,7 +726,6 @@ function searchImagesJS(dateStartWithSlashes, dateEndWithSlashes, safeSearchOpti
                             }
                     
                 }
-                
                
                 imageObj.onerror = function() {
                     // image did not load
@@ -741,9 +740,10 @@ function searchImagesJS(dateStartWithSlashes, dateEndWithSlashes, safeSearchOpti
                         loadingFinished(showNextPageButton);
                     }
                 }
-                
-            }
 
+            }
+            document.getElementById("estimated-results-value").innerHTML = totalResults.toLocaleString(language);
+            document.getElementById("estimated-results").style.display = totalResults > 0 ? 'block' : 'hidden';
         }
 
         
