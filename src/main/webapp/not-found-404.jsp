@@ -34,7 +34,7 @@
 	<meta http-equiv="Content-Language" content="pt-PT" />
 	<meta name="Keywords" content="<fmt:message key='404.meta.keywords'/>" />
 	<meta name="Description" content="<fmt:message key='404.meta.description'/>" />
-	<link rel="shortcut icon" href="img/logo-16.png" type="<%=request.getContextPath()%>/image/x-icon" />
+	<link rel="shortcut icon" href="/img/logo-16.png" type="<%=request.getContextPath()%>/image/x-icon" />
 	<link rel="stylesheet" title="Estilo principal" type="text/css" href="<%=request.getContextPath()%>/css/style.css"  media="all" />
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>

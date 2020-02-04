@@ -131,7 +131,7 @@
   <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
   <!-- ends google fonts links -->
 
-  <link rel="shortcut icon" href="img/logo-16.png" type="image/x-icon" />
+  <link rel="shortcut icon" href="/img/logo-16.png" type="image/x-icon" />
   <link rel="stylesheet" title="Estilo principal" type="text/css" href="/css/newStyle.css?build=<c:out value='${initParam.buildTimeStamp}'/>"  media="all" />
     <!-- font awesome -->
   <link rel="stylesheet" href="/css/font-awesome.min.css" />

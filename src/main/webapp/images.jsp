@@ -324,7 +324,7 @@ response.setHeader("Cache-Control","public, max-age=600");
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
   <!-- ends google fonts links -->
-  <link rel="shortcut icon" href="img/logo-16.png" type="image/x-icon"/>
+  <link rel="shortcut icon" href="/img/logo-16.png" type="image/x-icon"/>
   <link href="/css/csspin.css" rel="stylesheet" type="text/css"/>
   <script type="text/javascript">
       var minDate = new Date(820450800000);

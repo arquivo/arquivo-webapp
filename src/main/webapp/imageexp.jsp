@@ -124,7 +124,7 @@ String shareImage = "https://arquivo.pt/wayback/"+imgTstamp+"/"+imgSrc;
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
-  <link rel="shortcut icon" href="img/logo-16.png" type="image/x-icon"/>
+  <link rel="shortcut icon" href="/img/logo-16.png" type="image/x-icon"/>
   <link href="/css/csspin.css" rel="stylesheet" type="text/css"/>
 
   <link rel="stylesheet" title="Estilo principal" type="text/css" href="/css/newStyle.css?build=<c:out value='${initParam.buildTimeStamp}'/>"  media="all" />

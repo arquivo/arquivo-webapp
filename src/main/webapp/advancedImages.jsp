@@ -91,7 +91,7 @@
 	<meta http-equiv="Content-Language" content="pt-PT" />
 	<meta name="Keywords" content="<fmt:message key='advanced.meta.keywords'/>" />
 	<meta name="Description" content="<fmt:message key='advanced.meta.description'/>" />
-	<link rel="shortcut icon" href="img/logo-16.png" type="image/x-icon" />
+	<link rel="shortcut icon" href="/img/logo-16.png" type="image/x-icon" />
 	<meta name="theme-color" content="#1a73ba">
     <!-- Windows Phone -->
     <meta name="msapplication-navbutton-color" content="#1a73ba">
