@@ -410,7 +410,6 @@ String[] queryString_splitted=null;
     <link rel="stylesheet" href="/css/nouislider.min.css">
     <script type="text/javascript" src="/js/wNumb.js"></script>
     <!-- CSS loading spiner -->
-  <link href="/css/csspin.css" rel="stylesheet" type="text/css">
   <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5645cdb2e22ca317"></script>
   <!-- end addthis for sharing on soc
     ial media -->
@@ -459,8 +458,8 @@ String[] queryString_splitted=null;
 </head>
 
 <body id="home-search">
-    <%@ include file="/include/topbar.jsp" %>
-    <div class="container-fluid topcontainer" id="headerSearchDiv">
+  <%@ include file="/include/topbar.jsp" %>
+  <div class="container-fluid topcontainer" id="headerSearchDiv">
     <script type="text/javascript">
       var language = localStorage.language;
       pagesHref = window.location.href;
@@ -485,18 +484,14 @@ String[] queryString_splitted=null;
       }
     </script>
     <script type="text/javascript" src="/js/encodeHTML.js"></script>
-    <%@ include file="include/searchHeaderMobile.jsp" %>
+    <%@ include file="/include/searchHeaderMobile.jsp" %>
 
+    <div id="loadingDiv" class="loader"><div></div></div>
     <script type="text/javascript">
-      document.write("<div id='loadingDiv' class='text-center lds-ring' style='text-align: center; margin-top: 10%; margin-bottom: 5%;'><div></div><div></div><div></div><div></div></div>");
       $( document ).ready(function() {
-        if(typeof(loading)=="undefined" || loading != true){
-          $('#loadingDiv').show();
-          $('#conteudo-resultado').show();
-        }
-      $("#txtSearch").on('mousedown touchstart', function (e) {
-            e.stopPropagation();
-       });
+        $("#txtSearch").on('mousedown touchstart', function (e) {
+          e.stopPropagation();
+        });
       });
     </script>
     <script type="text/javascript">$('#pagesTab').addClass('selected');$('#pagesTab').addClass('primary-underline');</script>
@@ -595,17 +590,32 @@ String[] queryString_splitted=null;
             %>
 
 <%
- }
-}
+          }
+        }
 %>
 
 <% if (usedWayback) { %>
   <%@ include file="/include/url-search.jsp" %>
-<% } else { %>
-  <script type="text/javascript" src="/js/page-search.js?build=<c:out value='${initParam.buildTimeStamp}' />"></script>
+<% } else {
+  if (  (request.getParameter("query") == null || request.getParameter("query").equals("")) &&
+        (request.getParameter("adv_and") == null || request.getParameter("adv_and").equals("")) &&
+        (request.getParameter("adv_phr") == null || request.getParameter("adv_phr").equals("")) &&
+        (request.getParameter("adv_not") == null || request.getParameter("adv_not").equals("")) &&
+        (request.getParameter("format") == null || request.getParameter("format").equals("") ) &&
+        (request.getParameter("site") == null || request.getParameter("site").equals("")) ){
+  %>
+    <%-- hide loading spinner--%>
+    <%@ include file="include/intro.jsp" %>
+    <script type="text/javascript">
+      $( document ).ready(function() {
+        $('#loadingDiv').hide();
+      });
 
-  <div id="conteudo-resultado" class="container-fluid display-none col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8 col-lg-offset-3 col-lg-6 col-xl-offset-4 col-xl-4"> <%-- START OF: conteudo-resultado --%>
-    <div id="second-column">
+    </script>
+  <% } else { %>
+    <script type="text/javascript" src="/js/page-search.js?build=<c:out value='${initParam.buildTimeStamp}' />"></script>
+
+    <div id="conteudo-resultado" class="container-fluid col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8 col-lg-offset-3 col-lg-6 col-xl-offset-4 col-xl-4">
       <p id="estimated-results" style="display: none;"><fmt:message key="search.results.estimated.results.1"/> <span id="estimated-results-value"></span> <fmt:message key="search.results.estimated.results.2"/> <%= dateStartYear %></p>
 
       <div class="spell hidden"><fmt:message key="search.spellchecker"/> <span class="suggestion"></span></div>
@@ -623,73 +633,55 @@ String[] queryString_splitted=null;
         </ul>
       </div>
 
-  <div class="pagesNextPrevious text-center">
-
-    <ul>
-      <%
-        if (start > 0) {
-          int previousPageStart = start - hitsPerPage;
-          String previousPageUrl = "search.jsp?" +
-            "query=" + URLEncoder.encode(request.getAttribute("query").toString(), "UTF-8") +
-            "&dateStart="+ dateStartString +
-            "&dateEnd="+ dateEndString +
-            "&pag=prev" +                             // mark as 'previous page' link
-            "&start=" + previousPageStart +
-            "&hitsPerPage=" + hitsPerPage +
-            "&hitsPerDup=" + hitsPerDup +
-            "&dedupField=" + dedupField +
-            "&l="+ language;
-          if (sort != null) {
-            previousPageUrl = previousPageUrl +
-            "&sort=" + sort +
-            "&reverse=" + reverse;
-          }
-          previousPageUrl = StringEscapeUtils.escapeHtml(previousPageUrl);
-      %>
-        <li class="previous"><a id="previousPageSearch" style="display: none;" onclick="ga('send', 'event', 'Full-text search', 'Previous page', document.location.href );" class="myButtonStyle text-center right10" role="button" href="<%=previousPageUrl%>" title="<fmt:message key='search.pager.previous'/>">&larr; <fmt:message key='search.pager.previous'/></a></li>
-      <% } %>
-    <%
-        long nextPageStart = start + hitsPerPage;
-        String nextPageUrl = "search.jsp?" +
-          "query=" + URLEncoder.encode(request.getAttribute("query").toString(), "UTF-8") +
-          "&dateStart="+ dateStartString +
-          "&dateEnd="+ dateEndString +
-          "&pag=next" +
-          "&start=" + nextPageStart +
-          "&hitsPerPage=" + hitsPerPage +
-          "&hitsPerDup=" + hitsPerDup +
-          "&dedupField=" + dedupField +
-          "&l="+ language;
-        if (sort != null) {
-          nextPageUrl = nextPageUrl +
-          "&sort=" + sort +
-          "&reverse=" + reverse;
-        }
-        nextPageUrl = StringEscapeUtils.escapeHtml(nextPageUrl);
-    %>
-        <li class="next"><a id="nextPageSearch" style="display: none;" onclick="ga('send', 'event', 'Full-text search', 'Next page', document.location.href );" class="myButtonStyle text-center" role="button" href="<%=nextPageUrl%>" title="<fmt:message key='search.pager.next'/>"><fmt:message key='search.pager.next'/> &rarr;</a></li>
-    </ul>
-
-  </div>
-
-<% } %>
-
-</div>
-    <% if ( (request.getParameter("query") == null || request.getParameter("query").equals("")) &&
-            (request.getParameter("adv_and") == null || request.getParameter("adv_and").equals("")) &&
-            (request.getParameter("adv_phr") == null || request.getParameter("adv_phr").equals("")) &&
-            (request.getParameter("adv_not") == null || request.getParameter("adv_not").equals("")) &&
-            (request.getParameter("format") == null || request.getParameter("format").equals("") ) &&
-            (request.getParameter("site") == null || request.getParameter("site").equals(""))
-     ){
-    %>
-      <%@ include file="include/intro.jsp" %>
-    <% } %>
-
-
-      </div>  <!-- FIM #conteudo-resultado  -->
+      <div class="pagesNextPrevious text-center">
+        <ul>
+          <%
+            if (start > 0) {
+              int previousPageStart = start - hitsPerPage;
+              String previousPageUrl = "search.jsp?" +
+                "query=" + URLEncoder.encode(request.getAttribute("query").toString(), "UTF-8") +
+                "&dateStart="+ dateStartString +
+                "&dateEnd="+ dateEndString +
+                "&pag=prev" +                             // mark as 'previous page' link
+                "&start=" + previousPageStart +
+                "&hitsPerPage=" + hitsPerPage +
+                "&hitsPerDup=" + hitsPerDup +
+                "&dedupField=" + dedupField +
+                "&l="+ language;
+              if (sort != null) {
+                previousPageUrl = previousPageUrl +
+                "&sort=" + sort +
+                "&reverse=" + reverse;
+              }
+              previousPageUrl = StringEscapeUtils.escapeHtml(previousPageUrl);
+          %>
+            <li class="previous"><a id="previousPageSearch" style="display: none;" onclick="ga('send', 'event', 'Full-text search', 'Previous page', document.location.href );" class="myButtonStyle text-center right10" role="button" href="<%=previousPageUrl%>" title="<fmt:message key='search.pager.previous'/>">&larr; <fmt:message key='search.pager.previous'/></a></li>
+          <% } %>
+        <%
+            long nextPageStart = start + hitsPerPage;
+            String nextPageUrl = "search.jsp?" +
+              "query=" + URLEncoder.encode(request.getAttribute("query").toString(), "UTF-8") +
+              "&dateStart="+ dateStartString +
+              "&dateEnd="+ dateEndString +
+              "&pag=next" +
+              "&start=" + nextPageStart +
+              "&hitsPerPage=" + hitsPerPage +
+              "&hitsPerDup=" + hitsPerDup +
+              "&dedupField=" + dedupField +
+              "&l="+ language;
+            if (sort != null) {
+              nextPageUrl = nextPageUrl +
+              "&sort=" + sort +
+              "&reverse=" + reverse;
+            }
+            nextPageUrl = StringEscapeUtils.escapeHtml(nextPageUrl);
+        %>
+            <li class="next"><a id="nextPageSearch" style="display: none;" onclick="ga('send', 'event', 'Full-text search', 'Next page', document.location.href );" class="myButtonStyle text-center" role="button" href="<%=nextPageUrl%>" title="<fmt:message key='search.pager.next'/>"><fmt:message key='search.pager.next'/> &rarr;</a></li>
+        </ul>
+      </div>
     </div>
-  </div>
+  <% } %>
+<% } %>
 
 <%@include file="include/analytics.jsp" %>
 <%@include file="include/footer.jsp" %>

@@ -325,7 +325,6 @@ response.setHeader("Cache-Control","public, max-age=600");
   <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
   <!-- ends google fonts links -->
   <link rel="shortcut icon" href="/img/logo-16.png" type="image/x-icon"/>
-  <link href="/css/csspin.css" rel="stylesheet" type="text/css"/>
   <script type="text/javascript">
       var minDate = new Date(820450800000);
       var maxDate = new Date(<%=DATE_END.getTimeInMillis()%>);
@@ -361,7 +360,6 @@ response.setHeader("Cache-Control","public, max-age=600");
     <link rel="stylesheet" href="/css/nouislider.min.css">
     <script type="text/javascript" src="/js/wNumb.js"></script>
     <!-- CSS loading spiner -->
-    <link href="/css/csspin.css" rel="stylesheet" type="text/css">
     <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5645cdb2e22ca317"></script>
     <!-- end addthis for sharing on social media -->
 	<script type="text/javascript">
@@ -486,13 +484,9 @@ Content = {
   <div class="spell hidden"><fmt:message key="search.spellchecker"/> <span class="suggestion"></span></div>
 
   <div class="row image-container">
+    <div id="loadingDiv" class="loader"><div></div></div>
     <script type="text/javascript">
-      document.write("<div id='loadingDiv' class='text-center lds-ring' style='text-align: center; margin-top: 10%; margin-bottom: 5%;display:block'><div></div><div></div><div></div><div></div></div>");
       $( document ).ready(function() {
-        if(typeof(loading)=="undefined" || loading != true){
-          $('#loadingDiv').hide();
-          $('#conteudo-resultado').show();
-        }
         $("#txtSearch").on('mousedown touchstart', function (e) {
           e.stopPropagation();
         });

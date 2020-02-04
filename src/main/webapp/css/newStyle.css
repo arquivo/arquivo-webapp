@@ -1626,17 +1626,40 @@ h1, h2, h3, h4, h5 {
 #nextImage {
   display: block !important;
 }
-#loadingDiv {
-  text-align: center;
-  margin-top: 10%;
-  margin-bottom: 5%;
+
+.loader{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width:100%;
+  padding:10%;
+  flex-wrap:wrap;
 }
-#loadingDivImages {
-  text-align: center;
-  margin-top: 10%;
-  margin-bottom: 5%;
-  background-color: #D8DBDF;
+.loader div{
+  width:100px;
+  height:100px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  margin:10px 20px;
 }
+@keyframes load8{
+  100%{
+    transform:rotatez(360deg);
+  }
+}
+.loader div::before{
+  content:"";
+  color:white;
+  height:50px;
+  width:50px;
+  background:transparent;
+  border-radius:50%;
+  border:10px solid transparent;
+  border-color:#1c75c0 #1c75c0 transparent transparent;
+  animation:load8 .6s infinite;
+}
+
 .tabs-services {
   text-align: left;
   margin: 20px 0 0px 0;

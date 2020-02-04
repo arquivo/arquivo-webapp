@@ -125,7 +125,6 @@ String shareImage = "https://arquivo.pt/wayback/"+imgTstamp+"/"+imgSrc;
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
   <link rel="shortcut icon" href="/img/logo-16.png" type="image/x-icon"/>
-  <link href="/css/csspin.css" rel="stylesheet" type="text/css"/>
 
   <link rel="stylesheet" title="Estilo principal" type="text/css" href="/css/newStyle.css?build=<c:out value='${initParam.buildTimeStamp}'/>"  media="all" />
     <!-- font awesome -->
@@ -138,8 +137,6 @@ String shareImage = "https://arquivo.pt/wayback/"+imgTstamp+"/"+imgSrc;
     <script type="text/javascript" src="/js/nouislider.min.js"></script>
     <link rel="stylesheet" href="/css/nouislider.min.css">
     <script type="text/javascript" src="/js/wNumb.js"></script>
-    <!-- CSS loading spiner -->
-    <link href="/css/csspin.css" rel="stylesheet" type="text/css">
     <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5645cdb2e22ca317"></script>
     <!-- end addthis for sharing on social media -->
     <script type="text/javascript" src="/js/configs.js"></script>

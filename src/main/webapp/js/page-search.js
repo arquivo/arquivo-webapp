@@ -8,6 +8,7 @@
     }
 })();
 
+/*
 $(document).ajaxStart(function(){
     $('#loadingDiv').show();
 });
@@ -15,7 +16,7 @@ $(document).ajaxStart(function(){
 $(document).ajaxStop(function(){
  $('#loadingDiv').hide();
 });
-
+*/
 
 function createErrorPage(){
   $(''+
@@ -200,7 +201,8 @@ function searchPages(startIndex){
 	        }
 
 	        document.getElementById("estimated-results-value").innerHTML = totalResults.toLocaleString(language);
-	        document.getElementById("estimated-results").style.display = totalResults > 0 ? 'block' : 'hidden';
+	        document.getElementById("estimated-results").style.display = totalResults > 0 ? 'block' : 'none';
+	        document.getElementById("loadingDiv").style.display='none';
 		}
 	});
 }

@@ -137,7 +137,6 @@
   <meta name="Description" content="Página de resultados de uma pesquisa de imagens feita no Arquivo.pt."/>
   <link rel="shortcut icon" href="/img/logo-16.png" type="image/x-icon"/>
   <link rel="stylesheet" title="Estilo principal" type="text/css" href="/css/style.css" media="all"/>
-  <link href="/css/csspin.css" rel="stylesheet" type="text/css"/>
 
   <meta property="og:title" content="<fmt:message key='shareImage.image'/> <%=imageTitle%> — Arquivo.pt" />
   <meta property="og:description" content="<fmt:message key='shareImage.foundInArquivo' />" />

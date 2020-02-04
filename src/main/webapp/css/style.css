@@ -1810,10 +1810,6 @@ li.grouped {
 #conteudo-versoes .mais-resultados, #conteudo-versoes .mais-resultados span {
   text-align: center;
 }
-/*Update 09/12/2016*/
-#loadingDiv {
-  display: none;
-}
 #resultsUl li {
   float: left;
 }
