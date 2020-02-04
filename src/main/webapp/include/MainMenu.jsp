@@ -230,7 +230,6 @@ var MENU = MENU || (function(){
         copyLink: function(){                   
             var urlToCopy;
             if (typeof openImageViewer !== 'undefined' && openImageViewer === true){ 
-                console.log(imageHref); 
                 $('#mainMask').click();     
                 const sleep = (milliseconds) => {
                   return new Promise(resolve => setTimeout(resolve, milliseconds))
