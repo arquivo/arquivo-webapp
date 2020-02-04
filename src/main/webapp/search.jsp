@@ -416,7 +416,7 @@ String[] queryString_splitted=null;
     ial media -->
   <% if (pt.arquivo.webapp.Configuration.get("query.suggestion.api").isPresent()) { %>
   <script type="text/javascript">
-    querySuggestionAPI = "<%= pt.arquivo.webapp.Configuration.get("query.suggestion.api").get() %>";
+    querySuggestionAPI = '<%= pt.arquivo.webapp.Configuration.get("query.suggestion.api", request.getContextPath()+"/spellchecker/checker") %>';
   </script>
   <% } %>
   <script type="text/javascript" src="/js/configs.js"></script>
