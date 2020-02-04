@@ -369,7 +369,7 @@ response.setHeader("Cache-Control","public, max-age=600");
 	</script>
 	<% if (pt.arquivo.webapp.Configuration.get("query.suggestion.api") != null) { %>
       <script type="text/javascript">
-        querySuggestionAPI = "<%= pt.arquivo.webapp.Configuration.get("query.suggestion.api") %>";
+        querySuggestionAPI = "<%= pt.arquivo.webapp.Configuration.get("query.suggestion.api").get() %>";
       </script>
     <% } %>
     <script type="text/javascript" src="/js/configs.js"></script>
