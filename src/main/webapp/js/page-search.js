@@ -167,7 +167,7 @@ function searchPages(startIndex){
 	                var currentResultCode = `
 	                	<li${liAttributes}>
 							<div class="urlBlock">
-								<div class="url">→ ${urlPresentation}</div>
+								<p class="url" title="${urlPresentation}">→ ${urlPresentation}</p>
 								<a href="${linkToArchive}">
 								    <div class="border-bottom"></div>
 								    <h2>
