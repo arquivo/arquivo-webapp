@@ -193,7 +193,7 @@ function checkElement(selector) {
 function insertInPosition(position, imageObj, imageHeight, expandedImageHeight, expandedImageWidth){
   const maxImageHeight = 200;
   const realImageHeight = imageHeight <= maxImageHeight ? imageHeight : maxImageHeight;
-  const displayUrlMaxWidth = expandedImageWidth * realImageHeight / expandedImageHeight;
+  const displayUrlMaxWidth = (expandedImageWidth * realImageHeight / expandedImageHeight ) + 20;
   const maxImageExpandHeight = 400;
   const maxImageDivWidth =  ( ($(window).width() * 0.6) -70 ) * 0.95 ;
 
@@ -205,11 +205,12 @@ function insertInPosition(position, imageObj, imageHeight, expandedImageHeight, 
     const ratio = maxImageDivWidth/expandedImageWidth;
     expandedImageHeight = expandedImageHeight * ratio;
   }
+  const urlToPresentation = formatURLForPresentation(imageObj.pageURL);
 
   var contentToInsert = ''+
   '<div  class="imageContent" position='+position+' id="imageResults'+position+'" onclick = "openImage('+position+'); generateHash(\''+position+'\');">'+
   '   <img  height="'+realImageHeight.toString()+'" src="'+imageObj.src+'"/>'+
-  '   <p class="green image-display-url" style="width: '+displayUrlMaxWidth+'px">→ '+formatURLForPresentation(imageObj.pageURL)+'</p>'+
+  '   <p class="green image-display-url" style="max-width: '+displayUrlMaxWidth+'px" title="'+urlToPresentation+'">→ '+urlToPresentation+'</p>'+
   '   <p class="date image-display-date" id="date'+position+'">'+getDateSpaceFormated(imageObj.timestamp)+'</p>'+
   '   <div id="arrowWrapper'+position+'" class="arrowWrapper" >'+
   '       <div id="arrow'+position+'" class="arrow"/></div>' +
