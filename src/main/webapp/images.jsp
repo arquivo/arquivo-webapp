@@ -317,7 +317,9 @@ response.setHeader("Cache-Control","public, max-age=600");
   <!-- Windows Phone -->
   <meta name="msapplication-navbutton-color" content="#1a73ba">
   <!-- iOS Safari -->
-  <meta name="apple-mobile-web-app-status-bar-style" content="#1a73ba">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
   <!-- starts google fonts links -->
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">

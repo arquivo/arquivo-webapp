@@ -121,7 +121,8 @@ String shareImage = "https://arquivo.pt/wayback/"+imgTstamp+"/"+imgSrc;
   <!-- Windows Phone -->
   <meta name="msapplication-navbutton-color" content="#252525">
   <!-- iOS Safari -->
-  <meta name="apple-mobile-web-app-status-bar-style" content="#252525">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
   <link rel="shortcut icon" href="img/logo-16.png" type="image/x-icon"/>
   <link href="/css/csspin.css" rel="stylesheet" type="text/css"/>
