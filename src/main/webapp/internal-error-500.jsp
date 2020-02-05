@@ -41,7 +41,7 @@
 </head>
 <body>
 	<%@ include file="/include/topbar.jsp" %>
-	<div class="wrap">
+	<div >
 		<div id="main">
 			<div id="header">
 				<%@ include file="/include/logo.jsp" %>

@@ -134,7 +134,7 @@
           '<button class="clean-button-no-fill anchor-color faded" onclick="redirectToTable(\'list\')"><h4><i class="fa fa-list"></i> '+ Content.list +'</h4></button>'+
           '<h4 class="rightArrow"><button onclick="scrollTableRight()" class="clean-button-no-fill"><i class="fa fa-caret-right" aria-hidden="true"></i></ion-icon></button></h4>'+
         '</div>'+
-        '<div class="wrap">' +
+        '<div>' +
                '  <div id="intro">' +
                '    <h4 class="texto-1" style="text-align: center;padding-bottom: 15px;">'+ formatNumberOfVersions(numberOfVersions.toString()) +' '+
                  (numberOfVersions===1 ?  Content.versionPage : Content.versionsPage )+
@@ -268,7 +268,7 @@
           '<button class="clean-button-no-fill anchor-color faded" onclick="redirectToTable(\'table\')"><h4><i class="fa fa-table"></i> '+Content.table+' </h4></button>'+
           '<h4 class="text-bold"><i class="fa fa-list"></i> '+Content.list+'</h4>'+
         '</div>'+
-            '<div class="wrap">' +
+            '<div>' +
                '<div id="intro">' +
                  '<h4 class="texto-1" style="text-align: center;padding-bottom: 15px;">'+ formatNumberOfVersions(numberOfVersions.toString()) +' '+
                      (numberOfVersions===1 ?  Content.versionPage : Content.versionsPage )+

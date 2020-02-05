@@ -364,72 +364,33 @@ String[] queryString_splitted=null;
 
 %>
 
-
 <%---------------------- Start of HTML ---------------------------%>
 
 <%-- TODO: define XML lang --%>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="pt-PT" lang="pt-PT">
 <head>
   <title><fmt:message key='home.meta.title'/></title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
-  <%-- TODO: define META lang --%>
-  <meta http-equiv="Content-Language" content="pt-PT" />
   <meta name="Keywords" content="<fmt:message key='home.meta.keywords'/>" />
   <meta name="Description" content="<fmt:message key='home.meta.description'/>" />
+  <meta property="og:title" content="<fmt:message key='home.meta.title'/>"/>
+  <meta property="og:description" content="<fmt:message key='home.meta.description'/>"/>
+  <meta property="og:image" content="<%=request.getContextPath()%>/img/logoFace.png"/>
 
-    <meta property="og:title" content="<fmt:message key='home.meta.title'/>"/>
-    <meta property="og:description" content="<fmt:message key='home.meta.description'/>"/>
-    <meta property="og:image" content="<%=request.getContextPath()%>/img/logoFace.png"/>
-    <meta name="theme-color" content="#1a73ba">
-    <!-- Windows Phone -->
-    <meta name="msapplication-navbutton-color" content="#1a73ba">
-    <!-- iOS Safari -->
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <jsp:include page="/include/headerDefault.jsp" />
 
-    <script type="text/javascript">
-      var minDate = new Date(<%=DATE_START.getTimeInMillis()%>);
-      var maxDate = new Date(<%=DATE_END.getTimeInMillis()%>);
-      var minYear = minDate.getFullYear();
-      var maxYear = maxDate.getFullYear();
-    </script>
-  <link rel="shortcut icon" href="/img/logo-16.png" type="image/x-icon" />
-  <link rel="stylesheet" title="Estilo principal" type="text/css" href="/css/newStyle.css?build=<c:out value='${initParam.buildTimeStamp}'/>"  media="all" />
-    <!-- font awesome -->
-    <link rel="stylesheet" href="/css/font-awesome.min.css">
-    <!-- bootstrap -->
-    <link rel="stylesheet" href="/css/bootstrap.min.css">
-    <script src="/js/jquery-latest.min.js"></script>
-    <script src="/js/bootstrap.min.js"></script>
-
-  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
-    <!-- dual slider dependencies -->
-    <script type="text/javascript" src="/js/nouislider.min.js"></script>
-    <link rel="stylesheet" href="/css/nouislider.min.css">
-    <script type="text/javascript" src="/js/wNumb.js"></script>
-    <!-- CSS loading spiner -->
-  <% if (pt.arquivo.webapp.Configuration.get("query.suggestion.api").isPresent()) { %>
   <script type="text/javascript">
-    querySuggestionAPI = '<%= pt.arquivo.webapp.Configuration.get("query.suggestion.api", request.getContextPath()+"/spellchecker/checker") %>';
+    var minDate = new Date(<%=DATE_START.getTimeInMillis()%>);
+    var maxDate = new Date(<%=DATE_END.getTimeInMillis()%>);
+    var minYear = minDate.getFullYear();
+    var maxYear = maxDate.getFullYear();
   </script>
-  <% } %>
-  <script type="text/javascript" src="/js/configs.js"></script>
-  <script type="text/javascript" src="/js/js.cookie.js"></script>
-  <!-- swiper main menu -->
-  <script type="text/javascript" src="/js/swiper.min.js"></script>
-  <!-- NEW - 23.07.19: Call ionic -->
-  <script src="../@ionic/core/dist/ionic.js"></script>
-  <link rel="stylesheet" href="../@ionic/core/css/ionic.bundle.css">
-
-  <script src="/js/uglipop.min.js"></script>
 
   <script type="text/javascript">
+    <% if (pt.arquivo.webapp.Configuration.get("query.suggestion.api").isPresent()) { %>
+      querySuggestionAPI = '<%= pt.arquivo.webapp.Configuration.get("query.suggestion.api", request.getContextPath()+"/spellchecker/checker") %>';
+    <% } %>
     textSearchAPI = "<%= pt.arquivo.webapp.Configuration.get("text.search.api", "https://arquivo.pt/textsearch") %>";
-  </script>
 
-  <script type="text/javascript">
     notFoundTitle = '<fmt:message key="search.no-results.title"/>';
     noResultsSuggestions = '<fmt:message key="search.no-results.suggestions"/>';
     noResultsWellWritten = '<fmt:message key="search.no-results.suggestions.well-written"/>';

@@ -39,7 +39,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-	<div class="wrap">
+	<div>
 		<div id="main">
 			<div id="header">
 				<%@ include file="/include/logo.jsp" %>

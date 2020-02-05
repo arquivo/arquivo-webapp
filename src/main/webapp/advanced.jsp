@@ -87,19 +87,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="pt-PT" lang="pt-PT">
 <head>
 	<title><fmt:message key='advanced.meta.title'/></title>
-	<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
-	<%-- TODO: define META lang --%>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta http-equiv="Content-Language" content="pt-PT" />
 	<meta name="Keywords" content="<fmt:message key='advanced.meta.keywords'/>" />
 	<meta name="Description" content="<fmt:message key='advanced.meta.description'/>" />
-	<link rel="shortcut icon" href="/img/logo-16.png" type="image/x-icon" />
-	<meta name="theme-color" content="#1a73ba">
-    <!-- Windows Phone -->
-    <meta name="msapplication-navbutton-color" content="#1a73ba">
-    <!-- iOS Safari -->
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+	<jsp:include page="/include/headerDefault.jsp" />
 
 	<script type="text/javascript">
 		var minDate = new Date(<%=DATE_START.getTimeInMillis()%>);
@@ -107,35 +98,10 @@
 		var minYear = minDate.getFullYear();
 		var maxYear = maxDate.getFullYear();
 	</script>
-    <!-- starts google fonts links -->
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet">
-    <!-- ends google fonts links -->
-	<link rel="stylesheet" title="Estilo principal" type="text/css" href="/css/newStyle.css?build=<c:out value='${initParam.buildTimeStamp}'/>"  media="all" />
-    <!-- font awesome -->
-    <link rel="stylesheet" href="/css/font-awesome.min.css">
-    <!-- bootstrap -->
-    <link rel="stylesheet" href="/css/bootstrap.min.css">
-    <script src="/js/jquery-latest.min.js"></script>
-    <script src="/js/bootstrap.min.js"></script>
-    <!-- cookies for language selection -->
-    <script type="text/javascript" src="/js/js.cookie.js"></script>
-
-    <script type="text/javascript" src="/js/wNumb.js"></script>
-    <!-- left menu dependencies -->
-    <link rel="stylesheet" href="/css/leftmenu.css">
-    <!-- end left menu dependencies -->
-	<script type="text/javascript" src="/js/configs.js"></script>
-    <script type="text/javascript" src="/js/swiper.min.js"></script>
-  	<!-- NEW - 23.07.19: Call ionic -->
-  	<script src="../@ionic/core/dist/ionic.js"></script>
-  	<link rel="stylesheet" href="../@ionic/core/css/ionic.bundle.css">
-
-	<script src="/js/uglipop.min.js"></script>
-
 </head>
 <body id="advanced">
 	<%@ include file="/include/topbar.jsp" %>
-	<div class="wrap">
+	<div>
     <div class="container-fluid topcontainer col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8 col-lg-offset-3 col-lg-6 col-xl-offset-4 col-xl-4 " id="headerSearchDiv" >
 		<div id="info-texto-termos" class="row">
 		</div>

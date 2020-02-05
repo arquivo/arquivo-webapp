@@ -760,8 +760,6 @@ $(document).ready(function() {
     $(document).on('click', '#dButton', function() {
       var position =  $(this).attr('position');
       var imageObj = imageObjs[position]; /*get Current Image Object*/
-      var shareURL = '//' + window.location.hostname + '/shareImage.jsp?l='+language+'&imgurl='+encodeURIComponent(imageObj.currentImageURL)+'&imgrefurl='+encodeURIComponent(imageObj.pageURL)+'&imgrefts='+imageObj.timestamp+'&imgres='+parseInt(imageObj.expandedImageWidth)+'x'+parseInt(imageObj.expandedImageHeight)+'&query='+$('#txtSearch').val();
-      shortenURL( shareURL);
       
       $('#h2Copy').html(clickToCopy);
       $("#dialog").dialog('open');

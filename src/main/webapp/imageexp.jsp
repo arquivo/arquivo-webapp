@@ -112,47 +112,14 @@ String shareImage = "https://arquivo.pt/wayback/"+imgTstamp+"/"+imgSrc;
 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="pt-PT" lang="pt-PT"><head>
   <title><fmt:message key='images.imageTitle'/>:&nbsp; <c:out value = "${htmlQueryString}"/> &nbsp;  &mdash; Arquivo.pt</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8"/>
-  <meta http-equiv="Content-Language" content="pt-PT"/>
+  
   <meta name="Keywords" content="resultado, pesquisa, buscar, arquivo, Web, português, portuguesa, Portugal"/>
   <meta name="Description" content="Página de resultados de uma pesquisa de imagens feita no Arquivo.pt."/>
-  <meta name="theme-color" content="#252525">
-  <!-- Windows Phone -->
-  <meta name="msapplication-navbutton-color" content="#252525">
-  <!-- iOS Safari -->
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-
-  <link rel="shortcut icon" href="/img/logo-16.png" type="image/x-icon"/>
-
-  <link rel="stylesheet" title="Estilo principal" type="text/css" href="/css/newStyle.css?build=<c:out value='${initParam.buildTimeStamp}'/>"  media="all" />
-    <!-- font awesome -->
-    <link rel="stylesheet" href="/css/font-awesome.min.css">
-    <!-- bootstrap -->
-    <link rel="stylesheet" href="/css/bootstrap.min.css">
-    <script src="/js/jquery-latest.min.js"></script>
-    <script src="/js/bootstrap.min.js"></script>
-    <!-- dual slider dependencies -->
-    <script type="text/javascript" src="/js/nouislider.min.js"></script>
-    <link rel="stylesheet" href="/css/nouislider.min.css">
-    <script type="text/javascript" src="/js/wNumb.js"></script>
-    <!-- end addthis for sharing on social media -->
-    <script type="text/javascript" src="/js/configs.js"></script>
-
-
   <meta property="og:title" content="<%=shareTitle%>" />
   <meta property="og:description" content="<%=shareDescription%>" />
   <meta property="og:image" content="<%=shareImage%>" />
-
-
-  <link rel="stylesheet" type="text/css" href="/css/jquery-ui-1.7.2.custom.css"/>
-
-  <script src="https://apis.google.com/js/client.js" type="text/javascript"> </script>
-  <script type="text/javascript" src="/js/ui.datepicker.js"></script>
-  <script type="text/javascript" src="/js/ui.datepicker-pt-BR.js"></script>
-  <!--<script type="text/javascript" src="/js/imageConfigs.js"></script>-->
-
+  
+  <jsp:include page="/include/headerDefault.jsp" />
 
   <script type="text/javascript">
     calendarBegin = '<fmt:message key="calendar.begin" />'.replace("calendario", "calendário");
@@ -210,7 +177,6 @@ String shareImage = "https://arquivo.pt/wayback/"+imgTstamp+"/"+imgSrc;
   </script>
   <script src="/js/imageexp.js"></script>
 
-
   <script type="text/javascript">
     $(".border-mobile").click(function(e) {
        // Do something
@@ -218,27 +184,12 @@ String shareImage = "https://arquivo.pt/wayback/"+imgTstamp+"/"+imgSrc;
        console.log("button clicked");
     });
   </script>
-
-  <script src="@ionic/core/dist/ionic.js"></script>
-
-
-  <script type="text/javascript">
-  /*Addthis options share on facebook and twitter*/
-    var addthis_config = addthis_config||{};
-        addthis_config.data_track_addressbar = false;
-        addthis_config.data_track_clickback = false;
-  </script>
-  <%@include file="/include/analytics.jsp" %>
 </head>
 <body>
-
   <%@ include file="/include/topbar.jsp" %>
   <div id="expandedImageViewers"></div>
-
-
-</div></div></div>
-<%@include file="/include/analytics.jsp" %>
-<%@include file="/include/footer.jsp" %>
+  <%@include file="/include/analytics.jsp" %>
+  <%@include file="/include/footer.jsp" %>
 </body>
 </html>
 

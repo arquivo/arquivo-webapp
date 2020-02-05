@@ -124,31 +124,22 @@
 
 %>
 
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="pt-PT" lang="pt-PT"><head>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="pt-PT" lang="pt-PT">
+<head>
   <% if (htmlQueryString.length() > 0) { %>
 	  <title><fmt:message key='shareImage.image'/> <%=imageTitle%> — Arquivo.pt</title>
   <% } else { %>
   	  <title><fmt:message key='shareImage.image'/> — Arquivo.pt</title>
   <% } %>
-  <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8"/>
-
-  <meta http-equiv="Content-Language" content="pt-PT"/>
   <meta name="Keywords" content="resultado, pesquisa, buscar, arquivo, Web, português, portuguesa, Portugal"/>
   <meta name="Description" content="Página de resultados de uma pesquisa de imagens feita no Arquivo.pt."/>
-  <link rel="shortcut icon" href="/img/logo-16.png" type="image/x-icon"/>
-  <link rel="stylesheet" title="Estilo principal" type="text/css" href="/css/style.css" media="all"/>
-
   <meta property="og:title" content="<fmt:message key='shareImage.image'/> <%=imageTitle%> — Arquivo.pt" />
   <meta property="og:description" content="<fmt:message key='shareImage.foundInArquivo' />" />
   <meta property="og:image:width" content="<%=imageWidth%>" />
   <meta property="og:image:height" content="<%=imageHeight%>" />
   <meta property="og:image" content="<%=imageURLDecoded%>" />
-  <meta name="theme-color" content="#252525">
-  <!-- Windows Phone -->
-  <meta name="msapplication-navbutton-color" content="#252525">
-  <!-- iOS Safari -->
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+  <jsp:include page="/include/headerDefault.jsp" />
 
   <script type="text/javascript">
   Content = {
@@ -169,25 +160,18 @@
   };
 
   </script>
-  <script src="https://apis.google.com/js/client.js" type="text/javascript"> </script>
-  <script type="text/javascript" async="" src="//www.google-analytics.com/ga.js"></script>
   <script type="text/javascript">
                 var minDate = new Date(820450800000);
                 var maxDate = new Date(1451606399842);
   </script>
-  <script  src="/js/jquery-latest.min.js" type="text/javascript"></script>
+  
+  <%-- TODO is this needed ? --%>
   <link rel="stylesheet" type="text/css" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"/>
   <script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   <script src='http://rawgit.com/jasonday/jQuery-UI-Dialog-extended/master/jquery.dialogOptions.js'></script>
   <script type="text/javascript" src="/js/shareImages.js"></script>
-  <script type="text/javascript" src="/js/ui.datepicker.js"></script>
-  <script type="text/javascript" src="/js/ui.datepicker-pt-BR.js"></script>
-  <script type="text/javascript">
-    var addthis_config = addthis_config||{};
-        addthis_config.data_track_addressbar = false;
-        addthis_config.data_track_clickback = false;
-  </script>
-<%@include file="/include/analytics.jsp" %>
+
+  <%@include file="/include/analytics.jsp" %>
 </head>
 <body style="background: #222">
 
