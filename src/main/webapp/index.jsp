@@ -158,9 +158,6 @@
   <link href="/css/mobiscroll.custom-2.6.2.min.css" rel="stylesheet" type="text/css" />
   <script src="/js/mobiscroll.custom-2.6.2.min.js" type="text/javascript"></script>
 
-  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5645cdb2e22ca317"></script>
-  <!-- end addthis for sharing on social media -->
-
   <!-- starts New style to override less styles -->
   <script type="text/javascript">
     $('input,textarea').focus(function(){
@@ -243,8 +240,6 @@ function updateQueryStringParameter(uri, key, value) {
 
  </script>
  <!-- ends closing Welcome blue div on homepage -->
-
-  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5645cdb2e22ca317"></script>
 
   <script type="text/javascript" src="/js/configs.js"></script>
   <script type="text/javascript" src="/js/js.cookie.js"></script>

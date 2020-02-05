@@ -129,8 +129,6 @@
   	<!-- NEW - 23.07.19: Call ionic -->
   	<script src="../@ionic/core/dist/ionic.js"></script>
   	<link rel="stylesheet" href="../@ionic/core/css/ionic.bundle.css">
-    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5645cdb2e22ca317"></script>
-	<!-- end addthis for sharing on social media -->
 
 	<script src="/js/uglipop.min.js"></script>
 

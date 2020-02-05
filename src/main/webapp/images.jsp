@@ -360,8 +360,6 @@ response.setHeader("Cache-Control","public, max-age=600");
     <link rel="stylesheet" href="/css/nouislider.min.css">
     <script type="text/javascript" src="/js/wNumb.js"></script>
     <!-- CSS loading spiner -->
-    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5645cdb2e22ca317"></script>
-    <!-- end addthis for sharing on social media -->
 	<script type="text/javascript">
 		imageSearchAPI = "<%= pt.arquivo.webapp.Configuration.get("image.search.api", "https://arquivo.pt/imagesearch") %>";
 	</script>
@@ -402,7 +400,6 @@ response.setHeader("Cache-Control","public, max-age=600");
   </script>
       <!-- swiper main menu -->
    <script type="text/javascript" src="/js/swiper.min.js"></script>
-  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5645cdb2e22ca317" async="async"></script>
   <%@include file="/include/analytics.jsp" %>
 
   <script src="/js/uglipop.min.js"></script>

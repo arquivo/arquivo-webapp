@@ -137,7 +137,6 @@ String shareImage = "https://arquivo.pt/wayback/"+imgTstamp+"/"+imgSrc;
     <script type="text/javascript" src="/js/nouislider.min.js"></script>
     <link rel="stylesheet" href="/css/nouislider.min.css">
     <script type="text/javascript" src="/js/wNumb.js"></script>
-    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5645cdb2e22ca317"></script>
     <!-- end addthis for sharing on social media -->
     <script type="text/javascript" src="/js/configs.js"></script>
 
@@ -229,7 +228,6 @@ String shareImage = "https://arquivo.pt/wayback/"+imgTstamp+"/"+imgSrc;
         addthis_config.data_track_addressbar = false;
         addthis_config.data_track_clickback = false;
   </script>
-  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5645cdb2e22ca317" async="async"></script>
   <%@include file="/include/analytics.jsp" %>
 </head>
 <body>

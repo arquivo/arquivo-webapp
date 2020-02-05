@@ -410,9 +410,6 @@ String[] queryString_splitted=null;
     <link rel="stylesheet" href="/css/nouislider.min.css">
     <script type="text/javascript" src="/js/wNumb.js"></script>
     <!-- CSS loading spiner -->
-  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5645cdb2e22ca317"></script>
-  <!-- end addthis for sharing on soc
-    ial media -->
   <% if (pt.arquivo.webapp.Configuration.get("query.suggestion.api").isPresent()) { %>
   <script type="text/javascript">
     querySuggestionAPI = '<%= pt.arquivo.webapp.Configuration.get("query.suggestion.api", request.getContextPath()+"/spellchecker/checker") %>';
