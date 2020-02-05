@@ -94,8 +94,7 @@
 
 <%---------------------- Start of HTML ---------------------------%>
 
-<%-- TODO: define XML lang --%>
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="pt-PT" lang="pt-PT">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<c:out value='${locale}' />" lang="<c:out value='${locale}' />">
 <head>
   <title><fmt:message key='home.meta.title'/></title>
   <meta name="Keywords" content="<fmt:message key='home.meta.keywords'/>" />

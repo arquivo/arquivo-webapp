@@ -1,6 +1,8 @@
+<%@ taglib uri="http://java.sun.com/jstl/core" prefix="c" %>
+
 <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Language" content="pt-PT" />
+<meta http-equiv="Content-Language" content="<c:out value='${locale}' />" />
 <link rel="shortcut icon" href="/img/logo-16.png" type="image/x-icon" />
 <meta name="theme-color" content="#1a73ba">
 <%-- Windows Phone --%>

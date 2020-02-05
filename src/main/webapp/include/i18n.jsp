@@ -1,15 +1,15 @@
 <%@ taglib uri="http://jakarta.apache.org/taglibs/i18n" prefix="i18n" %>
 <%
-	String language = "pt";
-
-	String langParam = request.getParameter("l");
-	if (langParam != null) {
-		if (langParam.equals("en")) {
-			language = langParam;
-		} else { /* keep default */ };
-	}
-	
-	pageContext.setAttribute("language", language);
+  String language = "pt";
+  String locale = "pt-PT";
+  String langParam = request.getParameter("l");
+  if (langParam != null) {
+    if (langParam.equals("en")) {
+      language = langParam;
+      locale = "en-US";
+    }
+  }
+  pageContext.setAttribute("language", language);
+  pageContext.setAttribute("locale", locale);
 %>
 <fmt:setLocale value="<%=language%>"/>
-<%--<%@include file="/include/i18n.jsp" %> --%>

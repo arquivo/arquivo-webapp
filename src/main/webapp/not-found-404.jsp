@@ -25,13 +25,12 @@
 
 <%---------------------- Start of HTML ---------------------------%>
 
-<%-- TODO: define XML lang --%>
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="pt-PT" lang="pt-PT">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<c:out value='${locale}' />" lang="<c:out value='${locale}' />">
 <head>
 	<title><fmt:message key='404.meta.title'/></title>
 	<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
 	<%-- TODO: define META lang --%>
-	<meta http-equiv="Content-Language" content="pt-PT" />
+	<meta http-equiv="Content-Language" content="<c:out value='${locale}' />" />
 	<meta name="Keywords" content="<fmt:message key='404.meta.keywords'/>" />
 	<meta name="Description" content="<fmt:message key='404.meta.description'/>" />
 	<link rel="shortcut icon" href="/img/logo-16.png" type="<%=request.getContextPath()%>/image/x-icon" />
