@@ -594,7 +594,11 @@ Content = {
      ){
     %>
       <%@ include file="include/intro.jsp" %>
-
+      <script type="text/javascript">
+        $( document ).ready(function() {
+          $('#loadingDiv').hide();
+        });
+      </script>
     <% } %>
 
 </div></div>

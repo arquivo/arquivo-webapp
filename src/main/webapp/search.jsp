@@ -610,7 +610,6 @@ String[] queryString_splitted=null;
       $( document ).ready(function() {
         $('#loadingDiv').hide();
       });
-
     </script>
   <% } else { %>
     <script type="text/javascript" src="/js/page-search.js?build=<c:out value='${initParam.buildTimeStamp}' />"></script>
