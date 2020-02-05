@@ -31,8 +31,8 @@ response.setHeader("Cache-Control","public, max-age=600");
 <%@ taglib uri="http://java.sun.com/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jstl/fmt_rt" prefix="fmt" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
-<%@ include file="include/logging_params.jsp" %>
-<%@ include file="include/i18n.jsp" %>
+<%@ include file="/include/logging_params.jsp" %>
+<%@ include file="/include/i18n.jsp" %>
 <fmt:setLocale value="<%=language%>"/>
 
 <%! //To please the compiler since logging need those
@@ -223,11 +223,11 @@ String shareImage = "https://arquivo.pt/wayback/"+imgTstamp+"/"+imgSrc;
         addthis_config.data_track_clickback = false;
   </script>
   <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5645cdb2e22ca317" async="async"></script>
-  <%@include file="include/analytics.jsp" %>
+  <%@include file="/include/analytics.jsp" %>
 </head>
 <body>
 
-  <%@ include file="include/topbar.jsp" %>
+  <%@ include file="/include/topbar.jsp" %>
   <div id="expandedImageViewers">
     <div id="testViewer1" class="height-vh image-mobile-expanded-div no-outline" tabindex="1">
       <div class="row full-height no-outline">
@@ -238,8 +238,8 @@ String shareImage = "https://arquivo.pt/wayback/"+imgTstamp+"/"+imgSrc;
 
 
 </div></div></div>
-<%@include file="include/analytics.jsp" %>
-<%@include file="include/footer.jsp" %>
+<%@include file="/include/analytics.jsp" %>
+<%@include file="/include/footer.jsp" %>
 </body>
 </html>
 

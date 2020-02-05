@@ -15,9 +15,9 @@
 %>
 <%@ taglib uri="http://java.sun.com/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jstl/fmt_rt" prefix="fmt" %>
-<%@ include file="include/logging_params.jsp" %>
-<%@ include file="include/i18n.jsp" %>
-<%@ include file="include/simple-params-processing.jsp" %>
+<%@ include file="/include/logging_params.jsp" %>
+<%@ include file="/include/i18n.jsp" %>
+<%@ include file="/include/simple-params-processing.jsp" %>
 <fmt:setLocale value="<%=language%>"/>
 
 <%!	//To please the compiler since logging need those -- check [search.jsp]
@@ -136,7 +136,7 @@
 
 </head>
 <body id="advanced">
-	<%@ include file="include/topbar.jsp" %>
+	<%@ include file="/include/topbar.jsp" %>
 	<div class="wrap">
     <div class="container-fluid topcontainer col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8 col-lg-offset-3 col-lg-6 col-xl-offset-4 col-xl-4 " id="headerSearchDiv" >
 		<div id="info-texto-termos" class="row">
@@ -416,9 +416,9 @@ $(".expandable-div legend").click(function() {
 
 </script>
 
-<%@ include file="include/footer.jsp" %>
-<%@include file="include/analytics.jsp" %>
+<%@ include file="/include/footer.jsp" %>
+<%@include file="/include/analytics.jsp" %>
 </body>
 </html>
 
-<%@include file="include/logging.jsp" %>
+<%@include file="/include/logging.jsp" %>

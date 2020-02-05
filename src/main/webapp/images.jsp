@@ -34,8 +34,8 @@ response.setHeader("Cache-Control","public, max-age=600");
 <%@ taglib uri="http://java.sun.com/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jstl/fmt_rt" prefix="fmt" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
-<%@ include file="include/logging_params.jsp" %>
-<%@ include file="include/i18n.jsp" %>
+<%@ include file="/include/logging_params.jsp" %>
+<%@ include file="/include/i18n.jsp" %>
 <fmt:setLocale value="<%=language%>"/>
 
 <%! //To please the compiler since logging need those
@@ -403,7 +403,7 @@ response.setHeader("Cache-Control","public, max-age=600");
       <!-- swiper main menu -->
    <script type="text/javascript" src="/js/swiper.min.js"></script>
   <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5645cdb2e22ca317" async="async"></script>
-  <%@include file="include/analytics.jsp" %>
+  <%@include file="/include/analytics.jsp" %>
 
   <script src="/js/uglipop.min.js"></script>
 
@@ -477,7 +477,7 @@ Content = {
     advancedHref = window.location.href.toString().replace("images.jsp", "advancedImages.jsp");
   </script>
   <script type="text/javascript" src="/js/encodeHTML.js"></script>
-  <%@ include file="include/imageHeaderMobile.jsp" %>
+  <%@ include file="/include/imageHeaderMobile.jsp" %>
   <script type="text/javascript">$('#imagesTab').addClass('selected');$('#imagesTab').addClass('primary-underline');</script>
 
   <p id="estimated-results" style="display: none;"><fmt:message key="search.results.estimated.results.1"/> <span id="estimated-results-value"></span> <fmt:message key="search.results.estimated.results.2"/> <%= dateStartYear %></p>
@@ -593,7 +593,7 @@ Content = {
             (request.getParameter("site") == null || request.getParameter("site").equals(""))
      ){
     %>
-      <%@ include file="include/intro.jsp" %>
+      <%@ include file="/include/intro.jsp" %>
       <script type="text/javascript">
         $( document ).ready(function() {
           $('#loadingDiv').hide();
@@ -633,8 +633,8 @@ Content = {
     $('#showSlides').hide();
   </script>
 
-<%@include file="include/analytics.jsp" %>
-<%@include file="include/footer.jsp" %>
+<%@include file="/include/analytics.jsp" %>
+<%@include file="/include/footer.jsp" %>
 </body>
 </html>
 

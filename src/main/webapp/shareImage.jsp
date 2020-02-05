@@ -25,8 +25,8 @@
 %>
 <%@ taglib uri="http://java.sun.com/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jstl/fmt_rt" prefix="fmt" %>
-<%@ include file="include/logging_params.jsp" %>
-<%@ include file="include/i18n.jsp" %>
+<%@ include file="/include/logging_params.jsp" %>
+<%@ include file="/include/i18n.jsp" %>
 <fmt:setLocale value="<%=language%>"/>
 
 <%!	//To please the compiler since logging need those -- check [search.jsp]
@@ -189,7 +189,7 @@
   </script>
   <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5645cdb2e22ca317" async="async"/>
 
-<%@include file="include/analytics.jsp" %>
+<%@include file="/include/analytics.jsp" %>
 </head>
 <body style="background: #222">
 
@@ -258,4 +258,4 @@
   </script>
 </body>
 </html>
-<%@include file="include/logging.jsp" %>
+<%@include file="/include/logging.jsp" %>

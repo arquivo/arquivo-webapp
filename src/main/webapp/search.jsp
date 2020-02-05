@@ -30,8 +30,8 @@ response.setHeader("Cache-Control","public, max-age=600");
 <%@ taglib uri="http://java.sun.com/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jstl/fmt_rt" prefix="fmt" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
-<%@ include file="include/logging_params.jsp" %>
-<%@ include file="include/i18n.jsp" %>
+<%@ include file="/include/logging_params.jsp" %>
+<%@ include file="/include/i18n.jsp" %>
 <fmt:setLocale value="<%=language%>"/>
 
 <%! //To please the compiler since logging need those -- check [searchBootstrap.jsp]
@@ -605,7 +605,7 @@ String[] queryString_splitted=null;
         (request.getParameter("site") == null || request.getParameter("site").equals("")) ){
   %>
     <%-- hide loading spinner--%>
-    <%@ include file="include/intro.jsp" %>
+    <%@ include file="/include/intro.jsp" %>
     <script type="text/javascript">
       $( document ).ready(function() {
         $('#loadingDiv').hide();
@@ -682,9 +682,9 @@ String[] queryString_splitted=null;
   <% } %>
 <% } %>
 
-<%@include file="include/analytics.jsp" %>
-<%@include file="include/footer.jsp" %>
+<%@include file="/include/analytics.jsp" %>
+<%@include file="/include/footer.jsp" %>
 </body>
 </html>
 
-<%@include file="include/logging.jsp" %>
+<%@include file="/include/logging.jsp" %>

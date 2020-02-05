@@ -12,8 +12,8 @@
 %>
 <%@ taglib uri="http://java.sun.com/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jstl/fmt_rt" prefix="fmt" %>
-<%@ include file="include/logging_params.jsp" %>
-<%@ include file="include/i18n.jsp" %>
+<%@ include file="/include/logging_params.jsp" %>
+<%@ include file="/include/i18n.jsp" %>
 <fmt:setLocale value="<%=language%>"/>
 
 <%!	//To please the compiler since logging need those -- check [search.jsp]
@@ -42,7 +42,7 @@
 	<div class="wrap">
 		<div id="main">
 			<div id="header">
-				<%@ include file="include/logo.jsp" %>
+				<%@ include file="/include/logo.jsp" %>
 				<div id="info-texto-termos">
 					<h1><fmt:message key='404.title'/>.</h1>
 					<h2><fmt:message key='404.subtitle'/></h2>
@@ -64,9 +64,9 @@
 			</div>
 		</div>
 	</div>
-<%@include file="include/footer.jsp" %>
-<%@include file="include/analytics.jsp" %>
+<%@include file="/include/footer.jsp" %>
+<%@include file="/include/analytics.jsp" %>
 </body>
 </html>
 
-<%@include file="include/logging.jsp" %>
+<%@include file="/include/logging.jsp" %>

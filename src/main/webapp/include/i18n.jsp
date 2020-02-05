@@ -11,5 +11,5 @@
 	
 	pageContext.setAttribute("language", language);
 %>
-
-<%--<%@include file="include/i18n.jsp" %> --%>
+<fmt:setLocale value="<%=language%>"/>
+<%--<%@include file="/include/i18n.jsp" %> --%>

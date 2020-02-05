@@ -15,8 +15,8 @@
 %>
 <%@ taglib uri="http://java.sun.com/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jstl/fmt_rt" prefix="fmt" %>
-<%@ include file="include/logging_params.jsp" %>
-<%@ include file="include/i18n.jsp" %>
+<%@ include file="/include/logging_params.jsp" %>
+<%@ include file="/include/i18n.jsp" %>
 <fmt:setLocale value="<%=language%>"/>
 
 <%! //To please the compiler since logging need those -- check [search.jsp]
@@ -266,18 +266,18 @@ function updateQueryStringParameter(uri, key, value) {
 
 </head>
 <body id="homepage-landing">
-  <%@ include file="include/topbar.jsp" %>
+  <%@ include file="/include/topbar.jsp" %>
 
   <div class="container-fluid topcontainer" id="headerSearchDiv">
-    <%@ include file="include/homepageHeaderMobile.jsp" %>
+    <%@ include file="/include/homepageHeaderMobile.jsp" %>
     <script type="text/javascript">$('#pagesTab').addClass('selected');$('#pagesTab').addClass('primary-underline');</script>
   </div>
 
-  <%@ include file="include/intro.jsp" %>
+  <%@ include file="/include/intro.jsp" %>
 
-  <%@include file="include/analytics.jsp" %>
-  <%@include file="include/footer.jsp" %>
+  <%@include file="/include/analytics.jsp" %>
+  <%@include file="/include/footer.jsp" %>
 </body>
 </html>
 
-<%@include file="include/logging.jsp" %>
+<%@include file="/include/logging.jsp" %>
