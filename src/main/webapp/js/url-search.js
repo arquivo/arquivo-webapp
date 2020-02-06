@@ -107,7 +107,8 @@ function createMatrixTable(versionsArray, versionsURL){
 }
 
 function resizeResultsPageHeight(){
-  $('#resultados-lista').css('height', ($(window).height() - $('#resultados-lista').offset().top)*0.95 );
+  // do not resize because it was hidding on type show table some versions
+  //$('#resultados-lista').css('height', ($(window).height() - $('#resultados-lista').offset().top)*0.95 );
 }
 
 function createResultsTable(numberOfVersions, inputURL){
