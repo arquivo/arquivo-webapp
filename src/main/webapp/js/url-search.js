@@ -6,8 +6,8 @@ function getMonthTs(ts){
   return ts.substring(4,6);
 }
 
-function getYearPosition(ts){
-  return parseInt(getYearTs(ts)) - 1996;
+function getYearPosition(firstVersionYear, ts){
+  return parseInt(getYearTs(ts)) - firstVersionYear;
 }
 
 function getDateSpaceFormatedWithoutYear(ts){
@@ -48,15 +48,14 @@ function getShortDateSpaceFormated(ts){
   return day + " "+ month;
 }
 
-function createMatrixTable(versionsArray, versionsURL){
+function createMatrixTable(firstVersionYear, versionsArray, versionsURL){
   var today = new Date();
-  numberofVersions = yyyy - 1996;
   var yyyy = today.getFullYear();
-  var numberofVersions = yyyy - 1996;
+  var numberofVersions = yyyy - firstVersionYear;
   var matrix = new Array(numberofVersions);
   for (var i = 0; i < matrix.length; i++) {
     matrix[i] = [];
-    var yearStr = (1996+i).toString();
+    var yearStr = (firstVersionYear+i).toString();
     // add the headers for each year
     $("#years").append('<th id="th_'+yearStr+'" class="thTV">'+yearStr+'</th>');
   }
@@ -65,7 +64,7 @@ function createMatrixTable(versionsArray, versionsURL){
     var timestamp = versionsArray[i];
     var timestampStr = timestamp.toString();
     var url = versionsURL[i];
-    var pos = getYearPosition(timestampStr);
+    var pos = getYearPosition(firstVersionYear, timestampStr);
     var dateFormated = getDateSpaceFormated(timestampStr);
     var shortDateFormated= getShortDateSpaceFormated(timestampStr);
     var tdtoInsert = '<td class="tdTV"><a href="'+waybackURL+'/'+timestampStr+'/'+url+'" title="'+dateFormated+'">'+shortDateFormated+'</a></td>';
@@ -77,7 +76,7 @@ function createMatrixTable(versionsArray, versionsURL){
   var lengthi =0;
   for (var i = 0; i < matrix.length; i++) {
     lengthi = matrix[i].length;
-    var yearStr = (1996+i).toString();
+    var yearStr = (firstVersionYear+i).toString();
     if(lengthi == 0){
       $("#th_"+yearStr).addClass("inactivo");
     }
@@ -405,8 +404,9 @@ $.ajax({
         var typeShow = $('#typeShow').val().toString();
 
         if(typeShow === "table") {
+          const firstVersionYear = versionsArray.map(t => parseInt(t.substring(0,4))).reduce((a, b) => Math.min(a, b));
           createResultsTable(tokens.length-1, inputURL);
-          createMatrixTable(versionsArray, versionsURL);
+          createMatrixTable(firstVersionYear, versionsArray, versionsURL);
         } else {
           createResultsList(tokens.length-1, inputURL);
           createMatrixList(versionsArray, versionsURL);
