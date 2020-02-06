@@ -34,8 +34,6 @@ response.setHeader("Cache-Control","public, max-age=600");
 <%@ include file="/include/i18n.jsp" %>
 <fmt:setLocale value="<%=language%>"/>
 
-<%@ include file="/include/dates.jsp" %>
-
 <%!
   private static final String COLLECTION_KEY = "collection";
   private static final String COLLECTION_QUERY_PARAM_KEY = COLLECTION_KEY + ":";
@@ -262,13 +260,7 @@ String[] queryString_splitted=null;
   <meta property="og:image" content="<%=request.getContextPath()%>/img/logoFace.png"/>
 
   <jsp:include page="/include/headerDefault.jsp" />
-
-  <script type="text/javascript">
-    var minDate = new Date(<%=DATE_START.getTimeInMillis()%>);
-    var maxDate = new Date(<%=DATE_END.getTimeInMillis()%>);
-    var minYear = minDate.getFullYear();
-    var maxYear = maxDate.getFullYear();
-  </script>
+  <%@ include file="/include/dates.jsp" %>
 
   <script type="text/javascript">
     <% if (pt.arquivo.webapp.Configuration.get("query.suggestion.api").isPresent()) { %>

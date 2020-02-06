@@ -20,8 +20,6 @@
 <%@ include file="/include/simple-params-processing.jsp" %>
 <fmt:setLocale value="<%=language%>"/>
 
-<%@ include file="/include/dates.jsp" %>
-
 <%!	//To please the compiler since logging need those -- check [search.jsp]
 	private static int hitsTotal = -10;		// the value -10 will be used to mark as being "advanced search"
 %>
@@ -34,13 +32,7 @@
   <meta name="Description" content="<fmt:message key='advanced.meta.description'/>" />
 
   <jsp:include page="/include/headerDefault.jsp" />
-
-  <script type="text/javascript">
-    var minDate = new Date(<%=DATE_START.getTimeInMillis()%>);
-    var maxDate = new Date(<%=DATE_END.getTimeInMillis()%>);
-    var minYear = minDate.getFullYear();
-    var maxYear = maxDate.getFullYear();
-  </script>
+  <%@ include file="/include/dates.jsp" %>
 
 </head>
 <body id="advanced-images">

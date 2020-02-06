@@ -22,13 +22,10 @@
   String dateEndStringIonic = dateUtils.getDateEndStringIonic();
   
   String yearStartNoParameter = dateUtils.getDateStartString();
-
 %>
-<%--
 <script type="text/javascript">
 	var minDate = new Date(<%=DATE_START.getTimeInMillis()%>);
 	var maxDate = new Date(<%=DATE_END.getTimeInMillis()%>);
 	var minYear = minDate.getFullYear();
 	var maxYear = maxDate.getFullYear();
 </script>
---%>

@@ -38,8 +38,6 @@ response.setHeader("Cache-Control","public, max-age=600");
 <%@ include file="/include/i18n.jsp" %>
 <fmt:setLocale value="<%=language%>"/>
 
-<%@ include file="/include/dates.jsp" %>
-
 <%!
 
   //Remove http and https before testing against this url pattern
@@ -61,7 +59,6 @@ response.setHeader("Cache-Control","public, max-age=600");
   pageContext.setAttribute("waybackURL", waybackURL);
 %>
 
-<%-- Define the default end date --%>
 <%
   int queryStringParameter= 0;
   // Prepare the query values to be presented on the page, preserving the session
@@ -224,13 +221,8 @@ response.setHeader("Cache-Control","public, max-age=600");
   <meta name="Description" content="Página de resultados de uma pesquisa de imagens feita no Arquivo.pt."/>
 
   <jsp:include page="/include/headerDefault.jsp" />
-  
-  <script type="text/javascript">
-      var minDate = new Date(<%=DATE_START.getTimeInMillis()%>);
-      var maxDate = new Date(<%=DATE_END.getTimeInMillis()%>);
-      var minYear = minDate.getFullYear();
-      var maxYear = maxDate.getFullYear();
-  </script>
+  <%@ include file="/include/dates.jsp" %>
+
   <script type="text/javascript">
     calendarBegin = '<fmt:message key="calendar.begin" />'.replace("calendario", "calendário");
     calendarEnd = '<fmt:message key="calendar.end" />'.replace("calendario", "calendário");
