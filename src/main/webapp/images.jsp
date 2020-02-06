@@ -45,15 +45,6 @@ response.setHeader("Cache-Control","public, max-age=600");
 %>
 
 <%
-  Properties prop = new Properties();
-  prop.load(Thread.currentThread().getContextClassLoader().getResourceAsStream("validTLDs/valid.properties"));
-  String tldsLine = prop.getProperty("valid.tld");
-  String tlds[] = tldsLine.split("\t");
-  HashSet<String> validTlds = new HashSet<String>();
-  for(String tld:tlds){
-    validTlds.add(tld);
-  }
-
   // configurations
   String waybackURL = pt.arquivo.webapp.Configuration.get("wayback.url", "examples.com");
   pageContext.setAttribute("waybackURL", waybackURL);
@@ -192,7 +183,7 @@ response.setHeader("Cache-Control","public, max-age=600");
               String[] domainNameParts = host.split("\\.");
               String tldString ="."+domainNameParts[domainNameParts.length-1].toUpperCase();
               pt.arquivo.webapp.LOG.debug("TLD:"+ tldString);
-              if(validTlds.contains(tldString)){
+              if(pt.arquivo.webapp.TopLevelDomainUtil.contains(tldString)){
                 word = "site:" + host.toLowerCase();
               }
               else{

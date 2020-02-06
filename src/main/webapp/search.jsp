@@ -40,13 +40,6 @@ response.setHeader("Cache-Control","public, max-age=600");
   private static final Pattern URL_PATTERN = Pattern.compile("^.*? ?((https?:\\/\\/)?([a-zA-Z\\d][-\\w\\.]+)\\.([a-zA-Z\\.]{2,6})([-\\/\\w\\p{L}\\.~,;:%&=?+$#*\\(?\\)?]*)*\\/?) ?.*$");
 %>
 
-<%
-  Properties prop = new Properties();
-  prop.load(Thread.currentThread().getContextClassLoader().getResourceAsStream("validTLDs/valid.properties"));
-  String tldsLine = prop.getProperty("valid.tld");
-  String tlds[] = tldsLine.split("\t");
-%>
-
 <%-- Get the application beans --%>
 <%
   // configurations
@@ -388,15 +381,10 @@ String[] queryString_splitted=null;
             String protocol=url_queryString.getProtocol();
             String fileofUrl = url_queryString.getFile();
 
-            boolean validTLD = false;
-
-            for(String tld:tlds){ //
-              if(hostname.endsWith(tld.toLowerCase())){
-                validTLD = true;
-              }
-            }
-
-            if ( request.getParameter("query") != null && urlLength == request.getParameter("query").trim().length() && validTLD) {
+            if ( request.getParameter("query") != null && 
+                 urlLength == request.getParameter("query").trim().length() && 
+                 pt.arquivo.webapp.TopLevelDomainUtil.hostnameEndsWithValidTld(hostname)) {
+                 
               // option: (2)
               showList = false;
               usedWayback = true;
