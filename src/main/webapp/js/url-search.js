@@ -1,9 +1,3 @@
-<%@ taglib uri="http://java.sun.com/jstl/core" prefix="c" %>
-<%@ taglib uri="http://java.sun.com/jstl/fmt_rt" prefix="fmt" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
-
-<script type="text/javascript">
-
   function getYearTs(ts){
     return ts.substring(0, 4);
   }
@@ -75,7 +69,7 @@
       var pos = getYearPosition(timestampStr);
       var dateFormated = getDateSpaceFormated(timestampStr);
       var shortDateFormated= getShortDateSpaceFormated(timestampStr);
-      var tdtoInsert = '<td class="tdTV"><a href="<%=waybackURL%>/'+timestampStr+'/'+url+'" title="'+dateFormated+'">'+shortDateFormated+'</a></td>';
+      var tdtoInsert = '<td class="tdTV"><a href="'+waybackURL+'/'+timestampStr+'/'+url+'" title="'+dateFormated+'">'+shortDateFormated+'</a></td>';
       matrix[pos].push(tdtoInsert);
     }
 
@@ -199,7 +193,6 @@
 
   }
 
-
   function createMatrixList(versionsArray, versionsURL){
     var today = new Date();
     numberofVersions = yyyy - 1996;
@@ -222,8 +215,9 @@
       var url = versionsURL[i];
 
       var dateFormated = getDateSpaceFormated(timestampStr);
+      var versionWaybackUrl = waybackURL+'/'+timestampStr+'/'+url;
 
-      var tdtoInsert = '<a onclick="ga(\'send\', \'event\', \'Versions List\', \'Version Click\', \'<%=waybackURL%>/'+timestampStr+'/'+url+'\');" class="day-version-div text-center" id="'+timestampStr+'" href="<%=waybackURL%>/'+timestampStr+'/'+url+'" title="'+dateFormated+'">'+getDateSpaceFormatedWithoutYear(timestampStr)+'</a>';
+      var tdtoInsert = '<a onclick="ga(\'send\', \'event\', \'Versions List\', \'Version Click\', this.href);" class="day-version-div text-center" id="'+timestampStr+'" href="'+versionWaybackUrl+'" title="'+dateFormated+'">'+getDateSpaceFormatedWithoutYear(timestampStr)+'</a>';
 
        if(! $('#'+currentYear+'_'+currentMonth).length )  /*Add month if it doesn't exist already*/
       {
@@ -305,13 +299,13 @@
              '  <div id="second-column">'+
              '    <div id="search_stats"></div>'+
              '    <div id="conteudo-pesquisa-erro">'+
-                  '<div class="alert alert-danger col-xs-12 my-alert break-word"><p>'+Content.noResultsFound+' <span class="text-bold"><%=urlQuery%></span></p></div>'+
+                  '<div class="alert alert-danger col-xs-12 my-alert break-word"><p>'+Content.noResultsFound+' <span class="text-bold">'+urlQuery+'</span></p></div>'+
                   '<div id="sugerimos-que" class="col-xs-12 no-padding-left suggestions-no-results">'+
                       '<p class="text-bold">'+Content.suggestions+'</p>'+
                     '<ul>'+
                       '<li>'+Content.checkSpelling+'</li>'+
-                      '<li><a class="no-padding-left" href="'+Content.suggestUrl+'<%=urlQuery%>">'+Content.suggest+'</a> '+Content.suggestSiteArchived+'</li>'+
-                      '<li><a class="no-padding-left" href="http://timetravel.mementoweb.org/list/1996/<%=urlQuery%>">'+Content.mementoFind+'</a>.</li>'+
+                      '<li><a class="no-padding-left" href="'+Content.suggestUrl+urlQuery+Content.suggest+'</a> '+Content.suggestSiteArchived+'</li>'+
+                      '<li><a class="no-padding-left" href="http://timetravel.mementoweb.org/list/1996/'+urlQuery+'">'+Content.mementoFind+'</a>.</li>'+
                     '</ul>'+
                   '</div>'+
                   '</div>'+
@@ -320,20 +314,20 @@
   }
 
 
-      var urlsource = "<%=urlQuery%>" ;
-      var startDate = "<%=dateStartString%>";
+      var urlsource = urlQuery ;
+      var startDate = dateStartString;
       var startYear = startDate.substring(6,10)
       var startMonth = startDate.substring(3,5);
       var startDay = startDate.substring(0,2);
       var startTs = startYear+startMonth+startDay+'000000';
 
-      var endDate = "<%=dateEndString%>";
+      var endDate = dateEndString;
       var endYear = endDate.substring(6,10)
       var endMonth = endDate.substring(3,5);
       var endDay = endDate.substring(0,2);
       var endTs = endYear+endMonth+endDay+'000000';
 
-      var requestURL = "<%=waybackURL%>/" + "cdx";
+      var requestURL = waybackURL + "/" + "cdx";
       var versionsArray = [];
       var versionsURL = [];
 
@@ -436,5 +430,3 @@
         touched=false;
       });
   }
-
-</script>

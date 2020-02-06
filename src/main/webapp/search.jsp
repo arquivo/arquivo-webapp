@@ -384,7 +384,7 @@ String[] queryString_splitted=null;
             if ( request.getParameter("query") != null && 
                  urlLength == request.getParameter("query").trim().length() && 
                  pt.arquivo.webapp.TopLevelDomainUtil.hostnameEndsWithValidTld(hostname)) {
-                 
+
               // option: (2)
               showList = false;
               usedWayback = true;
@@ -418,7 +418,8 @@ String[] queryString_splitted=null;
 %>
 
 <% if (usedWayback) { %>
-  <%@ include file="/include/url-search.jsp" %>
+  <script type="text/javascript">urlQuery="<%=urlQuery%>";</script>
+  <script type="text/javascript" src="/js/url-search.js?build=<c:out value='${initParam.buildTimeStamp}' />"></script>
 <% } else {
   if (  (request.getParameter("query") == null || request.getParameter("query").equals("")) &&
         (request.getParameter("adv_and") == null || request.getParameter("adv_and").equals("")) &&
