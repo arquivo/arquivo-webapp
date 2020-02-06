@@ -34,19 +34,12 @@ response.setHeader("Cache-Control","public, max-age=600");
 <%@ include file="/include/i18n.jsp" %>
 <fmt:setLocale value="<%=language%>"/>
 
-<%! //To please the compiler since logging need those -- check [searchBootstrap.jsp]
-  private static Calendar DATE_START = new GregorianCalendar(1996, 1-1, 1);
-  private static final DateFormat FORMAT = new SimpleDateFormat("yyyyMMddHHmmss");
-  //TODO: remove dateStart & dateEnd ???
-  //private static Calendar dateStart = new GregorianCalendar();
-  //private static Calendar dateEnd = new GregorianCalendar();
-  private static final DateFormat OFFSET_FORMAT = new SimpleDateFormat("yyyy-MM-dd");
-  private static final Pattern OFFSET_PARAMETER = Pattern.compile("(\\d{4})-(\\d{2})-(\\d{2})");
+<%@ include file="/include/dates.jsp" %>
 
+<%!
   private static final String COLLECTION_KEY = "collection";
   private static final String COLLECTION_QUERY_PARAM_KEY = COLLECTION_KEY + ":";
   private static final Pattern URL_PATTERN = Pattern.compile("^.*? ?((https?:\\/\\/)?([a-zA-Z\\d][-\\w\\.]+)\\.([a-zA-Z\\.]{2,6})([-\\/\\w\\p{L}\\.~,;:%&=?+$#*\\(?\\)?]*)*\\/?) ?.*$");
-
 %>
 
 <%
@@ -61,40 +54,6 @@ response.setHeader("Cache-Control","public, max-age=600");
   // configurations
   String waybackURL = pt.arquivo.webapp.Configuration.get("wayback.url", "examples.com");
   pageContext.setAttribute("waybackURL", waybackURL);
-%>
-<%-- Define the default end date --%>
-<%
-  Calendar DATE_END = new GregorianCalendar();
-  DATE_END.set( Calendar.YEAR, DATE_END.get(Calendar.YEAR) );
-  DATE_END.set( Calendar.MONTH, 12-1 );
-  DATE_END.set( Calendar.DAY_OF_MONTH, 31 );
-  DATE_END.set( Calendar.HOUR_OF_DAY, 23 );
-  DATE_END.set( Calendar.MINUTE, 59 );
-  DATE_END.set( Calendar.SECOND, 59 );
-  int queryStringParameter= 0;
-
-  /** Read the embargo offset value from the configuration page. If not present, default to: -1 year */
-  try {
-        String offsetDateString = getServletContext().getInitParameter("embargo-offset");
-
-        Matcher offsetMatcher = OFFSET_PARAMETER.matcher( offsetDateString );
-        offsetMatcher.matches();
-        int offsetYear = Integer.parseInt(offsetMatcher.group(1));
-        int offsetMonth = Integer.parseInt(offsetMatcher.group(2));
-        int offsetDay = Integer.parseInt(offsetMatcher.group(3));
-
-        DATE_END.set(Calendar.YEAR, DATE_END.get(Calendar.YEAR) - offsetYear);
-        DATE_END.set(Calendar.MONTH, DATE_END.get(Calendar.MONTH) - offsetMonth);
-        DATE_END.set(Calendar.DAY_OF_MONTH, DATE_END.get(Calendar.DAY_OF_MONTH) - offsetDay );
-  } catch(IllegalStateException e) {
-        // Set the default embargo period to: 1 year
-        DATE_END.set( Calendar.YEAR, DATE_END.get(Calendar.YEAR) - 1);
-        pt.arquivo.webapp.LOG.error("Embargo offset parameter isn't in a valid format");
-  } catch(NullPointerException e) {
-        // Set the default embargo period to: 1 year
-        DATE_END.set( Calendar.YEAR, DATE_END.get(Calendar.YEAR) - 1);
-        pt.arquivo.webapp.LOG.error("Embargo offset parameter isn't present");
-  }
 %>
 <%-- Handle the url parameters --%>
 <%
@@ -248,79 +207,6 @@ String[] queryString_splitted=null;
   } else if (queryString.contains("sort:old")) {
         queryString = queryString.replace("sort:old","");
   }
-
-  /*** Start date ***/
-  Calendar dateStart = (Calendar)DATE_START.clone();
-  SimpleDateFormat inputDateFormatter = new SimpleDateFormat("dd/MM/yyyy");
-
-  if ( request.getParameter("dateStart") != null && !request.getParameter("dateStart").equals("") ) {
-        try {
-                dateStart.setTime( inputDateFormatter.parse(request.getParameter("dateStart")) );
-        } catch (NullPointerException e) {
-                pt.arquivo.webapp.LOG.debug("Invalid Start Date:"+ request.getParameter("dateStart") +"|");
-        }
-  }
-
-  /*** End date ***/
-  Calendar dateEnd = (Calendar)DATE_END.clone();
-
-  String dateEndNoParameter = inputDateFormatter.format( dateEnd.getTime() );
-  String yearEndNoParameter =dateEndNoParameter.substring(dateEndNoParameter.length()-4);
-  String yearStartNoParameter = "1996";
-
-  // Setting current date
-
-  if ( request.getParameter("dateEnd") != null && !request.getParameter("dateEnd").equals("") ) {
-        try {
-                dateEnd.setTime( inputDateFormatter.parse(request.getParameter("dateEnd")) );
-                // be sure to set the end date to the very last second of that day.
-                dateEnd.set( Calendar.HOUR_OF_DAY, 23 );
-                dateEnd.set( Calendar.MINUTE, 59 );
-                dateEnd.set( Calendar.SECOND, 59 );
-        } catch (NullPointerException e) {
-                pt.arquivo.webapp.LOG.debug("Invalid End Date:"+ request.getParameter("dateEnd") +"|");
-        }
-  }
-
-  /*** Switch dates if start GT end ***/
-    if(dateStart.getTime().compareTo(dateEnd.getTime())>0){
-      Calendar auxCal = dateStart;
-      dateStart = dateEnd;
-      dateEnd = auxCal;
-    }
-  /**/
-
-  /*** Add dates to nutch query ***/
-  if (queryString != null && queryString != "") {
-        queryString += " date:"+ FORMAT.format( dateStart.getTime() );
-        queryString += "-";
-        queryString += FORMAT.format( dateEnd.getTime() );
-  } else {
-        queryString = "";
-  }
-
-  String dateStartString = inputDateFormatter.format( dateStart.getTime() );
-
-  String dateStartDay = dateStartString.substring(0,2);
-
-  String dateStartMonth = dateStartString.substring(3,5);
-
-  String dateStartYear = dateStartString.substring(dateStartString.length()-4);
-
-  String dateStartStringIonic =  dateStartYear + "-" + dateStartMonth + "-" + dateStartDay;
-
-
-  String dateEndString = inputDateFormatter.format( dateEnd.getTime() );
-
-  String dateEndDay = dateEndString.substring(0,2);
-
-  String dateEndMonth = dateEndString.substring(3,5);
-
-  String dateEndYear = dateEndString.substring(dateEndString.length()-4);
-
-  String dateEndStringIonic =  dateEndYear + "-" + dateEndMonth + "-" + dateEndDay;
-
-  //--- not needed, since we use fields. String htmlQueryString = Entities.encode(queryString);
 
   /*****************    Offset param    ***************************/
   int start = 0;          // first hit to display
@@ -531,8 +417,8 @@ String[] queryString_splitted=null;
 
               pageContext.setAttribute("urlQueryParam", urlQueryParam);
               allVersions = "search.jsp?query="+ URLEncoder.encode(urlQueryParam, "UTF-8");
-              pageContext.setAttribute("dateStartWayback", FORMAT.format( dateStart.getTime() ) );
-              pageContext.setAttribute("dateEndWayback", FORMAT.format( dateEnd.getTime() ) );
+              //pageContext.setAttribute("dateStartWayback", FORMAT.format( dateStart.getTime() ) );
+              //pageContext.setAttribute("dateEndWayback", FORMAT.format( dateEnd.getTime() ) );
             }
 %>
 

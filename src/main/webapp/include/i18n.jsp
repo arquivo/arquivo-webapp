@@ -1,3 +1,4 @@
+<%@ taglib uri="http://java.sun.com/jstl/fmt_rt" prefix="fmt" %>
 <%@ taglib uri="http://jakarta.apache.org/taglibs/i18n" prefix="i18n" %>
 <%
   String language = "pt";

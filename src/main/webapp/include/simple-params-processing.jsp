@@ -64,21 +64,4 @@ if (queryString != null) {
 	}
 }	
 
-/*** Start date ***/
-String oldest_date = "01/01/1996";
-
-String dateStartString = request.getParameter("dateStart") != null ? request.getParameter("dateStart") : oldest_date;
-
-/*** End date ***/
-String dateEndString;
-
-if ( (dateEndString = request.getParameter("dateEnd")) == null) {
-	Calendar dateEnd = new GregorianCalendar();
-	dateEnd.set( Calendar.YEAR, dateEnd.get(Calendar.YEAR)-1 );
-	dateEnd.set( Calendar.MONTH, 12-1 );
-	dateEnd.set( Calendar.DAY_OF_MONTH, 1 );
-
-	SimpleDateFormat fmt = new SimpleDateFormat("dd/MM/yyyy");
-	dateEndString = fmt.format(dateEnd.getTime());
-}
 %>

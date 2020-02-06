@@ -12,6 +12,7 @@
   import="java.util.regex.Matcher"
   import="java.util.regex.Pattern"
   import="java.util.GregorianCalendar"
+  import="pt.arquivo.webapp.DateUtils"
 %>
 <%@ taglib uri="http://java.sun.com/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jstl/fmt_rt" prefix="fmt" %>
@@ -19,77 +20,9 @@
 <%@ include file="/include/i18n.jsp" %>
 <fmt:setLocale value="<%=language%>"/>
 
-<%! //To please the compiler since logging need those -- check [search.jsp]
-  private static final Pattern OFFSET_PARAMETER = Pattern.compile("(\\d{4})-(\\d{2})-(\\d{2})");
+<%@ include file="/include/dates.jsp" %>
+<%!
   private static int hitsTotal = -10;   // the value -10 will be used to mark as being "advanced search"
-  private static Calendar DATE_START = new GregorianCalendar(1996, 1-1, 1);
-    Calendar dateStart = (Calendar)DATE_START.clone();
-    SimpleDateFormat inputDateFormatter = new SimpleDateFormat("dd/MM/yyyy");
-  /*private static Calendar dateStart = new GregorianCalendar();*/
-  private static Calendar dateEnd = new GregorianCalendar();
-    String dateStartString = inputDateFormatter.format( dateStart.getTime() );
-    String dateStartDay = dateStartString.substring(0,2);
-
-    String dateStartMonth = dateStartString.substring(3,5);
-
-    String dateStartYear = dateStartString.substring(dateStartString.length()-4);
-
-    String dateStartStringIonic =  dateStartYear + "-" + dateStartMonth + "-" + dateStartDay;
-
-    String dateEndString = inputDateFormatter.format( dateEnd.getTime() );
-
-    String dateEndDay = dateEndString.substring(0,2);
-
-    String dateEndMonth = dateEndString.substring(3,5);
-
-    String dateEndYear = dateEndString.substring(dateEndString.length()-4);
-
-    String dateEndStringIonic =  dateEndYear + "-" + dateEndMonth + "-" + dateEndDay;
-
-    String yearStartNoParameter = "1996";
-
-%>
-
-<%-- Get the application beans --%>
-<%
-  Calendar DATE_END = new GregorianCalendar();
-  DATE_END.set( Calendar.YEAR, DATE_END.get(Calendar.YEAR) );
-  DATE_END.set( Calendar.MONTH, 12-1 );
-  DATE_END.set( Calendar.DAY_OF_MONTH, 31 );
-  DATE_END.set( Calendar.HOUR_OF_DAY, 23 );
-  DATE_END.set( Calendar.MINUTE, 59 );
-  DATE_END.set( Calendar.SECOND, 59 );
-  int queryStringParameter= 0;
-  String dateEndString="";
-  String dateEndYear="";
-  /** Read the embargo offset value from the configuration page. If not present, default to: -1 year */
-  try {
-        String offsetDateString = getServletContext().getInitParameter("embargo-offset");
-
-        Matcher offsetMatcher = OFFSET_PARAMETER.matcher( offsetDateString );
-        offsetMatcher.matches();
-        int offsetYear = Integer.parseInt(offsetMatcher.group(1));
-        int offsetMonth = Integer.parseInt(offsetMatcher.group(2));
-        int offsetDay = Integer.parseInt(offsetMatcher.group(3));
-
-        DATE_END.set(Calendar.YEAR, DATE_END.get(Calendar.YEAR) - offsetYear);
-        DATE_END.set(Calendar.MONTH, DATE_END.get(Calendar.MONTH) - offsetMonth);
-        DATE_END.set(Calendar.DAY_OF_MONTH, DATE_END.get(Calendar.DAY_OF_MONTH) - offsetDay );
-        dateEndString = inputDateFormatter.format( DATE_END.getTime() );
-      dateEndYear = dateEndString.substring(dateEndString.length()-4);
-  } catch(IllegalStateException e) {
-        // Set the default embargo period to: 1 year
-        DATE_END.set( Calendar.YEAR, DATE_END.get(Calendar.YEAR) - 1);
-        pt.arquivo.webapp.LOG.error("Embargo offset parameter isn't in a valid format");
-        dateEndString = inputDateFormatter.format( DATE_END.getTime() );
-      dateEndYear = dateEndString.substring(dateEndString.length()-4);
-  } catch(NullPointerException e) {
-        // Set the default embargo period to: 1 year
-        DATE_END.set( Calendar.YEAR, DATE_END.get(Calendar.YEAR) - 1);
-        dateEndString = inputDateFormatter.format( DATE_END.getTime() );
-      dateEndYear = dateEndString.substring(dateEndString.length()-4);
-        pt.arquivo.webapp.LOG.error("Embargo offset parameter isn't present");
-  }
 %>
 
 <%---------------------- Start of HTML ---------------------------%>
