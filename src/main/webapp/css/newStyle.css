@@ -494,6 +494,11 @@ body#homeImages .pagesNextPrevious {
   display: none;
   cursor: pointer;
 }
+@media (max-width: 300px) {
+  .month-version-div .month-right span {
+    display: none;
+  }
+}
 .month-version-div {
   text-align: center;
   display: none;
@@ -557,6 +562,7 @@ body#homeImages .pagesNextPrevious {
 }
 .yearText {
   color: white;
+  max-width: 30% !important;
 }
 .noVersions {
   background: #f7f7f7 !important;
@@ -564,17 +570,19 @@ body#homeImages .pagesNextPrevious {
   cursor: default !important;
   display: none;
 }
+@media (max-width: 215px) {
+  .numberVersions h4 span {
+    display: none;
+  }
+}
 .numberVersions {
-  float: right;
+  float: right !important;
+  width: 70% !important;
   padding-right: 1%;
   color: white;
   padding-bottom: 5px;
 }
-.iCarret {
-  margin-left: 15px;
-}
 .iCarretDisabled {
-  margin-left: 15px;
   visibility: hidden;
 }
 #resultados-url {
@@ -1104,11 +1112,8 @@ body#homeImages .spell {
   margin: 9px auto 11px auto;
   max-width: 914px;
 }
-#years {
-  padding-bottom: 40px;
-}
 .url-search-container #years {
-  margin: -9px 28px 0 28px !important;
+/*  margin: -9px 28px 0 28px !important;*/
 }
 .url-search-container #conteudo-versoes {
   margin: -10px 20px 0 20px !important;
@@ -2032,15 +2037,15 @@ tr.trTV:nth-child(even) {
   background-color: #f2f2f2
 }
 #layoutTV {
-  margin: 11px 21px !important;
-  margin-bottom: 10px !important;
+  /*margin: 11px 21px !important;
+  margin-bottom: 10px !important;*/
   padding: 18px 0 23px 0 !important;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
   border-bottom: none !important;
   background-color: #1c75c0 !important;
   text-align: center;
-  margin-top: 16px;
+  /*margin-top: 16px;*/
   margin-bottom: 15px;
   position: relative;
 }
@@ -2095,8 +2100,8 @@ tr.trTV:nth-child(even) {
   height: initial !important;
 }
 .row {
-  margin-right: -22px !important;
-  margin-left: -22px !important;
+  margin-right: -15px !important;
+  margin-left: -15px !important;
 }
 .menu-opcoes, .opcoes-top-direita {
   color: white;

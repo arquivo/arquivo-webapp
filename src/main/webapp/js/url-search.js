@@ -267,12 +267,12 @@ function createMatrixList(waybackURL, versionsArray, versionsURL){
     var yearStr = (1996+i).toString();
     var numberOfVersionsCurrentYear = $("#th_"+yearStr+" .day-version-div").length;
     if(numberOfVersionsCurrentYear > 1){
-      $("#th_"+yearStr+" div:first-child").after('<div class="col-xs-6 numberVersions no-padding-left text-right"><h4>'+numberOfVersionsCurrentYear.toString() + ' '+Content.searchVersions+'    <i class="fa fa-caret-down iCarret yearCarret" aria-hidden="true"></i></h4></div>');
+      $("#th_"+yearStr+" div:first-child").after('<div class="col-xs-6 numberVersions no-padding-left text-right"><h4><span>'+numberOfVersionsCurrentYear.toString() + ' '+Content.searchVersions+'</span>    <i class="fa fa-caret-down iCarret yearCarret" aria-hidden="true"></i></h4></div>');
     }else if(numberOfVersionsCurrentYear === 1 ){
-      $("#th_"+yearStr+" div:first-child").after('<div class="col-xs-6 numberVersions no-padding-left text-right"><h4>'+numberOfVersionsCurrentYear.toString() + ' '+Content.searchVersions+'    <i class="fa fa-caret-down iCarret yearCarret" aria-hidden="true"></i></h4></div>');
+      $("#th_"+yearStr+" div:first-child").after('<div class="col-xs-6 numberVersions no-padding-left text-right"><h4><span>'+numberOfVersionsCurrentYear.toString() + ' '+Content.searchVersions+'</span>    <i class="fa fa-caret-down iCarret yearCarret" aria-hidden="true"></i></h4></div>');
     }else{
       /*Year with no versions maybe delete if we don't want to present empty years?*/
-      $("#th_"+yearStr+" div:first-child").after('<div class="numberVersions no-padding-left text-right"><h4>'+numberOfVersionsCurrentYear.toString() + ' '+Content.searchVersions+'    <i class="fa fa-caret-down iCarretDisabled yearCarret" aria-hidden="true"></i></h4></div>');
+      $("#th_"+yearStr+" div:first-child").after('<div class="numberVersions no-padding-left text-right"><h4><span>'+numberOfVersionsCurrentYear.toString() + ' '+Content.searchVersions+'</span>    <i class="fa fa-caret-down iCarretDisabled yearCarret" aria-hidden="true"></i></h4></div>');
       $("#th_"+yearStr).addClass("noVersions");
     }
   }
