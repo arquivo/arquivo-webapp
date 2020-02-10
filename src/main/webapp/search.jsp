@@ -254,6 +254,7 @@ String[] queryString_splitted=null;
 
   <jsp:include page="/include/headerDefault.jsp" />
   <%@ include file="/include/dates.jsp" %>
+  <jsp:include page="/include/i18njs.jsp" />
 
   <script type="text/javascript">
     <% if (pt.arquivo.webapp.Configuration.get("query.suggestion.api").isPresent()) { %>
@@ -274,15 +275,6 @@ String[] queryString_splitted=null;
     waybackURL = "<%=waybackURL%>";
   </script>
 
-  <script type="text/javascript">
-    var language = localStorage.language;
-    if( language == 'EN'){
-      document.write('<script type="text/javascript" language="JavaScript" src="<%=request.getContextPath()%>/js/properties/ConstantsEN.js?build=<c:out value='${initParam.buildTimeStamp}' />"><\/script>');
-    }
-    else{
-      document.write('<script type="text/javascript" language="JavaScript" src="<%=request.getContextPath()%>/js/properties/ConstantsPT.js?build=<c:out value='${initParam.buildTimeStamp}' />"><\/script>');
-    }
-  </script>
 </head>
 
 <body id="home-search">
@@ -314,7 +306,6 @@ String[] queryString_splitted=null;
     <script type="text/javascript" src="/js/encodeHTML.js"></script>
     <%@ include file="/include/searchHeaderMobile.jsp" %>
 
-    <div id="loadingDiv" class="loader"><div></div></div>
     <script type="text/javascript">
       $( document ).ready(function() {
         $("#txtSearch").on('mousedown touchstart', function (e) {
@@ -418,8 +409,65 @@ String[] queryString_splitted=null;
 %>
 
 <% if (usedWayback) { %>
-  <script type="text/javascript">urlQuery="<%=urlQuery%>";</script>
-  <script type="text/javascript" src="/js/url-search.js?build=<c:out value='${initParam.buildTimeStamp}' />"></script>
+  <script>
+    // add event listener thar receive messages from url search iframe.
+    if (window.addEventListener) {
+        window.addEventListener("message", onMessage, false);        
+    } 
+    else if (window.attachEvent) {
+        window.attachEvent("onmessage", onMessage, false);
+    }
+    // generic function that receive multiple messages from url search iframe and calls different king on functions.
+    function onMessage(event) {
+        // Check sender origin to be trusted
+        if (!event.isTrusted) return;
+
+        var data = event.data;
+        if (typeof(window[data.func]) == "function") {
+            window[data.func].call(null, data.message);
+        }
+    }
+    // called from url search iframe when the user clicks a specific version
+    // the message is the url clicked
+    function urlSearchClickOnVersion(message) {
+      // send event to google analytics
+      ga('send', 'event', 'Versions List', 'Version Click', message);
+      //  go to the url clicked by the user on iframe
+      window.location = message;
+    }
+    // get the height of the iframe content
+    function getDocHeight(doc) {
+        doc = doc || document;
+        // stackoverflow.com/questions/1145850/
+        var body = doc.body, html = doc.documentElement;
+        var height = Math.max( body.scrollHeight, body.offsetHeight, 
+            html.clientHeight, html.scrollHeight, html.offsetHeight );
+        return height;
+    }
+    // resize the url search iframe so the iframe has the same size of its content then isn't the need of a scroll.
+    // it is like the iframe doesn't exist.
+    function resizeIframe() {
+      const id = "url_search_iframe";
+        var ifrm = document.getElementById(id);
+        var doc = ifrm.contentDocument? ifrm.contentDocument: 
+            ifrm.contentWindow.document;
+        ifrm.style.visibility = 'hidden';
+        //ifrm.style.height = "10px"; // reset to minimal height ...
+        // IE opt. for bing/msn needs a bit added or scrollbar appears
+        ifrm.style.height = getDocHeight( doc ) + 4 + "px";
+        ifrm.style.visibility = 'visible';
+    }
+  </script>
+  <div class="url-search-iframe-container">
+    <iframe
+      name="url_search_iframe" 
+      id="url_search_iframe"
+      allowFullScreen="true"
+      scrolling="no"
+      onload="resizeIframe(this)"
+      src="<%=request.getContextPath()%>/url/search/<%=dateStartYear%><%=dateStartMonth%><%=dateStartDay%>-<%=dateEndYear%><%=dateEndMonth%><%=dateEndDay%>/<%=urlQuery%>"></iframe>
+  </div>
+
 <% } else {
   if (  (request.getParameter("query") == null || request.getParameter("query").equals("")) &&
         (request.getParameter("adv_and") == null || request.getParameter("adv_and").equals("")) &&
@@ -428,6 +476,8 @@ String[] queryString_splitted=null;
         (request.getParameter("format") == null || request.getParameter("format").equals("") ) &&
         (request.getParameter("site") == null || request.getParameter("site").equals("")) ){
   %>
+    <div id="loadingDiv" class="loader"><div></div></div>
+
     <%-- hide loading spinner--%>
     <%@ include file="/include/intro.jsp" %>
     <script type="text/javascript">

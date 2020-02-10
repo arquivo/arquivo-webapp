@@ -43,7 +43,7 @@
 <script type="module" src="/@ionic/core/dist/ionic/ionic.esm.js"></script>
 <script type="text/javascript" nomodule="" src="/@ionic/core/dist/ionic/ionic.js"></script>
 
-<link rel="stylesheet" href="@ionic/core/css/ionic.bundle.css" />
+<link rel="stylesheet" href="/@ionic/core/css/ionic.bundle.css" />
 
 <script src="/js/uglipop.min.js"></script>
 

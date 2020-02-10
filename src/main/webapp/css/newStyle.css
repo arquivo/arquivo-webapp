@@ -1107,20 +1107,11 @@ body#homeImages .spell {
 #years {
   padding-bottom: 40px;
 }
-body#home-search #years {
+.url-search-container #years {
   margin: -9px 28px 0 28px !important;
 }
-body#home-search #conteudo-versoes {
+.url-search-container #conteudo-versoes {
   margin: -10px 20px 0 20px !important;
-}
-body#home-search #layoutTV {
-  margin: 11px 21px !important;
-  margin-bottom: 10px !important;
-  padding: 18px 0 23px 0 !important;
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
-  border-bottom: none !important;
-  background-color: #1c75c0 !important;
 }
 .clear-text {
   position: absolute;
@@ -2041,6 +2032,13 @@ tr.trTV:nth-child(even) {
   background-color: #f2f2f2
 }
 #layoutTV {
+  margin: 11px 21px !important;
+  margin-bottom: 10px !important;
+  padding: 18px 0 23px 0 !important;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border-bottom: none !important;
+  background-color: #1c75c0 !important;
   text-align: center;
   margin-top: 16px;
   margin-bottom: 15px;
@@ -2346,6 +2344,11 @@ h4.modalTitle {
   height: 100vh;
   padding: 0px 0px 40px 20px;
   display: block;
+}
+.url-search-iframe-container iframe {
+  border: 0; 
+  height: 50vh; 
+  width: 100%;
 }
 
 
@@ -2839,14 +2842,14 @@ h4.modalTitle {
     margin: 0 auto !important;
     float: none !important;
   }
-  body#home-search #years {
+  .url-search-container #years {
     margin: 1px auto 0 auto !important;
     width: 82.9% !important;
     max-width: 903px !important;
   }
 }
 @media (min-width:320px) and (max-width:399px) {
-  body#home-search #layoutTV {
+  #layoutTV {
     padding: 18px 0 15px 0 !important;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
@@ -2950,17 +2953,17 @@ h4.modalTitle {
   .call-to-actions {
     height: 600px !important;
   }
-  body#home-search #conteudo-versoes {
+  .url-search-container #conteudo-versoes {
     margin: 0 auto !important;
     width: 95.5% !important;
     max-width: 915px !important;
   }
-  body#home-search #conteudo-versoes {
+  .url-search-container #conteudo-versoes {
     margin: 0 auto !important;
     width: 95.5% !important;
     max-width: 915px !important;
   }
-  body#home-search #layoutTV {
+  #layoutTV {
     width: 95.5% !important;
     max-width: 915px !important;
     margin: 0 auto !important;
@@ -3034,18 +3037,18 @@ h4.modalTitle {
   }
 }
 @media (min-width:769px) and (max-width:1024px) {
-  body#home-search #years {
+  .url-search-container #years {
     margin: 3px auto 0 auto !important;
     width: 93.3% !important;
     max-width: 901px !important;
   }
-  body#home-search #layoutTV {
+  #layoutTV {
     margin: -20px auto 0 auto !important;
     width: 95% !important;
     max-width: 914px !important;
     margin-bottom: 10px !important;
   }
-  body#home-search #conteudo-versoes {
+  .url-search-container #conteudo-versoes {
     margin: 0 auto !important;
     width: 95.1% !important;
     max-width: 915px !important;

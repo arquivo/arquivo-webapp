@@ -1,3 +1,11 @@
+/**
+ * When using iframe it will send the following events has a call to other function.
+ * 
+ * Events:
+ *    resizeIframe 
+ *    urlSearchClickOnVersion 
+ */ 
+
 function getYearTs(ts){
   return ts.substring(0, 4);
 }
@@ -48,7 +56,7 @@ function getShortDateSpaceFormated(ts){
   return day + " "+ month;
 }
 
-function createMatrixTable(firstVersionYear, versionsArray, versionsURL){
+function createMatrixTable(waybackURL, firstVersionYear, versionsArray, versionsURL){
   var today = new Date();
   var yyyy = today.getFullYear();
   var numberofVersions = yyyy - firstVersionYear;
@@ -67,7 +75,7 @@ function createMatrixTable(firstVersionYear, versionsArray, versionsURL){
     var pos = getYearPosition(firstVersionYear, timestampStr);
     var dateFormated = getDateSpaceFormated(timestampStr);
     var shortDateFormated= getShortDateSpaceFormated(timestampStr);
-    var tdtoInsert = '<td class="tdTV"><a href="'+waybackURL+'/'+timestampStr+'/'+url+'" title="'+dateFormated+'">'+shortDateFormated+'</a></td>';
+    var tdtoInsert = '<td class="tdTV"><a onclick="if(inIframe()) { callUrlSearchClickOnVersionOnParent(this.href); return false;}" href="'+waybackURL+'/'+timestampStr+'/'+url+'" title="'+dateFormated+'">'+shortDateFormated+'</a></td>';
     matrix[pos].push(tdtoInsert);
   }
 
@@ -110,16 +118,16 @@ function resizeResultsPageHeight(){
   //$('#resultados-lista').css('height', ($(window).height() - $('#resultados-lista').offset().top)*0.95 );
 }
 
-function createResultsTable(numberOfVersions, inputURL){
+function createResultsTable(numberOfVersions, inputURL, insertOnElementId){
   scrollLeftPosition = 0;
   /*where the scroll should start in left of table*/
   scrollOffset = 200; /*distance in px of each scroll*/
 
-  $('<div id="resultados-url"></div>'+
+  $("#"+insertOnElementId).append('<div id="resultados-url"></div>'+
     '<div id="layoutTV">'+
     '<h4 class="leftArrow"><button onclick="scrollTableLeft()" class="clean-button-no-fill"><i class="fa fa-caret-left" aria-hidden="true"></i></ion-icon></button></h4>'+
     '<h4 class="text-bold"><i class="fa fa-table"></i> '+ Content.table +' </h4>'+
-    '<button class="clean-button-no-fill anchor-color faded" onclick="redirectToTable(\'list\')"><h4><i class="fa fa-list"></i> '+ Content.list +'</h4></button>'+
+    '<button class="clean-button-no-fill anchor-color faded" onclick="changeTypeShow(\'list\')"><h4><i class="fa fa-list"></i> '+ Content.list +'</h4></button>'+
     '<h4 class="rightArrow"><button onclick="scrollTableRight()" class="clean-button-no-fill"><i class="fa fa-caret-right" aria-hidden="true"></i></ion-icon></button></h4>'+
     '</div>'+
     '<div>' +
@@ -138,7 +146,7 @@ function createResultsTable(numberOfVersions, inputURL){
     '      </tbody>'+
     '    </table>'+
     '  </div>'+
-    '</div>'        ).insertAfter("#headerSearchDiv");
+    '</div>'        );
 
   $( document ).ready(function() {
     resizeResultsPageHeight();
@@ -150,10 +158,6 @@ function createResultsTable(numberOfVersions, inputURL){
 
   window.onresize = resizeResultsPageHeight;
 
-}
-
-function redirectToTable( valueParam ) {
-  window.location.href = replaceUrlParam(window.location.href, 'typeShow', valueParam);
 }
 
 function replaceUrlParam( url, paramName, paramValue ) {
@@ -187,7 +191,35 @@ function scrollTableRight(){
 
 }
 
-function createMatrixList(versionsArray, versionsURL){
+function inIframe () {
+    try {
+        return window.self !== window.top;
+    } catch (e) {
+        return true;
+    }
+}
+
+// Send message 'urlSearchClickOnVersion' meaning the user have selected/clicked one of the versions.
+function callUrlSearchClickOnVersionOnParent(waybackURLClicked) {
+  if (inIframe()) {
+    window.parent.postMessage({
+        'func': 'urlSearchClickOnVersion',
+        'message': waybackURLClicked
+    }, "*");
+  }
+}
+
+// Send message to parent window that inform that the user have interact with the UI.
+// Important to inform the parent window so resize iframe.
+function callResizeIframeOnParent() {
+  if (inIframe()) {
+    window.parent.postMessage({
+        'func': 'resizeIframe',
+    }, "*");
+  }
+}
+
+function createMatrixList(waybackURL, versionsArray, versionsURL){
   var today = new Date();
   numberofVersions = yyyy - 1996;
   var yyyy = today.getFullYear();
@@ -211,7 +243,7 @@ function createMatrixList(versionsArray, versionsURL){
     var dateFormated = getDateSpaceFormated(timestampStr);
     var versionWaybackUrl = waybackURL+'/'+timestampStr+'/'+url;
 
-    var tdtoInsert = '<a onclick="ga(\'send\', \'event\', \'Versions List\', \'Version Click\', this.href);" class="day-version-div text-center" id="'+timestampStr+'" href="'+versionWaybackUrl+'" title="'+dateFormated+'">'+getDateSpaceFormatedWithoutYear(timestampStr)+'</a>';
+    var tdtoInsert = '<a onclick="if(inIframe()) { callUrlSearchClickOnVersionOnParent(this.href); return false;} " class="day-version-div text-center" id="'+timestampStr+'" href="'+versionWaybackUrl+'" title="'+dateFormated+'">'+getDateSpaceFormatedWithoutYear(timestampStr)+'</a>';
 
     if(! $('#'+currentYear+'_'+currentMonth).length )  /*Add month if it doesn't exist already*/
     {
@@ -247,12 +279,10 @@ function createMatrixList(versionsArray, versionsURL){
 
 }
 
-
-
-function createResultsList(numberOfVersions, inputURL){
-  $('<div id="resultados-url">'+Content.resultsQuestion+' \'<a href="searchMobile.jsp?query=%22'+inputURL+'%22">'+inputURL+'</a>\'</div>'+
+function createResultsList(numberOfVersions, inputURL, insertOnElementId){
+  $("#"+insertOnElementId).append('<div id="resultados-url">'+Content.resultsQuestion+' \'<a href="searchMobile.jsp?query=%22'+inputURL+'%22">'+inputURL+'</a>\'</div>'+
     '<div id="layoutTV">'+
-    '<button class="clean-button-no-fill anchor-color faded" onclick="redirectToTable(\'table\')"><h4><i class="fa fa-table"></i> '+Content.table+' </h4></button>'+
+    '<button class="clean-button-no-fill anchor-color faded" onclick="changeTypeShow(\'table\')"><h4><i class="fa fa-table"></i> '+Content.table+' </h4></button>'+
     '<h4 class="text-bold"><i class="fa fa-list"></i> '+Content.list+'</h4>'+
     '</div>'+
     '<div>' +
@@ -266,7 +296,7 @@ function createResultsList(numberOfVersions, inputURL){
     '<div id="years" class="container-fluid col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8 col-lg-offset-3 col-lg-6 col-xl-offset-4 col-xl-4 ">' +
     '</div>' +
     '</div>' +
-    '</div>').insertAfter("#headerSearchDiv");
+    '</div>');
 }
 
 function isList(){
@@ -286,8 +316,8 @@ function formatNumberOfVersions( numberofVersionsString){
   return formatedNumberOfVersionsString;
 }
 
-function createErrorPage(){
-  $('<div id="conteudo-resultado-url" class="container-fluid col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8 col-lg-offset-3 col-lg-6 col-xl-offset-4 col-xl-4">'+
+function createErrorPage(urlQuery, insertOnElementId){
+  $("#"+insertOnElementId).append('<div id="conteudo-resultado-url" class="container-fluid col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8 col-lg-offset-3 col-lg-6 col-xl-offset-4 col-xl-4">'+
     '  <div id="first-column">&nbsp;</div>'+
     '  <div id="second-column">'+
     '    <div id="search_stats"></div>'+
@@ -297,13 +327,13 @@ function createErrorPage(){
     '<p class="text-bold">'+Content.suggestions+'</p>'+
     '<ul>'+
     '<li>'+Content.checkSpelling+'</li>'+
-    '<li><a class="no-padding-left" href="'+Content.suggestUrl+urlQuery+Content.suggest+'</a> '+Content.suggestSiteArchived+'</li>'+
+    '<li><a class="no-padding-left" href="'+Content.suggestUrl+urlQuery+'">'+Content.suggest+'</a> '+Content.suggestSiteArchived+'</li>'+
     '<li><a class="no-padding-left" href="http://timetravel.mementoweb.org/list/1996/'+urlQuery+'">'+Content.mementoFind+'</a>.</li>'+
     '</ul>'+
     '</div>'+
     '</div>'+
     '</div>'+
-    '</div>').insertAfter("#headerSearchDiv");
+    '</div>');
 }
 
 function attachClicks(){
@@ -319,6 +349,7 @@ function attachClicks(){
       $(this).find(".monthCarret").toggleClass('fa-caret-up fa-caret-down');
       $(this).toggleClass("preventMonth");
       touched = true;
+      callResizeIframeOnParent();
     }
   });
 
@@ -327,63 +358,78 @@ function attachClicks(){
       $(this).children(".month-version-div").toggle();
       $(this).find(".yearCarret").toggleClass('fa-caret-up fa-caret-down');
       $(this).toggleClass("preventYear");
+      callResizeIframeOnParent();
     }
     touched=false;
   });
 }
 
-var urlsource = urlQuery ;
-var startDate = dateStartString;
-var startYear = startDate.substring(6,10)
-var startMonth = startDate.substring(3,5);
-var startDay = startDate.substring(0,2);
-var startTs = startYear+startMonth+startDay+'000000';
+// Global variables
+var arquivo_waybackURL;
+var arquivo_urlQuery;
+var arquivo_startTs;
+var arquivo_endTs;
+var arquivo_insertOnElementId;
+var arquivo_loadingElementId;
 
-var endDate = dateEndString;
-var endYear = endDate.substring(6,10)
-var endMonth = endDate.substring(3,5);
-var endDay = endDate.substring(0,2);
-var endTs = endYear+endMonth+endDay+'000000';
+function initializeUrlSearch(waybackURL, urlQuery, startTs, endTs, insertOnElementId, loadingElementId, typeShow) {
+  arquivo_waybackURL = waybackURL;
+  arquivo_urlQuery = urlQuery;
+  arquivo_startTs = startTs;
+  arquivo_endTs = endTs;
+  arquivo_insertOnElementId = insertOnElementId;
+  arquivo_loadingElementId = loadingElementId;
+  startUrlSearch(waybackURL, urlQuery, startTs, endTs, insertOnElementId, loadingElementId, typeShow);
+}
 
-var requestURL = waybackURL + "/" + "cdx";
-var versionsArray = [];
-var versionsURL = [];
+function changeTypeShow(typeShow) {
+  $("#"+arquivo_insertOnElementId).empty();
+  startUrlSearch(arquivo_waybackURL, arquivo_urlQuery, arquivo_startTs, arquivo_endTs, arquivo_insertOnElementId, arquivo_loadingElementId, typeShow);
+}
 
-var inputURL = document.getElementById('txtSearch').value;
-var notFoundURLSearch = false;
+function startUrlSearch(waybackURL, urlQuery, startTs, endTs, insertOnElementId, loadingElementId, typeShow) {
 
-loading = false;
-$( document ).ajaxStart(function() {
-  loading = true;
-  $( "#loadingDiv").show();
-});
-$( document ).ajaxStop(function() {
+  var requestURL = waybackURL + ( waybackURL.endsWith("/") ? "" : "/" ) + "cdx";
+  var versionsArray = [];
+  var versionsURL = [];
+
+  //var inputURL = document.getElementById('txtSearch').value;
+  var inputURL = urlQuery;
+
+  var notFoundURLSearch = false;
+
   loading = false;
-  $( "#loadingDiv").hide();
-});
-$( document ).ajaxComplete(function() {
-  loading = false;
-  $( "#loadingDiv").hide();
-});
+  $( document ).ajaxStart(function() {
+    loading = true;
+    $( "#"+loadingElementId).show();
+  });
+  $( document ).ajaxStop(function() {
+    loading = false;
+    $( "#"+loadingElementId).hide();
+  });
+  $( document ).ajaxComplete(function() {
+    loading = false;
+    $( "#"+loadingElementId).hide();
+  });
 
-$.ajax({
-  // example request to the cdx-server api - 'http://arquivo.pt/pywb/replay-cdx?url=http://www.sapo.pt/index.html&output=json&fl=url,timestamp'
-  url: requestURL,
-  cache: true,
-  data: {
-    output: 'json',
-    url: urlsource,
-    fl: 'url,timestamp,status',
-    filter: '!~status:4|5',
-    from: startTs,
-    to: endTs
-  },
-  error: function() {
-      // Apresenta que não tem resultados!
-      createErrorPage();
-    },
+  $.ajax({
+    // example request to the cdx-server api - 'http://arquivo.pt/pywb/replay-cdx?url=http://www.sapo.pt/index.html&output=json&fl=url,timestamp'
+    url: requestURL,
+    cache: true,
     type: 'GET',
     dataType: 'text',
+    data: {
+      output: 'json',
+      url: urlQuery,
+      fl: 'url,timestamp,status',
+      filter: '!~status:4|5',
+      from: startTs,
+      to: endTs
+    },
+    error: function() {
+      // Apresenta que não tem resultados!
+      createErrorPage(urlQuery, insertOnElementId);
+    },
     success: function(data) {
       versionsArray = []
       if( data ) {
@@ -401,21 +447,20 @@ $.ajax({
           }
         });
 
-        var typeShow = $('#typeShow').val().toString();
-
         if(typeShow === "table") {
           const firstVersionYear = versionsArray.map(t => parseInt(t.substring(0,4))).reduce((a, b) => Math.min(a, b));
-          createResultsTable(tokens.length-1, inputURL);
-          createMatrixTable(firstVersionYear, versionsArray, versionsURL);
+          createResultsTable(tokens.length-1, inputURL, insertOnElementId);
+          createMatrixTable(waybackURL, firstVersionYear, versionsArray, versionsURL);
         } else {
-          createResultsList(tokens.length-1, inputURL);
-          createMatrixList(versionsArray, versionsURL);
+          createResultsList(tokens.length-1, inputURL, insertOnElementId);
+          createMatrixList(waybackURL, versionsArray, versionsURL);
         }
         attachClicks();
       } else {
-        createErrorPage();
+        createErrorPage(urlQuery, insertOnElementId);
       }
+
+      callResizeIframeOnParent();
     }
-   });
-
-
+  });
+}

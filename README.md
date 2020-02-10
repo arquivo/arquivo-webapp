@@ -26,6 +26,14 @@ Example that use a development environment for the majority of the services, but
 mvn clean verify -Dbackend.url=http://p25.arquivo.pt -Dquery.suggestion.server=https://arquivo.pt && docker-compose up
 ```
 
+## IDE
+
+To prepare you IDE you can download sources and javadocs of the dependencies, using:
+
+```bash
+mvn eclipse:eclipse -DdownloadSources=true -DdownloadJavadocs=true
+```
+
 ## Dependencies
 Some specific dependencies haven't been found on the central maven repository. The solution, for now, is to install locally on **my-repo** folder.
 
