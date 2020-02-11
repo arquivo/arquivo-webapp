@@ -499,5 +499,10 @@ function replacePageAndHighlightTimestamp(url, timestamp) {
   function getContextPath() {
      return window.location.pathname.substring(0, window.location.pathname.indexOf(urlSearchFunctionalityUrl));
   }
-  window.location = getContextPath() + urlSearchFunctionalityUrl + '/' + timestamp + '/' + url;
+  const alreadySameURL = url === arquivo_urlQuery;
+  if (alreadySameURL) {
+    openTimestamp(timestamp);
+  } else {
+    window.location = getContextPath() + urlSearchFunctionalityUrl + '/' + timestamp + '/' + url;
+  }
 }
