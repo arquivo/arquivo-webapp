@@ -1155,13 +1155,13 @@ div#flex-container {
   margin: 0 auto !important;
 }
 body#homeImages div#flex-container {
-  margin: -4px auto 0 auto !important;
+  margin: -44px auto 0 auto !important;
 }
 div#flex-container div:first-child {
   margin-bottom: 12px !important;
   float: none;
   width: 96% !important;
-  margin: 9px auto 12px auto !important;
+  margin: 5px auto 12px auto !important;
 }
 div#flex-container div:second-child {
   -webkit-box-shadow: none;
@@ -1351,23 +1351,27 @@ div.call-to-actions span {
   display: flex;  
 }
 .image-display-url {
-  padding-top: 21px;
-  font-size: 1.1em !important;
-  line-height: 0.6;
-  padding-bottom: 0.2em;
-  text-align: center;
-  word-wrap: break-word;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  color: #009688 !important;
+ padding-top: 21px;
+    font-size: 1.1em !important;
+    line-height: 0.6;
+    padding-bottom: 15px;
+    text-align: center;
+    word-wrap: break-word;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: #009688 !important;
+    width: 100% !important;
+    max-width: 220px !important;   
+    display: inline-block;
+    margin: 0 auto;
 }
 .image-display-date {
   font-weight: normal;
   font-size: 1em !important;
   text-align: center;
   margin-bottom: 0px !important;
-  width: 95%;
+  width: /*95%*/100%;
   white-space: nowrap;
   text-overflow: ellipsis;
   display: block;
@@ -1626,17 +1630,40 @@ h1, h2, h3, h4, h5 {
 #nextImage {
   display: block !important;
 }
-#loadingDiv {
-  text-align: center;
-  margin-top: 10%;
-  margin-bottom: 5%;
+
+.loader{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width:100%;
+  padding:10%;
+  flex-wrap:wrap;
 }
-#loadingDivImages {
-  text-align: center;
-  margin-top: 10%;
-  margin-bottom: 5%;
-  background-color: #D8DBDF;
+.loader div{
+  width:100px;
+  height:100px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  margin:10px 20px;
 }
+@keyframes load8{
+  100%{
+    transform:rotatez(360deg);
+  }
+}
+.loader div::before{
+  content:"";
+  color:white;
+  height:50px;
+  width:50px;
+  background:transparent;
+  border-radius:50%;
+  border:10px solid transparent;
+  border-color:#1c75c0 #1c75c0 transparent transparent;
+  animation:load8 .6s infinite;
+}
+
 .tabs-services {
   text-align: left;
   margin: 20px 0 0px 0;
@@ -1704,7 +1731,7 @@ a.advancedSearch {
   text-decoration: none;
   margin: 0 8px 0 0 !important;
   padding: 4px 10px 5px 10px !important;
-  border-radius: 7px;
+  border-radius: 5px;
   background-color: transparent;
   color: #007AFF;
   border: 1px solid #eceff0;
@@ -2543,7 +2570,7 @@ h4.modalTitle {
     margin-left: 1%;
   }
 }
-@media (min-width: 768px) and (max-width: 1199px) {
+@media (min-width: 769px) and (max-width: 1199px) {
   .mt-smd-5 {
     margin-top: 5px;
   }
@@ -2900,7 +2927,7 @@ h4.modalTitle {
     border: none !important;
   }
 }
-@media (min-width:768px) and (max-width:3000px) {
+@media (min-width:769px) and (max-width:3000px) {
   .leftArrow {
     position: absolute;
     top: 20.5%;
@@ -2944,7 +2971,7 @@ h4.modalTitle {
     margin-bottom: 10px !important;
   }
 }
-@media (min-width:768px) and (max-width:3000px) {
+@media (min-width:769px) and (max-width:3000px) {
   body#homepage-landing span#buttonSearch button span {
     top: -39px;
     right: -4px;
@@ -2973,6 +3000,11 @@ h4.modalTitle {
     margin-left: 7px;
     margin-right: 7px;
   }
+  
+    body#home-search #resultados-lista > ul > li:hover {
+   
+  }
+  
   .col-md-offset-2 {
     margin-left: 0 !important;
     margin: 0 auto !important;
@@ -2982,10 +3014,10 @@ h4.modalTitle {
     margin: 0 auto !important;
   }
   body#home-search #searchBarButtonsDiv {
-    margin-bottom: 35px !important;
+    margin-bottom: 29px !important;
   }
   body#home-search #searchBarButtonsDiv {
-    margin-top: -29px !important;
+    margin-top: -25px !important;
   }
   body#home-search .col-md-8 {
     float: none !important;
@@ -2993,7 +3025,7 @@ h4.modalTitle {
   body#homeImages #photos {
     width: 100% !important;
     /*max-width: 945px !important;*/
-    margin: 0 auto 10px auto !important;
+    margin: /*0px*/-17px auto 10px auto !important;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -3009,7 +3041,37 @@ h4.modalTitle {
   .pagesNextPrevious a:second-child {
     margin-bottom: 50px !important;
   }
+  
 }
+
+
+@media (min-width:320px) and (max-width:768px) {
+body#homeImages p#estimated-results {
+
+    width: 915px;
+    margin: 0 auto -20px auto;
+    padding-left: 17px;
+    display: flex;
+    width: 100%;
+    max-width: 915px;
+}
+
+body#homesearch p#estimated-results {
+
+    width: 915px;
+    margin: 0 auto -20px auto;
+    padding-left: 17px;
+    display: flex;
+    width: 100%;
+    max-width: 915px;
+}
+
+body#homeImages #searchBarButtonsDiv {
+    margin-bottom: 29px !important;
+}
+
+}
+
 @media (min-width:769px) and (max-width:1024px) {
   body#home-search #years {
     margin: 3px auto 0 auto !important;
@@ -3036,11 +3098,40 @@ h4.modalTitle {
     border: 1px solid #dfe1e5;
     margin-bottom: 10px;
     border-radius: 4px;
-    margin-left: 8px !important;
-    margin-right: 8px !important;
+    margin-left: /*8px*/ -15px !important;
+    margin-right: /*8px*/ -15px !important;
   }
+
+.imageContent {
+    width: 20% !important;  
+    justify-content: center;
+    display: inline-flex;
+    flex-direction: column;
+    padding: 1% 1% 1.9% 1%;
+   }
 }
 
+@media (min-width:1025px) and (max-width:1440px) {
+.imageContent {   
+ width: 15% !important;
+    vertical-align: initial;
+    justify-content: center;
+    display: inline-flex;
+    flex-direction: column;
+    padding: 1% 1% 1.9% 1%;
+}    
+}
+
+@media (min-width:1441px) and (max-width:3000px) {
+.imageContent {   
+ width: 10% !important;
+    vertical-align: initial;
+    justify-content: center;
+    display: inline-flex;
+    flex-direction: column;
+    padding: 1% 1% 1.9% 1%;
+}    
+}
 
 @media (min-width:  769px) and (max-width:3000px) {
 .pagesNextPrevious a {
@@ -3063,7 +3154,25 @@ h4.modalTitle {
     color: white !important;
     background-color: #1c75c0 !important;
     border: 1px solid #1c75c0;
-    cursor: pointer;
+    cursor: pointer;    
+}
+
+.url {
+    font-size: 13px;
+    }
+
+body#homeImages p#estimated-results {
+
+    width: 915px;
+    margin: 0 auto;
+    padding-left: 6px;
+    display: flex;
+    width: 100%;
+    max-width: 915px;
+}
+
+body#homeImages #searchBarButtonsDiv {
+    margin-bottom: 29px !important;
 }
 
 body#home-search #resultados-lista ul li .resumo {
@@ -3082,6 +3191,14 @@ body#home-search a#ImageButton:hover, a#ImageButton:active {
 #resultados-lista {
     margin-bottom: 31px;
 }
+
+#resultados-lista > ul > li:hover {
+    background: white !important;  
+    transition: background-color 0.5s;
+     -webkit-box-shadow: 0px 4px 5px -2px rgba(0, 0, 0, 0);
+  box-shadow: 0px 4px 5px -2px rgba(0, 0, 0, 0);
+}
+
 
 #resultados-lista > ul > li:nth-child(odd) {
     background: white !important;
@@ -3124,7 +3241,8 @@ display: flow-root;
 }
 
 .card-height { 
-  width: 50vw;
+  width: 35vw;
+
 }
 
 .closeItAbsolute, .closeIt { 
@@ -3132,9 +3250,9 @@ display: flow-root;
     right: calc(25vw + 0px);
 }
 
-.closeIt { 
-     top: 2px;
-    right: calc(25vw + -6px);
+.closeItAbsolute, .closeIt {
+    top: 8px;
+    right: calc(33vw + 0px);
 }
 
 body#homeImages .hydrated h4 {
@@ -3164,7 +3282,7 @@ div#flex-container div:first-child {
     margin-bottom: 12px !important;
     float: none;
     width: 98% !important;
-    margin: 9px auto 12px auto !important;
+    margin: 7px auto 12px auto !important;
 }
 
 div#flex-container h3 {
@@ -3304,6 +3422,10 @@ width:104px;
     height: 100vh;
     padding: 20px 0px 20px 10px;
     display: block;
+}
+
+body#home-search #years {
+ 
 }
 
 
