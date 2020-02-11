@@ -462,16 +462,25 @@ function startUrlSearch(waybackURL, urlQuery, startTs, endTs, insertOnElementId,
       versionsArray = []
       if( data ) {
         var tokens = data.split('\n')
+
+        var previousVersion = null;
+        const deltaToRemoveDuplicatedEntries = 3600; // remo
         $.each(tokens, function(e){
           if(this != ""){
             var version = JSON.parse(this);
             if( !version.status || version.status[0] === '4' || version.status[0] === '5'){ /*Ignore 400's and 500's*/
               /*empty on purpose*/
+            } else {
+              if (previousVersion != null && isRemovePreviousVersion(previousVersion, version, deltaToRemoveDuplicatedEntries)) {
+                versionsArray.pop();
+                versionsURL.pop();
+              } 
+              if (previousVersion == null || !isRemoveCurrentVersion(previousVersion, version, deltaToRemoveDuplicatedEntries)) {
+                versionsArray.push(version.timestamp);
+                versionsURL.push(version.url);
+                previousVersion = version;
+              }
             }
-            else{
-              versionsArray.push(version.timestamp);
-              versionsURL.push(version.url);
-            } 
           }
         });
 
@@ -494,6 +503,28 @@ function startUrlSearch(waybackURL, urlQuery, startTs, endTs, insertOnElementId,
   });
 }
 
+function isRemovePreviousVersion(previousVersion, currentVersion, delta) {
+  return previousVersion.status[0] === '3' && currentVersion.status[0] === '2' && timestampDifferenceInSeconds(previousVersion.timestamp, currentVersion.timestamp) <= delta;
+}
+
+function isRemoveCurrentVersion(previousVersion, currentVersion, delta) {
+  return previousVersion.status[0] === '2' && currentVersion.status[0] === '3' && timestampDifferenceInSeconds(previousVersion.timestamp, currentVersion.timestamp) <= delta;
+}
+
+function getDateFromTimestamp(ts) {
+  var y = parseInt(ts.substring(0,4));
+  var M = parseInt(ts.substring(4,6))-1;
+  var d =  parseInt(ts.substring(6,8));
+  var h = parseInt(ts.substring(8,10));
+  var m = parseInt(ts.substring(10,12));
+  var s = parseInt(ts.substring(12,14));
+  return new Date(y, M, d, h, m, s);
+}
+function timestampDifferenceInSeconds(ts1, ts2) {
+  var tsd1 = getDateFromTimestamp(ts1);
+  var tsd2 = getDateFromTimestamp(ts2);
+  return (tsd2.getTime() - tsd1.getTime()) /1000 ;
+}
 
 // function to be called on wayback parent iframe to update the displayed page and/or highligh specific timestamp
 function replacePageAndHighlightTimestamp(url, timestamp) {
