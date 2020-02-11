@@ -12,8 +12,8 @@
 %>
 <%@ taglib uri="http://java.sun.com/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jstl/fmt_rt" prefix="fmt" %>
-<%@ include file="include/logging_params.jsp" %>
-<%@ include file="include/i18n.jsp" %>
+<%@ include file="/include/logging_params.jsp" %>
+<%@ include file="/include/i18n.jsp" %>
 <fmt:setLocale value="<%=language%>"/>
 
 <%!	//To please the compiler since logging need those -- check [search.jsp]
@@ -25,13 +25,12 @@
 
 <%---------------------- Start of HTML ---------------------------%>
 
-<%-- TODO: define XML lang --%>
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="pt-PT" lang="pt-PT">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<c:out value='${locale}' />" lang="<c:out value='${locale}' />">
 <head>
 	<title><fmt:message key='500.meta.title'/></title>
 	<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
 	<%-- TODO: define META lang --%>
-	<meta http-equiv="Content-Language" content="pt-PT" />
+	<meta http-equiv="Content-Language" content="<c:out value='${locale}' />" />
 	<meta name="Keywords" content="<fmt:message key='500.meta.keywords'/>" />
 	<meta name="Description" content="<fmt:message key='500.meta.description'/>" />
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -40,11 +39,11 @@
 	<script type="text/javacsript" src="stream-min.js"></script>
 </head>
 <body>
-	<%@ include file="include/topbar.jsp" %>
-	<div class="wrap">
+	<%@ include file="/include/topbar.jsp" %>
+	<div >
 		<div id="main">
 			<div id="header">
-				<%@ include file="include/logo.jsp" %>
+				<%@ include file="/include/logo.jsp" %>
 				<div id="info-texto-termos">
 					<h1><fmt:message key='500.title'/></h1>
 					<h2><fmt:message key='500.subtitle'/></h2>
@@ -67,9 +66,9 @@
 			</div>
 		</div>
 	</div>
-<%@include file="include/footer.jsp" %>
-<%@include file="include/analytics.jsp" %>
+<%@include file="/include/footer.jsp" %>
+<%@include file="/include/analytics.jsp" %>
 </body>
 </html>
 
-<%@include file="include/logging.jsp" %>
+<%@include file="/include/logging.jsp" %>

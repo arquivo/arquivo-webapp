@@ -39,14 +39,6 @@ Uncomment this to start serve this jsp's without .jsp
   <taglib-uri>http://jakarta.apache.org/taglibs/log-1.0</taglib-uri>
   <taglib-location>/WEB-INF/taglibs-log.tld</taglib-location>
 </taglib>
-<!-- Define the embargo offset to apply to the end date -->
-<!-- The offset is defined in the format: yyyy-MM-dd -->
-<!-- As an example the offset "0002-01-10" corresponds to -->
-<!-- minus 2 years, 1 month and 10 days than the current date -->
-<context-param>
-   <param-name>embargo-offset</param-name>
-   <param-value>0001-00-00</param-value>
-</context-param>
 
 <error-page>
   <error-code>404</error-code>

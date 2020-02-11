@@ -86,7 +86,7 @@ function loadingFinished(showNextPageButton){
     }
     $('#previousImage').css('display','inline-block');
 
-    $('#loadingDivImages').hide();
+    $('#loadingDiv').hide();
 
 }
 
@@ -539,13 +539,14 @@ function encodeHtmlEntity(str) {
     return str;
 }
 
+/*
 $(document).ajaxStart(function(){ 
     $('#loadingDiv').show();
 });
 
 $(document).ajaxStop(function(){
  $('#loadingDiv').hide();  
-});
+});*/
 
 function initClipboard(linkCopied){
     var clipboard = new Clipboard('#btnCopy');
@@ -713,7 +714,7 @@ function searchImagesJS(dateStartWithSlashes, dateEndWithSlashes, safeSearchOpti
                 imageObj.onload = function() {
                             
                     if( startIndex != 0 &&  totalResults == responseJson.totalResults){
-                        $('#loadingDivImages').remove();
+                        $('#loadingDiv').remove();
                     }
                             totalResults --;
                             resultsToLoad --;
@@ -731,7 +732,7 @@ function searchImagesJS(dateStartWithSlashes, dateEndWithSlashes, safeSearchOpti
                 imageObj.onerror = function() {
                     // image did not load
                     if( startIndex != 0 &&  totalResults == responseJson.totalResults){
-                        $('#loadingDivImages').remove();
+                        $('#loadingDiv').remove();
                     }                
                     totalResults --;
                     resultsToLoad --;
@@ -759,8 +760,6 @@ $(document).ready(function() {
     $(document).on('click', '#dButton', function() {
       var position =  $(this).attr('position');
       var imageObj = imageObjs[position]; /*get Current Image Object*/
-      var shareURL = '//' + window.location.hostname + '/shareImage.jsp?l='+language+'&imgurl='+encodeURIComponent(imageObj.currentImageURL)+'&imgrefurl='+encodeURIComponent(imageObj.pageURL)+'&imgrefts='+imageObj.timestamp+'&imgres='+parseInt(imageObj.expandedImageWidth)+'x'+parseInt(imageObj.expandedImageHeight)+'&query='+$('#txtSearch').val();
-      shortenURL( shareURL);
       
       $('#h2Copy').html(clickToCopy);
       $("#dialog").dialog('open');

@@ -30,30 +30,14 @@ response.setHeader("Cache-Control","public, max-age=600");
 <%@ taglib uri="http://java.sun.com/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jstl/fmt_rt" prefix="fmt" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
-<%@ include file="include/logging_params.jsp" %>
-<%@ include file="include/i18n.jsp" %>
+<%@ include file="/include/logging_params.jsp" %>
+<%@ include file="/include/i18n.jsp" %>
 <fmt:setLocale value="<%=language%>"/>
 
-<%! //To please the compiler since logging need those -- check [searchBootstrap.jsp]
-  private static Calendar DATE_START = new GregorianCalendar(1996, 1-1, 1);
-  private static final DateFormat FORMAT = new SimpleDateFormat("yyyyMMddHHmmss");
-  //TODO: remove dateStart & dateEnd ???
-  //private static Calendar dateStart = new GregorianCalendar();
-  //private static Calendar dateEnd = new GregorianCalendar();
-  private static final DateFormat OFFSET_FORMAT = new SimpleDateFormat("yyyy-MM-dd");
-  private static final Pattern OFFSET_PARAMETER = Pattern.compile("(\\d{4})-(\\d{2})-(\\d{2})");
-
+<%!
   private static final String COLLECTION_KEY = "collection";
   private static final String COLLECTION_QUERY_PARAM_KEY = COLLECTION_KEY + ":";
   private static final Pattern URL_PATTERN = Pattern.compile("^.*? ?((https?:\\/\\/)?([a-zA-Z\\d][-\\w\\.]+)\\.([a-zA-Z\\.]{2,6})([-\\/\\w\\p{L}\\.~,;:%&=?+$#*\\(?\\)?]*)*\\/?) ?.*$");
-
-%>
-
-<%
-  Properties prop = new Properties();
-  prop.load(Thread.currentThread().getContextClassLoader().getResourceAsStream("validTLDs/valid.properties"));
-  String tldsLine = prop.getProperty("valid.tld");
-  String tlds[] = tldsLine.split("\t");
 %>
 
 <%-- Get the application beans --%>
@@ -61,40 +45,6 @@ response.setHeader("Cache-Control","public, max-age=600");
   // configurations
   String waybackURL = pt.arquivo.webapp.Configuration.get("wayback.url", "examples.com");
   pageContext.setAttribute("waybackURL", waybackURL);
-%>
-<%-- Define the default end date --%>
-<%
-  Calendar DATE_END = new GregorianCalendar();
-  DATE_END.set( Calendar.YEAR, DATE_END.get(Calendar.YEAR) );
-  DATE_END.set( Calendar.MONTH, 12-1 );
-  DATE_END.set( Calendar.DAY_OF_MONTH, 31 );
-  DATE_END.set( Calendar.HOUR_OF_DAY, 23 );
-  DATE_END.set( Calendar.MINUTE, 59 );
-  DATE_END.set( Calendar.SECOND, 59 );
-  int queryStringParameter= 0;
-
-  /** Read the embargo offset value from the configuration page. If not present, default to: -1 year */
-  try {
-        String offsetDateString = getServletContext().getInitParameter("embargo-offset");
-
-        Matcher offsetMatcher = OFFSET_PARAMETER.matcher( offsetDateString );
-        offsetMatcher.matches();
-        int offsetYear = Integer.parseInt(offsetMatcher.group(1));
-        int offsetMonth = Integer.parseInt(offsetMatcher.group(2));
-        int offsetDay = Integer.parseInt(offsetMatcher.group(3));
-
-        DATE_END.set(Calendar.YEAR, DATE_END.get(Calendar.YEAR) - offsetYear);
-        DATE_END.set(Calendar.MONTH, DATE_END.get(Calendar.MONTH) - offsetMonth);
-        DATE_END.set(Calendar.DAY_OF_MONTH, DATE_END.get(Calendar.DAY_OF_MONTH) - offsetDay );
-  } catch(IllegalStateException e) {
-        // Set the default embargo period to: 1 year
-        DATE_END.set( Calendar.YEAR, DATE_END.get(Calendar.YEAR) - 1);
-        pt.arquivo.webapp.LOG.error("Embargo offset parameter isn't in a valid format");
-  } catch(NullPointerException e) {
-        // Set the default embargo period to: 1 year
-        DATE_END.set( Calendar.YEAR, DATE_END.get(Calendar.YEAR) - 1);
-        pt.arquivo.webapp.LOG.error("Embargo offset parameter isn't present");
-  }
 %>
 <%-- Handle the url parameters --%>
 <%
@@ -249,79 +199,6 @@ String[] queryString_splitted=null;
         queryString = queryString.replace("sort:old","");
   }
 
-  /*** Start date ***/
-  Calendar dateStart = (Calendar)DATE_START.clone();
-  SimpleDateFormat inputDateFormatter = new SimpleDateFormat("dd/MM/yyyy");
-
-  if ( request.getParameter("dateStart") != null && !request.getParameter("dateStart").equals("") ) {
-        try {
-                dateStart.setTime( inputDateFormatter.parse(request.getParameter("dateStart")) );
-        } catch (NullPointerException e) {
-                pt.arquivo.webapp.LOG.debug("Invalid Start Date:"+ request.getParameter("dateStart") +"|");
-        }
-  }
-
-  /*** End date ***/
-  Calendar dateEnd = (Calendar)DATE_END.clone();
-
-  String dateEndNoParameter = inputDateFormatter.format( dateEnd.getTime() );
-  String yearEndNoParameter =dateEndNoParameter.substring(dateEndNoParameter.length()-4);
-  String yearStartNoParameter = "1996";
-
-  // Setting current date
-
-  if ( request.getParameter("dateEnd") != null && !request.getParameter("dateEnd").equals("") ) {
-        try {
-                dateEnd.setTime( inputDateFormatter.parse(request.getParameter("dateEnd")) );
-                // be sure to set the end date to the very last second of that day.
-                dateEnd.set( Calendar.HOUR_OF_DAY, 23 );
-                dateEnd.set( Calendar.MINUTE, 59 );
-                dateEnd.set( Calendar.SECOND, 59 );
-        } catch (NullPointerException e) {
-                pt.arquivo.webapp.LOG.debug("Invalid End Date:"+ request.getParameter("dateEnd") +"|");
-        }
-  }
-
-  /*** Switch dates if start GT end ***/
-    if(dateStart.getTime().compareTo(dateEnd.getTime())>0){
-      Calendar auxCal = dateStart;
-      dateStart = dateEnd;
-      dateEnd = auxCal;
-    }
-  /**/
-
-  /*** Add dates to nutch query ***/
-  if (queryString != null && queryString != "") {
-        queryString += " date:"+ FORMAT.format( dateStart.getTime() );
-        queryString += "-";
-        queryString += FORMAT.format( dateEnd.getTime() );
-  } else {
-        queryString = "";
-  }
-
-  String dateStartString = inputDateFormatter.format( dateStart.getTime() );
-
-  String dateStartDay = dateStartString.substring(0,2);
-
-  String dateStartMonth = dateStartString.substring(3,5);
-
-  String dateStartYear = dateStartString.substring(dateStartString.length()-4);
-
-  String dateStartStringIonic =  dateStartYear + "-" + dateStartMonth + "-" + dateStartDay;
-
-
-  String dateEndString = inputDateFormatter.format( dateEnd.getTime() );
-
-  String dateEndDay = dateEndString.substring(0,2);
-
-  String dateEndMonth = dateEndString.substring(3,5);
-
-  String dateEndYear = dateEndString.substring(dateEndString.length()-4);
-
-  String dateEndStringIonic =  dateEndYear + "-" + dateEndMonth + "-" + dateEndDay;
-
-  //--- not needed, since we use fields. String htmlQueryString = Entities.encode(queryString);
-
   /*****************    Offset param    ***************************/
   int start = 0;          // first hit to display
   String startString = request.getParameter("start");
@@ -364,76 +241,27 @@ String[] queryString_splitted=null;
 
 %>
 
-
 <%---------------------- Start of HTML ---------------------------%>
 
-<%-- TODO: define XML lang --%>
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="pt-PT" lang="pt-PT">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<c:out value='${locale}' />" lang="<c:out value='${locale}' />">
 <head>
   <title><fmt:message key='home.meta.title'/></title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
-  <%-- TODO: define META lang --%>
-  <meta http-equiv="Content-Language" content="pt-PT" />
   <meta name="Keywords" content="<fmt:message key='home.meta.keywords'/>" />
   <meta name="Description" content="<fmt:message key='home.meta.description'/>" />
+  <meta property="og:title" content="<fmt:message key='home.meta.title'/>"/>
+  <meta property="og:description" content="<fmt:message key='home.meta.description'/>"/>
+  <meta property="og:image" content="<%=request.getContextPath()%>/img/logoFace.png"/>
 
-    <meta property="og:title" content="<fmt:message key='home.meta.title'/>"/>
-    <meta property="og:description" content="<fmt:message key='home.meta.description'/>"/>
-    <meta property="og:image" content="<%=request.getContextPath()%>/img/logoFace.png"/>
-    <meta name="theme-color" content="#1a73ba">
-    <!-- Windows Phone -->
-    <meta name="msapplication-navbutton-color" content="#1a73ba">
-    <!-- iOS Safari -->
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-
-    <script type="text/javascript">
-      var minDate = new Date(<%=DATE_START.getTimeInMillis()%>);
-      var maxDate = new Date(<%=DATE_END.getTimeInMillis()%>);
-      var minYear = minDate.getFullYear();
-      var maxYear = maxDate.getFullYear();
-    </script>
-  <link rel="shortcut icon" href="/img/logo-16.png" type="image/x-icon" />
-  <link rel="stylesheet" title="Estilo principal" type="text/css" href="/css/newStyle.css?build=<c:out value='${initParam.buildTimeStamp}'/>"  media="all" />
-    <!-- font awesome -->
-    <link rel="stylesheet" href="/css/font-awesome.min.css">
-    <!-- bootstrap -->
-    <link rel="stylesheet" href="/css/bootstrap.min.css">
-    <script src="/js/jquery-latest.min.js"></script>
-    <script src="/js/bootstrap.min.js"></script>
-
-  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
-    <!-- dual slider dependencies -->
-    <script type="text/javascript" src="/js/nouislider.min.js"></script>
-    <link rel="stylesheet" href="/css/nouislider.min.css">
-    <script type="text/javascript" src="/js/wNumb.js"></script>
-    <!-- CSS loading spiner -->
-  <link href="/css/csspin.css" rel="stylesheet" type="text/css">
-  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5645cdb2e22ca317"></script>
-  <!-- end addthis for sharing on soc
-    ial media -->
-  <% if (pt.arquivo.webapp.Configuration.get("query.suggestion.api").isPresent()) { %>
-  <script type="text/javascript">
-    querySuggestionAPI = '<%= pt.arquivo.webapp.Configuration.get("query.suggestion.api", request.getContextPath()+"/spellchecker/checker") %>';
-  </script>
-  <% } %>
-  <script type="text/javascript" src="/js/configs.js"></script>
-  <script type="text/javascript" src="/js/js.cookie.js"></script>
-  <!-- swiper main menu -->
-  <script type="text/javascript" src="/js/swiper.min.js"></script>
-  <!-- NEW - 23.07.19: Call ionic -->
-  <script src="../@ionic/core/dist/ionic.js"></script>
-  <link rel="stylesheet" href="../@ionic/core/css/ionic.bundle.css">
-
-  <script src="/js/uglipop.min.js"></script>
+  <jsp:include page="/include/headerDefault.jsp" />
+  <%@ include file="/include/dates.jsp" %>
+  <jsp:include page="/include/i18njs.jsp" />
 
   <script type="text/javascript">
+    <% if (pt.arquivo.webapp.Configuration.get("query.suggestion.api").isPresent()) { %>
+      querySuggestionAPI = '<%= pt.arquivo.webapp.Configuration.get("query.suggestion.api", request.getContextPath()+"/spellchecker/checker") %>';
+    <% } %>
     textSearchAPI = "<%= pt.arquivo.webapp.Configuration.get("text.search.api", "https://arquivo.pt/textsearch") %>";
-  </script>
 
-  <script type="text/javascript">
     notFoundTitle = '<fmt:message key="search.no-results.title"/>';
     noResultsSuggestions = '<fmt:message key="search.no-results.suggestions"/>';
     noResultsWellWritten = '<fmt:message key="search.no-results.suggestions.well-written"/>';
@@ -447,20 +275,11 @@ String[] queryString_splitted=null;
     waybackURL = "<%=waybackURL%>";
   </script>
 
-  <script type="text/javascript">
-    var language = localStorage.language;
-    if( language == 'EN'){
-      document.write('<script type="text/javascript" language="JavaScript" src="<%=request.getContextPath()%>/js/properties/ConstantsEN.js?build=<c:out value='${initParam.buildTimeStamp}' />"><\/script>');
-    }
-    else{
-      document.write('<script type="text/javascript" language="JavaScript" src="<%=request.getContextPath()%>/js/properties/ConstantsPT.js?build=<c:out value='${initParam.buildTimeStamp}' />"><\/script>');
-    }
-  </script>
 </head>
 
 <body id="home-search">
-    <%@ include file="/include/topbar.jsp" %>
-    <div class="container-fluid topcontainer" id="headerSearchDiv">
+  <%@ include file="/include/topbar.jsp" %>
+  <div class="container-fluid topcontainer" id="headerSearchDiv">
     <script type="text/javascript">
       var language = localStorage.language;
       pagesHref = window.location.href;
@@ -485,18 +304,13 @@ String[] queryString_splitted=null;
       }
     </script>
     <script type="text/javascript" src="/js/encodeHTML.js"></script>
-    <%@ include file="include/searchHeaderMobile.jsp" %>
+    <%@ include file="/include/searchHeaderMobile.jsp" %>
 
     <script type="text/javascript">
-      document.write("<div id='loadingDiv' class='text-center lds-ring' style='text-align: center; margin-top: 10%; margin-bottom: 5%;'><div></div><div></div><div></div><div></div></div>");
       $( document ).ready(function() {
-        if(typeof(loading)=="undefined" || loading != true){
-          $('#loadingDiv').show();
-          $('#conteudo-resultado').show();
-        }
-      $("#txtSearch").on('mousedown touchstart', function (e) {
-            e.stopPropagation();
-       });
+        $("#txtSearch").on('mousedown touchstart', function (e) {
+          e.stopPropagation();
+        });
       });
     </script>
     <script type="text/javascript">$('#pagesTab').addClass('selected');$('#pagesTab').addClass('primary-underline');</script>
@@ -558,15 +372,10 @@ String[] queryString_splitted=null;
             String protocol=url_queryString.getProtocol();
             String fileofUrl = url_queryString.getFile();
 
-            boolean validTLD = false;
+            if ( request.getParameter("query") != null && 
+                 urlLength == request.getParameter("query").trim().length() && 
+                 pt.arquivo.webapp.TopLevelDomainUtil.hostnameEndsWithValidTld(hostname)) {
 
-            for(String tld:tlds){ //
-              if(hostname.endsWith(tld.toLowerCase())){
-                validTLD = true;
-              }
-            }
-
-            if ( request.getParameter("query") != null && urlLength == request.getParameter("query").trim().length() && validTLD) {
               // option: (2)
               showList = false;
               usedWayback = true;
@@ -579,8 +388,8 @@ String[] queryString_splitted=null;
 
               pageContext.setAttribute("urlQueryParam", urlQueryParam);
               allVersions = "search.jsp?query="+ URLEncoder.encode(urlQueryParam, "UTF-8");
-              pageContext.setAttribute("dateStartWayback", FORMAT.format( dateStart.getTime() ) );
-              pageContext.setAttribute("dateEndWayback", FORMAT.format( dateEnd.getTime() ) );
+              //pageContext.setAttribute("dateStartWayback", FORMAT.format( dateStart.getTime() ) );
+              //pageContext.setAttribute("dateEndWayback", FORMAT.format( dateEnd.getTime() ) );
             }
 %>
 
@@ -595,17 +404,91 @@ String[] queryString_splitted=null;
             %>
 
 <%
- }
-}
+          }
+        }
 %>
 
 <% if (usedWayback) { %>
-  <%@ include file="/include/url-search.jsp" %>
-<% } else { %>
-  <script type="text/javascript" src="/js/page-search.js?build=<c:out value='${initParam.buildTimeStamp}' />"></script>
+  <script>
+    // add event listener thar receive messages from url search iframe.
+    if (window.addEventListener) {
+        window.addEventListener("message", onMessage, false);        
+    } 
+    else if (window.attachEvent) {
+        window.attachEvent("onmessage", onMessage, false);
+    }
+    // generic function that receive multiple messages from url search iframe and calls different king on functions.
+    function onMessage(event) {
+        // Check sender origin to be trusted
+        if (!event.isTrusted) return;
 
-  <div id="conteudo-resultado" class="container-fluid display-none col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8 col-lg-offset-3 col-lg-6 col-xl-offset-4 col-xl-4"> <%-- START OF: conteudo-resultado --%>
-    <div id="second-column">
+        var data = event.data;
+        if (typeof(window[data.func]) == "function") {
+            window[data.func].call(null, data.message);
+        }
+    }
+    // called from url search iframe when the user clicks a specific version
+    // the message is the url clicked
+    function urlSearchClickOnVersion(message) {
+      // send event to google analytics
+      ga('send', 'event', 'Versions List', 'Version Click', message);
+      //  go to the url clicked by the user on iframe
+      window.location = message;
+    }
+    // get the height of the iframe content
+    function getDocHeight(doc) {
+        doc = doc || document;
+        // stackoverflow.com/questions/1145850/
+        var body = doc.body, html = doc.documentElement;
+        var height = Math.max( body.scrollHeight, body.offsetHeight, 
+            html.clientHeight, html.scrollHeight, html.offsetHeight );
+        return height;
+    }
+    // resize the url search iframe so the iframe has the same size of its content then isn't the need of a scroll.
+    // it is like the iframe doesn't exist.
+    function resizeIframe() {
+      const id = "url_search_iframe";
+        var ifrm = document.getElementById(id);
+        var doc = ifrm.contentDocument? ifrm.contentDocument: 
+            ifrm.contentWindow.document;
+        ifrm.style.visibility = 'hidden';
+        //ifrm.style.height = "10px"; // reset to minimal height ...
+        // IE opt. for bing/msn needs a bit added or scrollbar appears
+        ifrm.style.height = getDocHeight( doc ) + 4 + "px";
+        ifrm.style.visibility = 'visible';
+    }
+  </script>
+  <div class="url-search-iframe-container">
+    <iframe
+      name="url_search_iframe" 
+      id="url_search_iframe"
+      allowFullScreen="true"
+      scrolling="no"
+      onload="resizeIframe(this)"
+      src="<%=request.getContextPath()%>/url/search/<%=dateStartYear%><%=dateStartMonth%><%=dateStartDay%>-<%=dateEndYear%><%=dateEndMonth%><%=dateEndDay%>/<%=urlQuery%>"></iframe>
+  </div>
+
+<% } else {
+  if (  (request.getParameter("query") == null || request.getParameter("query").equals("")) &&
+        (request.getParameter("adv_and") == null || request.getParameter("adv_and").equals("")) &&
+        (request.getParameter("adv_phr") == null || request.getParameter("adv_phr").equals("")) &&
+        (request.getParameter("adv_not") == null || request.getParameter("adv_not").equals("")) &&
+        (request.getParameter("format") == null || request.getParameter("format").equals("") ) &&
+        (request.getParameter("site") == null || request.getParameter("site").equals("")) ){
+  %>
+    <div id="loadingDiv" class="loader"><div></div></div>
+
+    <%-- hide loading spinner--%>
+    <%@ include file="/include/intro.jsp" %>
+    <script type="text/javascript">
+      $( document ).ready(function() {
+        $('#loadingDiv').hide();
+      });
+    </script>
+  <% } else { %>
+    <script type="text/javascript" src="/js/page-search.js?build=<c:out value='${initParam.buildTimeStamp}' />"></script>
+
+    <div id="conteudo-resultado" class="container-fluid col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8 col-lg-offset-3 col-lg-6 col-xl-offset-4 col-xl-4">
       <p id="estimated-results" style="display: none;"><fmt:message key="search.results.estimated.results.1"/> <span id="estimated-results-value"></span> <fmt:message key="search.results.estimated.results.2"/> <%= dateStartYear %></p>
 
       <div class="spell hidden"><fmt:message key="search.spellchecker"/> <span class="suggestion"></span></div>
@@ -623,77 +506,59 @@ String[] queryString_splitted=null;
         </ul>
       </div>
 
-  <div class="pagesNextPrevious text-center">
-
-    <ul>
-      <%
-        if (start > 0) {
-          int previousPageStart = start - hitsPerPage;
-          String previousPageUrl = "search.jsp?" +
-            "query=" + URLEncoder.encode(request.getAttribute("query").toString(), "UTF-8") +
-            "&dateStart="+ dateStartString +
-            "&dateEnd="+ dateEndString +
-            "&pag=prev" +                             // mark as 'previous page' link
-            "&start=" + previousPageStart +
-            "&hitsPerPage=" + hitsPerPage +
-            "&hitsPerDup=" + hitsPerDup +
-            "&dedupField=" + dedupField +
-            "&l="+ language;
-          if (sort != null) {
-            previousPageUrl = previousPageUrl +
-            "&sort=" + sort +
-            "&reverse=" + reverse;
-          }
-          previousPageUrl = StringEscapeUtils.escapeHtml(previousPageUrl);
-      %>
-        <li class="previous"><a id="previousPageSearch" style="display: none;" onclick="ga('send', 'event', 'Full-text search', 'Previous page', document.location.href );" class="myButtonStyle text-center right10" role="button" href="<%=previousPageUrl%>" title="<fmt:message key='search.pager.previous'/>">&larr; <fmt:message key='search.pager.previous'/></a></li>
-      <% } %>
-    <%
-        long nextPageStart = start + hitsPerPage;
-        String nextPageUrl = "search.jsp?" +
-          "query=" + URLEncoder.encode(request.getAttribute("query").toString(), "UTF-8") +
-          "&dateStart="+ dateStartString +
-          "&dateEnd="+ dateEndString +
-          "&pag=next" +
-          "&start=" + nextPageStart +
-          "&hitsPerPage=" + hitsPerPage +
-          "&hitsPerDup=" + hitsPerDup +
-          "&dedupField=" + dedupField +
-          "&l="+ language;
-        if (sort != null) {
-          nextPageUrl = nextPageUrl +
-          "&sort=" + sort +
-          "&reverse=" + reverse;
-        }
-        nextPageUrl = StringEscapeUtils.escapeHtml(nextPageUrl);
-    %>
-        <li class="next"><a id="nextPageSearch" style="display: none;" onclick="ga('send', 'event', 'Full-text search', 'Next page', document.location.href );" class="myButtonStyle text-center" role="button" href="<%=nextPageUrl%>" title="<fmt:message key='search.pager.next'/>"><fmt:message key='search.pager.next'/> &rarr;</a></li>
-    </ul>
-
-  </div>
-
+      <div class="pagesNextPrevious text-center">
+        <ul>
+          <%
+            if (start > 0) {
+              int previousPageStart = start - hitsPerPage;
+              String previousPageUrl = "search.jsp?" +
+                "query=" + URLEncoder.encode(request.getAttribute("query").toString(), "UTF-8") +
+                "&dateStart="+ dateStartString +
+                "&dateEnd="+ dateEndString +
+                "&pag=prev" +                             // mark as 'previous page' link
+                "&start=" + previousPageStart +
+                "&hitsPerPage=" + hitsPerPage +
+                "&hitsPerDup=" + hitsPerDup +
+                "&dedupField=" + dedupField +
+                "&l="+ language;
+              if (sort != null) {
+                previousPageUrl = previousPageUrl +
+                "&sort=" + sort +
+                "&reverse=" + reverse;
+              }
+              previousPageUrl = StringEscapeUtils.escapeHtml(previousPageUrl);
+          %>
+            <li class="previous"><a id="previousPageSearch" style="display: none;" onclick="ga('send', 'event', 'Full-text search', 'Previous page', document.location.href );" class="myButtonStyle text-center right10" role="button" href="<%=previousPageUrl%>" title="<fmt:message key='search.pager.previous'/>">&larr; <fmt:message key='search.pager.previous'/></a></li>
+          <% } %>
+        <%
+            long nextPageStart = start + hitsPerPage;
+            String nextPageUrl = "search.jsp?" +
+              "query=" + URLEncoder.encode(request.getAttribute("query").toString(), "UTF-8") +
+              "&dateStart="+ dateStartString +
+              "&dateEnd="+ dateEndString +
+              "&pag=next" +
+              "&start=" + nextPageStart +
+              "&hitsPerPage=" + hitsPerPage +
+              "&hitsPerDup=" + hitsPerDup +
+              "&dedupField=" + dedupField +
+              "&l="+ language;
+            if (sort != null) {
+              nextPageUrl = nextPageUrl +
+              "&sort=" + sort +
+              "&reverse=" + reverse;
+            }
+            nextPageUrl = StringEscapeUtils.escapeHtml(nextPageUrl);
+        %>
+            <li class="next"><a id="nextPageSearch" style="display: none;" onclick="ga('send', 'event', 'Full-text search', 'Next page', document.location.href );" class="myButtonStyle text-center" role="button" href="<%=nextPageUrl%>" title="<fmt:message key='search.pager.next'/>"><fmt:message key='search.pager.next'/> &rarr;</a></li>
+        </ul>
+      </div>
+    </div>
+  <% } %>
 <% } %>
 
-</div>
-    <% if ( (request.getParameter("query") == null || request.getParameter("query").equals("")) &&
-            (request.getParameter("adv_and") == null || request.getParameter("adv_and").equals("")) &&
-            (request.getParameter("adv_phr") == null || request.getParameter("adv_phr").equals("")) &&
-            (request.getParameter("adv_not") == null || request.getParameter("adv_not").equals("")) &&
-            (request.getParameter("format") == null || request.getParameter("format").equals("") ) &&
-            (request.getParameter("site") == null || request.getParameter("site").equals(""))
-     ){
-    %>
-      <%@ include file="include/intro.jsp" %>
-    <% } %>
-
-
-      </div>  <!-- FIM #conteudo-resultado  -->
-    </div>
-  </div>
-
-<%@include file="include/analytics.jsp" %>
-<%@include file="include/footer.jsp" %>
+<%@include file="/include/analytics.jsp" %>
+<%@include file="/include/footer.jsp" %>
 </body>
 </html>
 
-<%@include file="include/logging.jsp" %>
+<%@include file="/include/logging.jsp" %>

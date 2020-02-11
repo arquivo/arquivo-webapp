@@ -34,47 +34,23 @@ response.setHeader("Cache-Control","public, max-age=600");
 <%@ taglib uri="http://java.sun.com/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jstl/fmt_rt" prefix="fmt" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
-<%@ include file="include/logging_params.jsp" %>
-<%@ include file="include/i18n.jsp" %>
+<%@ include file="/include/logging_params.jsp" %>
+<%@ include file="/include/i18n.jsp" %>
 <fmt:setLocale value="<%=language%>"/>
 
-<%! //To please the compiler since logging need those
-  private static Calendar DATE_START = new GregorianCalendar(1996, 1-1, 1);
-  private static final DateFormat FORMAT = new SimpleDateFormat("yyyyMMddHHmmss");
-  //TODO: remove dateStart & dateEnd ???
-  //private static Calendar dateStart = new GregorianCalendar();
-  //private static Calendar dateEnd = new GregorianCalendar();
-  private static final DateFormat OFFSET_FORMAT = new SimpleDateFormat("yyyy-MM-dd");
-  private static final Pattern OFFSET_PARAMETER = Pattern.compile("(\\d{4})-(\\d{2})-(\\d{2})");
+<%!
 
   //Remove http and https before testing against this url pattern
   private static final Pattern URL_PATTERN = Pattern.compile("^. ?(([a-zA-Z\\d][-\\w\\.]+)\\.([a-zA-Z\\.]{2,6})([-\\/\\w\\p{L}\\.~,;:%&=?+$#*]*)*\\/?) ?.*$");
 %>
 
 <%
-  Properties prop = new Properties();
-  prop.load(Thread.currentThread().getContextClassLoader().getResourceAsStream("validTLDs/valid.properties"));
-  String tldsLine = prop.getProperty("valid.tld");
-  String tlds[] = tldsLine.split("\t");
-  HashSet<String> validTlds = new HashSet<String>();
-  for(String tld:tlds){
-    validTlds.add(tld);
-  }
-
   // configurations
   String waybackURL = pt.arquivo.webapp.Configuration.get("wayback.url", "examples.com");
   pageContext.setAttribute("waybackURL", waybackURL);
 %>
 
-<%-- Define the default end date --%>
 <%
-  Calendar DATE_END = new GregorianCalendar();
-  DATE_END.set( Calendar.YEAR, DATE_END.get(Calendar.YEAR) );
-  DATE_END.set( Calendar.MONTH, 12-1 );
-  DATE_END.set( Calendar.DAY_OF_MONTH, 31 );
-  DATE_END.set( Calendar.HOUR_OF_DAY, 23 );
-  DATE_END.set( Calendar.MINUTE, 59 );
-  DATE_END.set( Calendar.SECOND, 59 );
   int queryStringParameter= 0;
   // Prepare the query values to be presented on the page, preserving the session
   String htmlQueryString = "";
@@ -101,30 +77,6 @@ response.setHeader("Cache-Control","public, max-age=600");
             size = "all";
           }
   }
-
- /** Read the embargo offset value from the configuration page. If not present, default to: -1 year */
-  try {
-        String offsetDateString = getServletContext().getInitParameter("embargo-offset");
-
-        Matcher offsetMatcher = OFFSET_PARAMETER.matcher( offsetDateString );
-        offsetMatcher.matches();
-        int offsetYear = Integer.parseInt(offsetMatcher.group(1));
-        int offsetMonth = Integer.parseInt(offsetMatcher.group(2));
-        int offsetDay = Integer.parseInt(offsetMatcher.group(3));
-
-        DATE_END.set(Calendar.YEAR, DATE_END.get(Calendar.YEAR) - offsetYear);
-        DATE_END.set(Calendar.MONTH, DATE_END.get(Calendar.MONTH) - offsetMonth);
-        DATE_END.set(Calendar.DAY_OF_MONTH, DATE_END.get(Calendar.DAY_OF_MONTH) - offsetDay );
-  } catch(IllegalStateException e) {
-        // Set the default embargo period to: 1 year
-        DATE_END.set( Calendar.YEAR, DATE_END.get(Calendar.YEAR) - 1);
-        pt.arquivo.webapp.LOG.error("Embargo offset parameter isn't in a valid format");
-  } catch(NullPointerException e) {
-        // Set the default embargo period to: 1 year
-        DATE_END.set( Calendar.YEAR, DATE_END.get(Calendar.YEAR) - 1);
-        pt.arquivo.webapp.LOG.error("Embargo offset parameter isn't present");
-  }
-
 
   if ( request.getParameter("type") != null && request.getParameter("type") != "") {
           type = request.getParameter("type");
@@ -203,58 +155,6 @@ response.setHeader("Cache-Control","public, max-age=600");
   //htmlQueryString= StringEscapeUtils.escapeHtml(htmlQueryString);
   //request.setAttribute("htmlQueryString", htmlQueryString);
 
- /*** Start date ***/
-  Calendar dateStart = (Calendar)DATE_START.clone();
-
-  SimpleDateFormat inputDateFormatter = new SimpleDateFormat("dd/MM/yyyy");
-
-  if ( request.getParameter("dateStart") != null && !request.getParameter("dateStart").equals("") ) {
-        try {
-                dateStart.setTime( inputDateFormatter.parse(request.getParameter("dateStart")) );
-        } catch (NullPointerException e) {
-                pt.arquivo.webapp.LOG.debug("Invalid Start Date:"+ request.getParameter("dateStart") +"|");
-        }
-  }
-  /*** End date ***/
-  Calendar dateEnd = (Calendar)DATE_END.clone();
-
-  String dateEndNoParameter = inputDateFormatter.format( dateEnd.getTime() );
-  String yearEndNoParameter =dateEndNoParameter.substring(dateEndNoParameter.length()-4);
-  String yearStartNoParameter = "1996";
-
-  // Setting current date
-
-  if ( request.getParameter("dateEnd") != null && !request.getParameter("dateEnd").equals("") ) {
-        try {
-                dateEnd.setTime( inputDateFormatter.parse(request.getParameter("dateEnd")) );
-                // be sure to set the end date to the very last second of that day.
-                dateEnd.set( Calendar.HOUR_OF_DAY, 23 );
-                dateEnd.set( Calendar.MINUTE, 59 );
-                dateEnd.set( Calendar.SECOND, 59 );
-        } catch (NullPointerException e) {
-                pt.arquivo.webapp.LOG.debug("Invalid End Date:"+ request.getParameter("dateEnd") +"|");
-        }
-  }
-  String dateStartString = inputDateFormatter.format( dateStart.getTime() );
-
-  String dateStartDay = dateStartString.substring(0,2);
-
-  String dateStartMonth = dateStartString.substring(3,5);
-
-  String dateStartYear = dateStartString.substring(dateStartString.length()-4);
-
-  String dateStartStringIonic =  dateStartYear + "-" + dateStartMonth + "-" + dateStartDay;
-
-  String dateEndString = inputDateFormatter.format( dateEnd.getTime() );
-
-  String dateEndDay = dateEndString.substring(0,2);
-
-  String dateEndMonth = dateEndString.substring(3,5);
-
-  String dateEndYear = dateEndString.substring(dateEndString.length()-4);
-
-  String dateEndStringIonic =  dateEndYear + "-" + dateEndMonth + "-" + dateEndDay;
-
   // Prepare the query values to be presented on the page, preserving the session
   //htmlQueryString = "";
 
@@ -283,7 +183,7 @@ response.setHeader("Cache-Control","public, max-age=600");
               String[] domainNameParts = host.split("\\.");
               String tldString ="."+domainNameParts[domainNameParts.length-1].toUpperCase();
               pt.arquivo.webapp.LOG.debug("TLD:"+ tldString);
-              if(validTlds.contains(tldString)){
+              if(pt.arquivo.webapp.TopLevelDomainUtil.contains(tldString)){
                 word = "site:" + host.toLowerCase();
               }
               else{
@@ -305,33 +205,15 @@ response.setHeader("Cache-Control","public, max-age=600");
   String loaderDefaultClass = (homeMessageClass.equals("")) ? "hidden" : "";
 %>
 
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="pt-PT" lang="pt-PT">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<c:out value='${locale}' />" lang="<c:out value='${locale}' />">
 <head>
   <title><fmt:message key='images.imageTitle'/>:&nbsp; <c:out value = "${htmlQueryString}"/> &nbsp;  &mdash; Arquivo.pt</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8"/>
-  <meta http-equiv="Content-Language" content="pt-PT"/>
   <meta name="Keywords" content="resultado, pesquisa, buscar, arquivo, Web, português, portuguesa, Portugal"/>
   <meta name="Description" content="Página de resultados de uma pesquisa de imagens feita no Arquivo.pt."/>
-  <meta name="theme-color" content="#1a73ba">
-  <!-- Windows Phone -->
-  <meta name="msapplication-navbutton-color" content="#1a73ba">
-  <!-- iOS Safari -->
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
-  <!-- starts google fonts links -->
-  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
-  <!-- ends google fonts links -->
-  <link rel="shortcut icon" href="/img/logo-16.png" type="image/x-icon"/>
-  <link href="/css/csspin.css" rel="stylesheet" type="text/css"/>
-  <script type="text/javascript">
-      var minDate = new Date(820450800000);
-      var maxDate = new Date(<%=DATE_END.getTimeInMillis()%>);
-      var minYear = minDate.getFullYear();
-      var maxYear = maxDate.getFullYear();
-  </script>
+  <jsp:include page="/include/headerDefault.jsp" />
+  <%@ include file="/include/dates.jsp" %>
+
   <script type="text/javascript">
     calendarBegin = '<fmt:message key="calendar.begin" />'.replace("calendario", "calendário");
     calendarEnd = '<fmt:message key="calendar.end" />'.replace("calendario", "calendário");
@@ -349,35 +231,15 @@ response.setHeader("Cache-Control","public, max-age=600");
     };
   </script>
 
-  <link rel="stylesheet" title="Estilo principal" type="text/css" href="/css/newStyle.css?build=<c:out value='${initParam.buildTimeStamp}'/>"  media="all" />
-    <!-- font awesome -->
-    <link rel="stylesheet" href="/css/font-awesome.min.css">
-    <!-- bootstrap -->
-    <link rel="stylesheet" href="/css/bootstrap.min.css">
-    <script src="/js/jquery-latest.min.js"></script>
-    <script src="/js/bootstrap.min.js"></script>
-    <!-- dual slider dependencies -->
-    <script type="text/javascript" src="/js/nouislider.min.js"></script>
-    <link rel="stylesheet" href="/css/nouislider.min.css">
-    <script type="text/javascript" src="/js/wNumb.js"></script>
-    <!-- CSS loading spiner -->
-    <link href="/css/csspin.css" rel="stylesheet" type="text/css">
-    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5645cdb2e22ca317"></script>
-    <!-- end addthis for sharing on social media -->
 	<script type="text/javascript">
 		imageSearchAPI = "<%= pt.arquivo.webapp.Configuration.get("image.search.api", "https://arquivo.pt/imagesearch") %>";
 	</script>
 	<% if (pt.arquivo.webapp.Configuration.get("query.suggestion.api") != null) { %>
-      <script type="text/javascript">
-        querySuggestionAPI = '<%= pt.arquivo.webapp.Configuration.get("query.suggestion.api", request.getContextPath()+"/spellchecker/checker") %>';
-      </script>
-    <% } %>
-    <script type="text/javascript" src="/js/configs.js"></script>
+    <script type="text/javascript">
+      querySuggestionAPI = '<%= pt.arquivo.webapp.Configuration.get("query.suggestion.api", request.getContextPath()+"/spellchecker/checker") %>';
+    </script>
+  <% } %>
 
-  <script src="https://apis.google.com/js/client.js" type="text/javascript"> </script>
-  <script type="text/javascript" src="/js/ui.datepicker.js"></script>
-  <script type="text/javascript" src="/js/ui.datepicker-pt-BR.js"></script>
-  <!--<script type="text/javascript" src="/js/imageConfigs.js"></script>-->
   <script type="text/javascript" src="/js/images2.js?build=<c:out value='${initParam.buildTimeStamp}'/>"></script>
   <script type="text/javascript">
     $(".border-mobile").click(function(e) {
@@ -387,27 +249,10 @@ response.setHeader("Cache-Control","public, max-age=600");
     });
   </script>
 
-  <!-- NEW - 23.07.19: Call ionic -->
-  <script src="../@ionic/core/dist/ionic.js"></script>
-  <link rel="stylesheet" href="../@ionic/core/css/ionic.bundle.css">
-
   <script type="text/javascript">
     clickToCopy = '<fmt:message key="images.clickToCopy" />';
     language = '<%= language %>'
   </script>
-
-  <script type="text/javascript">
-  /*Addthis options share on facebook and twitter*/
-    var addthis_config = addthis_config||{};
-        addthis_config.data_track_addressbar = false;
-        addthis_config.data_track_clickback = false;
-  </script>
-      <!-- swiper main menu -->
-   <script type="text/javascript" src="/js/swiper.min.js"></script>
-  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5645cdb2e22ca317" async="async"></script>
-  <%@include file="include/analytics.jsp" %>
-
-  <script src="/js/uglipop.min.js"></script>
 
 </head>
 <body id="homeImages">
@@ -479,20 +324,16 @@ Content = {
     advancedHref = window.location.href.toString().replace("images.jsp", "advancedImages.jsp");
   </script>
   <script type="text/javascript" src="/js/encodeHTML.js"></script>
-  <%@ include file="include/imageHeaderMobile.jsp" %>
+  <%@ include file="/include/imageHeaderMobile.jsp" %>
   <script type="text/javascript">$('#imagesTab').addClass('selected');$('#imagesTab').addClass('primary-underline');</script>
 
   <p id="estimated-results" style="display: none;"><fmt:message key="search.results.estimated.results.1"/> <span id="estimated-results-value"></span> <fmt:message key="search.results.estimated.results.2"/> <%= dateStartYear %></p>
   <div class="spell hidden"><fmt:message key="search.spellchecker"/> <span class="suggestion"></span></div>
 
   <div class="row image-container">
+    <div id="loadingDiv" class="loader"><div></div></div>
     <script type="text/javascript">
-      document.write("<div id='loadingDiv' class='text-center lds-ring' style='text-align: center; margin-top: 10%; margin-bottom: 5%;display:block'><div></div><div></div><div></div><div></div></div>");
       $( document ).ready(function() {
-        if(typeof(loading)=="undefined" || loading != true){
-          $('#loadingDiv').hide();
-          $('#conteudo-resultado').show();
-        }
         $("#txtSearch").on('mousedown touchstart', function (e) {
           e.stopPropagation();
         });
@@ -599,8 +440,12 @@ Content = {
             (request.getParameter("site") == null || request.getParameter("site").equals(""))
      ){
     %>
-      <%@ include file="include/intro.jsp" %>
-
+      <%@ include file="/include/intro.jsp" %>
+      <script type="text/javascript">
+        $( document ).ready(function() {
+          $('#loadingDiv').hide();
+        });
+      </script>
     <% } %>
 
 </div></div>
@@ -635,8 +480,8 @@ Content = {
     $('#showSlides').hide();
   </script>
 
-<%@include file="include/analytics.jsp" %>
-<%@include file="include/footer.jsp" %>
+<%@include file="/include/analytics.jsp" %>
+<%@include file="/include/footer.jsp" %>
 </body>
 </html>
 
