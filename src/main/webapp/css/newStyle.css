@@ -494,11 +494,6 @@ body#homeImages .pagesNextPrevious {
   display: none;
   cursor: pointer;
 }
-@media (max-width: 300px) {
-  .month-version-div .month-right span {
-    display: none;
-  }
-}
 .month-version-div {
   text-align: center;
   display: none;
@@ -562,7 +557,6 @@ body#homeImages .pagesNextPrevious {
 }
 .yearText {
   color: white;
-  max-width: 30% !important;
 }
 .noVersions {
   background: #f7f7f7 !important;
@@ -570,19 +564,17 @@ body#homeImages .pagesNextPrevious {
   cursor: default !important;
   display: none;
 }
-@media (max-width: 215px) {
-  .numberVersions h4 span {
-    display: none;
-  }
-}
 .numberVersions {
-  float: right !important;
-  width: 70% !important;
+  float: right;
   padding-right: 1%;
   color: white;
   padding-bottom: 5px;
 }
+.iCarret {
+  margin-left: 15px;
+}
 .iCarretDisabled {
+  margin-left: 15px;
   visibility: hidden;
 }
 #resultados-url {
@@ -969,9 +961,6 @@ body#advanced .box-content, body#advanced-images .box-content {
 .list-versions-div:active {
   background: none;
 }
-.viewing-version {
-  font-weight: bold;
-}
 .urlBlock {
   margin-bottom: 5px;
   padding-left: 15px;
@@ -1115,11 +1104,23 @@ body#homeImages .spell {
   margin: 9px auto 11px auto;
   max-width: 914px;
 }
-.url-search-container #years {
-/*  margin: -9px 28px 0 28px !important;*/
+#years {
+  padding-bottom: 40px;
 }
-.url-search-container #conteudo-versoes {
+body#home-search #years {
+  margin: -9px 28px 0 28px !important;
+}
+body#home-search #conteudo-versoes {
   margin: -10px 20px 0 20px !important;
+}
+body#home-search #layoutTV {
+  margin: 11px 21px !important;
+  margin-bottom: 10px !important;
+  padding: 18px 0 23px 0 !important;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border-bottom: none !important;
+  background-color: #1c75c0 !important;
 }
 .clear-text {
   position: absolute;
@@ -1730,7 +1731,7 @@ a.advancedSearch {
   text-decoration: none;
   margin: 0 8px 0 0 !important;
   padding: 4px 10px 5px 10px !important;
-  border-radius: 5px;
+  border-radius: 7px;
   background-color: transparent;
   color: #007AFF;
   border: 1px solid #eceff0;
@@ -2044,15 +2045,8 @@ tr.trTV:nth-child(even) {
   background-color: #f2f2f2
 }
 #layoutTV {
-  /*margin: 11px 21px !important;
-  margin-bottom: 10px !important;*/
-  padding: 18px 0 23px 0 !important;
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
-  border-bottom: none !important;
-  background-color: #1c75c0 !important;
   text-align: center;
-  /*margin-top: 16px;*/
+  margin-top: 16px;
   margin-bottom: 15px;
   position: relative;
 }
@@ -2107,8 +2101,8 @@ tr.trTV:nth-child(even) {
   height: initial !important;
 }
 .row {
-  margin-right: -15px !important;
-  margin-left: -15px !important;
+  margin-right: -22px !important;
+  margin-left: -22px !important;
 }
 .menu-opcoes, .opcoes-top-direita {
   color: white;
@@ -2356,11 +2350,6 @@ h4.modalTitle {
   height: 100vh;
   padding: 0px 0px 40px 20px;
   display: block;
-}
-.url-search-iframe-container iframe {
-  border: 0; 
-  height: 50vh; 
-  width: 100%;
 }
 
 
@@ -2854,14 +2843,14 @@ h4.modalTitle {
     margin: 0 auto !important;
     float: none !important;
   }
-  .url-search-container #years {
+  body#home-search #years {
     margin: 1px auto 0 auto !important;
     width: 82.9% !important;
     max-width: 903px !important;
   }
 }
 @media (min-width:320px) and (max-width:399px) {
-  #layoutTV {
+  body#home-search #layoutTV {
     padding: 18px 0 15px 0 !important;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
@@ -2965,17 +2954,17 @@ h4.modalTitle {
   .call-to-actions {
     height: 600px !important;
   }
-  .url-search-container #conteudo-versoes {
+  body#home-search #conteudo-versoes {
     margin: 0 auto !important;
     width: 95.5% !important;
     max-width: 915px !important;
   }
-  .url-search-container #conteudo-versoes {
+  body#home-search #conteudo-versoes {
     margin: 0 auto !important;
     width: 95.5% !important;
     max-width: 915px !important;
   }
-  #layoutTV {
+  body#home-search #layoutTV {
     width: 95.5% !important;
     max-width: 915px !important;
     margin: 0 auto !important;
@@ -3084,18 +3073,18 @@ body#homeImages #searchBarButtonsDiv {
 }
 
 @media (min-width:769px) and (max-width:1024px) {
-  .url-search-container #years {
+  body#home-search #years {
     margin: 3px auto 0 auto !important;
     width: 93.3% !important;
     max-width: 901px !important;
   }
-  #layoutTV {
+  body#home-search #layoutTV {
     margin: -20px auto 0 auto !important;
     width: 95% !important;
     max-width: 914px !important;
     margin-bottom: 10px !important;
   }
-  .url-search-container #conteudo-versoes {
+  body#home-search #conteudo-versoes {
     margin: 0 auto !important;
     width: 95.1% !important;
     max-width: 915px !important;
@@ -3206,8 +3195,6 @@ body#home-search a#ImageButton:hover, a#ImageButton:active {
 #resultados-lista > ul > li:hover {
     background: white !important;  
     transition: background-color 0.5s;
-     -webkit-box-shadow: 0px 4px 5px -2px rgba(0, 0, 0, 0);
-  box-shadow: 0px 4px 5px -2px rgba(0, 0, 0, 0);
 }
 
 
@@ -3256,14 +3243,14 @@ display: flow-root;
 
 }
 
-.closeItAbsolute, .closeIt { 
-    top: 8px;
-    right: calc(25vw + 0px);
+.closeItAbsolute { 
+    top: 9px;
+    right: calc(33vw + -5px);    
 }
 
-.closeItAbsolute, .closeIt {
-    top: 8px;
-    right: calc(33vw + 0px);
+.closeIt {
+    top: 3px;
+    right: calc(32vw + 0px);  
 }
 
 body#homeImages .hydrated h4 {
