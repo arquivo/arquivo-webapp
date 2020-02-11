@@ -969,6 +969,9 @@ body#advanced .box-content, body#advanced-images .box-content {
 .list-versions-div:active {
   background: none;
 }
+.viewing-version {
+  font-weight: bold;
+}
 .urlBlock {
   margin-bottom: 5px;
   padding-left: 15px;

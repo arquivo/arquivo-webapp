@@ -47,8 +47,18 @@ public class URLSearch extends HttpServlet {
 			urlStartPos = 0;
 		}
 
+		String timestampToOpen = null;
+		if (timeIntervalPlusUrlQuery.matches("[0-9]+/.*")) {
+			int timestampQuerySeparatorPosition = timeIntervalPlusUrlQuery.indexOf("/");
+			timestampToOpen = timeIntervalPlusUrlQuery.substring(0, timestampQuerySeparatorPosition);
+			urlStartPos = timestampQuerySeparatorPosition + 1;
+		}
+
 		request.setAttribute("startTs", from);
 		request.setAttribute("endTs", to);
+		if (timestampToOpen != null) {
+			request.setAttribute("timestampToOpen", timestampToOpen);
+		}
 
 		String urlQuery = timeIntervalPlusUrlQuery.substring(urlStartPos, timeIntervalPlusUrlQuery.length());
 		request.setAttribute("urlQuery", urlQuery);

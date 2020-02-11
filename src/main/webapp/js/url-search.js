@@ -75,7 +75,7 @@ function createMatrixTable(waybackURL, firstVersionYear, versionsArray, versions
     var pos = getYearPosition(firstVersionYear, timestampStr);
     var dateFormated = getDateSpaceFormated(timestampStr);
     var shortDateFormated= getShortDateSpaceFormated(timestampStr);
-    var tdtoInsert = '<td class="tdTV"><a onclick="if(inIframe()) { callUrlSearchClickOnVersionOnParent(this.href); return false;}" href="'+waybackURL+'/'+timestampStr+'/'+url+'" title="'+dateFormated+'">'+shortDateFormated+'</a></td>';
+    var tdtoInsert = '<td class="tdTV"><a id="'+timestampStr+'" onclick="if(inIframe()) { callUrlSearchClickOnVersionOnParent(this.href); return false;}" href="'+waybackURL+'/'+timestampStr+'/'+url+'" title="'+dateFormated+'">'+shortDateFormated+'</a></td>';
     matrix[pos].push(tdtoInsert);
   }
 
@@ -372,19 +372,47 @@ var arquivo_endTs;
 var arquivo_insertOnElementId;
 var arquivo_loadingElementId;
 
-function initializeUrlSearch(waybackURL, urlQuery, startTs, endTs, insertOnElementId, loadingElementId, typeShow) {
+function initializeUrlSearch(waybackURL, urlQuery, startTs, endTs, insertOnElementId, loadingElementId, typeShow, timestampToOpen) {
   arquivo_waybackURL = waybackURL;
   arquivo_urlQuery = urlQuery;
   arquivo_startTs = startTs;
   arquivo_endTs = endTs;
   arquivo_insertOnElementId = insertOnElementId;
   arquivo_loadingElementId = loadingElementId;
+  arquivo_timestampToOpen = timestampToOpen;
   startUrlSearch(waybackURL, urlQuery, startTs, endTs, insertOnElementId, loadingElementId, typeShow);
 }
 
 function changeTypeShow(typeShow) {
   $("#"+arquivo_insertOnElementId).empty();
   startUrlSearch(arquivo_waybackURL, arquivo_urlQuery, arquivo_startTs, arquivo_endTs, arquivo_insertOnElementId, arquivo_loadingElementId, typeShow);
+}
+
+function openTimestamp(timestampToOpen){
+  // remove other viewing version timestamp
+  $(".viewing-version").each(function() {
+    $(this).removeClass("viewing-version");
+  });
+
+  const year = timestampToOpen.substring(0,4);
+  if (year) {
+    // click on that year if not already opened
+    const yearEle = $("#th_"+year)
+    if (! yearEle.hasClass("preventYear")) {
+      yearEle.click();
+    }
+    if (timestampToOpen.length >= 6) {
+      // click on month if that month not already opened
+      const month = timestampToOpen.substring(4,6);
+      const monthEle = $("#"+year+"_"+month);
+      if (! monthEle.hasClass("preventMonth")){
+        monthEle.click();
+      }
+
+      const timestampEle = $("#"+timestampToOpen);
+      if (timestampEle) timestampEle.addClass("viewing-version");
+    }
+  }
 }
 
 function startUrlSearch(waybackURL, urlQuery, startTs, endTs, insertOnElementId, loadingElementId, typeShow) {
@@ -460,7 +488,16 @@ function startUrlSearch(waybackURL, urlQuery, startTs, endTs, insertOnElementId,
         createErrorPage(urlQuery, insertOnElementId);
       }
 
+      openTimestamp(arquivo_timestampToOpen);
       callResizeIframeOnParent();
     }
   });
+}
+
+function replacePageAndHighlightTimestamp(url, timestamp) {
+  let urlSearchFunctionalityUrl = "/url/search";
+  function getContextPath() {
+     return window.location.pathname.substring(0, window.location.pathname.indexOf(urlSearchFunctionalityUrl));
+  }
+  window.location = getContextPath() + urlSearchFunctionalityUrl + '/' + timestamp + '/' + url;
 }

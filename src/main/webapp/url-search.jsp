@@ -10,6 +10,8 @@
 
   String startTs = (String) request.getAttribute("startTs");
   String endTs = (String) request.getAttribute("endTs");
+  String timestampToOpen = (String) request.getAttribute("timestampToOpen");
+  
 %>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<c:out value='${locale}' />" lang="<c:out value='${locale}' />">
 <head>
@@ -33,7 +35,7 @@
   <div id="loadingDiv" class="loader"><div></div></div>
   <script type="text/javascript">
 
-    initializeUrlSearch("<%=waybackURL%>", "<%=urlQuery%>", "<%=startTs%>", "<%=endTs%>", 'urlSearchContainer', 'loadingDiv', 'list');
+    initializeUrlSearch("<%=waybackURL%>", "<%=urlQuery%>", "<%=startTs%>", "<%=endTs%>", 'urlSearchContainer', 'loadingDiv', 'list', "<%=timestampToOpen%>");
   </script>
 </body>
 </html>
