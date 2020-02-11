@@ -494,6 +494,8 @@ function startUrlSearch(waybackURL, urlQuery, startTs, endTs, insertOnElementId,
   });
 }
 
+
+// function to be called on wayback parent iframe to update the displayed page and/or highligh specific timestamp
 function replacePageAndHighlightTimestamp(url, timestamp) {
   let urlSearchFunctionalityUrl = "/url/search";
   function getContextPath() {
@@ -503,6 +505,7 @@ function replacePageAndHighlightTimestamp(url, timestamp) {
   if (alreadySameURL) {
     openTimestamp(timestamp);
   } else {
-    window.location = getContextPath() + urlSearchFunctionalityUrl + '/' + timestamp + '/' + url;
+    // replace location to prevent the back browser button to back
+    window.location.replace(getContextPath() + urlSearchFunctionalityUrl + '/' + timestamp + '/' + url);
   }
 }
