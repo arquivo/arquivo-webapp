@@ -272,24 +272,25 @@ ion-item {
   margin-bottom: 10px;
   margin-top: 0px !important;
   transition: box-shadow 0.5s ease 0s;
-  /*-webkit-box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.0);
+  -webkit-box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.0);
   -moz-box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.0);
-  box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.0);*/
+  box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.0);
   background: white !important;
 }
 #resultados-lista ul li:hover, #resultados-lista ul li:active {
-  -webkit-box-shadow: 0px 4px 5px -2px rgba(0, 0, 0, 0.40) !important;
-  box-shadow: 0px 4px 5px -2px rgba(0, 0, 0, 0.40) !important;
-   -moz-box-shadow: 0px 3px 6px 0px rgba0, 0, 0, 0.40);
+  -webkit-box-shadow: 0px 4px 5px -2px rgba(0, 0, 0, 0.10) !important;
+  box-shadow: 0px 4px 5px -2px rgba(0, 0, 0, 0.10) !important;
+  -moz-box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.10) !important;
   cursor: pointer !important;
   transition: background-color 0.5s !important;
   transition: box-shadow 0.5s !important;
-  background: #efefef !important; 
+  background: #efefef !important;   
 }
 #resultados-lista > ul > li:nth-child(odd) {
   background: white !important;
  /* box-shadow: 0 3px 6px rgba(32, 33, 36, 0.18);*/
   transition: background-color 0.5s;
+  transition: box-shadow 0.5s !important;
 }
 #resultados-lista > ul > li:nth-child(odd):active {
  /* -webkit-box-shadow: 0px 4px 5px -2px rgba(0, 0, 0, 0.40) !important;
@@ -3001,6 +3002,7 @@ h4.modalTitle {
     border-radius: 4px;
     margin-left: 7px;
     margin-right: 7px;
+    padding: 10px 10px 22px 12px;
   }
   
     body#home-search #resultados-lista > ul > li:hover {
@@ -3093,8 +3095,8 @@ body#homeImages #searchBarButtonsDiv {
     font-family: roboto !important;
   }
   body#home-search span#buttonSearch button span {
-    top: 17px !important;
-    right: -12px !important;
+    top: 14px !important;
+    right: -15px !important;
   }
   #resultados-lista > ul > li {
     border: 1px solid #dfe1e5;
@@ -3202,14 +3204,14 @@ body#home-search a#ImageButton:hover, a#ImageButton:active {
 
 #resultados-lista > ul > li:nth-child(odd) {
     background: white !important;
-    box-shadow: none !important;
+   /* box-shadow: none !important;*/
     transition: background-color 0.5s;
 }
 
 
 #resultados-lista > ul > li:nth-child(even) {
     background: white !important;
-    box-shadow: none;
+   /* box-shadow: none;*/
     transition: background-color 0.5s;
 }
 
@@ -3241,18 +3243,18 @@ display: flow-root;
 }
 
 .card-height { 
-  width: 35vw;
+  width: 45vw;
 
 }
 
 .closeItAbsolute { 
     top: 9px;
-    right: calc(33vw + -5px);    
+    right: calc(33vw + -8px);    
 }
 
 .closeIt {
     top: 3px;
-    right: calc(32vw + 0px);  
+    right: calc(32vw + 6px);  
 }
 
 body#homeImages .hydrated h4 {
@@ -3427,9 +3429,7 @@ width:104px;
 body#home-search #years {
  
 }
-
-
-
+}
 /* iPad Portrait */
 @media (device-width: 768px) and (device-height:1024px) {
   body#homeImages span#buttonSearch button span {

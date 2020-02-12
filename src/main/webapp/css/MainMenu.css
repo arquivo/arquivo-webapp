@@ -173,6 +173,7 @@ color: #ccc !important;*/
     z-index: 16777269;
     opacity: 0.5;
     display: none;
+    cursor: ew-resize;
 }
 
 #menuButton{
