@@ -162,6 +162,7 @@ var MENU = MENU || (function(){
                                 '<button class="clean-button" id="switchDesktop" onclick="MENU.switchDesktop();"><h4><i class="fa fa-desktop padding-right-menu-icon" aria-hidden="true"></i> <fmt:message key='topbar.menu.desktop'/></h4></button>'+              
                                 '<a href="//sobre.arquivo.pt/<%=language%>" onclick=""><h4><i class="fa fa-info-circle padding-right-menu-icon" aria-hidden="true"></i> <fmt:message key='topbar.menu.about'/></h4></a>'+                           
                             '</div>');
+            this.attachKeyBoardEvent();
         },
         toggleLanguage: function() {
             localStorage.setItem("language", "<fmt:message key='topbar.OtherLanguageShort'/>".toUpperCase());           
@@ -276,6 +277,22 @@ var MENU = MENU || (function(){
         goToContent: function(){
             const mySwiper = document.querySelector('.swiper-container').swiper;
             mySwiper.slideTo(1);
+        },
+        attachKeyBoardEvent: function() {
+            if (document.onkeydown == null) {
+                document.onkeydown = function(evt) {
+                  // When pressing escape key close image
+                  var isEscape = false;
+                  if ("key" in evt) {
+                      isEscape = (evt.key === "Escape" || evt.key === "Esc");
+                  } else {
+                      isEscape = (evt.keyCode === 27);
+                  }
+                  if (isEscape) {
+                      MENU.goToContent();
+                  }
+                }
+            }
         },
     };
 }());   
