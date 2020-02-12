@@ -120,10 +120,6 @@ body#adavanced .swiper-container {
 background-color:#1a5f97ba;
 }
 
-#menuSwiperSlide #cp-link {
-	margin-top: 52px !important;	
-}
-
 #menuSwiperSlide button:nth-of-type(1) h4{
 	border-top: none !important;
 }
@@ -180,10 +176,8 @@ color: #ccc !important;*/
 	cursor: pointer;
 	margin-top: 7px;
 }
-#menuButton.cross{
-	margin-left: -63px;
-    top: 7px;
-    right: 1px;
+#menuButton.open{
+    display: none;
 }
 
 /*.clean-button {outline:1px solid red;}*/
@@ -213,7 +207,8 @@ body#advanced .logo-main-div, body#advanced-images .logo-main-div {
     padding-bottom: 16px !important;
 	background-color: /*#000*/ /*#1a73ba*//*#25517a*/#1c75c0;	
 	text-align: center;
-    z-index: 9;       
+    z-index: 9;
+    height: 48px;
 }
 
 #safeSearch .select-text {outline: 1px solid red;}
@@ -251,7 +246,31 @@ body#advanced .logo-main-div, body#advanced-images .logo-main-div {
 .main-menu:hover {/*background-color: #ebebeb*/}
 
 .main-menu-top-div{
-	background-color:#42a5f5
+	background-color:/*#42a5f5*//*#007AFF*//*#1c75c0*/#1a5f97ba !important;
+	margin-top: -1px;
+	padding-left: 3px;
+}
+
+.clean-button-no-fill {
+    background: none;
+    color: inherit;
+    border: none;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+    text-align: inherit;
+    padding: 0 10px;
+    width: auto;
+}
+
+.close-functions {
+    color: #fff !important;
+    width: 25px;
+    position: absolute;
+    right: /*16px*/11px;
+    top: /*12px*/14px;
+    font-size: /*24px*/19px !important;
+    font-weight: bold !important;
 }
 
 /* NEW Style: give a white curve effect to the search box*/

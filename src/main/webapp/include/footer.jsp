@@ -23,7 +23,7 @@
           if (slider.activeIndex === 0) { /*open menu*/
           	this.allowSlidePrev = true;
           	$('#mainMask').fadeIn('fast');
-            menuButton.classList.add('cross');
+            menuButton.classList.add('open');
             $('.swiper-container').removeClass('swiper-no-swiping');
             // required because of slideToClickedSlide
             menuButton.removeEventListener('click', openMenu, true);
@@ -31,7 +31,7 @@
           	 this.allowSlidePrev = false;
           	$('.swiper-container').addClass('swiper-no-swiping');
           	$('#mainMask').fadeOut('fast');
-            menuButton.classList.remove('cross');
+            menuButton.classList.remove('open');
           }
         }
         , slideChangeTransitionEnd: function () {
