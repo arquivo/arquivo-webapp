@@ -410,9 +410,10 @@ function openTimestamp(timestampToOpen){
       }
 
       const timestampEle = $("#"+timestampToOpen);
-      if (timestampEle) timestampEle.addClass("viewing-version");
-
-      document.getElementById(timestampToOpen).scrollIntoView();
+      if (timestampEle) {
+        timestampEle.addClass("viewing-version");
+        $('body').scrollTo(timestampEle);
+      }
     }
   }
 }
