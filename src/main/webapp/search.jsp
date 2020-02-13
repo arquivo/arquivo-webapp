@@ -304,7 +304,12 @@ String[] queryString_splitted=null;
       }
     </script>
     <script type="text/javascript" src="/js/encodeHTML.js"></script>
-    <%@ include file="/include/searchHeaderMobile.jsp" %>
+    
+    <%
+      String formAction = "/search.jsp";
+      String advancedSearchAction = "/advanced.jsp";
+    %>
+    <%@ include file="/include/searchForm.jsp" %>
 
     <script type="text/javascript">
       $( document ).ready(function() {

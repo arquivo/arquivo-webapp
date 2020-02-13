@@ -124,7 +124,13 @@ function updateQueryStringParameter(uri, key, value) {
   <%@ include file="/include/topbar.jsp" %>
 
   <div class="container-fluid topcontainer" id="headerSearchDiv">
-    <%@ include file="/include/homepageHeaderMobile.jsp" %>
+    
+    <%
+      String formAction = "/search.jsp";
+      String advancedSearchAction = "/advanced.jsp";
+    %>
+    <%@ include file="/include/searchForm.jsp" %>
+
     <script type="text/javascript">$('#pagesTab').addClass('selected');$('#pagesTab').addClass('primary-underline');</script>
   </div>
 

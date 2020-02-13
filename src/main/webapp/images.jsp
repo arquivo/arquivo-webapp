@@ -324,7 +324,15 @@ Content = {
     advancedHref = window.location.href.toString().replace("images.jsp", "advancedImages.jsp");
   </script>
   <script type="text/javascript" src="/js/encodeHTML.js"></script>
-  <%@ include file="/include/imageHeaderMobile.jsp" %>
+  
+    
+  <%
+    String formAction = "/images.jsp";
+    String advancedSearchAction = "/advancedImages.jsp";
+  %>
+  <%@ include file="/include/searchForm.jsp" %>
+
+
   <script type="text/javascript">$('#imagesTab').addClass('selected');$('#imagesTab').addClass('primary-underline');</script>
 
   <p id="estimated-results" style="display: none;"><fmt:message key="search.results.estimated.results.1"/> <span id="estimated-results-value"></span> <fmt:message key="search.results.estimated.results.2"/> <%= dateStartYear %></p>

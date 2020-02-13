@@ -6,7 +6,7 @@
                   document.write('<ion-datetime id="ionDateEnd" class="display-none" display-format="D/MMM/YYYY" min="'+minYear+'-01-01" max="'+maxYear+'-12-31" value="<%=dateEndStringIonic%>"></ion-datetime>');
                 </script>
                 <script type="text/javascript">
-                  if(language.toUpperCase() === 'EN') {
+                  if(typeof language !== 'undefined' && language.toUpperCase() === 'EN') {
                     monthShortNamesArray = ["<fmt:message key='smonth.0'/>".charAt(0).toUpperCase() + "<fmt:message key='smonth.0'/>".slice(1),
                     '<fmt:message key='smonth.1'/>'.charAt(0).toUpperCase()  + '<fmt:message key='smonth.1'/>'.slice(1),
                     '<fmt:message key='smonth.2'/>'.charAt(0).toUpperCase() + '<fmt:message key='smonth.2'/>'.slice(1) ,
@@ -41,14 +41,14 @@
                   $('#ionDateStart')[0].monthShortNames = monthShortNamesArray;
                    $('#ionDateEnd')[0].monthShortNames = monthShortNamesArray;
                 </script>
-                <form id="searchForm" action="/images.jsp">
+                <form id="searchForm" action='<%= formAction %>'>
                 <div id="form_container">
                     <script type="text/javascript">
                       function submitForm() {
                         $('.search-button').click();
                       }
 
-                    $( '#searchForm' ).submit( function( ) {
+                      $('#searchForm').submit(function() {
                         var dateStartInput = $( '#dateStart_top' ).val().trim();
                         var dateEndInput = $( '#dateEnd_top' ).val().trim();
                         var startTime = new Date( createDateJsFormat( dateStartInput ) );
@@ -60,7 +60,6 @@
                           modalErrorDates();
                           return false;
                         }
-
                         return true;
                       });
 
@@ -91,7 +90,7 @@
 
                             <input name="query" id="txtSearch" value="<c:out value = "${htmlQueryString}"/>" type="search" class="form-control no-radius search-input swiper-no-swiping" placeholder="<fmt:message key='home.search.placeholder'/>" autocapitalize="off" autocomplete="off" autocorrect="off">
                             <script type="text/javascript">
-                                 $('#txtSearch').keydown(function (e){
+                                  $('#txtSearch').keydown(function (e){
                                     if(e.keyCode == 13){
                                         submitForm();
                                     }
@@ -173,6 +172,7 @@
                         var newStartDate = $('#ionDateStart').val();
                         var newStartDateTokens = newStartDate.split('-');
                         var newStartDateFormated =  newStartDateTokens[2].split('T')[0] + "/" + newStartDateTokens[1]+ "/"+ newStartDateTokens[0];
+
                         /*ionic uses the date format 1996-01-31T00:00:00+01:00  , we need to convert the date to our own date format i.e.  31/01/1996 */
                         $('#dateStart_top').attr("value", newStartDateFormated);
 
@@ -191,9 +191,9 @@
                         var newEndDateTokens = newEndDate.split('-');
                         var newEndDateFormated =  newEndDateTokens[2].split('T')[0] + "/" + newEndDateTokens[1]+ "/"+ newEndDateTokens[0];
                         /*ionic uses the date format 1996-01-31T00:00:00+01:00  , we need to convert the date to our own date format i.e.  31/01/1996 */
-                         $('#dateEnd_top').attr("value", newEndDateFormated);
+                        $('#dateEnd_top').attr("value", newEndDateFormated);
 
-                                                //update span with new date
+                        //update span with new date
                         $('#calendarDayRight').text( removeZeroInDay( newEndDateTokens[2].split('T')[0] ) );
                         $('#calendarMonthRight').text( getMonthShortName(newEndDateTokens[1]) );
                         $('#calendarYearRight').text( newEndDateTokens[0] );
@@ -240,15 +240,15 @@
                         dualRange.value = { lower: "<%=dateStartYear%>", upper: "<%=dateEndYear%>" };
                       </script>
                       </ion-item>
-                     </div>
                      <!-- ends history range slider -->
+                    </div>
 
                      <!-- starts Paginas and images links option -->
                      <div id="searchBarButtonsDiv"><br>
                        <script type="text/javascript">
-                         document.write('<a id="PageButton" class="advancedSearch" href="'+pagesHref+'"><span><fmt:message key='home.pages'/></span></a>');
-                         document.write('<a id="ImageButton" class="advancedSearch selected-button" href="'+imagesHref+'"><span><fmt:message key='images.images'/></span></a>');
-                         document.write('<a id="advancedSearchButton" class="advancedSearch" href=/advancedImages.jsp<%= request.getQueryString() != null ? "?" + request.getQueryString() : "" %>><span><fmt:message key='topbar.menu.advanced'/></span></a> ');
+                         document.write('<a id="PageButton" class="pageLink advancedSearch" href="/search.jsp<%= request.getQueryString() != null ? "?" + request.getQueryString() : "" %>"><span><fmt:message key='home.pages'/></span></a>');
+                         document.write('<a id="ImageButton" class="advancedSearch selected-button imageLink" href="/images.jsp<%= request.getQueryString() != null ? "?" + request.getQueryString() : "" %>"><span><fmt:message key='images.images'/></span></a>');
+                         document.write('<a id="advancedSearchButton" class="advancedSearch" href="<%= advancedSearchAction %><%= request.getQueryString() != null ? "?" + request.getQueryString() : "" %>"><span><fmt:message key='topbar.menu.advanced'/></span></a> ');
                        </script>
                      </div>
                 </div>
@@ -256,20 +256,18 @@
 
         <script src="/include/clearForm.js"></script>
         <script type="text/javascript">
-          // Append a suffix to dates.
-          // Example: 23 => 23rd, 1 => 1st.
-          function nth (d) {
-            if(d>3 && d<21) return 'th';
-            switch (d % 10) {
-                  case 1:  return "st";
-                  case 2:  return "nd";
-                  case 3:  return "rd";
-                  default: return "th";
-              }
-          }
-
-
-        </script>
+        // Append a suffix to dates.
+        // Example: 23 => 23rd, 1 => 1st.
+        function nth (d) {
+          if(d>3 && d<21) return 'th';
+          switch (d % 10) {
+                case 1:  return "st";
+                case 2:  return "nd";
+                case 3:  return "rd";
+                default: return "th";
+            }
+        }
+      </script>
                 </form>
                 <ion-modal-controller></ion-modal-controller>
 <script type="text/javascript">
@@ -302,4 +300,4 @@ async function presentModal() {
 
             </div>
         </div>
-<!-- End ImageHeaderMobile -->
+<!-- End HomePageHeaderMobile -->
