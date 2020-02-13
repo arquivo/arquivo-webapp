@@ -246,8 +246,16 @@
                      <!-- starts Paginas and images links option -->
                      <div id="searchBarButtonsDiv"><br>
                        <script type="text/javascript">
-                         document.write('<a id="PageButton" class="pageLink advancedSearch" href="/search.jsp<%= request.getQueryString() != null ? "?" + request.getQueryString() : "" %>"><span><fmt:message key='home.pages'/></span></a>');
-                         document.write('<a id="ImageButton" class="advancedSearch selected-button imageLink" href="/images.jsp<%= request.getQueryString() != null ? "?" + request.getQueryString() : "" %>"><span><fmt:message key='images.images'/></span></a>');
+						function removeParams(urlSearch, searchParamsToRemove) {
+							var searchParams = new URLSearchParams(urlSearch);
+							searchParamsToRemove.forEach(p2r => searchParams.delete(p2r));
+							return searchParams.toString();
+						}
+						var queryStringCleaned = removeParams( new URL(window.location.href).search.slice(1), ["start"] );
+						queryStringCleaned = queryStringCleaned.length > 0 ? "?"+queryStringCleaned : "";
+
+                         document.write('<a id="PageButton" class="pageLink advancedSearch" href="/search.jsp'+queryStringCleaned+'"><span><fmt:message key='home.pages'/></span></a>');
+                         document.write('<a id="ImageButton" class="advancedSearch selected-button imageLink" href="/images.jsp'+queryStringCleaned+'"><span><fmt:message key='images.images'/></span></a>');
                          document.write('<a id="advancedSearchButton" class="advancedSearch" href="<%= advancedSearchAction %><%= request.getQueryString() != null ? "?" + request.getQueryString() : "" %>"><span><fmt:message key='topbar.menu.advanced'/></span></a> ');
                        </script>
                      </div>
@@ -300,4 +308,3 @@ async function presentModal() {
 
             </div>
         </div>
-<!-- End HomePageHeaderMobile -->
