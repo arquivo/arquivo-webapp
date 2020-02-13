@@ -476,16 +476,11 @@ String[] queryString_splitted=null;
         (request.getParameter("format") == null || request.getParameter("format").equals("") ) &&
         (request.getParameter("site") == null || request.getParameter("site").equals("")) ){
   %>
+    <%@ include file="/include/intro.jsp" %>
+    
+  <% } else { %>
     <div id="loadingDiv" class="loader"><div></div></div>
 
-    <%-- hide loading spinner--%>
-    <%@ include file="/include/intro.jsp" %>
-    <script type="text/javascript">
-      $( document ).ready(function() {
-        $('#loadingDiv').hide();
-      });
-    </script>
-  <% } else { %>
     <script type="text/javascript" src="/js/page-search.js?build=<c:out value='${initParam.buildTimeStamp}' />"></script>
 
     <div id="conteudo-resultado" class="container-fluid col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8 col-lg-offset-3 col-lg-6 col-xl-offset-4 col-xl-4">

@@ -8,16 +8,6 @@
     }
 })();
 
-/*
-$(document).ajaxStart(function(){
-    $('#loadingDiv').show();
-});
-
-$(document).ajaxStop(function(){
- $('#loadingDiv').hide();
-});
-*/
-
 function createErrorPage(){
   $(''+
     '<div id="conteudo-pesquisa-erro">'+
