@@ -130,6 +130,7 @@ function searchPages(startIndex){
 	                if (typeof currentDocument === 'undefined' || !currentDocument) {
 	                    continue;
 	                }
+	                var currentResultGlobalPosition = parseInt(startIndex) + i + 1;
 
 	                var title = currentDocument.title;
 	                var originalURL = currentDocument.originalURL;
@@ -159,7 +160,7 @@ function searchPages(startIndex){
 	                	<li${liAttributes}>
 							<div class="urlBlock">
 								<p class="url" title="${urlPresentation}">→ ${urlPresentation}</p>
-								<a href="${linkToArchive}">
+								<a href="${linkToArchive}" onclick="ga('send', 'event', 'Search result', 'Page search', 'Result position', ${currentResultGlobalPosition});">
 								    <div class="border-bottom"></div>
 								    <h2>
 								    	${mimeTypePresentation}

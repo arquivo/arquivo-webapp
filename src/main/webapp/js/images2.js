@@ -190,7 +190,7 @@ function checkElement(selector) {
     }
 }
 
-function insertInPosition(position, imageObj, imageHeight, expandedImageHeight, expandedImageWidth){
+function insertInPosition(position, imageObj, imageHeight, expandedImageHeight, expandedImageWidth, currentResultGlobalPosition){
   const maxImageHeight = 200;
   const realImageHeight = imageHeight <= maxImageHeight ? imageHeight : maxImageHeight;
   const displayUrlMaxWidth = (expandedImageWidth * realImageHeight / expandedImageHeight ) + 20;
@@ -208,7 +208,7 @@ function insertInPosition(position, imageObj, imageHeight, expandedImageHeight, 
   const urlToPresentation = formatURLForPresentation(imageObj.pageURL);
 
   var contentToInsert = ''+
-  '<div  class="imageContent" position='+position+' id="imageResults'+position+'" onclick = "openImage('+position+'); generateHash(\''+position+'\');">'+
+  '<div  class="imageContent" position='+position+' id="imageResults'+position+'" onclick="ga(\'send\', \'event\', \'Search result\', \'Image search\', \'Result position\', '+currentResultGlobalPosition+'); openImage('+position+'); generateHash(\''+position+'\');">'+
   '   <img  height="'+realImageHeight.toString()+'" src="'+imageObj.src+'"/>'+
   '   <p class="green image-display-url" style="max-width: '+displayUrlMaxWidth+'px" title="'+urlToPresentation+'">→ '+urlToPresentation+'</p>'+
   '   <p class="date image-display-date" id="date'+position+'">'+getDateSpaceFormated(imageObj.timestamp)+'</p>'+
@@ -661,6 +661,7 @@ function searchImagesJS(dateStartWithSlashes, dateEndWithSlashes, safeSearchOpti
                 if (typeof currentDocument === 'undefined' || !currentDocument || typeof currentDocument.imgTstamp === 'undefined' || !currentDocument.imgTstamp){                    
                     continue;
                 }
+                var currentResultGlobalPosition = parseInt(startIndex) + i + 1;
 
                 var currentImageURL = waybackURL +'/' + currentDocument.imgTstamp +'im_/'+currentDocument.imgSrc;
                 var imageDigest = currentDocument.imgDigest;
@@ -710,6 +711,7 @@ function searchImagesJS(dateStartWithSlashes, dateEndWithSlashes, safeSearchOpti
                 totalPosition = totalPosition + 1;
 
                 imageObj.src = "data:"+currentDocument.imgMimeType+";base64," + currentDocument.imgThumbnailBase64;
+                imageObj.currentResultGlobalPosition = currentResultGlobalPosition;
 
                 imageObj.onload = function() {
                             
@@ -721,7 +723,7 @@ function searchImagesJS(dateStartWithSlashes, dateEndWithSlashes, safeSearchOpti
                                
                             var insertPosition = (parseInt(this.position)+parseInt(currentStart));   
 
-                            insertInPosition(insertPosition, this, this.height, this.expandedHeight, this.expandedWidth);
+                            insertInPosition(insertPosition, this, this.height, this.expandedHeight, this.expandedWidth, this.currentResultGlobalPosition);
                        
                             if(resultsToLoad <= 0){
                                 loadingFinished(showNextPageButton);
