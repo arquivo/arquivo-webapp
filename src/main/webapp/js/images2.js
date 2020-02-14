@@ -128,10 +128,6 @@ const sleep = (milliseconds) => {
   return new Promise(resolve => setTimeout(resolve, milliseconds))
 }
 
-//async function getCurrentOpenImagePosition() {
-//  return parseInt( await document.querySelector('ion-slides').getActiveIndex() );
-//}
-
 function openImage(position){
   lastImageViewedByUser = parseInt(position);
   openImageViewer = true;
@@ -143,7 +139,10 @@ function openImage(position){
     initialSlide: 1,
     speed: 400,
     noSwipingClass: 'hide-me-class-swiper'
-  }       
+  }
+ 
+  openLazyLoadOriginalImage(position);
+
   $('ion-slides')[0].slideTo($('ion-slides')[0].slideTo($('#testViewer'+position).prevAll().length));
  
   sleep(500).then(() => {
@@ -152,6 +151,20 @@ function openImage(position){
   
   // hide search results
   document.getElementById("headerSearchDiv").style.display = "none";
+}
+
+function openLazyLoadOriginalImage(position) {
+  function loadImage(position) {
+    // load original image src
+    const imageElement = $('#testViewer'+position+ ' img');
+    if (imageElement && !imageElement.attr('src')) {
+      // set img src attribute with data-src attribute
+      imageElement.attr('src', imageElement.attr('data-src'));
+    }
+  }
+  loadImage(position); // current
+  loadImage(position-1); // previous
+  loadImage(position+1); // next
 }
 
 function closeImage(position){  
@@ -173,6 +186,7 @@ async function slideChanged() {
   const idx = await document.querySelector('ion-slides').getActiveIndex();
   if (Number.isInteger(idx)) {
     lastImageViewedByUser = idx;
+    openLazyLoadOriginalImage(idx);
   }
 }
 
@@ -251,12 +265,6 @@ function insertInPosition(position, imageObj, imageHeight, expandedImageHeight, 
 }    
 
 function  insertImageViewer(imageObj, position){
-  /*this If should be removed in production*/
-  /*due to lack of configurations and a proper test environment with images configured in solr for test purposes I had to load the images from Arquivo.pt directly*/
-  if(imageObj.currentImageURL.startsWith("http://m.p18") || imageObj.currentImageURL.startsWith("http://m.p51")){ //TODO wtf?! it's dangerous!
-    imageObj.currentImageURL = "https://"+imageObj.currentImageURL.substr(13,imageObj.currentImageURL.length);
-  }
-
 return ''+
 //image-expanded-full-width
 /*If landscaped image show it full width on small screens*/
@@ -267,7 +275,7 @@ return ''+
           '<div id="insert-card-'+position+'" class="full-height text-right">'+
               '<ion-card id="card'+position+'" class="card-height">'+
                  '<a href="'+waybackURL+'/'+imageObj.pageTstamp+'/'+imageObj.pageURL+'">'+
-                  (parseInt(imageObj.expandedWidth) >$( window ).width() ? '<img class="image-expanded-viewer image-expanded-full-width" src="'+imageObj.currentImageURL+'">' : '<img class="image-expanded-viewer" src="'+imageObj.currentImageURL+'">')+
+                    '<img ' + (parseInt(imageObj.expandedWidth) >$( window ).width() ? 'class="image-expanded-viewer image-expanded-full-width" ' : 'class="image-expanded-viewer" ') + 'data-src="'+imageObj.currentImageURL+'" />'+
                  '</a>'+
                  '<ion-row class="image-viewer-expanded-main-actions">'+
                       '<ion-col size="6" class="text-left"><a href="'+waybackURL+'/'+imageObj.pageTstamp+'/'+imageObj.pageURL+'"><ion-button size="small" class="visit-page border-mobile" fill="clear"><ion-icon name="globe" class="middle"></ion-icon><span class="middle"><h5>&nbsp;'+details.visit+'</h5></span></ion-button></a></ion-col>'+
@@ -675,7 +683,7 @@ function searchImagesJS(dateStartWithSlashes, dateEndWithSlashes, safeSearchOpti
                 }
 
                 var pageURL = currentDocument.pageURL;
-                var thumbnail = currentImageURL;
+                // var thumbnail = currentImageURL;
 
                 
                 imageObj = new Image();
@@ -718,16 +726,16 @@ function searchImagesJS(dateStartWithSlashes, dateEndWithSlashes, safeSearchOpti
                     if( startIndex != 0 &&  totalResults == responseJson.totalResults){
                         $('#loadingDiv').remove();
                     }
-                            totalResults --;
-                            resultsToLoad --;
-                               
-                            var insertPosition = (parseInt(this.position)+parseInt(currentStart));   
-
-                            insertInPosition(insertPosition, this, this.height, this.expandedHeight, this.expandedWidth, this.currentResultGlobalPosition);
+                    totalResults --;
+                    resultsToLoad --;
                        
-                            if(resultsToLoad <= 0){
-                                loadingFinished(showNextPageButton);
-                            }
+                    var insertPosition = (parseInt(this.position)+parseInt(currentStart));   
+
+                    insertInPosition(insertPosition, this, this.height, this.expandedHeight, this.expandedWidth, this.currentResultGlobalPosition);
+               
+                    if(resultsToLoad <= 0){
+                        loadingFinished(showNextPageButton);
+                    }
                     
                 }
                
