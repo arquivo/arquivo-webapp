@@ -265,6 +265,15 @@ var MENU = MENU || (function(){
             setTimeout(function(){
             $('#alertCopy').remove();
             }, 2000); /*time to show the notification plus the time to do the fadeout effect*/
+
+            // aditionally if browser has the web share api, share the link
+            if (navigator.share) {
+              navigator.share({
+                url: urlToCopy,
+              })
+              .then(() => console.log('Successful share'))
+              .catch((error) => console.log('Error sharing', error));
+            }
         },
         pagesClick: function(){
             $('#pagesCarret').toggleClass('fa-caret-up fa-caret-down');
