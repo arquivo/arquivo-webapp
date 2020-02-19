@@ -20,7 +20,11 @@
 <link rel="stylesheet" href="/css/font-awesome.min.css" />
 
 <link rel="stylesheet" href="/css/bootstrap.min.css" />
-<script type="text/javascript" src="/js/jquery-latest.min.js"></script>
+
+<link rel="stylesheet" href="/static/jquery-ui-1.12.1.custom/jquery-ui.min.css" media="none" onload="if(media!='all')media='all'" /><%-- Lazy load css download --%>
+<script src="/static/jquery-3.4.1.min.js"></script>
+<script async src="/static/jquery-ui-1.12.1.custom/jquery-ui.js"></script><%-- async to lazy load --%>
+
 <script type="text/javascript" src="/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="/js/js.cookie.js"></script>
 <script type="text/javascript" src="/js/swiper.min.js"></script>
@@ -46,13 +50,3 @@
 <link rel="stylesheet" href="/@ionic/core/css/ionic.bundle.css" />
 
 <script src="/js/uglipop.min.js"></script>
-
-<%-- 
-
-load Jquery UI date picker
-<script type="text/javascript" src="/js/ui.datepicker.js"></script>
-<script type="text/javascript" src="/js/ui.datepicker-pt-BR.js"></script>
-
-jquery-ui-1.7.2.custom
-
---%>

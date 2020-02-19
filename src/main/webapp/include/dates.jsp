@@ -30,4 +30,6 @@
 	var maxYear = maxDate.getFullYear();
   const dateStartString = "<%=dateStartString%>";
   const dateEndString = "<%=dateEndString%>";
+  const dateStart = new Date(<%=dateStart.getTimeInMillis()%>);
+  const dateEnd = new Date(<%=dateEnd.getTimeInMillis()%>);
 </script>

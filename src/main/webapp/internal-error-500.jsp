@@ -16,13 +16,6 @@
 <%@ include file="/include/i18n.jsp" %>
 <fmt:setLocale value="<%=language%>"/>
 
-<%!	//To please the compiler since logging need those -- check [search.jsp]
-	private static int hitsTotal = -10;		// the value -10 will be used to mark as being "advanced search"
-	private static Calendar DATE_START = new GregorianCalendar(1996, 1-1, 1);
-	private static Calendar dateStart = new GregorianCalendar();
-	private static Calendar dateEnd = new GregorianCalendar();
-%>
-
 <%---------------------- Start of HTML ---------------------------%>
 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<c:out value='${locale}' />" lang="<c:out value='${locale}' />">
@@ -33,10 +26,8 @@
 	<meta http-equiv="Content-Language" content="<c:out value='${locale}' />" />
 	<meta name="Keywords" content="<fmt:message key='500.meta.keywords'/>" />
 	<meta name="Description" content="<fmt:message key='500.meta.description'/>" />
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="shortcut icon" href="/img/logo-16.png" type="image/x-icon" />
-	<link rel="stylesheet" title="Estilo principal" type="text/css" href="/css/style.css"  media="all" />
-	<script type="text/javacsript" src="stream-min.js"></script>
+	
+	<jsp:include page="/include/headerDefault.jsp" />
 </head>
 <body>
 	<%@ include file="/include/topbar.jsp" %>

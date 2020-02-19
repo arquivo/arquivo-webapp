@@ -9,3 +9,6 @@
     document.write('<script type="text/javascript" language="JavaScript" src="<%=request.getContextPath()%>/js/properties/ConstantsPT.js?build=<c:out value='${initParam.buildTimeStamp}' />"><\/script>');
   }
 </script>
+<% if (language.equals("pt")) { %>
+	<script type="text/javascript" src="/static/jquery-ui-1.12.1.custom/datepicker-pt.js"></script>
+<% } %>

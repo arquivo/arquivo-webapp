@@ -95,7 +95,7 @@ input {
   position: relative;
   z-index: 999997
 }
-#sliderCircleRight {
+#sliderCircleEnd {
   position: relative;
   padding-right: 9px;
   padding-top: 0px;
@@ -110,7 +110,7 @@ input {
   color: #1a73ba;
   z-index: -1;
 }
-#sliderCircleLeft {
+#sliderCircleStart {
   position: relative;
   padding-right: 36px;
   margin-left: 0px;
@@ -124,7 +124,7 @@ input {
   z-index: -1;
 }
 /* NEW style: calendar month and day */
-#calendarDayLeft {
+#calendarDayStart {
   position: relative;
   top: 29px;
   left: -9.8px;
@@ -133,7 +133,7 @@ input {
   color: #1a73ba;
   font-family: helvetica, arial !important;
 }
-#calendarMonthLeft {
+#calendarMonthStart {
   position: relative;
   top: 8.3px;
   left: 12px;
@@ -142,7 +142,7 @@ input {
   color: #1a73ba;
   font-family: helvetica, arial !important;
 }
-#calendarDayRight {
+#calendarDayEnd {
   position: relative;
   top: 27px;
   left: -8.5px;
@@ -151,7 +151,7 @@ input {
   color: #1a73ba;
   font-family: helvetica, arial !important;
 }
-#calendarMonthRight {
+#calendarMonthEnd {
   position: relative;
   top: 8.3px;
   left: 11px;
@@ -160,7 +160,7 @@ input {
   color: #1a73ba;
   font-family: helvetica, arial !important;
 }
-#calendarYearLeft {
+#calendarYearStart {
   position: relative;
   bottom: 30px;
   left: 1.1px;
@@ -168,7 +168,7 @@ input {
   font-size: 1.2em;
   font-family: helvetica, arial !important;
 }
-#calendarYearRight {
+#calendarYearEnd {
   position: relative;
   bottom: 29px;
   left: 3px;

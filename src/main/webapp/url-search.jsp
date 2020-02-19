@@ -21,7 +21,7 @@
 
   <jsp:include page="/include/headerDefault.jsp" />
   <%@ include file="/include/dates.jsp" %>
-  <jsp:include page="/include/i18njs.jsp" />
+  <%@ include file="/include/i18njs.jsp" %>
 
   <script type="text/javascript">
     waybackURL = "<%= pt.arquivo.webapp.Configuration.get("wayback.url", "examples.com") %>";

@@ -213,6 +213,7 @@ response.setHeader("Cache-Control","public, max-age=600");
 
   <jsp:include page="/include/headerDefault.jsp" />
   <%@ include file="/include/dates.jsp" %>
+  <%@ include file="/include/i18njs.jsp" %>
 
   <script type="text/javascript">
     calendarBegin = '<fmt:message key="calendar.begin" />'.replace("calendario", "calendário");
