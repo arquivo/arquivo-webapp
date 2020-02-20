@@ -329,47 +329,7 @@
 
       <script src="/include/clearForm.js"></script>
       <script type="text/javascript">
-        // Append a suffix to dates.
-        // Example: 23 => 23rd, 1 => 1st.
-        function nth (d) {
-          if(d>3 && d<21) return 'th';
-          switch (d % 10) {
-                case 1:  return "st";
-                case 2:  return "nd";
-                case 3:  return "rd";
-                default: return "th";
-            }
-        }
       </script>
     </form>
-    <ion-modal-controller></ion-modal-controller>
-    <script type="text/javascript">
-      customElements.define('modal-page', class extends HTMLElement {
-        connectedCallback() {
-          this.innerHTML = `
-          <ion-header>
-            <ion-toolbar>
-              <ion-title>Super Modal</ion-title>
-            </ion-toolbar>
-          </ion-header>
-          <ion-content>
-            Content
-          </ion-content>`;
-        }
-      });
-
-      async function presentModal() {
-        // initialize controller
-        const modalController = document.querySelector('ion-modal-controller');
-        await modalController.componentOnReady();
-
-        // present the modal
-        const modalElement = await modalController.create({
-          component: 'modal-page'
-        });
-        await modalElement.present();
-      }
-    </script>
-
-    </div>
+  </div>
 </div>
