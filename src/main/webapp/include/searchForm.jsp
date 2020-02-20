@@ -327,8 +327,15 @@
         </div>
       </div>
 
-      <script src="/include/clearForm.js"></script>
       <script type="text/javascript">
+        $("#txtSearch").on("change paste keyup", function() {
+          $(this).val().trim().length > 0 ? $('.clear-text').show() : $('.clear-text').hide();
+        }); 
+        $(".clear-text").on("click", function() {
+           $("#txtSearch").val('');
+           $(this).hide();
+           $("#txtSearch").focus();
+        });     
       </script>
     </form>
   </div>
