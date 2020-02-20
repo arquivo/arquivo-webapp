@@ -119,6 +119,12 @@ var ARQUIVO = ARQUIVO || (function(){
 			import('/static/jquery.inputmask-3.3.11/jquery.inputmask.bundle.js').then(module => {
 				$(input).inputmask( _inputmaskConfiguration() );
 		    });
-		}
+		},
+
+		removeParams: function(urlSearch, searchParamsToRemove) {
+	    	var searchParams = new URLSearchParams(urlSearch);
+	        searchParamsToRemove.forEach(p2r => searchParams.delete(p2r));
+	        return searchParams.toString();
+	    }
     };
 }());

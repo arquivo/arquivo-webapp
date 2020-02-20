@@ -311,12 +311,8 @@
               function submitSearchFormTo(action) {
                 $('#searchForm').attr('action', action).submit();
               }
-              function removeParams(urlSearch, searchParamsToRemove) {
-                var searchParams = new URLSearchParams(urlSearch);
-                searchParamsToRemove.forEach(p2r => searchParams.delete(p2r));
-                return searchParams.toString();
-              }
-              var queryStringCleaned = removeParams( new URL(window.location.href).search.slice(1), ["start"] );
+              
+              var queryStringCleaned = ARQUIVO.removeParams( new URL(window.location.href).search.slice(1), ["start"] );
               queryStringCleaned = queryStringCleaned.length > 0 ? "?"+queryStringCleaned : "";
 
               document.write('<a id="PageButton" class="pageLink advancedSearch" href="/search.jsp'+queryStringCleaned+'" onclick="submitSearchFormTo(\'/search.jsp\'); return false;"><span><fmt:message key='home.pages'/></span></a>');
