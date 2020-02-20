@@ -270,7 +270,7 @@
 
                   ARQUIVO_SEARCH_DATES.updateCalendarCard( "Start", newDate );
 
-                  var currentDateEnd = $('#calendarYearStart').text();
+                  var currentDateEnd = $('#calendarYearEnd').text();
                   //update dual range
                   dualRange.value = { lower: newDate.getFullYear(), upper: currentDateEnd };
                   $('#dateStart_top').change();
