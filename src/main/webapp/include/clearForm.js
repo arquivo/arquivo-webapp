@@ -10,8 +10,8 @@ $(".clear-text").on("click", function() {
 });     
 $('#searchForm').submit(function() 
 {
-    if ($.trim($(".form-control").val()) === "") {
+    //if ($.trim($(".form-control").val()) === "") {
         /*TODO:: Do something when user enters empty input?*/
-    return false;
-    }
+    //return false;
+    //}
 });    
