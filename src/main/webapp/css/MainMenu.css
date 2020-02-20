@@ -308,11 +308,11 @@ body#advanced .logo-main-div, body#advanced-images .logo-main-div {
 span#buttonSearch {}
 
 
-body#advanced .container-fluid, body#advanced-images .container-fluid{width: 100%;margin:0;padding: 0
+body#advanced .container-fluid, body#advanced-images .container-fluid{
+    width: 100%;margin:0;padding: 0
     width: 100%;
     margin: 0;   
     padding: 0px 0 /*20px*/0px 0;   
-    background-color:/*#f8f8f8*//*#f6f6f6*//*#eeeeee*/ /*#fff*/#f8f8f8 !important;
 }
 body#advanced #main #conteudo-pesquisa, body#advanced-images #main #conteudo-pesquisa{
 	margin-top: -34px;

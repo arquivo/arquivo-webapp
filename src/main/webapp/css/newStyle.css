@@ -710,6 +710,7 @@ legend.scheduler-border {
 .expandable-div {
   background-color: #000;
   color: grey;
+  border-bottom: 1px solid #dfe1e5;
 }
 .expandable-div legend:active {
   background-color: #007AFF;
@@ -793,12 +794,11 @@ input[type=text] {
   padding-top: 2px !important;
 }
 .expandable-div legend {
-  border-bottom: 1px solid #2196f3 !important;
-  border-bottom: 1px solid #9e9e9e52 !important;
   background-color: white !important;
   color: black !important;
   font-weight: bold;
   transition: background-color 0.5s;
+  border-bottom-width: 0px;
 }
 .expandable-div legend:active {
   background-color: #ccc !important;
@@ -896,9 +896,6 @@ body#advanced .calendar-anchor-advanced img, body#advanced-images .calendar-anch
   right: 4px;
   z-index: 999999999;
   width: 29px;
-}
-body#advanced .box-content, body#advanced-images .box-content {
-  display: none;
 }
 .calendar-anchor-advanced img {
   position: absolute;
