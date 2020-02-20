@@ -1,5 +1,7 @@
 <%@ taglib uri="http://java.sun.com/jstl/fmt_rt" prefix="fmt" %>
 <%@ taglib uri="http://java.sun.com/jstl/core" prefix="c" %>
+
+<%@ include file="/include/i18n.jsp" %>
 <%
   // configurations
   String waybackURL = pt.arquivo.webapp.Configuration.get("wayback.url", "examples.com");
@@ -11,7 +13,6 @@
   String startTs = (String) request.getAttribute("startTs");
   String endTs = (String) request.getAttribute("endTs");
   String timestampToOpen = (String) request.getAttribute("timestampToOpen");
-  
 %>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<c:out value='${locale}' />" lang="<c:out value='${locale}' />">
 <head>
