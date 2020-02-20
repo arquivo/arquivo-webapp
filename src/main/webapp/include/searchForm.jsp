@@ -189,9 +189,8 @@
         </div>
         <!-- starts search lupe and "x" close button -->
         <div>
-          <span class="clear-text"><i class="fa fa-close"></i></span>
-            <span id="buttonSearch" class="input-group-addon no-radius search-button-span">
-             <button class="search-button" type="submit">
+          <span id="buttonSearch" class="input-group-addon no-radius search-button-span">
+            <button class="search-button" type="submit">
               <span class="glyphicon glyphicon-search white"></span>
             </button>
           </span>
@@ -324,14 +323,11 @@
       </div>
 
       <script type="text/javascript">
-        $("#txtSearch").on("change paste keyup", function() {
-          $(this).val().trim().length > 0 ? $('.clear-text').show() : $('.clear-text').hide();
-        }); 
-        $(".clear-text").on("click", function() {
-           $("#txtSearch").val('');
-           $(this).hide();
-           $("#txtSearch").focus();
-        });     
+        window.onload = function() {
+          if (! ARQUIVO.isMobileOrTablet()) {
+            ARQUIVO.focusInputIfEmpty($("#txtSearch"));
+          }
+        };
       </script>
     </form>
   </div>

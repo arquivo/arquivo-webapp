@@ -125,6 +125,14 @@ var ARQUIVO = ARQUIVO || (function(){
             var searchParams = new URLSearchParams(urlSearch);
             searchParamsToRemove.forEach(p2r => searchParams.delete(p2r));
             return searchParams.toString();
+        },
+
+        focusInputIfEmpty: function(input) {
+            const i = $(input);
+            const v = i.val();
+            if (v.length == 0) {
+                i.focus();
+            }
         }
     };
 }());
