@@ -11,9 +11,9 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
-<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet" />  <!-- needed ? -->
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap" rel="stylesheet" media="none" onload="if(media!='all')media='all'" /><%-- Lazy load css download --%>
+<link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet" media="none" onload="if(media!='all')media='all'" /><%-- Lazy load css download --%>
+<link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet" media="none" onload="if(media!='all')media='all'" /><%-- Lazy load css download --%>
 
 <link rel="shortcut icon" href="/img/logo-16.png" type="image/x-icon" />
 <link rel="stylesheet" title="Estilo principal" type="text/css" href="/css/newStyle.css?build=<c:out value='${initParam.buildTimeStamp}'/>"  media="all" />
