@@ -204,7 +204,7 @@ var MENU = MENU || (function(){
                 var txtSearch = document.getElementById('txtSearch').value.toString();
                 var newURL = "";
                 if(txtSearch !='' && txtSearch != undefined){
-                    newURL = "/advanced.jsp?l=<%=language%>&query="+encodeHtmlEntities( document.getElementById( 'txtSearch' ).value.toString( ) );
+                    newURL = "/advanced.jsp?l=<%=language%>&query="+ARQUIVO.encodeHtmlEntities( document.getElementById( 'txtSearch' ).value.toString( ) );
                     console.log( 'newURL => ' + newURL );
                    
                     
@@ -218,7 +218,7 @@ var MENU = MENU || (function(){
                 var txtSearch = document.getElementById('txtSearch').value.toString();
                 var newURL = "";
                 if(txtSearch !='' && txtSearch != undefined){
-                    newURL = "/advancedImages.jsp?l=<%=language%>&query="+encodeHtmlEntities( document.getElementById( 'txtSearch' ).value.toString( ) );
+                    newURL = "/advancedImages.jsp?l=<%=language%>&query="+ARQUIVO.encodeHtmlEntities( document.getElementById( 'txtSearch' ).value.toString( ) );
                 } else {
                     newURL = "/advancedImages.jsp?l=<%=language%>";
                 }

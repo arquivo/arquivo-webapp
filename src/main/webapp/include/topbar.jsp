@@ -1,24 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd" >
-<%@page import="java.net.URL"%>
-
-<%@ page
-	session="true"
-	contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"
-
-	import="java.io.File"
-	import="java.io.IOException"
-	import="java.net.URLEncoder"
-	import="java.text.DateFormat"
-	import="java.util.Calendar"
-	import="java.util.Date"
-	import="java.util.regex.Matcher"
-	import="java.util.regex.Pattern"
-	import="java.util.GregorianCalendar"
-%>
-
-<!-- Main Menu Dependencies -->
+<!-- Top bar -->
 <link rel="stylesheet" href="/css/swiper.min.css">
 <link rel="stylesheet" href="/css/MainMenu.css?build=<c:out value='${initParam.buildTimeStamp}'/>" />
 <%@ include file="MainMenu.jsp" %>

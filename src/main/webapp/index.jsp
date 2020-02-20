@@ -78,7 +78,7 @@
       var newURL = "";
       var txtSearch = document.getElementById('txtSearch').value.toString();
       if(txtSearch !='' && txtSearch != undefined){
-               newURL = "/advanced.jsp?l=<%=language%>&query="+encodeHtmlEntities(txtSearch);
+               newURL = "/advanced.jsp?l=<%=language%>&query="+ARQUIVO.encodeHtmlEntities(txtSearch);
 
       } else {
         newURL = "/advanced.jsp?l=<%=language%>";

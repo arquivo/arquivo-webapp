@@ -303,7 +303,6 @@ String[] queryString_splitted=null;
           return rtn;
       }
     </script>
-    <script type="text/javascript" src="/js/encodeHTML.js"></script>
     
     <%
       String formAction = "/search.jsp";
@@ -319,8 +318,6 @@ String[] queryString_splitted=null;
       });
     </script>
     <script type="text/javascript">$('#pagesTab').addClass('selected');$('#pagesTab').addClass('primary-underline');</script>
-    <script type="text/javascript" src="/js/searchHeaderMobile.js"></script><!-- In progress
-  -->
 
 
 

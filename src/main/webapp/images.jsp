@@ -324,8 +324,6 @@ Content = {
     pagesHref = window.location.href.toString().replace("images.jsp", "search.jsp"); /*TODO remove from this href parameters that are only appliable to image search*/
     advancedHref = window.location.href.toString().replace("images.jsp", "advancedImages.jsp");
   </script>
-  <script type="text/javascript" src="/js/encodeHTML.js"></script>
-  
     
   <%
     String formAction = "/images.jsp";

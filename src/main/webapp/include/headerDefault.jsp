@@ -23,7 +23,7 @@
 
 <link rel="stylesheet" href="/static/jquery-ui-1.12.1.custom/jquery-ui.min.css" media="none" onload="if(media!='all')media='all'" /><%-- Lazy load css download --%>
 <script src="/static/jquery-3.4.1.min.js"></script>
-<script async src="/static/jquery-ui-1.12.1.custom/jquery-ui.js"></script><%-- async to lazy load --%>
+<script src="/static/jquery-ui-1.12.1.custom/jquery-ui.js"></script><%-- async to lazy load --%>
 
 <script type="text/javascript" src="/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="/js/js.cookie.js"></script>
@@ -40,8 +40,6 @@
 <link href="/css/mobiscroll.custom-2.6.2.min.css" rel="stylesheet" type="text/css" />
 <script src="/js/mobiscroll.custom-2.6.2.min.js" type="text/javascript"></script>
 
-<script type="text/javascript" src="/js/encodeHTML.js"></script>
-
 <script type="text/javascript" src="/js/configs.js"></script>
 
 <script type="module" src="/@ionic/core/dist/ionic/ionic.esm.js"></script>
@@ -50,3 +48,5 @@
 <link rel="stylesheet" href="/@ionic/core/css/ionic.bundle.css" />
 
 <script src="/js/uglipop.min.js"></script>
+
+<script src="/js/arquivo.js?build=<c:out value='${initParam.buildTimeStamp}'/>"></script>
