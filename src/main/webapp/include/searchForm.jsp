@@ -22,6 +22,8 @@
                 <div id="${datePickerId}">
               </div>
             `);
+
+            jQuery('#'+dateInputId).inputmask({ regex: "[0-3][0-9]\/[0-1][0-9]\/[1-2][0-9][0-9][0-9]" });
             
             // open date picker div
             $("#"+datePickerId).datepicker({
@@ -378,3 +380,5 @@
 
     </div>
 </div>
+
+<script async src="/static/jquery.inputmask-3.3.11/jquery.inputmask.bundle.js" /><%-- async to lazy load --%>
