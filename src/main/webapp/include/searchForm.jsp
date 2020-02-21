@@ -64,73 +64,25 @@
           updateCalendarCard: function(type, dateToPutOnCard) {
             // type: like 'Start or 'End
             // date: a date javascript object
+            $('#date'+type+'_top').attr("value", ARQUIVO.formatJSDateToPresentation(dateToPutOnCard) );
 
-            $('#date'+type+'_top').attr("value", this.formatJSDateToPresentation(dateToPutOnCard) );
-
-            function removeZeroInDay(dayStr){
-              if(dayStr.length == 2 && dayStr.charAt(0) === "0"){
-                return dayStr.charAt(1);
-              }
-              return dayStr;
-            }
-            const d = removeZeroInDay( dateToPutOnCard.getDate() ); // get the day of the month
+            const d = ARQUIVO.removeZeroInDay( dateToPutOnCard.getDate() ); // get the day of the month
             $('#calendarDay'+type).text( d );
             
-            const m = this.monthShortNamesArray()[ dateToPutOnCard.getMonth() ];
+            const m = ARQUIVO.monthShortNamesArray()[ dateToPutOnCard.getMonth() ];
             $('#calendarMonth'+type).text( m );
 
             $('#calendarYear'+type).text( dateToPutOnCard.getFullYear() );
           },
-          convertIonDateToJSDate: function(ionDate) {
-            /*ionic uses the date format 1996-01-31T00:00:00+01:00  , we need to convert the date to our own date format i.e.  31/01/1996 */
-            var newDate = $(ionDate).val();
-            var newDateTokens = newDate.split('-');
-            //var newDateFormated =  newDateTokens[2].split('T')[0] + "/" + newDateTokens[1]+ "/"+ newDateTokens[0];
-            return new Date(newDateTokens[0], parseInt(newDateTokens[1])-1, parseInt(newDateTokens[2].split('T')[0]) );
-          },
-          formatJSDateToPresentation: function(date) {
-            const d = new Date(date);
-            var sdate = [
-              ('0' + d.getDate()).slice(-2),
-              ('0' + (d.getMonth() + 1)).slice(-2),
-              d.getFullYear()
-            ].join('/');
-            return sdate;
-          },
-          monthShortNamesArray: function() {
-            if(typeof language !== 'undefined' && language.toUpperCase() === 'EN') {
-              monthShortNamesArray = ["<fmt:message key='smonth.0'/>".charAt(0).toUpperCase() + "<fmt:message key='smonth.0'/>".slice(1),
-              '<fmt:message key='smonth.1'/>'.charAt(0).toUpperCase()  + '<fmt:message key='smonth.1'/>'.slice(1),
-              '<fmt:message key='smonth.2'/>'.charAt(0).toUpperCase() + '<fmt:message key='smonth.2'/>'.slice(1) ,
-              '<fmt:message key='smonth.3'/>'.charAt(0).toUpperCase() + '<fmt:message key='smonth.3'/>'.slice(1) ,
-              '<fmt:message key='smonth.4'/>'.charAt(0).toUpperCase() + '<fmt:message key='smonth.4'/>'.slice(1),
-              '<fmt:message key='smonth.5'/>'.charAt(0).toUpperCase() + '<fmt:message key='smonth.5'/>'.slice(1),
-              '<fmt:message key='smonth.6'/>'.charAt(0).toUpperCase() + '<fmt:message key='smonth.6'/>'.slice(1),
-              '<fmt:message key='smonth.7'/>'.charAt(0).toUpperCase() + '<fmt:message key='smonth.7'/>'.slice(1),
-              '<fmt:message key='smonth.8'/>'.charAt(0).toUpperCase() + '<fmt:message key='smonth.8'/>'.slice(1),
-              '<fmt:message key='smonth.9'/>'.charAt(0).toUpperCase() + '<fmt:message key='smonth.9'/>'.slice(1),
-              '<fmt:message key='smonth.10'/>'.charAt(0).toUpperCase() + '<fmt:message key='smonth.10'/>'.slice(1),
-              '<fmt:message key='smonth.11'/>'.charAt(0).toUpperCase() + '<fmt:message key='smonth.11'/>'.slice(1)];
-            } else {
-               monthShortNamesArray = ["<fmt:message key='smonth.0'/>",'<fmt:message key='smonth.1'/>','<fmt:message key='smonth.2'/>','<fmt:message key='smonth.3'/>','<fmt:message key='smonth.4'/>','<fmt:message key='smonth.5'/>','<fmt:message key='smonth.6'/>','<fmt:message key='smonth.7'/>','<fmt:message key='smonth.8'/>','<fmt:message key='smonth.9'/>','<fmt:message key='smonth.10'/>','<fmt:message key='smonth.11'/>'];
-            }
-            return monthShortNamesArray;
-          },
           initializeIonDateTimeComponent: function(ionDateTimeComponent) {
             const i = $(ionDateTimeComponent);
-            i.cancelText = "<fmt:message key='picker.cancel'/>";
-            i.doneText = "<fmt:message key='picker.ok'/>";
-            i.monthShortNames = this.monthShortNamesArray();
+            i.cancelText = Content.picker.cancel;
+            i.doneText = Content.picker.ok;
+            i.monthShortNames = ARQUIVO.monthShortNamesArray();
           },
           getCalendarDate: function(type) {
-            function createDateJsFormat( _date ){
-              var day = _date.split('/')[0];
-              var month = _date.split('/')[1];
-              var year = _date.split('/')[2];
-              return month + '/' + day + '/' + year;
-            }
             var input = $( '#date'+type+'_top' ).val().trim();
-            var t = new Date( createDateJsFormat( input ) );
+            var t = new Date( ARQUIVO.createDateJsFormat( input ) );
             t.setHours(0,0,0,0);
             return t;
           }
@@ -166,7 +118,7 @@
             uglipop({
               class:'modalReplay noprint', //styling class for Modal
               source:'html',
-              content:'<h4 class="modalTitle"><i class="fa" aria-hidden="true"></i> <fmt:message key='datepicker.error.date'/></h4>'+
+              content:'<h4 class="modalTitle"><i class="fa" aria-hidden="true"></i> '+Content.datepicker.error.date+'</h4>'+
                       '<div class="row"><a id="errorDates" onclick="closeModalErrorDates()" class="col-xs-6 text-center leftAnchor modalOptions">OK</a></div>'});
           }
 
@@ -260,7 +212,7 @@
 
               <script type="text/javascript">
                 $('#ionDateStart').on("ionChange", function() {
-                  const newDate = ARQUIVO_SEARCH_DATES.convertIonDateToJSDate(this);
+                  const newDate = ARQUIVO.convertIonDateToJSDate(this);
 
                   ARQUIVO_SEARCH_DATES.updateCalendarCard( "Start", newDate );
 
@@ -270,7 +222,7 @@
                   $('#dateStart_top').change();
                 });
                 $('#ionDateEnd').on("ionChange", function() {
-                  const newDate = ARQUIVO_SEARCH_DATES.convertIonDateToJSDate(this);
+                  const newDate = ARQUIVO.convertIonDateToJSDate(this);
 
                   ARQUIVO_SEARCH_DATES.updateCalendarCard( "End", newDate );
 

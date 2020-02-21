@@ -270,22 +270,6 @@ function searchImages(startIndex){
   var typeVar = "<%=type%>";
 </script>
 <script type="text/javascript">
-Content = {
-    months:
-    {  '01': "<fmt:message key="month.0" />",
-       '02': "<fmt:message key="month.1" />",
-       '03': "<fmt:message key="month.2" />",
-       '04': "<fmt:message key="month.3" />",
-       '05': "<fmt:message key="month.4" />",
-       '06': "<fmt:message key="month.5" />",
-       '07': "<fmt:message key="month.6" />",
-       '08': "<fmt:message key="month.7" />",
-       '09': "<fmt:message key="month.8" />",
-       '10': "<fmt:message key="month.9" />",
-       '11': "<fmt:message key="month.10" />",
-       '12': "<fmt:message key="month.11" />",
-    },
-};
   share  = '<fmt:message key="images.share" />';
   close ='<fmt:message key="images.close"/>';
   leftArrow='<fmt:message key="images.leftArrow"/>';

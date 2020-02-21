@@ -33,6 +33,7 @@
 
   <jsp:include page="/include/headerDefault.jsp" />
   <%@ include file="/include/dates.jsp" %>
+  <%@ include file="/include/i18njs.jsp" %>
 
 </head>
 <body id="advanced-images">
@@ -176,128 +177,109 @@
     </div>
 
 <script type="text/javascript">
-$('#wordsOptions').show();
-$(".expandable-div legend").click(function() {
-	$('fieldset > legend > i').removeClass('fa-caret-up').addClass('fa-caret-down')
-
-    var isVisible =  $(this).next().is(':visible');
-
-	$('.box-content').slideUp('fast');
-
-	if (isVisible){
-		console.log('hiding element');
-		$(this).next().slideUp('fast');
-		$(this).children("i").removeClass('fa-caret-up').addClass('fa-caret-down');
-	}
-	else{
-		console.log('showing element');
-		$(this).next().slideDown('fast').show().slideDown('fast');
-		$(this).children("i").removeClass('fa-caret-down').addClass('fa-caret-up');
-	}
-});
-</script>
-<script type="text/javascript">
-	$('#dateStart_top').click( function(e) {
-	  e.preventDefault();
-	  $('#ionDateStart').trigger('click');
-	});
-	$('#dateEnd_top').click( function(e) {
-	  e.preventDefault();
-	  $('#ionDateEnd').trigger('click');
-	});
-
-	$('#ionDateStart').on("ionChange", function() {
-		var newStartDate = $('#ionDateStart').val();
-		var newStartDateTokens = newStartDate.split('-');
-		var newStartDateFormated =  newStartDateTokens[2].split('T')[0] + "/" + newStartDateTokens[1]+ "/"+ newStartDateTokens[0];
-		/*ionic uses the date format 1996-01-31T00:00:00+01:00  , we need to convert the date to our own date format i.e.  31/01/1996 */
-		$('#dateStart_top').val(newStartDateFormated);
-	});
-	$('#ionDateEnd').on("ionChange", function() {
-		var newEndDate = $('#ionDateEnd').val();
-		var newEndDateTokens = newEndDate.split('-');
-		var newEndDateFormated =  newEndDateTokens[2].split('T')[0] + "/" + newEndDateTokens[1]+ "/"+ newEndDateTokens[0];
-		/*ionic uses the date format 1996-01-31T00:00:00+01:00  , we need to convert the date to our own date format i.e.  31/01/1996 */
-		$('#dateEnd_top').val(newEndDateFormated);
-	});
-
-
-	/** Validade dates**/
- 	$( '#searchForm' ).submit( function( ) {
-	    var dateStartInput = $( '#dateStart_top' ).val( ).trim( );
-	    var dateEndInput = $( '#dateEnd_top' ).val( ).trim( );
-	    var startTime = new Date( createDateJsFormat( dateStartInput ) );
-	    startTime.setHours(0,0,0,0);
-	    var endTime = new Date( createDateJsFormat( dateEndInput ) );
-	    endTime.setHours(0,0,0,0);
-
-	    if(startTime > endTime) {
-	      modalErrorDates();
-	      return false;
+window.onload = function() {
+	$(".expandable-div legend").click(function() {
+	    var isVisible =  $(this).next().is(':visible');
+	    if (isVisible){
+	        // close
+	        $(this).next().slideUp('fast');
+	        $(this).children("i").removeClass('fa-caret-down').addClass('fa-caret-up');
+	    } else {
+	        // open
+	        $(this).next().slideDown('fast').show().slideDown('fast');
+	        $(this).children("i").removeClass('fa-caret-up').addClass('fa-caret-down');
 	    }
-
-	    return true;
 	});
 
-	function createDateJsFormat( _date ){
-		var day = _date.split('/')[0];
-		var month = _date.split('/')[1];
-		var year = _date.split('/')[2];
-
-		return month + '/' + day + '/' + year;
+	const mobile = ARQUIVO.isMobileOrTablet();
+	if (mobile) { // is mobile or tablet
+	    $('#dateStart_top').click( function(e) {
+	      e.preventDefault();
+	      $('#ionDateStart').trigger('click');
+	    });
+	    $('#dateEnd_top').click( function(e) {
+	      e.preventDefault();
+	      $('#ionDateEnd').trigger('click');
+	    });
+	    $('#ionDateStart').on("ionChange", function() {
+	        var newStartDate = $('#ionDateStart').val();
+	        var newStartDateTokens = newStartDate.split('-');
+	        var newStartDateFormated =  newStartDateTokens[2].split('T')[0] + "/" + newStartDateTokens[1]+ "/"+ newStartDateTokens[0];
+	        /*ionic uses the date format 1996-01-31T00:00:00+01:00  , we need to convert the date to our own date format i.e.  31/01/1996 */
+	        $('#dateStart_top').val(newStartDateFormated);
+	    });
+	    $('#ionDateEnd').on("ionChange", function() {
+	        var newEndDate = $('#ionDateEnd').val();
+	        var newEndDateTokens = newEndDate.split('-');
+	        var newEndDateFormated =  newEndDateTokens[2].split('T')[0] + "/" + newEndDateTokens[1]+ "/"+ newEndDateTokens[0];
+	        /*ionic uses the date format 1996-01-31T00:00:00+01:00  , we need to convert the date to our own date format i.e.  31/01/1996 */
+	        $('#dateEnd_top').val(newEndDateFormated);
+	    });
+	    
+	} else {
+		const datepickerConfiguration = {
+          dateFormat: "dd/mm/yy",
+          changeMonth: true, // Whether the month should be rendered as a dropdown instead of text.
+          changeYear: true, // Whether the year should be rendered as a dropdown instead of text
+          yearRange: minYear+":"+maxYear, // The range of years displayed in the year drop-down - minYear and maxYear are a global javascript variables
+          minDate: minDate, // The minimum selectable date - minDate is a global javascript variable
+          maxDate: maxDate, // The maximum selectable date - maxDate is a global javascript variable
+        };
+		ARQUIVO.inputMaskAnInput($('#dateStart_top').datepicker(datepickerConfiguration));
+		ARQUIVO.inputMaskAnInput($('#dateEnd_top').datepicker(datepickerConfiguration));
 	}
 
-	function modalErrorDates(){
-		uglipop({
-		  class:'modalReplay noprint', //styling class for Modal
-		  source:'html',
-		  content:'<h4 class="modalTitle"><i class="fa" aria-hidden="true"></i> <fmt:message key='datepicker.error.date'/></h4>'+
-		          '<div class="row"><a id="errorDates" onclick="closeModalErrorDates()" class="col-xs-6 text-center leftAnchor modalOptions">OK</a></div>'});
-	}
-
-	function closeModalErrorDates() {
-		$('#uglipop_content_fixed').fadeOut();
-		$('#uglipop_overlay').fadeOut('fast');
-	}
-
-
-</script>
-<script type="text/javascript">
 	$('#startDateCalendarAnchor').click( function(e) {
-	  e.preventDefault();
-	  $('#dateStart_top').trigger('click');
-	});
-</script>
-<script type="text/javascript">
-	$('#endDateCalendarAnchor').click( function(e) {
-	  e.preventDefault();
-	  $('#dateEnd_top').trigger('click');
-	});
-</script>
-<script type="text/javascript">
-  monthShortNamesArray = ["<fmt:message key='smonth.0'/>",'<fmt:message key='smonth.1'/>','<fmt:message key='smonth.2'/>','<fmt:message key='smonth.3'/>','<fmt:message key='smonth.4'/>','<fmt:message key='smonth.5'/>','<fmt:message key='smonth.6'/>','<fmt:message key='smonth.7'/>','<fmt:message key='smonth.8'/>','<fmt:message key='smonth.9'/>','<fmt:message key='smonth.10'/>','<fmt:message key='smonth.11'/>'];
-  function removeZeroInDay(dayStr){
-    if(dayStr.length == 2 && dayStr.charAt(0) === "0"){
-      return dayStr.charAt(1);
+      e.preventDefault();
+      $('#dateStart_top').trigger( mobile ? 'click' : 'focus' );
+    });
+    $('#endDateCalendarAnchor').click( function(e) {
+      e.preventDefault();
+      $('#dateEnd_top').trigger( mobile ? 'click' : 'focus' );
+    });
+
+    /** Validade dates**/
+     $( '#searchForm' ).submit( function( ) {
+        var dateStartInput = $( '#dateStart_top' ).val().trim();
+        var dateEndInput = $( '#dateEnd_top' ).val().trim();
+        var startTime = new Date( ARQUIVO.createDateJsFormat( dateStartInput ) );
+        startTime.setHours(0,0,0,0);
+        var endTime = new Date( ARQUIVO.createDateJsFormat( dateEndInput ) );
+        endTime.setHours(0,0,0,0);
+
+        if(startTime > endTime) {
+          modalErrorDates();
+          return false;
+        }
+
+        return true;
+    });
+
+    function modalErrorDates(){
+        uglipop({
+          class:'modalReplay noprint', //styling class for Modal
+          source:'html',
+          content:'<h4 class="modalTitle"><i class="fa" aria-hidden="true"></i> <fmt:message key='datepicker.error.date'/></h4>'+
+                  '<div class="row"><a id="errorDates" onclick="closeModalErrorDates()" class="col-xs-6 text-center leftAnchor modalOptions">OK</a></div>'});
     }
-    return dayStr;
-  }
-  function getMonthShortName(monthPositionStr){
-    return monthShortNamesArray[parseInt(monthPositionStr)-1];
-  }
-</script>
-<script type="text/javascript">
-  $('#ionDateStart')[0].cancelText = "<fmt:message key='picker.cancel'/>";
-  $('#ionDateEnd')[0].cancelText = "<fmt:message key='picker.cancel'/>";
-  $('#ionDateStart')[0].doneText = "<fmt:message key='picker.ok'/>";
-  $('#ionDateEnd')[0].doneText = "<fmt:message key='picker.ok'/>";
-  $('#ionDateStart')[0].monthShortNames = monthShortNamesArray;
-  $('#ionDateEnd')[0].monthShortNames = monthShortNamesArray;
 
-  $('#formatType')[0].cancelText =  "<fmt:message key='picker.cancel'/>";
-  $('#size')[0].cancelText =  "<fmt:message key='picker.cancel'/>";
-  $('#safeSearch')[0].cancelText =  "<fmt:message key='picker.cancel'/>";
+    function closeModalErrorDates() {
+        $('#uglipop_content_fixed').fadeOut();
+        $('#uglipop_overlay').fadeOut('fast');
+    }
 
+	$('#ionDateStart')[0].cancelText = Content.picker.cancel;
+	$('#ionDateEnd')[0].cancelText = Content.picker.cancel;
+	$('#ionDateStart')[0].doneText = Content.picker.ok;
+	$('#ionDateEnd')[0].doneText = Content.picker.ok;
+	$('#ionDateStart')[0].monthShortNames = ARQUIVO.monthShortNamesArray();
+	$('#ionDateEnd')[0].monthShortNames = ARQUIVO.monthShortNamesArray();
+	
+	$('#formatType')[0].cancelText =  "<fmt:message key='picker.cancel'/>";
+	$('#size')[0].cancelText =  "<fmt:message key='picker.cancel'/>";
+	$('#safeSearch')[0].cancelText =  "<fmt:message key='picker.cancel'/>";
+
+};
 </script>
 
 <%-- end copy --%>

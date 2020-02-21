@@ -14,18 +14,18 @@ Content = {
 			 '12': "Dezembro",
 		},
     shortMonths: 
-		{ 	 '01': "Jan",
-			 '02': "Fev",
-			 '03': "Mar",
-			 '04': "Abr",
-			 '05': "Mai",
-			 '06': "Jun",
-			 '07': "Jul",
-			 '08': "Ago",
-			 '09': "Set",
-			 '10': "Out",
-			 '11': "Nov",
-			 '12': "Dez",
+		{ 	 '01': "jan",
+			 '02': "fev",
+			 '03': "mar",
+			 '04': "abr",
+			 '05': "mai",
+			 '06': "jun",
+			 '07': "jul",
+			 '08': "ago",
+			 '09': "set",
+			 '10': "out",
+			 '11': "nov",
+			 '12': "dez",
 		},
     savedInArchive:"Foram gravadas no arquivo",
     versionsStored:"Tabela de vers&#245;es",
@@ -61,6 +61,15 @@ Content = {
     searchVersion: "vers&atilde;o",
     searchVersions: "vers&otilde;es",
     table: "Tabela",
-    list: "Lista"
+    list: "Lista",
 
+    datepicker: {
+        error: {
+            date: "A data inicial n&atilde;o pode ser superior<br /> a data final.",
+        },
+    },
+    picker: {
+        ok: "OK",
+        cancel: "Cancelar",
+    },
 };

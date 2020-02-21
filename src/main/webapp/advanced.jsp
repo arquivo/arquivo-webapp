@@ -34,6 +34,7 @@
 
     <jsp:include page="/include/headerDefault.jsp" />
     <%@ include file="/include/dates.jsp" %>
+    <%@ include file="/include/i18njs.jsp" %>
 
 </head>
 <body id="advanced">
@@ -259,9 +260,9 @@ window.onload = function() {
      $( '#searchForm' ).submit( function( ) {
         var dateStartInput = $( '#dateStart_top' ).val().trim();
         var dateEndInput = $( '#dateEnd_top' ).val().trim();
-        var startTime = new Date( createDateJsFormat( dateStartInput ) );
+        var startTime = new Date( ARQUIVO.createDateJsFormat( dateStartInput ) );
         startTime.setHours(0,0,0,0);
-        var endTime = new Date( createDateJsFormat( dateEndInput ) );
+        var endTime = new Date( ARQUIVO.createDateJsFormat( dateEndInput ) );
         endTime.setHours(0,0,0,0);
 
         if(startTime > endTime) {
@@ -271,14 +272,6 @@ window.onload = function() {
 
         return true;
     });
-
-    function createDateJsFormat( _date ){
-        var day = _date.split('/')[0];
-        var month = _date.split('/')[1];
-        var year = _date.split('/')[2];
-
-        return month + '/' + day + '/' + year;
-    }
 
     function modalErrorDates(){
         uglipop({
@@ -293,25 +286,15 @@ window.onload = function() {
         $('#uglipop_overlay').fadeOut('fast');
     }
 
-	monthShortNamesArray = ["<fmt:message key='smonth.0'/>",'<fmt:message key='smonth.1'/>','<fmt:message key='smonth.2'/>','<fmt:message key='smonth.3'/>','<fmt:message key='smonth.4'/>','<fmt:message key='smonth.5'/>','<fmt:message key='smonth.6'/>','<fmt:message key='smonth.7'/>','<fmt:message key='smonth.8'/>','<fmt:message key='smonth.9'/>','<fmt:message key='smonth.10'/>','<fmt:message key='smonth.11'/>'];
-	function removeZeroInDay(dayStr){
-		if(dayStr.length == 2 && dayStr.charAt(0) === "0"){
-		  return dayStr.charAt(1);
-		}
-		return dayStr;
-	}
-	function getMonthShortName(monthPositionStr){
-		return monthShortNamesArray[parseInt(monthPositionStr)-1];
-	}
+	$('#ionDateStart')[0].cancelText = Content.picker.cancel;
+	$('#ionDateEnd')[0].cancelText = Content.picker.cancel;
+	$('#ionDateStart')[0].doneText = Content.picker.ok;
+	$('#ionDateEnd')[0].doneText = Content.picker.ok;
+	$('#ionDateStart')[0].monthShortNames = ARQUIVO.monthShortNamesArray();
+	$('#ionDateEnd')[0].monthShortNames = ARQUIVO.monthShortNamesArray();
 
-	$('#ionDateStart')[0].cancelText = "<fmt:message key='picker.cancel'/>";
-	$('#ionDateEnd')[0].cancelText = "<fmt:message key='picker.cancel'/>";
-	$('#ionDateStart')[0].doneText = "<fmt:message key='picker.ok'/>";
-	$('#ionDateEnd')[0].doneText = "<fmt:message key='picker.ok'/>";
-	$('#ionDateStart')[0].monthShortNames = monthShortNamesArray;
-	$('#ionDateEnd')[0].monthShortNames = monthShortNamesArray;
-	$('#formatType')[0].cancelText =  "<fmt:message key='picker.cancel'/>";
-	$('#num-result')[0].cancelText =  "<fmt:message key='picker.cancel'/>";
+	$('#formatType')[0].cancelText = Content.picker.cancel;
+	$('#num-result')[0].cancelText = Content.picker.cancel;
 
 };
 </script>

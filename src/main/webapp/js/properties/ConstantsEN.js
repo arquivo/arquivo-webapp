@@ -61,6 +61,17 @@ Content = {
     searchVersion: "version",
     searchVersions: "versions",
     table: "Table",
-    list: "List"
+    list: "List",
 
+    datepicker: {
+        error: {
+            date: "Start date cannot be higher than end date."
+        }
+    },
+    picker: {
+        ok: "OK"
+    },
+    picker: {
+        cancel: "Cancel"
+    }
 };

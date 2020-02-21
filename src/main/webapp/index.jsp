@@ -37,6 +37,7 @@
 
   <jsp:include page="/include/headerDefault.jsp" />
   <%@ include file="/include/dates.jsp" %>
+  <%@ include file="/include/i18njs.jsp" %>
 
   <!-- starts New style to override less styles -->
   <script type="text/javascript">
