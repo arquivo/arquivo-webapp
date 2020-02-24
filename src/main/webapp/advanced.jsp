@@ -278,7 +278,7 @@ window.onload = function() {
           class:'modalReplay noprint', //styling class for Modal
           source:'html',
           content:'<h4 class="modalTitle"><i class="fa" aria-hidden="true"></i> <fmt:message key='datepicker.error.date'/></h4>'+
-                  '<div class="row"><a id="errorDates" onclick="closeModalErrorDates()" class="col-xs-6 text-center leftAnchor modalOptions">OK</a></div>'});
+                  '<div class="row"><a id="errorDates" onclick="ARQUIVO.closeModalUglipop()" class="col-xs-6 text-center leftAnchor modalOptions">OK</a></div>'});
     }
 
 	$('#ionDateStart')[0].cancelText = Content.picker.cancel;
@@ -293,10 +293,6 @@ window.onload = function() {
 
 };
 
-function closeModalErrorDates() {
-    $('#uglipop_content_fixed').fadeOut();
-    $('#uglipop_overlay').fadeOut('fast');
-}
 </script>
 
 <%@ include file="/include/footer.jsp" %>

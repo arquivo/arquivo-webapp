@@ -5,23 +5,35 @@
       var ARQUIVO_SEARCH_DATES = ARQUIVO_SEARCH_DATES || (function(){
         return {
           openDatePicker : function(type) {
-            const dateElementId = "modalDateContent"+ type;
+            //const dateElementId = "modalDateContent"+ type;
             const datePickerId = "modalDatePicker" + type;
             const dateInputId =  "modalDateInput" + type;
             const dateInputVal = $("#date"+type+"_top").val();
             
-            // delete modal content if already exits
-            if ($("#"+dateElementId).length > 0) {
-              $("#"+dateElementId).remove();
-            }
+            uglipop({
+              class:'dateModal dateModal' + type, //styling class for Modal
+              source:'html',
+              content: 
+              `
+                <h2>${Content.picker[type.toLowerCase()].header}</h2>
+                <p class="dateInputContainer dateInputContainer${type}">
+                  <input size="10" type="text" id="${dateInputId}" value="${dateInputVal}" class="dateInput dateInput${type}" /> 
+                  dd/mm/yyyy
+                </p>
+                <div id="${datePickerId}"></div>
+                <div class="dateModalButtons dateModalButtons${type}">
+                  <button class="dateModalButtonsCancel dateModalButtonsCancel${type}" onclick="ARQUIVO.closeModalUglipop();">
+                    <span>${Content.picker.cancel}</span>
+                  </button>
+                  <button class="dateModalButtonsOk dateModalButtonsOk${type}" onclick="ARQUIVO_SEARCH_DATES.updateCalendarCard('${type}', $('#${datePickerId}').datepicker( 'getDate' ) ); ARQUIVO.closeModalUglipop();">
+                    <span>${Content.picker.ok}</span>
+                  </button>
+                </div>
+              `
+            });
 
             // create new modal content and append it to bottom of the body DOM
-            $( "body" ).append(`
-              <div id="${dateElementId}" title="Select ${type}" class="dateModal dateModal${type}">
-                <input size="10" type="text" id="${dateInputId}" value="${dateInputVal}" class="dateInput dateInput${type}" />
-                <div id="${datePickerId}">
-              </div>
-            `);
+            $( "body" ).append();
 
             ARQUIVO.inputMaskAnInput( $('#'+dateInputId) );
             
@@ -38,28 +50,14 @@
               maxDate: maxDate, // The maximum selectable date - maxDate is a global javascript variable
             });
 
+            // focus the input
+            $('#'+dateInputId).focus();
+
             // connect the input and the datepicker
             $('#'+dateInputId).change(function(){
                 $('#'+datePickerId).datepicker('setDate', $(this).val());
             });
 
-            // open modal
-            $( "#"+dateElementId ).dialog({
-              modal: true,
-              buttons: {
-                Cancel: function() {
-                  $( this ).dialog( "close" );
-                },
-                Ok: function() {
-                  // on ok button pressed
-                  const newDate = $('#'+datePickerId).datepicker( "getDate" );
-                  ARQUIVO_SEARCH_DATES.updateCalendarCard(type, newDate );
-
-                  // close the modal dialog
-                  $( this ).dialog( "close" );
-                }
-              }
-            });
           },
           updateCalendarCard: function(type, dateToPutOnCard) {
             // type: like 'Start or 'End
@@ -119,12 +117,7 @@
               class:'modalReplay noprint', //styling class for Modal
               source:'html',
               content:'<h4 class="modalTitle"><i class="fa" aria-hidden="true"></i> '+Content.datepicker.error.date+'</h4>'+
-                      '<div class="row"><a id="errorDates" onclick="closeModalErrorDates()" class="col-xs-6 text-center leftAnchor modalOptions">OK</a></div>'});
-          }
-
-          function closeModalErrorDates() {
-            $('#uglipop_content_fixed').fadeOut();
-            $('#uglipop_overlay').fadeOut('fast');
+                      '<div class="row"><a id="errorDates" onclick="ARQUIVO.closeModalUglipop()" class="col-xs-6 text-center leftAnchor modalOptions">OK</a></div>'});
           }
 
         </script>

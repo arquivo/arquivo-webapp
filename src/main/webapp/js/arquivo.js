@@ -188,5 +188,12 @@ var ARQUIVO = ARQUIVO || (function(){
                 '</div>'+
                 '');
         },
+
+        closeModalUglipop: function() {
+            $('#uglipop_overlay_wrapper').fadeOut();
+            $('#uglipop_overlay').fadeOut();
+            $('#uglipop_content_fixed').fadeOut('fast');
+        },
+
     };
 }());

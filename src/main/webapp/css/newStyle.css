@@ -3643,3 +3643,45 @@ body#home-search #years {
     right: -8px !important;
   }
 }
+
+.ui-datepicker {
+  font-size: 16px;
+}
+.dateModal {
+  background-color: white;
+  font-size: 16px;
+  padding: 20px;
+}
+.dateInputContainer {
+  margin: 20px 0px 20px 0px;
+}
+.dateModalButtons {
+  margin-top: 20px;
+}
+.dateModalButtons button {
+  background-color: transparent;
+  margin-right: none;
+  color: #1c75c0;
+  margin-right: 0;
+  border: 1px solid #1c75c0;
+  transition: background-color 0.5s ease 0s;
+  color: #1c75c0;
+  font-size: 13px;
+  border-radius: 5px;
+  padding: 4px 10px 5px 10px;
+}
+.dateModalButtons button:hover {
+  background-color: #1c75c0;
+  color: white;
+  border: 1px solid transparent;
+  text-decoration: none;
+}
+.dateModalButtons button:active {
+  background-color: #1c75c0;
+  border: 1px solid #1c75c0;
+  color: #fff;
+}
+.dateModalButtonsOk {
+  float: right;
+}
+

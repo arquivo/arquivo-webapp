@@ -71,6 +71,12 @@ Content = {
     picker: {
         ok: "OK",
         cancel: "Cancel",
+        start: {
+            header: "Filter results from",
+        },
+        end: {
+            header: "Filter results until",
+        },
     },
     images: {
         details: {
