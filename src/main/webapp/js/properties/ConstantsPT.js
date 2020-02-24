@@ -72,4 +72,19 @@ Content = {
         ok: "OK",
         cancel: "Cancelar",
     },
+    images: {
+        details: {
+            details: "Detalhes",
+            page: "P&aacute;gina",
+            title: "t&iacute;tulo:",
+            image: "Imagem",
+            resolution: "resolu&ccedil;&atilde;o:",
+            safesearch: "classifica&ccedil;&atilde;o safesearch:",
+            collection: "Cole&ccedil;&atilde;o",
+            name: "nome:",
+        },
+        viewer: {
+            visit: "Visitar",
+        },
+    }, 
 };

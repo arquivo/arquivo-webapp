@@ -218,18 +218,6 @@ response.setHeader("Cache-Control","public, max-age=600");
   <script type="text/javascript">
     calendarBegin = '<fmt:message key="calendar.begin" />'.replace("calendario", "calendário");
     calendarEnd = '<fmt:message key="calendar.end" />'.replace("calendario", "calendário");
-    /*Object with required properties to display in the view details modal*/
-    details = {
-      details : '<fmt:message key="images.details.details"/>',
-      page  : '<fmt:message key="images.details.page"/>',
-      title     : '<fmt:message key="images.details.title"/>',
-      image  : '<fmt:message key="images.details.image"/>',
-      resolution: '<fmt:message key="images.details.resolution"/>',
-      safesearch: '<fmt:message key="images.details.safesearch"/>',
-      collection: '<fmt:message key="images.details.collection"/>',
-      name: '<fmt:message key="images.details.name"/>',
-      visit: '<fmt:message key="images.viewer.visit"/>'
-    };
   </script>
 
 	<script type="text/javascript">

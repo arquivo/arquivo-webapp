@@ -69,9 +69,22 @@ Content = {
         }
     },
     picker: {
-        ok: "OK"
+        ok: "OK",
+        cancel: "Cancel",
     },
-    picker: {
-        cancel: "Cancel"
-    }
+    images: {
+        details: {
+            details: "Details",
+            page: "Page",
+            title: "title:",
+            image: "Image",
+            resolution: "resolution:",
+            safesearch: "safesearch score:",
+            collection: "Collection",
+            name: "name:",
+        },
+        viewer: {
+            visit: "Visit",
+        },
+    }, 
 };

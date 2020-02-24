@@ -278,11 +278,11 @@ return ''+
                     '<img ' + (parseInt(imageObj.expandedWidth) >$( window ).width() ? 'class="image-expanded-viewer image-expanded-full-width" ' : 'class="image-expanded-viewer" ') + 'data-src="'+imageObj.currentImageURL+'" />'+
                  '</a>'+
                  '<ion-row class="image-viewer-expanded-main-actions">'+
-                      '<ion-col size="6" class="text-left"><a href="'+waybackURL+'/'+imageObj.pageTstamp+'/'+imageObj.pageURL+'"><ion-button size="small" class="visit-page border-mobile" fill="clear"><ion-icon name="globe" class="middle"></ion-icon><span class="middle"><h5>&nbsp;'+details.visit+'</h5></span></ion-button></a></ion-col>'+
-                      '<ion-col size="6" ><ion-button size="small" class="view-details border-mobile" onclick="viewDetails('+position+')" fill="clear" ><ion-icon name="information-circle-outline" class="middle"></ion-icon><span class="middle"><h5>&nbsp;'+details.details+'</h5></span></ion-button></ion-col>'+
+                      '<ion-col size="6" class="text-left"><a href="'+waybackURL+'/'+imageObj.pageTstamp+'/'+imageObj.pageURL+'"><ion-button size="small" class="visit-page border-mobile" fill="clear"><ion-icon name="globe" class="middle"></ion-icon><span class="middle"><h5>&nbsp;'+Content.images.details.visit+'</h5></span></ion-button></a></ion-col>'+
+                      '<ion-col size="6" ><ion-button size="small" class="view-details border-mobile" onclick="viewDetails('+position+')" fill="clear" ><ion-icon name="information-circle-outline" class="middle"></ion-icon><span class="middle"><h5>&nbsp;'+Content.images.details.details+'</h5></span></ion-button></ion-col>'+
                   '</ion-row>'+
                   '<ion-row>'+
-                      '<h4 class="text-left">'+details.image+'</h4>'+                
+                      '<h4 class="text-left">'+Content.images.details.image+'</h4>'+                
                   '</ion-row>'+
                   '<ion-card-content>'+                
                       '<ion-list class="imageList selected">'+
@@ -294,7 +294,7 @@ return ''+
                       '</ion-list>'+
                   '</ion-card-content>'+  
                   '<ion-row>'+
-                      '<h4 class="text-left">'+details.page+'</h4>'+                
+                      '<h4 class="text-left">'+Content.images.details.page+'</h4>'+                
                   '</ion-row>'+
                   '<ion-card-content>'+                
                       '<ion-list>'+
@@ -319,38 +319,38 @@ function viewDetails(position){
     var detailsCard = ''+
     '<ion-card id="detailsCard'+position+'" class="card-height">'+
       '<ion-row>'+
-        '<h3 class="text-left">'+details.details+'</h4>'+                
+        '<h3 class="text-left">'+Content.images.details.details+'</h4>'+                
       '</ion-row>'+            
       '<ion-row>'+
-        '<h4 class="text-left">'+details.page+'</h4>'+                
+        '<h4 class="text-left">'+Content.images.details.page+'</h4>'+                
       '</ion-row>'+      
       '<ion-card-content>'+
         '<ion-list>'+
          '<ion-item class="item-borderless" lines="none" ><h5><em>url:</em>&nbsp;<a href="'+waybackURL+'/'+imageObj.pageTstamp+'/'+imageObj.pageURL+'">'+imageObj.pageURL+'</a></h5></ion-item>'+
           '<ion-item lines="none" ><h5><em>timestamp:</em> '+imageObj.pageTstamp+'</h5></ion-item>'+
-          '<ion-item lines="none" ><h5><em>'+details.title+'</em> '+imageObj.pageTitle+'</h5></ion-item>'+
+          '<ion-item lines="none" ><h5><em>'+Content.images.details.title+'</em> '+imageObj.pageTitle+'</h5></ion-item>'+
         '</ion-list>'+
       '</ion-card-content>'+
       '<ion-row>'+      
-        '<h4 class="text-left">'+details.image+'</h4>'+                
+        '<h4 class="text-left">'+Content.images.details.image+'</h4>'+                
       '</ion-row>'+      
       '<ion-card-content>'+
         '<ion-list>'+
           '<ion-item class="item-borderless" lines="none" ><h5><em>src:</em>&nbsp;<a href="'+waybackURL+'/'+imageObj.timestamp+'im_/'+imageObj.imgSrc+'">'+imageObj.imgSrc+'</a></h5></ion-item>'+
           '<ion-item lines="none" ><h5><em>timestamp:</em> '+imageObj.timestamp+'</h5></ion-item>'+
-          (imageObj.titleFull != "" ? '<ion-item lines="none" ><h5><em>'+details.title+'</em> '+imageObj.titleFull+'</h5></ion-item>': '') +
+          (imageObj.titleFull != "" ? '<ion-item lines="none" ><h5><em>'+Content.images.details.title+'</em> '+imageObj.titleFull+'</h5></ion-item>': '') +
           (imageObj.imgAltFull != "" ? '<ion-item lines="none" ><h5><em>alt:</em> '+imageObj.imgAltFull+'</h5></ion-item>': '') +
-          '<ion-item lines="none" ><h5><em>'+details.resolution+'</em> '+parseInt(imageObj.expandedWidth)+' x '+parseInt(imageObj.expandedHeight)+' pixels</h5></ion-item>'+
+          '<ion-item lines="none" ><h5><em>'+Content.images.details.resolution+'</em> '+parseInt(imageObj.expandedWidth)+' x '+parseInt(imageObj.expandedHeight)+' pixels</h5></ion-item>'+
           '<ion-item lines="none" ><h5><em>mimetype:</em> '+imageObj.imgMimeType+'</h5></ion-item>'+
-          '<ion-item lines="none" ><h5><em>'+details.safesearch+'</em> '+imageObj.safe+'</h5></ion-item>'+
+          '<ion-item lines="none" ><h5><em>'+Content.images.details.safesearch+'</em> '+imageObj.safe+'</h5></ion-item>'+
         '</ion-list>'+
       '</ion-card-content>'+      
       '<ion-row>'+      
-        '<h4 class="text-left">'+details.collection+'</h4>'+                
+        '<h4 class="text-left">'+Content.images.details.collection+'</h4>'+                
       '</ion-row>'+      
       '<ion-card-content>'+
         '<ion-list>'+
-          '<ion-item class="item-borderless" lines="none" ><h5><em>'+details.name+'</em> '+imageObj.collection+'</h5></ion-item>'+
+          '<ion-item class="item-borderless" lines="none" ><h5><em>'+Content.images.details.name+'</em> '+imageObj.collection+'</h5></ion-item>'+
         '</ion-list>'+
       '</ion-card-content>'+      
     '</ion-card>'+
