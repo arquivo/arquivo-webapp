@@ -72,10 +72,10 @@ Content = {
         ok: "OK",
         cancel: "Cancelar",
         start: {
-            header: "Filtrar resultados a partir de",
+            header: "A partir de:",
         },
         end: {
-            header: "Filtrar resultados até",
+            header: "Até:",
         },
     },
     images: {

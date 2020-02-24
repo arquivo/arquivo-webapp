@@ -3684,4 +3684,8 @@ body#home-search #years {
 .dateModalButtonsOk {
   float: right;
 }
-
+.ui-datepicker .ui-datepicker-title select {
+  background-color: white;
+  border-color: #1c75c0;
+  margin: 1px;
+}
