@@ -169,5 +169,24 @@ var ARQUIVO = ARQUIVO || (function(){
                 i.focus();
             }
         },
+
+        getSearchNoResultsHtml: function() {
+            return $(''+
+                '<div id="conteudo-pesquisa-erro">'+
+                    '<div class="alert alert-danger break-word col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3 my-alert-images">'+
+                      '<p>'+Content.search.noResults.title+'<span class="text-bold"> '+$('#txtSearch').attr("value")+'</span></p>'+
+                    '</div>'+
+                    '<div id="sugerimos-que" class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3 no-padding-left">'+
+                        '<p class="text-bold">'+Content.search.noResults.suggestions.intro+'</p>'+
+                      '<ul class="suggestions-no-results">'+
+                        '<li>'+Content.search.noResults.suggestions.wellWritten+'</li>'+
+                        '<li>'+Content.search.noResults.suggestions.timeInterval+'</li>'+
+                        '<li>'+Content.search.noResults.suggestions.keywords+'</li>'+
+                        '<li>'+Content.search.noResults.suggestions.genericWords+'</li>'+
+                      '</ul>'+
+                    '</div>'+
+                '</div>'+
+                '');
+        },
     };
 }());

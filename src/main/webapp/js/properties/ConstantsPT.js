@@ -87,4 +87,17 @@ Content = {
             visit: "Visitar",
         },
     }, 
+    search: {
+        noResults: {
+            title: "N&atilde;o foram encontrados resultados para a sua pesquisa:",
+            suggestions: {
+                intro: "Sugerimos que:",
+                wellWritten: "Verifique que todas as palavras est&atilde;o escritas corretamente.",
+                timeInterval: "Aumente o intervalo de tempo sobre o qual est&aacute; a pesquisar.",
+                genericWords: "Tente palavras mais gerais.",
+                keywords: "Tente utilizar outras palavras-chave.",
+            },
+        },
+    },
+
 };

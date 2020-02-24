@@ -262,13 +262,6 @@ String[] queryString_splitted=null;
     <% } %>
     textSearchAPI = "<%= pt.arquivo.webapp.Configuration.get("text.search.api", "https://arquivo.pt/textsearch") %>";
 
-    notFoundTitle = '<fmt:message key="search.no-results.title"/>';
-    noResultsSuggestions = '<fmt:message key="search.no-results.suggestions"/>';
-    noResultsWellWritten = '<fmt:message key="search.no-results.suggestions.well-written"/>';
-    noResultsInterval = '<fmt:message key="search.no-results.suggestions.time-interval"/>';
-    noResultsKeywords = '<fmt:message key="search.no-results.suggestions.keywords"/>';
-    noResultsGenericWords = '<fmt:message key="search.no-results.suggestions.generic-words"/>';
-
     start = <%=start%>;
     hitsPerPage = <%=hitsPerPage%>;
     dateStartYear = <%=dateStartYear%>;
@@ -281,7 +274,6 @@ String[] queryString_splitted=null;
   <%@ include file="/include/topbar.jsp" %>
   <div class="container-fluid topcontainer" id="headerSearchDiv">
     <script type="text/javascript">
-      var language = localStorage.language;
       pagesHref = window.location.href;
       var urlWithoutType = removeParam( 'typeShow', window.location.href );
       imagesHref =  urlWithoutType.toString().replace("search.jsp", "images.jsp");  /*TODO remove from this href parameters that are only appliable to text search*/

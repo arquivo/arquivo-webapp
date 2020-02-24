@@ -215,11 +215,6 @@ response.setHeader("Cache-Control","public, max-age=600");
   <%@ include file="/include/dates.jsp" %>
   <%@ include file="/include/i18njs.jsp" %>
 
-  <script type="text/javascript">
-    calendarBegin = '<fmt:message key="calendar.begin" />'.replace("calendario", "calendário");
-    calendarEnd = '<fmt:message key="calendar.end" />'.replace("calendario", "calendário");
-  </script>
-
 	<script type="text/javascript">
 		imageSearchAPI = "<%= pt.arquivo.webapp.Configuration.get("image.search.api", "https://arquivo.pt/imagesearch") %>";
 	</script>
@@ -238,11 +233,6 @@ response.setHeader("Cache-Control","public, max-age=600");
     });
   </script>
 
-  <script type="text/javascript">
-    clickToCopy = '<fmt:message key="images.clickToCopy" />';
-    language = '<%= language %>'
-  </script>
-
 </head>
 <body id="homeImages">
 <script type="text/javascript">
@@ -258,36 +248,10 @@ function searchImages(startIndex){
   var typeVar = "<%=type%>";
 </script>
 <script type="text/javascript">
-  share  = '<fmt:message key="images.share" />';
-  close ='<fmt:message key="images.close"/>';
-  leftArrow='<fmt:message key="images.leftArrow"/>';
-  rightArrow='<fmt:message key="images.rightArrow"/>';
-  resolution='<fmt:message key="images.size" />';
-  imageType='<fmt:message key="images.type" />';
-  imageTitle ='<fmt:message key="images.imageTitle" />';
-  visitPage='<fmt:message key="images.visitPage" />';
-  showImage='<fmt:message key="images.showImage" />';
-  imageUndefined='<fmt:message key="images.undefined" />';
-  showDetails = '<fmt:message key="images.showDetails" />';
-  fieldDescription = '<fmt:message key="images.field.description" />';
-  pageString =  '<fmt:message key="images.page" />';
-  imageString = '<fmt:message key="images.image" />';
-  titleString= '<fmt:message key="images.title" />';
-  resolutionString= '<fmt:message key="images.resolution" />';
-  nameString= '<fmt:message key="images.name" />';
-  notFoundTitle = '<fmt:message key="search.no-results.title"/>';
-  noResultsSuggestions = '<fmt:message key="search.no-results.suggestions"/>';
-  noResultsWellWritten = '<fmt:message key="search.no-results.suggestions.well-written"/>';
-  noResultsInterval = '<fmt:message key="search.no-results.suggestions.time-interval"/>';
-  noResultsKeywords = '<fmt:message key="search.no-results.suggestions.keywords"/>';
-  noResultsGenericWords = '<fmt:message key="search.no-results.suggestions.generic-words"/>';
   startPosition = "<%=startPosition%>";
   numrows ="<%=numrows%>"; /*Number of Images to show by default*/
   waybackURL = "<%=waybackURL%>";
 </script>
-
-<script type="text/javascript" src="/js/js.cookie.js"></script>
-
 
   <%@ include file="/include/topbar.jsp" %>
   <div class="container-fluid topcontainer" id="headerSearchDiv">

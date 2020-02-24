@@ -9,22 +9,7 @@
 })();
 
 function createErrorPage(){
-  $(''+
-    '<div id="conteudo-pesquisa-erro">'+
-        '<div class="alert alert-danger break-word col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3 my-alert-images">'+
-          '<p>'+notFoundTitle+'<span class="text-bold"> '+$('#txtSearch').attr("value")+'</span></p>'+
-        '</div>'+
-        '<div id="sugerimos-que" class="col-xs-12 no-padding-left">'+
-            '<p class="text-bold">'+noResultsSuggestions+'</p>'+
-          '<ul class="suggestions-no-results">'+
-            '<li>'+noResultsWellWritten+'</li>'+
-            '<li>'+noResultsInterval+'</li>'+
-            '<li>'+noResultsKeywords+'</li>'+
-            '<li>'+noResultsGenericWords+'</li>'+
-          '</ul>'+
-        '</div>'+
-    '</div>'+
-    '').insertBefore("#resultados-lista");
+  ARQUIVO.getSearchNoResultsHtml().insertBefore("#resultados-lista");
     //$( window ).resize(function() {$('#conteudo-pesquisa-erro').css('margin-left', $('#search-dateStart_top').offset().left)}); /*dirty hack to keep message aligned with not responsive searchbox*/$( window ).resize(function() {$('.spell').css('margin-left', $('#search-dateStart_top').offset().left)}); /*dirty hack to keep message aligned with not responsive searchbox*/
 }
 

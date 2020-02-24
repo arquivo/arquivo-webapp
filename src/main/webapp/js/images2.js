@@ -278,7 +278,7 @@ return ''+
                     '<img ' + (parseInt(imageObj.expandedWidth) >$( window ).width() ? 'class="image-expanded-viewer image-expanded-full-width" ' : 'class="image-expanded-viewer" ') + 'data-src="'+imageObj.currentImageURL+'" />'+
                  '</a>'+
                  '<ion-row class="image-viewer-expanded-main-actions">'+
-                      '<ion-col size="6" class="text-left"><a href="'+waybackURL+'/'+imageObj.pageTstamp+'/'+imageObj.pageURL+'"><ion-button size="small" class="visit-page border-mobile" fill="clear"><ion-icon name="globe" class="middle"></ion-icon><span class="middle"><h5>&nbsp;'+Content.images.details.visit+'</h5></span></ion-button></a></ion-col>'+
+                      '<ion-col size="6" class="text-left"><a href="'+waybackURL+'/'+imageObj.pageTstamp+'/'+imageObj.pageURL+'"><ion-button size="small" class="visit-page border-mobile" fill="clear"><ion-icon name="globe" class="middle"></ion-icon><span class="middle"><h5>&nbsp;'+Content.images.viewer.visit+'</h5></span></ion-button></a></ion-col>'+
                       '<ion-col size="6" ><ion-button size="small" class="view-details border-mobile" onclick="viewDetails('+position+')" fill="clear" ><ion-icon name="information-circle-outline" class="middle"></ion-icon><span class="middle"><h5>&nbsp;'+Content.images.details.details+'</h5></span></ion-button></ion-col>'+
                   '</ion-row>'+
                   '<ion-row>'+
@@ -547,23 +547,6 @@ function encodeHtmlEntity(str) {
     return str;
 }
 
-/*
-$(document).ajaxStart(function(){ 
-    $('#loadingDiv').show();
-});
-
-$(document).ajaxStop(function(){
- $('#loadingDiv').hide();  
-});*/
-
-function initClipboard(linkCopied){
-    var clipboard = new Clipboard('#btnCopy');
-    clipboard.on('success', function(e) {
-      $('#h2Copy').html(linkCopied);
-    });
-    return;    
-}
-
 // returns an object with query and the extracted special parameters
 function extractQuerySpecialParameters(inputQuery) {
     var words = [];
@@ -771,7 +754,6 @@ $(document).ready(function() {
       var position =  $(this).attr('position');
       var imageObj = imageObjs[position]; /*get Current Image Object*/
       
-      $('#h2Copy').html(clickToCopy);
       $("#dialog").dialog('open');
 
       /*If click anywhere outside modal lets close it*/
@@ -914,23 +896,8 @@ function capitalizeFirstLetter(string) {
 }
 
 function createErrorPage(){
-  $(''+
-    '<div id="conteudo-pesquisa-erro">'+
-        '<div class="alert alert-danger break-word col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3 my-alert-images">'+
-          '<p>'+notFoundTitle+'<span class="text-bold"> '+$('#txtSearch').attr("value")+'</span></p>'+
-        '</div>'+
-        '<div id="sugerimos-que" class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3 no-padding-left">'+
-            '<p class="text-bold">'+noResultsSuggestions+'</p>'+
-          '<ul class="suggestions-no-results">'+
-            '<li>'+noResultsWellWritten+'</li>'+
-            '<li>'+noResultsInterval+'</li>'+
-            '<li>'+noResultsKeywords+'</li>'+
-            '<li>'+noResultsGenericWords+'</li>'+
-          '</ul>'+
-        '</div>'+
-    '</div>'+
-    '').insertBefore("#photos");    
-    $( window ).resize(function() {$('#conteudo-pesquisa-erro').css('margin-left', $('#search-dateStart_top').offset().left)}); /*dirty hack to keep message aligned with not responsive searchbox*/$( window ).resize(function() {$('.spell').css('margin-left', $('#search-dateStart_top').offset().left)}); /*dirty hack to keep message aligned with not responsive searchbox*/ 
+  ARQUIVO.getSearchNoResultsHtml().insertBefore("#photos");    
+  $( window ).resize(function() {$('#conteudo-pesquisa-erro').css('margin-left', $('#search-dateStart_top').offset().left)}); /*dirty hack to keep message aligned with not responsive searchbox*/$( window ).resize(function() {$('.spell').css('margin-left', $('#search-dateStart_top').offset().left)}); /*dirty hack to keep message aligned with not responsive searchbox*/ 
 }
 
 document.onkeydown = function(evt) {

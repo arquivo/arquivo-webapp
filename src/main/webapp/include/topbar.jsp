@@ -4,7 +4,6 @@
 <%@ include file="MainMenu.jsp" %>
 <script src="https://ajax.googleapis.com/ajax/libs/dojo/1.13.0/dojo/dojo.js"></script>
 <script type="text/javascript">MENU.init()</script>
-<script type="text/javascript" src="/js/js.cookie.js"></script>
 <script>
 	localStorage.setItem("language", "<%=language%>".toUpperCase());
 	/*Cookies.set("language", "<%=language%>".toUpperCase());*/
