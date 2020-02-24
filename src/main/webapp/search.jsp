@@ -276,7 +276,6 @@ String[] queryString_splitted=null;
     <script type="text/javascript">
       pagesHref = window.location.href;
       var urlWithoutType = removeParam( 'typeShow', window.location.href );
-      imagesHref =  urlWithoutType.toString().replace("search.jsp", "images.jsp");  /*TODO remove from this href parameters that are only appliable to text search*/
       function removeParam(key, sourceURL) {
           var rtn = sourceURL.split("?")[0],
               param,
