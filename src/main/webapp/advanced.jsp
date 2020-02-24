@@ -281,11 +281,6 @@ window.onload = function() {
                   '<div class="row"><a id="errorDates" onclick="closeModalErrorDates()" class="col-xs-6 text-center leftAnchor modalOptions">OK</a></div>'});
     }
 
-    function closeModalErrorDates() {
-        $('#uglipop_content_fixed').fadeOut();
-        $('#uglipop_overlay').fadeOut('fast');
-    }
-
 	$('#ionDateStart')[0].cancelText = Content.picker.cancel;
 	$('#ionDateEnd')[0].cancelText = Content.picker.cancel;
 	$('#ionDateStart')[0].doneText = Content.picker.ok;
@@ -297,6 +292,11 @@ window.onload = function() {
 	$('#num-result')[0].cancelText = Content.picker.cancel;
 
 };
+
+function closeModalErrorDates() {
+    $('#uglipop_content_fixed').fadeOut();
+    $('#uglipop_overlay').fadeOut('fast');
+}
 </script>
 
 <%@ include file="/include/footer.jsp" %>
