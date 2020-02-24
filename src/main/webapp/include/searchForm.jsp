@@ -32,6 +32,15 @@
               `
             });
 
+            // on pressing enter on input change the date and close the modal
+            $('#'+dateInputId).on('keyup', function(e) {
+                if (e.keyCode === 13) {
+                    ARQUIVO_SEARCH_DATES.updateCalendarCard(type, $('#'+datePickerId).datepicker( 'getDate' ) ); 
+                    ARQUIVO.closeModalUglipop();
+                }
+            });
+
+
             // create new modal content and append it to bottom of the body DOM
             $( "body" ).append();
 
