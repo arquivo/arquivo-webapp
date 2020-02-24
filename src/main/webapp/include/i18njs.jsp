@@ -1,8 +1,9 @@
 <%@ taglib uri="http://java.sun.com/jstl/core" prefix="c" %>
 
 <script type="text/javascript">
-	var language = '<%= language %>'
-  if( language == 'EN'){
+  var language = '<%= language %>';
+  localStorage.setItem("language", "<%=language%>".toUpperCase());
+  if( language.toUpperCase() == 'EN'){
     document.write('<script type="text/javascript" language="JavaScript" src="<%=request.getContextPath()%>/js/properties/ConstantsEN.js?build=<c:out value='${initParam.buildTimeStamp}' />"><\/script>');
   }
   else{
