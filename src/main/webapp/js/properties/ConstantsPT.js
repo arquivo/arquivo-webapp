@@ -99,5 +99,31 @@ Content = {
             },
         },
     },
-
+    topbar: {
+        help: "Ajuda",
+        about: "Sobre",
+        portuguese: "Portugu&ecirc;s",
+        english: "English",
+        aboutUrl: "//sobre.arquivo.pt/pt/",
+        OtherLanguage: "English",
+        OtherLanguageShort: "en",
+        otherLanguage: "En",
+        link: {
+            copied: "Link copiado",
+        },
+        menu: {
+            home: "Nova pesquisa",
+            advanced: "Pesquisa avan&ccedil;ada",
+            share: "Partilhar",
+            about: "Sobre",
+            otherLanguage: "English",
+            desktop: "Vers&atilde;o desktop",
+            images: "Pesquisa de imagens",
+            bug: "https://sobre.arquivo.pt/pt/contacto/?your-subject=Problema%20no%20arquivo.pt&your-message=",
+            report: "Reportar problema",
+            pages: "P&aacute;ginas",
+            copy: "Copiar link",
+            images: "Imagens",
+        },
+    },
 };

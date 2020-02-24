@@ -99,4 +99,32 @@ Content = {
             },
         },
     },
+    topbar: {
+        help: "Help",
+        about: "About",
+        portuguese: "Portugu&ecirc;s",
+        english: "English",
+        aboutUrl: "//sobre.arquivo.pt/en/",
+        OtherLanguage: "Portugu&ecirc;s",
+        OtherLanguageShort: "pt",
+        otherLanguage: "Pt",
+        link: {
+            copied: "Link copied",
+        },
+        menu: {
+            home: "New search",
+            advanced: "Advanced search",
+            share: "Share",
+            about: "About",
+            otherLanguage: "Portugu&ecirc;s",
+            desktop: "Desktop version",
+            images: "Image search",
+            bug: "https://sobre.arquivo.pt/en/contact/?your-subject=Problem%20in%20arquivo.pt&your-message=",
+            report: "Report a bug",
+            pages: "Pages",
+            copy: "Copy link",
+            images: "Images",
+        },
+    },
+
 };

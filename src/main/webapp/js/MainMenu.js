@@ -1,40 +1,24 @@
-<script type="text/javascript">
-/*Auxiliary functions*/
-String.prototype.replaceAll = String.prototype.replaceAll || function(needle, replacement) {
-    return this.split(needle).join(replacement);
-};
-if (!String.prototype.startsWith) {
-  String.prototype.startsWith = function(searchString, position) {
-    position = position || 0;
-    return this.indexOf(searchString, position) === position;
-  };
-} 
 
-function getSlidePosition(){
-    console.log('slides length:' + $('ion-slide').length);
-    for(i=0; i< $('ion-slide').length; i++){
-        console.log('element i: ' + i);
-        console.log('element left offset: ' + $('ion-slide:nth-child('+(i+1)+')').offset().left);
-        if($('ion-slide:nth-child('+(i+1)+')').offset().left >= -10  && $('ion-slide:nth-child('+(i+1)+')').offset().left <= 10){
-            console.log('found posistion: ' + i);
-            return i+1
-        }
-    }
-    return -1
-}
-
-function getImageHref(position){
-    return $('ion-slide:nth-child('+(position)).find('.imageHref').attr('href');
-}
-
-
-/*End Auxiliary functions*/
-
-
-
-    
-/*Arquivo.pt specific functions and js code, such as loading constants, cookies, custom html code, etc*/
 var MENU = MENU || (function(){
+    function replaceAll(str, needle, replacement ) {
+        return str.split(needle).join(replacement);
+    }
+    function getImageHref(position){
+        return $('ion-slide:nth-child('+(position)).find('.imageHref').attr('href');
+    }
+    function getSlidePosition(){
+        console.log('slides length:' + $('ion-slide').length);
+        for(i=0; i< $('ion-slide').length; i++){
+            console.log('element i: ' + i);
+            console.log('element left offset: ' + $('ion-slide:nth-child('+(i+1)+')').offset().left);
+            if($('ion-slide:nth-child('+(i+1)+')').offset().left >= -10  && $('ion-slide:nth-child('+(i+1)+')').offset().left <= 10){
+                console.log('found posistion: ' + i);
+                return i+1
+            }
+        }
+        return -1
+    }
+
     return {
         init : function() {
             document.write(''+
@@ -42,7 +26,6 @@ var MENU = MENU || (function(){
                     '<div id="menuWrapper" class="swiper-wrapper">'+
                         '<div class="swiper-slide content"><div id="mainMask"></div>');     
             this.attachMask();
-
         },
         close: function(){
             document.write( '</div></div></div>');
@@ -52,25 +35,25 @@ var MENU = MENU || (function(){
                                     '<h4>&nbsp;</h4>'+
                                     '<button href="#" onclick="MENU.goToContent()" class="close-functions clean-button-no-fill">&#10005;</button>' +
                                 '</div>'+
-                                '<button class="clean-button" id="changeLanguage" onclick="MENU.changeLanguage();" ><h4><i class="fa fa-flag padding-right-menu-icon" aria-hidden="true"></i> <fmt:message key='topbar.menu.otherLanguage'/></h4></button>'+
-                                '<button id="cp-link" class="clean-button" onclick="MENU.copyLink();"><h4><i class="fa fa-link padding-right-menu-icon" aria-hidden="true"></i> <fmt:message key='topbar.menu.copy'/></h4></button>' +
-                                '<button class="clean-button" id="pagesMenu" onclick="MENU.pagesClick();"><h4><i class="fa fa-globe padding-right-menu-icon" aria-hidden="true"></i> <fmt:message key='topbar.menu.pages'/><i id="pagesCarret" class="fa fa-caret-down iCarret shareCarret pull-right" aria-hidden="true"></i></h4></button>'+      
+                                '<button class="clean-button" id="changeLanguage" onclick="MENU.changeLanguage();" ><h4><i class="fa fa-flag padding-right-menu-icon" aria-hidden="true"></i> '+Content.topbar.menu.otherLanguage+'</h4></button>'+
+                                '<button id="cp-link" class="clean-button" onclick="MENU.copyLink();"><h4><i class="fa fa-link padding-right-menu-icon" aria-hidden="true"></i> '+Content.topbar.menu.copy+'</h4></button>' +
+                                '<button class="clean-button" id="pagesMenu" onclick="MENU.pagesClick();"><h4><i class="fa fa-globe padding-right-menu-icon" aria-hidden="true"></i> '+Content.topbar.menu.pages+'<i id="pagesCarret" class="fa fa-caret-down iCarret shareCarret pull-right" aria-hidden="true"></i></h4></button>'+      
                                 '<div id="pageOptions">'+                                                           
-                                    '<a href="/search.jsp?l=<%=language%>" onclick=""><h4 class="submenu"><i class="fa fa-search padding-right-menu-icon" aria-hidden="true"></i> <fmt:message key='topbar.menu.home'/></h4></a>' +
-                                    '<button class="clean-button" id="advancedSearch" onclick="MENU.advancedPagesClick();"><h4 class="submenu"><i class="fa fa-search-plus padding-right-menu-icon" aria-hidden="true"></i> <fmt:message key='topbar.menu.advanced'/></h4></button>' +                          
+                                    '<a href="/search.jsp?l=<%=language%>" onclick=""><h4 class="submenu"><i class="fa fa-search padding-right-menu-icon" aria-hidden="true"></i> '+Content.topbar.menu.home+'</h4></a>' +
+                                    '<button class="clean-button" id="advancedSearch" onclick="MENU.advancedPagesClick();"><h4 class="submenu"><i class="fa fa-search-plus padding-right-menu-icon" aria-hidden="true"></i> '+Content.topbar.menu.advanced+'</h4></button>' +                          
                                 '</div>'+
-                                '<button class="clean-button" id="imagesMenu" onclick="MENU.imagesClick();"><h4><i class="fa fa-image padding-right-menu-icon" aria-hidden="true"></i> <fmt:message key='topbar.menu.images'/><i id="imagesCarret" class="fa fa-caret-down iCarret shareCarret pull-right" aria-hidden="true"></i></h4></button>'+
+                                '<button class="clean-button" id="imagesMenu" onclick="MENU.imagesClick();"><h4><i class="fa fa-image padding-right-menu-icon" aria-hidden="true"></i> '+Content.topbar.menu.images+'<i id="imagesCarret" class="fa fa-caret-down iCarret shareCarret pull-right" aria-hidden="true"></i></h4></button>'+
                                 '<div id="imageOptions">'+                                                          
-                                    '<a href="/images.jsp?l=<%=language%>" onclick=""><h4 class="submenu"><i class="fa fa-search padding-right-menu-icon" aria-hidden="true"></i> <fmt:message key='topbar.menu.home'/></h4></a>' +
-                                    '<button class="clean-button" id="advancedImages" onclick="MENU.advancedImagesClick();"><h4 class="submenu"><i class="fa fa-search-plus padding-right-menu-icon" aria-hidden="true"></i> <fmt:message key='topbar.menu.advanced'/></h4></button>' +             
+                                    '<a href="/images.jsp?l=<%=language%>" onclick=""><h4 class="submenu"><i class="fa fa-search padding-right-menu-icon" aria-hidden="true"></i> '+Content.topbar.menu.home+'</h4></a>' +
+                                    '<button class="clean-button" id="advancedImages" onclick="MENU.advancedImagesClick();"><h4 class="submenu"><i class="fa fa-search-plus padding-right-menu-icon" aria-hidden="true"></i> '+Content.topbar.menu.advanced+'</h4></button>' +             
                                 '</div>'+                                                                               
-                                '<button class="clean-button" id="switchDesktop" onclick="MENU.switchDesktop();"><h4><i class="fa fa-desktop padding-right-menu-icon" aria-hidden="true"></i> <fmt:message key='topbar.menu.desktop'/></h4></button>'+              
-                                '<a href="//sobre.arquivo.pt/<%=language%>" onclick=""><h4><i class="fa fa-info-circle padding-right-menu-icon" aria-hidden="true"></i> <fmt:message key='topbar.menu.about'/></h4></a>'+                           
+                                '<button class="clean-button" id="switchDesktop" onclick="MENU.switchDesktop();"><h4><i class="fa fa-desktop padding-right-menu-icon" aria-hidden="true"></i> '+Content.topbar.menu.desktop+'</h4></button>'+              
+                                '<a href="//sobre.arquivo.pt/<%=language%>" onclick=""><h4><i class="fa fa-info-circle padding-right-menu-icon" aria-hidden="true"></i> '+Content.topbar.menu.about+'</h4></a>'+                           
                             '</div>');
             this.attachKeyBoardEvent();
         },
         toggleLanguage: function() {
-            localStorage.setItem("language", "<fmt:message key='topbar.OtherLanguageShort'/>".toUpperCase());           
+            localStorage.setItem("language", Content.topbar.OtherLanguageShort.toUpperCase() );
             /*changes language*/
             key="l"; /*language parameter*/
             sourceURL = window.location.href;
@@ -87,11 +70,8 @@ var MENU = MENU || (function(){
                     }
                 }
                 rtn = rtn + "?" + params_arr.join("&");
-                rtn = rtn +"&l=<fmt:message key='topbar.OtherLanguageShort'/>";
             }
-            else{
-                rtn=rtn +"?l=<fmt:message key='topbar.OtherLanguageShort'/>";
-            }
+            rtn = rtn +"&l="+Content.topbar.OtherLanguageShort;
             return rtn;
         },  
         changeLanguage: function(){                 
@@ -103,7 +83,6 @@ var MENU = MENU || (function(){
                     /*redirect current link from mobile to desktop version i.e. remove the m. from current link*/
                     window.location = window.location.href.replace(window.location.hostname , window.location.hostname.substr(2, window.location.hostname.length)) 
                     return false;           
-            
         },
         advancedPagesClick: function(){
                 var txtSearch = document.getElementById('txtSearch').value.toString();
@@ -111,8 +90,6 @@ var MENU = MENU || (function(){
                 if(txtSearch !='' && txtSearch != undefined){
                     newURL = "/advanced.jsp?l=<%=language%>&query="+ARQUIVO.encodeHtmlEntities( document.getElementById( 'txtSearch' ).value.toString( ) );
                     console.log( 'newURL => ' + newURL );
-                   
-                    
                 } else {
                     newURL = "/advanced.jsp?l=<%=language%>";
                 }
@@ -130,7 +107,7 @@ var MENU = MENU || (function(){
                 window.location.href = newURL;
         },          
         reportBug: function(){
-                window.location = '<fmt:message key="topbar.menu.bug" />'+window.location.href.replaceAll('&', '%26');
+                window.location = Content.topbar.menu.bug + replaceAll(window.location.href, '&', '%26');
         },                          
         attachMask: function(){       
           $('#mainMask').on('click', function(e){
@@ -154,8 +131,6 @@ var MENU = MENU || (function(){
                 urlToCopy = window.location.href;
                 MENU.copyURL(urlToCopy);
             }
-
-
         },
         copyURL: function(urlToCopy){           
             console.log("urlToCopy: " + urlToCopy);
@@ -165,7 +140,7 @@ var MENU = MENU || (function(){
             dummy.select();
             document.execCommand('copy');
             document.body.removeChild(dummy);
-            $('body').append('<div id="alertCopy" class="alert alert-success alertCopy"><strong><fmt:message key='topbar.link.copied'/></strong></div>');
+            $('body').append('<div id="alertCopy" class="alert alert-success alertCopy"><strong>'+Content.topbar.link.copied+'</strong></div>');
             $('#alertCopy').show().delay(1500).fadeOut();
             setTimeout(function(){
             $('#alertCopy').remove();
@@ -210,4 +185,3 @@ var MENU = MENU || (function(){
         },
     };
 }());   
-</script>
