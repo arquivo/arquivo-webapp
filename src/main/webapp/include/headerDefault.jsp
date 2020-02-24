@@ -16,7 +16,6 @@
 <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet" media="none" onload="if(media!='all')media='all'" /><%-- Lazy load css download --%>
 
 <link rel="shortcut icon" href="/img/logo-16.png" type="image/x-icon" />
-<link rel="stylesheet" title="Estilo principal" type="text/css" href="/css/newStyle.css?build=<c:out value='${initParam.buildTimeStamp}'/>"  media="all" />
 <link rel="stylesheet" href="/css/font-awesome.min.css" />
 
 <link rel="stylesheet" href="/css/bootstrap.min.css" />
@@ -47,6 +46,9 @@
 
 <link rel="stylesheet" href="/@ionic/core/css/ionic.bundle.css" />
 
+<link rel="stylesheet" title="Estilo principal" type="text/css" href="/css/newStyle.css?build=<c:out value='${initParam.buildTimeStamp}'/>"  media="all" />
+
 <script src="/js/uglipop.min.js"></script>
 
 <script src="/js/arquivo.js?build=<c:out value='${initParam.buildTimeStamp}'/>"></script>
+
