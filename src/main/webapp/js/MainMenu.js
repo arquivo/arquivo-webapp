@@ -39,16 +39,16 @@ var MENU = MENU || (function(){
                                 '<button id="cp-link" class="clean-button" onclick="MENU.copyLink();"><h4><i class="fa fa-link padding-right-menu-icon" aria-hidden="true"></i> '+Content.topbar.menu.copy+'</h4></button>' +
                                 '<button class="clean-button" id="pagesMenu" onclick="MENU.pagesClick();"><h4><i class="fa fa-globe padding-right-menu-icon" aria-hidden="true"></i> '+Content.topbar.menu.pages+'<i id="pagesCarret" class="fa fa-caret-down iCarret shareCarret pull-right" aria-hidden="true"></i></h4></button>'+      
                                 '<div id="pageOptions">'+                                                           
-                                    '<a href="/search.jsp?l=<%=language%>" onclick=""><h4 class="submenu"><i class="fa fa-search padding-right-menu-icon" aria-hidden="true"></i> '+Content.topbar.menu.home+'</h4></a>' +
+                                    '<a href="/search.jsp?l='+language+'" onclick=""><h4 class="submenu"><i class="fa fa-search padding-right-menu-icon" aria-hidden="true"></i> '+Content.topbar.menu.home+'</h4></a>' +
                                     '<button class="clean-button" id="advancedSearch" onclick="MENU.advancedPagesClick();"><h4 class="submenu"><i class="fa fa-search-plus padding-right-menu-icon" aria-hidden="true"></i> '+Content.topbar.menu.advanced+'</h4></button>' +                          
                                 '</div>'+
                                 '<button class="clean-button" id="imagesMenu" onclick="MENU.imagesClick();"><h4><i class="fa fa-image padding-right-menu-icon" aria-hidden="true"></i> '+Content.topbar.menu.images+'<i id="imagesCarret" class="fa fa-caret-down iCarret shareCarret pull-right" aria-hidden="true"></i></h4></button>'+
                                 '<div id="imageOptions">'+                                                          
-                                    '<a href="/images.jsp?l=<%=language%>" onclick=""><h4 class="submenu"><i class="fa fa-search padding-right-menu-icon" aria-hidden="true"></i> '+Content.topbar.menu.home+'</h4></a>' +
+                                    '<a href="/images.jsp?l='+language+'" onclick=""><h4 class="submenu"><i class="fa fa-search padding-right-menu-icon" aria-hidden="true"></i> '+Content.topbar.menu.home+'</h4></a>' +
                                     '<button class="clean-button" id="advancedImages" onclick="MENU.advancedImagesClick();"><h4 class="submenu"><i class="fa fa-search-plus padding-right-menu-icon" aria-hidden="true"></i> '+Content.topbar.menu.advanced+'</h4></button>' +             
                                 '</div>'+                                                                               
                                 '<button class="clean-button" id="switchDesktop" onclick="MENU.switchDesktop();"><h4><i class="fa fa-desktop padding-right-menu-icon" aria-hidden="true"></i> '+Content.topbar.menu.desktop+'</h4></button>'+              
-                                '<a href="//sobre.arquivo.pt/<%=language%>" onclick=""><h4><i class="fa fa-info-circle padding-right-menu-icon" aria-hidden="true"></i> '+Content.topbar.menu.about+'</h4></a>'+                           
+                                '<a href="//sobre.arquivo.pt/'+language+'" onclick=""><h4><i class="fa fa-info-circle padding-right-menu-icon" aria-hidden="true"></i> '+Content.topbar.menu.about+'</h4></a>'+                           
                             '</div>');
             this.attachKeyBoardEvent();
         },
@@ -90,10 +90,10 @@ var MENU = MENU || (function(){
                 var txtSearch = document.getElementById('txtSearch').value.toString();
                 var newURL = "";
                 if(txtSearch !='' && txtSearch != undefined){
-                    newURL = "/advanced.jsp?l=<%=language%>&query="+ARQUIVO.encodeHtmlEntities( document.getElementById( 'txtSearch' ).value.toString( ) );
+                    newURL = "/advanced.jsp?l="+language+"&query="+ARQUIVO.encodeHtmlEntities( document.getElementById( 'txtSearch' ).value.toString( ) );
                     console.log( 'newURL => ' + newURL );
                 } else {
-                    newURL = "/advanced.jsp?l=<%=language%>";
+                    newURL = "/advanced.jsp?l=" + language;
                 }
                 window.location.href = newURL;
 
@@ -102,9 +102,9 @@ var MENU = MENU || (function(){
                 var txtSearch = document.getElementById('txtSearch').value.toString();
                 var newURL = "";
                 if(txtSearch !='' && txtSearch != undefined){
-                    newURL = "/advancedImages.jsp?l=<%=language%>&query="+ARQUIVO.encodeHtmlEntities( document.getElementById( 'txtSearch' ).value.toString( ) );
+                    newURL = "/advancedImages.jsp?l="+language+"&query="+ARQUIVO.encodeHtmlEntities( document.getElementById( 'txtSearch' ).value.toString( ) );
                 } else {
-                    newURL = "/advancedImages.jsp?l=<%=language%>";
+                    newURL = "/advancedImages.jsp?l="+language;
                 }
                 window.location.href = newURL;
         },          
