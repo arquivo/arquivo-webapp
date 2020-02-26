@@ -54,8 +54,7 @@ var MENU = MENU || (function(){
         },
         toggleLanguage: function() {
             localStorage.setItem("language", Content.topbar.OtherLanguageShort.toUpperCase() );
-            /*changes language*/
-            key="l"; /*language parameter*/
+            key="l";
             sourceURL = window.location.href;
             var rtn = sourceURL.split("?")[0],
                 param,
@@ -69,9 +68,12 @@ var MENU = MENU || (function(){
                         params_arr.splice(i, 1);
                     }
                 }
-                rtn = rtn + "?" + params_arr.join("&");
+                rtn += "?" + params_arr.join("&");
+                rtn += "&";
+            } else {
+                rtn += "?";
             }
-            rtn = rtn +"&l="+Content.topbar.OtherLanguageShort;
+            rtn += "l="+Content.topbar.OtherLanguageShort;
             return rtn;
         },  
         changeLanguage: function(){                 
