@@ -15,7 +15,7 @@
               source:'html',
               content: 
               `
-                <h2>${Content.picker[type.toLowerCase()].header}</h2>
+                <h4>${Content.picker[type.toLowerCase()].header}</h4>
                 <p class="dateInputContainer dateInputContainer${type}">
                   <input size="10" type="text" id="${dateInputId}" value="${dateInputVal}" class="dateInput dateInput${type}" /> 
                   dd/mm/yyyy
