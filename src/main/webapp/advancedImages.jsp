@@ -263,16 +263,12 @@ window.onload = function() {
                   '<div class="row"><a id="errorDates" onclick="ARQUIVO.closeModalUglipop()" class="col-xs-6 text-center leftAnchor modalOptions">OK</a></div>'});
     }
 
-	$('#ionDateStart')[0].cancelText = Content.picker.cancel;
-	$('#ionDateEnd')[0].cancelText = Content.picker.cancel;
-	$('#ionDateStart')[0].doneText = Content.picker.ok;
-	$('#ionDateEnd')[0].doneText = Content.picker.ok;
-	$('#ionDateStart')[0].monthShortNames = ARQUIVO.monthShortNamesArray();
-	$('#ionDateEnd')[0].monthShortNames = ARQUIVO.monthShortNamesArray();
+    ARQUIVO.initializeIonDateTimeComponent($('#ionDateStart')[0]);
+    ARQUIVO.initializeIonDateTimeComponent($('#ionDateEnd')[0]);
 	
-	$('#formatType')[0].cancelText =  "<fmt:message key='picker.cancel'/>";
-	$('#size')[0].cancelText =  "<fmt:message key='picker.cancel'/>";
-	$('#safeSearch')[0].cancelText =  "<fmt:message key='picker.cancel'/>";
+	$('#formatType')[0].cancelText = Content.picker.cancel;
+	$('#size')[0].cancelText = Content.picker.cancel;
+	$('#safeSearch')[0].cancelText = Content.picker.cancel;
 
 };
 

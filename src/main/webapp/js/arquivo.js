@@ -195,5 +195,11 @@ var ARQUIVO = ARQUIVO || (function(){
             $('#uglipop_content_fixed').fadeOut('fast');
         },
 
+        initializeIonDateTimeComponent: function(ionDateTimeComponent) {
+            ionDateTimeComponent.cancelText = Content.picker.cancel;
+            ionDateTimeComponent.doneText = Content.picker.ok;
+            ionDateTimeComponent.monthShortNames = ARQUIVO.monthShortNamesArray();
+        },
+
     };
 }());

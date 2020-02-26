@@ -81,12 +81,6 @@
 
             $('#calendarYear'+type).text( dateToPutOnCard.getFullYear() );
           },
-          initializeIonDateTimeComponent: function(ionDateTimeComponent) {
-            const i = $(ionDateTimeComponent);
-            i.cancelText = Content.picker.cancel;
-            i.doneText = Content.picker.ok;
-            i.monthShortNames = ARQUIVO.monthShortNamesArray();
-          },
           getCalendarDate: function(type) {
             var input = $( '#date'+type+'_top' ).val().trim();
             var t = new Date( ARQUIVO.createDateJsFormat( input ) );
@@ -99,9 +93,9 @@
 
     <script type="text/javascript">
       document.write('<ion-datetime id="ionDateStart" class="display-none" display-format="D/MMM/YYYY" min="'+minYear+'-01-01" max="'+maxYear+'-12-31" value="<%=dateStartStringIonic%>"></ion-datetime>');
-      ARQUIVO_SEARCH_DATES.initializeIonDateTimeComponent($('#ionDateStart'));
+      ARQUIVO.initializeIonDateTimeComponent($('#ionDateStart')[0]);
       document.write('<ion-datetime id="ionDateEnd" class="display-none" display-format="D/MMM/YYYY" min="'+minYear+'-01-01" max="'+maxYear+'-12-31" value="<%=dateEndStringIonic%>"></ion-datetime>');
-      ARQUIVO_SEARCH_DATES.initializeIonDateTimeComponent($('#ionDateEnd'));
+      ARQUIVO.initializeIonDateTimeComponent($('#ionDateEnd')[0]);
     </script>
     <form id="searchForm" action='<%= formAction %>'>
       <div id="form_container">
