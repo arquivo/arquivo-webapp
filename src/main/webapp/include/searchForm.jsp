@@ -159,23 +159,23 @@
                 <input size="10" class="display-none" type="text" id="dateStart_top" name="dateStart" value="<%=dateStartString%>" />
                 <input size="10" class="display-none" type="text" id="dateEnd_top" name="dateEnd" value="<%=dateEndString%>" />
 
-                <button type="button" class="clean-button-no-fill" id="sliderCircleEnd" onclick="openDateEnd();" slot="end">
-                  <span id="calendarDayEnd"></span>
+                <button type="button" class="clean-button-no-fill searchCalendar" id="sliderCircleEnd" onclick="openDateEnd();" slot="end">
+                  <span class="searchCalendarDay" id="calendarDayEnd"></span>
                   <br/>
-                  <span id="calendarMonthEnd"></span>
+                  <span class="searchCalendarMonth" id="calendarMonthEnd"></span>
                   <br/>
-                  <span id="calendarYearEnd"></span>
+                  <span class="searchCalendarYear" id="calendarYearEnd"></span>
                   <script>
                     ARQUIVO_SEARCH_DATES.updateCalendarCard('End', dateEnd);
                   </script>
                 </button>
 
-                <button type="button" class="clean-button-no-fill" id="sliderCircleStart" slot="start" onclick="openDateStart()">
-                  <span id="calendarDayStart"></span>
+                <button type="button" class="clean-button-no-fill searchCalendar" id="sliderCircleStart" slot="start" onclick="openDateStart()">
+                  <span class="searchCalendarDay" id="calendarDayStart"></span>
                   <br/>
-                  <span id="calendarMonthStart"></span>
+                  <span class="searchCalendarMonth" id="calendarMonthStart"></span>
                   <br/>
-                  <span id="calendarYearStart"></span>
+                  <span class="searchCalendarYear" id="calendarYearStart"></span>
                   <script type="text/javascript">
                     ARQUIVO_SEARCH_DATES.updateCalendarCard('Start', dateStart);
                   </script>
