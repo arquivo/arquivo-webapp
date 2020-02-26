@@ -746,7 +746,7 @@ legend.scheduler-border {
 .box-content {
   background-color: white;
   padding-bottom: 15px;
-  padding-left: 45px !important;
+  padding-left: 38px !important;
 }
 .no-padding-left {
   padding-left: 0px !important;
@@ -757,13 +757,13 @@ legend.scheduler-border {
 .box-content label {
   color: black;
   font-weight: normal;
-  font-size: 16px;
+  font-size: 15px;
   padding-left: 1px !important;
 }
 .box-content input {
   color: initial;
   padding: 10px 10px 10px 14px !important;
-  font-size: 17px;
+  font-size: 15px;
   width: 99.7% !important;
   position: relative;
   border-radius: 5px !important;
@@ -777,6 +777,62 @@ legend.scheduler-border {
   -webkit-box-shadow: none !important;
   box-shadow: none !important;
 }
+
+/* Desktop date picker */
+
+body#homepage-landing .dateModal {
+padding:20px !important;
+border-radius:5px;
+-webkit-box-shadow: 0px 17px 15px -6px rgba(0,0,0,0.45);
+-moz-box-shadow: 0px 17px 15px -6px rgba(0,0,0,0.45);
+box-shadow: 0px 17px 15px -6px rgba(0,0,0,0.45);
+}
+
+body#homepage-landing .ui-widget.ui-widget-content {
+box-shadow: none !important;
+padding: 18px 0px 9px 0px;
+border: 1px solid transparent;
+}
+
+.ui-widget.ui-widget-content {
+-webkit-box-shadow: 0px 17px 15px -13px rgba(0,0,0,0.45);
+-moz-box-shadow: 0px 17px 15px -13px rgba(0,0,0,0.45);
+box-shadow: 0px 17px 15px -13px rgba(0,0,0,0.45);
+padding: 18px 20px 9px 15px;
+border: 1px solid #ccc;
+font-family: roboto !important;
+}
+
+.ui-datepicker .ui-datepicker-title select {
+    background-color: white;
+    border-color: #cfcfcf !important;
+    margin: 1px;
+    font-family: roboto;
+    font-size: 14px;
+    font-weight: normal;
+    color: black;
+}
+.ui-state-default {
+border:1px solid transparent !important;
+    border-radius: 5px !important;
+}
+
+.ui-datepicker .ui-datepicker-title select {
+    background-color: white;
+    border-color: #1c75c0;
+    margin: 1px;
+    font-weight: normal;
+}
+
+
+.ui-datepicker th {  
+    padding: .7em .3em;
+    text-align: center;
+    font-weight: normal;
+    border: 0;
+    font-size: 14px;
+}
+
 input[type=text] {
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -784,9 +840,10 @@ input[type=text] {
   background: white !important;
   outline: none;
 }
-.box-content input:focus {
+.box-content input[type=text]:focus {
   box-shadow: none !important;
   -webkit-box-shadow: none !important;
+  background-color:#bae8fd38 !important;
 }
 .row .tip, .col-xs-10 {
   float: left !important;
@@ -853,7 +910,8 @@ input[type=text] {
 .button-advanced {
   background-color: white;
   padding: 20px 0;
-  margin-bottom: -20px;
+  margin-bottom: 50px;
+  text-align: right;
 }
 .text-bold {
   font-weight: bold;
@@ -891,11 +949,11 @@ em {
   position: relative;
 }
 body#advanced .calendar-anchor-advanced img, body#advanced-images .calendar-anchor-advanced img {
-  position: absolute;
-  top: -11px;
-  right: 4px;
-  z-index: 999999999;
-  width: 29px;
+   position: absolute;
+    top: -9px;
+    right: 11px;
+    z-index: 999999999;
+    width: 25px;
 }
 .calendar-anchor-advanced img {
   position: absolute;
@@ -952,7 +1010,7 @@ body#advanced .calendar-anchor-advanced img, body#advanced-images .calendar-anch
   padding-left: 0px !important;
 }
 .padding-left-5 {
-  padding-left: 5px;
+  padding-left: /*5px*/0;
 }
 #divLoading {
   display: none;

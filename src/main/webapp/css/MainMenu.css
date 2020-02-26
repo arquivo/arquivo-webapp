@@ -329,19 +329,35 @@ body#advanced .opcoes-top-direita, body#advanced-images .opcoes-top-direita {
 padding-right: 42px !important;  
 }
 
-body#advanced .myButtonStyle, body#advanced-images .myButtonStyle  {
-    padding: 11px 0;
-    background-color: /*#007AFF*/#1c75c0!important;   
-    border: 1px solid /*#007AFF*/#1c75c0!important;
-    color: white !important;
+body#advanced .myButtonStyle, body#advanced-images .myButtonStyle, body#advanced .myButtonStyle:active, body#advanced-images .myButtonStyle:active  {
+    background-color: transparent !important;
+    border: 1px solid #1c75c0 !important;    
+    padding: 6px 0;       
+    text-decoration: none !important;
+    font-size: 13px;   
+    color: #1c75c0 !important;   
+    transition: background-color 0.5s ease 0s;   
+    width: 9% !important;
 }
 
-body#advanced .myButtonStyle:active, body#advanced-images .myButtonStyle:active  {
-    padding: 11px 0;
-    background-color: #777!important;   
-    border: 1px solid #777!important;
-    color: white !important;
+body#advanced .myButtonStyle:hover, body#advanced-images .myButtonStyle:hover, body#advanced .myButtonStyle:active, body#advanced-images .myButtonStyle:active  {
+    background-color: #1c75c0 !important;
+    border: 1px solid #1c75c0 !important;    
+    padding: 6px 0;       
+    text-decoration: none !important;
+    font-size: 13px;   
+    color: #fff !important;   
+    transition: background-color 0.5s ease 0s;   
+    
 }
+
+.expandable-div {
+    background-color: transparent;
+    color: grey;
+    border-bottom: 1px solid #dfe1e5;
+    padding-bottom: 18px !important;
+}
+
 
 body#advanced .glyphicon-search:before, body#advanced-images .glyphicon-search:before {
 	display: none !important
