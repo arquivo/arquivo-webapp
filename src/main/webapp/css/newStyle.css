@@ -3689,3 +3689,9 @@ body#home-search #years {
   border-color: #1c75c0;
   margin: 1px;
 }
+
+@media (min-width: 500px) {
+.grouped {
+  margin-left: 50px !important;
+}
+}
