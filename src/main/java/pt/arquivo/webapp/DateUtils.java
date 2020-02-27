@@ -18,7 +18,7 @@ public class DateUtils {
 
 	private static final Pattern OFFSET_PARAMETER = Pattern.compile("(\\d{4})-(\\d{2})-(\\d{2})");
 
-	private static final SimpleDateFormat inputDateFormatter = new SimpleDateFormat("dd/MM/yyyy");
+	private static final String inputDateFormatter = "dd/MM/yyyy";
 
 	private Calendar fixedDateStart;
 	private Calendar fixedDateEnd;
@@ -87,7 +87,7 @@ public class DateUtils {
 		if (dateFromRequestParameter != null && !dateFromRequestParameter.trim().isEmpty()) {
 			Date d = null;
 			try {
-				d = inputDateFormatter.parse(dateFromRequestParameter.trim());
+				d = new SimpleDateFormat(inputDateFormatter).parse(dateFromRequestParameter.trim());
 			} catch (ParseException e) {
 				LOG.debug("Invalid Date:" + dateFromRequestParameter);
 			}
@@ -103,7 +103,7 @@ public class DateUtils {
 	}
 
 	public String getDateEndString() {
-		return inputDateFormatter.format(getDateEnd().getTime());
+		return new SimpleDateFormat(inputDateFormatter).format(getDateEnd().getTime());
 	}
 
 	public String getDateEndDay() {
@@ -119,7 +119,7 @@ public class DateUtils {
 	}
 
 	public String getDateStartString() {
-		return inputDateFormatter.format(getDateStart().getTime());
+		return new SimpleDateFormat(inputDateFormatter).format(getDateStart().getTime());
 	}
 
 	public String getDateStartDay() {

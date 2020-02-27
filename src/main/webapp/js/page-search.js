@@ -138,7 +138,7 @@ function searchPages(startIndex){
 	                previousResultHostname = url.hostname;
 	                previousResultURL = originalURL;
 
-					var liAttributes = duplicatedWithPrevious ? ' class="grouped"' : '';
+					var liAttributes = duplicatedWithPrevious ? 'class="grouped"' : '';
 
 	                if (title.trim().length == 0)  {
 	                	title = originalURL;
@@ -147,10 +147,10 @@ function searchPages(startIndex){
 	                var mimeTypePresentation = primaryMimeType !== 'text' ? `<span class="mime">[${secondaryMimeType.toUpperCase()}]</span>` : '';
 
 	                var currentResultCode = `
-	                	<li${liAttributes}>
+	                	<li ${liAttributes} onclick="ga('send', 'event', 'Search result', 'Page search', 'Result position', ${currentResultGlobalPosition}); window.location='${linkToArchive}'; ">
 							<div class="urlBlock">
 								<p class="url" title="${urlPresentation}">→ ${urlPresentation}</p>
-								<a href="${linkToArchive}" onclick="ga('send', 'event', 'Search result', 'Page search', 'Result position', ${currentResultGlobalPosition});">
+								<a href="${linkToArchive}">
 								    <div class="border-bottom"></div>
 								    <h2>
 								    	${mimeTypePresentation}

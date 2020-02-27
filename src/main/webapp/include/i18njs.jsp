@@ -2,7 +2,15 @@
 
 <script type="text/javascript">
   var language = '<%= language %>';
-  localStorage.setItem("language", "<%=language%>".toUpperCase());
+  
+  // if not defined on server side then try to get previous client choosen language.
+  if (!language || language.length == 0) {
+  	language = localStorage.getItem("language");
+  }
+  
+  // save choosen language on local storage
+  localStorage.setItem("language", language.toUpperCase());
+  
   if( language.toUpperCase() == 'EN'){
     document.write('<script type="text/javascript" language="JavaScript" src="<%=request.getContextPath()%>/js/properties/ConstantsEN.js?build=<c:out value='${initParam.buildTimeStamp}' />"><\/script>');
   }
