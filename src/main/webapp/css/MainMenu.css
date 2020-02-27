@@ -392,7 +392,7 @@ body#advanced .myButtonStyle, body#advanced-images .myButtonStyle, body#advanced
     color: #1c75c0 !important;   
     transition: background-color 0.5s ease 0s;   
     width: auto !important; 
-    padding: 4px 15px 5px 15px !important;
+    padding: 4px 10px 5px 10px !important;
    }
 
 body#advanced .myButtonStyle:hover, body#advanced-images .myButtonStyle:hover, body#advanced .myButtonStyle:active, body#advanced-images .myButtonStyle:active  {

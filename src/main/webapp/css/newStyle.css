@@ -179,6 +179,10 @@ font-family: helvetica, arial !important;
 ion-item {
   --pin-display: none !important;
 }
+
+body#advanced #searchForm {
+margin-top: 0 !important;
+}
 #searchForm {
   margin-top: 25px;
 }
@@ -506,7 +510,7 @@ body#homeImages .pagesNextPrevious {
 .month-version-div {
   text-align: center;
   display: none;
-  background-color: #009cdf !important;
+  background-color: #1a5f97ba !important;
   color: white;
   cursor: pointer;
   margin-left: 0px !important;
@@ -524,7 +528,8 @@ body#homeImages .pagesNextPrevious {
   text-align: left;
   display: none;
   cursor: pointer;
-  background-color: #c0ebfe !important;
+  background-color: /*#c0ebfe*/#0b497f !important;
+  color: #fff;
 }
 .yearA {
   width: 100%;
@@ -536,10 +541,15 @@ body#homeImages .pagesNextPrevious {
   width: 100%;
   border-bottom: 1px dashed;
 }
-.yearUl a:visited {
-  color: black;
-  text-decoration: inherit;
+.yearUl a:visited, .yearUl a {
+ color: white;
+    text-decoration: inherit;
+    padding-left: 40px;
+    font-size: 14 !important;    
 }
+
+
+
 .day-version-div {
   border-bottom: 1px dashed white !important;
 }
@@ -582,7 +592,7 @@ body#homeImages .pagesNextPrevious {
 .numberVersions {
   float: right !important;
   width: 70% !important;
-  padding-right: 1%;
+  padding-right: /*1%*/15px;
   color: white;
   padding-bottom: 5px;
 }
@@ -1024,7 +1034,7 @@ body#advanced .calendar-anchor-advanced img, body#advanced-images .calendar-anch
   display: none;
 }
 #years h4 {
-  font-size: 16px !important;
+  font-size: /*16px*/14px !important;
 }
 .list-versions-div {
   cursor: pointer;
@@ -2091,7 +2101,7 @@ th.thTV, td.tdTV {
   padding: 4px !important;
   min-width: 57px;
   border-right: 1px solid lightgray;
-  font-size: 1.2em !important;
+  font-size: 0.8em !important;
   padding: 10px 0px !important
 }
 tr.trTV:nth-child(even) {
@@ -2161,8 +2171,8 @@ tr.trTV:nth-child(even) {
   height: initial !important;
 }
 .row {
-  margin-right: -15px !important;
-  margin-left: -15px !important;
+  margin-right: -21px !important;
+  margin-left: -21px !important;
 }
 .menu-opcoes, .opcoes-top-direita {
   color: white;
@@ -3021,19 +3031,19 @@ h4.modalTitle {
   }
   .url-search-container #conteudo-versoes {
     margin: 0 auto !important;
-    width: 95.5% !important;
-    max-width: 915px !important;
+    /*width: 95.5% !important;
+    max-width: 915px !important;*/
   }
   .url-search-container #conteudo-versoes {
     margin: 0 auto !important;
-    width: 95.5% !important;
-    max-width: 915px !important;
+   /* width: 95.5% !important;
+    max-width: 915px !important;*/
   }
   #layoutTV {
     width: 95.5% !important;
     max-width: 915px !important;
     margin: 0 auto !important;
-    margin-bottom: 10px !important;
+    margin-bottom: /*10px*/0 !important;
   }
 }
 @media (min-width:769px) and (max-width:3000px) {
@@ -3450,6 +3460,7 @@ width:104px;
     padding-top: 0px;
     margin-top: 0px;
     font-weight: 400;
+
 }
 
 .left-icon {
@@ -3764,7 +3775,7 @@ body#homeImages .dateModal, body#home-search .dateModal, body#homeImages .dateMo
     background-color: white;
     padding: 20px;
     margin-bottom: 0;
-    text-align: right; 
+    text-align: right !important; 
 }
 }
 
@@ -3774,4 +3785,9 @@ li.next .myButtonStyle:after, #btnSubmitBottom:after {
 
 li.previous .myButtonStyle:before {
   content: "← ";
+  
+}
+
+#urlSearchContainer {
+margin-top: 20px;
 }
