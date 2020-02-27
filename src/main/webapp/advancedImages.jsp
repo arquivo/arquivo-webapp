@@ -165,7 +165,6 @@
 					<div id="bottom-submit" class="text-center button-advanced">
 						<button type="submit" value="<fmt:message key='advanced.submit'/>" alt="<fmt:message key='advanced.submit'/>" class="myButtonStyle col-xs-offset-3 col-xs-6" name="btnSubmitBottom" id="btnSubmitBottom" accesskey="e" >
 						<fmt:message key='advanced.search'/>
-						<span class="glyphicon glyphicon-search padding-left-5"></span>
 						</button>
 					</div>
 
@@ -263,16 +262,12 @@ window.onload = function() {
                   '<div class="row"><a id="errorDates" onclick="ARQUIVO.closeModalUglipop()" class="col-xs-6 text-center leftAnchor modalOptions">OK</a></div>'});
     }
 
-	$('#ionDateStart')[0].cancelText = Content.picker.cancel;
-	$('#ionDateEnd')[0].cancelText = Content.picker.cancel;
-	$('#ionDateStart')[0].doneText = Content.picker.ok;
-	$('#ionDateEnd')[0].doneText = Content.picker.ok;
-	$('#ionDateStart')[0].monthShortNames = ARQUIVO.monthShortNamesArray();
-	$('#ionDateEnd')[0].monthShortNames = ARQUIVO.monthShortNamesArray();
+    ARQUIVO.initializeIonDateTimeComponent($('#ionDateStart')[0]);
+    ARQUIVO.initializeIonDateTimeComponent($('#ionDateEnd')[0]);
 	
-	$('#formatType')[0].cancelText =  "<fmt:message key='picker.cancel'/>";
-	$('#size')[0].cancelText =  "<fmt:message key='picker.cancel'/>";
-	$('#safeSearch')[0].cancelText =  "<fmt:message key='picker.cancel'/>";
+	$('#formatType')[0].cancelText = Content.picker.cancel;
+	$('#size')[0].cancelText = Content.picker.cancel;
+	$('#safeSearch')[0].cancelText = Content.picker.cancel;
 
 };
 

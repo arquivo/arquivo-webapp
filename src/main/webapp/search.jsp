@@ -537,7 +537,11 @@ String[] queryString_splitted=null;
             }
             nextPageUrl = StringEscapeUtils.escapeHtml(nextPageUrl);
         %>
-            <li class="next"><a id="nextPageSearch" style="display: none;" onclick="ga('send', 'event', 'Full-text search', 'Next page', document.location.href );" class="myButtonStyle text-center" role="button" href="<%=nextPageUrl%>" title="<fmt:message key='search.pager.next'/>"><fmt:message key='search.pager.next'/> &rarr;</a></li>
+            <li class="next">
+              <a id="nextPageSearch" style="display: none;" onclick="ga('send', 'event', 'Full-text search', 'Next page', document.location.href );" class="myButtonStyle text-center" role="button" href="<%=nextPageUrl%>" title="<fmt:message key='search.pager.next'/>">
+                <fmt:message key='search.pager.next'/>
+              </a>
+            </li>
         </ul>
       </div>
     </div>

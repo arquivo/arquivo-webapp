@@ -64,6 +64,8 @@ function searchPages(startIndex){
 
     var extractedQuery = extractQuerySpecialParameters(input);
 
+    const deduplicationPerHostname = extractedQuery.site.length == 0
+
     $.ajax({
 		url: textSearchAPI,
     	dataType: 'text',
@@ -109,7 +111,7 @@ function searchPages(startIndex){
 	            }
 	            var resultsToLoad = currentResults;
 
-	            var previousResultHostname;
+	            var previousResultHostname, previousResultURL;
 	            for (var i=0; i< currentResults; i++){
 	                var currentDocument = responseJson.response_items[i];
 	                if (typeof currentDocument === 'undefined' || !currentDocument) {
@@ -132,8 +134,11 @@ function searchPages(startIndex){
 					var month = Content.months[currentDocument.tstamp.substring(4,6)];
 					var day = parseInt(currentDocument.tstamp.substring(6,8));
 
-					var liAttributes = previousResultHostname === url.hostname ? ' class="grouped"' : '';
+					var duplicatedWithPrevious = deduplicationPerHostname ? previousResultHostname === url.hostname : previousResultURL === originalURL;
 	                previousResultHostname = url.hostname;
+	                previousResultURL = originalURL;
+
+					var liAttributes = duplicatedWithPrevious ? ' class="grouped"' : '';
 
 	                if (title.trim().length == 0)  {
 	                	title = originalURL;

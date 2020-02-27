@@ -3774,3 +3774,21 @@ body#homeImages .dateModal, body#home-search .dateModal, body#homeImages .dateMo
     text-align: right; 
 }
 }
+
+/*
+// Add shortcut keyboard key to each element
+*:hover:after, :focus:after {
+  content: " [" attr(accesskey) "] ";
+}
+*[accesskey=""]:hover::after, *:not([accesskey]):hover::after, *[accesskey=""]:focus::after, *:not([accesskey]):focus::after {
+    content: none;
+}
+*/
+
+li.next .myButtonStyle:after, #btnSubmitBottom:after {
+  content: " →";
+}
+
+li.previous .myButtonStyle:before {
+  content: "← ";
+}
