@@ -3450,7 +3450,6 @@ width:104px;
     padding-top: 0px;
     margin-top: 0px;
     font-weight: 400;
-
 }
 
 .left-icon {
@@ -3767,4 +3766,12 @@ body#homeImages .dateModal, body#home-search .dateModal, body#homeImages .dateMo
     margin-bottom: 0;
     text-align: right; 
 }
+}
+
+li.next .myButtonStyle:after, #btnSubmitBottom:after {
+  content: " →";
+}
+
+li.previous .myButtonStyle:before {
+  content: "← ";
 }
