@@ -296,6 +296,7 @@ ion-item {
  /* -webkit-box-shadow: 0px 4px 5px -2px rgba(0, 0, 0, 0.40) !important;
   box-shadow: 0px 4px 5px -2px rgba(0, 0, 0, 0.40) !important;*/
   cursor: pointer !important;
+
   transition: background-color 0.5s !important;
   background: #efefef !important;
 }
@@ -736,17 +737,23 @@ legend.scheduler-border {
 .expandable-div legend {
   color: white;
   padding-bottom: 15px;
-  padding-top: 15px;
-  padding-left: 24px;
+  padding-top: 23px /*15px*/;
+  padding-left: 16.9px;
   margin-bottom: 0px;
   font-size: 17px;
   cursor: pointer;
   padding-right: 7px;
 }
+
+.expandable-div:nth-child(1) legend {  
+  padding-top: 0px !important;
+  
+}
+
 .box-content {
   background-color: white;
   padding-bottom: 15px;
-  padding-left: 38px !important;
+  padding-left: 31px !important;
 }
 .no-padding-left {
   padding-left: 0px !important;
@@ -788,7 +795,7 @@ border-radius:5px;
 box-shadow: 0px 17px 15px -6px rgba(0,0,0,0.45);
 }
 
-body#homepage-landing .ui-widget.ui-widget-content {
+body#homepage-landing .ui-widget.ui-widget-content, body#home-search .ui-widget.ui-widget-content, body#homeImages .ui-widget.ui-widget-content {
 box-shadow: none !important;
 padding: 18px 0px 9px 0px;
 border: 1px solid transparent;
@@ -3710,6 +3717,14 @@ body#home-search #years {
   font-size: 16px;
   padding: 20px;
 }
+
+body#homeImages .dateModal, body#home-search .dateModal, body#homeImages .dateModal {
+    border-radius:5px;
+    -webkit-box-shadow: 0px 17px 15px -13px rgba(0,0,0,0.45);
+    -moz-box-shadow: 0px 17px 15px -13px rgba(0,0,0,0.45);
+    box-shadow: 0px 17px 15px -13px rgba(0,0,0,0.45);
+}
+
 .dateInputContainer {
   margin: 20px 0px 20px 0px;
 }
@@ -3746,4 +3761,16 @@ body#home-search #years {
   background-color: white;
   border-color: #1c75c0;
   margin: 1px;
+}
+
+@media (min-width: 768px) {
+.grouped {
+  margin-left: 50px !important;
+}
+ .button-advanced {
+    background-color: white;
+    padding: 20px;
+    margin-bottom: 0;
+    text-align: right; 
+}
 }

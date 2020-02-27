@@ -330,38 +330,39 @@ padding-right: 42px !important;
 }
 
 body#advanced .myButtonStyle, body#advanced-images .myButtonStyle, body#advanced .myButtonStyle:active, body#advanced-images .myButtonStyle:active  {
-    background-color: transparent !important;
-    border: 1px solid #1c75c0 !important;    
-    padding: 6px 0;       
+    background-color: #1c75c0 !important;   
+    border: 1px solid #1c75c0 !important;
+    border-radius: 5px !important;
     text-decoration: none !important;
-    font-size: 13px;   
-    color: #1c75c0 !important;   
-    transition: background-color 0.5s ease 0s;   
-    width: 9% !important;
-}
+    padding: 9px !important;
+    transition: background-color 0.5s ease 0s;
+    color: #fff;   
+    width: 100% !important;
+    font-size: 16px;
+   }
 
 body#advanced .myButtonStyle:hover, body#advanced-images .myButtonStyle:hover, body#advanced .myButtonStyle:active, body#advanced-images .myButtonStyle:active  {
-    background-color: #1c75c0 !important;
-    border: 1px solid #1c75c0 !important;    
-    padding: 6px 0;       
-    text-decoration: none !important;
-    font-size: 13px;   
-    color: #fff !important;   
-    transition: background-color 0.5s ease 0s;   
-    
+    background-color: #fff !important;
+    border: 1px solid #1c75c0 !important; 
+    color: #1c75c0 !important;      
 }
 
 .expandable-div {
     background-color: transparent;
     color: grey;
     border-bottom: 1px solid #dfe1e5;
-    padding-bottom: 18px !important;
+    padding-bottom: 10px !important;
 }
 
 
 body#advanced .glyphicon-search:before, body#advanced-images .glyphicon-search:before {
 	display: none !important
 }
+
+ #bottom-submit {
+   padding: 20px 8px;
+   margin: 10px 6px;
+   }
 
 @media screen and (min-device-width:769px) and (max-device-width:3000px) {
 .menu h4 {  
@@ -378,4 +379,36 @@ body#advanced .glyphicon-search:before, body#advanced-images .glyphicon-search:b
 }
 .submenu:hover {
 background-color: #134874ba !important;
+}
+
+
+@media screen and (min-width:768px) {
+
+body#advanced .myButtonStyle, body#advanced-images .myButtonStyle, body#advanced .myButtonStyle:active, body#advanced-images .myButtonStyle:active  {
+    background-color: transparent !important;
+    border: 1px solid #1c75c0 !important;
+    text-decoration: none !important;
+    font-size: 13px;   
+    color: #1c75c0 !important;   
+    transition: background-color 0.5s ease 0s;   
+    width: auto !important; 
+    padding: 4px 10px 5px 10px !important;
+   }
+
+body#advanced .myButtonStyle:hover, body#advanced-images .myButtonStyle:hover, body#advanced .myButtonStyle:active, body#advanced-images .myButtonStyle:active  {
+    background-color: #1c75c0 !important;
+    border: 1px solid #1c75c0 !important; 
+    color: #fff !important;      
+}
+   
+   #bottom-submit {
+   padding: 20px 8px;
+   margin: 10px 6px;
+   }
+   .button-advanced {
+    background-color: white;
+    padding: 20px;
+    margin-bottom: 0;
+    text-align: right; 
+}
 }
