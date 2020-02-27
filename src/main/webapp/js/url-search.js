@@ -412,7 +412,7 @@ function openTimestamp(timestampToOpen){
       const timestampEle = $("#"+timestampToOpen);
       if (timestampEle) {
         timestampEle.addClass("viewing-version");
-        $('body').scrollTo(timestampEle);
+        document.getElementById(timestampToOpen).scrollIntoView({behavior: "smooth", block: "center", inline: "center"});
       }
     }
   }
