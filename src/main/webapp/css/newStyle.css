@@ -1159,22 +1159,15 @@ body#homeImages #conteudo-pesquisa-erro {}
 #sugerimos-que {
   margin-top: -12px;
 }
-body#home-search .spell {
-  color: #9C27B0;
-  font-size: 1.2em;
-  width: 91%;
-  margin: 6px auto 11px auto;
-  max-width: 914px;
-  position: relative;
-  top: -25px;
-  left: -14px;
-}
-body#homeImages .spell {
+.spell {
   color: #9C27B0;
   font-size: 1.2em;
   width: 91%;
   margin: 9px auto 11px auto;
   max-width: 914px;
+  position: relative;
+  top: -25px;
+  left: -14px;
 }
 .url-search-container #years {
 /*  margin: -9px 28px 0 28px !important;*/
@@ -3395,7 +3388,7 @@ div#flex-container div#intro-award div{
     background-size: cover;
 }
 
-body#home-search .spell { 
+.spell { 
     top: -25px;
     left: -19px;
 }
