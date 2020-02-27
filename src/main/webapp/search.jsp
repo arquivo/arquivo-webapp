@@ -472,14 +472,14 @@ String[] queryString_splitted=null;
     <%@ include file="/include/intro.jsp" %>
     
   <% } else { %>
-    <div id="loadingDiv" class="loader"><div></div></div>
-
     <script type="text/javascript" src="/js/page-search.js?build=<c:out value='${initParam.buildTimeStamp}' />"></script>
 
     <div id="conteudo-resultado" class="container-fluid col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8 col-lg-offset-3 col-lg-6 col-xl-offset-4 col-xl-4">
-      <p id="estimated-results" style="display: none;"><fmt:message key="search.results.estimated.results.1"/> <span id="estimated-results-value"></span> <fmt:message key="search.results.estimated.results.2"/> <%= dateStartYear %></p>
-
       <div class="spell hidden"><fmt:message key="search.spellchecker"/> <span class="suggestion"></span></div>
+      
+      <div id="loadingDiv" class="loader"><div></div></div>
+
+      <p id="estimated-results" style="display: none;"><fmt:message key="search.results.estimated.results.1"/> <span id="estimated-results-value"></span> <fmt:message key="search.results.estimated.results.2"/> <%= dateStartYear %></p>
 
       <%-- Show search tip if the showTip option is active --%>
       <% if (showTip != null) { %>
