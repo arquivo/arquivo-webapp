@@ -165,7 +165,6 @@
 					<div id="bottom-submit" class="text-center button-advanced">
 						<button type="submit" value="<fmt:message key='advanced.submit'/>" alt="<fmt:message key='advanced.submit'/>" class="myButtonStyle col-xs-offset-3 col-xs-6" name="btnSubmitBottom" id="btnSubmitBottom" accesskey="e" >
 						<fmt:message key='advanced.search'/>
-						<span class="glyphicon glyphicon-search padding-left-5"></span>
 						</button>
 					</div>
 

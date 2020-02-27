@@ -328,7 +328,11 @@ function searchImages(startIndex){
             "&l="+ language;
           previousPageUrl = StringEscapeUtils.escapeHtml(previousPageUrl);
       %>
-        <li class="previous previous-image" id="previousImage"><a onclick="ga('send', 'event', 'Image search mobile', 'Previous page', document.location.href );" class="myButtonStyle text-center right10" role="button" href="<%=previousPageUrl%>" title="<fmt:message key='search.pager.previous'/>">&larr; <fmt:message key='search.pager.previous'/></a></li>
+        <li class="previous previous-image" id="previousImage">
+          <a onclick="ga('send', 'event', 'Image search mobile', 'Previous page', document.location.href );" class="myButtonStyle text-center right10" role="button" href="<%=previousPageUrl%>" title="<fmt:message key='search.pager.previous'/>">
+            <fmt:message key='search.pager.previous'/>
+          </a>
+        </li>
       <% } %>
 
       <%
@@ -344,7 +348,9 @@ function searchImages(startIndex){
           nextPageUrl = StringEscapeUtils.escapeHtml(nextPageUrl);
       %>
           <li class="next next-image" id="nextImage">
-            <a onclick="ga('send', 'event', 'Image search mobile', 'Next page', document.location.href );" class="myButtonStyle text-center" role="button" href="<%=nextPageUrl%>" title="<fmt:message key='search.pager.next'/>"><fmt:message key='search.pager.next'/> &rarr;</a>
+            <a onclick="ga('send', 'event', 'Image search mobile', 'Next page', document.location.href );" class="myButtonStyle text-center" role="button" href="<%=nextPageUrl%>" title="<fmt:message key='search.pager.next'/>">
+              <fmt:message key='search.pager.next'/>
+            </a>
           </li>
       <% } %>
 

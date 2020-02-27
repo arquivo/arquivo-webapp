@@ -3753,3 +3753,21 @@ body#home-search #years {
   margin-left: 50px !important;
 }
 }
+
+/*
+// Add shortcut keyboard key to each element
+*:hover:after, :focus:after {
+  content: " [" attr(accesskey) "] ";
+}
+*[accesskey=""]:hover::after, *:not([accesskey]):hover::after, *[accesskey=""]:focus::after, *:not([accesskey]):focus::after {
+    content: none;
+}
+*/
+
+li.next .myButtonStyle:after, #btnSubmitBottom:after {
+  content: " →";
+}
+
+li.previous .myButtonStyle:before {
+  content: "← ";
+}
