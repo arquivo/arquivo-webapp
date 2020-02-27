@@ -125,48 +125,48 @@ input {
 }
 /* NEW style: calendar month and day */
 #calendarDayStart {
-  position: relative;
-  top: 29px;
-  left: -9.8px;
-  font-size: 1.1em;
-  letter-spacing: -1px;
-  color: #1a73ba;
-  font-family: helvetica, arial !important;
+position: relative;
+    top: 29.4px;
+    left: -7.8px;
+    font-size: 1.1em;
+    letter-spacing: -1px;
+    color: #1a73ba;
+    font-family: helvetica, arial !important;
 }
 #calendarMonthStart {
-  position: relative;
-  top: 8.3px;
-  left: 12px;
-  font-size: 0.9em;
-  letter-spacing: 0px;
-  color: #1a73ba;
-  font-family: helvetica, arial !important;
+    position: relative;
+    top: 8.3px;
+    left: 12px;
+    font-size: 0.9em;
+    letter-spacing: 0px;
+    color: #1a73ba;
+    font-family: helvetica, arial !important;
 }
 #calendarDayEnd {
-  position: relative;
-  top: 27px;
-  left: -8.5px;
-  font-size: 1.1em;
-  letter-spacing: -1px;
-  color: #1a73ba;
-  font-family: helvetica, arial !important;
+    position: relative;
+    top: 29.4px;
+    left: -6.5px;
+    font-size: 1.1em;
+    letter-spacing: -1px;
+    color: #1a73ba;
+    font-family: helvetica, arial !important;
 }
 #calendarMonthEnd {
-  position: relative;
-  top: 8.3px;
-  left: 11px;
-  font-size: 0.9em;
-  letter-spacing: 0px;
-  color: #1a73ba;
-  font-family: helvetica, arial !important;
+    position: relative;
+    top: 8.3px;
+    left: 13px;
+    font-size: 0.9em;
+    letter-spacing: 0px;
+    color: #1a73ba;
+    font-family: helvetica, arial !important;
 }
 #calendarYearStart {
-  position: relative;
-  bottom: 30px;
-  left: 1.1px;
-  padding-top: -2px !important;
-  font-size: 1.2em;
-  font-family: helvetica, arial !important;
+position: relative;
+bottom: 30px;
+left: 1.1px;
+padding-top: -2px !important;
+font-size: 1.2em;
+font-family: helvetica, arial !important;
 }
 #calendarYearEnd {
   position: relative;
@@ -822,6 +822,7 @@ font-family: roboto !important;
 .ui-state-default {
 border:1px solid transparent !important;
     border-radius: 5px !important;
+    font-weight: 500 !important;
 }
 
 .ui-datepicker .ui-datepicker-title select {
@@ -957,7 +958,7 @@ em {
 }
 body#advanced .calendar-anchor-advanced img, body#advanced-images .calendar-anchor-advanced img {
    position: absolute;
-    top: -9px;
+    top: -7.8px;
     right: 11px;
     z-index: 999999999;
     width: 25px;
@@ -3765,7 +3766,7 @@ body#homeImages .dateModal, body#home-search .dateModal, body#homeImages .dateMo
 
 @media (min-width: 768px) {
 .grouped {
-  margin-left: 50px !important;
+  margin-left: 30px !important;
 }
  .button-advanced {
     background-color: white;
@@ -3773,22 +3774,4 @@ body#homeImages .dateModal, body#home-search .dateModal, body#homeImages .dateMo
     margin-bottom: 0;
     text-align: right; 
 }
-}
-
-/*
-// Add shortcut keyboard key to each element
-*:hover:after, :focus:after {
-  content: " [" attr(accesskey) "] ";
-}
-*[accesskey=""]:hover::after, *:not([accesskey]):hover::after, *[accesskey=""]:focus::after, *:not([accesskey]):focus::after {
-    content: none;
-}
-*/
-
-li.next .myButtonStyle:after, #btnSubmitBottom:after {
-  content: " →";
-}
-
-li.previous .myButtonStyle:before {
-  content: "← ";
 }
