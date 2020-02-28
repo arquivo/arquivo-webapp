@@ -409,10 +409,10 @@ function openTimestamp(timestampToOpen){
         monthEle.click();
       }
 
-      const timestampEle = $("#"+timestampToOpen);
-      if (timestampEle) {
-        timestampEle.addClass("viewing-version");
-        document.getElementById(timestampToOpen).scrollIntoView({behavior: "smooth", block: "center", inline: "center"});
+      const timestampEle = document.getElementById(timestampToOpen);
+      if (typeof(timestampEle) != 'undefined' && timestampEle != null) { // exits ?
+        timestampEle.classList.add("viewing-version");
+        timestampEle.scrollIntoView({behavior: "smooth", block: "center", inline: "center"});
       }
     }
   }
