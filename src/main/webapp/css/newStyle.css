@@ -2242,7 +2242,7 @@ body#advanced .formatTypeDropdown, body#advanced-images .formatTypeDropdown {
 }
 .select-icon-inner {}
 .fa-caret-up:before {
-  content: "\f0d7";
+  content: "\f0d8";
   font-size: 1.1em;
   padding: 3px 9px 7px 9px;
   border-radius: 50px;
