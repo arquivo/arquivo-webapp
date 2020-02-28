@@ -412,7 +412,7 @@ function openTimestamp(timestampToOpen){
       const timestampEle = document.getElementById(timestampToOpen);
       if (typeof(timestampEle) != 'undefined' && timestampEle != null) { // exits ?
         timestampEle.classList.add("viewing-version");
-        timestampEle.scrollIntoView({behavior: "smooth", block: "center", inline: "center"});
+        document.documentElement.scrollTop = timestampEle.offsetTop
       }
     }
   }
