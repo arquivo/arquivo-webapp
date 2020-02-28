@@ -535,7 +535,11 @@ function replacePageAndHighlightTimestamp(url, timestamp) {
   function getContextPath() {
      return window.location.pathname.substring(0, window.location.pathname.indexOf(urlSearchFunctionalityUrl));
   }
-  const alreadySameURL = url === arquivo_urlQuery;
+  // normalize URLs like pywb wayback does
+  const newUrlNormalized     = url.replace(/^(http(s)?:\/\/(www\.)?)?/i, '');
+  const currentUrlNormalized = arquivo_urlQuery.replace(/^(http(s)?:\/\/(www\.)?)?/i, '');
+
+  const alreadySameURL = newUrlNormalized === currentUrlNormalized;
   if (alreadySameURL) {
     openTimestamp(timestamp);
   } else {
