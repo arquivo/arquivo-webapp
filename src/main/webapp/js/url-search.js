@@ -409,10 +409,10 @@ function openTimestamp(timestampToOpen){
         monthEle.click();
       }
 
-      const timestampEle = $("#"+timestampToOpen);
-      if (timestampEle) {
-        timestampEle.addClass("viewing-version");
-        document.getElementById(timestampToOpen).scrollIntoView({behavior: "smooth", block: "center", inline: "center"});
+      const timestampEle = document.getElementById(timestampToOpen);
+      if (typeof(timestampEle) != 'undefined' && timestampEle != null) { // exits ?
+        timestampEle.classList.add("viewing-version");
+        document.documentElement.scrollTop = timestampEle.offsetTop
       }
     }
   }
@@ -535,7 +535,11 @@ function replacePageAndHighlightTimestamp(url, timestamp) {
   function getContextPath() {
      return window.location.pathname.substring(0, window.location.pathname.indexOf(urlSearchFunctionalityUrl));
   }
-  const alreadySameURL = url === arquivo_urlQuery;
+  // normalize URLs like pywb wayback does
+  const newUrlNormalized     = url.replace(/^(http(s)?\:\/\/(www\.)?)?/, '');
+  const currentUrlNormalized = arquivo_urlQuery.replace(/^(http(s)?\:\/\/(www\.)?)?/, '');
+
+  const alreadySameURL = newUrlNormalized === currentUrlNormalized;
   if (alreadySameURL) {
     openTimestamp(timestamp);
   } else {
