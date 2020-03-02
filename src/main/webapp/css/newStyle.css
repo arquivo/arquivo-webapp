@@ -537,31 +537,31 @@ body#homeImages .pagesNextPrevious {
 .yearUl a {
   text-decoration: none;
   color: #007aff;
-  font-size: 16px !important;
+  font-size: 13px !important;
   width: 100%;
   border-bottom: 1px dashed;
+  font-weight: normal;
 }
 .yearUl a:visited, .yearUl a {
  color: white;
     text-decoration: inherit;
     padding-left: 46px;
-    font-size: 12px !important; 
-    font-weight: normal;
+    font-size: 12 !important;    
 }
 
 
 
 .day-version-div {
-  border-bottom: 1px dashed white !important;
+ /* border-bottom: 1px dashed white !important;*/
 }
 .day-version-div:hover {
-  border-bottom: 1px dashed white !important;
+  /*border-bottom: 1px dashed white !important;*/
 }
 .day-version-div:visited {
   /*border-bottom: 1px dashed white !important;*/
 }
 .day-version-div:last-child {
-  /*border-bottom: 1px solid white !important;*/
+ /* border-bottom: 1px solid white !important;*/
 }
 .day-version-div:active {
   background-color: #bbdefb;
@@ -578,7 +578,7 @@ body#homeImages .pagesNextPrevious {
 .yearText {
   color: white;
   max-width: 30% !important;
-  padding-left: 28px;
+  padding-left: 29 !important;
 }
 .noVersions {
   background: #f7f7f7 !important;
@@ -1716,7 +1716,6 @@ h1, h2, h3, h4, h5 {
   100%{
     transform:rotatez(360deg);
   }
-
 }
 .loader div::before{
   content:"";
@@ -3790,13 +3789,18 @@ li.previous .myButtonStyle:before {
   content: "← ";
 }
 
-#urlSearchContainer {
+.url-search-container {
 margin-top: 0px; 
 height: 100vh;
-background-color: #1c75c0;
+background-color: #1c75c0 !important;
 }
+
 
 @media (max-width: 980px) {
 #layoutTV {display: none !important;}
 }
 
+body#home-search .plt-desktop #urlSearchContainer {
+background-color: transparent !important;
+
+}
