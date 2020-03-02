@@ -487,7 +487,7 @@ body#homeImages .pagesNextPrevious {
 }
 .yearUl > div:nth-child(3) {
   margin-top: 42px;
-  border-top: 1px solid white;
+  /*border-top: 1px solid white;*/
 }
 .yearUl .row {
   margin-left: 0px !important;
@@ -544,8 +544,9 @@ body#homeImages .pagesNextPrevious {
 .yearUl a:visited, .yearUl a {
  color: white;
     text-decoration: inherit;
-    padding-left: 40px;
-    font-size: 14 !important;    
+    padding-left: 46px;
+    font-size: 12px !important; 
+    font-weight: normal;
 }
 
 
@@ -557,10 +558,10 @@ body#homeImages .pagesNextPrevious {
   border-bottom: 1px dashed white !important;
 }
 .day-version-div:visited {
-  border-bottom: 1px dashed white !important;
+  /*border-bottom: 1px dashed white !important;*/
 }
 .day-version-div:last-child {
-  border-bottom: 1px solid white !important;
+  /*border-bottom: 1px solid white !important;*/
 }
 .day-version-div:active {
   background-color: #bbdefb;
@@ -577,6 +578,7 @@ body#homeImages .pagesNextPrevious {
 .yearText {
   color: white;
   max-width: 30% !important;
+  padding-left: 28px;
 }
 .noVersions {
   background: #f7f7f7 !important;
@@ -662,7 +664,7 @@ h5 {
   margin-bottom: 0px;
 }
 .month-left {
-  padding-left: 30px !important;
+  padding-left: 35px !important;
 }
 .input-start-year {
   float: left;
@@ -969,7 +971,7 @@ em {
 body#advanced .calendar-anchor-advanced img, body#advanced-images .calendar-anchor-advanced img {
    position: absolute;
     top: -7.8px;
-    right: 11px;
+    right: 5px;
     z-index: 999999999;
     width: 25px;
 }
@@ -1034,7 +1036,7 @@ body#advanced .calendar-anchor-advanced img, body#advanced-images .calendar-anch
   display: none;
 }
 #years h4 {
-  font-size: /*16px*/14px !important;
+  font-size: /*16px*/13px !important;
 }
 .list-versions-div {
   cursor: pointer;
@@ -1714,6 +1716,7 @@ h1, h2, h3, h4, h5 {
   100%{
     transform:rotatez(360deg);
   }
+
 }
 .loader div::before{
   content:"";
@@ -2242,7 +2245,7 @@ body#advanced .formatTypeDropdown, body#advanced-images .formatTypeDropdown {
 }
 .select-icon-inner {}
 .fa-caret-up:before {
-  content: "\f0d7";
+  content: "\f0d8";
   font-size: 1.1em;
   padding: 3px 9px 7px 9px;
   border-radius: 50px;
@@ -3785,9 +3788,15 @@ li.next .myButtonStyle:after, #btnSubmitBottom:after {
 
 li.previous .myButtonStyle:before {
   content: "← ";
-  
 }
 
 #urlSearchContainer {
-margin-top: 20px;
+margin-top: 0px; 
+height: 100vh;
+background-color: #1c75c0;
 }
+
+@media (max-width: 980px) {
+#layoutTV {display: none !important;}
+}
+
