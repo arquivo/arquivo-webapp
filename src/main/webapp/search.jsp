@@ -516,7 +516,11 @@ String[] queryString_splitted=null;
               }
               previousPageUrl = StringEscapeUtils.escapeHtml(previousPageUrl);
           %>
-            <li class="previous"><a id="previousPageSearch" style="display: none;" onclick="ga('send', 'event', 'Full-text search', 'Previous page', document.location.href );" class="myButtonStyle text-center right10" role="button" href="<%=previousPageUrl%>" title="<fmt:message key='search.pager.previous'/>">&larr; <fmt:message key='search.pager.previous'/></a></li>
+            <li class="previous">
+              <a id="previousPageSearch" style="display: none;" onclick="ga('send', 'event', 'Full-text search', 'Previous page', document.location.href );" class="myButtonStyle text-center right10" role="button" href="<%=previousPageUrl%>" title="<fmt:message key='search.pager.previous'/>">
+                <fmt:message key='search.pager.previous'/>
+              </a>
+            </li>
           <% } %>
         <%
             long nextPageStart = start + hitsPerPage;
