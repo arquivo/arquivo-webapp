@@ -473,7 +473,7 @@ body#homeImages .pagesNextPrevious {
   content: none !important;
 }
 .yearUl {
-  background: #1c75c0;
+  background: /*#1c75c0*/#0B497F;
   border-radius: 0px;
   text-align: left;
   padding-top: 5px;
@@ -510,7 +510,7 @@ body#homeImages .pagesNextPrevious {
 .month-version-div {
   text-align: center;
   display: none;
-  background-color: #1a5f97ba !important;
+  background-color: /*#1a5f97ba*/ #0b3961 !important;
   color: white;
   cursor: pointer;
   margin-left: 0px !important;
@@ -528,7 +528,7 @@ body#homeImages .pagesNextPrevious {
   text-align: left;
   display: none;
   cursor: pointer;
-  background-color: /*#c0ebfe*/#0b497f !important;
+  background-color: /*#c0ebfe #0b497f*/#0b3961 !important;
   color: #fff;
 }
 .yearA {
@@ -545,7 +545,7 @@ body#homeImages .pagesNextPrevious {
 .yearUl a:visited, .yearUl a {
  color: white;
     text-decoration: inherit;
-    padding-left: 46px;
+    padding-left: 43px;
     font-size: 12 !important;    
 }
 
