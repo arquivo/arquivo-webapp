@@ -246,9 +246,11 @@ body#advanced .logo-main-div, body#advanced-images .logo-main-div {
 .main-menu:hover {/*background-color: #ebebeb*/}
 
 .main-menu-top-div{
-	background-color:/*#42a5f5*//*#007AFF*//*#1c75c0*/#1a5f97ba !important;
+	background-color: #1a5f97ba !important;
 	margin-top: -1px;
 	padding-left: 3px;
+    position: relative;
+    z-index: 10;
 }
 
 .clean-button-no-fill {
@@ -267,7 +269,7 @@ body#advanced .logo-main-div, body#advanced-images .logo-main-div {
     color: #fff !important;
     width: 25px;
     position: absolute;
-    right: /*16px*/11px;
+    right: /*16px*/23px;
     top: /*12px*/14px;
     font-size: /*24px*/19px !important;
     font-weight: bold !important;
