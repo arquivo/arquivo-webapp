@@ -38,6 +38,30 @@ body#home-search .urlBlock a:visited {
   margin-top: 4px;
   padding-right: 13% !important;
 }
+
+/* scrollbar */
+
+html {
+  --scrollbarBG: #1c75c0;
+  --thumbBG: #0b497f;
+}
+body::-webkit-scrollbar {
+  width: 11px;
+}
+body {
+  scrollbar-width: thin;
+  scrollbar-color: var(--thumbBG) var(--scrollbarBG);
+}
+body::-webkit-scrollbar-track {
+  background: var(--scrollbarBG);
+}
+body::-webkit-scrollbar-thumb {
+  background-color: var(--thumbBG) ;
+  border-radius: 0px;
+  border: 3px solid var(--scrollbarBG);
+}
+
+
 /* NEW STYLE: Hover search bar effect*/
 #searchForm .form-control:focus {
   -webkit-box-shadow: 0px 4px 5px -2px rgba(0, 0, 0, 0.35);
@@ -2413,6 +2437,7 @@ h4.modalTitle {
   z-index: 2;
   top: 0;
   bottom: 0;
+
   margin: 50% 0 !important;
   right: -4px;
   border-radius: 50px;
@@ -3791,10 +3816,14 @@ li.previous .myButtonStyle:before {
 
 .url-search-container {
 margin-top: 0px; 
-height: 100vh;
-background-color: #1c75c0 !important;
+height: 100%;
 }
 
+@media (max-width: 200px) {
+  .url-search-container  {
+    background-color: #1c75c0 !important;
+  }
+}
 
 @media (max-width: 980px) {
 #layoutTV {display: none !important;}
