@@ -497,14 +497,14 @@ body#homeImages .pagesNextPrevious {
   content: none !important;
 }
 .yearUl {
-  background: /*#1c75c0*/#0B497F;
-  border-radius: 0px;
-  text-align: left;
-  padding-top: 5px;
-  margin-bottom: 1px;
-  margin-left: 0px !important;
-  margin-right: 0px !important;
-  cursor: pointer;
+ background: /*#1c75c0*/#0B497F;
+ border-radius: 0px;
+ text-align: left;
+ padding-top: 5px; 
+ margin-left: 0px !important;
+ margin-right: 0px !important;
+ cursor: pointer;
+ border-bottom: 1px solid #45639f;
 }
 .yearUl:active {
   background: #2196f3;
@@ -539,6 +539,7 @@ body#homeImages .pagesNextPrevious {
   cursor: pointer;
   margin-left: 0px !important;
   margin-right: 0px !important;
+  border-bottom: 1px solid #45639f;
 }
 .month-version-div:active {
   background: #64b5f6;
@@ -563,14 +564,16 @@ body#homeImages .pagesNextPrevious {
   color: #007aff;
   font-size: 13px !important;
   width: 100%;
-  border-bottom: 1px dashed;
+  border-bottom: 1px dashed #6f7693;
   font-weight: normal;
+  
 }
 .yearUl a:visited, .yearUl a {
  color: white;
     text-decoration: inherit;
     padding-left: 43px;
-    font-size: 12 !important;    
+    font-size: 12 !important; 
+    opacity: 0.9
 }
 
 
@@ -824,7 +827,7 @@ legend.scheduler-border {
 /* Desktop date picker */
 
 body#homepage-landing .dateModal {
-padding:20px !important;
+padding:10px 30px 20px 30px;
 border-radius:5px;
 -webkit-box-shadow: 0px 17px 15px -6px rgba(0,0,0,0.45);
 -moz-box-shadow: 0px 17px 15px -6px rgba(0,0,0,0.45);
@@ -1061,6 +1064,7 @@ body#advanced .calendar-anchor-advanced img, body#advanced-images .calendar-anch
 }
 #years h4 {
   font-size: /*16px*/13px !important;
+  opacity: 0.9;
 }
 .list-versions-div {
   cursor: pointer;
@@ -1699,8 +1703,9 @@ h1, h2, h3, h4, h5 {
   width: 100%;
   margin: 0px;
   font-family: "Roboto", "Open Sans", sans-serif;
-  font-size: 1.3em !important;
-  height: 48px;
+  font-size: 1.1em !important;
+  font-weight: 200 !important;
+  height: 54px;
   font-weight: normal !important;
   text-align: center;
   background-color: #1b65a2 !important;
@@ -2278,6 +2283,12 @@ body#advanced .formatTypeDropdown, body#advanced-images .formatTypeDropdown {
   top: 1px;
   right: 7px;
 }
+
+body#homepage-landing .fa-caret-up:before, body#home-search .fa-caret-up:before, body#homeImages .fa-caret-up:before, body#advanced .fa-caret-up:before, body#advanced-images .fa-caret-up:before  {
+  right: -4px;  
+}
+
+
 .fa-caret-down:before {
   content: "\f0d7";
   font-size: 1.1em;
@@ -3747,14 +3758,14 @@ body#home-search #years {
 .dateModal {
   background-color: white;
   font-size: 16px;
-  padding: 20px;
+  padding: 20px 30px 20px 30px;
 }
 
 body#homeImages .dateModal, body#home-search .dateModal, body#homeImages .dateModal {
     border-radius:5px;
-    -webkit-box-shadow: 0px 17px 15px -13px rgba(0,0,0,0.45);
-    -moz-box-shadow: 0px 17px 15px -13px rgba(0,0,0,0.45);
-    box-shadow: 0px 17px 15px -13px rgba(0,0,0,0.45);
+    -webkit-box-shadow: 0px 6px 12px 1px rgba(0,0,0,0.50);
+    -moz-box-shadow: 0px 6px 12px 1px rgba(0,0,0,0.50);
+    box-shadow: 0px 6px 12px 1px rgba(0,0,0,0.50);
 }
 
 .dateInputContainer {
@@ -3834,11 +3845,6 @@ body#home-search .plt-desktop #urlSearchContainer {
 background-color: transparent !important;
 
 }
-
-
-
-
-
 
 /*
  * Footer

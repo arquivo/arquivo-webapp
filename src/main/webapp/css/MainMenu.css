@@ -377,6 +377,7 @@ body#advanced .glyphicon-search:before, body#advanced-images .glyphicon-search:b
 	color: #fff;
     display: initial;   
     min-width: 200px;
+    max-width: 200px;
 }
 }
 .submenu:hover {

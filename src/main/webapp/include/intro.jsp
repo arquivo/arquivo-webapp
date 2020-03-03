@@ -11,7 +11,13 @@
 		<div id="archivePresentation-<%=language%>" class="call-to-actions">	
 			<iframe title="<fmt:message key='home.intro.video.presentation'/>" src="https://www.youtube.com/embed/<fmt:message key='home.intro.presentation.youtube'/>?controls=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; " allowfullscreen></iframe>
 		</div>
-	</div>       
+	</div> 
+    <div>
+		<h3><fmt:message key='home.intro.testimonials'/></h3>
+		<div id="testimonials-<%=language%>" class="call-to-actions">
+			<iframe title="<fmt:message key='home.intro.testimonials'/>" src="https://www.youtube.com/embed/<fmt:message key='home.intro.testimonials.youtube'/>?controls=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; " allowfullscreen></iframe>
+		</div>
+	</div>
 	<div>
 		<h3><fmt:message key='home.intro.preserved'/></h3>
 		<div id="pagesPreserved-<%=language%>" class="call-to-actions">
@@ -23,11 +29,5 @@
 		<div id="exhibitions-<%=language%>" class="call-to-actions">
 			<a href="<fmt:message key='home.exhibitions.href'/>" alt="<fmt:message key='home.intro.exhibitions'/>" title="<fmt:message key='home.intro.exhibitions'/>"><fmt:message key='home.intro.exhibitions'/></a>
 		</div>
-	</div>
-	<div>
-		<h3><fmt:message key='home.intro.testimonials'/></h3>
-		<div id="testimonials-<%=language%>" class="call-to-actions">
-			<iframe title="<fmt:message key='home.intro.testimonials'/>" src="https://www.youtube.com/embed/<fmt:message key='home.intro.testimonials.youtube'/>?controls=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; " allowfullscreen></iframe>
-		</div>
-	</div>
+	</div>	
 </div>
