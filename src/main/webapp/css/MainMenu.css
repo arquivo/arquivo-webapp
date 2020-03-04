@@ -343,7 +343,7 @@ body#advanced .myButtonStyle, body#advanced-images .myButtonStyle, body#advanced
     font-size: 16px;
    }
 
-body#advanced .myButtonStyle:hover, body#advanced-images .myButtonStyle:hover, body#advanced .myButtonStyle:hover, body#advanced-images .myButtonStyle:hover  {
+body#advanced .myButtonStyle:hover, body#advanced-images .myButtonStyle:hover, body#advanced .myButtonStyle:active, body#advanced-images .myButtonStyle:active  {
     background-color: #fff !important;
     border: 1px solid #1c75c0 !important; 
     color: #1c75c0 !important;      
