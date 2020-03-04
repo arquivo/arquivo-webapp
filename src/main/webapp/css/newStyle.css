@@ -2782,6 +2782,7 @@ h4.modalTitle {
     margin-top: -26px !important;
   }
 }
+
 /* ----------- Samsung S3 ----------- */
 /* Portrait and Landscape */
 @media only screen and (min-device-width: 360px) and (-webkit-min-device-pixel-ratio: 2) and (device-aspect-ratio: 2/3) {
