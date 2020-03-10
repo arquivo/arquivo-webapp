@@ -452,7 +452,7 @@ function startUrlSearch(waybackURL, urlQuery, startTs, endTs, insertOnElementId,
     data: {
       output: 'json',
       url: urlQuery,
-      fl: 'url,timestamp,status',
+      fields: 'timestamp,status',
       filter: '!~status:4|5',
       from: startTs,
       to: endTs
