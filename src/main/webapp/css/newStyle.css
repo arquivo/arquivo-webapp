@@ -213,6 +213,8 @@ ion-item {
 }
 body#advanced #searchForm {
   margin-top: 0 !important;
+  
+    margin: 0 21px;
 }
 #searchForm {
   margin-top: 25px;
@@ -403,6 +405,7 @@ body#homeImages .pagesNextPrevious {
   transition: background-color 0.5s ease 0s;
   color: #007AFF;
   border: 1px solid #007AFF;
+  font-size: 15px;
   float: left;
   width: 100%;
   margin-bottom: 10px !important;
@@ -2169,6 +2172,10 @@ tr.trTV:nth-child(even) {
   #layoutTV {
     margin-top: 9px;
   }
+  #buttonSearch button {   
+    right: 16px !important;
+   
+}
 }
 
 @media screen and (min-width:769px) {
@@ -2177,7 +2184,7 @@ tr.trTV:nth-child(even) {
   }   
 }
 @media screen and (max-width:1023px) {
-  body#homepage-landing #buttonSearch button, body#home-search #buttonSearch button {
+   body#home-search #buttonSearch button {
     right: 16px !important;
   }
 }
@@ -2967,6 +2974,10 @@ top: 16px
     margin-right: auto !important;
     width: 100% !important;
   }
+  body#homeImages #buttonSearch button {    
+    right: 30px !important;
+  
+}
 }
 @media (min-width:768px) and (max-width:960px) {
   #photos {
