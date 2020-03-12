@@ -5662,7 +5662,7 @@ body#home-search .plt-desktop #urlSearchContainer {
     font-size: 14px !important;
   }
   body#home-search p#estimated-results {
-    margin-top: 0 !important;
+    margin-top: /*0*/ -5px !important;
     margin-left: 0 !important;
   }
   #resultados-lista ul li .resumo {
@@ -8339,7 +8339,7 @@ h4.modalTitle {
 content: url(../img/parent-news.svg);
 position: absolute;
 left: 20px;
-top: 16px
+top: 14px
 }
 
 
@@ -8468,6 +8468,12 @@ top: 16px
     margin-right: 3px;
     padding: 0px 0px 15px 3px !important;
   }
+  
+  #homeImages .image-container {    
+    margin-bottom: 28px !important;
+}
+  
+  
   body#homepage-landing a#ImageButton, body#homepage-landing a#ImageButton:active, body#homepage-landing a#PageButton, body#homepage-landing a#PageButton:active {
     margin-bottom: 13px;
     color: #1c75c0 !important;
