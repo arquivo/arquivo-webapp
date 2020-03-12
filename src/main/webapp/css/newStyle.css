@@ -2505,7 +2505,6 @@ left: 20px;
 top: 16px
 }
 
-
 /***************************************************************************/
 /***************************************************************************/
 /**************          MEDIA   QUERIES          **************************/
@@ -3818,7 +3817,7 @@ body#homeImages .dateModal, body#home-search .dateModal, body#homeImages .dateMo
   border-color: #1c75c0;
   margin: 1px;
 }
-@media (min-width: 768px) {
+@media (min-width: 769px) {
   .grouped {
     margin-left: 30px !important;
   }
@@ -5907,7 +5906,7 @@ body::-webkit-scrollbar-thumb {
   margin: 0 auto;
   font-family: 'Roboto', sans-serif !important;
 }
-@media screen and (max-width:3000px) {
+@media screen and (min-width:768px) and (max-width:3000px) {
   #searchBarBlock {
     position: relative !important;
     z-index: 999999;
@@ -5939,9 +5938,10 @@ p#estimated-results {
   top: 0;
   -webkit-transition: all 220ms ease-in-out;
   padding-bottom: 0px;
-  margin-left: /*25px*/ 13px;
+  /*margin-left: /*25px*/ /*13px;*/
   position: relative;
-  top: -22px;
+  top: -20px;
+  padding-left: 6px;
 }
 input {
   -webkit-user-select: text;
@@ -6077,8 +6077,8 @@ body#advanced #searchForm {
 }
 #resultados-lista {
   font-family: roboto !important;
-  margin-left: /*1px*/ -20px !important;
-  margin-right: /*1px*/ -20px !important;
+  margin-left:  0px !important;
+  margin-right: 0px  !important;
   margin-top: 1px;
 }
 #resultados-lista ul {
@@ -6095,8 +6095,9 @@ body#advanced #searchForm {
     font-size: 1.2em !important;
     font-family: Roboto !important;
     border: none;
-    width: 994px;
+    width: 100%;
     margin: 0 auto;
+   /* max-width: 993px;*/
 }
 #resultados-lista ul li {
   list-style-type: none;
@@ -6190,16 +6191,19 @@ body#advanced #searchForm {
   background-color: #efefef !important;
 }
 body#home-search #conteudo-resultado {
-  margin-left: 9px;
-  margin-right: 9px;
+  margin-left: /*9px*/0px;
+  margin-right:/* 9px*/0px;
+  padding: 0 !important;
+  max-width: 993px !important;;
+  margin-bottom: 20px;
 }
 #conteudo-resultado {
   padding-bottom: 35px;
-  padding-left: 9px;
-  padding-right: 9px;
+  padding-left:/*9px*/3px;
+  padding-right: /*9px*/3px;
   margin-top: 30px;
   margin-left: -15px;
-  margin-right: -15px;
+  margin-right: -15px;  
 }
 #conteudo-resultado-url {
   padding-left: 9px;
@@ -6217,8 +6221,8 @@ body#home-search #conteudo-resultado {
     margin-top: 20px;
     width: 100%;  
     height: 100%;   
-    margin: 0 auto !important;   
-    padding: 0 12px;
+    margin: 35px auto !important;   
+    padding: 0 17px;
 }
 
 
@@ -6963,7 +6967,7 @@ span#buttonSearch {
   border-radius: 60px;
   position: absolute !important;
   top: 0px;
-  right: /*13px*/ 19px;
+  right: 13px;
 }
 span#buttonSearch button span {
   color: #007AFF;
@@ -7275,7 +7279,7 @@ div.call-to-actions span {
   margin-top: /*7px*/ 0 !important;
   margin-left: -4px !important;
   margin-right: -4px !important;
-  margin-bottom: 40px;
+  margin-bottom: 40px
 }
 #photos {
   line-height: 0;
@@ -7694,7 +7698,7 @@ a.advancedSearch:hover {
   padding: 0 0px 20px 0px;
   border-radius: 5px;
   margin-top: 6px;
-  width: 97.5%;
+  width: 98.5%;
   margin-top: 20px;
 }
 body#homeImages #searchBarButtonsDiv {
@@ -8013,7 +8017,10 @@ tr.trTV:nth-child(even) {
 @media screen and (min-width:769px) {
   #layoutTV {
     margin-top: 9px !important;   
-  }   
+  } 
+  span#buttonSearch{
+    right: 21px !important;   
+}
 }
 @media screen and (max-width:1023px) {
    body#home-search #buttonSearch button {
@@ -8452,7 +8459,7 @@ top: 16px
     margin-top: 40px;
   }
 }
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 768px) {
   #resultados-lista > ul > li {
     border: 1px solid #dfe1e5;
     margin-bottom: 10px;
@@ -8487,12 +8494,19 @@ top: 16px
 /* CSS For Tablet and Desktop versions*/
 @media screen and (min-width: 768px) {
   #resultados-lista > ul > li {
-    border: 1px solid #dfe1e5;
+   /* border: 1px solid #dfe1e5;
     margin-bottom: 10px;
     border-radius: 4px;
     margin-left: 15px;
     margin-right: 15px;
-    font-size: 0.95em;
+    font-size: 0.95em;*/
+    
+    border: 1px solid #dfe1e5;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    margin-left: 3px;
+    margin-right: 3px;
+    padding: 0px 0px 15px 3px !important;
   }
   div.omitted-results {
     padding: 13px 14px 13px 14px;
@@ -8932,6 +8946,7 @@ top: 16px
   }
   
   
+  
   .rightArrow {
     position: absolute;    
     border-radius: 50px !important;   
@@ -8962,8 +8977,13 @@ top: 16px
     max-width: /*915px*/ 959px !important;
     margin: 0 auto !important;
     margin-bottom: /*10px*/ -1 !important;
-    margin-top: 6px !important;
+    margin-top: 8px !important;
   }
+  
+  body#home-search #conteudo-resultado {
+  
+    margin-bottom: 35px !important;
+}
 }
 @media (min-width:769px) and (max-width:3000px) {
   body#homepage-landing span#buttonSearch button span {
@@ -9038,7 +9058,7 @@ top: 16px
 @media (min-width:320px) and (max-width:768px) {
   body#homeImages p#estimated-results {
     width: 915px;
-    margin: 0 auto -20px auto;
+    margin: /*0*/ 21px auto -20px auto;
     padding-left: 17px;
     display: flex;
     width: 100%;
@@ -9301,15 +9321,17 @@ top: 16px
 }
 .spell {
   top: -25px;
-  left: -12px;
+  left: -2px;
 }
 
 body#home-search .spell {
   top: -25px;
-  left: -20px;
+  left: -11px !important;
 }
+
+
 body#home-search #conteudo-pesquisa-erro {
-  margin-top: 16px !important;
+  /*margin-top: 16px !important;*/
 }
 #sugerimos-que {
   margin-top: 0px;
@@ -9449,6 +9471,7 @@ body#home-search #years {}
     width: 100% !important;
     max-width: 930px !important;
     margin: 0 auto !important;
+    outline: 1px solid red;
   }
   .pagesNextPrevious {
     max-width: 932px !important;
@@ -10070,7 +10093,16 @@ body#home-search .plt-desktop #urlSearchContainer {
   padding-right: 0;
   max-width: 960px;
 }
+
+
 @media (max-width: 767px) {
+  
+  body#home-search .spell {
+    top: -29px !important;
+    left: -9px !important;
+    margin-bottom: -13px !important;
+}
+  
   #newFooterWrapper [class*="mobile-push-"], #newFooterWrapper [class*="mobile-pull-"] {
     position: relative;
   }
@@ -11473,6 +11505,16 @@ body#home-search .plt-desktop #urlSearchContainer {
     -webkit-transition-duration: 1s
   }
 }
+
+
+@media screen (width: 768px){
+body#home-search p#estimated-results {
+    margin-top: 25px !important; 
+}
+span#buttonSearch {    
+    right: 31px !important;
+}
+}
 @media screen and (max-width: 768px) {
   #newFooterWrapper .expanded {
     display: none;
@@ -11492,10 +11534,11 @@ body#home-search .plt-desktop #urlSearchContainer {
   a#PageButton, a#ImageButton, a#advancedSearchButton {
     font-size: 14px !important;
   }
-  body#home-search p#estimated-results {
+  /*body#home-search p#estimated-results {
     margin-top: 0 !important;
     margin-left: 0 !important;
-  }
+    padding-left: 10px !important;
+  }*/
   #resultados-lista ul li .resumo {
     font-size: 16px !important;
   }
@@ -11505,7 +11548,7 @@ body#home-search .plt-desktop #urlSearchContainer {
 }
 
 body#homeImages #searchBarButtonsDiv {
-    margin-bottom: 26px !important;
+    margin-bottom: /*26px*/3px !important;
 }
 
 #home-search #searchBarButtonsDiv {

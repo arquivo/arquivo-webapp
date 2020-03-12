@@ -298,6 +298,10 @@ body#advanced .logo-main-div, body#advanced-images .logo-main-div {
 	padding-right: 20px;
 }
 
+.menu .shareCarret{
+	padding-right: 8px;
+}
+
 #shareOptions, #toolsOptions, #pageOptions, #imageOptions{
 	display: none;
 }
