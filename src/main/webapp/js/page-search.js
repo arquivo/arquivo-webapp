@@ -51,6 +51,22 @@ function extractQuerySpecialParameters(inputQuery) {
 	};
 }
 
+function emphasizeText(textToBeEmphasized, emphasizeText) {
+	var resultText = textToBeEmphasized;
+	emphasizeText.split(' ').forEach(function(emphasizeWord) {
+		if (emphasizeWord != 'e' && emphasizeWord != 'm' && emphasizeWord != 'em') {
+			// can not use replace text with ignore case because it will change the case of the original text
+			const from = resultText.toLowerCase().indexOf(emphasizeWord.toLowerCase());
+			const to = from + emphasizeWord.toLowerCase().length;
+			if (from >= 0) {
+				const originalText = resultText.substring(from, to);
+				resultText = resultText.substring(0, from) + '<em>'+originalText+'</em>' + resultText.substring(to, resultText.length );
+			}
+		}
+	});
+	return resultText;
+}
+
 function formatURLForPresentation(originalURL) {
 	return originalURL.replace(/^(http(s)?\:\/\/(www\.)?)?/,'').replace(/\/$/,'');
 }
@@ -119,7 +135,7 @@ function searchPages(startIndex){
 	                }
 	                var currentResultGlobalPosition = parseInt(startIndex) + i + 1;
 
-	                var title = currentDocument.title;
+	                var title = emphasizeText(currentDocument.title, extractedQuery.query);
 	                var originalURL = currentDocument.originalURL;
 	                var url = new URL(originalURL);
 	                var hostname = url.hostname;
