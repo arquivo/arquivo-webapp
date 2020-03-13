@@ -104,6 +104,7 @@ Content = {
                 genericWords: "Try more general words.",
             },
         },
+        viewMoreForSameSite: "View more results of",
     },
     topbar: {
         help: "Help",

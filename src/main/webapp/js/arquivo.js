@@ -57,7 +57,7 @@ var ARQUIVO = ARQUIVO || (function(){
         encodeHtmlEntities: function(str) {
             str = str.replaceAll('ç','%26ccedil%3B')
                      .replaceAll('Á','%26Aacute%3B')
-                     .replaceAll('á','%26aacute%3B')
+                      .replaceAll('á','%26aacute%3B')
                      .replaceAll('À','%26Agrave%3B')
                      .replaceAll('Â','%26Acirc%3B')
                      .replaceAll('à','%26agrave%3B')
@@ -201,5 +201,54 @@ var ARQUIVO = ARQUIVO || (function(){
             ionDateTimeComponent.monthShortNames = ARQUIVO.monthShortNamesArray();
         },
 
+        // present url without protocol neither www.
+        formatURLForPresentation: function(url) {
+            return url.replace(/^(http(s)?\:\/\/)?(www\.)?/,'').replace(/\/$/,'');
+        },
+
+        replaceUrlParam: function(url, paramName, paramValue) {
+            var href = new URL(url);
+            href.searchParams.set(paramName, paramValue);
+            return href.toString();
+        }, 
+
+        // returns an object with query and the extracted special parameters
+        extractQuerySpecialParameters: function(inputQuery) {
+            var words = [];
+            var collection = [];
+            var site = [];
+            var type = [];
+
+            inputQuery.split(' ').forEach(function(item) {
+                var special = false;
+                var pair = item.split(':');
+                if (pair.length == 2) {
+                    var key = pair[0];
+                    var value = pair[1];
+                    if (key === 'site') {
+                        site.push(value);
+                        special = true;
+                    } else if (key === 'type') {
+                        type.push(value);
+                        special = true;
+                    } else if (key === 'collection') {
+                        collection.push(value);
+                        special = true;
+                    }
+                }
+                if (!special) {
+                    words.push(item);
+                }
+            });
+            const query = words.join(' ');
+
+            return {
+                query: query,
+                site: site.join(','),
+                type: type.join(','),
+                collection: collection.join(',')
+            };
+        },
+ 
     };
 }());

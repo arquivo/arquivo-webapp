@@ -3359,9 +3359,6 @@ top: 16px
   body#home-search a#ImageButton, a#ImageButton:active {
     font-size: 13px;
   }
-  body#home-search #resultados-lista ul li:hover a {
-    background-color: red;
-  }
   body#home-search .next-previous-ul, body#homeImages .next-previous-ul {
     display: flow-root;
   }
@@ -9216,9 +9213,6 @@ top: 14px
   body#home-search a#ImageButton, a#ImageButton:active {
     font-size: 13px;
   }
-  body#home-search #resultados-lista ul li:hover a {
-    background-color: red;
-  }
   body#home-search .next-previous-ul, body#homeImages .next-previous-ul {
     display: flow-root;
   }
@@ -11709,3 +11703,18 @@ margin-top: 5px !important;
 #newFooterWrapper footerLogo {
   height: 5
 }
+
+.viewMoreForSameSiteLink {
+  display: block;
+  padding-left: 15px;
+  padding-right: 15px;
+  font-size: 12px;
+  font-family: 'Roboto', sans-serif;
+  padding-top: 7px;
+}
+@media screen and (max-width:1023px) {
+  .viewMoreForSameSiteLink {
+    display: none;
+  }
+}
+

@@ -104,6 +104,7 @@ Content = {
                 keywords: "Tente utilizar outras palavras-chave.",
             },
         },
+        viewMoreForSameSite: "Ver mais resultados de",
     },
     topbar: {
         help: "Ajuda",

@@ -109,10 +109,6 @@ function getDateSpaceFormated(ts){
     return day + " "+ month + ", " +year;
 }
 
-function formatURLForPresentation(originalURL) {
-  return originalURL.replace(/^(http(s)?\:\/\/(www\.)?)?/,'').replace(/\/$/,'');
-}
-
 lastImageViewedByUser = -1; /*Global var refers to the lastImage the user*/
 
 function generateHash( position ){
@@ -288,7 +284,7 @@ return ''+
                       '<ion-list class="imageList selected">'+
       ( imageObj.title !== ""  ? ' <ion-item class="item-borderless image-viewer-img-title" lines="none" ><a class="imageHref" target="_blank" href="'+imageObj.currentImageURL+'">' +imageObj.title+'</a></ion-item>':'') +
       ( imageObj.imgAlt !== "" &&  imageObj.title == ""  ? ' <ion-item id="imgTitleLabel'+position+'" lines="none"><a class="imageHref" target="_blank" href="'+imageObj.currentImageURL+'">' +imageObj.imgAlt+'</a></ion-item>':'') +  
-                          '<ion-item lines="none" class="image-viewer-img-src">' +formatURLForPresentation(imageObj.imgSrc)+'</ion-item>'+
+                          '<ion-item lines="none" class="image-viewer-img-src">' +ARQUIVO.formatURLForPresentation(imageObj.imgSrc)+'</ion-item>'+
                           '<ion-item lines="none" class="image-viewer-img-mime-type-resolution">'+imageObj.imgMimeType+' '+parseInt(imageObj.expandedWidth)+' x '+parseInt(imageObj.expandedHeight)+'</ion-item>'+
                           '<ion-item lines="none" class="image-viewer-img-timestamp">'+getDateSpaceFormated(imageObj.timestamp)+'</ion-item>'+             
                       '</ion-list>'+
@@ -299,7 +295,7 @@ return ''+
                   '<ion-card-content>'+                
                       '<ion-list>'+
       '                       <ion-item class="item-borderless image-viewer-page-title" lines="none" ><a target="_blank" href="'+waybackURL+'/'+imageObj.pageTstamp+'/'+imageObj.pageURL+'">'+imageObj.pageTitle+'</a></ion-item>'+
-      '                       <ion-item lines="none" class="image-viewer-page-url">'+formatURLForPresentation(imageObj.pageURL)+'</ion-item>'+
+      '                       <ion-item lines="none" class="image-viewer-page-url">'+ARQUIVO.formatURLForPresentation(imageObj.pageURL)+'</ion-item>'+
       '                       <ion-item lines="none" class="image-viewer-page-timestamp">'+getDateSpaceFormated(imageObj.pageTstamp)+'</ion-item>'+          
                       '</ion-list>'+
                   '</ion-card-content>'+                                
@@ -451,44 +447,6 @@ function closeDetails(position){
   $('#card'+position).show();
 }
 
-// returns an object with query and the extracted special parameters
-function extractQuerySpecialParameters(inputQuery) {
-    var words = [];
-    var collection = [];
-    var site = [];
-    var type = [];
-
-  inputQuery.split(' ').forEach(function(item) {
-    var special = false;
-    var pair = item.split(':');
-    if (pair.length == 2) {
-      var key = pair[0];
-        var value = pair[1];
-        if (key === 'site') {
-          site.push(value);
-          special = true;
-        } else if (key === 'type') {
-          type.push(value);
-          special = true;
-        } else if (key === 'collection') {
-          collection.push(value);
-          special = true;
-        } 
-    }
-      if (!special) {
-        words.push(item);
-      }
-  });
-  const query = words.join(' ');
-
-  return { 
-    query: query,
-    site: site.join(','),
-    type: type.join(','),
-    collection: collection.join(',')
-  };
-}
-
 function searchImagesJS(dateStartWithSlashes, dateEndWithSlashes, safeSearchOption,startIndex){
   //TODO:: Decide if we just send the API query in the form of 
   // /imagesearch?q=sapo%20site:sapo.pt%20type:jpeg      
@@ -506,7 +464,7 @@ function searchImagesJS(dateStartWithSlashes, dateEndWithSlashes, safeSearchOpti
     var dateEnd= $('#dateEnd_top').val().substring($('#dateEnd_top').val().length - 4) +''+  $('#dateEnd_top').val().substring(3,5) +''+ $('#dateEnd_top').val().substring(0,2)+'235959';
     currentStart = startIndex;
     
-    var extractedQuery = extractQuerySpecialParameters(input);
+    var extractedQuery = ARQUIVO.extractQuerySpecialParameters(input);
 
     $.ajax({
        url: imageSearchAPI,      
