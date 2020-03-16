@@ -58,10 +58,7 @@
               minDate: minDate, // The minimum selectable date - minDate is a global javascript variable
               maxDate: maxDate, // The maximum selectable date - maxDate is a global javascript variable
               monthNamesShort: $.datepicker.regional[language].monthNames,
-              onChangeMonthYear: function(y, m, i){ // callback function called when month or year is changed
-                  var d = i.selectedDay;
-                  $(this).datepicker('setDate', new Date(y, m-1, d));
-              },
+              onChangeMonthYear: ARQUIVO.onChangeMonthYearJQueryDatePicker,
             });
 
             // focus the input

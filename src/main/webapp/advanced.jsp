@@ -241,10 +241,7 @@ window.onload = function() {
           yearRange: minYear+":"+maxYear, // The range of years displayed in the year drop-down - minYear and maxYear are a global javascript variables
           minDate: minDate, // The minimum selectable date - minDate is a global javascript variable
           maxDate: maxDate, // The maximum selectable date - maxDate is a global javascript variable
-          onChangeMonthYear: function(y, m, i){ // callback function called when month or year is changed
-              var d = i.selectedDay;
-              $(this).datepicker('setDate', new Date(y, m-1, d));
-          },
+          onChangeMonthYear: ARQUIVO.onChangeMonthYearJQueryDatePicker,
         };
 		ARQUIVO.inputMaskAnInput($('#dateStart_top').datepicker(datepickerConfiguration));
 		ARQUIVO.inputMaskAnInput($('#dateEnd_top').datepicker(datepickerConfiguration));

@@ -206,6 +206,20 @@ var ARQUIVO = ARQUIVO || (function(){
             ionDateTimeComponent.monthNames = ARQUIVO.monthNamesArray();
         },
 
+        // callback function called when month or year is changed
+        onChangeMonthYearJQueryDatePicker: function(y, m, i){ 
+            var d = i.selectedDay;
+
+            // to prevent the problem when changing from a month with 31 days to a other month with <31 days
+            // the calendar were going to the first or second day of the next month
+            function getDaysInMonth(m, y) {
+              return m===2 ? y & 3 || !(y%25) && y & 15 ? 28 : 29 : 30 + (m+(m>>3)&1);
+            }
+            const minDay = Math.min(getDaysInMonth(m, y), d);
+
+            $(this).datepicker('setDate', new Date(y, m-1, minDay));
+        },
+
         // present url without protocol neither www.
         formatURLForPresentation: function(url) {
             return url.replace(/^(http(s)?\:\/\/)?(www\.)?/,'').replace(/\/$/,'');
