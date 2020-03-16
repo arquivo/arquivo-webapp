@@ -6050,6 +6050,12 @@ body#advanced #searchForm {
   
     margin: 0 21px;
 }
+
+body#advanced-images #searchForm {
+  margin-top: 0px;  
+  padding: 0 21px;
+}
+
 #searchForm {
   margin-top: 25px;
 }
@@ -6643,7 +6649,7 @@ legend.scheduler-border {
 .box-content {
   background-color: white;
   padding-bottom: 15px;
-  padding-left: /*31px*/ /*28px*/ 44px !important;
+  padding-left: /*31px*/ /*28px*/ 42px !important;
 }
 .no-padding-left {
   padding-left: 0px !important;
@@ -6886,8 +6892,8 @@ body#advanced .calendar-anchor-advanced img, body#advanced-images .calendar-anch
 }
 .topcontainer {
   margin-top: 15px;
-  padding-right: 9px;
-  padding-left: 9px;
+  padding-right: 7px;
+  padding-left: 7px;
 }
 @media screen and (min-width:769px) {
   .col-sm-10 {
@@ -9681,6 +9687,17 @@ body#homeImages .dateModal, body#home-search .dateModal, body#homeImages .dateMo
   border-color: #1c75c0;
   margin: 1px;
 }
+/*  New code */
+.ui-datepicker .ui-datepicker-prev, .ui-datepicker .ui-datepicker-next {
+  display: none;
+}
+.ui-datepicker .ui-datepicker-title {
+  margin: 0px;
+}
+.ui-datepicker .ui-datepicker-title select {
+  width: 49%;
+}
+
 @media (min-width: 768px) {
   .grouped {
     margin-left: 30px !important;
@@ -11712,4 +11729,7 @@ margin-top: 5px !important;
 }
 #newFooterWrapper footerLogo {
   height: 5
+}
+.dateInput{
+  width: 100%;
 }
