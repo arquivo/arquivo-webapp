@@ -47,8 +47,8 @@
         <div id="main" class="main-form-advanced">
             <div id="conteudo-pesquisa">
                 <script type="text/javascript">
-                  document.write('<ion-datetime id="ionDateStart" class="display-none" display-format="D/MMM/YYYY" min="'+minYear+'-01-01" max="'+maxYear+'-12-31" value="<%=dateStartStringIonic%>"></ion-datetime>');
-                  document.write('<ion-datetime id="ionDateEnd" class="display-none" display-format="D/MMM/YYYY" min="'+minYear+'-01-01" max="'+maxYear+'-12-31" value="<%=dateEndStringIonic%>"></ion-datetime>');
+                  document.write('<ion-datetime id="ionDateStart" class="display-none" display-format="D/MMMM/YYYY" min="'+minYear+'-01-01" max="'+maxYear+'-12-31" value="<%=dateStartStringIonic%>"></ion-datetime>');
+                  document.write('<ion-datetime id="ionDateEnd" class="display-none" display-format="D/MMMM/YYYY" min="'+minYear+'-01-01" max="'+maxYear+'-12-31" value="<%=dateEndStringIonic%>"></ion-datetime>');
                 </script>
                 <form  id="searchForm" method="get" action="search.jsp">
                     <input type="hidden" name="l" value="<%= language %>" />
@@ -241,6 +241,7 @@ window.onload = function() {
           yearRange: minYear+":"+maxYear, // The range of years displayed in the year drop-down - minYear and maxYear are a global javascript variables
           minDate: minDate, // The minimum selectable date - minDate is a global javascript variable
           maxDate: maxDate, // The maximum selectable date - maxDate is a global javascript variable
+          onChangeMonthYear: ARQUIVO.onChangeMonthYearJQueryDatePicker,
         };
 		ARQUIVO.inputMaskAnInput($('#dateStart_top').datepicker(datepickerConfiguration));
 		ARQUIVO.inputMaskAnInput($('#dateEnd_top').datepicker(datepickerConfiguration));
