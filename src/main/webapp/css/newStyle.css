@@ -3815,6 +3815,7 @@ body#homeImages .dateModal, body#home-search .dateModal, body#homeImages .dateMo
 }
 .dateModalButtonsOk {
   float: right;
+  min-width: 73px;
 }
 .ui-datepicker .ui-datepicker-title select {
   background-color: white;
