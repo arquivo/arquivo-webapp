@@ -4,7 +4,10 @@
     <script>
       var ARQUIVO_SEARCH_DATES = ARQUIVO_SEARCH_DATES || (function(){
         return {
-          openDatePicker : function(type) {
+          openDatePicker : function(type, changeDateFunctionName) {
+            // type - Start or End string
+            // changeDateFunction - a function name that change the date on caller function of this function. It receives a Javascript Date Object.
+
             //const dateElementId = "modalDateContent"+ type;
             const datePickerId = "modalDatePicker" + type;
             const dateInputId =  "modalDateInput" + type;
@@ -25,7 +28,7 @@
                   <button class="dateModalButtonsCancel dateModalButtonsCancel${type}" onclick="ARQUIVO.closeModalUglipop();">
                     <span>${Content.picker.cancel}</span>
                   </button>
-                  <button class="dateModalButtonsOk dateModalButtonsOk${type}" onclick="ARQUIVO_SEARCH_DATES.updateCalendarCard('${type}', $('#${datePickerId}').datepicker( 'getDate' ) ); ARQUIVO.closeModalUglipop();">
+                  <button class="dateModalButtonsOk dateModalButtonsOk${type}" onclick="${changeDateFunctionName}( $('#${datePickerId}').datepicker( 'getDate' ) ); ARQUIVO.closeModalUglipop();">
                     <span>${Content.picker.ok}</span>
                   </button>
                 </div>
@@ -88,7 +91,31 @@
             var t = new Date( ARQUIVO.createDateJsFormat( input ) );
             t.setHours(0,0,0,0);
             return t;
-          }
+          },
+
+          updateStart: function(newDate) {
+            this.updateCalendarCard( "Start", newDate );
+            var currentDateEnd = $('#calendarYearEnd').text();
+            //update dual range
+            dualRange.value = { lower: newDate.getFullYear(), upper: currentDateEnd };
+            $('#dateStart_top').change();
+          },
+
+          updateEnd: function(newDate) {
+            this.updateCalendarCard( "End", newDate );
+            var currentDateStart = $('#calendarYearStart').text();
+            //update dual range
+            dualRange.value = { lower: currentDateStart, upper: newDate.getFullYear() };
+            $('#dateEnd_top').change();
+          },
+
+          openDateStartPicker: function() {
+            this.openDatePicker("Start", "ARQUIVO_SEARCH_DATES.updateStart");
+          },
+          openDateEndPicker: function() {
+            this.openDatePicker("End", "ARQUIVO_SEARCH_DATES.updateEnd");
+          },
+
         };
       }());
     </script>
@@ -188,7 +215,7 @@
                       $('#ionDateStart').click();
                     } else {
                       // use jquery modal with a date picker
-                      ARQUIVO_SEARCH_DATES.openDatePicker("Start");
+                      ARQUIVO_SEARCH_DATES.openDateStartPicker();
                     }
                    return;
                   }
@@ -201,7 +228,7 @@
                       $('#ionDateEnd').click();
                     } else {
                       // use jquery modal with a date picker
-                      ARQUIVO_SEARCH_DATES.openDatePicker("End");
+                      ARQUIVO_SEARCH_DATES.openDateEndPicker();
                     }
                    return;
                   }
@@ -211,23 +238,11 @@
               <script type="text/javascript">
                 $('#ionDateStart').on("ionChange", function() {
                   const newDate = ARQUIVO.convertIonDateToJSDate(this);
-
-                  ARQUIVO_SEARCH_DATES.updateCalendarCard( "Start", newDate );
-
-                  var currentDateEnd = $('#calendarYearEnd').text();
-                  //update dual range
-                  dualRange.value = { lower: newDate.getFullYear(), upper: currentDateEnd };
-                  $('#dateStart_top').change();
+                  ARQUIVO_SEARCH_DATES.updateStart(newDate);
                 });
                 $('#ionDateEnd').on("ionChange", function() {
                   const newDate = ARQUIVO.convertIonDateToJSDate(this);
-
-                  ARQUIVO_SEARCH_DATES.updateCalendarCard( "End", newDate );
-
-                  var currentDateStart = $('#calendarYearStart').text();
-                  //update dual range
-                  dualRange.value = { lower: currentDateStart, upper: newDate.getFullYear() };
-                  $('#dateEnd_top').change();
+                  ARQUIVO_SEARCH_DATES.updateEnd(newDate);
                 });
 
                 // When chaning ionic range
