@@ -2505,6 +2505,10 @@ left: 20px;
 top: 16px
 }
 
+.withTip {
+display: inline
+}
+
 /***************************************************************************/
 /***************************************************************************/
 /**************          MEDIA   QUERIES          **************************/
@@ -6627,7 +6631,7 @@ legend.scheduler-border {
   color: white;
   padding-bottom: 15px;
   padding-top: 23px /*15px*/ ;
-  padding-left: 16.9px;
+  padding-left: 20.9px;
   margin-bottom: 0px;
   font-size: 17px;
   cursor: pointer;
@@ -6639,7 +6643,7 @@ legend.scheduler-border {
 .box-content {
   background-color: white;
   padding-bottom: 15px;
-  padding-left: /*31px*/ 28px !important;
+  padding-left: /*31px*/ /*28px*/ 40px !important;
 }
 .no-padding-left {
   padding-left: 0px !important;
@@ -8154,8 +8158,8 @@ body#advanced .formatTypeDropdown, body#advanced-images .formatTypeDropdown {
   position: relative;
   background-color: #c0c0c024;
   top: -1px !important;
-    right: 7px !important;
-    margin-left: 10px !important;
+  right: /*7px*/ -3px !important;
+  margin-left: 10px !important;
 }
 body#homepage-landing .fa-caret-up:before, body#home-search .fa-caret-up:before, body#homeImages .fa-caret-up:before, body#advanced .fa-caret-up:before, body#advanced-images .fa-caret-up:before {
   right: -4px;
@@ -8170,7 +8174,7 @@ body#homepage-landing .fa-caret-up:before, body#home-search .fa-caret-up:before,
   background-color: #c0c0c024;
   right: 7px;
   top: 1px !important;
-  right: 7px !important;
+  right: /*7px*/ -3px !important;
   margin-left: 10px !important;
 }
 #pagesMenu .fa-caret-down:before {
