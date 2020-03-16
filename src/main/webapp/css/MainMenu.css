@@ -321,7 +321,7 @@ body#advanced .container-fluid, body#advanced-images .container-fluid{
     padding: 0px 0 /*20px*/0px 0;   
 }
 body#advanced #main #conteudo-pesquisa, body#advanced-images #main #conteudo-pesquisa{
-	margin-top: -34px;
+	margin-top: -40px;
 }
 
 body#advanced .col-xs-offset-3, body#advanced-images .col-xs-offset-3 {margin:0 !important;width:95% !important;float: none !important;}
