@@ -215,7 +215,7 @@ function insertInPosition(position, imageObj, imageHeight, expandedImageHeight, 
     const ratio = maxImageDivWidth/expandedImageWidth;
     expandedImageHeight = expandedImageHeight * ratio;
   }
-  const urlToPresentation = formatURLForPresentation(imageObj.pageURL);
+  const urlToPresentation = ARQUIVO.formatURLForPresentation(imageObj.pageURL);
 
   var contentToInsert = ''+
   '<div  class="imageContent" position='+position+' id="imageResults'+position+'" onclick="ga(\'send\', \'event\', \'Search result\', \'Image search\', \'Result position\', '+currentResultGlobalPosition+'); openImage('+position+'); generateHash(\''+position+'\');">'+
