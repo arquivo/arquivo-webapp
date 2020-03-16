@@ -6643,7 +6643,7 @@ legend.scheduler-border {
 .box-content {
   background-color: white;
   padding-bottom: 15px;
-  padding-left: /*31px*/ /*28px*/ 42px !important;
+  padding-left: /*31px*/ /*28px*/ 44px !important;
 }
 .no-padding-left {
   padding-left: 0px !important;
