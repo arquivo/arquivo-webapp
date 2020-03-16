@@ -2505,6 +2505,10 @@ left: 20px;
 top: 16px
 }
 
+.withTip {
+display: inline
+}
+
 /***************************************************************************/
 /***************************************************************************/
 /**************          MEDIA   QUERIES          **************************/
@@ -3359,6 +3363,9 @@ top: 16px
   body#home-search a#ImageButton, a#ImageButton:active {
     font-size: 13px;
   }
+  body#home-search #resultados-lista ul li:hover a {
+    background-color: red;
+  }
   body#home-search .next-previous-ul, body#homeImages .next-previous-ul {
     display: flow-root;
   }
@@ -3778,7 +3785,7 @@ body#homeImages .dateModal, body#home-search .dateModal, body#homeImages .dateMo
   box-shadow: 0px 6px 12px 1px rgba(0, 0, 0, 0.50);
 }
 .dateInputContainer {
-  margin: 20px 0px 0px 0px;
+  margin: 20px 0px 20px 0px;
 }
 .dateModalButtons {
   margin-top: 20px;
@@ -6624,7 +6631,7 @@ legend.scheduler-border {
   color: white;
   padding-bottom: 15px;
   padding-top: 23px /*15px*/ ;
-  padding-left: 16.9px;
+  padding-left: 20.9px;
   margin-bottom: 0px;
   font-size: 17px;
   cursor: pointer;
@@ -6636,7 +6643,7 @@ legend.scheduler-border {
 .box-content {
   background-color: white;
   padding-bottom: 15px;
-  padding-left: /*31px*/ 28px !important;
+  padding-left: /*31px*/ /*28px*/ 44px !important;
 }
 .no-padding-left {
   padding-left: 0px !important;
@@ -8151,8 +8158,8 @@ body#advanced .formatTypeDropdown, body#advanced-images .formatTypeDropdown {
   position: relative;
   background-color: #c0c0c024;
   top: -1px !important;
-    right: 7px !important;
-    margin-left: 10px !important;
+  right: /*7px*/ -3px !important;
+  margin-left: 10px !important;
 }
 body#homepage-landing .fa-caret-up:before, body#home-search .fa-caret-up:before, body#homeImages .fa-caret-up:before, body#advanced .fa-caret-up:before, body#advanced-images .fa-caret-up:before {
   right: -4px;
@@ -8167,7 +8174,7 @@ body#homepage-landing .fa-caret-up:before, body#home-search .fa-caret-up:before,
   background-color: #c0c0c024;
   right: 7px;
   top: 1px !important;
-  right: 7px !important;
+  right: /*7px*/ -3px !important;
   margin-left: 10px !important;
 }
 #pagesMenu .fa-caret-down:before {
@@ -9213,6 +9220,9 @@ top: 14px
   body#home-search a#ImageButton, a#ImageButton:active {
     font-size: 13px;
   }
+  body#home-search #resultados-lista ul li:hover a {
+    background-color: red;
+  }
   body#home-search .next-previous-ul, body#homeImages .next-previous-ul {
     display: flow-root;
   }
@@ -9623,15 +9633,6 @@ body#home-search #years {}
 .ui-datepicker {
   font-size: 16px;
 }
-.ui-datepicker .ui-datepicker-prev, .ui-datepicker .ui-datepicker-next {
-  display: none;
-}
-.ui-datepicker .ui-datepicker-title {
-  margin: 0px;
-}
-.ui-datepicker .ui-datepicker-title select {
-  width: 49%;
-}
 .dateModal {
   background-color: white;
   font-size: 16px;
@@ -9644,7 +9645,7 @@ body#homeImages .dateModal, body#home-search .dateModal, body#homeImages .dateMo
   box-shadow: 0px 6px 12px 1px rgba(0, 0, 0, 0.50);
 }
 .dateInputContainer {
-  margin: 20px 0px 0px 0px;
+  margin: 20px 0px 20px 0px;
 }
 .dateModalButtons {
   margin-top: 20px;
@@ -11711,21 +11712,4 @@ margin-top: 5px !important;
 }
 #newFooterWrapper footerLogo {
   height: 5
-}
-
-.viewMoreForSameSiteLink {
-  display: block;
-  padding-left: 15px;
-  padding-right: 15px;
-  font-size: 12px;
-  font-family: 'Roboto', sans-serif;
-  padding-top: 7px;
-}
-@media screen and (max-width:1023px) {
-  .viewMoreForSameSiteLink {
-    display: none;
-  }
-}
-.dateInput{
-  width: 100%;
 }
