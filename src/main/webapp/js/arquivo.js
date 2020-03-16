@@ -53,6 +53,10 @@ var ARQUIVO = ARQUIVO || (function(){
             // convert Content.shortMonths to an array of ["jan", "fev", "mar", ...]
             return Object.entries(Content.shortMonths).sort( (a,b) => parseInt(a[0]) - parseInt(b[0])).map( e => e[1] );
         },
+        monthNamesArray: function() {
+            // convert Content.shortMonths to an array of ["jan", "fev", "mar", ...]
+            return Object.entries(Content.months).sort( (a,b) => parseInt(a[0]) - parseInt(b[0])).map( e => e[1] );
+        },
         // encode some char of str has html
         encodeHtmlEntities: function(str) {
             str = str.replaceAll('ç','%26ccedil%3B')
@@ -199,6 +203,7 @@ var ARQUIVO = ARQUIVO || (function(){
             ionDateTimeComponent.cancelText = Content.picker.cancel;
             ionDateTimeComponent.doneText = Content.picker.ok;
             ionDateTimeComponent.monthShortNames = ARQUIVO.monthShortNamesArray();
+            ionDateTimeComponent.monthNames = ARQUIVO.monthNamesArray();
         },
 
         // present url without protocol neither www.

@@ -46,8 +46,8 @@
 		<div id="main" class="main-form-advanced">
 			<div id="conteudo-pesquisa">
                 <script type="text/javascript">
-                  document.write('<ion-datetime id="ionDateStart" class="display-none" display-format="D/MMM/YYYY" min="'+minYear+'-01-01" max="'+maxYear+'-12-31" value="<%=dateStartStringIonic%>"></ion-datetime>');
-                  document.write('<ion-datetime id="ionDateEnd" class="display-none" display-format="D/MMM/YYYY" min="'+minYear+'-01-01" max="'+maxYear+'-12-31" value="<%=dateEndStringIonic%>"></ion-datetime>');
+                  document.write('<ion-datetime id="ionDateStart" class="display-none" display-format="D/MMMM/YYYY" min="'+minYear+'-01-01" max="'+maxYear+'-12-31" value="<%=dateStartStringIonic%>"></ion-datetime>');
+                  document.write('<ion-datetime id="ionDateEnd" class="display-none" display-format="D/MMMM/YYYY" min="'+minYear+'-01-01" max="'+maxYear+'-12-31" value="<%=dateEndStringIonic%>"></ion-datetime>');
                 </script>
 				<form method="get" id="searchForm" action="images.jsp">
 					<input type="hidden" name="l" value="<%= language %>" />
