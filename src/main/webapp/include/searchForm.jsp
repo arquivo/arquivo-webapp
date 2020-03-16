@@ -48,6 +48,12 @@
             $( "body" ).append();
 
             ARQUIVO.inputMaskAnInput( $('#'+dateInputId) );
+
+            // The minimum selectable date - minDate is a global javascript variable
+            const minimimDate = type == 'Start' ? minDate : this.getCalendarDate('Start');
+
+            // The maximum selectable date - maxDate is a global javascript variable
+            const maximumDate = type == 'End' ? maxDate : this.getCalendarDate('End');
             
             // open date picker div
             $("#"+datePickerId).datepicker({
@@ -58,8 +64,8 @@
               changeMonth: true, // Whether the month should be rendered as a dropdown instead of text.
               changeYear: true, // Whether the year should be rendered as a dropdown instead of text
               yearRange: minYear+":"+maxYear, // The range of years displayed in the year drop-down - minYear and maxYear are a global javascript variables
-              minDate: minDate, // The minimum selectable date - minDate is a global javascript variable
-              maxDate: maxDate, // The maximum selectable date - maxDate is a global javascript variable
+              minDate: minimimDate, 
+              maxDate: maximumDate, 
               monthNamesShort: $.datepicker.regional[language].monthNames,
               onChangeMonthYear: ARQUIVO.onChangeMonthYearJQueryDatePicker,
             });
