@@ -3363,9 +3363,6 @@ display: inline
   body#home-search a#ImageButton, a#ImageButton:active {
     font-size: 13px;
   }
-  body#home-search #resultados-lista ul li:hover a {
-    background-color: red;
-  }
   body#home-search .next-previous-ul, body#homeImages .next-previous-ul {
     display: flow-root;
   }
@@ -3785,7 +3782,7 @@ body#homeImages .dateModal, body#home-search .dateModal, body#homeImages .dateMo
   box-shadow: 0px 6px 12px 1px rgba(0, 0, 0, 0.50);
 }
 .dateInputContainer {
-  margin: 20px 0px 20px 0px;
+  margin: 20px 0px 0px 0px;
 }
 .dateModalButtons {
   margin-top: 20px;
@@ -9220,9 +9217,6 @@ top: 14px
   body#home-search a#ImageButton, a#ImageButton:active {
     font-size: 13px;
   }
-  body#home-search #resultados-lista ul li:hover a {
-    background-color: red;
-  }
   body#home-search .next-previous-ul, body#homeImages .next-previous-ul {
     display: flow-root;
   }
@@ -9633,6 +9627,15 @@ body#home-search #years {}
 .ui-datepicker {
   font-size: 16px;
 }
+.ui-datepicker .ui-datepicker-prev, .ui-datepicker .ui-datepicker-next {
+  display: none;
+}
+.ui-datepicker .ui-datepicker-title {
+  margin: 0px;
+}
+.ui-datepicker .ui-datepicker-title select {
+  width: 49%;
+}
 .dateModal {
   background-color: white;
   font-size: 16px;
@@ -9645,7 +9648,7 @@ body#homeImages .dateModal, body#home-search .dateModal, body#homeImages .dateMo
   box-shadow: 0px 6px 12px 1px rgba(0, 0, 0, 0.50);
 }
 .dateInputContainer {
-  margin: 20px 0px 20px 0px;
+  margin: 20px 0px 0px 0px;
 }
 .dateModalButtons {
   margin-top: 20px;
@@ -11712,4 +11715,21 @@ margin-top: 5px !important;
 }
 #newFooterWrapper footerLogo {
   height: 5
+}
+
+.viewMoreForSameSiteLink {
+  display: block;
+  padding-left: 15px;
+  padding-right: 15px;
+  font-size: 12px;
+  font-family: 'Roboto', sans-serif;
+  padding-top: 7px;
+}
+@media screen and (max-width:1023px) {
+  .viewMoreForSameSiteLink {
+    display: none;
+  }
+}
+.dateInput{
+  width: 100%;
 }
