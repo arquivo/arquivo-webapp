@@ -28,7 +28,7 @@
                   <button class="dateModalButtonsCancel dateModalButtonsCancel${type}" onclick="ARQUIVO.closeModalUglipop();">
                     <span>${Content.picker.cancel}</span>
                   </button>
-                  <button class="dateModalButtonsOk dateModalButtonsOk${type}" onclick="${changeDateFunctionName}( $('#${datePickerId}').datepicker( 'getDate' ) ); ARQUIVO.closeModalUglipop();">
+                  <button class="dateModalButtonsOk dateModalButtonsOk${type}" onclick="ARQUIVO_SEARCH_DATES.${changeDateFunctionName}( $('#${datePickerId}').datepicker( 'getDate' ) ); ARQUIVO.closeModalUglipop();">
                     <span>${Content.picker.ok}</span>
                   </button>
                 </div>
@@ -38,11 +38,10 @@
             // on pressing enter on input change the date and close the modal
             $('#'+dateInputId).on('keyup', function(e) {
                 if (e.keyCode === 13) {
-                    ARQUIVO_SEARCH_DATES.updateCalendarCard(type, $('#'+datePickerId).datepicker( 'getDate' ) ); 
+                    ARQUIVO_SEARCH_DATES[changeDateFunctionName]( $('#'+datePickerId).datepicker( 'getDate' ) ); 
                     ARQUIVO.closeModalUglipop();
                 }
             });
-
 
             // create new modal content and append it to bottom of the body DOM
             $( "body" ).append();
@@ -116,10 +115,10 @@
           },
 
           openDateStartPicker: function() {
-            this.openDatePicker("Start", "ARQUIVO_SEARCH_DATES.updateStart");
+            this.openDatePicker("Start", "updateStart");
           },
           openDateEndPicker: function() {
-            this.openDatePicker("End", "ARQUIVO_SEARCH_DATES.updateEnd");
+            this.openDatePicker("End", "updateEnd");
           },
 
         };
