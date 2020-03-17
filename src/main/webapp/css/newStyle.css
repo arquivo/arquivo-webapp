@@ -5161,6 +5161,7 @@ body#home-search .plt-desktop #urlSearchContainer {
     width: 65%;
   }
   #newFooterWrapper .prefix-65 {
+
     margin-left: 65%;
   }
   #newFooterWrapper .suffix-65 {
@@ -6937,16 +6938,16 @@ body#advanced .calendar-anchor-advanced img, body#advanced-images .calendar-anch
 }
 .urlBlock {
   margin-bottom: 5px;
-  padding-left: 15px;
-  padding-right: 15px;
-  padding-top: 14px;
+  padding-left: 17px;
+  padding-right: 19px;
+  padding-top: 21px;
   cursor: pointer;
 }
 .urlBlock:active {
   background: none;
 }
 .summary {
-  padding-left: 15px;
+  padding-left: 18px;
   padding-right: 15px;
   font-size: 1.5em;
   font-family: 'Roboto', sans-serif;
@@ -7034,6 +7035,7 @@ body#home-search #conteudo-pesquisa-erro {
   border: 1px solid #ccc;
   max-width: 959px;
   background: transparent;
+
   padding: 0 0 20px 0;
   border-radius: 5px;
   margin: 0px auto !important;
@@ -11748,6 +11750,12 @@ margin-top: 5px !important;
   font-family: 'Roboto', sans-serif;
   padding-top: 7px;
 }
+
+.viewMoreForSameSiteLink:hover, .viewMoreForSameSiteLink:active, {
+  background-color: transparent;
+  text-decoration: underline;
+}
+
 @media screen and (max-width:1023px) {
   .viewMoreForSameSiteLink {
     display: none;
