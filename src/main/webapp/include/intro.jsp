@@ -21,7 +21,7 @@
 	<div>
 		<h3><fmt:message key='home.intro.preserved'/></h3>
 		<div id="pagesPreserved-<%=language%>" class="call-to-actions">
-			<a href="<fmt:message key='home.video'/>" alt="<fmt:message key='home.intro.video.presentation'/>" title="<fmt:message key='home.intro.video.presentation'/>"><fmt:message key='home.intro.video.presentation'/></a>
+			<a href="<fmt:message key='home.intro.preserved.href'/>" alt="<fmt:message key='home.intro.preserved'/>" title="<fmt:message key='home.intro.preserved'/>"><fmt:message key='home.intro.preserved'/></a>
 		</div>
 	</div>       
 	<div>
