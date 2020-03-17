@@ -9710,9 +9710,9 @@ body#homeImages .dateModal, body#home-search .dateModal, body#homeImages .dateMo
   width: 49%;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 769px) {
   .grouped {
-    margin-left: 30px !important;
+    margin-left: 40px !important;
   }
   .button-advanced {
     background-color: white;
