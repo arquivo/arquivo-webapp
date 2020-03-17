@@ -3364,7 +3364,7 @@ display: inline
     font-size: 13px;
   }
   body#home-search #resultados-lista ul li:hover a {
-    background-color: red;
+    /*background-color: red;*/
   }
   body#home-search .next-previous-ul, body#homeImages .next-previous-ul {
     display: flow-root;
