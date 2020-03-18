@@ -1,5 +1,12 @@
 <%@ taglib uri="http://java.sun.com/jstl/core" prefix="c" %>
 
+<meta property="og:image" content="<%=request.getContextPath()%>/img/logoFace.png"/>
+<meta property="og:image:alt" content="Arquivo.pt">
+<meta property="og:image:type" content="image/png" />
+<meta property="og:image:width" content="512" />
+<meta property="og:image:height" content="512" />
+<meta property="og:type" content="website" />
+
 <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Language" content="<c:out value='${locale}' />" />
