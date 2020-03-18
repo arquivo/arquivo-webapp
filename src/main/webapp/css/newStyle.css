@@ -2320,9 +2320,14 @@ body#advanced .formatTypeDropdown, body#advanced-images .formatTypeDropdown {
     right: 7px !important;
     margin-left: 10px !important;
 }
-body#homepage-landing .fa-caret-up:before, body#home-search .fa-caret-up:before, body#homeImages .fa-caret-up:before, body#advanced .fa-caret-up:before, body#advanced-images .fa-caret-up:before {
+body#homepage-landing .fa-caret-up:before, body#homepage-landing .fa-caret-up:before, body#home-search .fa-caret-up:before, body#homeImages .fa-caret-up:before, body#advanced .fa-caret-up:before, body#advanced-images .fa-caret-up:before {
   right: -4px;
 }
+
+.menu .shareCarret {
+    padding-right: 8px;
+}
+
 .fa-caret-down:before {
   content: "\f0d7";
   font-size: 1.1em;
@@ -8161,7 +8166,7 @@ body#advanced .formatTypeDropdown, body#advanced-images .formatTypeDropdown {
 .fa-caret-up:before {
   content: "\f0d8";
   font-size: 1.1em;
-  padding: 3px 9px 7px 9px;
+  padding: 3px 8px 7px 8px;
   border-radius: 50px;
   margin-top: 3px !important;
   position: relative;
@@ -8176,7 +8181,7 @@ body#homepage-landing .fa-caret-up:before, body#home-search .fa-caret-up:before,
 .fa-caret-down:before {
   content: "\f0d7";
   font-size: 1.1em;
-  padding: 5px 9px 4px 9px;
+  padding: 5px 8px 4px 8px;
   border-radius: 50px;
   margin-top: 3px !important;
   position: relative;
@@ -8190,7 +8195,7 @@ body#homepage-landing .fa-caret-up:before, body#home-search .fa-caret-up:before,
   content: "\f0d7";
   font-size: 1.1em;
   border: 1px solid #e3e3e32e;
-  padding: 5px 9px;
+  padding: 5px 8px;
   border-radius: 50px;
   margin-top: 3px !important;
   position: relative;
@@ -8208,7 +8213,7 @@ body#homepage-landing .fa-caret-up:before, body#home-search .fa-caret-up:before,
   content: "\f0d7";
   font-size: 1.1em;
   border: 1px solid #e3e3e32e;
-  padding: 5px 9px;
+  padding: 5px 8px;
   border-radius: 50px;
   margin-top: 3px !important;
   position: relative;
