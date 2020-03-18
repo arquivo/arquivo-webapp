@@ -3885,6 +3885,15 @@ body#home-search .plt-desktop #urlSearchContainer {
 #newFooterWrapper .inside-header {
   padding: 40px;
 }
+
+@media screen and (max-width:768px){
+.headerMenuText {
+position: absolute;
+    top: -5px;
+    left: 27px;
+    font-size: 0.7em;
+}
+}
 #newFooterWrapper .separate-containers .inside-article, #newFooterWrapper .separate-containers .comments-area, #newFooterWrapper .separate-containers .page-header, #newFooterWrapper .separate-containers .paging-navigation, #newFooterWrapper .one-container .site-content {
   padding: 40px;
 }
@@ -8371,6 +8380,7 @@ position: absolute;
 left: 20px;
 top: 14px
 }
+
 
 
 /***************************************************************************/
