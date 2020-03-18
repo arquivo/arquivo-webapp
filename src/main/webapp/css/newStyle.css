@@ -3886,9 +3886,16 @@ body#home-search .plt-desktop #urlSearchContainer {
   padding: 40px;
 }
 
+@media screen and (max-width:768px){
+.headerMenuText {
+display: none;
+}
+}
+
 @media screen and (min-width:769px){
 .headerMenuText {
-position: absolute;
+  display: block;    
+  position: absolute;
     top: -5px;
     left: 27px;
     font-size: 0.7em;
