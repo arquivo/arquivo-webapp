@@ -133,5 +133,8 @@ Content = {
             images: "Images",
         },
     },
-
+    header: {
+        menu: "Menu",
+        options: "Options",
+    },
 };

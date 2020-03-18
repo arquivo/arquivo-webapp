@@ -133,4 +133,8 @@ Content = {
             images: "Imagens",
         },
     },
+    header: {
+        menu: "Menu",
+        options: "Op&ccedil;&#245;es",
+    },
 };

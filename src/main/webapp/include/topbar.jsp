@@ -12,6 +12,8 @@
 					<div class="bar"></div>
 					<div class="bar"></div>
 				</div>
+				<span class="headerMenuText"></span>
+				<script type="text/javascript">$('.headerMenuText').text(Content.header.menu)</script>
 			</a>
 			<a href="/?l=<%=language%>"><img src="/img/arquivo-logo-white.svg" id="arquivoLogo" alt="Arquivo.pt logo" class="text-center logo-main" /></a>
 		</div>
