@@ -33,7 +33,6 @@
   <meta name="Description" content="<fmt:message key='home.meta.description'/>" />
   <meta property="og:title" content="<fmt:message key='home.meta.title'/>"/>
   <meta property="og:description" content="<fmt:message key='home.meta.description'/>"/>
-  <meta property="og:image" content="<%=request.getContextPath()%>/img/logoFace.png"/>
 
   <jsp:include page="/include/headerDefault.jsp" />
   <%@ include file="/include/dates.jsp" %>
