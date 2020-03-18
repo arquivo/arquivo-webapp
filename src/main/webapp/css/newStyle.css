@@ -2344,7 +2344,7 @@ body#homepage-landing .fa-caret-up:before, body#homepage-landing .fa-caret-up:be
 #pagesMenu .fa-caret-down:before {
   content: "\f0d7";
   font-size: 1.1em;
-  border: 1px solid #e3e3e32e;
+  /*border: 1px solid #e3e3e32e;*/
   padding: 5px 9px;
   border-radius: 50px;
   margin-top: 3px !important;
@@ -2355,14 +2355,14 @@ body#homepage-landing .fa-caret-up:before, body#homepage-landing .fa-caret-up:be
   color: white !important;
 }
 #pagesMenu .fa-caret-up:before {
-  border: 1px solid #e3e3e32e;
+ /* border: 1px solid #e3e3e32e;*/
   background-color: #c0c0c024;
   top: -2px;
 }
 #imagesMenu .fa-caret-down:before {
   content: "\f0d7";
   font-size: 1.1em;
-  border: 1px solid #e3e3e32e;
+ /* border: 1px solid #e3e3e32e;*/
   padding: 5px 9px;
   border-radius: 50px;
   margin-top: 3px !important;
@@ -2373,7 +2373,7 @@ body#homepage-landing .fa-caret-up:before, body#homepage-landing .fa-caret-up:be
   color: white !important;
 }
 #imagesMenu .fa-caret-up:before {
-  border: 1px solid #e3e3e32e;
+  /*border: 1px solid #e3e3e32e;*/
   background-color: #c0c0c024;
   top: -2px;
 }
@@ -6368,7 +6368,7 @@ body#homeImages .pagesNextPrevious {
   content: none !important;
 }
 .yearUl {
-  background: /*#1c75c0*/ #0f5999;
+  background: /*#1c75c0*/ /*#0f5999*/ #1c75c0;
   border-radius: 0px;
   text-align: left;
   padding-top: 5px;
@@ -6405,7 +6405,7 @@ body#homeImages .pagesNextPrevious {
 .month-version-div {
   text-align: center;
   display: none;
-  background-color: /*#1a5f97ba*/ /*#0b3961*/ #0f416c !important;
+  background-color: /*#1a5f97ba*/ /*#0b3961*/ /*#0f416c*/#1c75c0 !important;
   color: white;
   cursor: pointer;
   margin-left: 0px !important;
@@ -6424,7 +6424,7 @@ body#homeImages .pagesNextPrevious {
   text-align: left;
   display: none;
   cursor: pointer;
-  background-color: /*#c0ebfe #0b497f*/ /*#0b3961*/ #0c2d4b !important;
+  background-color: /*#c0ebfe #0b497f*/ /*#0b3961*/ /*#0c2d4b*/#29699f !important;
   color: #fff;
 }
 .yearA {
@@ -8166,17 +8166,28 @@ body#advanced .formatTypeDropdown, body#advanced-images .formatTypeDropdown {
 .fa-caret-up:before {
   content: "\f0d8";
   font-size: 1.1em;
-  padding: 3px 8px 7px 8px;
+  padding: 2px 7px 4px 7px;
   border-radius: 50px;
   margin-top: 3px !important;
   position: relative;
   background-color: #c0c0c024;
   top: -1px !important;
-  right: /*7px*/ -3px !important;
+  right: /*7px*/ /*-3px*/8px !important;
   margin-left: 10px !important;
 }
 body#homepage-landing .fa-caret-up:before, body#home-search .fa-caret-up:before, body#homeImages .fa-caret-up:before, body#advanced .fa-caret-up:before, body#advanced-images .fa-caret-up:before {
-  right: -4px;
+  right: 0px !important;
+}
+
+
+body#homepage-landing .fa-caret-down:before, body#home-search .fa-caret-down:before, body##homeImages .fa-caret-down:before {
+right: 0px;
+}
+
+
+body#advanced .fa-caret-down:before, body#advanced-images .fa-caret-down:before {
+  right: 0px !important ;
+  
 }
 .fa-caret-down:before {
   content: "\f0d7";
@@ -8188,32 +8199,32 @@ body#homepage-landing .fa-caret-up:before, body#home-search .fa-caret-up:before,
   background-color: #c0c0c024;
   right: 7px;
   top: 1px !important;
-  right: /*7px*/ -3px !important;
+  right: /*7px*/ /*-3px*/ 7px !important;
   margin-left: 10px !important;
 }
 #pagesMenu .fa-caret-down:before {
   content: "\f0d7";
   font-size: 1.1em;
-  border: 1px solid #e3e3e32e;
-  padding: 5px 8px;
+ /* border: 1px solid #e3e3e32e;*/
+  padding: 3px 7px 3px 7px;
   border-radius: 50px;
   margin-top: 3px !important;
   position: relative;
   top: 0px;
-  right: -4px;
+  right: /*-4px*/0 !important;
   background-color: #c0c0c024;
   color: white !important;
 }
 #pagesMenu .fa-caret-up:before {
-  border: 1px solid #e3e3e32e;
+  /*border: 1px solid #e3e3e32e;*/
   background-color: #c0c0c024;
   top: -2px;
 }
 #imagesMenu .fa-caret-down:before {
   content: "\f0d7";
   font-size: 1.1em;
-  border: 1px solid #e3e3e32e;
-  padding: 5px 8px;
+  /*border: 1px solid #e3e3e32e;*/
+  padding: /*5px 8px;*/3px 7px 3px 7px;
   border-radius: 50px;
   margin-top: 3px !important;
   position: relative;
@@ -8221,9 +8232,10 @@ body#homepage-landing .fa-caret-up:before, body#home-search .fa-caret-up:before,
   right: -4px;
   background-color: #c0c0c024;
   color: white !important;
+  right: 0 !important;
 }
 #imagesMenu .fa-caret-up:before {
-  border: 1px solid #e3e3e32e;
+  /*border: 1px solid #e3e3e32e;*/
   background-color: #c0c0c024;
   top: -2px;
 }
