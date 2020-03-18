@@ -302,6 +302,10 @@ body#advanced .logo-main-div, body#advanced-images .logo-main-div {
 	padding-right: 8px;
 }
 
+body#advanced .menu .shareCarret, body#advanced-images .menu .shareCarret, body#homepage-landing .menu .shareCarret, body#home-search .menu .shareCarret,  body#homeImages .menu .shareCarret {
+    padding-right: 17px;    
+}
+
 #shareOptions, #toolsOptions, #pageOptions, #imageOptions{
 	display: none;
 }
