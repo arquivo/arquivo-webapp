@@ -94,11 +94,16 @@
 
             // on change input
             $('#'+dateInputId).change(function(){
-              // update datepicker with newinput value
-              $('#'+datePickerId).datepicker('setDate', $(this).val());
+              const dateInputValue = $(this).val();
 
-              // update callback value
-              updateCallerDateFromDatePicker();
+              // prevent change the date when the user didn't finish inserting a full date on keyboard
+              if (dateInputValue.replace('_','').length == 10) {
+                // update datepicker with newinput value
+                $('#'+datePickerId).datepicker('setDate', dateInputValue);
+
+                // update callback value
+                updateCallerDateFromDatePicker();
+              }
             });
 
           },
