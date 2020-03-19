@@ -281,6 +281,7 @@
                     let date = ARQUIVO_SEARCH_DATES.getCalendarDate(type);
                     date.setFullYear(newYear);
                     ARQUIVO_SEARCH_DATES.updateCalendarCard(type, date);
+                    $('#ionDate'+type).val( ARQUIVO.convertJsDateToIonDate(date) );
                   }
                   updateYear("Start", "lower");
                   updateYear("End", "upper");

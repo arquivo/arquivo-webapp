@@ -32,6 +32,14 @@ var ARQUIVO = ARQUIVO || (function(){
             ].join('/');
             return sdate;
         },
+        convertJsDateToIonDate : function(jsDate) {
+            var sdate = [
+              jsDate.getFullYear(),
+              ('0' + (jsDate.getMonth() + 1)).slice(-2),
+              ('0' + jsDate.getDate()).slice(-2)
+            ].join('-');
+            return sdate;
+        },
         convertIonDateToPresentation: function(ionDate) {
             return this.formatJSDateToPresentation(this.convertIonDateToJSDate(ionDate));
         },
