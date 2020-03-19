@@ -25,20 +25,39 @@
                 </p>
                 <div id="${datePickerId}"></div>
                 <div class="dateModalButtons dateModalButtons${type}">
-                  <button class="dateModalButtonsCancel dateModalButtonsCancel${type}" onclick="ARQUIVO.closeModalUglipop();">
-                    <span>${Content.picker.cancel}</span>
-                  </button>
-                  <button class="dateModalButtonsOk dateModalButtonsOk${type}" onclick="ARQUIVO_SEARCH_DATES.${changeDateFunctionName}( $('#${datePickerId}').datepicker( 'getDate' ) ); ARQUIVO.closeModalUglipop();">
+                  <button class="dateModalButtonsOk dateModalButtonsOk${type}" onclick="ARQUIVO.closeModalUglipop();">
                     <span>${Content.picker.ok}</span>
                   </button>
                 </div>
               `
             });
 
+            function updateCallerDateFromDatePicker() {
+              ARQUIVO_SEARCH_DATES[changeDateFunctionName]( $('#'+datePickerId).datepicker( 'getDate' ) );
+            }
+
+            // callback function called when month or year is changed
+            function onChangeMonthYearFunction(y, m, i) {
+              var d = i.selectedDay;
+
+              // to prevent the problem when changing from a month with 31 days to a other month with <31 days
+              // the calendar were going to the first or second day of the next month
+              function getDaysInMonth(m, y) {
+                return m===2 ? y & 3 || !(y%25) && y & 15 ? 28 : 29 : 30 + (m+(m>>3)&1);
+              }
+              const minDay = Math.min(getDaysInMonth(m, y), d);
+              const newDate = new Date(y, m-1, minDay);
+
+              $(this).datepicker('setDate', newDate);
+
+              // hack can't call updateCallerDateFromDatePicker function!
+              ARQUIVO_SEARCH_DATES[changeDateFunctionName]( newDate );
+            }
+
             // on pressing enter on input change the date and close the modal
             $('#'+dateInputId).on('keyup', function(e) {
                 if (e.keyCode === 13) {
-                    ARQUIVO_SEARCH_DATES[changeDateFunctionName]( $('#'+datePickerId).datepicker( 'getDate' ) ); 
+                    updateCallerDateFromDatePicker();
                     ARQUIVO.closeModalUglipop();
                 }
             });
@@ -66,15 +85,20 @@
               minDate: minimimDate, 
               maxDate: maximumDate, 
               monthNamesShort: $.datepicker.regional[language].monthNames,
-              onChangeMonthYear: ARQUIVO.onChangeMonthYearJQueryDatePicker,
+              onChangeMonthYear: onChangeMonthYearFunction,
+              onSelect: updateCallerDateFromDatePicker,
             });
 
             // focus the input
             $('#'+dateInputId).focus();
 
-            // connect the input and the datepicker
+            // on change input
             $('#'+dateInputId).change(function(){
-                $('#'+datePickerId).datepicker('setDate', $(this).val());
+              // update datepicker with newinput value
+              $('#'+datePickerId).datepicker('setDate', $(this).val());
+
+              // update callback value
+              updateCallerDateFromDatePicker();
             });
 
           },
