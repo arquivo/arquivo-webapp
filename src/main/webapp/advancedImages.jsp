@@ -45,10 +45,6 @@
 		<!-- Formulario -->
 		<div id="main" class="main-form-advanced">
 			<div id="conteudo-pesquisa">
-                <script type="text/javascript">
-                  document.write('<ion-datetime id="ionDateStart" class="display-none" display-format="D/MMMM/YYYY" min="'+minYear+'-01-01" max="'+maxYear+'-12-31" value="<%=dateStartStringIonic%>"></ion-datetime>');
-                  document.write('<ion-datetime id="ionDateEnd" class="display-none" display-format="D/MMMM/YYYY" min="'+minYear+'-01-01" max="'+maxYear+'-12-31" value="<%=dateEndStringIonic%>"></ion-datetime>');
-                </script>
 				<form method="get" id="searchForm" action="images.jsp">
 					<input type="hidden" name="l" value="<%= language %>" />
 		            <div class="expandable-div">
@@ -93,14 +89,7 @@
 							<legend><fmt:message key='advanced.date'/><i class="fa iCarret yearCarret fa-caret-down pull-right right-15" aria-hidden="true"></i></legend>
 							<div class="box-content container-fluid ">
 								<div id="label-data-1">
-									<label class="row  col-xs-12 no-padding-left label-padding-top" for="dateStart_top"><fmt:message key='advanced.date.from'/></label>
-									<div class="withTip">
-										<input size="10" class="row  date-advanced no-padding-left" type="text" id="dateStart_top" name="dateStart" value="<%=dateStartString%>" /><a class="calendar-anchor-advanced" id="startDateCalendarAnchor"><img src="/img/calendario-drop-down.svg"/></a>
-									</div>
-									<label id="labelDateEnd" class="row  col-xs-12 no-padding-left label-padding-top" for="dateEnd_top"><fmt:message key='advanced.date.to'/></label>
-									<div class="withTip">
-										<input type="text" class="row  date-advanced no-padding-left" id="dateEnd_top" name="dateEnd" size="10" value="<%=dateEndString%>" /><a class="calendar-anchor-advanced" id="endDateCalendarAnchor"><img src="/img/calendario-drop-down.svg"/></a>
-									</div>
+									<%@ include file="/include/datePickerComponent.jsp" %>
 								</div>
 							</div>
 						</fieldset>
@@ -189,89 +178,9 @@ window.onload = function() {
 	        $(this).children("i").removeClass('fa-caret-up').addClass('fa-caret-down');
 	    }
 	});
-
-	const mobile = ARQUIVO.isMobileOrTablet();
-	if (mobile) { // is mobile or tablet
-	    $('#dateStart_top').click( function(e) {
-	      e.preventDefault();
-	      $('#ionDateStart').trigger('click');
-	    });
-	    $('#dateEnd_top').click( function(e) {
-	      e.preventDefault();
-	      $('#ionDateEnd').trigger('click');
-	    });
-	    $('#ionDateStart').on("ionChange", function() {
-	        var newStartDate = $('#ionDateStart').val();
-	        var newStartDateTokens = newStartDate.split('-');
-	        var newStartDateFormated =  newStartDateTokens[2].split('T')[0] + "/" + newStartDateTokens[1]+ "/"+ newStartDateTokens[0];
-	        /*ionic uses the date format 1996-01-31T00:00:00+01:00  , we need to convert the date to our own date format i.e.  31/01/1996 */
-	        $('#dateStart_top').val(newStartDateFormated);
-	    });
-	    $('#ionDateEnd').on("ionChange", function() {
-	        var newEndDate = $('#ionDateEnd').val();
-	        var newEndDateTokens = newEndDate.split('-');
-	        var newEndDateFormated =  newEndDateTokens[2].split('T')[0] + "/" + newEndDateTokens[1]+ "/"+ newEndDateTokens[0];
-	        /*ionic uses the date format 1996-01-31T00:00:00+01:00  , we need to convert the date to our own date format i.e.  31/01/1996 */
-	        $('#dateEnd_top').val(newEndDateFormated);
-	    });
-	    
-	} else {
-		const datepickerConfiguration = {
-          dateFormat: "dd/mm/yy",
-          changeMonth: true, // Whether the month should be rendered as a dropdown instead of text.
-          changeYear: true, // Whether the year should be rendered as a dropdown instead of text
-          yearRange: minYear+":"+maxYear, // The range of years displayed in the year drop-down - minYear and maxYear are a global javascript variables
-          minDate: minDate, // The minimum selectable date - minDate is a global javascript variable
-          maxDate: maxDate, // The maximum selectable date - maxDate is a global javascript variable
-          onChangeMonthYear: ARQUIVO.onChangeMonthYearJQueryDatePicker,
-        };
-		ARQUIVO.inputMaskAnInput($('#dateStart_top').datepicker(datepickerConfiguration));
-		ARQUIVO.inputMaskAnInput($('#dateEnd_top').datepicker(datepickerConfiguration));
-	}
-
-	$('#startDateCalendarAnchor').click( function(e) {
-      e.preventDefault();
-      $('#dateStart_top').trigger( mobile ? 'click' : 'focus' );
-    });
-    $('#endDateCalendarAnchor').click( function(e) {
-      e.preventDefault();
-      $('#dateEnd_top').trigger( mobile ? 'click' : 'focus' );
-    });
-
-    /** Validade dates**/
-     $( '#searchForm' ).submit( function( ) {
-        var dateStartInput = $( '#dateStart_top' ).val().trim();
-        var dateEndInput = $( '#dateEnd_top' ).val().trim();
-        var startTime = new Date( ARQUIVO.createDateJsFormat( dateStartInput ) );
-        startTime.setHours(0,0,0,0);
-        var endTime = new Date( ARQUIVO.createDateJsFormat( dateEndInput ) );
-        endTime.setHours(0,0,0,0);
-
-        if(startTime > endTime) {
-          modalErrorDates();
-          return false;
-        }
-
-        return true;
-    });
-
-    function modalErrorDates(){
-        uglipop({
-          class:'modalReplay noprint', //styling class for Modal
-          source:'html',
-          content:'<h4 class="modalTitle"><i class="fa" aria-hidden="true"></i> <fmt:message key='datepicker.error.date'/></h4>'+
-                  '<div class="row"><a id="errorDates" onclick="ARQUIVO.closeModalUglipop()" class="col-xs-6 text-center leftAnchor modalOptions">OK</a></div>'});
-    }
-
-    ARQUIVO.initializeIonDateTimeComponent($('#ionDateStart')[0]);
-    ARQUIVO.initializeIonDateTimeComponent($('#ionDateEnd')[0]);
-	
 	$('#formatType')[0].cancelText = Content.picker.cancel;
-	$('#size')[0].cancelText = Content.picker.cancel;
-	$('#safeSearch')[0].cancelText = Content.picker.cancel;
-
+	$('#num-result')[0].cancelText = Content.picker.cancel;
 };
-
 </script>
 
 <%-- end copy --%>

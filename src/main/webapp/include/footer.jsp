@@ -4,7 +4,6 @@
 	<!-- Initialize Swiper -->
     var menuButton = document.querySelector('#menuButton');
     var openMenu = function () {
-      console.log('open');
       $('.logo-main-div').css("position:fixed!important; width:initial;");
       $('#menuWrapper').removeClass('transform-none');
       $('#menuSwiperSlide').removeClass('hidden');
