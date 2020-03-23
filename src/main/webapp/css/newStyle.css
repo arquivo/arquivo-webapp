@@ -3795,7 +3795,6 @@ body#homeImages .dateModal, body#home-search .dateModal, body#homeImages .dateMo
 }
 .dateModalButtons {
   margin-top: 20px;
-  height: 30px;
 }
 .dateModalButtons button {
   background-color: transparent;
@@ -3892,7 +3891,7 @@ body#home-search .plt-desktop #urlSearchContainer {
 .headerMenuText {
 display: none;
 }
-.menu-button {display: block}
+.menu-button {display: block} 
 }
 
 @media screen and (min-width:769px){
@@ -9719,7 +9718,6 @@ body#homeImages .dateModal, body#home-search .dateModal, body#homeImages .dateMo
 }
 .dateModalButtons {
   margin-top: 20px;
-  height: 30px;
 }
 .dateModalButtons button {
   background-color: transparent;
@@ -11661,6 +11659,8 @@ body#homepage-landing div#flex-container {
 #resultados-lista ul {
     width: auto; 
 }
+
+.grouped:before {display: none !important}
 
 }
 
