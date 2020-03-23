@@ -5709,7 +5709,7 @@ body#advanced .headerMenuText, body#advanced-images .headerMenuText  {
   }
   body#home-search p#estimated-results {
     margin-top: /*0*/ -5px !important;
-    margin-left: 0 !important;
+    margin-left: 13px !important;
   }
   #resultados-lista ul li .resumo {
     font-size: 16px !important;
