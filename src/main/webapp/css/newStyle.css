@@ -2503,12 +2503,7 @@ h4.modalTitle {
   width: 100%;
 }
 
-.grouped:before {
-content: url(../img/parent-news.svg);
-position: absolute;
-left: 20px;
-top: 16px
-}
+
 
 .withTip {
 display: inline
@@ -3142,6 +3137,12 @@ display: inline
     margin-bottom: /*10px*/ -1 !important;
     margin-top: 6px !important;
   }
+  .grouped:before {
+content: url(../img/parent-news.svg);
+position: absolute;
+left: 20px;
+top: 16px
+}
 }
 @media (min-width:769px) and (max-width:3000px) {
   body#homepage-landing span#buttonSearch button span {
@@ -6406,7 +6407,7 @@ body#homeImages .pagesNextPrevious {
   margin-left: 0px !important;
   margin-right: 0px !important;
   cursor: pointer;
-  border-bottom: 1px solid #45639f;
+  border-bottom: 1px solid /*#45639f*/#1c75c0;
 }
 .yearUl:active {
   background: #2196f3;
@@ -6969,8 +6970,11 @@ body#advanced .calendar-anchor-advanced img, body#advanced-images .calendar-anch
 .list-versions-div:active {
   background: none;
 }
-.viewing-version {
+.viewing-version a {
   font-weight: bold;
+  
+
+  
 }
 .urlBlock {
   margin-bottom: 5px;
@@ -11800,8 +11804,13 @@ margin-top: 5px !important;
   padding-top: 7px;
 }
 
-.viewMoreForSameSiteLink:hover, .viewMoreForSameSiteLink:active, {
-  background-color: transparent;
+.viewMoreForSameSiteLink:hover, .viewMoreForSameSiteLink:active {
+  background-color: none;
+  text-decoration: underline;
+}
+
+.grouped:hover .viewMoreForSameSiteLink a {
+  background-color: white !important;
   text-decoration: underline;
 }
 
