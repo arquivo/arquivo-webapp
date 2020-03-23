@@ -408,7 +408,7 @@ body#homeImages .pagesNextPrevious {
   font-size: 15px;
   float: left;
   width: 100%;
-  margin-bottom: 10px !important;
+  margin-bottom: 10px !important;   
 }
 .pagesNextPrevious a:hover {
   border: 1px solid #1c75c0 !important;
@@ -844,7 +844,7 @@ body#homepage-landing .dateModal {
   -moz-box-shadow: 0px 17px 15px -6px rgba(0, 0, 0, 0.45);
   box-shadow: 0px 17px 15px -6px rgba(0, 0, 0, 0.45);
 }
-body#homepage-landing .ui-widget.ui-widget-content, body#home-search .ui-widget.ui-widget-content, body#homeImages .ui-widget.ui-widget-content {
+body#homepage-landing .ui-widget.ui-widget-content, body#home-search .ui-widget.ui-widget-content, body#homeImages .ui-widget.ui-widget-content, body#advanced-images .ui-widget.ui-widget-content {
   box-shadow: none !important;
   padding: 18px 0px 9px 0px;
   border: 1px solid transparent;
@@ -3299,7 +3299,7 @@ top: 16px
 }
 @media (min-width: 769px) and (max-width:3000px) {
   .pagesNextPrevious a {
-    background-color: #1c75c0 !important;
+    background-color: transparent !important;
     color: white !important;
     border: 1px solid #1c75c0 !important;
     border-radius: 5px !important;
@@ -3309,8 +3309,7 @@ top: 16px
     color: #007AFF;
     border: 1px solid #007AFF;
     float: left;
-    width: 100px;
-    /*margin-bottom: 35px !important;*/
+    width: 100px;   
     margin-right: 10px;
     text-decoration: none !important;
     font-size: 1.05em;
@@ -3907,6 +3906,10 @@ display: none;
     margin: 0;
     transition: 0.5s;
 }
+
+body#advanced .headerMenuText, body#advanced-images .headerMenuText  {
+    left: 4px;
+  }
 
 .headerMenuText:hover, .headerMenuText:active {    
     
@@ -6028,40 +6031,48 @@ input {
 }
 /* NEW style: calendar month and day */
 #calendarDayStart {
-  position: relative;
-  top: 29.65px;
-  left: -8px;
-  font-size: 1.1em;
-  letter-spacing: -1px;
-  color: #1a73ba;
-  font-family: helvetica, arial !important;
+position: relative;
+    top: 29px;
+    left: -7.5px;
+    font-size: 1em;
+    letter-spacing: -1px;
+    color: #1a73ba;
+    font-family: helvetica, arial !important;
+    text-align: right;
 }
 #calendarMonthStart {
-  position: relative;
-  top: 8.3px;
-  left: 12px;
-  font-size: 0.9em;
-  letter-spacing: 0px;
-  color: #1a73ba;
-  font-family: helvetica, arial !important;
+ position: relative;
+    top: 9.2px;
+    left: 12.1px;
+    font-size: 0.8em;
+    letter-spacing: 0px;
+    color: #1a73ba;
+    font-family: helvetica, arial !important;
+    text-align: right;
+    display: inline-block;
+    width: 19px;
 }
-#calendarDayEnd {
+#calendarDayEnd {  
   position: relative;
-  top: 29.65px;
-  left: -7px;
-  font-size: 1.1em;
-  letter-spacing: -1px;
-  color: #1a73ba;
-  font-family: helvetica, arial !important;
+    top: 29px;
+    left: -8px;
+    font-size: 1em;
+    letter-spacing: -1px;
+    color: #1a73ba;
+    font-family: helvetica, arial !important;
 }
 #calendarMonthEnd {
   position: relative !important;
-  top: 9.8px !important;
-  left: 13px !important;
-  font-size: 0.9em !important;
-  letter-spacing: 0px !important;
-  color: #1a73ba !important;
-  font-family: helvetica, arial !important;
+    top: 9.7px !important;
+    left: 11.6px !important;
+    font-size: 0.8em !important;
+    letter-spacing: 0px !important;
+    color: #1a73ba !important;
+    font-family: helvetica, arial !important;
+    text-align: right;
+    display: inline-block;
+    width: 19px;
+
 }
 #calendarYearStart {
   position: relative !important;
@@ -6719,15 +6730,15 @@ legend.scheduler-border {
 }
 /* Desktop date picker */
 body#homepage-landing .dateModal {
-  padding: 10px 30px 20px 30px;
+  padding: 10px 30px 50px 30px;
   border-radius: 5px;
   -webkit-box-shadow: 0px 17px 15px -6px rgba(0, 0, 0, 0.45);
   -moz-box-shadow: 0px 17px 15px -6px rgba(0, 0, 0, 0.45);
   box-shadow: 0px 17px 15px -6px rgba(0, 0, 0, 0.45);
 }
-body#homepage-landing .ui-widget.ui-widget-content, body#home-search .ui-widget.ui-widget-content, body#homeImages .ui-widget.ui-widget-content {
+body#homepage-landing .ui-widget.ui-widget-content, body#home-search .ui-widget.ui-widget-content, body#homeImages .ui-widget.ui-widget-content, body#advanced .ui-widget.ui-widget-content {
   box-shadow: none !important;
-  padding: 18px 0px 9px 0px;
+  padding: 18px 0px 0px 0px;
   border: 1px solid transparent;
 }
 .ui-widget.ui-widget-content {
@@ -7765,7 +7776,7 @@ body#homeImages #searchBarButtonsDiv {
   text-align: center;
   float: left;
   margin-top: -29px;
-  margin-bottom: 3px;
+  margin-bottom: /*3px*/0;
   padding: 0 13px;
 }
 a#advancedSearchButton {
@@ -9210,27 +9221,27 @@ top: 14px
 }
 @media (min-width: 769px) and (max-width:3000px) {
   .pagesNextPrevious a {
-    background-color: #1c75c0 !important;
-    color: white !important;
+    background-color: white !important;
+    color: #1c75c0 !important;
     border: 1px solid #1c75c0 !important;
     border-radius: 5px !important;
     text-decoration: none !important;
     padding: 6px 0 !important;
-    transition: background-color 0.5s ease 0s;
-    color: #007AFF;
-    border: 1px solid #007AFF;
+    transition: background-color 0.5s ease 0s;      
     float: left;
-    width: 100px;
-    /*margin-bottom: 35px !important;*/
-    margin-right: 10px;
+    width: 100px;   
     text-decoration: none !important;
     font-size: 1.05em;
-    margin-right: 6px !important;
-    color: white !important;
-    background-color: #1c75c0 !important;
-    border: 1px solid #1c75c0;
-    cursor: pointer;
+    margin-right: 6px !important;  
+    cursor: pointer;    
   }
+  
+  .pagesNextPrevious a:hover {
+    background-color: #1c75c0 !important;
+    color: white !important;
+    border: 1px solid #1c75c0 !important;    
+  }
+  
   .url {
     font-size: 13px;
   }
@@ -9243,7 +9254,7 @@ top: 14px
     max-width: /*915px*/ 970px;
   }
   body#homeImages #searchBarButtonsDiv {
-    margin-bottom: /*29px*/ 2px !important;
+    margin-bottom: /*29px*/ /*2px*/0 !important;
   }
   body#home-search #resultados-lista ul li .resumo {
     line-height: 1.6em !important;
@@ -9280,9 +9291,7 @@ top: 14px
   body#home-search a#ImageButton, a#ImageButton:active {
     font-size: 13px;
   }
-  body#home-search #resultados-lista ul li:hover a {
-    background-color: red;
-  }
+
   body#home-search .next-previous-ul, body#homeImages .next-previous-ul {
     display: flow-root;
   }
@@ -9328,7 +9337,7 @@ top: 14px
     margin-bottom: 12px !important;
     float: none;
     width: /*98%*/ 100% !important;
-    margin: 7px auto /*61px*/ 52px auto !important;
+    margin: 9px auto /*61px*/ 52px auto !important;
   }
   div#flex-container h3 {
     /*display: none;*/
@@ -9703,9 +9712,14 @@ body#home-search #years {}
   width: 49%;
 }
 .dateModal {
-  background-color: white;
-  font-size: 16px;
-  padding: 20px 30px 20px 30px;
+ background-color: white;
+ font-size: 16px;
+ padding: 20px 30px 50px 30px;
+ border-radius: 5px;
+ -webkit-box-shadow: 0px 17px 15px -6px rgba(0, 0, 0, 0.45);
+ -moz-box-shadow: 0px 17px 15px -6px rgba(0, 0, 0, 0.45);
+ box-shadow: 0px 17px 15px -6px rgba(0, 0, 0, 0.45);
+}
 }
 body#homeImages .dateModal, body#home-search .dateModal, body#homeImages .dateModal {
   border-radius: 5px;

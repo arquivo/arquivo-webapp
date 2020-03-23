@@ -115,6 +115,12 @@ ion-range {
 .select-icon-inner { border-top: transparent!important; }
 
 /* New style override IONIC V4: removing paddings left and right */
+
+body#advanced ion-item, body#advanced-images ion-item { 
+   --padding-start:20px/*13px*/ !important;  
+   --inner-padding-end: 22px/*13px*/ !important;
+}
+
 ion-item { 
    --padding-start:13px/*0*/ !important;  
    --inner-padding-end: 13px/*0*/ !important;

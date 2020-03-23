@@ -87,7 +87,7 @@
 					<div class="expandable-div">
 						<fieldset id="date">
 							<legend><fmt:message key='advanced.date'/><i class="fa iCarret yearCarret fa-caret-down pull-right right-15" aria-hidden="true"></i></legend>
-							<div class="box-content container-fluid ">
+							<div class="container-fluid ">
 								<div id="label-data-1">
 									<%@ include file="/include/datePickerComponent.jsp" %>
 								</div>
