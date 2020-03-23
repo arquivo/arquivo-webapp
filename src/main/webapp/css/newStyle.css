@@ -3887,14 +3887,14 @@ body#home-search .plt-desktop #urlSearchContainer {
   padding: 40px;
 }
 
-@media screen and (max-width:768px){
+@media screen and (max-width:960px){
 .headerMenuText {
 display: none;
 }
 .menu-button {display: block} 
 }
 
-@media screen and (min-width:769px){
+@media screen and (min-width:960px){
 .headerMenuText {
  display: block;
     position: absolute;
