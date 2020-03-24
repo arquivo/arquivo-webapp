@@ -3568,7 +3568,6 @@ a#advancedSearchButton {
   display: block;
 }
 body#home-search #years {}
-}
 /* iPad Portrait */
 @media (device-width: 768px) and (device-height:1024px) {
   body#homeImages span#buttonSearch button span {
@@ -3594,6 +3593,12 @@ body#home-search #years {}
   #buttonSearch button {
     right: 42px !important;
   }
+  
+  span#buttonSearch button span.glyphicon {  
+    right: 10px !important;
+    
+}
+
   #resultados-lista {
     width: 100% !important;
     max-width: 742px !important;
@@ -7027,7 +7032,7 @@ span#buttonSearch {
   border-radius: 60px;
   position: absolute !important;
   top: 0px;
-  right: 13px;
+  right: 13px;  
 }
 span#buttonSearch button span {
   color: #007AFF;
@@ -7037,8 +7042,9 @@ span#buttonSearch button span {
   font-weight: normal !important;
   position: absolute !important;
   top: 12px;
-  right: -4px;
+  right: -4px;  
 }
+
 span#buttonSearch button span {
   color: #1c75c0;
   background-color: transparent !important;
@@ -7147,7 +7153,7 @@ body#homeImages #conteudo-pesquisa-erro {}
 /* LANDING PAGE NEW AREA */
 div#flex-container {
   flex-direction: column;
-  align-items;
+  align-items:center;
   padding-bottom: 7px;
   background-color: white !important;
   width: 100% !important;
@@ -7175,7 +7181,7 @@ div#flex-container div:second-child {
 }
 div#flex-container div {
   border-radius: 10px;
-  margin: 7px 8px 16px 0px !important;
+  margin: 7px /*8px*/0px 16px 0px !important;
   padding: 0px;
   background-color: #eaeaea !important;
   flex-grow: 1;
@@ -8899,6 +8905,7 @@ top: 14px
     margin-left: auto !important;
     margin-right: auto !important;
     width: 100% !important;
+    position: relative
   }
   body#homeImages #buttonSearch button {    
     right: 30px !important;
@@ -8920,7 +8927,7 @@ top: 14px
     margin-right: 9px !important;
   }
   .col-sm-offset-1 {
-    width: 100% !important;
+    width: /*100%*/99.4% !important;
     max-width: /*972px*/ 1015px !important;
     margin: 0 auto !important;
     float: none !important;
@@ -9492,11 +9499,25 @@ a#advancedSearchButton {
 body#home-search #years {}
 }
 /* iPad Portrait */
-@media (device-width: 768px) and (device-height:1024px) {
+@media (min-device-width: 768px) and (max-device-height:1024px) {
   body#homeImages span#buttonSearch button span {
     top: 12px !important;
-    right: -12px !important;
+    right: -2px !important;
   }
+  
+  #txtSearch {
+  margin-bottom: -2px;
+  }
+  
+  #searchForm .form-control {
+    margin-bottom: 0px !important;
+}
+  
+  span#buttonSearch {
+     right: 22px !important;
+}
+    
+  
   #ionSlider {
     margin-top: -13px;
   }
@@ -9515,6 +9536,7 @@ body#home-search #years {}
   }
   #buttonSearch button {
     right: 42px !important;
+    outline: 1px solid red !important;
   }
   #resultados-lista {
     width: 100% !important;
@@ -9524,9 +9546,13 @@ body#home-search #years {}
   body#homeImages #photos {
     max-width: 736px !important;
   }
+  
+  #flex-container div {
+  outline: 1px solid red
+  }
 }
 /* iPad Landscape */
-@media (device-width: 1024px) and (device-height:768px) {
+@media (min-device-width: 1024px) and (max-device-height:768px) {
   body#homeImages span#buttonSearch button span {
     top: 12px !important;
     right: -12px !important;
