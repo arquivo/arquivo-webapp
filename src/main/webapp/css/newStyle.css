@@ -3857,8 +3857,7 @@ li.previous .myButtonStyle:before {
   .url-search-container {
     background-color: #1c75c0 !important;
   }
-  #layoutTV {
-    outline: 5px solid red;
+  #layoutTV {   
     display: none !important;
   }
 }
@@ -9535,8 +9534,7 @@ body#home-search #years {}
     margin-bottom: 11px;
   }
   #buttonSearch button {
-    right: 42px !important;
-    outline: 1px solid red !important;
+    right: 42px !important;   
   }
   #resultados-lista {
     width: 100% !important;
@@ -9547,8 +9545,7 @@ body#home-search #years {}
     max-width: 736px !important;
   }
   
-  #flex-container div {
-  outline: 1px solid red
+  #flex-container div { 
   }
 }
 /* iPad Landscape */
@@ -9574,8 +9571,7 @@ body#home-search #years {}
     margin-top: 1px;
     width: 100% !important;
     max-width: 930px !important;
-    margin: 0 auto !important;
-    outline: 1px solid red;
+    margin: 0 auto !important;   
   }
   .pagesNextPrevious {
     max-width: 932px !important;
@@ -9825,8 +9821,7 @@ li.previous .myButtonStyle:before {
   .url-search-container {
     background-color: #1c75c0 !important;
   }
-  #layoutTV {
-    outline: 5px solid red;
+  #layoutTV {   
     display: none !important;
   }
 }
@@ -11859,3 +11854,4 @@ margin-top: 5px !important;
 .dateInput{
   width: 100%;
 }
+
