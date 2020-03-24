@@ -2888,7 +2888,7 @@ display: inline
   }
   div#flex-container div:first-child {
     margin-bottom: 11px !important;
-    width: 94.79% !important;
+    /*width: 94.79% !important;*/
   }
   #award-pt, #award-en, #pagesPreserved-pt, #pagesPreserved-en, #exhibitions-pt, #exhibitions-en {
     height: 230px !important;
@@ -7180,7 +7180,7 @@ div#flex-container div:second-child {
 }
 div#flex-container div {
   border-radius: 10px;
-  margin: 7px /*8px*/0px 16px 0px !important;
+  margin: 7px 8px 16px 0px !important;
   padding: 0px;
   background-color: #eaeaea !important;
   flex-grow: 1;
@@ -11854,4 +11854,74 @@ margin-top: 5px !important;
 .dateInput{
   width: 100%;
 }
+
+@media (width:768px) and (height:1024px) {
+div#flex-container div {  
+    margin: 7px 0px 16px 0px !important;  
+    height: 400px
+}
+body#home-search p#estimated-results {
+    margin-top: 24px !important;   
+}
+body#homeImages #photos {
+    max-width: 100% !important;
+    margin: 0 9px;
+}
+#resultados-lista {    
+    width: 100% !important;
+    margin: 0 0px !important;
+}
+body#homeImages p#estimated-results {
+    padding-left: 21px; 
+}
+body#homeImages span#buttonSearch button span {
+    top: 12px !important;
+    right: -6px !important;
+}
+body#home-search p#estimated-results {
+    margin-left: 8px !important;
+}
+#searchForm .form-control {
+    margin-bottom: -2px;
+}
+#searchBarBlock {
+    max-width: 734px !important;
+    margin: -71px auto 0px auto !important;
+}
+
+body#home-search .pagesNextPrevious { 
+    padding: 0 2.8px; 
+    display: inline-block;
+    margin: 25px auto !important;
+}
+body#home-search #conteudo-resultado {    
+    max-width: 740px !important; 
+}
+
+body#homeImages .pagesNextPrevious {  
+    padding: 0 2.8px; 
+    display: block;
+    margin: 25px auto !important;
+}
+}
+/* iPad landscape*/
+@media (width:1024px) and (height:768px) {
+body#homeImages #photos {
+    max-width: 968px !important;
+}
+#searchBarBlock {
+    max-width: 959px !important; 
+}
+.pagesNextPrevious {
+    max-width: 1016px !important;
+}
+.pagesNextPrevious {
+    padding: 0 14px;
+}
+#resultados-lista {
+    max-width: 968px !important;
+}
+}
+
+
 
