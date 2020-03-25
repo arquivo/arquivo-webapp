@@ -1252,7 +1252,7 @@ body#homeImages #conteudo-pesquisa-erro {}
 /* LANDING PAGE NEW AREA */
 div#flex-container {
   flex-direction: column;
-  align-items;
+  /*align-items;*/
   padding-bottom: 7px;
   background-color: white !important;
   width: 100% !important;
@@ -1262,9 +1262,10 @@ div#flex-container {
 }
 body#homepage-landing div#flex-container {
   width: 96% !important;
+  margin: /*-62px*/-50px auto 0 auto !important;
 }
 body#homeImages div#flex-container {
-  margin: -62px auto 0 auto !important;
+  margin: /*-62px*/-57px auto 0 auto !important;
   width: 96% !important;
 }
 div#flex-container div:first-child {
@@ -2175,8 +2176,10 @@ tr.trTV:nth-child(even) {
     margin-top: 9px;
   }
   #buttonSearch button {   
-    right: 16px !important;
-   
+    right: 16px !important;  
+    
+}body#homeImages #flex-container {
+margin-top: 11px !important
 }
 }
 
@@ -7164,8 +7167,8 @@ body#homepage-landing div#flex-container {
   width: 96% !important;
 }
 body#homeImages div#flex-container {
-  margin: -62px auto 0 auto !important;
-  width: 96% !important;
+ /* margin: -62px auto 0 auto !important;
+  width: 96% !important;*/
 }
 div#flex-container div:first-child {
   margin-bottom: 12px !important;
@@ -11687,7 +11690,7 @@ margin-bottom: 2px;
     font-size: 15px; 
 }
 body#homepage-landing div#flex-container { 
-    margin: 8px auto 0 auto !important;
+    margin: 10px auto 0 auto !important;
 }
 
 #resultados-lista ul {
@@ -11855,6 +11858,7 @@ margin-top: 5px !important;
   width: 100%;
 }
 
+/* iPad Portrait */
 @media (width:768px) and (height:1024px) {
 div#flex-container div {  
     margin: 7px 0px 16px 0px !important;  
@@ -11879,7 +11883,7 @@ body#homeImages span#buttonSearch button span {
     right: -6px !important;
 }
 body#home-search p#estimated-results {
-    margin-left: 8px !important;
+    margin-left: 7px !important;
 }
 #searchForm .form-control {
     margin-bottom: -2px;
@@ -11895,7 +11899,7 @@ body#home-search .pagesNextPrevious {
     margin: 25px auto !important;
 }
 body#home-search #conteudo-resultado {    
-    max-width: 740px !important; 
+    max-width: 734px !important; 
 }
 
 body#homeImages .pagesNextPrevious {  
@@ -11903,8 +11907,47 @@ body#homeImages .pagesNextPrevious {
     display: block;
     margin: 25px auto !important;
 }
+#home-search #searchBarButtonsDiv {
+    margin-bottom: 0px;
 }
-/* iPad landscape*/
+body#homeImages div#flex-container {
+    margin: -49px auto 0 auto !important;
+    width: 100% !important;
+    max-width: 737px !important;
+}
+body#homepage-landing div#flex-container {
+    margin: 9px auto 0 auto !important;
+}
+body#home-search div#flex-container {
+    max-width: 736px !important;
+
+}
+#bottom-submit {
+    padding: 20px 17px;
+    margin: 10px 6px;
+}
+
+
+body#homeImages .spell {    
+    left: -13px !important;
+    margin: 9px auto 7px auto;
+}
+
+body#home-search .spell {
+    top: -25px;
+    left: -22px !important;
+}
+#homeImages #conteudo-pesquisa-erro {
+    width: 100%; 
+    max-width: 733px;
+}
+#conteudo-pesquisa-erro .alert-danger {
+    width: 100%;
+    margin: 0 !important;
+    width: 100% !important;
+}
+}
+/* iPad landscape */
 @media (width:1024px) and (height:768px) {
 body#homeImages #photos {
     max-width: 968px !important;
@@ -11921,6 +11964,152 @@ body#homeImages #photos {
 #resultados-lista {
     max-width: 968px !important;
 }
+div#flex-container {
+    width: 100% !important;
+    max-width: 958px !important;
+    margin-top: 0px !important;
+}
+#buttonSearch button {   
+    right: 30px !important;
+}
+.pagesNextPrevious {
+    padding: 0 18px !important;
+}
+body#homeImages p#estimated-results {
+    padding-left: 17px;    
+}
+body#home-search p#estimated-results {
+    padding-left: 15px;    
+}
+body#home-search.spell {   
+    left: 11px !important;
+}
+body#homeImages .spell {    
+    left: -11px !important;
+    margin: 9px auto 7px auto;
+}
+body#home-search #resultados-lista > ul > li.grouped {
+    margin-left: 29px !important;
+}
+body#advanced #bottom-submit {
+    padding: 20px 14px;
+    margin: 10px 6px;
+}
+}
+
+/* iPad Pro portrait */
+@media (width:1024px) and (height:1366px) {
+div#flex-container {
+    width: 100% !important;
+    max-width: 914px !important;
+    margin-bottom: 16px !important;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between
+}
+#resultados-lista {   
+    width: 100%;
+    max-width: 925px !important;
+    margin: 0 auto !important;
+}
+body#homeImages #photos {
+    width: 100% !important;
+    max-width: 924px !important;    
+}
+p#estimated-results {  
+    padding-left: 37px !important;  
+}
+body#homeImages p#estimated-results {  
+    padding-left: 39px !important;  
+}
+body#homeImages .pagesNextPrevious {
+    padding: 0 26px !important;
+}
+body#home-search .pagesNextPrevious {
+    padding: 0 38px !important;
+}
+div#flex-container div:nth-child(2), div#flex-container div:nth-child(3), div#flex-container div:nth-child(4), div#flex-container div:nth-child(5) {
+    width: 46%;
+    height: 300px;
+    margin-bottom: 50px !important;
+}
+body#home-search #conteudo-resultado, body#homeImages #conteudo-pesquisa-erro {
+    max-width: 914px !important;
+}
+body#home-search .spell {   
+    left: -30px !important;
+}
+body#homeImages .spell {    
+    left: 11px !important;
+    margin: 9px auto 7px auto;
+}
+}
+
+/* iPad Pro lansdcape */
+@media (width:1366px) and (height:1024px) {
+
+div#flex-container {
+    max-width: 931px !important;    
+}
+body#homeImages #photos {   
+    width: 100% !important;
+    max-width: 1322px !important;   
+}
+body#home-search .pagesNextPrevious {
+    padding: 0 18px;
+}
+
+body#homeImages .pagesNextPrevious {
+    padding: 0 12px;
+}
+
+body#homeImages p#estimated-results {
+    padding-left: 30px;
+}
+p#estimated-results {
+    padding-left: 16px;
+}
+body#home-search #conteudo-resultado {
+    max-width: 965px !important;
+}
+#bottom-submit {
+    padding: 20px 17px !important;
+    margin: 10px 6px;
+}
+body#home-search #conteudo-resultado {
+    max-width: 966px !important;
+}
+
+body#homeImages #conteudo-pesquisa-erro, 
+body#home-search #conteudo-pesquisa-erro {
+    max-width: 930px !important;
+}
+body#home-search .spell {
+    top: -25px;
+    left: -15px !important;
+    padding-bottom: 3px;
+}
+body#homeImages .spell {    
+    left: 3px !important;   
+}
+#searchForm .form-control {
+    margin-top: 10px;
+    margin-bottom: 0;
+}
+#buttonSearch button {  
+    right: 42px !important;
+    top: 8px;  
+}
+body#home-search #buttonSearch button {
+    right: 42px !important;
+    top: 9px;
+}
+body#homeImages #buttonSearch button {
+    right: 39px !important;
+    top: 2px;
+}
+
 }
 
 
