@@ -13,7 +13,7 @@ body#advanced-images .swiper-container #menuWrapper {
 }
 
 .swiper-container {
-	/* New code */
+	/* New code for swiper */
 	background-color: #1c75c0 !important;
 	width: 100%;
 	height: 100%;	
@@ -340,21 +340,21 @@ padding-right: 42px !important;
 }
 
 body#advanced .myButtonStyle, body#advanced-images .myButtonStyle, body#advanced .myButtonStyle:active, body#advanced-images .myButtonStyle:active  {
-    background-color: #1c75c0 !important;   
+    background-color: #ffffff !important;   
     border: 1px solid #1c75c0 !important;
     border-radius: 5px !important;
     text-decoration: none !important;
     padding: 9px !important;
     transition: background-color 0.5s ease 0s;
-    color: #fff;   
+    color: #1c75c0;   
     width: 100% !important;
     font-size: 16px;
    }
 
 body#advanced .myButtonStyle:hover, body#advanced-images .myButtonStyle:hover, body#advanced .myButtonStyle:active, body#advanced-images .myButtonStyle:active  {
-    background-color: #fff !important;
+    background-color: #1c75c0 !important;
     border: 1px solid #1c75c0 !important; 
-    color: #1c75c0 !important;      
+    color: #ffffff !important;      
 }
 
 .expandable-div {
