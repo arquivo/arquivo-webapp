@@ -166,9 +166,9 @@
       },
 
       writeIonicDateTimes : function() {
-		document.write('<ion-datetime id="ionDateStart" class="display-none" display-format="D/MMMM/YYYY" min="'+minYear+'-01-01" max="'+maxYear+'-12-31" value="<%=dateStartStringIonic%>"></ion-datetime>');
+		document.write('<ion-datetime id="ionDateStart" class="display-none" display-format="D/MMMM/YYYY" min="'+minYear+'-01-01" max="'+ARQUIVO.convertJsDateToIonDate(maxDate)+'" value="<%=dateStartStringIonic%>"></ion-datetime>');
 		ARQUIVO.initializeIonDateTimeComponent($('#ionDateStart')[0]);
-		document.write('<ion-datetime id="ionDateEnd" class="display-none" display-format="D/MMMM/YYYY" min="'+minYear+'-01-01" max="'+maxYear+'-12-31" value="<%=dateEndStringIonic%>"></ion-datetime>');
+		document.write('<ion-datetime id="ionDateEnd" class="display-none" display-format="D/MMMM/YYYY" min="'+minYear+'-01-01" max="'+ARQUIVO.convertJsDateToIonDate(maxDate)+'" value="<%=dateEndStringIonic%>"></ion-datetime>');
 		ARQUIVO.initializeIonDateTimeComponent($('#ionDateEnd')[0]);
       },
     };

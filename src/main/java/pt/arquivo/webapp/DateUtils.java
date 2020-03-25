@@ -42,16 +42,17 @@ public class DateUtils {
 			dateEnd = auxCal;
 		}
 
-		this.fixedDateEnd.set(Calendar.YEAR, this.fixedDateEnd.get(Calendar.YEAR));
-		this.fixedDateEnd.set(Calendar.MONTH, 12 - 1);
-		this.fixedDateEnd.set(Calendar.DAY_OF_MONTH, 31);
-		this.fixedDateEnd.set(Calendar.HOUR_OF_DAY, 23);
-		this.fixedDateEnd.set(Calendar.MINUTE, 59);
-		this.fixedDateEnd.set(Calendar.SECOND, 59);
+		// this.fixedDateEnd.set(Calendar.YEAR, this.fixedDateEnd.get(Calendar.YEAR));
+		// this.fixedDateEnd.set(Calendar.MONTH, 12 - 1);
+		// this.fixedDateEnd.set(Calendar.DAY_OF_MONTH, 31);
+		// this.fixedDateEnd.set(Calendar.HOUR_OF_DAY, 23);
+		// this.fixedDateEnd.set(Calendar.MINUTE, 59);
+		// this.fixedDateEnd.set(Calendar.SECOND, 59);
 		/**
 		 * Read the embargo offset value from the configuration page. If not present,
 		 * default to: -1 year
 		 */
+		/*
 		try {
 			String offsetDateString = Configuration.get("embargo-offset", "0001-00-00");
 
@@ -73,6 +74,7 @@ public class DateUtils {
 			this.fixedDateEnd.set(Calendar.YEAR, this.fixedDateEnd.get(Calendar.YEAR) - 1);
 			LOG.error("Embargo offset parameter isn't present");
 		}
+		*/
 	}
 
 	public Calendar getDateStart() {
