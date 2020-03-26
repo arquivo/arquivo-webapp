@@ -99,7 +99,7 @@
 							<div class="box-content container-fluid ">
 								<div id="label-format-1">
 									<label class="row  col-xs-12 no-padding-left label-padding-top" for="formatType"><fmt:message key='advanced.format.label'/></label>
-									<ion-select id="formatType" interface="action-sheet" placeholder="Select One"  class="row  col-xs-10 no-padding-left formatTypeDropdown" name="type">
+									<ion-select id="formatType" interface="action-sheet" placeholder="<fmt:message key='advanced.select.one'/>"  class="row  col-xs-10 no-padding-left formatTypeDropdown" name="type">
 									<%
 										String[] mimeList = {"jpg", "png", "gif", "bmp", "webp"};
 										String[] mimeListDetail = {"Joint Photographic Experts Group (.jpeg)", "Portable Network Graphics (.png)", "Graphics Interchange Format (.gif)", "Bitmap Image File (.bmp)", "WEBP (.webp)"};
@@ -120,14 +120,14 @@
 									%>
 									</ion-select>
 									<label for="size" class="row  col-xs-12 no-padding-left label-padding-top"><fmt:message key='images.size'/></label>
-									<ion-select id="size" name="size" interface="action-sheet" placeholder="Select One"  class="row  col-xs-10 no-padding-left formatTypeDropdown">
+									<ion-select id="size" name="size" interface="action-sheet" placeholder="<fmt:message key='advanced.select.one'/>"  class="row  col-xs-10 no-padding-left formatTypeDropdown">
 										<ion-select-option value="all" <%= imagesSize.trim().equals("") || imagesSize.trim().equals("all") ? "selected" : "" %> ><fmt:message key='images.showAll'/></ion-select-option>
 										<ion-select-option value="sm"  <%= imagesSize.trim().equals("sm") ? "selected" : "" %> ><fmt:message key='images.tools.sm'/></ion-select-option>
 										<ion-select-option value="md"  <%= imagesSize.trim().equals("md") ? "selected" : "" %> ><fmt:message key='images.tools.md'/></ion-select-option>
 										<ion-select-option value="lg" <%= imagesSize.trim().equals("lg") ? "selected" : "" %>  ><fmt:message key='images.tools.lg'/></ion-select-option>
 									</ion-select>
 									<label for="safeSearch" class="row  col-xs-12 no-padding-left label-padding-top"><fmt:message key='images.safeSearch'/></label>
-									<ion-select id="safeSearch" interface="action-sheet" placeholder="Select One" name="safeSearch" class="row  col-xs-10 no-padding-left formatTypeDropdown">
+									<ion-select id="safeSearch" interface="action-sheet" placeholder="<fmt:message key='advanced.select.one'/>" name="safeSearch" class="row  col-xs-10 no-padding-left formatTypeDropdown">
 										<ion-select-option value="on" <%= safeSearch.equals("") || safeSearch.equals("on") ? "selected" : "" %>  ><fmt:message key='images.safeOnLabel'/></ion-select-option>
 										<ion-select-option value="off" <%= safeSearch.equals("off") ? "selected" : "" %>   ><fmt:message key='images.safeOffLabel'/></ion-select-option>
 									</ion-select>
@@ -178,8 +178,11 @@ window.onload = function() {
 	        $(this).children("i").removeClass('fa-caret-up').addClass('fa-caret-down');
 	    }
 	});
-	$('#formatType')[0].cancelText = Content.picker.cancel;
-	$('#num-result')[0].cancelText = Content.picker.cancel;
+	const applyCancelFunction = function() { 
+        $(this)[0].cancelText = Content.picker.cancel; 
+    }
+	$('#formatType').each( applyCancelFunction );
+	$('#num-result').each( applyCancelFunction );
 };
 </script>
 
