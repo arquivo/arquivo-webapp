@@ -203,6 +203,18 @@ response.setHeader("Cache-Control","public, max-age=600");
   int numrows = 25;
   String homeMessageClass= (htmlQueryString.equals("")) ? "" :  "hidden";
   String loaderDefaultClass = (homeMessageClass.equals("")) ? "hidden" : "";
+
+  /*****************    Hits/page param ***************************/
+  int hitsPerPage = 10;          // number of hits to display
+  String hitsString = request.getParameter("hitsPerPage");
+  if (hitsString != null) {
+        try {
+                hitsPerPage = Integer.parseInt(hitsString);
+        } catch (NumberFormatException e) {
+                pt.arquivo.webapp.LOG.debug("WRONG VALUE of hitsPerPage:"+ hitsString +"|");
+        }
+  }
+  
 %>
 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<c:out value='${locale}' />" lang="<c:out value='${locale}' />">
