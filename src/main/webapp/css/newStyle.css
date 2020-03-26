@@ -2765,49 +2765,7 @@ display: inline
     margin-left: 1%;
   }
 }
-/* Samsung S2 */
-@media screen and (device-width: 320px) and (device-height: 534px) and (-webkit-device-pixel-ratio: 1.5) {
-  #award-pt, #award-en, #pagesPreserved-pt, #pagesPreserved-en, #exhibitions-pt, #exhibitions-en {
-    height: 230px !important;
-  }
-  a.advancedSearch {
-    font-size: 0.8em;
-    font-size: 1em !important;
-  }
-  div#flex-container h3 {
-    font-size: 1.5em;
-  }
-  #resultados-lista ul li h2 {
-    font-size: 15px;
-  }
-  #resultados-lista ul li .resumo {
-    font-size: 14.5px !important;
-  }
-  .list-versions-div .date {
-    font-size: 14.2px !important;
-  }
-  .hydrated h3 {
-    font-size: 1.2em;
-  }
-  body#homeImages .hydrated h4 {
-    font-size: 1.2em !important;
-  }
-  #welcomeMessage #closeMessage {
-    cursor: pointer;
-    position: absolute;
-    top: 0px;
-    right: 8px;
-    padding: 0px 4px;
-    border: 1px solid white;
-    background-color: white;
-    border-radius: 49px;
-    font-size: 0.95em !important;
-    color: #007aff;
-  }
-  .call-to-actions {
-    height: 300px !important;
-  }
-}
+
 /****  Landscape ********/
 @media screen and (device-width:534px) and (device-height: 320px) and (-webkit-device-pixel-ratio: 1.5) {
   #award-pt, #award-en, #pagesPreserved-pt, #pagesPreserved-en, #exhibitions-pt, #exhibitions-en {
@@ -8822,6 +8780,13 @@ top: 14px
   #award-pt, #award-en, #pagesPreserved-pt, #pagesPreserved-en, #exhibitions-pt, #exhibitions-en {
     height: 230px !important;
   }
+  div#flex-container div:first-child {
+    margin-bottom: 11px !important;
+    width: /*94.79%*/100% !important;
+  }
+  /* body#home-search .topcontainer {
+    padding-left: 0px;
+}*/
 }
 /* ----------- iPhone 5 and 5S ----------- */
 /* Portrait */
@@ -8846,8 +8811,11 @@ top: 14px
   }
   div#flex-container div:first-child {
     margin-bottom: 11px !important;
-    width: 94.79% !important;
+    width: /*94.79%*/100% !important;
   }
+  /*body#home-search .topcontainer {
+    padding-left: 0px;
+}*/
 }
 /* Landscape */
 @media (device-width: 568px) and (device-height: 320px) {
@@ -9315,7 +9283,7 @@ top: 14px
   }
   .closeItAbsolute {
     top: 9px;
-    right: calc(29vw + -15px);
+    right: calc(29vw + -8px);
   }
   .closeIt {
     top: 3px;
@@ -9467,7 +9435,7 @@ a#advancedSearchButton {
   font-size: 2.5em !important;
   position: absolute;
   color: #fff;
-  top: 0;
+  top: /*0*/-40px;
   bottom: 0;
   left: -4px;
   bottom: 0;
@@ -9486,7 +9454,7 @@ a#advancedSearchButton {
   position: absolute;
   color: #fff !important;
   z-index: 2;
-  top: 0;
+  top: /*0*/-40px;
   bottom: 0;
   margin: 50% 0 !important;
   right: -4px;
@@ -11858,6 +11826,13 @@ margin-top: 5px !important;
   width: 100%;
 }
 
+@media screen and (min-width:961px) {
+.replayMenu h4:nth-child(1) {outline: 1px solid red}
+}
+
+
+/* iPads ********************************/
+
 /* iPad Portrait */
 @media (width:768px) and (height:1024px) {
 div#flex-container div {  
@@ -12109,8 +12084,69 @@ body#homeImages #buttonSearch button {
     right: 39px !important;
     top: 2px;
 }
-
 }
 
+/* Samsung S2 */
+@media screen and (device-width: 320px) and (device-height: 534px) and (-webkit-device-pixel-ratio: 1.5) {
+  #award-pt, #award-en, #pagesPreserved-pt, #pagesPreserved-en, #exhibitions-pt, #exhibitions-en {
+    height: 230px !important;
+  }
+  a.advancedSearch {
+    font-size: 0.8em;
+    font-size: 1em !important;
+  }
+  div#flex-container h3 {
+    font-size: 1.5em;
+  }
+  #resultados-lista ul li h2 {
+    font-size: 15px;
+  }
+  #resultados-lista ul li .resumo {
+    font-size: 14.5px !important;
+  }
+  .list-versions-div .date {
+    font-size: 14.2px !important;
+  }
+  .hydrated h3 {
+    font-size: 1.2em;
+  }
+  body#homeImages .hydrated h4 {
+    font-size: 1.2em !important;
+  }
+  #welcomeMessage #closeMessage {
+    cursor: pointer;
+    position: absolute;
+    top: 0px;
+    right: 8px;
+    padding: 0px 4px;
+    border: 1px solid white;
+    background-color: white;
+    border-radius: 49px;
+    font-size: 0.95em !important;
+    color: #007aff;
+  }
+  .call-to-actions {
+    height: 300px !important;
+  }
+ 
+a#PageButton, a#ImageButton, a#advancedSearchButton {
+    font-size: 13px !important;
+}
+body#homeImages p#estimated-results {
+    width: 915px;
+    margin: /*0*/ 18px auto -20px auto;
+    padding-left: 17px;
+    display: flex;
+    width: 100%;
+    max-width: 915px;
+}
+}
+
+/* Samsung S2 portrait */
+@media screen and (device-width: 534px) and (device-height: 320px) and (-webkit-device-pixel-ratio: 1.5) {
+  div#flex-container div:first-child {
+    width: 99.9% !important;
+}
+}
 
 
