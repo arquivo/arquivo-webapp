@@ -46,7 +46,7 @@ body#adavanced .swiper-container {
 .content {
 	width: 100%;
 	min-height: 100vh;
-	background-color:/*#f8f8f8*//*#eeeeee*/white !important;
+	background-color:white !important;   
 }
 
 /*Start Menu Button*/

@@ -6002,7 +6002,7 @@ position: relative;
     font-size: 1em;
     letter-spacing: -1px;
     color: #1a73ba;
-    font-family: helvetica, arial !important;
+    font-family:  'Roboto', 'Helvetica', 'Arial', sans-serif !important;
     text-align: right;
 }
 #calendarMonthStart {
@@ -6012,7 +6012,7 @@ position: relative;
     font-size: 0.8em;
     letter-spacing: 0px;
     color: #1a73ba;
-    font-family: helvetica, arial !important;
+    font-family:  'Roboto', 'Helvetica', 'Arial', sans-serif !important;
     text-align: right;
     display: inline-block;
     width: 19px;
@@ -6024,7 +6024,7 @@ position: relative;
     font-size: 1em;
     letter-spacing: -1px;
     color: #1a73ba;
-    font-family: helvetica, arial !important;
+    font-family:  'Roboto', 'Helvetica', 'Arial', sans-serif !important;
 }
 #calendarMonthEnd {
   position: relative !important;
@@ -6033,7 +6033,7 @@ position: relative;
     font-size: 0.8em !important;
     letter-spacing: 0px !important;
     color: #1a73ba !important;
-    font-family: helvetica, arial !important;
+    font-family:  'Roboto', 'Helvetica', 'Arial', sans-serif !important;
     text-align: right;
     display: inline-block;
     width: 19px;
@@ -6045,7 +6045,7 @@ position: relative;
   left: 1.1px !important;
   padding-top: -2px !important;
   font-size: 1.2em !important;
-  font-family: helvetica, arial !important;
+  font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif !important;
 }
 #calendarYearEnd {
   position: relative !important;
@@ -6053,7 +6053,7 @@ position: relative;
   left: 2px !important;
   padding-top: 1px !important;
   font-size: 1.2em !important;
-  font-family: helvetica, arial !important;
+  font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif !important;
 }
 ion-item {
   --pin-display: none !important;
@@ -7118,7 +7118,7 @@ div#flex-container {
   background-color: white !important;
   width: 100% !important;
   max-width: 960px !important;
-  min-width: 320px !important;
+  min-width: /*320px*/306px !important;
   margin: 9px auto 0 auto !important
 }
 body#homepage-landing div#flex-container {
@@ -11836,7 +11836,7 @@ margin-top: 5px !important;
 /* iPad Portrait */
 @media (width:768px) and (height:1024px) {
 div#flex-container div {  
-    margin: 7px 0px 16px 0px !important;  
+    margin: 7px 0px 57px 0px !important;  
     height: 400px
 }
 body#home-search p#estimated-results {
@@ -12096,7 +12096,7 @@ body#homeImages #buttonSearch button {
     font-size: 1em !important;
   }
   div#flex-container h3 {
-    font-size: 1.5em;
+    font-size: 1.3em;
   }
   #resultados-lista ul li h2 {
     font-size: 15px;
@@ -12145,7 +12145,10 @@ body#homeImages p#estimated-results {
 /* Samsung S2 portrait */
 @media screen and (device-width: 534px) and (device-height: 320px) and (-webkit-device-pixel-ratio: 1.5) {
   div#flex-container div:first-child {
-    width: 99.9% !important;
+    width: 100% !important;
+}
+.image-mobile-expanded-div ion-card ion-row {   
+    padding-top: 10px !important;
 }
 }
 
