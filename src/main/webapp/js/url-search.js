@@ -20,7 +20,7 @@ function getYearPosition(firstVersionYear, ts){
 
 function getDateSpaceFormatedWithoutYear(ts){
   var month = ts.substring(4, 6);
-  month = Content.months[month];
+  month = Content.months_alt[month];
   var day = ts.substring(6, 8);
   if( day[0] === '0'){
     day = day[1];
@@ -34,7 +34,7 @@ function getDateSpaceFormatedWithoutYear(ts){
 function getDateSpaceFormated(ts){
   var year = ts.substring(0, 4);
   var month = ts.substring(4, 6);
-  month = Content.months[month];
+  month = Content.months_alt[month];
   var day = ts.substring(6, 8);
   if( day[0] === '0'){
     day = day[1];
@@ -247,7 +247,7 @@ function createMatrixList(waybackURL, versionsArray, versionsURL){
 
     if(! $('#'+currentYear+'_'+currentMonth).length )  /*Add month if it doesn't exist already*/
     {
-      $("#th_"+currentYear.toString()).append('<div class="month-version-div row" id="'+currentYear+'_'+currentMonth+'"><h4 class="month-left month-margins col-xs-6 text-left">'+Content.months[currentMonth]+'</h4><h4 class="month-margins col-xs-6 text-right month-right" ><span id="month_'+currentYear+'_'+currentMonth+'">1 '+ Content.searchVersion +'</span> <i class="fa fa-caret-down iCarret monthCarret" aria-hidden="true"></i></h4></div>');
+      $("#th_"+currentYear.toString()).append('<div class="month-version-div row" id="'+currentYear+'_'+currentMonth+'"><h4 class="month-left month-margins col-xs-6 text-left">'+Content.months_alt[currentMonth]+'</h4><h4 class="month-margins col-xs-6 text-right month-right" ><span id="month_'+currentYear+'_'+currentMonth+'">1 '+ Content.searchVersion +'</span> <i class="fa fa-caret-down iCarret monthCarret" aria-hidden="true"></i></h4></div>');
       currentMonthVersions = 1;
     }
     $("#"+currentYear+'_'+currentMonth).append(tdtoInsert);
