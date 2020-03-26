@@ -7,6 +7,9 @@
   if (!language || language.length == 0) {
   	language = localStorage.getItem("language");
   }
+  if (!language || language.length == 0) {
+    language = ( navigator.language || navigator.userLanguage ).startsWith('pt') ? 'PT' : 'EN';
+  }
   
   // save choosen language on local storage
   localStorage.setItem("language", language.toUpperCase());
