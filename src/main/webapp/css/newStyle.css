@@ -4059,10 +4059,10 @@ body#advanced .headerMenuText, body#advanced-images .headerMenuText  {
 
   #newFooterWrapper .sidebar, #newFooterWrapper .content-area, #newFooterWrapper .inside-footer-widgets > div {
     float: none;
-    width: 23% !important;
+    width: 100% !important;
     left: 0;
     right: 0;
-    outline: 1px solid red
+   
   }
   #newFooterWrapper .inside-footer-widgets > div:not(:last-child) {
     margin-bottom: 40px;
@@ -11830,7 +11830,7 @@ margin-top: 5px !important;
 }
 
 @media screen and (min-width:961px) {
-.replayMenu h4:nth-child(1) {outline: 1px solid red}
+.replayMenu h4:nth-child(1) {}
 }
 
 
