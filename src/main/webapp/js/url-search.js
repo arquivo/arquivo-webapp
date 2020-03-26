@@ -59,7 +59,7 @@ function getShortDateSpaceFormated(ts){
 function createMatrixTable(waybackURL, firstVersionYear, versionsArray, versionsURL){
   var today = new Date();
   var yyyy = today.getFullYear();
-  var numberofVersions = yyyy - firstVersionYear;
+  var numberofVersions = yyyy - firstVersionYear +1;
   var matrix = new Array(numberofVersions);
   for (var i = 0; i < matrix.length; i++) {
     matrix[i] = [];
