@@ -3821,6 +3821,9 @@ li.previous .myButtonStyle:before {
   #layoutTV {   
     display: none !important;
   }
+  #conteudo-pesquisa-erro{
+    display: none;
+  }
 }
 @media (min-width: 201px) {
   #layoutTV {
