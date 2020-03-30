@@ -388,6 +388,27 @@ function changeTypeShow(typeShow) {
   startUrlSearch(arquivo_waybackURL, arquivo_urlQuery, arquivo_startTs, arquivo_endTs, arquivo_insertOnElementId, arquivo_loadingElementId, typeShow);
 }
 
+function scroll(e) {
+  var el = $( e );
+  var elOffset = el.offset().top;
+  var offset = elOffset - (window.innerHeight / 2);
+  console.log("scroll offset " + offset);
+  $('html, body').animate({scrollTop:offset}, 700);
+  //document.getElementById("urlSearchContainer").scrollTop = offset;
+}
+
+function isScrolledIntoView(el) {
+    var rect = el.getBoundingClientRect();
+    var elemTop = rect.top;
+    var elemBottom = rect.bottom;
+
+    // Only completely visible elements return true:
+    var isVisible = (elemTop >= 0) && (elemBottom <= window.innerHeight);
+    // Partially visible elements return true:
+    //isVisible = elemTop < window.innerHeight && elemBottom >= 0;
+    return isVisible;
+}
+
 function openTimestamp(timestampToOpen){
   // remove other viewing version timestamp
   $(".viewing-version").each(function() {
@@ -412,7 +433,10 @@ function openTimestamp(timestampToOpen){
       const timestampEle = document.getElementById(timestampToOpen);
       if (typeof(timestampEle) != 'undefined' && timestampEle != null) { // exits ?
         timestampEle.classList.add("viewing-version");
-        document.documentElement.scrollTop = timestampEle.offsetTop
+        // scrollIntoView didn't work because it scrolls the parent windows instead of inner iframe creating strange effects.
+        if (!isScrolledIntoView(timestampEle)) {
+          scroll(timestampEle);
+        }
       }
     }
   }
