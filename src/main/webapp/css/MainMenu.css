@@ -17,8 +17,7 @@ body#advanced-images .swiper-container #menuWrapper {
 	background-color: #1c75c0 !important;
 	width: 100%;
 	height: 100%;	
-	padding:0;	
-	max-width:2044px !important;
+	padding:0;		
 	margin: 0 auto !important;
 }
 
@@ -43,10 +42,18 @@ body#adavanced .swiper-container {
     max-width: 320px;
     }
 
+body#home-search .content {
+	width: 100%;
+	min-height: 100vh;
+	background-color:white !important;   
+    padding-bottom: 0px;
+}
+
 .content {
 	width: 100%;
 	min-height: 100vh;
 	background-color:white !important;   
+    padding-bottom: 50px;
 }
 
 /*Start Menu Button*/
@@ -133,12 +140,12 @@ color: #ccc !important;*/
 }
 
 .submenu{
-	background-color:#1a5f97ba;
+	/*background-color:#1a5f97ba;*/
     padding-left: 30px!important;
 }
 
 #menuSwiperSlide button h4.submenu:hover{	
-    background-color: #1f5788 !important;
+    background-color: #1a5f97ba !important;
 }
 
 .menu a{
@@ -147,7 +154,7 @@ color: #ccc !important;*/
 }
 
 .menu h4:active{
-	 background: rgba(255, 255, 255, 0.2)!important;
+	/* background: rgba(255, 255, 255, 0.2)!important;*/
 }	
 
 #topBarFixed{
@@ -175,9 +182,6 @@ color: #ccc !important;*/
 #menuButton{
 	cursor: pointer;
 	margin-top: 7px;
-}
-#menuButton.open{
-    display: none;
 }
 
 /*.clean-button {outline:1px solid red;}*/
@@ -374,7 +378,7 @@ body#advanced .glyphicon-search:before, body#advanced-images .glyphicon-search:b
    margin: 10px 6px;
    }
 
-@media screen and (min-device-width:769px) and (max-device-width:3000px) {
+@media screen and (min-device-width:769px) {
 .menu h4 {  
     font-size: 13px;    
 }
@@ -389,7 +393,7 @@ body#advanced .glyphicon-search:before, body#advanced-images .glyphicon-search:b
 }
 }
 .submenu:hover {
-background-color: #134874ba !important;
+background-color: none !important;
 }
 
 
@@ -409,7 +413,7 @@ body#advanced .myButtonStyle, body#advanced-images .myButtonStyle, body#advanced
 body#advanced .myButtonStyle:hover, body#advanced-images .myButtonStyle:hover, body#advanced .myButtonStyle:active, body#advanced-images .myButtonStyle:active  {
     background-color: #1c75c0 !important;
     border: 1px solid #1c75c0 !important; 
-    color: #fff !important;      
+    color: #fff !important;    
 }
    
    #bottom-submit {

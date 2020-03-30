@@ -3821,6 +3821,9 @@ li.previous .myButtonStyle:before {
   #layoutTV {   
     display: none !important;
   }
+  #conteudo-pesquisa-erro{
+    display: none;
+  }
 }
 @media (min-width: 201px) {
   #layoutTV {
@@ -3866,7 +3869,7 @@ display: none;
     left: -11px;
     font-size: 0.6em;
     padding: 0 10px;
-    border: 1px solid transparent;
+    border: 1px solid white !important;
     border-radius: 5px;
     margin: 0;
     transition: 0.5s;
@@ -3879,8 +3882,8 @@ body#advanced .headerMenuText, body#advanced-images .headerMenuText  {
 .headerMenuText:hover, .headerMenuText:active {    
     
     color: #1a73ba;
-    border: 1px solid transparent;   
-    background-color: white
+    border: 1px solid white;   
+    background-color:white
    
 }
 .menu-button {display:none}
