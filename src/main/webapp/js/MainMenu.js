@@ -47,7 +47,6 @@ var MENU = MENU || (function(){
                                     '<a href="/images.jsp?l='+language+'" onclick=""><h4 class="submenu"><i class="fa fa-search padding-right-menu-icon" aria-hidden="true"></i> '+Content.topbar.menu.home+'</h4></a>' +
                                     '<button class="clean-button" id="advancedImages" onclick="MENU.advancedImagesClick();"><h4 class="submenu"><i class="fa fa-search-plus padding-right-menu-icon" aria-hidden="true"></i> '+Content.topbar.menu.advanced+'</h4></button>' +             
                                 '</div>'+                                                                               
-                                '<button class="clean-button" id="switchDesktop" onclick="MENU.switchDesktop();"><h4><i class="fa fa-desktop padding-right-menu-icon" aria-hidden="true"></i> '+Content.topbar.menu.desktop+'</h4></button>'+              
                                 '<a href="//sobre.arquivo.pt/'+language+'" onclick=""><h4><i class="fa fa-info-circle padding-right-menu-icon" aria-hidden="true"></i> '+Content.topbar.menu.about+'</h4></a>'+                           
                             '</div>');
             this.attachKeyBoardEvent();
@@ -79,12 +78,6 @@ var MENU = MENU || (function(){
         changeLanguage: function(){                 
                     window.location = MENU.toggleLanguage(); 
                     return false; 
-        },
-        switchDesktop: function(){
-                    Cookies.set('forceDesktop', 'true', { domain: window.location.hostname.substr(2, window.location.hostname.length) });
-                    /*redirect current link from mobile to desktop version i.e. remove the m. from current link*/
-                    window.location = window.location.href.replace(window.location.hostname , window.location.hostname.substr(2, window.location.hostname.length)) 
-                    return false;           
         },
         advancedPagesClick: function(){
                 var txtSearch = document.getElementById('txtSearch').value.toString();

@@ -1,6 +1,6 @@
 <%
 /** Query String ***/
-String queryString = request.getParameter("query") != null ? URLDecoder.decode(new String(request.getParameter("query").getBytes("ISO-8859-1"), "UTF-8")) : null;
+String queryString = request.getParameter("query") != null ? URLDecoder.decode(request.getParameter("query")) : null;
 final String QUERY_REGEX =  "(-?&quot;.*?&quot;|\\S+)+";
 /*"(\".+?\"|\\S+)*";*/
 

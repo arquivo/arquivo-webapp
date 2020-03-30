@@ -98,17 +98,6 @@ function doInitialSearch(){
     searchImages(startPosition);
 }
 
-function getDateSpaceFormated(ts){
-    var year = ts.substring(0, 4);
-    var month = ts.substring(4, 6);
-    month = Content.months[month];
-    var day = ts.substring(6, 8);
-    if(day.charAt(0) === '0' ){
-      day = day.charAt(1);
-    }
-    return day + " "+ month + ", " +year;
-}
-
 lastImageViewedByUser = -1; /*Global var refers to the lastImage the user*/
 
 function generateHash( position ){
@@ -221,7 +210,7 @@ function insertInPosition(position, imageObj, imageHeight, expandedImageHeight, 
   '<div  class="imageContent" position='+position+' id="imageResults'+position+'" onclick="ga(\'send\', \'event\', \'Search result\', \'Image search\', \'Result position\', '+currentResultGlobalPosition+'); openImage('+position+'); generateHash(\''+position+'\');">'+
   '   <img  height="'+realImageHeight.toString()+'" src="'+imageObj.src+'"/>'+
   '   <p class="green image-display-url" style="max-width: '+displayUrlMaxWidth+'px" title="'+urlToPresentation+'">→ '+urlToPresentation+'</p>'+
-  '   <p class="date image-display-date" id="date'+position+'">'+getDateSpaceFormated(imageObj.timestamp)+'</p>'+
+  '   <p class="date image-display-date" id="date'+position+'">'+ARQUIVO.formatTimestampToPresentation(imageObj.timestamp)+'</p>'+
   '   <div id="arrowWrapper'+position+'" class="arrowWrapper" >'+
   '       <div id="arrow'+position+'" class="arrow"/></div>' +
   '   </div>'+ 
@@ -286,7 +275,7 @@ return ''+
       ( imageObj.imgAlt !== "" &&  imageObj.title == ""  ? ' <ion-item id="imgTitleLabel'+position+'" lines="none"><a class="imageHref" target="_blank" href="'+imageObj.currentImageURL+'">' +imageObj.imgAlt+'</a></ion-item>':'') +  
                           '<ion-item lines="none" class="image-viewer-img-src">' +ARQUIVO.formatURLForPresentation(imageObj.imgSrc)+'</ion-item>'+
                           '<ion-item lines="none" class="image-viewer-img-mime-type-resolution">'+imageObj.imgMimeType+' '+parseInt(imageObj.expandedWidth)+' x '+parseInt(imageObj.expandedHeight)+'</ion-item>'+
-                          '<ion-item lines="none" class="image-viewer-img-timestamp">'+getDateSpaceFormated(imageObj.timestamp)+'</ion-item>'+             
+                          '<ion-item lines="none" class="image-viewer-img-timestamp">'+ARQUIVO.formatTimestampToPresentation(imageObj.timestamp)+'</ion-item>'+             
                       '</ion-list>'+
                   '</ion-card-content>'+  
                   '<ion-row>'+
@@ -296,7 +285,7 @@ return ''+
                       '<ion-list>'+
       '                       <ion-item class="item-borderless image-viewer-page-title" lines="none" ><a target="_blank" href="'+waybackURL+'/'+imageObj.pageTstamp+'/'+imageObj.pageURL+'">'+imageObj.pageTitle+'</a></ion-item>'+
       '                       <ion-item lines="none" class="image-viewer-page-url">'+ARQUIVO.formatURLForPresentation(imageObj.pageURL)+'</ion-item>'+
-      '                       <ion-item lines="none" class="image-viewer-page-timestamp">'+getDateSpaceFormated(imageObj.pageTstamp)+'</ion-item>'+          
+      '                       <ion-item lines="none" class="image-viewer-page-timestamp">'+ARQUIVO.formatTimestampToPresentation(imageObj.pageTstamp)+'</ion-item>'+          
                       '</ion-list>'+
                   '</ion-card-content>'+                                
               '</ion-card> '+

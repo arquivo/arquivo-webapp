@@ -23,6 +23,20 @@ var ARQUIVO = ARQUIVO || (function(){
             //var newDateFormated =  newDateTokens[2].split('T')[0] + "/" + newDateTokens[1]+ "/"+ newDateTokens[0];
             return new Date(newDateTokens[0], parseInt(newDateTokens[1])-1, parseInt(newDateTokens[2].split('T')[0]) );
         },
+        /**
+         * Returns current timestamp in short form such as '2 Nov 10:24, 2015'
+         */
+        formatTimestampToPresentation: function(timestamp){
+            var year = timestamp.substring(0, 4);
+            var month = timestamp.substring(4, 6);
+            var day = timestamp.substring(6, 8);
+            if(day.charAt(0) == '0'){
+                day = day.charAt(1);
+            }
+            var hour = timestamp.substring(8,10);
+            var minute = timestamp.substring(10,12);
+            return day+" "+Content.months[month]+" "+Content.at+" "+hour+":"+minute+", "+year;
+        },
         formatJSDateToPresentation: function(date) {
             const d = new Date(date);
             var sdate = [

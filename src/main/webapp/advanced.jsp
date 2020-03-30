@@ -193,8 +193,11 @@ window.onload = function() {
 	        $(this).children("i").removeClass('fa-caret-up').addClass('fa-caret-down');
 	    }
 	});
-	$('#formatType')[0].cancelText = Content.picker.cancel;
-	$('#num-result')[0].cancelText = Content.picker.cancel;
+    const applyCancelFunction = function() { 
+        $(this)[0].cancelText = Content.picker.cancel; 
+    }
+	$('#formatType').each( applyCancelFunction );
+	$('#num-result').each( applyCancelFunction );
 };
 </script>
 

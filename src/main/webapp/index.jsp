@@ -22,6 +22,7 @@
 
 <%!
   private static int hitsTotal = -10;   // the value -10 will be used to mark as being "advanced search"
+  int hitsPerPage = 10;
 %>
 
 <%---------------------- Start of HTML ---------------------------%>
