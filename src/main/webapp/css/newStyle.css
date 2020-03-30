@@ -559,7 +559,7 @@ body#homeImages .pagesNextPrevious {
   cursor: pointer;
   margin-left: 0px !important;
   margin-right: 0px !important;
-  border-bottom: 1px solid #45639f;
+  border-bottom: 1px solid #e3e3e32e;
 }
 .month-version-div:active {
   background: #64b5f6;
@@ -6446,7 +6446,7 @@ background-color: transparent !important;
   color: #007aff;
   font-size: 13px !important;
   width: 100%;
-  border-bottom: 1px dashed #6f7693;
+  border-bottom: 1px solid #e3e3e32e;
   font-weight: normal;
 }
 .yearUl a:visited, .yearUl a {
