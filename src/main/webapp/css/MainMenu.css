@@ -27,9 +27,11 @@ body#adavanced .swiper-container {
 }
 
 .swiper-wrapper {
-	/*background-color: #252525;*/	
-	/*width: 100% !important/*100%*/;
 }
+
+.swiper-wrapper ion-card {	 
+}
+
 .menu {
     margin-top: /*52px*/0px;
     /* min-width: 100px; */
@@ -397,7 +399,7 @@ background-color: none !important;
 }
 
 
-@media screen and (min-width:768px) {
+@media screen and (min-width:769px) {
 
 body#advanced .myButtonStyle, body#advanced-images .myButtonStyle, body#advanced .myButtonStyle:active, body#advanced-images .myButtonStyle:active  {
     background-color: transparent !important;

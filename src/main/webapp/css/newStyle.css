@@ -6386,7 +6386,7 @@ background-color: transparent !important;
   margin-left: 0px !important;
   margin-right: 0px !important;
   cursor: pointer;
-  border-bottom: 1px solid /*#45639f*/#1c75c0;
+  border-bottom: 1px solid /*#45639f*//*#1c75c0 */ #e3e3e32e;
 }
 .yearUl:active {
   background: #2196f3;
@@ -6421,7 +6421,7 @@ background-color: transparent !important;
   cursor: pointer;
   margin-left: 0px !important;
   margin-right: 0px !important;
-  border-bottom: 1px solid #45639f;
+  /*border-bottom: 1px solid #45639f;*/
 }
 .month-version-div:active {
   background: #64b5f6;
@@ -9289,11 +9289,11 @@ top: 14px
   }
   .closeItAbsolute {
     top: 9px;
-    right: calc(29vw + -8px);
+    right: calc(29vw + -11px);
   }
   .closeIt {
     top: 3px;
-    right: calc(27vw + 6px);
+    right: calc(27vw + 9px);
   }
   body#homeImages .hydrated h4 {
     font-size: 1.1em !important;
