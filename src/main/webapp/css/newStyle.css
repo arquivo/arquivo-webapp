@@ -6452,7 +6452,7 @@ background-color: transparent !important;
 .yearUl a:visited, .yearUl a {
   color: white;
   text-decoration: inherit;
-  padding-left: 43px;
+  padding-left: 45px;
   font-size: 12 !important;
   opacity: 0.9
 }
@@ -8188,7 +8188,7 @@ body#advanced .formatTypeDropdown, body#advanced-images .formatTypeDropdown {
   background-color: #c0c0c024;
   top: -1px !important;
   right: /*7px*/ /*-3px*/8px !important;
-  margin-left: 10px !important;
+  margin-left: 12px !important;
 }
 body#homepage-landing .fa-caret-up:before, body#home-search .fa-caret-up:before, body#homeImages .fa-caret-up:before, body#advanced .fa-caret-up:before, body#advanced-images .fa-caret-up:before {
   right: 0px !important;
