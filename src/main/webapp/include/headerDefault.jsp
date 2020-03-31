@@ -57,5 +57,7 @@
 
 <script src="/js/uglipop.min.js"></script>
 
+<script src="/static/jquery.inputmask-3.3.11/jquery.inputmask.bundle.js"></script><%-- MS Edge not loading it has module --%>
+
 <script src="/js/arquivo.js?build=<c:out value='${initParam.buildTimeStamp}'/>"></script>
 
