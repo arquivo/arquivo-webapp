@@ -8233,6 +8233,7 @@ body#advanced .fa-caret-down:before, body#advanced-images .fa-caret-down:before 
   top: 1px !important;
   right: /*7px*/ /*-3px*/ 7px !important;
   margin-left: 10px !important;
+  opacity:0.6;
 }
 #pagesMenu .fa-caret-down:before {
   content: "\f0d7";
