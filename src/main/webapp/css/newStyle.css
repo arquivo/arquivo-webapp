@@ -581,6 +581,9 @@ body#homeImages .pagesNextPrevious {
 }
 
 
+
+
+
 .yearUl:hover {
  background: #1a5f97ba;
 }
@@ -1094,7 +1097,10 @@ body#advanced .calendar-anchor-advanced img, body#advanced-images .calendar-anch
   background: none;
 }
 .viewing-version {
-  font-weight: bold;
+  font-size: 13px !important;
+  background-color: white !important;
+  color: #286aa2 !important;
+  font-weight: bold !important;
 }
 .urlBlock {
   margin-bottom: 5px;
@@ -1188,6 +1194,7 @@ input:active, input:focus {
 }
 body#home-search #conteudo-pesquisa-erro {
   margin-top: 0px !important;
+  border: 1px solid #ccc;
 }
 #conteudo-pesquisa-erro {
   margin-left: 9px;
@@ -6458,7 +6465,7 @@ background-color: transparent !important;
 .yearUl a:visited, .yearUl a {
   color: white;
   text-decoration: inherit;
-  padding-left: 45px;
+  padding-left: 42px;
   font-size: 12 !important;
   opacity: 0.9
 }
@@ -6957,9 +6964,13 @@ body#advanced .calendar-anchor-advanced img, body#advanced-images .calendar-anch
 }
 .viewing-version a {
   font-weight: bold;
-  
+}
 
-  
+.viewing-version {
+  font-size: 13px !important;
+  background-color: white !important;
+  color: #286aa2 !important;
+  font-weight: bold !important;
 }
 .urlBlock {
   margin-bottom: 5px;
@@ -8222,6 +8233,7 @@ body#advanced .fa-caret-down:before, body#advanced-images .fa-caret-down:before 
   top: 1px !important;
   right: /*7px*/ /*-3px*/ 7px !important;
   margin-left: 10px !important;
+  opacity:0.6;
 }
 #pagesMenu .fa-caret-down:before {
   content: "\f0d7";
