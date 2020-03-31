@@ -1194,6 +1194,7 @@ input:active, input:focus {
 }
 body#home-search #conteudo-pesquisa-erro {
   margin-top: 0px !important;
+  border: 1px solid #ccc;
 }
 #conteudo-pesquisa-erro {
   margin-left: 9px;
@@ -6464,7 +6465,7 @@ background-color: transparent !important;
 .yearUl a:visited, .yearUl a {
   color: white;
   text-decoration: inherit;
-  padding-left: 45px;
+  padding-left: 42px;
   font-size: 12 !important;
   opacity: 0.9
 }
