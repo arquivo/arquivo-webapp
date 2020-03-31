@@ -581,6 +581,9 @@ body#homeImages .pagesNextPrevious {
 }
 
 
+
+
+
 .yearUl:hover {
  background: #1a5f97ba;
 }
@@ -1093,8 +1096,11 @@ body#advanced .calendar-anchor-advanced img, body#advanced-images .calendar-anch
 .list-versions-div:active {
   background: none;
 }
-.viewing-version {
-  font-weight: bold;
+a.viewing-version {
+  font-size: 13px !important;
+  background-color: white !important;
+  color: #286aa2 !important;
+  font-weight: bold !important;
 }
 .urlBlock {
   margin-bottom: 5px;
@@ -6957,9 +6963,6 @@ body#advanced .calendar-anchor-advanced img, body#advanced-images .calendar-anch
 }
 .viewing-version a {
   font-weight: bold;
-  
-
-  
 }
 .urlBlock {
   margin-bottom: 5px;
