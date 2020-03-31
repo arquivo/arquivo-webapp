@@ -8,6 +8,16 @@ var ARQUIVO = ARQUIVO || (function(){
         return { regex: "[0-3][0-9]\/[0-1][0-9]\/[1-2][0-9][0-9][0-9]", insertMode: false };
     }
 
+    function _monthsToArray(obj) {
+        var array = new Array(12);
+        for (var prop in obj) {
+            if (Object.prototype.hasOwnProperty.call(obj, prop)) {
+                array[parseInt(prop)-1] = obj[prop];
+            }
+        }
+        return array;
+    }
+
     // public methods
     return {
         removeZeroInDay: function(dayStr) {
@@ -72,12 +82,12 @@ var ARQUIVO = ARQUIVO || (function(){
             return check;
         },
         monthShortNamesArray: function() {
-            // convert Content.shortMonths to an array of ["jan", "fev", "mar", ...]
-            return Object.entries(Content.shortMonths).sort( (a,b) => parseInt(a[0]) - parseInt(b[0])).map( e => e[1] );
+            // convert Content.shortMonths to an array of ["jan", "fev", "mar", ...]            
+            return _monthsToArray(Content.shortMonths);
         },
         monthNamesArray: function() {
             // convert Content.shortMonths to an array of ["jan", "fev", "mar", ...]
-            return Object.entries(Content.months).sort( (a,b) => parseInt(a[0]) - parseInt(b[0])).map( e => e[1] );
+            return _monthsToArray(Content.months);
         },
         // encode some char of str has html
         encodeHtmlEntities: function(str) {
@@ -205,10 +215,10 @@ var ARQUIVO = ARQUIVO || (function(){
                 }
             }
 
-            var url = urlSearch;;
-            searchParamsToRemove.forEach(p2r => {
-                url = removeURLParameter(p2r);
-            });
+            var url = urlSearch;
+            for (i = 0; i < searchParamsToRemove.length ; i++) {
+                url = removeURLParameter(searchParamsToRemove[i]);
+            }
             return url;
         },
 

@@ -13,20 +13,18 @@
         uglipop({
           class:'dateModal dateModal' + type, //styling class for Modal
           source:'html',
-          content: 
-          `
-            <h4>${Content.picker[type.toLowerCase()].header}</h4>
-            <p class="dateInputContainer dateInputContainer${type}">
-              <input size="10" type="text" id="${dateInputId}" value="${dateInputVal}" class="dateInput dateInput${type}" /> 
-              dd/mm/yyyy
-            </p>
-            <div id="${datePickerId}"></div>
-            <div class="dateModalButtons dateModalButtons${type}">
-              <button class="dateModalButtonsOk dateModalButtonsOk${type}" onclick="ARQUIVO.closeModalUglipop();">
-                <span>${Content.picker.ok}</span>
-              </button>
-            </div>
-          `
+          content:           
+            '<h4>'+Content.picker[type.toLowerCase()].header+'</h4>'+
+            '<p class="dateInputContainer dateInputContainer'+type+'">'+
+              '<input size="10" type="text" id="'+dateInputId+'" value="'+dateInputVal+'" class="dateInput dateInput'+type+'" />'+
+              'dd/mm/yyyy'+
+            '</p>'+
+            '<div id="'+datePickerId+'"></div>'+
+            '<div class="dateModalButtons dateModalButtons'+type+'">'+
+              '<button class="dateModalButtonsOk dateModalButtonsOk'+type+'" onclick="ARQUIVO.closeModalUglipop();">'+
+                '<span>'+Content.picker.ok+'</span>'+
+              '</button>'+
+            '</div>'
         });
 
         function updateCallerDateFromDatePicker() {
