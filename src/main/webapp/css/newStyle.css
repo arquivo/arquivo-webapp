@@ -1096,7 +1096,7 @@ body#advanced .calendar-anchor-advanced img, body#advanced-images .calendar-anch
 .list-versions-div:active {
   background: none;
 }
-a.viewing-version {
+.viewing-version {
   font-size: 13px !important;
   background-color: white !important;
   color: #286aa2 !important;
@@ -6963,6 +6963,13 @@ body#advanced .calendar-anchor-advanced img, body#advanced-images .calendar-anch
 }
 .viewing-version a {
   font-weight: bold;
+}
+
+.viewing-version {
+  font-size: 13px !important;
+  background-color: white !important;
+  color: #286aa2 !important;
+  font-weight: bold !important;
 }
 .urlBlock {
   margin-bottom: 5px;
