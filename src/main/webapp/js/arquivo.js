@@ -176,16 +176,40 @@ var ARQUIVO = ARQUIVO || (function(){
         },
 
         inputMaskAnInput: function(input) {
-            // load input mask as a module an then apply it.
-            import('/static/jquery.inputmask-3.3.11/jquery.inputmask.bundle.js').then(module => {
-                $(input).inputmask( _inputmaskConfiguration() );
-            });
+            $(input).inputmask( _inputmaskConfiguration() );
         },
 
         removeParams: function(urlSearch, searchParamsToRemove) {
-            var searchParams = new URLSearchParams(urlSearch);
-            searchParamsToRemove.forEach(p2r => searchParams.delete(p2r));
-            return searchParams.toString();
+            // Replace URLSearchParam to MS Edge support
+            // https://stackoverflow.com/a/26257722
+            function removeURLParameter(url, parameter) {
+                //prefer to use l.search if you have a location/link object
+                var urlparts= url.split('?');   
+                if (urlparts.length>=2) {
+
+                    var prefix= encodeURIComponent(parameter)+'=';
+                    var pars= urlparts[1].split(/[&;]/g);
+
+                    //reverse iteration as may be destructive
+                    for (var i= pars.length; i-- > 0;) {    
+                        //idiom for string.startsWith
+                        if (pars[i].lastIndexOf(prefix, 0) !== -1) {  
+                            pars.splice(i, 1);
+                        }
+                    }
+
+                    url= urlparts[0]+'?'+pars.join('&');
+                    return url;
+                } else {
+                    return url;
+                }
+            }
+
+            var url = urlSearch;;
+            searchParamsToRemove.forEach(p2r => {
+                url = removeURLParameter(p2r);
+            });
+            return url;
         },
 
         focusInputIfEmpty: function(input) {
@@ -234,9 +258,18 @@ var ARQUIVO = ARQUIVO || (function(){
         },
 
         replaceUrlParam: function(url, paramName, paramValue) {
-            var href = new URL(url);
-            href.searchParams.set(paramName, paramValue);
-            return href.toString();
+            // Replace URL javascript class with this function so it works on MS Edge
+
+            // https://stackoverflow.com/a/20420424
+            if (paramValue == null) {
+                paramValue = '';
+            }
+            var pattern = new RegExp('\\b('+paramName+'=).*?(&|#|$)');
+            if (url.search(pattern)>=0) {
+                return url.replace(pattern,'$1' + paramValue + '$2');
+            }
+            url = url.replace(/[?#]$/,'');
+            return url + (url.indexOf('?')>0 ? '&' : '?') + paramName + '=' + paramValue;
         }, 
 
         // returns an object with query and the extracted special parameters
