@@ -647,7 +647,7 @@ document.onkeydown = function(evt) {
   } else {
       isArrowLeft = (evt.keyCode === 37);
   }
-  if (isArrowLeft) {
+  if (isArrowLeft && $('#showSlides').is(":visible")) {
       previousImage();
   }
 
@@ -658,7 +658,7 @@ document.onkeydown = function(evt) {
   } else {
       isArrowRigth = (evt.keyCode === 39);
   }
-  if (isArrowRigth) {
+  if (isArrowRigth && $('#showSlides').is(":visible")) {
       nextImage();
   }
 };
