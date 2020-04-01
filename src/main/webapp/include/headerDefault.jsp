@@ -62,16 +62,18 @@
 
 <script src="/js/arquivo.js?build=<c:out value='${initParam.buildTimeStamp}'/>"></script>
 
-<!-- For IE <= 9 -->
-<!--[if IE]>
-<script type="text/javascript">
-	alert("<fmt:message key='browser.upgrade.message'/>");
-</script>
-<![endif]-->
+<c:if test="${empty param.showBrowserUpgradeMessage}">
+	<!-- For IE <= 9 -->
+	<!--[if IE]>
+	<script type="text/javascript">
+		alert("<fmt:message key='browser.upgrade.message'/>");
+	</script>
+	<![endif]-->
 
-<!-- For IE > 9 -->
-<script type="text/javascript">
-    if (window.navigator.msPointerEnabled) {
-        alert("<fmt:message key='browser.upgrade.message'/>");
-    }
-</script>
+	<!-- For IE > 9 -->
+	<script type="text/javascript">
+	    if (window.navigator.msPointerEnabled) {
+	        alert("<fmt:message key='browser.upgrade.message'/>");
+	    }
+	</script>
+</c:if>

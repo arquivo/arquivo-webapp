@@ -20,7 +20,9 @@
   <meta name="Keywords" content="<fmt:message key='url.search.meta.keywords'/>" />
   <meta name="Description" content="<fmt:message key='url.search.meta.description'/>" />
 
-  <jsp:include page="/include/headerDefault.jsp" />
+  <jsp:include page="/include/headerDefault.jsp">
+      <jsp:param name="showBrowserUpgradeMessage" value="false" />
+  </jsp:include>
   <%@ include file="/include/dates.jsp" %>
   <%@ include file="/include/i18njs.jsp" %>
 
