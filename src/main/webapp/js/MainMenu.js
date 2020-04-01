@@ -113,14 +113,17 @@ var MENU = MENU || (function(){
             var urlToCopy;
             if (typeof openImageViewer !== 'undefined' && openImageViewer === true){ 
                 $('#mainMask').click();     
-                const sleep = (milliseconds) => {
+                
+                /*const sleep = (milliseconds) => {
                   return new Promise(resolve => setTimeout(resolve, milliseconds))
                 }               
                 sleep(500).then(() => {
                     console.log('href: ' + getImageHref(getSlidePosition()));
                     MENU.copyURL(getImageHref(getSlidePosition()));
-                });
+                });*/
                 /*imageHref.then(MENU.copyURL());*/
+                console.log('href: ' + getImageHref(getSlidePosition()));
+                MENU.copyURL(getImageHref(getSlidePosition()));
             }
             else{ /*Default case copy current url*/
                 urlToCopy = window.location.href;
@@ -146,8 +149,9 @@ var MENU = MENU || (function(){
               navigator.share({
                 url: urlToCopy,
               })
-              .then(() => console.log('Successful share'))
-              .catch((error) => console.log('Error sharing', error));
+              ;
+              //.then(() => console.log('Successful share'))
+              //.catch((error) => console.log('Error sharing', error));
             }
         },
         pagesClick: function(){

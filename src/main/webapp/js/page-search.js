@@ -116,7 +116,7 @@ function searchPages(startIndex){
 	                	title = originalURL;
 	                }
 
-	                var mimeTypePresentation = primaryMimeType !== 'text' ? `<span class="mime">[${secondaryMimeType.toUpperCase()}]</span>` : '';
+	                var mimeTypePresentation = primaryMimeType !== 'text' ? '<span class="mime">['+secondaryMimeType.toUpperCase()+']</span>' : '';
 
 					var liAttributes = '';
 	                var viewMoreForSameSiteContent = '';
@@ -128,36 +128,36 @@ function searchPages(startIndex){
 	                	const newQuery = inputQuery + " site:"+ previousResultHostname;
 	                	const viewMoreForSameSiteLinkHref = ARQUIVO.replaceUrlParam(window.location.href, "query", newQuery);
 						viewMoreForSameSiteContent = 
-							`<div class="viewMoreForSameSiteLink">
-								<a href="${viewMoreForSameSiteLinkHref}">
-									${Content.search.viewMoreForSameSite} ${previousResultHostname}
-								</a>
-							</div>`;
+							'<div class="viewMoreForSameSiteLink">'+
+								'<a href="'+viewMoreForSameSiteLinkHref+'">'+
+									Content.search.viewMoreForSameSite+' '+previousResultHostname+
+								'</a>'+
+							'</div>';
 	                }
 
-	                var currentResultCode = `
-	                	<li ${liAttributes} onclick="ga('send', 'event', 'Search result', 'Page search', 'Result position', ${currentResultGlobalPosition}); window.location='${linkToArchive}'; ">
-							<div class="urlBlock">
-								<p class="url" title="${urlPresentation}">→ ${urlPresentation}</p>
-								<a href="${linkToArchive}">
-								    <div class="border-bottom"></div>
-								    <h2>
-								    	${mimeTypePresentation}
-								    	${title}
-								    </h2>
-							    </a>
-				                <div class="list-versions-div">
-				                	<span class="date"> ${day} ${month}, ${year} </span>
-				                </div>
-							</div>
-							<div class="summary">
-								<span class="resumo">
-									${snippet}
-								</span>
-							</div>
-							${viewMoreForSameSiteContent}
-	                	</li>
-	                `;
+	                var currentResultCode = 
+	                	'<li ${liAttributes} onclick="ga(\'send\', \'event\', \'Search result\', \'Page search\', \'Result position\', '+currentResultGlobalPosition+'); window.location=\''+linkToArchive+'\'; ">'+
+							'<div class="urlBlock">'+
+								'<p class="url" title="'+urlPresentation+'">→ '+urlPresentation+'</p>'+
+								'<a href="'+linkToArchive+'">'+
+								    '<div class="border-bottom"></div>'+
+								    '<h2>'+
+								    	mimeTypePresentation+
+								    	title+
+								    '</h2>'+
+							    '</a>'+
+				                '<div class="list-versions-div">'+
+				                	'<span class="date"> '+day+' '+month+', '+year+' </span>'+
+				                '</div>'+
+							'</div>'+
+							'<div class="summary">'+
+								'<span class="resumo">'+
+									snippet+
+								'</span>'+
+							'</div>'+
+							viewMoreForSameSiteContent+
+	                	'</li>'
+	                ;
 
 	                // append result item to ul inside the resultados-lista div
 					document.getElementById("resultados-lista").children[0].insertAdjacentHTML('beforeend', currentResultCode);

@@ -1,4 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jstl/fmt_rt" prefix="fmt" %>
 
 <meta property="og:image" content="<%=request.getContextPath()%>/img/logoFace.png"/>
 <meta property="og:image:alt" content="Arquivo.pt">
@@ -61,3 +62,18 @@
 
 <script src="/js/arquivo.js?build=<c:out value='${initParam.buildTimeStamp}'/>"></script>
 
+<c:if test="${empty param.showBrowserUpgradeMessage}">
+	<!-- For IE <= 9 -->
+	<!--[if IE]>
+	<script type="text/javascript">
+		alert("<fmt:message key='browser.upgrade.message'/>");
+	</script>
+	<![endif]-->
+
+	<!-- For IE > 9 -->
+	<script type="text/javascript">
+	    if (window.navigator.msPointerEnabled) {
+	        alert("<fmt:message key='browser.upgrade.message'/>");
+	    }
+	</script>
+</c:if>
