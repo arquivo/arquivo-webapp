@@ -512,7 +512,7 @@ function startUrlSearch(waybackURL, urlQuery, startTs, endTs, insertOnElementId,
         });
 
         if(typeShow === "table") {
-          const firstVersionYear = versionsArray.map(t => parseInt(t.substring(0,4))).reduce((a, b) => Math.min(a, b));
+          const firstVersionYear = versionsArray.map(function(t) { parseInt(t.substring(0,4)); }).reduce( function(a, b) { Math.min(a, b); });
           createResultsTable(tokens.length-1, inputURL, insertOnElementId);
           createMatrixTable(waybackURL, firstVersionYear, versionsArray, versionsURL);
         } else {

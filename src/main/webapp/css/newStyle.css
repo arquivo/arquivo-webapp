@@ -1,3 +1,32 @@
+html {
+  --scrollbarBG: #1c75c0;
+  --thumbBG: #0b497f;
+}
+body::-webkit-scrollbar {
+  width: 11px;
+}
+body {
+  scrollbar-width: thin;
+  scrollbar-color: var(--thumbBG) var(--scrollbarBG);
+}
+body::-webkit-scrollbar-track {
+  background: var(--scrollbarBG);
+}
+body::-webkit-scrollbar-thumb {
+  background-color: var(--thumbBG);
+  border-radius: 0px;
+  border: 3px solid var(--scrollbarBG);
+}
+
+
+#uglipop_content_fixed::-webkit-scrollbar {
+  width: 1em !important;
+}
+
+#uglipop_content_fixed::-webkit-scrollbar-track {
+
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -7,6 +36,7 @@ body {
   background-color: white !important;
   /*padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);*/
 }
+
 body#home-search .urlBlock a:visited {
   color: #8b14d5 !important;
 }
@@ -7096,7 +7126,7 @@ body#homeImages #conteudo-pesquisa-erro {}
 }
 .spell {
   color: #9C27B0;
-  font-size: 1.2em;
+  font-size: 1.1em;
   width: 91%;
   margin: 9px auto 11px auto;
   max-width: 914px;
@@ -8313,7 +8343,7 @@ body#advanced .fa-caret-down:before, body#advanced-images .fa-caret-down:before 
   border-top: 1px solid #3E3E3E;
 }
 #uglipop_overlay {
-  opacity: 0.6 !important;
+  opacity: 0.8 !important;
   z-index: 1;
   background-color: #000000 !important;
 }
@@ -11858,7 +11888,7 @@ margin-top: 5px !important;
 /* iPads ********************************/
 
 /* iPad Portrait */
-@media (width:768px) and (height:1024px) {
+@media (device-width:768px) and (device-height:1024px) {
 div#flex-container div {  
     margin: 7px 0px 57px 0px !important;  
     height: 400px
@@ -11926,7 +11956,6 @@ body#home-search div#flex-container {
     margin: 10px 6px;
 }
 
-
 body#homeImages .spell {    
     left: -13px !important;
     margin: 9px auto 7px auto;
@@ -11945,9 +11974,44 @@ body#home-search .spell {
     margin: 0 !important;
     width: 100% !important;
 }
+.url-search-container #years { 
+    max-width: 725px !important;
+    width: 100% !important;
+    margin: 0 auto !important;
+}
+#layoutTV {
+    max-width: 737px;
+    width: 100%;
+    margin: 8px auto 0 auto;
+}
+.rightArrow { 
+    top: 18%;
+    right: 9px;    
+    padding: 1% 1.5% 1% 1.9% !important;   
+}
+.leftArrow {
+    top: 18%;
+    left: 9px;    
+    padding: 1% 1.9% 1% 1.5% !important;   
+}
+.url-search-container #conteudo-versoes { 
+    margin: 0 auto !important;
+    width: 100% !important;
+    max-width: 736px !important;
+}
+body#homepage-landing #buttonSearch button, body#home-search #buttonSearch button  {   
+    right: 10px !important;
+}
+body#homeImages #buttonSearch button {
+    right: 26px !important;
+    top: 5px;
+}
+.content {    
+ padding-bottom: 0px !important ;
+}
 }
 /* iPad landscape */
-@media (width:1024px) and (height:768px) {
+@media (device-width:1024px) and (device-height:768px) {
 body#homeImages #photos {
     max-width: 968px !important;
 }
@@ -11994,10 +12058,30 @@ body#advanced #bottom-submit {
     padding: 20px 14px;
     margin: 10px 6px;
 }
+.url-search-container #years { 
+    max-width: 946px !important;
+    width: 100% !important;
+    margin: 0 auto !important;
+}
+
+#layoutTV {
+    max-width: 737px;
+    width: 100%;
+    margin: 0 auto;
+}
+body#home-search #buttonSearch button {
+    right: 22px !important;
+}
+body#homepage-landing #buttonSearch button {
+    right: 32px !important;
+}
+.content {    
+ padding-bottom: 0px !important;
+}
 }
 
 /* iPad Pro portrait */
-@media (width:1024px) and (height:1366px) {
+@media (device-width:1024px) and (device-height:1366px) {
 div#flex-container {
     width: 100% !important;
     max-width: 914px !important;
@@ -12017,7 +12101,7 @@ body#homeImages #photos {
     max-width: 924px !important;    
 }
 p#estimated-results {  
-    padding-left: 37px !important;  
+    padding-left: 3px !important;  
 }
 body#homeImages p#estimated-results {  
     padding-left: 39px !important;  
@@ -12026,7 +12110,7 @@ body#homeImages .pagesNextPrevious {
     padding: 0 26px !important;
 }
 body#home-search .pagesNextPrevious {
-    padding: 0 38px !important;
+    padding: 0 6px !important;
 }
 div#flex-container div:nth-child(2), div#flex-container div:nth-child(3), div#flex-container div:nth-child(4), div#flex-container div:nth-child(5) {
     width: 46%;
@@ -12034,7 +12118,7 @@ div#flex-container div:nth-child(2), div#flex-container div:nth-child(3), div#fl
     margin-bottom: 50px !important;
 }
 body#home-search #conteudo-resultado, body#homeImages #conteudo-pesquisa-erro {
-    max-width: 914px !important;
+    max-width: 925px !important;
 }
 body#home-search .spell {   
     left: -30px !important;
@@ -12043,10 +12127,31 @@ body#homeImages .spell {
     left: 11px !important;
     margin: 9px auto 7px auto;
 }
+#layoutTV {
+    max-width: 914px !important;
+}
+.url-search-container #years {  
+    max-width: 903px !important;
+}
+.url-search-container #conteudo-versoes {  
+    max-width: 914px !important;  
+}
+.content {    
+ padding-bottom: 0px !important;
+}
+body#homeImages span#buttonSearch, body#homepage-landing span#buttonSearch {
+ position: relative;
+right: 4px !important;
+    top: 53px !important;
+}
+body#home-search span#buttonSearch {
+    right: 4px !important;
+    top: 2px !important;
+}
 }
 
 /* iPad Pro lansdcape */
-@media (width:1366px) and (height:1024px) {
+@media (device-width:1366px) and (device-height:1024px) {
 
 div#flex-container {
     max-width: 931px !important;    
@@ -12107,6 +12212,15 @@ body#home-search #buttonSearch button {
 body#homeImages #buttonSearch button {
     right: 39px !important;
     top: 2px;
+}
+#layoutTV {
+    max-width: 930px !important;
+}
+.url-search-container #years {  
+    max-width: 919px !important;
+}
+.content {    
+ padding-bottom: 0px !important ;
 }
 }
 
