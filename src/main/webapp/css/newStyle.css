@@ -598,12 +598,12 @@ body#homeImages .pagesNextPrevious {
  /* background: #90caf9 !important;*/
 }
 .day-version-div {
+  border-top: 1px solid #e3e3e32e;
   padding-top: 12px;
   padding-bottom: 13px;
   text-align: left;
   display: none;
-  cursor: pointer;
-  background-color: /*#c0ebfe #0b497f*/ /*#0b3961*/ #0c2d4b !important;
+  cursor: pointer; 
   color: #fff;
 }
 .yearA {
@@ -8293,7 +8293,7 @@ body#advanced .fa-caret-down:before, body#advanced-images .fa-caret-down:before 
   right: /*7px*/ /*-3px*/ 7px !important;
   margin-left: 10px !important;
   /*opacity:0.6;*/
-  color: white
+  /*color:#1c75c0*/
 }
 #pagesMenu .fa-caret-down:before {
   content: "\f0d7";
@@ -8305,7 +8305,7 @@ body#advanced .fa-caret-down:before, body#advanced-images .fa-caret-down:before 
   position: relative;
   top: 0px;
   right: /*-4px*/0 !important;
-  /*background-color: #c0c0c024;
+  /*background-color: #c0c0c024;*/
   color: white !important;*/
 }
 #pagesMenu .fa-caret-up:before {
