@@ -98,7 +98,7 @@
 						<legend><fmt:message key='advancedImages.size'/><i class="fa iCarret yearCarret fa-caret-down pull-right right-15" aria-hidden="true"></i></legend>
 							<div class="box-content container-fluid ">
 								<div id="label-format-1">
-									<label class="row  col-xs-12 no-padding-left label-padding-top" for="formatType"><fmt:message key='advanced.format.label'/></label>
+									<label class="row  col-xs-12 no-padding-left label-padding-top" for="formatType"><fmt:message key='advancedImages.format.label'/></label>
 									<ion-select id="formatType" interface="action-sheet" placeholder="<fmt:message key='advanced.select.one'/>"  class="row  col-xs-10 no-padding-left formatTypeDropdown" name="type">
 									<%
 										String[] mimeList = {"jpg", "png", "gif", "bmp", "webp"};

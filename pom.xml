@@ -22,7 +22,7 @@
 		<backend.base.url>preprod.arquivo.pt</backend.base.url>
 		<backend.url>${backend.protocol}://${backend.base.url}</backend.url>
 
-		<wayback.server>${backend.protocol}://m.${backend.base.url}</wayback.server>
+		<wayback.server>${backend.protocol}://${backend.base.url}</wayback.server>
 		<wayback.url>${wayback.server}/wayback</wayback.url>
 
 		<image.search.server>${backend.url}</image.search.server>

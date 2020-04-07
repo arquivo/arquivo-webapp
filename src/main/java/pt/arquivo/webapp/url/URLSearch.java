@@ -30,8 +30,9 @@ public class URLSearch extends HttpServlet {
 		int urlStartPos;
 		String from;
 		String to;
+		String typeShow = "list";
 
-		boolean hasTimeInterval = timeIntervalPlusUrlQuery.matches("[0-9]+-[0-9]+/.*");
+		boolean hasTimeInterval = timeIntervalPlusUrlQuery.matches("[0-9]+-[0-9]+(-[a-zA-Z]+)?/.*");
 		if (hasTimeInterval) {
 
 			int timeIntervalAndUrlQuerySeparatorPosition = timeIntervalPlusUrlQuery.indexOf("/");
@@ -41,6 +42,10 @@ public class URLSearch extends HttpServlet {
 			from = timeIntervalArray[0]; // "19960101"
 			to = timeIntervalArray[1]; // "20201230"
 			urlStartPos = timeIntervalAndUrlQuerySeparatorPosition + 1;
+
+			boolean typeShowTable = timeIntervalArray.length >= 2 && timeIntervalArray[2].toLowerCase().equals("table");
+			typeShow = typeShowTable ? "table" : "list";
+
 		} else {
 			from = "19960101";
 			to = LocalDate.now().format(DateTimeFormatter.ofPattern("yyyyMMdd"));
@@ -59,6 +64,7 @@ public class URLSearch extends HttpServlet {
 		if (timestampToOpen != null) {
 			request.setAttribute("timestampToOpen", timestampToOpen);
 		}
+		request.setAttribute("typeShow", typeShow);
 
 		String urlQuery = timeIntervalPlusUrlQuery.substring(urlStartPos, timeIntervalPlusUrlQuery.length());
 		request.setAttribute("urlQuery", urlQuery);

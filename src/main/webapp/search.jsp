@@ -457,7 +457,7 @@ String[] queryString_splitted=null;
       allowFullScreen="true"
       scrolling="no"
       onload="resizeIframe(this)"
-      src="<%=request.getContextPath()%>/url/search/<%=dateStartYear%><%=dateStartMonth%><%=dateStartDay%>-<%=dateEndYear%><%=dateEndMonth%><%=dateEndDay%>/<%=urlQuery%>"></iframe>
+      src="<%=request.getContextPath()%>/url/search/<%=dateStartYear%><%=dateStartMonth%><%=dateStartDay%>-<%=dateEndYear%><%=dateEndMonth%><%=dateEndDay%>-<%=typeShowParam%>/<%=urlQuery%>"></iframe>
   </div>
 
 <% } else {
