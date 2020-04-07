@@ -8293,7 +8293,7 @@ body#advanced .fa-caret-down:before, body#advanced-images .fa-caret-down:before 
   right: /*7px*/ /*-3px*/ 7px !important;
   margin-left: 10px !important;
   /*opacity:0.6;*/
-  /*color:#1c75c0*/
+ /* color:white*/
 }
 #pagesMenu .fa-caret-down:before {
   content: "\f0d7";
@@ -8306,8 +8306,22 @@ body#advanced .fa-caret-down:before, body#advanced-images .fa-caret-down:before 
   top: 0px;
   right: /*-4px*/0 !important;
   /*background-color: #c0c0c024;*/
-  color: white !important;*/
+  /*color: white !important;*/
 }
+
+#pagesMenu .fa-caret-down:before {
+  content: "\f0d7";
+  font-size: 1.1em;
+ /* border: 1px solid #e3e3e32e;*/
+  padding: 3px 7px 3px 7px;
+  border-radius: 50px;
+  margin-top: 3px !important;
+  position: relative;
+  top: 0px;
+  right: /*-4px*/0 !important;
+  /*background-color: #c0c0c024;*/  
+}
+
 #pagesMenu .fa-caret-up:before {
   /*border: 1px solid #e3e3e32e;*/
   background-color: #c0c0c024;

@@ -131,6 +131,7 @@ background-color:#fff;
 color: #1c75c0
 }
 
+
 #menuSwiperSlide button:nth-of-type(1) h4{
 	border-top: none !important;
 }
@@ -145,6 +146,9 @@ color: #ccc !important;*/
 
 .submenu{	
     padding-left: 30px!important;
+}
+
+.submenu:hover {	   
 }
 
 
@@ -215,7 +219,7 @@ body#advanced .logo-main-div, body#advanced-images .logo-main-div {
     height: 48px;
 }
 
-#safeSearch .select-text {outline: 1px solid red;}
+#safeSearch .select-text {}
 
 .logo-main-div-fixed{
 	position: fixed!important;
