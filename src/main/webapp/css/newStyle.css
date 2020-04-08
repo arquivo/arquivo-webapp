@@ -6003,6 +6003,9 @@ body::-webkit-scrollbar-thumb {
   outline: none;
   border: none;
   background-color: transparent;
+  /* Add at least some size so it can be testable on firefox */
+  width: 1px;  
+  height: 25px;
 }
 /* Estimated results */
 p#estimated-results {
