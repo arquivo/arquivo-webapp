@@ -2240,8 +2240,8 @@ tr.trTV:nth-child(even) {
   #buttonSearch button {   
     right: 16px !important;  
     
-}body#homeImages #flex-container {
-margin-top: 11px !important
+}body#homeImages div#flex-container {
+margin-top: -56px !important
 }
 }
 
