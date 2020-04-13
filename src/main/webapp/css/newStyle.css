@@ -7062,6 +7062,12 @@ body#advanced .calendar-anchor-advanced img, body#advanced-images .calendar-anch
   font-size: /*16px*/ 13px !important;
   opacity: 1;
 }
+
+#years h4 span {
+ display: none;
+  
+}
+
 .list-versions-div {
   cursor: pointer;
   padding-top: 8px;
@@ -9911,7 +9917,8 @@ li.previous .myButtonStyle:before {
 }
 @media (min-width: 201px) {
   #layoutTV {
-    display: block !important;
+    display: block !important;   
+    margin-bottom: -5px !important;
   }
 }
 @media (min-width: 768px) {
