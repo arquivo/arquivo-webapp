@@ -131,7 +131,7 @@ ion-item{
    --knob-background-color: white !important;
 }
 
-.range-pin {outline: 1px solid red !important}
+.range-pin {}
 
 .ion-color-dark
 

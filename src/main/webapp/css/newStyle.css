@@ -1708,12 +1708,12 @@ body#home-landing.hydrated h3 {
   padding-top: 0px;
 }
 .image-mobile-expanded-div ion-list {
-  padding: 15px 0 8px 0;
+ /* padding: 15px 0 8px 0;
   background: transparent;
   border-top: 1px solid #435b662e;
   border-bottom: 1px solid #435b662e;
   margin-top: 5px !important;
-  margin-bottom: -17px !important;
+  margin-bottom: -17px !important;*/
 }
 .image-mobile-expanded-div ion-list ion-item:last-of-type {
   padding: 10px 0;
@@ -7620,15 +7620,15 @@ body#home-landing.hydrated h3 {
   color: #222 !important;
 }
 .image-mobile-expanded-div ion-card-content {
-  padding-top: 0px;
+  padding-top: 0px;  
 }
 .image-mobile-expanded-div ion-list {
-  padding: 15px 0 8px 0;
-  background: transparent;
-  border-top: 1px solid #435b662e;
-  border-bottom: 1px solid #435b662e;
-  margin-top: 5px !important;
-  margin-bottom: -17px !important;
+ padding: 0px 0 8px 0;
+ background: transparent;
+ /* border-top: 1px solid #435b662e; */
+ /* border-bottom: 1px solid #435b662e; */
+ margin-top: 0px !important;
+ margin-bottom: 00px !important;
 }
 .image-mobile-expanded-div ion-list ion-item:last-of-type {
   padding: 10px 0;
@@ -9131,7 +9131,7 @@ top: 14px
     width: 95.5% !important;
     max-width: /*915px*/ 959px !important;
     margin: 0 auto !important;
-    margin-bottom: /*10px*/ -1 !important;
+    margin-bottom: /*10px*/ -3px !important;
     margin-top: 8px !important;
   }
   
@@ -9395,7 +9395,7 @@ top: 14px
   }
   .closeItAbsolute {
     top: 9px;
-    right: calc(29vw + -11px);
+    right: calc(29vw + -15px);
   }
   .closeIt {
     top: 3px;
@@ -9838,27 +9838,28 @@ body#homeImages .dateModal, body#home-search .dateModal, body#homeImages .dateMo
   margin-top: 20px;
 }
 .dateModalButtons button {
-  background-color: transparent;
+  background-color: #1c75c0;
   margin-right: none;
   color: #1c75c0;
   margin-right: 0;
-  border: 1px solid #1c75c0;
+  border: 1px solid transparent;
   transition: background-color 0.5s ease 0s;
-  color: #1c75c0;
+  color: white;
   font-size: 13px;
   border-radius: 5px;
   padding: 4px 10px 5px 10px;
 }
 .dateModalButtons button:hover {
-  background-color: #1c75c0;
-  color: white;
-  border: 1px solid transparent;
+  background-color: white;
+  color: #1c75c0;
+  border: 1px solid #1c75c0;
   text-decoration: none;
 }
 .dateModalButtons button:active {
-  background-color: #1c75c0;
-  border: 1px solid #1c75c0;
+  background-color: #033f72 !important;
+  border: 1px solid #033f72;
   color: #fff;
+  outline: none;
 }
 .dateModalButtonsOk {
   float: right;
