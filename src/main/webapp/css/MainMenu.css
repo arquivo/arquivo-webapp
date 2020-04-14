@@ -257,8 +257,8 @@ body#advanced .logo-main-div, body#advanced-images .logo-main-div {
 	background-color: #1a5f97ba !important;
 	margin-top: -1px;
 	padding-left: 3px;
-    position: inherit;
-    z-index: 10;
+    position: relative !important;
+    z-index: 9999999999999;
 }
 
 .main-menu-top-div h4:hover{
