@@ -2258,7 +2258,7 @@ margin-top: -58px !important;
   }  
   #homeImages .image-container {    
    margin-bottom: 59px !important;   
-   height: 0px !important;   
+   height:inherit !important;    
   }
 }
 @media screen and (max-width:1023px) {
