@@ -2240,9 +2240,9 @@ tr.trTV:nth-child(even) {
   #buttonSearch button {   
     right: 16px !important;      
 }
-body#homeImages div#flex-container {
+/*body#homeImages div#flex-container {
 margin-top: -59px !important;
-}
+}*/
 }
 
 @media screen and (min-width:769px) {
@@ -2254,15 +2254,6 @@ body#homeImages div#flex-container {
 /*margin-top: -59px !important;*/
 }
 }
-
-/* Safari hack */
-@media screen and (min-color-index:0) and(-webkit-min-device-pixel-ratio:0)
-{ @media screen and (min-width:769px) {
-    body#homeImages div#flex-container {
-margin-top: -35px !important;
-outline:1px solid red;
-}
-}}
 
 @media screen and (min-width:769px) {
   #layoutTV {
@@ -12038,7 +12029,12 @@ body#homeImages .pagesNextPrevious {
     margin-bottom: 0px;
 }
 body#homeImages div#flex-container {
-    margin: -49px auto 0 auto !important;
+    margin: -61
+    p
+    lisboa
+    
+    marginposition
+    x auto 0 auto !important;
     width: 100% !important;
     max-width: 737px !important;
 }
