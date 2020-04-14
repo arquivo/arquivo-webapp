@@ -8622,7 +8622,8 @@ top: 14px
   
   #homeImages .image-container {    
    margin-bottom: 59px !important;   
-   height: 0px
+   height: 0px !important;
+   outline:1px solid #ccc
 }
     
   /*body#homepage-landing a#ImageButton, body#homepage-landing a#ImageButton:active, body#homepage-landing a#PageButton, body#homepage-landing a#PageButton:active {
