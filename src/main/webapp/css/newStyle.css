@@ -1337,7 +1337,7 @@ body#homepage-landing div#flex-container {
  /* margin: -50px auto 0 auto !important;*/
 }
 body#homeImages div#flex-container {
-  margin: -75px auto 0 auto !important;
+ /* margin: -75px auto 0 auto !important;*/
   width: 97% !important;
 }
 div#flex-container div:first-child {
@@ -2238,11 +2238,17 @@ tr.trTV:nth-child(even) {
     margin-top: 9px;
   }
   #buttonSearch button {   
-    right: 16px !important;  
-    
+    right: 16px !important;      
 }
 body#homeImages div#flex-container {
 margin-top: -59px !important;
+}
+}
+
+@media screen and (min-width:769px) {
+
+body#homeImages div#flex-container {
+margin-top: -75px !important;
 }
 }
 
