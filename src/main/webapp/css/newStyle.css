@@ -1337,7 +1337,7 @@ body#homepage-landing div#flex-container {
  /* margin: -50px auto 0 auto !important;*/
 }
 body#homeImages div#flex-container {
-  margin: -35px auto 0 auto !important;
+  margin: -75px auto 0 auto !important;
   width: 97% !important;
 }
 div#flex-container div:first-child {
@@ -2240,8 +2240,9 @@ tr.trTV:nth-child(even) {
   #buttonSearch button {   
     right: 16px !important;  
     
-}body#homeImages div#flex-container {
-margin-top: -59px !important
+}
+body#homeImages div#flex-container {
+margin-top: -59px !important;
 }
 }
 
@@ -8614,10 +8615,10 @@ top: 14px
   }
   
   #homeImages .image-container {    
-    margin-bottom: 23px !important;
+   margin-bottom: 59px !important;   
+   height: 0px
 }
-  
-  
+    
   /*body#homepage-landing a#ImageButton, body#homepage-landing a#ImageButton:active, body#homepage-landing a#PageButton, body#homepage-landing a#PageButton:active {
     margin-bottom: 13px;
     color: #1c75c0 !important;
@@ -9799,7 +9800,7 @@ body#home-search #years {}
     right: 0px !important;
   }
   div#flex-container div:first-child {
-    width: 98.3% !important;
+    width: /*98.3%*/100% !important;
   }
 }
 /* iPhone XR landscape */
