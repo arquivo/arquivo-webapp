@@ -254,7 +254,7 @@ body#advanced .logo-main-div, body#advanced-images .logo-main-div {
 .main-menu:hover {/*background-color: #ebebeb*/}
 
 .main-menu-top-div{
-	background-color: #1a5f97ba !important;
+	/*background-color: #1a5f97ba !important;*/
 	margin-top: -1px;
 	padding-left: 3px;
     position: relative !important;
