@@ -2257,7 +2257,7 @@ margin-top: -58px !important;
     margin-top: 9px !important;   
   }  
   #homeImages .image-container {    
-   margin-bottom: 59px !important;   
+   /*margin-bottom: 59px !important;  */ 
    height:inherit !important;    
   }
 }
