@@ -9401,7 +9401,7 @@ top: 14px
     display: flow-root;
   }
   #homeImages .image-container {
-    margin-bottom: 0px;
+    margin-bottom: /*0px*/ -13px !important;
   }
   .next-previous-ul {
     margin-top: 21px;
