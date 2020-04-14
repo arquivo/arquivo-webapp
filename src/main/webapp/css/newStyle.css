@@ -2250,6 +2250,9 @@ margin-top: -59px !important;
 body#homeImages div#flex-container {
 /*margin-top: -22px !important;*/
 }
+body#homeImages div#flex-container {
+margin-top: -59px !important;
+}
 }
 
 @media screen and (min-width:769px) {
@@ -7044,13 +7047,13 @@ body#advanced .calendar-anchor-advanced img, body#advanced-images .calendar-anch
 .topcontainer {
   margin-top: 15px;
   padding-right: 7px;
-  padding-left: 7px;
+  padding-left: 7px;  
 }
 @media screen and (min-width:769px) {
   .col-sm-10 {
     padding-right: 15px !important;
     padding-left: 15px !important;
-  }
+  }  
 }
 .no-padding-horizontal {
   padding-left: 0px;
