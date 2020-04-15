@@ -12394,4 +12394,24 @@ body#homeImages p#estimated-results {
 }
 }
 
+/* safari, correct bug for Images button page: version 6+ to 10 */
+
+@media screen and (min-color-index:0) and (-webkit-min-device-pixel-ratio:0) {
+    @media screen and (min-width: 769px) {
+       body#homeImages div#flex-container {
+margin: -35px auto 0 auto !important;
+}        
+}
+}
+
+/* safari, correct bug for Images button page: version 10 + */
+
+@media not all and (min-resolution:.001dpcm) {
+    @media screen and (min-width: 769px) {
+       body#homeImages div#flex-container {
+margin: -35px auto 0 auto !important;
+}        
+}
+}
+
 
