@@ -43,7 +43,7 @@ public class URLSearch extends HttpServlet {
 			to = timeIntervalArray[1]; // "20201230"
 			urlStartPos = timeIntervalAndUrlQuerySeparatorPosition + 1;
 
-			boolean typeShowTable = timeIntervalArray.length >= 2 && timeIntervalArray[2].toLowerCase().equals("table");
+			boolean typeShowTable = timeIntervalArray.length > 2 && timeIntervalArray[2].toLowerCase().equals("table");
 			typeShow = typeShowTable ? "table" : "list";
 
 		} else {
