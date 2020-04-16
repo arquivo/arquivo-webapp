@@ -217,7 +217,7 @@ var ARQUIVO = ARQUIVO || (function(){
 
             var url = urlSearch;
             for (i = 0; i < searchParamsToRemove.length ; i++) {
-                url = removeURLParameter(searchParamsToRemove[i]);
+                url = removeURLParameter(urlSearch, searchParamsToRemove[i]);
             }
             return url;
         },
