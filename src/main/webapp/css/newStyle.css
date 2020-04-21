@@ -3944,6 +3944,8 @@ display: none;
     border-radius: 5px;
     margin: 0;
     transition: 0.5s;
+    width: 54px;
+    height: 31px;
 }
 
 body#advanced .headerMenuText, body#advanced-images .headerMenuText  {
