@@ -3819,10 +3819,17 @@ body#home-search #years {}
     width: 98.3% !important;
   }
 }
-/* iPhone XR landscape */
-@media (device-height: 896px) and (device-width:414px) {
+
+/* iPhone XR portrait */
+@media (device-height: 414px) and (device-width:896px) {
   
 }
+
+/* iPhone XR landscape */
+@media (device-height: 896px) and (device-width:414px) {
+ 
+}
+
 .ui-datepicker {
   font-size: 16px;
 }
@@ -9849,10 +9856,7 @@ body#home-search #years {}
 }
 /* iPhone XR landscape */
 @media (device-height: 896px) and (device-width:414px) {
-  body#homeImages span#buttonSearch button span {
-    top: 12px !important;
-    right: -8px !important;
-  }
+ 
 }
 .ui-datepicker {
   font-size: 16px;
