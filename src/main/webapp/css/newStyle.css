@@ -3821,10 +3821,7 @@ body#home-search #years {}
 }
 /* iPhone XR landscape */
 @media (device-height: 896px) and (device-width:414px) {
-  body#homeImages span#buttonSearch button span {
-    top: 12px !important;
-    right: -8px !important;
-  }
+  
 }
 .ui-datepicker {
   font-size: 16px;
