@@ -410,3 +410,9 @@ span#buttonSearch {
     text-align: right;
   }
 }
+@media screen and (device-width:1366px) and (device-height:1024px) {
+span#buttonSearch {  
+    right: 50px !important;
+    top: 18px !important;
+}
+}

@@ -11994,6 +11994,8 @@ margin-top: 5px !important;
 
 
 /* iPads ********************************/
+/* **************************************/
+/* ***** ********************************/
 
 /* iPad Portrait */
 @media (device-width:768px) and (device-height:1024px) {
@@ -12124,6 +12126,20 @@ span#buttonSearch {
     right: 21px !important;
     outline: 1px msolid red;
 }
+span#buttonSearch button span.glyphicon {
+    right: -6px !important;
+}
+body#homepage-landing #buttonSearch button {
+    right: 10px !important;
+}
+body#homeImages #buttonSearch button {
+    right: 0px !important;
+    top: 0px;
+}
+body#homeImages span#buttonSearch button span {
+    top: 4px !important;
+    right: 4px !important;
+}
 }
 /* iPad landscape */
 @media (device-width:1024px) and (device-height:768px) {
@@ -12196,6 +12212,19 @@ body#homepage-landing #buttonSearch button {
 #newFooterWrapper .site-footer .footer-widgets-container .inside-footer-widgets {
     margin-left: -35px !important;
     display: flex !important;
+}
+body#homepage-landing #buttonSearch button {
+    right: 0px !important;
+}
+body#home-search #buttonSearch button {
+    right: 0px !important;
+}
+#buttonSearch button {
+    right: 0px !important;   
+}
+body#homeImages span#buttonSearch button span {
+    top: 5px !important;
+    right: 2px !important;
 }
 }
 
@@ -12271,10 +12300,35 @@ body#home-search span#buttonSearch {
     margin-left: -12px !important;
     display: flex !important;
 }
+body#home-search span#buttonSearch {
+    right: 60px !important;
+    top: 12px !important;
+}
+body#home-search span#buttonSearch button span {
+    top: 4px !important;
+    right: 3px !important;
+}
+body#homepage-landing span#buttonSearch {
+    position: relative;
+    right: 60px !important;
+    top: 12px !important;
+}
+span#buttonSearch button span {
+    top: 4px !important;
+    right: 3px !important;
+}
+body#homeImages span#buttonSearch, body#homepage-landing span#buttonSearch {
+    position: relative;
+    right: 58px !important;
+    top: 13px !important;
+}
+body#homeImages span#buttonSearch button span {
+    right: 4px !important;
+}
 }
 
 /* iPad Pro lansdcape */
-@media (device-width:1366px) and (device-height:1024px) {
+@media screen and (device-width:1366px) and (device-height:1024px) {
 
 div#flex-container {
     max-width: 931px !important;    
@@ -12328,13 +12382,10 @@ body#homeImages .spell {
     right: 42px !important;
     top: 8px;  
 }
-body#home-search #buttonSearch button {
-    right: 42px !important;
-    top: 9px;
-}
+
 body#homeImages #buttonSearch button {
-    right: 39px !important;
-    top: 2px;
+    right: 0px !important;
+    top: 0px;
 }
 #layoutTV {
     max-width: 930px !important;
@@ -12348,6 +12399,35 @@ body#homeImages #buttonSearch button {
 #newFooterWrapper .site-footer .footer-widgets-container .inside-footer-widgets {
     margin-left: -20px !important;
     display: flex !important;
+}
+
+span#buttonSearch {
+    width: 30px;
+    height: 30px;
+    right: 50px !important;
+    top: 18px !important;
+    position: absolute;
+    z-index: 999999;
+}
+#buttonSearch button {
+    right: 0px !important;
+    top: -1px;   
+}
+#buttonSearch button {
+    /*right: 13px !important;
+    top: 6px;*/
+}
+body#homeImages span#buttonSearch button span {
+    top: 4px !important;
+    right: 3px !important;
+}
+#searchBarBlock span#buttonSearch {
+    width: 30px !important;
+    height: 30px !important;
+    right: 50px !important;
+    top: 18px !important;
+    position: absolute !important;
+    z-index: 999999 !important;
 }
 }
 
