@@ -46,7 +46,7 @@
         <!-- Formulario -->
         <div id="main" class="main-form-advanced">
             <div id="conteudo-pesquisa">
-                <form  id="searchForm" method="get" action="search.jsp">
+                <form  id="searchForm" method="get" action='<%= request.getContextPath() + "/search.jsp" %>'>
                     <input type="hidden" name="l" value="<%= language %>" />
                     <div class="expandable-div">
                         <fieldset id="words">
