@@ -221,9 +221,8 @@ function callResizeIframeOnParent() {
 
 function createMatrixList(waybackURL, versionsArray, versionsURL){
   var today = new Date();
-  numberofVersions = yyyy - 1996;
   var yyyy = today.getFullYear();
-  var numberofVersions = yyyy - 1996;
+  var numberofVersions = yyyy - 1996 +1;
   var matrix = new Array(numberofVersions);
   for (var i = 0; i < matrix.length; i++) {
     matrix[i] = [];
