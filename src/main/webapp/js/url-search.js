@@ -494,7 +494,7 @@ function startUrlSearch(waybackURL, urlQuery, startTs, endTs, insertOnElementId,
         $.each(tokens, function(e){
           if(this != ""){
             var version = JSON.parse(this);
-            if( !version.status || version.status[0] === '4' || version.status[0] === '5'){ /*Ignore 400's and 500's*/
+            if( version.status && ( version.status[0] === '4' || version.status[0] === '5') ){ /*Ignore 400's and 500's*/
               /*empty on purpose*/
             } else {
               if (previousVersion != null && isRemovePreviousVersion(previousVersion, version, deltaToRemoveDuplicatedEntries)) {
@@ -530,11 +530,11 @@ function startUrlSearch(waybackURL, urlQuery, startTs, endTs, insertOnElementId,
 }
 
 function isRemovePreviousVersion(previousVersion, currentVersion, delta) {
-  return previousVersion.status[0] === '3' && currentVersion.status[0] === '2' && timestampDifferenceInSeconds(previousVersion.timestamp, currentVersion.timestamp) <= delta;
+  return previousVersion.status && previousVersion.status[0] === '3' && currentVersion.status[0] === '2' && timestampDifferenceInSeconds(previousVersion.timestamp, currentVersion.timestamp) <= delta;
 }
 
 function isRemoveCurrentVersion(previousVersion, currentVersion, delta) {
-  return previousVersion.status[0] === '2' && currentVersion.status[0] === '3' && timestampDifferenceInSeconds(previousVersion.timestamp, currentVersion.timestamp) <= delta;
+  return previousVersion.status && previousVersion.status[0] === '2' && currentVersion.status[0] === '3' && timestampDifferenceInSeconds(previousVersion.timestamp, currentVersion.timestamp) <= delta;
 }
 
 function getDateFromTimestamp(ts) {
