@@ -326,8 +326,8 @@ function createErrorPage(urlQuery, insertOnElementId){
     '<p class="text-bold">'+Content.suggestions+'</p>'+
     '<ul>'+
     '<li>'+Content.checkSpelling+'</li>'+
-    '<li><a class="no-padding-left" href="'+Content.suggestUrl+urlQuery+'">'+Content.suggest+'</a> '+Content.suggestSiteArchived+'</li>'+
-    '<li><a class="no-padding-left" href="http://timetravel.mementoweb.org/list/1996/'+urlQuery+'">'+Content.mementoFind+'</a>.</li>'+
+    '<li><a class="no-padding-left" target="_top" href="'+Content.suggestUrl+urlQuery+'">'+Content.suggest+'</a> '+Content.suggestSiteArchived+'</li>'+
+    '<li><a class="no-padding-left" target="_top" href="http://timetravel.mementoweb.org/list/1996/'+urlQuery+'">'+Content.mementoFind+'</a>.</li>'+
     '</ul>'+
     '</div>'+
     '</div>'+
