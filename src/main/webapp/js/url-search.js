@@ -279,7 +279,7 @@ function createMatrixList(waybackURL, versionsArray, versionsURL){
 }
 
 function createResultsList(numberOfVersions, inputURL, insertOnElementId){
-  $("#"+insertOnElementId).append('<div id="resultados-url">'+Content.resultsQuestion+' \'<a href="searchMobile.jsp?query=%22'+inputURL+'%22">'+inputURL+'</a>\'</div>'+
+  $("#"+insertOnElementId).append('<div id="resultados-url">'+Content.resultsQuestion+' \'<a target="_top" href="/search.jsp?query=%22'+inputURL+'%22">'+inputURL+'</a>\'</div>'+
     '<div id="layoutTV">'+
     '<button class="clean-button-no-fill anchor-color faded" onclick="changeTypeShow(\'table\')"><h4><i class="fa fa-table"></i> '+Content.table+' </h4></button>'+
     '<h4 class="text-bold"><i class="fa fa-list"></i> '+Content.list+'</h4>'+
