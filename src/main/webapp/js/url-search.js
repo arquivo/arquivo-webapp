@@ -510,6 +510,10 @@ function startUrlSearch(waybackURL, urlQuery, startTs, endTs, insertOnElementId,
           }
         });
 
+        const totalResults = versionsArray.length;
+        document.getElementById("estimated-results-value").innerHTML = totalResults.toLocaleString(language);
+        document.getElementById("estimated-results").style.display = totalResults > 0 ? 'block' : 'none';
+
         if(typeShow === "table") {
           const firstVersionYear = versionsArray.map(function(t) { return parseInt(t.substring(0,4)); }).reduce( function(a, b) { return Math.min(a, b); });
           createResultsTable(tokens.length-1, inputURL, insertOnElementId);

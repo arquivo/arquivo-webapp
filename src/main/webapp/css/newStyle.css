@@ -12475,6 +12475,7 @@ body#homeImages span#buttonSearch button span {
 }
 /* iphone 5 5SE */
 @media screen and (device-width: 534px) and (device-height: 320px) and (-webkit-device-pixel-ratio: 1.5) {
+}
 
 /* Samsung S2 */
 @media screen and (device-width: 320px) and (device-height: 534px) and (-webkit-device-pixel-ratio: 1.5) {
@@ -12550,4 +12551,13 @@ body#homeImages p#estimated-results {
 margin: -35px auto 0 auto !important;
 }        
 }
+}
+
+@media (max-width: 200px) {
+  .url-search-estimated-results-container {
+    display: none;
+  }
+  #resultados-url {
+    display: none;    
+  }
 }
