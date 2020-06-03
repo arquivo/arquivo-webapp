@@ -367,7 +367,7 @@ var ARQUIVO = ARQUIVO || (function(){
             var a = document.createElement('a');
             const now = new Date();
             const timestamp = this.jsDateToTimetamp(now);
-            a.download = "arquivo_pt_"+type+"_export_"+timestamp+".csv";
+            a.download = "arquivo_pt_"+type+"_"+timestamp+".csv";
             a.href = window.URL.createObjectURL(bb);
             a.click();
         },

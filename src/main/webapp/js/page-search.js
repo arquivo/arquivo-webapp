@@ -212,7 +212,7 @@ function searchPages(startIndex){
 	        }
 
 	        document.getElementById("replayMenuButton").style.display = totalResults > 0 ? 'block' : 'none';
-	        document.getElementById("exportSERPOptionsMenuButton").onclick = function () {ARQUIVO.exportSERP('page-search'); return false; };
+	        document.getElementById("exportSERPOptionsMenuButton").onclick = function () {ARQUIVO.exportSERP('page_search'); return false; };
 	        document.getElementById("nextPageSearch").style.display = totalResults > (start + hitsPerPage) ? 'block' : 'none';
 
 	        var previousPageSearch = document.getElementById("previousPageSearch");

@@ -651,7 +651,7 @@ function searchImagesJS(dateStartWithSlashes, dateEndWithSlashes, safeSearchOpti
             document.getElementById("estimated-results").style.display = totalResults > 0 ? 'block' : 'hidden';
         }
         document.getElementById("replayMenuButton").style.display = totalResults > 0 ? 'block' : 'none';
-        document.getElementById("exportSERPOptionsMenuButton").onclick = function () {ARQUIVO.exportSERP('image-search'); return false; };
+        document.getElementById("exportSERPOptionsMenuButton").onclick = function () {ARQUIVO.exportSERP('image_search'); return false; };
        },
        type: 'GET'
     });
