@@ -174,8 +174,10 @@ var MENU = MENU || (function(){
             $('#imageOptions').slideToggle( "fast", "linear" );
         },                                              
         goToContent: function(){
-            const mySwiper = document.querySelector('.swiper-container').swiper;
-            mySwiper.slideTo(1);
+            const swiper = document.querySelector('.swiper-container').swiper;
+            swiper.slideTo(1);
+            swiper.allowSlidePrev = false;
+            swiper.allowSlideNext = false;
         },
         attachKeyBoardEvent: function() {
             if (document.onkeydown == null) {

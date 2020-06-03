@@ -7,6 +7,7 @@
     var replayMenu = document.querySelector('#replayMenuButton');
     var openReplayMenu = function () {
       swiper.allowSlideNext = true;
+      swiper.allowSlidePrev = true;
       swiper.slideNext();
       $('#mainMask').fadeIn('fast');
     };
@@ -28,7 +29,7 @@
         slideChangeTransitionStart: function () {
           var slider = this;
           if (slider.activeIndex === 0) { /*open menu*/
-          	//this.allowSlidePrev = true;
+          	this.allowSlidePrev = true;
             this.allowSlideNext = true;
           	$('#mainMask').fadeIn('fast');
             menuButton.classList.add('open');
