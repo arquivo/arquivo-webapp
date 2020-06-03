@@ -455,6 +455,18 @@ function searchImagesJS(dateStartWithSlashes, dateEndWithSlashes, safeSearchOpti
     
     var extractedQuery = ARQUIVO.extractQuerySpecialParameters(input);
 
+    // Add information to export SERP functionality with query arguments
+    ARQUIVO.exportSERPSaveLine("Query argument", "Query value");
+    ARQUIVO.exportSERPSaveLine("query", extractedQuery.query);
+    ARQUIVO.exportSERPSaveLine("from", dateStart);
+    ARQUIVO.exportSERPSaveLine("to", dateEnd);
+    ARQUIVO.exportSERPSaveLine("offset", startIndex);
+    ARQUIVO.exportSERPSaveLine("maxItems", numrows);
+    ARQUIVO.exportSERPSaveLine("siteSearch", extractedQuery.site);
+    ARQUIVO.exportSERPSaveLine("type", extractedQuery.type);
+    ARQUIVO.exportSERPSaveLine("collection", extractedQuery.collection);
+    ARQUIVO.exportSERPSaveLine(); // Add an empty line after all the arguments
+
     $.ajax({
        url: imageSearchAPI,      
        data: {
@@ -497,6 +509,28 @@ function searchImagesJS(dateStartWithSlashes, dateEndWithSlashes, safeSearchOpti
               noMoreResults=true;
             }
             var resultsToLoad = currentResults;
+
+            // add headers to export SERP
+            ARQUIVO.exportSERPSaveLine("Results");
+
+            ARQUIVO.exportSERPSaveLine(
+                "year",
+                "month",
+                "day",
+                "imgTstamp",
+                "imgHeight",
+                "imgWidth",
+                "imgSrc",
+                "imgLinkToArchive",
+                "collection",
+                "imgMimeType",
+                "imgAlt",
+                "imgTitle",
+                "pageTstamp",
+                "pageURL",
+                "pageLinkToArchive",
+                "pageTitle"
+            );
             
             for (var i=0; i< currentResults; i++){
                 var currentDocument = responseJson.responseItems[i];
@@ -587,10 +621,37 @@ function searchImagesJS(dateStartWithSlashes, dateEndWithSlashes, safeSearchOpti
                     }
                 }
 
+                // append result so it can be exported
+                var year = parseInt(currentDocument.imgTstamp.toString().substring(0,4));
+                var month = Content.months[currentDocument.imgTstamp.toString().substring(4,6)];
+                var day = parseInt(currentDocument.imgTstamp.toString().substring(6,8));
+
+                ARQUIVO.exportSERPSaveLine(
+                  year,
+                  month,
+                  day,
+                  currentDocument.imgTstamp,
+                  currentDocument.imgHeight,
+                  currentDocument.imgWidth,
+                  currentDocument.imgSrc,
+                  currentDocument.imgLinkToArchive,
+                  currentDocument.collection,
+                  currentDocument.imgMimeType,
+                  currentDocument.imgAlt,
+                  currentDocument.imgTitle,
+                  currentDocument.pageTstamp,
+                  currentDocument.pageURL,
+                  currentDocument.pageLinkToArchive,
+                  currentDocument.pageTitle
+                );
+
             }
+
             document.getElementById("estimated-results-value").innerHTML = totalResults.toLocaleString(language);
             document.getElementById("estimated-results").style.display = totalResults > 0 ? 'block' : 'hidden';
         }
+        document.getElementById("replayMenuButton").style.display = totalResults > 0 ? 'block' : 'none';
+        document.getElementById("exportSERPOptionsMenuButton").onclick = function () {ARQUIVO.exportSERP('image-search'); return false; };
        },
        type: 'GET'
     });

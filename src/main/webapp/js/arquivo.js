@@ -3,6 +3,8 @@
  */
 var ARQUIVO = ARQUIVO || (function(){
 
+    var _exportSERPInfo = '';
+
     // private methods
     function _inputmaskConfiguration () {
         return { regex: "[0-3][0-9]\/[0-1][0-9]\/[1-2][0-9][0-9][0-9]", insertMode: false };
@@ -318,6 +320,56 @@ var ARQUIVO = ARQUIVO || (function(){
                 type: type.join(','),
                 collection: collection.join(',')
             };
+        },
+
+        // pass any size of arguments
+        exportSERPSaveLine: function() {
+            const textSeparator = "", columnSeparator = "\t";
+            var replaceTabsRegExp = new RegExp("("+columnSeparator+"|\n)", 'g');
+            let line = "";
+            for (var i=0; i < arguments.length; i++) {
+                if (i != 0) {
+                    line += columnSeparator;
+                }
+                line += textSeparator;
+                const a = arguments[i];
+                if (a) {
+                    line += a.toString().replace(replaceTabsRegExp, '    ');
+                }
+                line += textSeparator;
+            }
+            _exportSERPInfo += ( line + "\n" );
+            return line;
+        },
+
+        addZero: function(i) {
+          if (i < 10) {
+            i = "0" + i;
+          }
+          return i;
+        },
+
+        jsDateToTimetamp: function(d = new Date()) {
+            const sdate = [
+                d.getFullYear(),
+                ('0' + (d.getMonth() + 1)).slice(-2) + 
+                ('0' + d.getDate()).slice(-2),
+                this.addZero(d.getHours()),
+                this.addZero(d.getMinutes()),
+                this.addZero(d.getSeconds()),
+            ].join('');
+            return sdate;
+        },
+
+        exportSERP: function(type) {
+            var fileContent = _exportSERPInfo;
+            var bb = new Blob([fileContent ], { type: 'text/tab-separated-values' });
+            var a = document.createElement('a');
+            const now = new Date();
+            const timestamp = this.jsDateToTimetamp(now);
+            a.download = "arquivo_pt_"+type+"_export_"+timestamp+".csv";
+            a.href = window.URL.createObjectURL(bb);
+            a.click();
         },
  
     };

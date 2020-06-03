@@ -146,6 +146,9 @@ Content = {
             copy: "Copy link",
             images: "Images",
         },
+        optionsMenu: {
+            exportSERP: "Export to CSV",
+        },
     },
     header: {
         menu: "Menu",

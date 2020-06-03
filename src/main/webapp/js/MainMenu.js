@@ -50,6 +50,17 @@ var MENU = MENU || (function(){
                                 '<a href="//sobre.arquivo.pt/'+language+'" onclick=""><h4><i class="fa fa-info-circle padding-right-menu-icon" aria-hidden="true"></i> '+Content.topbar.menu.about+'</h4></a>'+                           
                             '</div>');
             this.attachKeyBoardEvent();
+
+            $('.swiper-wrapper').append(''+
+                '<div class="swiper-slide replayMenu swiper-slide-next">'+
+                    '<div class="main-menu-top-div">'+
+                        '<h4>&nbsp;</h4>'+
+                        '<button href="#" onclick="MENU.goToContent()" class="close-functions clean-button-no-fill">&#10005;</button>' +
+                    '</div>'+
+                    '<a id="exportSERPOptionsMenuButton" alt="Export para CSV" href="javascript:void(0)"><h4><i class="export-serp-icon"></i>'+Content.topbar.optionsMenu.exportSERP+'</h4></a>'+
+                '</div>'
+            );
+
         },
         toggleLanguage: function() {
             localStorage.setItem("language", Content.topbar.OtherLanguageShort.toUpperCase() );

@@ -12561,3 +12561,46 @@ margin: -35px auto 0 auto !important;
     display: none;    
   }
 }
+
+.replayMenu {
+  width: 100%;
+  min-width: 320px;
+  max-width: 320px;
+  background-color: #1c75c0;
+  color: #fff;
+  z-index: 0;
+  overflow-y: auto;
+}
+
+.swiper-container {
+  width: 100%;
+  height: 100%;
+  background-color: /*#000*/ #1c75c0 !important;
+  margin: 0 !important;
+}
+.swiper-container h4 {
+  display: block;
+  font-family: Roboto !important;
+  color: white;
+  border-top: 1px solid #e3e3e32e;
+  padding-top: /*15px*/ 20px;
+  margin-bottom: 0px;
+  padding-bottom: /*15px*/ 20px;
+  margin-top: 0px;
+  padding-left: 20px;
+  font-size: 17px;
+  cursor: pointer;
+  text-decoration: none;
+  font-weight: 500 !important;
+}
+.swiper-container h4:hover {
+  text-decoration: none;
+}
+.swiper-container a {
+  text-decoration: none;
+}
+
+.swiper-container h4:hover, .swiper-container h4:active {
+  background-color: #fff;
+  color: #1c75c0;
+}

@@ -40,6 +40,18 @@ function searchPages(startIndex){
 
     const deduplicationPerHostname = extractedQuery.site.length == 0
 
+    // Add information to export SERP functionality with query arguments
+    ARQUIVO.exportSERPSaveLine("Query argument", "Query value");
+    ARQUIVO.exportSERPSaveLine("query", extractedQuery.query);
+    ARQUIVO.exportSERPSaveLine("from", dateStart);
+    ARQUIVO.exportSERPSaveLine("to", dateEnd);
+    ARQUIVO.exportSERPSaveLine("offset", startIndex);
+    ARQUIVO.exportSERPSaveLine("maxItems", hitsPerPage);
+    ARQUIVO.exportSERPSaveLine("siteSearch", extractedQuery.site);
+    ARQUIVO.exportSERPSaveLine("type", extractedQuery.type);
+    ARQUIVO.exportSERPSaveLine("collection", extractedQuery.collection);
+    ARQUIVO.exportSERPSaveLine(); // Add an empty line after all the arguments
+
     $.ajax({
 		url: textSearchAPI,
     	dataType: 'text',
@@ -86,6 +98,24 @@ function searchPages(startIndex){
 	            var resultsToLoad = currentResults;
 
 	            var previousResultHostname, previousResultURL;
+
+	            // add headers to export SERP
+	            ARQUIVO.exportSERPSaveLine("Results");
+	            ARQUIVO.exportSERPSaveLine(
+	            	"year",
+					"month",
+					"day",
+					"timestamp",
+					"originalURL",
+					"linkToArchive",
+					"linkToScreenshot",
+					"linkToExtractedText",
+					"collection" ,
+					"mimeType",
+					"title",
+					"snippet" 
+				);
+
 	            for (var i=0; i< currentResults; i++){
 	                var currentDocument = responseJson.response_items[i];
 	                if (typeof currentDocument === 'undefined' || !currentDocument) {
@@ -159,11 +189,30 @@ function searchPages(startIndex){
 	                	'</li>'
 	                ;
 
+	                // append result so it can be exported
+	                ARQUIVO.exportSERPSaveLine(
+	                	year,
+						month,
+						day,
+						currentDocument.tstamp,
+						currentDocument.originalURL,
+						currentDocument.linkToArchive,
+						currentDocument.linkToScreenshot,
+						currentDocument.linkToExtractedText,
+						currentDocument.collection,
+						currentDocument.mimeType,
+						currentDocument.title,
+						currentDocument.snippet 
+					);
+
 	                // append result item to ul inside the resultados-lista div
 					document.getElementById("resultados-lista").children[0].insertAdjacentHTML('beforeend', currentResultCode);
 	            }
+
 	        }
 
+	        document.getElementById("replayMenuButton").style.display = totalResults > 0 ? 'block' : 'none';
+	        document.getElementById("exportSERPOptionsMenuButton").onclick = function () {ARQUIVO.exportSERP('page-search'); return false; };
 	        document.getElementById("nextPageSearch").style.display = totalResults > (start + hitsPerPage) ? 'block' : 'none';
 
 	        var previousPageSearch = document.getElementById("previousPageSearch");

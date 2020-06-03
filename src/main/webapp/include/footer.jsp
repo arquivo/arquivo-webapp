@@ -3,6 +3,13 @@
 <script type="text/javascript">
 	<!-- Initialize Swiper -->
     var menuButton = document.querySelector('#menuButton');
+
+    var replayMenu = document.querySelector('#replayMenuButton');
+    var openReplayMenu = function () {
+      swiper.slideNext();
+      $('#mainMask').fadeIn('fast');
+    };
+
     var openMenu = function () {
       $('.logo-main-div').css("position:fixed!important; width:initial;");
       $('#menuWrapper').removeClass('transform-none');
@@ -37,11 +44,13 @@
           var slider = this;
           if (slider.activeIndex === 1) {
             menuButton.addEventListener('click', openMenu, true);
+            replayMenu.addEventListener('click', openReplayMenu, true);
           }
         },
       }
     });
-    swiper.allowSlidePrev = false;
+    swiper.allowSlidePrev = true;
+    swiper.allowSlideNext = true;
     /*$( "#menuButton" ).click(function() {
       openMenu();
     });*/
