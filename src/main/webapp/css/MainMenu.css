@@ -431,6 +431,7 @@ span#buttonSearch {
   background-color: transparent;
   border: none;
   outline: none;
+  line-height: 30px;
 }
 
 @media screen and (max-width:960px) {
@@ -451,30 +452,7 @@ span#buttonSearch {
 @media screen and (min-width:960px) {
   .headerOptionsText {
     font-size: 13px !important;
-    padding: 0 10px;
-    border: 1px solid transparent;
-    border-radius: 5px;
-    margin: 9px -8px 0 0;
-    transition: 0.5s;
-    color: white;
-    background-color: transparent;
-    border: 1px solid white;
-  }
-  .headerOptionsText {
-    display: block;
-  }
-  .headerOptionsTextDots {
-    display: none;
-  }
-  .menu-button {
-    display: none
-  }
-}
-
-@media screen and (min-width:960px) {
-  .headerOptionsText {
-    font-size: 13px !important;
-    padding: 0 10px;
+    padding: 0px 10px;
     border: 1px solid transparent;
     border-radius: 5px;
     margin: 9px -8px 0 0;
