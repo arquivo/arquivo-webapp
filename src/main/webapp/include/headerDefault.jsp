@@ -29,7 +29,7 @@
 <link rel="stylesheet" href="/css/bootstrap.min.css" />
 
 <link rel="stylesheet" href="/static/jquery-ui-1.12.1.custom/jquery-ui.min.css" media="none" onload="if(media!='all')media='all'" /><%-- Lazy load css download --%>
-<script src="/static/jquery-3.4.1.min.js"></script>
+<script src="/static/jquery-3.5.1.min.js"></script>
 <script src="/static/jquery-ui-1.12.1.custom/jquery-ui.js"></script><%-- async to lazy load --%>
 
 <script type="text/javascript" src="/js/bootstrap.min.js"></script>
