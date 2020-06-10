@@ -41,15 +41,15 @@ function searchPages(startIndex){
     const deduplicationPerHostname = extractedQuery.site.length == 0
 
     // Add information to export SERP functionality with query arguments
-    ARQUIVO.exportSERPSaveLine("Query argument", "Query value");
-    ARQUIVO.exportSERPSaveLine("query", extractedQuery.query);
-    ARQUIVO.exportSERPSaveLine("from", dateStart);
-    ARQUIVO.exportSERPSaveLine("to", dateEnd);
-    ARQUIVO.exportSERPSaveLine("offset", startIndex);
-    ARQUIVO.exportSERPSaveLine("maxItems", hitsPerPage);
-    ARQUIVO.exportSERPSaveLine("siteSearch", extractedQuery.site);
-    ARQUIVO.exportSERPSaveLine("type", extractedQuery.type);
-    ARQUIVO.exportSERPSaveLine("collection", extractedQuery.collection);
+    ARQUIVO.exportSERPSaveLine(Content.exportSERP.pageSearch.queryArgument, Content.exportSERP.pageSearch.queryValue);
+    ARQUIVO.exportSERPSaveLine(Content.exportSERP.pageSearch.query, extractedQuery.query);
+    ARQUIVO.exportSERPSaveLine(Content.exportSERP.pageSearch.from, dateStart);
+    ARQUIVO.exportSERPSaveLine(Content.exportSERP.pageSearch.to, dateEnd);
+    ARQUIVO.exportSERPSaveLine(Content.exportSERP.pageSearch.offset, startIndex);
+    ARQUIVO.exportSERPSaveLine(Content.exportSERP.pageSearch.maxItems, hitsPerPage);
+    ARQUIVO.exportSERPSaveLine(Content.exportSERP.pageSearch.siteSearch, extractedQuery.site);
+    ARQUIVO.exportSERPSaveLine(Content.exportSERP.pageSearch.type, extractedQuery.type);
+    ARQUIVO.exportSERPSaveLine(Content.exportSERP.pageSearch.collection, extractedQuery.collection);
     ARQUIVO.exportSERPSaveLine(); // Add an empty line after all the arguments
 
     $.ajax({
@@ -102,18 +102,18 @@ function searchPages(startIndex){
 	            // add headers to export SERP
 	            ARQUIVO.exportSERPSaveLine("Results");
 	            ARQUIVO.exportSERPSaveLine(
-	            	"year",
-					"month",
-					"day",
-					"timestamp",
-					"originalURL",
-					"linkToArchive",
-					"linkToScreenshot",
-					"linkToExtractedText",
-					"collection" ,
-					"mimeType",
-					"title",
-					"snippet" 
+	            	Content.exportSERP.pageSearch.year,
+					Content.exportSERP.pageSearch.month,
+					Content.exportSERP.pageSearch.day,
+					Content.exportSERP.pageSearch.timestamp,
+					Content.exportSERP.pageSearch.originalURL,
+					Content.exportSERP.pageSearch.linkToArchive,
+					Content.exportSERP.pageSearch.linkToScreenshot,
+					Content.exportSERP.pageSearch.linkToExtractedText,
+					Content.exportSERP.pageSearch.collection,
+					Content.exportSERP.pageSearch.mimeType,
+					Content.exportSERP.pageSearch.title,
+					Content.exportSERP.pageSearch.snippet 
 				);
 
 	            for (var i=0; i< currentResults; i++){

@@ -456,15 +456,15 @@ function searchImagesJS(dateStartWithSlashes, dateEndWithSlashes, safeSearchOpti
     var extractedQuery = ARQUIVO.extractQuerySpecialParameters(input);
 
     // Add information to export SERP functionality with query arguments
-    ARQUIVO.exportSERPSaveLine("Query argument", "Query value");
-    ARQUIVO.exportSERPSaveLine("query", extractedQuery.query);
-    ARQUIVO.exportSERPSaveLine("from", dateStart);
-    ARQUIVO.exportSERPSaveLine("to", dateEnd);
-    ARQUIVO.exportSERPSaveLine("offset", startIndex);
-    ARQUIVO.exportSERPSaveLine("maxItems", numrows);
-    ARQUIVO.exportSERPSaveLine("siteSearch", extractedQuery.site);
-    ARQUIVO.exportSERPSaveLine("type", extractedQuery.type);
-    ARQUIVO.exportSERPSaveLine("collection", extractedQuery.collection);
+    ARQUIVO.exportSERPSaveLine(Content.exportSERP.imageSearch.queryArgument, Content.exportSERP.imageSearch.queryValue);
+    ARQUIVO.exportSERPSaveLine(Content.exportSERP.imageSearch.query, extractedQuery.query);
+    ARQUIVO.exportSERPSaveLine(Content.exportSERP.imageSearch.from, dateStart);
+    ARQUIVO.exportSERPSaveLine(Content.exportSERP.imageSearch.to, dateEnd);
+    ARQUIVO.exportSERPSaveLine(Content.exportSERP.imageSearch.offset, startIndex);
+    ARQUIVO.exportSERPSaveLine(Content.exportSERP.imageSearch.maxItems, numrows);
+    ARQUIVO.exportSERPSaveLine(Content.exportSERP.imageSearch.siteSearch, extractedQuery.site);
+    ARQUIVO.exportSERPSaveLine(Content.exportSERP.imageSearch.type, extractedQuery.type);
+    ARQUIVO.exportSERPSaveLine(Content.exportSERP.imageSearch.collection, extractedQuery.collection);
     ARQUIVO.exportSERPSaveLine(); // Add an empty line after all the arguments
 
     $.ajax({
@@ -514,22 +514,22 @@ function searchImagesJS(dateStartWithSlashes, dateEndWithSlashes, safeSearchOpti
             ARQUIVO.exportSERPSaveLine("Results");
 
             ARQUIVO.exportSERPSaveLine(
-                "year",
-                "month",
-                "day",
-                "imgTstamp",
-                "imgHeight",
-                "imgWidth",
-                "imgSrc",
-                "imgLinkToArchive",
-                "collection",
-                "imgMimeType",
-                "imgAlt",
-                "imgTitle",
-                "pageTstamp",
-                "pageURL",
-                "pageLinkToArchive",
-                "pageTitle"
+                Content.exportSERP.imageSearch.year,
+                Content.exportSERP.imageSearch.month,
+                Content.exportSERP.imageSearch.day,
+                Content.exportSERP.imageSearch.imgTstamp,
+                Content.exportSERP.imageSearch.imgHeight,
+                Content.exportSERP.imageSearch.imgWidth,
+                Content.exportSERP.imageSearch.imgSrc,
+                Content.exportSERP.imageSearch.imgLinkToArchive,
+                Content.exportSERP.imageSearch.collection,
+                Content.exportSERP.imageSearch.imgMimeType,
+                Content.exportSERP.imageSearch.imgAlt,
+                Content.exportSERP.imageSearch.imgTitle,
+                Content.exportSERP.imageSearch.pageTstamp,
+                Content.exportSERP.imageSearch.pageURL,
+                Content.exportSERP.imageSearch.pageLinkToArchive,
+                Content.exportSERP.imageSearch.pageTitle
             );
             
             for (var i=0; i< currentResults; i++){
