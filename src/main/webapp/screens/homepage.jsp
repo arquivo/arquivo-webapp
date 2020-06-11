@@ -59,7 +59,7 @@
     var pageClass = $(this).hasClass("pageLink");
     var imageClass = $(this).hasClass("imageLink");
 
-    var pagesHref = (imageClass === true ? "/images.jsp?l=<%=language%>" : "/search.jsp?l=<%=language%>");
+    var pagesHref = (imageClass === true ? "/image/search?l=<%=language%>" : "/page/search?l=<%=language%>");
 
     var query = $('#txtSearch').val();
     var dateStart = $('#dateStart_top').val();
@@ -76,10 +76,10 @@
       var newURL = "";
       var txtSearch = document.getElementById('txtSearch').value.toString();
       if(txtSearch !='' && txtSearch != undefined){
-               newURL = "/advanced.jsp?l=<%=language%>&query="+ARQUIVO.encodeHtmlEntities(txtSearch);
+               newURL = "/page/advanced/search?l=<%=language%>&query="+ARQUIVO.encodeHtmlEntities(txtSearch);
 
       } else {
-        newURL = "/advanced.jsp?l=<%=language%>";
+        newURL = "/page/advanced/search?l=<%=language%>";
       }
 
       console.log('newURL => ' + newURL);
@@ -124,8 +124,8 @@ function updateQueryStringParameter(uri, key, value) {
   <div class="container-fluid topcontainer" id="headerSearchDiv">
     
     <%
-      String formAction = "/search.jsp";
-      String advancedSearchAction = "/advanced.jsp";
+      String formAction = "/page/search";
+      String advancedSearchAction = "/page/advanced/search";
     %>
     <%@ include file="/include/searchForm.jsp" %>
 

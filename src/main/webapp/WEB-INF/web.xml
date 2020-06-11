@@ -1,79 +1,49 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-
 <!DOCTYPE web-app
-    PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
-    "http://java.sun.com/dtd/web-app_2_3.dtd">
-
+  PUBLIC '-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN'
+  'http://java.sun.com/dtd/web-app_2_3.dtd'>
 <web-app>
-
-<!--
-Uncomment this to start serve this jsp's without .jsp
-<servlet>
-    <servlet-name>search</servlet-name>
-    <jsp-file>/search.jsp</jsp-file>
-</servlet>
-<servlet-mapping>
-    <servlet-name>search</servlet-name>
-    <url-pattern>/search</url-pattern>
-</servlet-mapping>
-
-<servlet>
-    <servlet-name>images</servlet-name>
-    <jsp-file>/images.jsp</jsp-file>
-</servlet>
-<servlet-mapping>
-    <servlet-name>images</servlet-name>
-    <url-pattern>/images</url-pattern>
-</servlet-mapping>
--->
-<welcome-file-list>
-  <welcome-file>index.jsp</welcome-file>
-  <welcome-file>index.html</welcome-file>
-</welcome-file-list>
-<taglib>
-  <taglib-uri>http://jakarta.apache.org/taglibs/i18n</taglib-uri>
-  <taglib-location>/WEB-INF/taglibs-i18n.tld</taglib-location>
- </taglib>
-
-<taglib>
-  <taglib-uri>http://jakarta.apache.org/taglibs/log-1.0</taglib-uri>
-  <taglib-location>/WEB-INF/taglibs-log.tld</taglib-location>
-</taglib>
-
-<error-page>
-  <error-code>404</error-code>
-  <location>/not-found-404.jsp</location>
-</error-page>
-
-<error-page>
-  <error-code>500</error-code>
-  <location>/internal-error-500.jsp</location>
-</error-page>
-
-<context-param>
-	<param-name>javax.servlet.jsp.jstl.fmt.localizationContext</param-name>
-	<param-value>pt.arquivo.i18n.Default</param-value>
-</context-param>
-<context-param>
-	<param-name>javax.servlet.jsp.jstl.fmt.fallbackLocale</param-name>
-	<param-value>pt</param-value>
-</context-param>
-<context-param>
-	<param-name>javax.servlet.jsp.jstl.fmt.locale</param-name>
-	<param-value>pt</param-value>
-</context-param>
-<context-param>
+  <welcome-file-list>
+    <welcome-file>screens/homepage.jsp</welcome-file>
+  </welcome-file-list>
+  <taglib>
+    <taglib-uri>http://jakarta.apache.org/taglibs/i18n</taglib-uri>
+    <taglib-location>/WEB-INF/taglibs-i18n.tld</taglib-location>
+  </taglib>
+  <taglib>
+    <taglib-uri>http://jakarta.apache.org/taglibs/log-1.0</taglib-uri>
+    <taglib-location>/WEB-INF/taglibs-log.tld</taglib-location>
+  </taglib>
+  <error-page>
+    <error-code>404</error-code>
+    <location>/not-found-404.jsp</location>
+  </error-page>
+  <error-page>
+    <error-code>500</error-code>
+    <location>/internal-error-500.jsp</location>
+  </error-page>
+  <context-param>
+    <param-name>javax.servlet.jsp.jstl.fmt.localizationContext</param-name>
+    <param-value>pt.arquivo.i18n.Default</param-value>
+  </context-param>
+  <context-param>
+    <param-name>javax.servlet.jsp.jstl.fmt.fallbackLocale</param-name>
+    <param-value>pt</param-value>
+  </context-param>
+  <context-param>
+    <param-name>javax.servlet.jsp.jstl.fmt.locale</param-name>
+    <param-value>pt</param-value>
+  </context-param>
+  <context-param>
     <param-name>buildTimeStamp</param-name>
     <param-value>${timestamp}</param-value>
-</context-param>
-
-<taglib>
-	<taglib-uri>http://java.sun.com/jsp/jstl/core</taglib-uri>
-	<taglib-location>/WEB-INF/taglibs-c.tld</taglib-location>
-</taglib>
-<taglib>
-	<taglib-uri>http://java.sun.com/jsp/jstl/fmt</taglib-uri>
-	<taglib-location>/WEB-INF/taglibs-fmt.tld</taglib-location>
-</taglib>
-
+  </context-param>
+  <taglib>
+    <taglib-uri>http://java.sun.com/jsp/jstl/core</taglib-uri>
+    <taglib-location>/WEB-INF/taglibs-c.tld</taglib-location>
+  </taglib>
+  <taglib>
+    <taglib-uri>http://java.sun.com/jsp/jstl/fmt</taglib-uri>
+    <taglib-location>/WEB-INF/taglibs-fmt.tld</taglib-location>
+  </taglib>
 </web-app>

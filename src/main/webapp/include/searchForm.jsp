@@ -45,8 +45,8 @@
               var queryStringCleaned = ARQUIVO.removeParams( new URL(window.location.href).search.slice(1), ["start"] );
               queryStringCleaned = queryStringCleaned.length > 0 ? "?"+queryStringCleaned : "";
 
-              document.write('<a id="PageButton" class="pageLink advancedSearch" href="/search.jsp'+queryStringCleaned+'" onclick="submitSearchFormTo(\'/search.jsp\'); return false;"><span><fmt:message key='home.pages'/></span></a>');
-              document.write('<a id="ImageButton" class="advancedSearch selected-button imageLink" href="/images.jsp'+queryStringCleaned+'" onclick="submitSearchFormTo(\'/images.jsp\'); return false;"><span><fmt:message key='images.images'/></span></a>');
+              document.write('<a id="PageButton" class="pageLink advancedSearch" href="/page/search'+queryStringCleaned+'" onclick="submitSearchFormTo(\'/page/search\'); return false;"><span><fmt:message key='home.pages'/></span></a>');
+              document.write('<a id="ImageButton" class="advancedSearch selected-button imageLink" href="/image/search'+queryStringCleaned+'" onclick="submitSearchFormTo(\'/image/search\'); return false;"><span><fmt:message key='images.images'/></span></a>');
               document.write('<a id="advancedSearchButton" class="advancedSearch" href="<%= advancedSearchAction %>'+queryStringCleaned+'" onclick="submitSearchFormTo(\'<%= advancedSearchAction %>\'); return false;"><span><fmt:message key='topbar.menu.advanced'/></span></a> ');
             </script>
           </div>
