@@ -30,6 +30,10 @@ function emphasizeText(textToBeEmphasized, emphasizeText) {
 }
 
 function searchPages(startIndex){
+	var client_id = ARQUIVO.getClientId(20);
+	var search_id = ARQUIVO.generateId(20);
+	var trackingId = client_id + '_' + search_id;
+
     var inputQuery = $('#txtSearch').val();
 
     var dateStart=$('#dateStart_top').val().substring($('#dateStart_top').val().length - 4) +''+  $('#dateStart_top').val().substring(3,5) +''+ $('#dateStart_top').val().substring(0,2)+ '000000' ;
@@ -65,7 +69,8 @@ function searchPages(startIndex){
 			maxItems: hitsPerPage,
 			siteSearch: extractedQuery.site,
 			type: extractedQuery.type,
-			collection: extractedQuery.collection
+			collection: extractedQuery.collection,
+			trackingId: trackingId
 		},
 
 		error: function() {
@@ -129,6 +134,7 @@ function searchPages(startIndex){
 	                var hostname = url.hostname;
 	                var urlPresentation = ARQUIVO.formatURLForPresentation(currentDocument.originalURL);
 	                var linkToArchive = currentDocument.linkToArchive;
+	                var linkToArchiveWithTracking = "/page/view/" + trackingId + "_" + (i+1) + linkToArchive.substring(linkToArchive.indexOf("/wayback")+"/wayback".length);
 	                var snippet = currentDocument.snippet;
 	                var mimeType = currentDocument.mimeType;
 	                var primaryMimeType = mimeType.split('/')[0];
@@ -169,7 +175,7 @@ function searchPages(startIndex){
 	                	'<li '+liAttributes+' onclick="ga(\'send\', \'event\', \'Search result\', \'Page search\', \'Result position\', '+currentResultGlobalPosition+'); window.location=\''+linkToArchive+'\'; ">'+
 							'<div class="urlBlock">'+
 								'<p class="url" title="'+urlPresentation+'">→ '+urlPresentation+'</p>'+
-								'<a href="'+linkToArchive+'">'+
+								'<a href="'+linkToArchiveWithTracking+'">'+
 								    '<div class="border-bottom"></div>'+
 								    '<h2>'+
 								    	mimeTypePresentation+
