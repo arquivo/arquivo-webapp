@@ -1,6 +1,5 @@
 package pt.arquivo.webapp.image;
 
-
 import java.io.IOException;
 
 import javax.servlet.ServletException;
@@ -22,7 +21,7 @@ public class ImageAdvancedSearch extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		request.getRequestDispatcher("/screen/imageAdvancedSearch.jsp").forward(request, response);
+		request.getRequestDispatcher("/screens/imageAdvancedSearch.jsp").forward(request, response);
 	}
 
 }
