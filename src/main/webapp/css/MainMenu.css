@@ -347,14 +347,33 @@ body#advanced .glyphicon-search:before, body#advanced-images .glyphicon-search:b
   margin: 10px 6px;
 }
 
-@media screen and (min-width:768px) {
-span#buttonSearch {          
+.glyphicon-search:before {
+    content: none !important;
+}
+
+/*@media screen and (min-width:768px) {*/
+@media screen and (min-width:255px) {
+/*span#buttonSearch {          
     width: 30px;
     height: 30px;
     right: 38px !important;
     top: 11px !important;
     position: absolute;
     z-index: 999999;
+    background-color: red !important;
+    border-top-right-radius: 10px !important;   
+    border-bottom-right-radius: 10px !important;*
+}*/
+span#buttonSearch {
+    width: 49px;
+    height: 45px;
+    right: 29px !important;
+    top: 4px !important;
+    position: absolute;
+    z-index: 999999;
+    background-color: #1c75c0 !important;
+    border-top-right-radius: 10px !important;
+    border-bottom-right-radius: 10px !important;
 }
 }
 
@@ -415,4 +434,69 @@ span#buttonSearch {
     right: 50px !important;
     top: 18px !important;
 }
+}
+
+.replay-menu-button {
+  color: white;
+  margin: -7px 0 0 0;
+  padding: 7px 20px 0 0px;
+  float: right !important;
+  font-size: 2.3em;
+  text-decoration: none !important;
+  font-family: roboto, sans-serif;
+  position: absolute;
+  top: 0px;
+  right: 3px;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  line-height: 30px;
+}
+
+@media screen and (max-width:960px) {
+  .headerMenuText {
+    display: none;
+  }
+  .headerOptionsText {
+    display: none;
+  }
+  .headerOptionsTextDots {
+    display: block;
+  }
+  .menu-button {
+    display: block
+  }
+}
+
+@media screen and (min-width:960px) {
+  .headerOptionsText {
+    font-size: 13px !important;
+    padding: 0px 10px;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    margin: 9px -8px 0 0;
+    transition: 0.5s;
+    color: white;
+    background-color: transparent;
+    border: 1px solid white;
+  }
+  .headerOptionsText {
+    display: block;
+  }
+  .headerOptionsTextDots {
+    display: none;
+  }
+  .menu-button {
+    display: none
+  }
+}
+.headerMenuText:hover, .headerOptionsText:hover {
+  color: #1c75c0;
+  border: 1px solid white;
+  background-color: white;
+}
+.headerMenuText:active, .headerOptionsText:active {
+  color: #fff;
+  border: 1px solid #033f72 !important;
+  background-color: #033f72 !important;
 }

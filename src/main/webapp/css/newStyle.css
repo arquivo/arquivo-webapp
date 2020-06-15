@@ -1337,7 +1337,7 @@ body#homepage-landing div#flex-container {
 /* margin: -50px auto 0 auto !important;*/
 }
 body#homeImages div#flex-container {
-  margin: -75px auto 0 auto !important;
+  margin: /*-75px*/-20px auto 0 auto !important;
   width: 97% !important;
 }
 div#flex-container div:first-child {
@@ -5964,8 +5964,9 @@ body#home-search .urlBlock a:visited {
   transition: ::-moz-placeholder 0.5s ease 0s;
   transition: :-ms-input-placeholder 0.5s ease 0s;
   transition: :-moz-placeholder 0.5s ease 0s;
-  background-color: #eaeaea !important;
-  padding-left: 15px;
+  /*background-color: #eaeaea !important;*/
+  background: #eaeaea url(../img/magnifier.svg)  no-repeat 10px 14px;  
+  padding-left: 32px;
   border: 1px solid transparent !important;
   outline: none !important;
   font-size: 19px !important;
@@ -5974,7 +5975,7 @@ body#home-search .urlBlock a:visited {
   transition: background-color 0.5s ease 0s !important;
   -webkit-box-shadow: 0px 4px 5px -2px rgba(0, 0, 0, 0);
   box-shadow: 0px 4px 5px -2px rgba(0, 0, 0, 0);
-  padding-top: 3px;
+  padding-top: 6px;
   margin-top: 4px;
   padding-right: 13% !important;
 }
@@ -6085,6 +6086,39 @@ input {
   color: #1a73ba;
   z-index: -1;
 }
+
+#sliderCircleEnd:hover {
+  position: relative;
+  padding-right: 9px;
+  padding-top: 0px;
+  margin-left: 0px;
+  background: transparent url(../img/calendario-hover.svg) no-repeat right 6px;
+  background-size: 52px;
+  text-decoration: none !important;
+  font-size: 1.15em !important;
+  height: 73px;
+  height: 79px;
+  padding-left: 36px;
+  color: #1a73ba;
+  z-index: -1;
+}
+
+#sliderCircleEnd:active {
+  position: relative;
+  padding-right: 9px;
+  padding-top: 0px;
+  margin-left: 0px;
+  background: transparent url(../img/calendario-active.svg) no-repeat right 6px;
+  background-size: 52px;
+  text-decoration: none !important;
+  font-size: 1.15em !important;
+  height: 73px;
+  height: 79px;
+  padding-left: 36px;
+  color: #1a73ba;
+  z-index: -1;
+}
+
 #sliderCircleStart {
   position: relative;
   padding-right: 36px;
@@ -6098,6 +6132,36 @@ input {
   color: #1a73ba;
   z-index: -1;
 }
+
+#sliderCircleStart:hover {
+  position: relative;
+  padding-right: 36px;
+  margin-left: 0px;
+  background: transparent url(../img/calendario-hover.svg) no-repeat 0px 6px;
+  background-size: 52px;
+  text-decoration: none !important;
+  font-size: 1.15em !important;
+  height: 79px;
+  padding-left: 7px;
+  color: #1a73ba;
+  z-index: -1;
+}
+
+#sliderCircleStart:active {
+  position: relative;
+  padding-right: 36px;
+  margin-left: 0px;
+  background: transparent url(../img/calendario-active.svg) no-repeat 0px 6px;
+  background-size: 52px;
+  text-decoration: none !important;
+  font-size: 1.15em !important;
+  height: 79px;
+  padding-left: 7px;
+  color: #1a73ba;
+  z-index: -1;
+}
+
+
 /* NEW style: calendar month and day */
 #calendarDayStart {
 position: relative;
@@ -6108,6 +6172,7 @@ position: relative;
     color: #1a73ba;
     font-family:  'Roboto', 'Helvetica', 'Arial', sans-serif !important;
     text-align: right;
+    color: #ffffff
 }
 #calendarMonthStart {
  position: relative;
@@ -6120,8 +6185,9 @@ position: relative;
     text-align: right;
     display: inline-block;
     width: 19px;
+    color: #ffffff
 }
-#calendarDayEnd {  
+#calendarDayEnd, #calendarDayEnd:active  {  
   position: relative;
     top: 29px;
     left: -8px;
@@ -6129,6 +6195,7 @@ position: relative;
     letter-spacing: -1px;
     color: #1a73ba;
     font-family:  'Roboto', 'Helvetica', 'Arial', sans-serif !important;
+    color:#ffffff
 }
 #calendarMonthEnd {
   position: relative !important;
@@ -6141,7 +6208,7 @@ position: relative;
     text-align: right;
     display: inline-block;
     width: 19px;
-
+    color:#ffffff !important
 }
 #calendarYearStart {
   position: relative !important;
@@ -6150,15 +6217,38 @@ position: relative;
   padding-top: -2px !important;
   font-size: 1.2em !important;
   font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif !important;
+  color:#ffffff
 }
 #calendarYearEnd {
   position: relative !important;
   bottom: 30px !important;
-  left: 2px !important;
+  left: 3px !important;
   padding-top: 1px !important;
   font-size: 1.2em !important;
   font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif !important;
+  color:#ffffff
+} 
+
+#sliderCircleEnd:hover #calendarYearEnd, #sliderCircleEnd:hover #calendarMonthEnd, #sliderCircleEnd:hover #calendarDayEnd {
+color:#033f72 !important;
+transition: 0.5
 }
+
+#sliderCircleEnd:active #calendarYearEnd, #sliderCircleEnd:active #calendarMonthEnd, #sliderCircleEnd:active #calendarDayEnd {
+color: #ffffff !important;
+transition: 0.5
+}
+
+#sliderCircleStart:hover #calendarYearStart, #sliderCircleStart:hover #calendarMonthStart, #sliderCircleStart:hover #calendarDayStart {
+color:#033f72 !important;
+transition: 0.5
+}
+
+#sliderCircleStart:active #calendarYearStart, #sliderCircleStart:active #calendarMonthStart, #sliderCircleStart:active #calendarDayStart {
+color: #ffffff !important;
+transition: 0.5
+}
+
 ion-item {
   --pin-display: none !important;
 }
@@ -9375,7 +9465,7 @@ top: 14px
   }
   body#homeImages p#estimated-results {
     width: 915px;
-    margin: 23px auto 0 auto;
+    margin: 36px auto -16px auto;
     padding-left: 6px;
     display: flex;
     width: 100%;
@@ -9383,7 +9473,7 @@ top: 14px
   }  
   body#home-search p#estimated-results {
     width: 915px;
-    margin: 23px auto 10px auto;
+    margin: 36px auto -26px auto;
     padding-left: 0px;
     display: flex;
     width: 100%;
@@ -9471,7 +9561,7 @@ top: 14px
     width: 100% !important;
     max-width: 960px !important;
     min-width: 320px !important;
-    margin: 0 auto 50px auto !important;
+    margin: 16px auto 50px auto !important;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -9546,7 +9636,7 @@ top: 14px
 }
 .spell {
   top: -25px;
-  left: -2px;
+  left: /*-2px*/-22px;
 }
 
 body#home-search .spell {
@@ -12009,7 +12099,7 @@ margin-top: 5px !important;
 
 .image-display-date {
     font-weight: normal;
-    font-size: 1em !important; 
+    font-size: 0.9em !important; 
     display: flex;  
     width: fit-content;
     margin: 0 auto;
@@ -12475,6 +12565,7 @@ body#homeImages span#buttonSearch button span {
 }
 /* iphone 5 5SE */
 @media screen and (device-width: 534px) and (device-height: 320px) and (-webkit-device-pixel-ratio: 1.5) {
+}
 
 /* Samsung S2 */
 @media screen and (device-width: 320px) and (device-height: 534px) and (-webkit-device-pixel-ratio: 1.5) {
@@ -12550,4 +12641,56 @@ body#homeImages p#estimated-results {
 margin: -35px auto 0 auto !important;
 }        
 }
+}
+
+@media (max-width: 200px) {
+  .url-search-estimated-results-container {
+    display: none;
+  }
+  #resultados-url {
+    display: none;    
+  }
+}
+
+.replayMenu {
+  width: 100%;
+  min-width: 320px;
+  max-width: 320px;
+  background-color: #1c75c0;
+  color: #fff;
+  z-index: 0;
+  overflow-y: auto;
+}
+
+.swiper-container {
+  width: 100%;
+  height: 100%;
+  background-color: /*#000*/ #1c75c0 !important;
+  margin: 0 !important;
+}
+.swiper-container h4 {
+  display: block;
+  font-family: Roboto !important;
+  color: white;
+  border-top: 1px solid #e3e3e32e;
+  padding-top: /*15px*/ 20px;
+  margin-bottom: 0px;
+  padding-bottom: /*15px*/ 20px;
+  margin-top: 0px;
+  padding-left: 20px;
+  font-size: 17px;
+  cursor: pointer;
+  text-decoration: none;
+  font-weight: 500 !important;
+}
+.swiper-container h4:hover {
+  text-decoration: none;
+}
+.swiper-container a {
+  text-decoration: none;
+}
+
+.swiper-container h4:hover, .swiper-container h4:active {
+  background-color: #fff;
+  color: #1c75c0;
 }
