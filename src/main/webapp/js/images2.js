@@ -136,6 +136,21 @@ function openImage(position){
   
   // hide search results
   document.getElementById("headerSearchDiv").style.display = "none";
+  sendOpenImageTrackingAsAjax(position);
+}
+
+function sendOpenImageTrackingAsAjax(position) {
+  const imageElement = $('#testViewer'+position+ ' img');
+  const imageTrackingURL = imageElement.attr('data-openImageTrackingURL');
+  //console.log("Sending open image to url: " + imageTrackingURL);
+  $.ajax({
+       url: imageTrackingURL,
+       dataType: 'text',
+       type: 'GET',
+       success: function(data) {
+         console.log('Success sending open image.');
+       }
+     });
 }
 
 function openLazyLoadOriginalImage(position) {
@@ -260,7 +275,7 @@ return ''+
           '<div id="insert-card-'+position+'" class="full-height text-right">'+
               '<ion-card id="card'+position+'" class="card-height">'+
                  '<a href="'+waybackURL+'/'+imageObj.pageTstamp+'/'+imageObj.pageURL+'">'+
-                    '<img ' + (parseInt(imageObj.expandedWidth) >$( window ).width() ? 'class="image-expanded-viewer image-expanded-full-width" ' : 'class="image-expanded-viewer" ') + 'data-src="'+imageObj.currentImageURL+'" />'+
+                    '<img ' + (parseInt(imageObj.expandedWidth) >$( window ).width() ? 'class="image-expanded-viewer image-expanded-full-width" ' : 'class="image-expanded-viewer" ') + 'data-src="'+imageObj.currentImageURL+'" data-openImageTrackingURL="'+imageObj.openImageTrackingURL+'" />'+
                  '</a>'+
                  '<ion-row class="image-viewer-expanded-main-actions">'+
                       '<ion-col size="6" class="text-left"><a href="'+waybackURL+'/'+imageObj.pageTstamp+'/'+imageObj.pageURL+'"><ion-button size="small" class="visit-page border-mobile" fill="clear"><ion-icon name="globe" class="middle"></ion-icon><span class="middle"><h5>&nbsp;'+Content.images.viewer.visit+'</h5></span></ion-button></a></ion-col>'+
@@ -437,10 +452,9 @@ function closeDetails(position){
 }
 
 function searchImagesJS(dateStartWithSlashes, dateEndWithSlashes, safeSearchOption,startIndex){
-  //TODO:: Decide if we just send the API query in the form of 
-  // /imagesearch?q=sapo%20site:sapo.pt%20type:jpeg      
-  // or if we parse each word in the input and send the API query in the form off
-  // /imagesearch?q=sapo&siteSearch=sapo.pt&type=jpeg */
+    var client_id = ARQUIVO.getClientId(20);
+    var search_id = ARQUIVO.generateId(20);
+    var trackingId = client_id + '_' + search_id;
 
     if( safeSearchOption == "null"){
         safeSearchOption = "on";
@@ -455,6 +469,18 @@ function searchImagesJS(dateStartWithSlashes, dateEndWithSlashes, safeSearchOpti
     
     var extractedQuery = ARQUIVO.extractQuerySpecialParameters(input);
 
+    // Add information to export SERP functionality with query arguments
+    ARQUIVO.exportSERPSaveLine(Content.exportSERP.imageSearch.queryArgument, Content.exportSERP.imageSearch.queryValue);
+    ARQUIVO.exportSERPSaveLine(Content.exportSERP.imageSearch.query, extractedQuery.query);
+    ARQUIVO.exportSERPSaveLine(Content.exportSERP.imageSearch.from, dateStart);
+    ARQUIVO.exportSERPSaveLine(Content.exportSERP.imageSearch.to, dateEnd);
+    ARQUIVO.exportSERPSaveLine(Content.exportSERP.imageSearch.offset, startIndex);
+    ARQUIVO.exportSERPSaveLine(Content.exportSERP.imageSearch.maxItems, numrows);
+    ARQUIVO.exportSERPSaveLine(Content.exportSERP.imageSearch.siteSearch, extractedQuery.site);
+    ARQUIVO.exportSERPSaveLine(Content.exportSERP.imageSearch.type, extractedQuery.type);
+    ARQUIVO.exportSERPSaveLine(Content.exportSERP.imageSearch.collection, extractedQuery.collection);
+    ARQUIVO.exportSERPSaveLine(); // Add an empty line after all the arguments
+
     $.ajax({
        url: imageSearchAPI,      
        data: {
@@ -466,7 +492,8 @@ function searchImagesJS(dateStartWithSlashes, dateEndWithSlashes, safeSearchOpti
           more: "imgThumbnailBase64,imgSrcURLDigest,imgDigest,pageProtocol,pageHost,pageImages,safe",
           siteSearch: extractedQuery.site,
           type: extractedQuery.type,
-          collection: extractedQuery.collection
+          collection: extractedQuery.collection,
+          trackingId: trackingId
        },
            
        timeout: 300000,
@@ -477,7 +504,6 @@ function searchImagesJS(dateStartWithSlashes, dateEndWithSlashes, safeSearchOpti
         $('#imagesDefaultTextDiv').hide(); /*Hiding default message*/
 
         var responseJson = $.parseJSON(data);
-
 
         totalResults = responseJson.totalItems;
         var showNextPageButton = ((parseInt(startIndex) + parseInt(numrows)) >= totalResults) ? false: true;    
@@ -497,6 +523,28 @@ function searchImagesJS(dateStartWithSlashes, dateEndWithSlashes, safeSearchOpti
               noMoreResults=true;
             }
             var resultsToLoad = currentResults;
+
+            // add headers to export SERP
+            ARQUIVO.exportSERPSaveLine("Results");
+
+            ARQUIVO.exportSERPSaveLine(
+                Content.exportSERP.imageSearch.year,
+                Content.exportSERP.imageSearch.month,
+                Content.exportSERP.imageSearch.day,
+                Content.exportSERP.imageSearch.imgTstamp,
+                Content.exportSERP.imageSearch.imgHeight,
+                Content.exportSERP.imageSearch.imgWidth,
+                Content.exportSERP.imageSearch.imgSrc,
+                Content.exportSERP.imageSearch.imgLinkToArchive,
+                Content.exportSERP.imageSearch.collection,
+                Content.exportSERP.imageSearch.imgMimeType,
+                Content.exportSERP.imageSearch.imgAlt,
+                Content.exportSERP.imageSearch.imgTitle,
+                Content.exportSERP.imageSearch.pageTstamp,
+                Content.exportSERP.imageSearch.pageURL,
+                Content.exportSERP.imageSearch.pageLinkToArchive,
+                Content.exportSERP.imageSearch.pageTitle
+            );
             
             for (var i=0; i< currentResults; i++){
                 var currentDocument = responseJson.responseItems[i];
@@ -554,6 +602,7 @@ function searchImagesJS(dateStartWithSlashes, dateEndWithSlashes, safeSearchOpti
 
                 imageObj.src = "data:"+currentDocument.imgMimeType+";base64," + currentDocument.imgThumbnailBase64;
                 imageObj.currentResultGlobalPosition = currentResultGlobalPosition;
+                imageObj.openImageTrackingURL = "/image/view/" + trackingId + "_" + (i+1) + '/' + currentDocument.imgTstamp + '/' +currentDocument.imgSrc;
 
                 imageObj.onload = function() {
                             
@@ -587,10 +636,37 @@ function searchImagesJS(dateStartWithSlashes, dateEndWithSlashes, safeSearchOpti
                     }
                 }
 
+                // append result so it can be exported
+                var year = parseInt(currentDocument.imgTstamp.toString().substring(0,4));
+                var month = Content.months[currentDocument.imgTstamp.toString().substring(4,6)];
+                var day = parseInt(currentDocument.imgTstamp.toString().substring(6,8));
+
+                ARQUIVO.exportSERPSaveLine(
+                  year,
+                  month,
+                  day,
+                  currentDocument.imgTstamp,
+                  currentDocument.imgHeight,
+                  currentDocument.imgWidth,
+                  currentDocument.imgSrc,
+                  currentDocument.imgLinkToArchive,
+                  currentDocument.collection,
+                  currentDocument.imgMimeType,
+                  currentDocument.imgAlt,
+                  currentDocument.imgTitle,
+                  currentDocument.pageTstamp,
+                  currentDocument.pageURL,
+                  currentDocument.pageLinkToArchive,
+                  currentDocument.pageTitle
+                );
+
             }
+
             document.getElementById("estimated-results-value").innerHTML = totalResults.toLocaleString(language);
             document.getElementById("estimated-results").style.display = totalResults > 0 ? 'block' : 'hidden';
         }
+        document.getElementById("replayMenuButton").style.display = totalResults > 0 ? 'block' : 'none';
+        document.getElementById("exportSERPOptionsMenuButton").onclick = function () {ARQUIVO.exportSERP('image_search'); return false; };
        },
        type: 'GET'
     });

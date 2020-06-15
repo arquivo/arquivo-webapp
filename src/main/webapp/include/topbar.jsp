@@ -16,6 +16,14 @@
 				<script type="text/javascript">$('.headerMenuText').text(Content.header.menu)</script>
 			</a>
 			<a href="/?l=<%=language%>"><img src="/img/arquivo-logo-white.svg" id="arquivoLogo" alt="Arquivo.pt logo" class="text-center logo-main" /></a>
+
+			<button id="replayMenuButton" class="replay-menu-button" title="Options menu" style="display: none;">
+				<span class="headerOptionsText">
+				</span>
+				<script type="text/javascript">$('.headerOptionsText').text(Content.header.options)</script>
+				<span class="headerOptionsTextDots">...</span>
+			</button>
+
 		</div>
 	</div>
 	<!-- NEW Style: give a black curve effect to the search box -->

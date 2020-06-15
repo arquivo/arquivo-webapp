@@ -221,9 +221,8 @@ function callResizeIframeOnParent() {
 
 function createMatrixList(waybackURL, versionsArray, versionsURL){
   var today = new Date();
-  numberofVersions = yyyy - 1996;
   var yyyy = today.getFullYear();
-  var numberofVersions = yyyy - 1996;
+  var numberofVersions = yyyy - 1996 +1;
   var matrix = new Array(numberofVersions);
   for (var i = 0; i < matrix.length; i++) {
     matrix[i] = [];
@@ -280,7 +279,7 @@ function createMatrixList(waybackURL, versionsArray, versionsURL){
 }
 
 function createResultsList(numberOfVersions, inputURL, insertOnElementId){
-  $("#"+insertOnElementId).append('<div id="resultados-url">'+Content.resultsQuestion+' \'<a href="searchMobile.jsp?query=%22'+inputURL+'%22">'+inputURL+'</a>\'</div>'+
+  $("#"+insertOnElementId).append('<div id="resultados-url">'+Content.resultsQuestion+' \'<a target="_top" href="/page/search?query=%22'+inputURL+'%22">'+inputURL+'</a>\'</div>'+
     '<div id="layoutTV">'+
     '<button class="clean-button-no-fill anchor-color faded" onclick="changeTypeShow(\'table\')"><h4><i class="fa fa-table"></i> '+Content.table+' </h4></button>'+
     '<h4 class="text-bold"><i class="fa fa-list"></i> '+Content.list+'</h4>'+
@@ -327,8 +326,8 @@ function createErrorPage(urlQuery, insertOnElementId){
     '<p class="text-bold">'+Content.suggestions+'</p>'+
     '<ul>'+
     '<li>'+Content.checkSpelling+'</li>'+
-    '<li><a class="no-padding-left" href="'+Content.suggestUrl+urlQuery+'">'+Content.suggest+'</a> '+Content.suggestSiteArchived+'</li>'+
-    '<li><a class="no-padding-left" href="http://timetravel.mementoweb.org/list/1996/'+urlQuery+'">'+Content.mementoFind+'</a>.</li>'+
+    '<li><a class="no-padding-left" target="_top" href="'+Content.suggestUrl+urlQuery+'">'+Content.suggest+'</a> '+Content.suggestSiteArchived+'</li>'+
+    '<li><a class="no-padding-left" target="_top" href="http://timetravel.mementoweb.org/list/1996/'+urlQuery+'">'+Content.mementoFind+'</a>.</li>'+
     '</ul>'+
     '</div>'+
     '</div>'+
@@ -495,7 +494,7 @@ function startUrlSearch(waybackURL, urlQuery, startTs, endTs, insertOnElementId,
         $.each(tokens, function(e){
           if(this != ""){
             var version = JSON.parse(this);
-            if( !version.status || version.status[0] === '4' || version.status[0] === '5'){ /*Ignore 400's and 500's*/
+            if( version.status && ( version.status[0] === '4' || version.status[0] === '5') ){ /*Ignore 400's and 500's*/
               /*empty on purpose*/
             } else {
               if (previousVersion != null && isRemovePreviousVersion(previousVersion, version, deltaToRemoveDuplicatedEntries)) {
@@ -510,6 +509,10 @@ function startUrlSearch(waybackURL, urlQuery, startTs, endTs, insertOnElementId,
             }
           }
         });
+
+        const totalResults = versionsArray.length;
+        document.getElementById("estimated-results-value").innerHTML = totalResults.toLocaleString(language);
+        document.getElementById("estimated-results").style.display = totalResults > 0 ? 'block' : 'none';
 
         if(typeShow === "table") {
           const firstVersionYear = versionsArray.map(function(t) { return parseInt(t.substring(0,4)); }).reduce( function(a, b) { return Math.min(a, b); });
@@ -531,11 +534,11 @@ function startUrlSearch(waybackURL, urlQuery, startTs, endTs, insertOnElementId,
 }
 
 function isRemovePreviousVersion(previousVersion, currentVersion, delta) {
-  return previousVersion.status[0] === '3' && currentVersion.status[0] === '2' && timestampDifferenceInSeconds(previousVersion.timestamp, currentVersion.timestamp) <= delta;
+  return previousVersion.status && previousVersion.status[0] === '3' && currentVersion.status[0] === '2' && timestampDifferenceInSeconds(previousVersion.timestamp, currentVersion.timestamp) <= delta;
 }
 
 function isRemoveCurrentVersion(previousVersion, currentVersion, delta) {
-  return previousVersion.status[0] === '2' && currentVersion.status[0] === '3' && timestampDifferenceInSeconds(previousVersion.timestamp, currentVersion.timestamp) <= delta;
+  return previousVersion.status && previousVersion.status[0] === '2' && currentVersion.status[0] === '3' && timestampDifferenceInSeconds(previousVersion.timestamp, currentVersion.timestamp) <= delta;
 }
 
 function getDateFromTimestamp(ts) {

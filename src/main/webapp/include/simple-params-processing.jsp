@@ -52,8 +52,13 @@ if (queryString != null) {
 					imagesSize += parcel.substring(parcel.indexOf(':')+1) + " ";
 				} else if (parcel.startsWith("safe:")) {
 					safeSearch = parcel.substring(parcel.indexOf(':')+1);
+				} else  {
+					// is other term like: aaa:bbb
+					if (and.length() != 0) {
+						and.append(" ");
+					}
+					and.append(parcel);
 				}
-				// TODO - handle
 			} else {								//words
 				if (and.length() != 0) {
 					and.append(" ");

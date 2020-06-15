@@ -3,6 +3,15 @@
 <script type="text/javascript">
 	<!-- Initialize Swiper -->
     var menuButton = document.querySelector('#menuButton');
+
+    var replayMenu = document.querySelector('#replayMenuButton');
+    var openReplayMenu = function () {
+      swiper.allowSlideNext = true;
+      swiper.allowSlidePrev = true;
+      swiper.slideNext();
+      $('#mainMask').fadeIn('fast');
+    };
+
     var openMenu = function () {
       $('.logo-main-div').css("position:fixed!important; width:initial;");
       $('#menuWrapper').removeClass('transform-none');
@@ -21,27 +30,33 @@
           var slider = this;
           if (slider.activeIndex === 0) { /*open menu*/
           	this.allowSlidePrev = true;
+            this.allowSlideNext = true;
           	$('#mainMask').fadeIn('fast');
             menuButton.classList.add('open');
             $('.swiper-container').removeClass('swiper-no-swiping');
             // required because of slideToClickedSlide
             menuButton.removeEventListener('click', openMenu, true);
-          } else { /*close menu*/
-          	 this.allowSlidePrev = false;
-          	$('.swiper-container').addClass('swiper-no-swiping');
-          	$('#mainMask').fadeOut('fast');
+          } else  if (slider.activeIndex === 1) { /*close menu or options*/
+            $('.swiper-container').addClass('swiper-no-swiping');
+            $('#mainMask').fadeOut('fast');
             menuButton.classList.remove('open');
+          // can not make ionic return the replay menu has activeIndex with 2 value, so the following if dead code.
+          } else if(slider.activeIndex === 2){
+            $('#mainMask').fadeIn('fast');
+            this.allowSlidePrev = true;
           }
         }
         , slideChangeTransitionEnd: function () {
           var slider = this;
           if (slider.activeIndex === 1) {
             menuButton.addEventListener('click', openMenu, true);
+            replayMenu.addEventListener('click', openReplayMenu, true);
           }
         },
       }
     });
     swiper.allowSlidePrev = false;
+    swiper.allowSlideNext = false;
     /*$( "#menuButton" ).click(function() {
       openMenu();
     });*/

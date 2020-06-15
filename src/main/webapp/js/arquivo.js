@@ -3,6 +3,17 @@
  */
 var ARQUIVO = ARQUIVO || (function(){
 
+    const _exportSERPNewLine = "\r\n";
+    const _exportSERPTextSeparator = "\"";
+    
+    // If changed also change the _exportSERPInfo initial value.
+    const _exportSERPColumnSeparator = ",";
+
+    // variable to store the export search engine result page information
+    // initialized with information that tells the Ms excel that the file use
+    // the TAB char has column separator.
+    var _exportSERPInfo = "sep=," + _exportSERPNewLine;
+
     // private methods
     function _inputmaskConfiguration () {
         return { regex: "[0-3][0-9]\/[0-1][0-9]\/[1-2][0-9][0-9][0-9]", insertMode: false };
@@ -319,6 +330,109 @@ var ARQUIVO = ARQUIVO || (function(){
                 collection: collection.join(',')
             };
         },
+
+        // pass any size of arguments
+        exportSERPSaveLine: function() {
+            var cleanColumnRegExp = new RegExp("("+_exportSERPColumnSeparator+"|"+_exportSERPNewLine+")", 'g');
+            var cleanTextSepRegExp = null;
+            if (_exportSERPTextSeparator == "\"") {
+                cleanTextSepRegExp = new RegExp(_exportSERPTextSeparator, 'g');
+                cleanTextSepNewValue = "\"\"";
+            }
+            let line = "";
+            for (var i=0; i < arguments.length; i++) {
+                if (i != 0) {
+                    line += _exportSERPColumnSeparator;
+                }
+                line += _exportSERPTextSeparator;
+                var a = arguments[i];
+                if (a && cleanTextSepRegExp) {
+                    a = a.toString().replace(cleanTextSepRegExp, cleanTextSepNewValue);
+                }
+                if (a && cleanColumnRegExp) {
+                    a = a.toString().replace(cleanColumnRegExp, '    ');
+                }
+                line += a;
+                line += _exportSERPTextSeparator;
+            }
+            _exportSERPInfo += ( line + _exportSERPNewLine );
+            return line;
+        },
+
+        addZero: function(i) {
+          if (i < 10) {
+            i = "0" + i;
+          }
+          return i;
+        },
+
+        jsDateToTimetamp: function(d = new Date()) {
+            const sdate = [
+                d.getFullYear(),
+                ('0' + (d.getMonth() + 1)).slice(-2) + 
+                ('0' + d.getDate()).slice(-2),
+                this.addZero(d.getHours()),
+                this.addZero(d.getMinutes()),
+                this.addZero(d.getSeconds()),
+            ].join('');
+            return sdate;
+        },
+
+        exportSERP: function(type) {
+            var fileContent = _exportSERPInfo;
+            var bb = new Blob([fileContent ], { type: 'text/tab-separated-values' });
+            var a = document.createElement('a');
+            const now = new Date();
+            const timestamp = this.jsDateToTimetamp(now);
+            a.download = "arquivo_pt_"+type+"_"+timestamp+".csv";
+            a.href = window.URL.createObjectURL(bb);
+            a.click();
+        },
+
+        // Generate random string/characters
+        // len is optional
+        generateId : function (len) {
+          function dec2hex (dec) {
+            return ('0' + dec.toString(16)).substr(-2)
+          }
+          var arr = new Uint8Array((len || 40) / 2)
+          window.crypto.getRandomValues(arr)
+          return Array.from(arr, dec2hex).join('')
+        },
+
+        /*
+         * Get the client identification. If it didn't have any, generate a new one
+         * and save it to a cookie.
+         */
+        getClientId : function() {
+          function setCookie(cname, cvalue, exdays) {
+            var d = new Date();
+            d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+            var expires = "expires="+d.toUTCString();
+            document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+          }
+          function getCookie(cname) {
+            var name = cname + "=";
+            var ca = document.cookie.split(';');
+            for(var i = 0; i < ca.length; i++) {
+              var c = ca[i];
+              while (c.charAt(0) == ' ') {
+                c = c.substring(1);
+              }
+              if (c.indexOf(name) == 0) {
+                return c.substring(name.length, c.length);
+              }
+            }
+            return "";
+          }
+          const clientIdCookieName = "client_id";
+          let client_id = getCookie(clientIdCookieName);
+          if (client_id.length == 0) {
+              client_id = this.generateId(20);
+              setCookie(clientIdCookieName, client_id, 1);
+          }
+          return client_id;
+        }
  
     };
 }());

@@ -16,7 +16,7 @@
 <%@ include file="/include/i18n.jsp" %>
 <fmt:setLocale value="<%=language%>"/>
 
-<%!	//To please the compiler since logging need those -- check [search.jsp]
+<%!	//To please the compiler since logging need those -- check [page/search]
 	private static int hitsTotal = -10;		// the value -10 will be used to mark as being "advanced search"
 	private static Calendar DATE_START = new GregorianCalendar(1996, 1-1, 1);
 	private static Calendar dateStart = new GregorianCalendar();

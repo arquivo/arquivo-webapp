@@ -34,6 +34,9 @@
   <script type="text/javascript" src="/js/url-search.js?build=<c:out value='${initParam.buildTimeStamp}' />"></script>
 </head>
 <body>
+  <div class="url-search-estimated-results-container">
+    <p class="url-search-estimated-results" id="estimated-results" style="display: none;"><fmt:message key="search.results.estimated.results.1"/> <span id="estimated-results-value"></span> <fmt:message key="search.results.estimated.results.2"/> <%= dateStartYear %></p>
+  </div>
   <div class="url-search-container" id="urlSearchContainer">
   </div>
   <div id="loadingDiv" class="loader"><div></div></div>

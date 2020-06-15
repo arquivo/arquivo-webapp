@@ -30,6 +30,10 @@ function emphasizeText(textToBeEmphasized, emphasizeText) {
 }
 
 function searchPages(startIndex){
+	var client_id = ARQUIVO.getClientId(20);
+	var search_id = ARQUIVO.generateId(20);
+	var trackingId = client_id + '_' + search_id;
+
     var inputQuery = $('#txtSearch').val();
 
     var dateStart=$('#dateStart_top').val().substring($('#dateStart_top').val().length - 4) +''+  $('#dateStart_top').val().substring(3,5) +''+ $('#dateStart_top').val().substring(0,2)+ '000000' ;
@@ -39,6 +43,18 @@ function searchPages(startIndex){
     var extractedQuery = ARQUIVO.extractQuerySpecialParameters(inputQuery);
 
     const deduplicationPerHostname = extractedQuery.site.length == 0
+
+    // Add information to export SERP functionality with query arguments
+    ARQUIVO.exportSERPSaveLine(Content.exportSERP.pageSearch.queryArgument, Content.exportSERP.pageSearch.queryValue);
+    ARQUIVO.exportSERPSaveLine(Content.exportSERP.pageSearch.query, extractedQuery.query);
+    ARQUIVO.exportSERPSaveLine(Content.exportSERP.pageSearch.from, dateStart);
+    ARQUIVO.exportSERPSaveLine(Content.exportSERP.pageSearch.to, dateEnd);
+    ARQUIVO.exportSERPSaveLine(Content.exportSERP.pageSearch.offset, startIndex);
+    ARQUIVO.exportSERPSaveLine(Content.exportSERP.pageSearch.maxItems, hitsPerPage);
+    ARQUIVO.exportSERPSaveLine(Content.exportSERP.pageSearch.siteSearch, extractedQuery.site);
+    ARQUIVO.exportSERPSaveLine(Content.exportSERP.pageSearch.type, extractedQuery.type);
+    ARQUIVO.exportSERPSaveLine(Content.exportSERP.pageSearch.collection, extractedQuery.collection);
+    ARQUIVO.exportSERPSaveLine(); // Add an empty line after all the arguments
 
     $.ajax({
 		url: textSearchAPI,
@@ -53,7 +69,8 @@ function searchPages(startIndex){
 			maxItems: hitsPerPage,
 			siteSearch: extractedQuery.site,
 			type: extractedQuery.type,
-			collection: extractedQuery.collection
+			collection: extractedQuery.collection,
+			trackingId: trackingId
 		},
 
 		error: function() {
@@ -86,6 +103,24 @@ function searchPages(startIndex){
 	            var resultsToLoad = currentResults;
 
 	            var previousResultHostname, previousResultURL;
+
+	            // add headers to export SERP
+	            ARQUIVO.exportSERPSaveLine("Results");
+	            ARQUIVO.exportSERPSaveLine(
+	            	Content.exportSERP.pageSearch.year,
+					Content.exportSERP.pageSearch.month,
+					Content.exportSERP.pageSearch.day,
+					Content.exportSERP.pageSearch.timestamp,
+					Content.exportSERP.pageSearch.originalURL,
+					Content.exportSERP.pageSearch.linkToArchive,
+					Content.exportSERP.pageSearch.linkToScreenshot,
+					Content.exportSERP.pageSearch.linkToExtractedText,
+					Content.exportSERP.pageSearch.collection,
+					Content.exportSERP.pageSearch.mimeType,
+					Content.exportSERP.pageSearch.title,
+					Content.exportSERP.pageSearch.snippet 
+				);
+
 	            for (var i=0; i< currentResults; i++){
 	                var currentDocument = responseJson.response_items[i];
 	                if (typeof currentDocument === 'undefined' || !currentDocument) {
@@ -99,6 +134,7 @@ function searchPages(startIndex){
 	                var hostname = url.hostname;
 	                var urlPresentation = ARQUIVO.formatURLForPresentation(currentDocument.originalURL);
 	                var linkToArchive = currentDocument.linkToArchive;
+	                var linkToArchiveWithTracking = "/page/view/" + trackingId + "_" + (i+1) + linkToArchive.substring(linkToArchive.indexOf("/wayback")+"/wayback".length);
 	                var snippet = currentDocument.snippet;
 	                var mimeType = currentDocument.mimeType;
 	                var primaryMimeType = mimeType.split('/')[0];
@@ -136,10 +172,10 @@ function searchPages(startIndex){
 	                }
 
 	                var currentResultCode = 
-	                	'<li ${liAttributes} onclick="ga(\'send\', \'event\', \'Search result\', \'Page search\', \'Result position\', '+currentResultGlobalPosition+'); window.location=\''+linkToArchive+'\'; ">'+
+	                	'<li '+liAttributes+' onclick="ga(\'send\', \'event\', \'Search result\', \'Page search\', \'Result position\', '+currentResultGlobalPosition+'); window.location=\''+linkToArchive+'\'; ">'+
 							'<div class="urlBlock">'+
 								'<p class="url" title="'+urlPresentation+'">→ '+urlPresentation+'</p>'+
-								'<a href="'+linkToArchive+'">'+
+								'<a href="'+linkToArchiveWithTracking+'">'+
 								    '<div class="border-bottom"></div>'+
 								    '<h2>'+
 								    	mimeTypePresentation+
@@ -159,11 +195,30 @@ function searchPages(startIndex){
 	                	'</li>'
 	                ;
 
+	                // append result so it can be exported
+	                ARQUIVO.exportSERPSaveLine(
+	                	year,
+						month,
+						day,
+						currentDocument.tstamp,
+						currentDocument.originalURL,
+						currentDocument.linkToArchive,
+						currentDocument.linkToScreenshot,
+						currentDocument.linkToExtractedText,
+						currentDocument.collection,
+						currentDocument.mimeType,
+						currentDocument.title,
+						currentDocument.snippet 
+					);
+
 	                // append result item to ul inside the resultados-lista div
 					document.getElementById("resultados-lista").children[0].insertAdjacentHTML('beforeend', currentResultCode);
 	            }
+
 	        }
 
+	        document.getElementById("replayMenuButton").style.display = totalResults > 0 ? 'block' : 'none';
+	        document.getElementById("exportSERPOptionsMenuButton").onclick = function () {ARQUIVO.exportSERP('page_search'); return false; };
 	        document.getElementById("nextPageSearch").style.display = totalResults > (start + hitsPerPage) ? 'block' : 'none';
 
 	        var previousPageSearch = document.getElementById("previousPageSearch");
