@@ -136,6 +136,21 @@ function openImage(position){
   
   // hide search results
   document.getElementById("headerSearchDiv").style.display = "none";
+  sendOpenImageTrackingAsAjax(position);
+}
+
+function sendOpenImageTrackingAsAjax(position) {
+  const imageElement = $('#testViewer'+position+ ' img');
+  const imageTrackingURL = imageElement.attr('data-openImageTrackingURL');
+  //console.log("Sending open image to url: " + imageTrackingURL);
+  $.ajax({
+       url: imageTrackingURL,
+       dataType: 'text',
+       type: 'GET',
+       success: function(data) {
+         console.log('Success sending open image.');
+       }
+     });
 }
 
 function openLazyLoadOriginalImage(position) {
@@ -260,7 +275,7 @@ return ''+
           '<div id="insert-card-'+position+'" class="full-height text-right">'+
               '<ion-card id="card'+position+'" class="card-height">'+
                  '<a href="'+waybackURL+'/'+imageObj.pageTstamp+'/'+imageObj.pageURL+'">'+
-                    '<img ' + (parseInt(imageObj.expandedWidth) >$( window ).width() ? 'class="image-expanded-viewer image-expanded-full-width" ' : 'class="image-expanded-viewer" ') + 'data-src="'+imageObj.currentImageURL+'" />'+
+                    '<img ' + (parseInt(imageObj.expandedWidth) >$( window ).width() ? 'class="image-expanded-viewer image-expanded-full-width" ' : 'class="image-expanded-viewer" ') + 'data-src="'+imageObj.currentImageURL+'" data-openImageTrackingURL="'+imageObj.openImageTrackingURL+'" />'+
                  '</a>'+
                  '<ion-row class="image-viewer-expanded-main-actions">'+
                       '<ion-col size="6" class="text-left"><a href="'+waybackURL+'/'+imageObj.pageTstamp+'/'+imageObj.pageURL+'"><ion-button size="small" class="visit-page border-mobile" fill="clear"><ion-icon name="globe" class="middle"></ion-icon><span class="middle"><h5>&nbsp;'+Content.images.viewer.visit+'</h5></span></ion-button></a></ion-col>'+
@@ -437,10 +452,9 @@ function closeDetails(position){
 }
 
 function searchImagesJS(dateStartWithSlashes, dateEndWithSlashes, safeSearchOption,startIndex){
-  //TODO:: Decide if we just send the API query in the form of 
-  // /imagesearch?q=sapo%20site:sapo.pt%20type:jpeg      
-  // or if we parse each word in the input and send the API query in the form off
-  // /imagesearch?q=sapo&siteSearch=sapo.pt&type=jpeg */
+    var client_id = ARQUIVO.getClientId(20);
+    var search_id = ARQUIVO.generateId(20);
+    var trackingId = client_id + '_' + search_id;
 
     if( safeSearchOption == "null"){
         safeSearchOption = "on";
@@ -478,7 +492,8 @@ function searchImagesJS(dateStartWithSlashes, dateEndWithSlashes, safeSearchOpti
           more: "imgThumbnailBase64,imgSrcURLDigest,imgDigest,pageProtocol,pageHost,pageImages,safe",
           siteSearch: extractedQuery.site,
           type: extractedQuery.type,
-          collection: extractedQuery.collection
+          collection: extractedQuery.collection,
+          trackingId: trackingId
        },
            
        timeout: 300000,
@@ -489,7 +504,6 @@ function searchImagesJS(dateStartWithSlashes, dateEndWithSlashes, safeSearchOpti
         $('#imagesDefaultTextDiv').hide(); /*Hiding default message*/
 
         var responseJson = $.parseJSON(data);
-
 
         totalResults = responseJson.totalItems;
         var showNextPageButton = ((parseInt(startIndex) + parseInt(numrows)) >= totalResults) ? false: true;    
@@ -588,6 +602,7 @@ function searchImagesJS(dateStartWithSlashes, dateEndWithSlashes, safeSearchOpti
 
                 imageObj.src = "data:"+currentDocument.imgMimeType+";base64," + currentDocument.imgThumbnailBase64;
                 imageObj.currentResultGlobalPosition = currentResultGlobalPosition;
+                imageObj.openImageTrackingURL = "/image/view/" + trackingId + "_" + (i+1) + '/' + currentDocument.imgTstamp + '/' +currentDocument.imgSrc;
 
                 imageObj.onload = function() {
                             
