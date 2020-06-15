@@ -498,7 +498,7 @@ String[] queryString_splitted=null;
           <%
             if (start > 0) {
               int previousPageStart = start - hitsPerPage;
-              String previousPageUrl = "page/search?" +
+              String previousPageUrl = "/page/search?" +
                 "query=" + URLEncoder.encode(request.getAttribute("query").toString(), "UTF-8") +
                 "&dateStart="+ dateStartString +
                 "&dateEnd="+ dateEndString +
@@ -523,7 +523,7 @@ String[] queryString_splitted=null;
           <% } %>
         <%
             long nextPageStart = start + hitsPerPage;
-            String nextPageUrl = "page/search?" +
+            String nextPageUrl = "/page/search?" +
               "query=" + URLEncoder.encode(request.getAttribute("query").toString(), "UTF-8") +
               "&dateStart="+ dateStartString +
               "&dateEnd="+ dateEndString +

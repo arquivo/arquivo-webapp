@@ -332,7 +332,7 @@ function searchImages(startIndex){
       if (startPosition >= numrows) {
           int previousPageStart = startPosition - numrows;
           if(previousPageStart <0){previousPageStart=0;}
-          String previousPageUrl = "image/search?" + "query=" + query +
+          String previousPageUrl = "/image/search?" + "query=" + query +
             "&dateStart="+ dateStartString +
             "&dateEnd="+ dateEndString +
             "&pag=prev" +                             // mark as 'previous page' link
@@ -350,7 +350,7 @@ function searchImages(startIndex){
       <%
         if (true) { /*TODO:: add condition check if there are more results */
            long nextPageStart = startPosition + numrows;
-           String nextPageUrl = "image/search?" +
+           String nextPageUrl = "/image/search?" +
             "query=" + query +
             "&dateStart="+ dateStartString +
             "&dateEnd="+ dateEndString +
