@@ -3,7 +3,16 @@
  */
 var ARQUIVO = ARQUIVO || (function(){
 
-    var _exportSERPInfo = '';
+    const _exportSERPNewLine = "\r\n";
+    const _exportSERPTextSeparator = "\"";
+    
+    // If changed also change the _exportSERPInfo initial value.
+    const _exportSERPColumnSeparator = ",";
+
+    // variable to store the export search engine result page information
+    // initialized with information that tells the Ms excel that the file use
+    // the TAB char has column separator.
+    var _exportSERPInfo = "sep=," + _exportSERPNewLine;
 
     // private methods
     function _inputmaskConfiguration () {
@@ -324,21 +333,29 @@ var ARQUIVO = ARQUIVO || (function(){
 
         // pass any size of arguments
         exportSERPSaveLine: function() {
-            const textSeparator = "", columnSeparator = "\t";
-            var replaceTabsRegExp = new RegExp("("+columnSeparator+"|\n)", 'g');
+            var cleanColumnRegExp = new RegExp("("+_exportSERPColumnSeparator+"|"+_exportSERPNewLine+")", 'g');
+            var cleanTextSepRegExp = null;
+            if (_exportSERPTextSeparator == "\"") {
+                cleanTextSepRegExp = new RegExp(_exportSERPTextSeparator, 'g');
+                cleanTextSepNewValue = "\"\"";
+            }
             let line = "";
             for (var i=0; i < arguments.length; i++) {
                 if (i != 0) {
-                    line += columnSeparator;
+                    line += _exportSERPColumnSeparator;
                 }
-                line += textSeparator;
-                const a = arguments[i];
-                if (a) {
-                    line += a.toString().replace(replaceTabsRegExp, '    ');
+                line += _exportSERPTextSeparator;
+                var a = arguments[i];
+                if (a && cleanTextSepRegExp) {
+                    a = a.toString().replace(cleanTextSepRegExp, cleanTextSepNewValue);
                 }
-                line += textSeparator;
+                if (a && cleanColumnRegExp) {
+                    a = a.toString().replace(cleanColumnRegExp, '    ');
+                }
+                line += a;
+                line += _exportSERPTextSeparator;
             }
-            _exportSERPInfo += ( line + "\n" );
+            _exportSERPInfo += ( line + _exportSERPNewLine );
             return line;
         },
 
