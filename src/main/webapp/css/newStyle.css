@@ -5969,7 +5969,7 @@ body#home-search .urlBlock a:visited {
   padding-left: 32px;
   border: 1px solid transparent !important;
   outline: none !important;
-  font-size: 19px !important;
+  font-size: 18    px !important;
   font-family: 'Roboto', sans-serif !important;
   transition: box-shadow 0.5s ease 0s !important;
   transition: background-color 0.5s ease 0s !important;
@@ -6014,7 +6014,7 @@ body::-webkit-scrollbar-thumb {
   z-index: 999999;
   margin-top: -78px !important;
   display: block !important;
-  width: 98.4% !important;
+  width: 95% !important;
   margin: 0 auto;
   font-family: 'Roboto', sans-serif !important;
 }
@@ -6034,12 +6034,13 @@ body::-webkit-scrollbar-thumb {
   z-index: 1000000 !important;
   right: 0px !important;
   top: 0px;
-  padding: 12px 0px 12px 0 !important;
+  padding: 14.5px 10px 12px 10px !important;
   outline: none;
   border: none;
-  background-color: transparent;  
-  width: 30px;
-  height: 30px;
+  background-color: transparent;
+  width: auto;
+  height: 27px;
+  font-size: 13px;
 }
 /* Estimated results */
 p#estimated-results {
@@ -6085,6 +6086,7 @@ input {
   padding-left: 36px;
   color: #1a73ba;
   z-index: -1;
+  transition: 0.5s;
 }
 
 #sliderCircleEnd:hover {
@@ -6131,6 +6133,7 @@ input {
   padding-left: 7px;
   color: #1a73ba;
   z-index: -1;
+  transition: 0.5s;
 }
 
 #sliderCircleStart:hover {
@@ -9685,7 +9688,7 @@ a#advancedSearchButton {
   white-space: normal !important;
 }
 #resultados-lista ul li h2 {
-  font-size: 18px;
+  font-size: /*18px*/20px;
   margin-bottom: 0px;
   padding-top: 0px;
   margin-top: 0px;
@@ -11809,6 +11812,8 @@ body#home-search .plt-desktop #urlSearchContainer {
 }
 #newFooterWrapper #wp_editor_widget-8 > h4[class*="widget-title"], #newFooterWrapper #wp_editor_widget-9 > h4[class*="widget-title"], #newFooterWrapper #wp_editor_widget-11 > h4[class*="widget-title"], #newFooterWrapper #wp_editor_widget-12 > h4[class*="widget-title"], #newFooterWrapper #wp_editor_widget-13 > h4[class*="widget-title"], #newFooterWrapper #wp_editor_widget-14 > h4[class*="widget-title"], #newFooterWrapper #wp_editor_widget-15 > h4[class*="widget-title"], #newFooterWrapper #wp_editor_widget-16 > h4[class*="widget-title"] {
   font-weight: bold;
+  padding: 0;
+  border-top: none;
 }
 #newFooterWrapper .navigation-search {
   /*display: block!important;*/
@@ -12678,7 +12683,7 @@ margin: -35px auto 0 auto !important;
   padding-bottom: /*15px*/ 20px;
   margin-top: 0px;
   padding-left: 20px;
-  font-size: 17px;
+  font-size: /*17px*/13px    ;
   cursor: pointer;
   text-decoration: none;
   font-weight: 500 !important;
