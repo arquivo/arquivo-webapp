@@ -8256,6 +8256,9 @@ tr.trTV:nth-child(even) {
   #buttonSearch button {   
     /*right: 16px !important; */  
 }
+#buttonSearch button {
+    font-size: 14px;  
+}
 }
 
 @media screen and (min-width:769px) {
@@ -12247,7 +12250,7 @@ body#home-search .spell {
     max-width: 736px !important;
 }
 body#homepage-landing #buttonSearch button, body#home-search #buttonSearch button  {   
-    right: 10px !important;
+    right: 0px !important;
 }
 body#homeImages #buttonSearch button {
     right: 26px !important;
@@ -12268,7 +12271,7 @@ span#buttonSearch button span.glyphicon {
     right: -6px !important;
 }
 body#homepage-landing #buttonSearch button {
-    right: 10px !important;
+    right: 0px !important;
 }
 body#homeImages #buttonSearch button {
     right: 0px !important;
@@ -12277,6 +12280,19 @@ body#homeImages #buttonSearch button {
 body#homeImages span#buttonSearch button span {
     top: 4px !important;
     right: 4px !important;
+}
+span#buttonSearch {
+    width: auto;
+    height: 45px;
+    right: 30px!important;
+    top: 4px !important;
+    color: white;
+    position: absolute;
+    z-index: 999999;
+    background-color: #1c75c0 !important;
+    border-top-right-radius: 10px !important;
+    border-bottom-right-radius: 10px !important;
+    transition: 0.5s;
 }
 }
 /* iPad landscape */
@@ -12425,37 +12441,26 @@ body#homeImages .spell {
 .content {    
  padding-bottom: 0px !important;
 }
-body#homeImages span#buttonSearch, body#homepage-landing span#buttonSearch {
- position: relative;
-right: 4px !important;
-    top: 53px !important;
-}
-body#home-search span#buttonSearch {
-    right: 4px !important;
-    top: 2px !important;
-}
+
 #newFooterWrapper .site-footer .footer-widgets-container .inside-footer-widgets {
     margin-left: -12px !important;
     display: flex !important;
 }
-body#home-search span#buttonSearch {
-    right: 60px !important;
-    top: 12px !important;
-}
+
 body#home-search span#buttonSearch button span {
     top: 4px !important;
     right: 3px !important;
 }
-body#homepage-landing span#buttonSearch {
+/*body#homepage-landing*/ span#buttonSearch {
     position: relative;
     right: 60px !important;
     top: 12px !important;
 }
-span#buttonSearch button span {
+/*span#buttonSearch button span {
     top: 4px !important;
     right: 3px !important;
 }
-body#homeImages span#buttonSearch, body#homepage-landing span#buttonSearch {
+/*body#homeImages span#buttonSearch, body#homepage-landing*/ span#buttonSearch {
     position: relative;
     right: 58px !important;
     top: 13px !important;

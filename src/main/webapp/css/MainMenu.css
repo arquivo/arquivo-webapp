@@ -371,7 +371,7 @@ body#advanced .glyphicon-search:before, body#advanced-images .glyphicon-search:b
 span#buttonSearch {
     width: auto;
     height: 45px;
-    right: 29px !important;
+    right: /*29px*/24px !important;
     top: 4px !important;
     color: white;
     position: absolute;
@@ -444,12 +444,63 @@ span#buttonSearch:active {
     text-align: right;
   }
 }
-@media screen and (device-width:1366px) and (device-height:1024px) {
-span#buttonSearch {  
-    right: 50px !important;
-    top: 18px !important;
+
+/* iPad Portrait */
+@media (device-width:768px) and (device-height:1024px) {
+
+span#buttonSearch {   
+    right: 30px!important;   
+}
+#resultados-lista ul li h2 {
+    font-size: 18px;
 }
 }
+
+/* iPad landscape */
+@media (device-width:1024px) and (device-height:768px) {
+span#buttonSearch {   
+    right: 29px!important;   
+}
+#resultados-lista ul li h2 {
+    font-size: 18px;
+}
+}
+
+/* iPad Pro portrait */
+@media screen and (device-height: 1366px) and (device-width: 1024px){
+span#buttonSearch {
+    width: auto;
+    height: 45px;
+    right: 52px !important;
+    top: 4px !important;
+    color: white;
+    position: absolute;
+    z-index: 999999;
+    background-color: #1c75c0 !important;
+    border-top-right-radius: 10px !important;
+    border-bottom-right-radius: 10px !important;
+    transition: 0.5s;
+}
+}
+/* iPad Pro landscape */
+@media screen and (device-height: 1024px) and (device-width: 1366px){
+span#buttonSearch {
+    width: auto;
+    height: 45px;
+    right: 45px !important;
+    top: 10px !important;
+    color: white;
+    position: absolute;
+    z-index: 999999;
+    background-color: #1c75c0 !important;
+    border-top-right-radius: 10px !important;
+    border-bottom-right-radius: 10px !important;
+    transition: 0.5s;
+}
+
+}
+
+
 
 .replay-menu-button {
   color: white;
