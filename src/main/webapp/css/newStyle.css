@@ -3263,7 +3263,7 @@ top: 16px
 @media (min-width:320px) and (max-width:768px) {
   body#homeImages p#estimated-results {
     width: 915px;
-    margin: 20px auto -1px auto;
+    margin: 25px auto -17px auto;
     padding-left: 18px;
     display: flex;
     width: 100%;
@@ -5775,9 +5775,16 @@ body#advanced .headerMenuText, body#advanced-images .headerMenuText  {
   a#PageButton, a#ImageButton, a#advancedSearchButton {
     font-size: 14px !important;
   }
-  body#home-search p#estimated-results {
-    margin-top: /*0*/ 23px !important;
+  body#home-search p#estimated-results {    
+    margin-top: /*0*/ 30px !important;
     margin-left: 12px !important;
+    margin-bottom: -27px;
+}
+
+
+
+
+
   }
   #resultados-lista ul li .resumo {
     font-size: 16px !important;
@@ -6937,11 +6944,12 @@ legend.scheduler-border {
 .label-padding-top {
   padding-top: 15px;
 }
-.box-content label {
+.box-content label {    
   color: black;
   font-weight: normal;
   font-size: 15px;
-  padding-left: 1px !important;
+  padding-left: 22px !important;
+  background: transparent url(../img/advanced-arrow.svg) no-repeat left 8px; 
 }
 .box-content input {
   color: initial;
