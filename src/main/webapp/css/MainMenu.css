@@ -9,7 +9,7 @@ body#advanced-images .swiper-container {
 body#advanced-images .swiper-container #menuWrapper {}
 .swiper-container {
   /* New code for swiper */
-  background-color: #1c75c0 !important;
+  background-color: /*#1c75c0*/#033f72 !important;
   width: 100%;
   height: 100%;
   padding: 0;
@@ -180,7 +180,7 @@ body#advanced .logo-main-div, body#advanced-images .logo-main-div {
   padding-right: 23px;
   padding-top: 8px !important;
   padding-bottom: 16px !important;
-  background-color: /*#000*/ /*#1a73ba*/ /*#25517a*/ #1c75c0;
+  background-color: /*#1c75c0*/ #033f72 !important;
   text-align: center;
   z-index: 0;
   height: 48px;
@@ -371,7 +371,7 @@ body#advanced .glyphicon-search:before, body#advanced-images .glyphicon-search:b
 span#buttonSearch {
     width: auto;
     height: 45px;
-    right: /*29px*/24px !important;
+    right: 29px !important;
     top: 4px !important;
     color: white;
     position: absolute;
@@ -537,14 +537,13 @@ span#buttonSearch {
 @media screen and (min-width:960px) {
   .headerOptionsText {
     font-size: 13px !important;
-    padding: 0px 10px;
-    border: 1px solid transparent;
+    padding: 0px 10px;   
     border-radius: 5px;
-    margin: 9px -8px 0 0;
+    margin: 7px -8px 0 0;
     transition: 0.5s;
-    color: white;
-    background-color: transparent;
+    color: white;   
     border: 1px solid white;
+    background-color: #1c75c0;
   }
   .headerOptionsText {
     display: block;

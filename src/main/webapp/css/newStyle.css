@@ -3954,7 +3954,7 @@ display: none;
 .headerMenuText {
  display: block;
     position: absolute;
-    top: -6.5px;
+    top: -7px;
     left: -11px;
     font-size: 0.6em;
     padding: 0 10px;
@@ -3964,6 +3964,7 @@ display: none;
     transition: 0.5s;
     width: 54px;
     height: 31px;
+    background-color: #1c75c0;
 }
 
 body#advanced .headerMenuText, body#advanced-images .headerMenuText  {
@@ -6007,6 +6008,7 @@ body::-webkit-scrollbar-thumb {
   background-color: white !important;
   display: block;
   visibility: visible !important;
+  color: #222;
 }
 /* NEW STYLE: forcing 100% width on the search bar */
 #searchBarBlock {
@@ -6332,11 +6334,16 @@ body#advanced-images #searchForm {
   white-space: normal !important;
 }
 #resultados-lista ul li a {
-  color: #1c75c0 !important;
+  color: /*#1c75c0*/#033f72 !important;
   font-size: 1.18em !important;
   font-family: 'Roboto', sans-serif;
-  line-height: normal;
+  line-height: normal;  
 }
+
+#resultados-lista ul li a:hover {
+ text-decoration: underline
+}
+
 #resultados-lista ul li a:visited h2 {
   color: #9c27b0 !important;
 }
@@ -9691,7 +9698,7 @@ a#advancedSearchButton {
   white-space: normal !important;
 }
 #resultados-lista ul li h2 {
-  font-size: /*18px*/20px;
+  font-size: /*18px*/19px;
   margin-bottom: 0px;
   padding-top: 0px;
   margin-top: 0px;
@@ -11817,6 +11824,7 @@ body#home-search .plt-desktop #urlSearchContainer {
   font-weight: bold;
   padding: 0;
   border-top: none;
+  background-color: transparent;
 }
 #newFooterWrapper .navigation-search {
   /*display: block!important;*/
