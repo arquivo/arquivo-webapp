@@ -5982,8 +5982,8 @@ body#home-search .urlBlock a:visited {
 }
 /* scrollbar */
 html {
-  --scrollbarBG: #1c75c0;
-  --thumbBG: #0b497f;
+  --scrollbarBG: #033f72 !important;
+  --thumbBG: #1c75c0;
 }
 body::-webkit-scrollbar {
   width: 11px;
@@ -6089,6 +6089,7 @@ input {
   color: #1a73ba;
   z-index: -1;
   transition: 0.5s;
+  display: block
 }
 
 #sliderCircleEnd:hover {
@@ -6136,6 +6137,7 @@ input {
   color: #1a73ba;
   z-index: -1;
   transition: 0.5s;
+  display: block
 }
 
 #sliderCircleStart:hover {
@@ -6150,6 +6152,7 @@ input {
   padding-left: 7px;
   color: #1a73ba;
   z-index: -1;
+  display: block
 }
 
 #sliderCircleStart:active {
@@ -6164,6 +6167,7 @@ input {
   padding-left: 7px;
   color: #1a73ba;
   z-index: -1;
+  display: block
 }
 
 
@@ -12712,3 +12716,20 @@ margin: -35px auto 0 auto !important;
   background-color: #fff;
   color: #1c75c0;
 }
+
+/* Export results */
+#exportSERPOptionsMenuButton h4 {
+background: transparent url(../img/export-results.svg) no-repeat 20px 13px;
+padding-left: 45px;
+}
+
+#exportSERPOptionsMenuButton h4:hover {
+background:  #fff url(../img/export-results-hover.svg) no-repeat 20px 13px !important;
+color:#104877 !important;
+}
+
+#exportSERPOptionsMenuButton h4:active {
+background:  #104877 url(../img/export-results-hover.svg) no-repeat 20px 13px !important;
+color:#104877 !important;
+}
+

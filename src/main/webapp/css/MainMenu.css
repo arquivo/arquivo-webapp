@@ -114,9 +114,10 @@ body#home-search .content {
   color: #033f72 !important
 }
 .menu h4:active {
-  background-color: #fff;
-  color: #1c75c0
+  background-color: #033f72 !important;
+  color: #ffffff
 }
+
 #menuSwiperSlide button:nth-of-type(1) h4 {
   border-top: none !important;
 }
@@ -169,7 +170,7 @@ body#advanced .logo-main-div, body#advanced-images .logo-main-div {
   padding-bottom: 20px;
 }
 .curve-background {
-  background-color: /*#000*/ #1c75c0;
+  background-color: #033f72 !important;
   z-index: 9;
   padding-top: 22px;
 }
