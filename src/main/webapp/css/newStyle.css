@@ -12127,8 +12127,7 @@ margin-top: 5px !important;
 
 .image-display-date {
     font-weight: normal;
-    font-size: 0.9em !important; 
-    display: flex;  
+    font-size: 0.9em !important;     
     width: fit-content;
     margin: 0 auto;
 }
