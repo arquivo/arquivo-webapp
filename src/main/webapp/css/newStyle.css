@@ -7768,6 +7768,7 @@ ion-button {
   margin-right: -1em;
   color: #ffffff !important; 
   background-color: #1c75c0;
+  transition: 0.1s
 }
 
 .view-details:hover { 
@@ -7787,7 +7788,8 @@ ion-button {
   color: rgba(0, 0, 0, 0.7) !important;
   --ion-background-color: transparent !important;
   --ion-padding: 20px !important;
-  --ion-padding-: 0 !important
+  --ion-padding-: 0 !important;
+  font-size: inherit;
 }
 .image-mobile-expanded-div ion-card ion-row {
   margin-left: 23px;
@@ -7813,6 +7815,7 @@ body#home-landing.hydrated h3 {
 }
 .image-mobile-expanded-div ion-card-content {
   padding-top: 0px;  
+  padding-left: 10.5px
 }
 .image-mobile-expanded-div ion-list {
  padding: 0px 0 8px 0;
@@ -7823,7 +7826,7 @@ body#home-landing.hydrated h3 {
  margin-bottom: 00px !important;
 }
 .image-mobile-expanded-div ion-list ion-item:last-of-type {
-  padding: 10px 0;
+  padding: 0px 0;
 }
 .image-mobile-expanded-div ion-list ion-item {
   word-wrap: break-word;
@@ -8061,7 +8064,7 @@ body#homeImages #searchBarButtonsDiv {
   float: left;
   margin-top: -29px;
   margin-bottom: /*3px*/0;
-  padding: 0 13px;
+  padding: 0 14px 0 14.5px;
 }
 a#advancedSearchButton {
   float: right !important;
@@ -9528,7 +9531,7 @@ top: 14px
   body#homeImages p#estimated-results {
     width: 915px;
     margin: 36px auto -16px auto;
-    padding-left: 6px;
+    padding-left: 9px;
     display: flex;
     width: 100%;
     max-width: /*915px*/ 970px;
@@ -9609,10 +9612,16 @@ top: 14px
   }
   .closeIt {
     top: 3px;
-    right: calc(27vw + 9px);
+    right: calc(27vw + 3px);
   }
+  
+  .card-content-md {
+    padding-bottom: 0 !important
+  }
+  
   body#homeImages .hydrated h4 {
     font-size: 1.1em !important;
+    padding-left: 0 !important
   }
   .hydrated h3 {
     font-size: 1.3em;
