@@ -21,9 +21,12 @@
   <meta name="Keywords" content="<fmt:message key='url.search.meta.keywords'/>" />
   <meta name="Description" content="<fmt:message key='url.search.meta.description'/>" />
 
-  <jsp:include page="/include/headerDefault.jsp">
-      <jsp:param name="showBrowserUpgradeMessage" value="false" />
-  </jsp:include>
+  <link rel="stylesheet" href="/static/jquery-ui-1.12.1.custom/jquery-ui.min.css" media="none" onload="if(media!='all')media='all'" /><%-- Lazy load css download --%>
+  <script src="/static/jquery-3.5.1.min.js"></script>
+  <script src="/static/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
+
+  <link rel="stylesheet" href="/css/urlSearch.css?build=<c:out value='${initParam.buildTimeStamp}'  />" media="none" onload="if(media!='all')media='all'" /><%-- Lazy load css download --%>
+  
   <%@ include file="/include/dates.jsp" %>
   <%@ include file="/include/i18njs.jsp" %>
 
@@ -34,14 +37,19 @@
   <script type="text/javascript" src="/js/url-search.js?build=<c:out value='${initParam.buildTimeStamp}' />"></script>
 </head>
 <body>
-  <div class="url-search-estimated-results-container">
-    <p class="url-search-estimated-results" id="estimated-results" style="display: none;"><fmt:message key="search.results.estimated.results.1"/> <span id="estimated-results-value"></span> <fmt:message key="search.results.estimated.results.2"/> <%= dateStartYear %></p>
+  <div class="urlSearchEstimatedResultsContainer">
+    <p class="urlSearchEstimatedResults" id="estimatedResults" style="display: none;">
+      <fmt:message key="search.results.estimated.results.1"/>
+      <span id="estimatedResultsValue"></span> 
+      <fmt:message key="search.results.estimated.results.2"/>
+      <%= dateStartYear %>
+    </p>
   </div>
-  <div class="url-search-container" id="urlSearchContainer">
+
+  <div id="urlSearchContainer" class="urlSearchContainer">
   </div>
   <div id="loadingDiv" class="loader"><div></div></div>
   <script type="text/javascript">
-
     initializeUrlSearch("<%=waybackURL%>", "<%=urlQuery%>", "<%=startTs%>", "<%=endTs%>", 'urlSearchContainer', 'loadingDiv', "<%=typeShow%>", "<%=timestampToOpen%>");
   </script>
 </body>

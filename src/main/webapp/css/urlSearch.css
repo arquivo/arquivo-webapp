@@ -1,0 +1,121 @@
+div, li {
+  outline: 1px solid red
+}
+
+div {
+  outline: 1px solid red
+}
+
+ul {
+  outline: 1px solid green;
+  list-style-type: none
+}
+
+li {
+  outline: 1px solid blue
+}
+
+
+div.urlSearchContainer.list > div.tablePresentation {
+  display: none;
+}
+
+div.urlSearchContainer.table > div.listPresentation {
+  display: none;
+}
+
+li.close > h4 > span.interactionStatus:after {
+  content: "\2191";
+}
+
+li.open > h4 > span.interactionStatus:after {
+  content: "\2193";
+}
+
+li.close > ul {
+  display: none;
+}
+
+div.urlSearchContainer.list a.listLink {
+  font-weight: bold;
+}
+
+div.urlSearchContainer.table a.tableLink {
+  font-weight: bold;
+}
+
+.noVersions {
+	display: none;
+}
+
+.previous:after {
+	content: "\2190";
+}
+
+.next:after {
+	content: "\2192";
+}
+
+.tablePresentation {
+  display: block;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+.tablePresentation table td {
+  min-width: 50px;
+}
+
+.tablePresentation table thead {
+  background-color: white;
+}
+
+.viewingVersion {
+  font-weight: bold;
+}
+
+.list .previous ,.list .next {
+  display: none;
+}
+
+@media (max-width: 200px) {
+  .urlSearchEstimatedResultsContainer, .resultsHeader {
+    display: none;
+  }
+}
+
+/*
+ * Loading spinner
+ */
+.loader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /*width: 100%;*/
+  padding: 10%;
+  flex-wrap: wrap;
+}
+.loader div {
+  width: 100px;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px 20px;
+}
+@keyframes load8 {
+  100% {
+    transform: rotatez(360deg);
+  }
+}
+.loader div::before {
+  content: "";
+  color: white;
+  height: 50px;
+  width: 50px;
+  background: transparent;
+  border-radius: 50%;
+  border: 10px solid transparent;
+  border-color: #1c75c0 #1c75c0 transparent transparent;
+  animation: load8 .6s infinite;
+}
