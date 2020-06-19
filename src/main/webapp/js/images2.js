@@ -702,7 +702,7 @@ function createErrorPage(){
   $( window ).resize(function() {$('#conteudo-pesquisa-erro').css('margin-left', $('#search-dateStart_top').offset().left)}); /*dirty hack to keep message aligned with not responsive searchbox*/$( window ).resize(function() {$('.spell').css('margin-left', $('#search-dateStart_top').offset().left)}); /*dirty hack to keep message aligned with not responsive searchbox*/ 
 }
 
-document.onkeydown = function(evt) {
+document.addEventListener('keydown', function(evt) {
   evt = evt || window.event;
   
   // When pressing escape key close image
@@ -737,4 +737,4 @@ document.onkeydown = function(evt) {
   if (isArrowRigth && $('#showSlides').is(":visible")) {
       nextImage();
   }
-};
+});
