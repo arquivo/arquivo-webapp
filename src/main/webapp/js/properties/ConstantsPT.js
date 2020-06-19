@@ -208,4 +208,6 @@ Content = {
             pageTitle: "Título da página",
         }
     },
+    pageSearchButton: "Páginas",
+    imageSearchButton: "Imagens",
 };

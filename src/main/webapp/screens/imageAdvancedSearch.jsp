@@ -38,117 +38,105 @@
 </head>
 <body id="advanced-images">
 	<%@ include file="/include/topbar.jsp" %>
-	<div>
     <div class="container-fluid topcontainer col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8 col-lg-offset-3 col-lg-6 col-xl-offset-4 col-xl-4 " id="headerSearchDiv" >
 		<div id="info-texto-termos" class="row">
 		</div>
 		<!-- Formulario -->
 		<div id="main" class="main-form-advanced">
 			<div id="conteudo-pesquisa">
-				<form method="get" id="searchForm" action='<%= request.getContextPath() + "/image/search" %>'>
+				<form method="get" id="searchForm" action="/image/search">
 					<input type="hidden" name="l" value="<%= language %>" />
-		            <div class="expandable-div">
-						<fieldset id="words">
-							<legend><fmt:message key='advancedImages.terms'/><i class="fa iCarret yearCarret fa-caret-down pull-right right-15" aria-hidden="true"></i></legend>
-							<div class="box-content container-fluid" id="wordsOptions">
-								<div id="label-palavras-1">
-									<label for="adv_and" class="row  col-xs-12 no-padding-left label-padding-top"><fmt:message key='advancedImages.terms.all'/></label>
-									<div class="withTip ">
-										<input type="text" id="adv_and" class="row  col-xs-10" name="adv_and" value="<%= (request.getParameter("adv_and") != null && !(request.getParameter("adv_and").equals(""))) ? request.getParameter("adv_and") : and.toString()%>" />
-										<div class="row  col-xs-10 no-padding-left">
-											<span class="tip"><fmt:message key='advancedImages.terms.all.hint'/></span>
-										</div>
-									</div>
-								</div>
+		            <div class="expandable-div box-content container-fluid">
+						<div class="topActionsOnAdvancedSearch">
+                            <script type="text/javascript">
+                              document.write(ARQUIVO.getSearchButtonsHTML());
+                            </script>
+                        </div>
 
-								<div id="label-palavras-2">
-									<label class="row  col-xs-12 no-padding-left label-padding-top" for="adv_phr"><fmt:message key='advancedImages.terms.phrase'/></label>
-									<div class="withTip">
-										<input type="text" class="row  col-xs-10" id="adv_phr" name="adv_phr" value="<%= (request.getParameter("adv_phr") != null && !(request.getParameter("adv_phr").equals(""))) ? request.getParameter("adv_phr") : phrase.toString()%>" />
-										<div class="row  col-xs-10 no-padding-left">
-											<span class="tip"><fmt:message key='advancedImages.terms.phrase.hint'/></span>
-										</div>
-									</div>
-								</div>
-
-								<div id="label-palavras-3">
-									<label class="row  col-xs-12 no-padding-left label-padding-top" for="adv_not"><fmt:message key='advancedImages.terms.not'/></label>
-									<div class="withTip">
-										<input type="text" class="row  col-xs-10" id="adv_not" name="adv_not" value="<%= (request.getParameter("adv_not") != null && !(request.getParameter("adv_not").equals(""))) ? request.getParameter("adv_not") : not.toString()%>" />
-										<div class="row  col-xs-10 no-padding-left">
-											<span class="tip"><fmt:message key='advancedImages.terms.not.hint'/></span>
-										</div>
-									</div>
+						<div id="label-palavras-1">
+							<label for="adv_and" class="row  col-xs-12 no-padding-left label-padding-top"><fmt:message key='advancedImages.terms.all'/>:</label>
+							<div class="withTip ">
+								<input type="text" id="adv_and" class="row  col-xs-10" name="adv_and" value="<%= (request.getParameter("adv_and") != null && !(request.getParameter("adv_and").equals(""))) ? request.getParameter("adv_and") : and.toString()%>" />
+								<div class="row  col-xs-10 no-padding-left">
+									<span class="tip"><fmt:message key='advancedImages.terms.all.hint'/></span>
 								</div>
 							</div>
-						</fieldset>
+						</div>
+
+						<div id="label-palavras-2">
+							<label class="row  col-xs-12 no-padding-left label-padding-top" for="adv_phr"><fmt:message key='advancedImages.terms.phrase'/>:</label>
+							<div class="withTip">
+								<input type="text" class="row  col-xs-10" id="adv_phr" name="adv_phr" value="<%= (request.getParameter("adv_phr") != null && !(request.getParameter("adv_phr").equals(""))) ? request.getParameter("adv_phr") : phrase.toString()%>" />
+								<div class="row  col-xs-10 no-padding-left">
+									<span class="tip"><fmt:message key='advancedImages.terms.phrase.hint'/></span>
+								</div>
+							</div>
+						</div>
+
+						<div id="label-palavras-3">
+							<label class="row  col-xs-12 no-padding-left label-padding-top" for="adv_not"><fmt:message key='advancedImages.terms.not'/>:</label>
+							<div class="withTip">
+								<input type="text" class="row  col-xs-10" id="adv_not" name="adv_not" value="<%= (request.getParameter("adv_not") != null && !(request.getParameter("adv_not").equals(""))) ? request.getParameter("adv_not") : not.toString()%>" />
+								<div class="row  col-xs-10 no-padding-left">
+									<span class="tip"><fmt:message key='advancedImages.terms.not.hint'/></span>
+								</div>
+							</div>
+						</div>
+
+						<div id="advancedSearchDatesContainer">
+                            <label class="row  col-xs-12 no-padding-left label-padding-top" for=""><fmt:message key='advanced.date'/>:</label>
+                            <div id="label-data-1">
+                                <%@ include file="/include/datePickerComponent.jsp" %>
+                            </div>
+                        </div>
 					</div>
+					<div class="expandable-div box-content container-fluid">
+						<label class="row  col-xs-12 no-padding-left label-padding-top" for="formatType"><fmt:message key='advancedImages.format.label'/>:</label>
+						<select id="formatType" interface="action-sheet" placeholder="<fmt:message key='advancedImages.select.one'/>"  class="row  col-xs-10 no-padding-left formatTypeDropdown" name="type">
+						<%
+							String[] mimeList = {"jpg", "png", "gif", "bmp", "webp"};
+							String[] mimeListDetail = {"Joint Photographic Experts Group (.jpeg)", "Portable Network Graphics (.png)", "Graphics Interchange Format (.gif)", "Bitmap Image File (.bmp)", "WEBP (.webp)"};
 
-					<div class="expandable-div">
-						<fieldset id="date">
-							<legend><fmt:message key='advancedImages.date'/><i class="fa iCarret yearCarret fa-caret-down pull-right right-15" aria-hidden="true"></i></legend>
-							<div class="container-fluid ">
-								<div id="label-data-1">
-									<%@ include file="/include/datePickerComponent.jsp" %>
-								</div>
-							</div>
-						</fieldset>
+							if (format == null || "all".equals(format)) {%>
+								<option value="all" selected><fmt:message key='advancedImages.format.all'/></option>
+							<%} else {%>
+								<option value="all"><fmt:message key='advancedImages.format.all'/></option>
+							<%}
+
+							for (int i=0; i < mimeList.length; i++) {
+								if (mimeList[i].equals(format.trim())) {
+									out.print("<option value=\""+ mimeList[i] +"\" selected>"+ mimeListDetail[i] +"</option");
+								} else {
+									out.print("<option value=\""+ mimeList[i] +"\">"+ mimeListDetail[i] +"</option>");
+								}
+							}
+						%>
+						</select>
 					</div>
-					<div class="expandable-div">
-						<legend><fmt:message key='advancedImages.size'/><i class="fa iCarret yearCarret fa-caret-down pull-right right-15" aria-hidden="true"></i></legend>
-							<div class="box-content container-fluid ">
-								<div id="label-format-1">
-									<label class="row  col-xs-12 no-padding-left label-padding-top" for="formatType"><fmt:message key='advancedImages.format.label'/></label>
-									<ion-select id="formatType" interface="action-sheet" placeholder="<fmt:message key='advancedImages.select.one'/>"  class="row  col-xs-10 no-padding-left formatTypeDropdown" name="type">
-									<%
-										String[] mimeList = {"jpg", "png", "gif", "bmp", "webp"};
-										String[] mimeListDetail = {"Joint Photographic Experts Group (.jpeg)", "Portable Network Graphics (.png)", "Graphics Interchange Format (.gif)", "Bitmap Image File (.bmp)", "WEBP (.webp)"};
-
-										if (format == null || "all".equals(format)) {%>
-											<ion-select-option value="all" selected><fmt:message key='advancedImages.format.all'/></ion-select-option>
-										<%} else {%>
-											<ion-select-option value="all"><fmt:message key='advancedImages.format.all'/></ion-select-option>
-										<%}
-
-										for (int i=0; i < mimeList.length; i++) {
-											if (mimeList[i].equals(format.trim())) {
-												out.print("<ion-select-option value=\""+ mimeList[i] +"\" selected>"+ mimeListDetail[i] +"</ion-select-option");
-											} else {
-												out.print("<ion-select-option value=\""+ mimeList[i] +"\">"+ mimeListDetail[i] +"</ion-select-option>");
-											}
-										}
-									%>
-									</ion-select>
-									<label for="size" class="row  col-xs-12 no-padding-left label-padding-top"><fmt:message key='images.size'/></label>
-									<ion-select id="size" name="size" interface="action-sheet" placeholder="<fmt:message key='advancedImages.select.one'/>"  class="row  col-xs-10 no-padding-left formatTypeDropdown">
-										<ion-select-option value="all" <%= imagesSize.trim().equals("") || imagesSize.trim().equals("all") ? "selected" : "" %> ><fmt:message key='images.showAll'/></ion-select-option>
-										<ion-select-option value="sm"  <%= imagesSize.trim().equals("sm") ? "selected" : "" %> ><fmt:message key='images.tools.sm'/></ion-select-option>
-										<ion-select-option value="md"  <%= imagesSize.trim().equals("md") ? "selected" : "" %> ><fmt:message key='images.tools.md'/></ion-select-option>
-										<ion-select-option value="lg" <%= imagesSize.trim().equals("lg") ? "selected" : "" %>  ><fmt:message key='images.tools.lg'/></ion-select-option>
-									</ion-select>
-									<label for="safeSearch" class="row  col-xs-12 no-padding-left label-padding-top"><fmt:message key='images.safeSearch'/></label>
-									<ion-select id="safeSearch" interface="action-sheet" placeholder="<fmt:message key='advancedImages.select.one'/>" name="safeSearch" class="row  col-xs-10 no-padding-left formatTypeDropdown">
-										<ion-select-option value="on" <%= safeSearch.equals("") || safeSearch.equals("on") ? "selected" : "" %>  ><fmt:message key='images.safeOnLabel'/></ion-select-option>
-										<ion-select-option value="off" <%= safeSearch.equals("off") ? "selected" : "" %>   ><fmt:message key='images.safeOffLabel'/></ion-select-option>
-									</ion-select>
-
-								</div>
-							</div>
-
+					<div class="expandable-div box-content container-fluid">
+						<label for="size" class="row  col-xs-12 no-padding-left label-padding-top"><fmt:message key='advancedImages.size'/>:</label>
+						<select id="size" name="size" interface="action-sheet" placeholder="<fmt:message key='advancedImages.select.one'/>"  class="row  col-xs-10 no-padding-left formatTypeDropdown">
+							<option value="all" <%= imagesSize.trim().equals("") || imagesSize.trim().equals("all") ? "selected" : "" %> ><fmt:message key='images.showAll'/></option>
+							<option value="sm"  <%= imagesSize.trim().equals("sm") ? "selected" : "" %> ><fmt:message key='images.tools.sm'/></option>
+							<option value="md"  <%= imagesSize.trim().equals("md") ? "selected" : "" %> ><fmt:message key='images.tools.md'/></option>
+							<option value="lg" <%= imagesSize.trim().equals("lg") ? "selected" : "" %>  ><fmt:message key='images.tools.lg'/></option>
+						</select>
 					</div>
-					<div class="expandable-div">
-						<fieldset id="domains">
-							<legend><fmt:message key='advancedImages.website'/><i class="fa iCarret yearCarret fa-caret-down pull-right right-15" aria-hidden="true"></i></legend>
-							<div class="box-content container-fluid ">
-								<div id="label-domains-1">
-									<label class="row  col-xs-12 no-padding-left label-padding-top" for="site"><fmt:message key='advancedImages.website.label'/></label>
-									<div class="withTip">
-										<input class="row  col-xs-10 no-padding-left" type="text" id="site" name="site" value="<%=site%>" />
-										<span class="row  col-xs-10 no-padding-left tip"><fmt:message key='advancedImages.website.hint'/></span>
-									</div>
-								</div>
+					<div class="expandable-div box-content container-fluid">
+						<label for="safeSearch" class="row  col-xs-12 no-padding-left label-padding-top"><fmt:message key='images.safeSearch'/>:</label>
+						<select id="safeSearch" interface="action-sheet" placeholder="<fmt:message key='advancedImages.select.one'/>" name="safeSearch" class="row  col-xs-10 no-padding-left formatTypeDropdown">
+							<option value="on" <%= safeSearch.equals("") || safeSearch.equals("on") ? "selected" : "" %>  ><fmt:message key='images.safeOnLabel'/></option>
+							<option value="off" <%= safeSearch.equals("off") ? "selected" : "" %>   ><fmt:message key='images.safeOffLabel'/></option>
+						</select>
+					</div>
+					<div class="expandable-div box-content container-fluid">
+						<div id="label-domains-1">
+							<label class="row  col-xs-12 no-padding-left label-padding-top" for="site"><fmt:message key='advancedImages.website'/>:</label>
+							<div class="withTip">
+								<input class="row  col-xs-10 no-padding-left" type="text" id="site" name="site" value="<%=site%>" />
+								<span class="row  col-xs-10 no-padding-left tip"><fmt:message key='advancedImages.website.hint'/></span>
 							</div>
-						</fieldset>
+						</div>
 					</div>
 
 					<div id="bottom-submit" class="text-center button-advanced">
@@ -159,35 +147,21 @@
 
 
 				</form>
-                        </div>
-                </div>
+            </div>
+        </div>
 		<!-- Fim formulário -->
     </div>
 
-<script type="text/javascript">
-window.onload = function() {
-	$(".expandable-div legend").click(function() {
-	    var isVisible =  $(this).next().is(':visible');
-	    if (isVisible){
-	        // close
-	        $(this).next().slideUp('fast');
-	        $(this).children("i").removeClass('fa-caret-down').addClass('fa-caret-up');
-	    } else {
-	        // open
-	        $(this).next().slideDown('fast').show().slideDown('fast');
-	        $(this).children("i").removeClass('fa-caret-up').addClass('fa-caret-down');
+	<script type="text/javascript">
+	window.onload = function() {
+		const applyCancelFunction = function() { 
+	        $(this)[0].cancelText = Content.picker.cancel; 
 	    }
-	});
-	const applyCancelFunction = function() { 
-        $(this)[0].cancelText = Content.picker.cancel; 
-    }
-	$('#formatType').each( applyCancelFunction );
-	$('#num-result').each( applyCancelFunction );
-};
-</script>
+		$('#formatType').each( applyCancelFunction );
+		$('#num-result').each( applyCancelFunction );
+	};
+	</script>
 
-<%-- end copy --%>
-	</div>
 <%@ include file="/include/footer.jsp" %>
 <%@include file="/include/analytics.jsp" %>
 </body>
