@@ -8064,7 +8064,7 @@ body#homeImages #searchBarButtonsDiv {
   float: left;
   margin-top: -29px;
   margin-bottom: /*3px*/0;
-  padding: 0 14px 0 14.5px;
+  padding: 0 14px 0 15px;
 }
 a#advancedSearchButton {
   float: right !important;
