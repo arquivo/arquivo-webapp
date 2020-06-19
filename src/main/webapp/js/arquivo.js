@@ -380,7 +380,7 @@ var ARQUIVO = ARQUIVO || (function(){
 
         exportSERP: function(type) {
             var fileContent = _exportSERPInfo;
-            var bb = new Blob([fileContent ], { type: 'text/tab-separated-values' });
+            var bb = new Blob([fileContent ], { /*encoding:"UTF-8",*/ type: 'text/csv;charset=utf-8' });
             var a = document.createElement('a');
             const now = new Date();
             const timestamp = this.jsDateToTimetamp(now);
