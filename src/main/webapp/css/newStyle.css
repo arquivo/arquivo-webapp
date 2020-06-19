@@ -7001,7 +7001,7 @@ body#homepage-landing .ui-widget.ui-widget-content, body#home-search .ui-widget.
 .ui-state-default {
   border: 1px solid transparent !important;
   border-radius: 5px !important;
-  font-weight: 500 !important;
+  font-weight: 400 !important;
 }
 .ui-datepicker .ui-datepicker-title select {
   background-color: white;
@@ -7734,17 +7734,54 @@ ion-button {
   z-index: 99999999999999999;
   height: calc(100vh - 18px);
 }
-.visit-page {
-  --padding-start: 1em;
-  margin-left: -1em;
-  color: #1c75c0 !important;
+.visit-page { 
+  margin-left: -1em;  
+  color: white !important;
   --padding-start: 0.45em;
-}
+  background-color: #1c75c0;
+  border-radius: 5px;
+  border: 1px solid transparent;
+  transition: 0.1s
+} 
+
+.visit-page h5, .view-details h5 { 
+ font-weight: 400 !important;
+ font-size: 0.9em
+} 
+
+.visit-page:hover {  
+  color: #1c75c0 !important;
+  border: 1px solid #1c75c0; 
+  background-color: white !important;  
+} 
+
+.visit-page:active {  
+  color: white !important;
+  border: 1px solid #033f72; 
+  background-color: #033f72 !important;  
+} 
+
 .view-details {
+  border-radius: 5px;
+  font-weight: 400;
   --padding-end: 0.75em;
   margin-right: -1em;
-  color: #1c75c0 !important;
+  color: #ffffff !important; 
+  background-color: #1c75c0;
 }
+
+.view-details:hover { 
+ color: #1c75c0 !important;
+  border: 1px solid #1c75c0; 
+  background-color: white !important;  
+}
+
+.view-details:active { 
+  color: white !important;
+  border: 1px solid #033f72; 
+  background-color: #033f72 !important;  
+}
+
 .image-mobile-expanded-div ion-list ion-item {
   --min-height: 20px;
   color: rgba(0, 0, 0, 0.7) !important;
