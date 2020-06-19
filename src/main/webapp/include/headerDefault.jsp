@@ -30,15 +30,15 @@
 
 <link rel="stylesheet" href="/static/jquery-ui-1.12.1.custom/jquery-ui.min.css" media="none" onload="if(media!='all')media='all'" /><%-- Lazy load css download --%>
 <script src="/static/jquery-3.5.1.min.js"></script>
-<script src="/static/jquery-ui-1.12.1.custom/jquery-ui.js"></script><%-- async to lazy load --%>
+<script src="/static/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
 
 <script type="text/javascript" src="/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="/js/js.cookie.js"></script>
 <script type="text/javascript" src="/js/swiper.min.js"></script>
 
 <%--- dual slider dependencies are we using this slider ? --%>
-	<script type="text/javascript" src="/js/nouislider.min.js"></script>
-	<link rel="stylesheet" href="/css/nouislider.min.css">
+<script type="text/javascript" src="/js/nouislider.min.js"></script>
+<link rel="stylesheet" href="/css/nouislider.min.css">
 
 <script type="text/javascript" src="/js/wNumb.js"></script>
 
