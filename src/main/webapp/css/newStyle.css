@@ -3263,7 +3263,7 @@ top: 16px
 @media (min-width:320px) and (max-width:768px) {
   body#homeImages p#estimated-results {
     width: 915px;
-    margin: 20px auto -1px auto;
+    margin: 25px auto -17px auto;
     padding-left: 18px;
     display: flex;
     width: 100%;
@@ -3954,7 +3954,7 @@ display: none;
 .headerMenuText {
  display: block;
     position: absolute;
-    top: -6.5px;
+    top: -7px;
     left: -11px;
     font-size: 0.6em;
     padding: 0 10px;
@@ -3964,6 +3964,7 @@ display: none;
     transition: 0.5s;
     width: 54px;
     height: 31px;
+    background-color: #1c75c0;
 }
 
 body#advanced .headerMenuText, body#advanced-images .headerMenuText  {
@@ -5774,9 +5775,16 @@ body#advanced .headerMenuText, body#advanced-images .headerMenuText  {
   a#PageButton, a#ImageButton, a#advancedSearchButton {
     font-size: 14px !important;
   }
-  body#home-search p#estimated-results {
-    margin-top: /*0*/ 23px !important;
+  body#home-search p#estimated-results {    
+    margin-top: /*0*/ 30px !important;
     margin-left: 12px !important;
+    margin-bottom: -27px;
+}
+
+
+
+
+
   }
   #resultados-lista ul li .resumo {
     font-size: 16px !important;
@@ -5981,8 +5989,8 @@ body#home-search .urlBlock a:visited {
 }
 /* scrollbar */
 html {
-  --scrollbarBG: #1c75c0;
-  --thumbBG: #0b497f;
+  --scrollbarBG: #033f72 !important;
+  --thumbBG: #1c75c0;
 }
 body::-webkit-scrollbar {
   width: 11px;
@@ -6007,6 +6015,7 @@ body::-webkit-scrollbar-thumb {
   background-color: white !important;
   display: block;
   visibility: visible !important;
+  color: #222;
 }
 /* NEW STYLE: forcing 100% width on the search bar */
 #searchBarBlock {
@@ -6087,6 +6096,7 @@ input {
   color: #1a73ba;
   z-index: -1;
   transition: 0.5s;
+  display: block
 }
 
 #sliderCircleEnd:hover {
@@ -6134,6 +6144,7 @@ input {
   color: #1a73ba;
   z-index: -1;
   transition: 0.5s;
+  display: block
 }
 
 #sliderCircleStart:hover {
@@ -6148,6 +6159,7 @@ input {
   padding-left: 7px;
   color: #1a73ba;
   z-index: -1;
+  display: block
 }
 
 #sliderCircleStart:active {
@@ -6162,6 +6174,7 @@ input {
   padding-left: 7px;
   color: #1a73ba;
   z-index: -1;
+  display: block
 }
 
 
@@ -6332,11 +6345,16 @@ body#advanced-images #searchForm {
   white-space: normal !important;
 }
 #resultados-lista ul li a {
-  color: #1c75c0 !important;
+  color: /*#1c75c0*/#033f72 !important;
   font-size: 1.18em !important;
   font-family: 'Roboto', sans-serif;
-  line-height: normal;
+  line-height: normal;  
 }
+
+#resultados-lista ul li a:hover {
+ text-decoration: underline
+}
+
 #resultados-lista ul li a:visited h2 {
   color: #9c27b0 !important;
 }
@@ -6926,11 +6944,12 @@ legend.scheduler-border {
 .label-padding-top {
   padding-top: 15px;
 }
-.box-content label {
+.box-content label {    
   color: black;
   font-weight: normal;
   font-size: 15px;
-  padding-left: 1px !important;
+  padding-left: 22px !important;
+  background: transparent url(../img/advanced-arrow.svg) no-repeat left 8px; 
 }
 .box-content input {
   color: initial;
@@ -6982,7 +7001,7 @@ body#homepage-landing .ui-widget.ui-widget-content, body#home-search .ui-widget.
 .ui-state-default {
   border: 1px solid transparent !important;
   border-radius: 5px !important;
-  font-weight: 500 !important;
+  font-weight: 400 !important;
 }
 .ui-datepicker .ui-datepicker-title select {
   background-color: white;
@@ -7715,17 +7734,54 @@ ion-button {
   z-index: 99999999999999999;
   height: calc(100vh - 18px);
 }
-.visit-page {
-  --padding-start: 1em;
-  margin-left: -1em;
-  color: #1c75c0 !important;
+.visit-page { 
+  margin-left: -1em;  
+  color: white !important;
   --padding-start: 0.45em;
-}
+  background-color: #1c75c0;
+  border-radius: 5px;
+  border: 1px solid transparent;
+  transition: 0.1s
+} 
+
+.visit-page h5, .view-details h5 { 
+ font-weight: 400 !important;
+ font-size: 0.9em
+} 
+
+.visit-page:hover {  
+  color: #1c75c0 !important;
+  border: 1px solid #1c75c0; 
+  background-color: white !important;  
+} 
+
+.visit-page:active {  
+  color: white !important;
+  border: 1px solid #033f72; 
+  background-color: #033f72 !important;  
+} 
+
 .view-details {
+  border-radius: 5px;
+  font-weight: 400;
   --padding-end: 0.75em;
   margin-right: -1em;
-  color: #1c75c0 !important;
+  color: #ffffff !important; 
+  background-color: #1c75c0;
 }
+
+.view-details:hover { 
+ color: #1c75c0 !important;
+  border: 1px solid #1c75c0; 
+  background-color: white !important;  
+}
+
+.view-details:active { 
+  color: white !important;
+  border: 1px solid #033f72; 
+  background-color: #033f72 !important;  
+}
+
 .image-mobile-expanded-div ion-list ion-item {
   --min-height: 20px;
   color: rgba(0, 0, 0, 0.7) !important;
@@ -8255,6 +8311,9 @@ tr.trTV:nth-child(even) {
   }
   #buttonSearch button {   
     /*right: 16px !important; */  
+}
+#buttonSearch button {
+    font-size: 14px;  
 }
 }
 
@@ -9688,7 +9747,7 @@ a#advancedSearchButton {
   white-space: normal !important;
 }
 #resultados-lista ul li h2 {
-  font-size: /*18px*/20px;
+  font-size: /*18px*/19px;
   margin-bottom: 0px;
   padding-top: 0px;
   margin-top: 0px;
@@ -11814,6 +11873,7 @@ body#home-search .plt-desktop #urlSearchContainer {
   font-weight: bold;
   padding: 0;
   border-top: none;
+  background-color: transparent;
 }
 #newFooterWrapper .navigation-search {
   /*display: block!important;*/
@@ -12104,8 +12164,7 @@ margin-top: 5px !important;
 
 .image-display-date {
     font-weight: normal;
-    font-size: 0.9em !important; 
-    display: flex;  
+    font-size: 0.9em !important;     
     width: fit-content;
     margin: 0 auto;
 }
@@ -12247,7 +12306,7 @@ body#home-search .spell {
     max-width: 736px !important;
 }
 body#homepage-landing #buttonSearch button, body#home-search #buttonSearch button  {   
-    right: 10px !important;
+    right: 0px !important;
 }
 body#homeImages #buttonSearch button {
     right: 26px !important;
@@ -12268,7 +12327,7 @@ span#buttonSearch button span.glyphicon {
     right: -6px !important;
 }
 body#homepage-landing #buttonSearch button {
-    right: 10px !important;
+    right: 0px !important;
 }
 body#homeImages #buttonSearch button {
     right: 0px !important;
@@ -12277,6 +12336,19 @@ body#homeImages #buttonSearch button {
 body#homeImages span#buttonSearch button span {
     top: 4px !important;
     right: 4px !important;
+}
+span#buttonSearch {
+    width: auto;
+    height: 45px;
+    right: 30px!important;
+    top: 4px !important;
+    color: white;
+    position: absolute;
+    z-index: 999999;
+    background-color: #1c75c0 !important;
+    border-top-right-radius: 10px !important;
+    border-bottom-right-radius: 10px !important;
+    transition: 0.5s;
 }
 }
 /* iPad landscape */
@@ -12425,37 +12497,26 @@ body#homeImages .spell {
 .content {    
  padding-bottom: 0px !important;
 }
-body#homeImages span#buttonSearch, body#homepage-landing span#buttonSearch {
- position: relative;
-right: 4px !important;
-    top: 53px !important;
-}
-body#home-search span#buttonSearch {
-    right: 4px !important;
-    top: 2px !important;
-}
+
 #newFooterWrapper .site-footer .footer-widgets-container .inside-footer-widgets {
     margin-left: -12px !important;
     display: flex !important;
 }
-body#home-search span#buttonSearch {
-    right: 60px !important;
-    top: 12px !important;
-}
+
 body#home-search span#buttonSearch button span {
     top: 4px !important;
     right: 3px !important;
 }
-body#homepage-landing span#buttonSearch {
+/*body#homepage-landing*/ span#buttonSearch {
     position: relative;
     right: 60px !important;
     top: 12px !important;
 }
-span#buttonSearch button span {
+/*span#buttonSearch button span {
     top: 4px !important;
     right: 3px !important;
 }
-body#homeImages span#buttonSearch, body#homepage-landing span#buttonSearch {
+/*body#homeImages span#buttonSearch, body#homepage-landing*/ span#buttonSearch {
     position: relative;
     right: 58px !important;
     top: 13px !important;
@@ -12699,3 +12760,20 @@ margin: -35px auto 0 auto !important;
   background-color: #fff;
   color: #1c75c0;
 }
+
+/* Export results */
+#exportSERPOptionsMenuButton h4 {
+background: transparent url(../img/export-results.svg) no-repeat 20px 13px;
+padding-left: 45px;
+}
+
+#exportSERPOptionsMenuButton h4:hover {
+background:  #fff url(../img/export-results-hover.svg) no-repeat 20px 13px !important;
+color:#104877 !important;
+}
+
+#exportSERPOptionsMenuButton h4:active {
+background:  #104877 url(../img/export-results-hover.svg) no-repeat 20px 13px !important;
+color:#104877 !important;
+}
+
