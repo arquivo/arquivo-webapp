@@ -1,20 +1,72 @@
-div, li {
-  outline: 1px solid red
+/* Wayback versions CSS */
+body {
+margin: 0
+}
+div {  
+  padding-left: 0px;
+  font-family: roboto, arial, sans-serif;  
+  color: white;
+  margin: 0 
 }
 
-div {
-  outline: 1px solid red
+li { 
+  margin: 0;
+  padding: 0 5px
 }
 
-ul {
-  outline: 1px solid green;
-  list-style-type: none
+ul { 
+  list-style-type: none;
+  padding: 0
 }
 
 li {
-  outline: 1px solid blue
+  margin: 0;
+  padding: 0;   
 }
 
+h4 {
+margin:0;
+display: block;
+padding: 13px 5px 13px 13px;
+border-bottom: 1px solid #ffffff26;
+}
+
+h4.yearHeader {
+
+}
+
+h4.monthHeader {
+padding-left: 20px;
+}
+
+/* buttons  states */
+h4:hover, h4:hover span, h4:hover a  {
+background-color: white;
+color: #033f72;
+cursor:pointer;
+}
+
+h4:active, h4:active span, h4:active a {
+background-color: #033f72;
+color: white
+}
+
+span, a{
+font-size: 13px;
+font-weight: 400; 
+color: white;
+}
+
+a {
+background-color: #1c75c0;
+}
+
+.versionsCount {
+    float: right;
+    padding-right: 40px;
+    font-size: 0.7em;
+    padding-top: 2px;
+}
 
 div.urlSearchContainer.list > div.tablePresentation {
   display: none;
@@ -24,12 +76,27 @@ div.urlSearchContainer.table > div.listPresentation {
   display: none;
 }
 
-li.close > h4 > span.interactionStatus:after {
-  content: "\2191";
+span.interactionStatus {
+  position: absolute;
+  right:0  
 }
 
 li.open > h4 > span.interactionStatus:after {
-  content: "\2193";
+  /*content: "\2191"; */
+  content: url(../img/button-a-down.svg); 
+  float: right;
+  cursor: default;
+  padding-right: 15px;
+  margin-top: 0px;
+}
+
+li.close > h4 > span.interactionStatus:after {
+  /*content: "\2191"; */
+  content: url(../img/button-a-up.svg); 
+  float: right;
+  cursor: default;
+  padding-right: 15px;
+  margin-top: 0px;
 }
 
 li.close > ul {
@@ -71,7 +138,19 @@ div.urlSearchContainer.table a.tableLink {
 }
 
 .viewingVersion {
-  font-weight: bold;
+    font-weight: 400;
+    padding: 13px 5px 13px 35px;
+    display: block;
+}
+
+.viewingVersion:hover {
+    background-color: white;
+    color: #033f72;
+}
+
+.viewingVersion:active {
+    background-color: #033f72;
+    color: white;
 }
 
 .list .previous ,.list .next {
