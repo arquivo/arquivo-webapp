@@ -172,7 +172,8 @@ div.urlSearchContainer.table a.tableLink {
     font-weight: bold;
     padding: 13px 0px 13px 0px;
     display: block;
-    background-color: #1c75c0
+    background-color: #1c75c0;
+    font-size: 0.7em
 }
 
 .viewingVersion a  {
