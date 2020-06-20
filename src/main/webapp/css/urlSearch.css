@@ -82,7 +82,8 @@ padding: 13px 0px 13px 0px;
 display: block;
 border-bottom: 1px solid #ffffff26;
 text-align: center;
-text-decoration: none
+text-decoration: none;
+font-size: 0.7em;
 }
 
 li.version:hover  {
