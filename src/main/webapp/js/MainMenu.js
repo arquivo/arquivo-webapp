@@ -180,20 +180,18 @@ var MENU = MENU || (function(){
             swiper.allowSlideNext = false;
         },
         attachKeyBoardEvent: function() {
-            if (document.onkeydown == null) {
-                document.onkeydown = function(evt) {
-                  // When pressing escape key close image
-                  var isEscape = false;
-                  if ("key" in evt) {
-                      isEscape = (evt.key === "Escape" || evt.key === "Esc");
-                  } else {
-                      isEscape = (evt.keyCode === 27);
-                  }
-                  if (isEscape) {
-                      MENU.goToContent();
-                  }
-                }
-            }
+            document.addEventListener('keydown', function(evt) {
+              // When pressing escape key close image
+              var isEscape = false;
+              if ("key" in evt) {
+                  isEscape = (evt.key === "Escape" || evt.key === "Esc");
+              } else {
+                  isEscape = (evt.keyCode === 27);
+              }
+              if (isEscape) {
+                  MENU.goToContent();
+              }
+            });
         },
     };
 }());   

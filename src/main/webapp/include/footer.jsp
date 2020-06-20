@@ -27,28 +27,29 @@
       draggable: false,
       on: {
         slideChangeTransitionStart: function () {
-          var slider = this;
-          if (slider.activeIndex === 0) { /*open menu*/
-          	this.allowSlidePrev = true;
+          if (this.activeIndex === 0) { /*open menu*/
+          	this.allowSlidePrev = false;
             this.allowSlideNext = true;
           	$('#mainMask').fadeIn('fast');
             menuButton.classList.add('open');
             $('.swiper-container').removeClass('swiper-no-swiping');
             // required because of slideToClickedSlide
             menuButton.removeEventListener('click', openMenu, true);
-          } else  if (slider.activeIndex === 1) { /*close menu or options*/
+          } else  if (this.activeIndex === 1) { /*close menu or options*/
             $('.swiper-container').addClass('swiper-no-swiping');
             $('#mainMask').fadeOut('fast');
             menuButton.classList.remove('open');
+            this.allowSlidePrev = false;
+            this.allowSlideNext = false;
           // can not make ionic return the replay menu has activeIndex with 2 value, so the following if dead code.
-          } else if(slider.activeIndex === 2){
+          } else if(this.activeIndex === 2){
             $('#mainMask').fadeIn('fast');
             this.allowSlidePrev = true;
+            this.allowSlideNext = false;
           }
         }
         , slideChangeTransitionEnd: function () {
-          var slider = this;
-          if (slider.activeIndex === 1) {
+          if (this.activeIndex === 1) {
             menuButton.addEventListener('click', openMenu, true);
             replayMenu.addEventListener('click', openReplayMenu, true);
           }
