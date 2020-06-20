@@ -2043,7 +2043,7 @@ a#ImageButton, a#ImageButton:active {
   margin-right: 0 !important;
   font-size: 1.25em;
   background-color: none !important;
-  transition: background-color 0.5s ease 0s;
+  /*transition: background-color 0.5s ease 0s;*/
 }
 a#ImageButton:hover {
   background-color: #1c75c0 !important;
@@ -6095,7 +6095,7 @@ input {
   padding-left: 36px;
   color: #1a73ba;
   z-index: -1;
-  transition: 0.5s;
+  /*transition: 0.5s;*/
   display: block
 }
 
@@ -6143,7 +6143,7 @@ input {
   padding-left: 7px;
   color: #1a73ba;
   z-index: -1;
-  transition: 0.5s;
+  /*transition: 0.5s;*/
   display: block
 }
 
@@ -8103,7 +8103,7 @@ a#PageButton {
   margin-right: 6px !important;
   color: #fff !important;
   background-color: none !important;
-  transition: background-color 0.5s ease 0s;
+  /*transition: background-color 0.5s ease 0s;*/
   border: 1px solid #1c75c0;
 }
 

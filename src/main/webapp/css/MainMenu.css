@@ -107,7 +107,7 @@ body#home-search .content {
   font-size: /*17px*/ 17px;
   cursor: pointer;
   text-decoration: none;
-  transition: 0.1s;
+  /*transition: 0.1s;*/
 }
 .menu h4:hover {
   background-color: #fff;
