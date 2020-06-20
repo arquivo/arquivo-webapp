@@ -143,6 +143,12 @@ div.urlSearchContainer.table a.tableLink {
     display: block;
 }
 
+.viewingVersion, .versiona {
+    font-weight: 400;
+    padding: 13px 5px 13px 35px;
+    display: block;
+}
+
 .viewingVersion:hover {
     background-color: white;
     color: #033f72;
