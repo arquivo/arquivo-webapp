@@ -58,17 +58,19 @@ color: white;
 }
 
 a  {
-
+padding: 13px 5px 13px 20px;
 }
 
 li.version  {
-padding: 13px 5px 13px 35px;
 }
 
 li.version:hover  {
 background: white;
 }
 
+li.version a  {
+background-color: transparent
+}
 
 .versionsCount {
     float: right;
@@ -153,10 +155,18 @@ div.urlSearchContainer.table a.tableLink {
     background-color: #1c75c0
 }
 
+.viewingVersion a  {
+    font-weight: 400;
+    padding: 0px;
+    display: block;
+    background-color: #1c75c0
+}
+
 .viewingVersion:hover {
     background-color: white;
     color: #033f72;
 }
+
 
 .viewingVersion:active {
     background-color: #033f72;
