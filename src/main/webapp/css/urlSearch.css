@@ -58,7 +58,9 @@ color: white;
 }
 
 a  {
-padding: 13px 5px 13px 20px;
+font-weight: 400;
+padding: 13px 5px 13px 35px;
+display: block;
 }
 
 li.version  {
