@@ -80,6 +80,7 @@ a  {
 font-weight: 400;
 padding: 13px 5px 13px 35px;
 display: block;
+border-bottom: 1px solid #ffffff26;
 }
 
 li.version  {
@@ -183,7 +184,6 @@ div.urlSearchContainer.table a.tableLink {
     background-color: white;
     color: #033f72;
 }
-
 
 .viewingVersion:active {
     background-color: #033f72;
