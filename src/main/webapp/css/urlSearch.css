@@ -46,7 +46,7 @@ li {
 h4 {
 margin:0;
 display: block;
-padding: 13px 5px 13px 13px;
+padding: 13px 5px 13px 14px;
 border-bottom: 1px solid #ffffff26;
 }
 
@@ -168,7 +168,7 @@ div.urlSearchContainer.table a.tableLink {
 }
 
 .viewingVersion  {
-    font-weight: 400;
+    font-weight: bold;
     padding: 13px 5px 13px 35px;
     display: block;
     background-color: #1c75c0
