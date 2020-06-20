@@ -83,7 +83,7 @@ span.interactionStatus {
 
 li.open > h4 > span.interactionStatus:after {
   /*content: "\2191"; */
-  content: url(../img/button-a-down.svg); 
+  content: url(../img/button-a-up.svg); 
   float: right;
   cursor: default;
   padding-right: 15px;
@@ -92,7 +92,7 @@ li.open > h4 > span.interactionStatus:after {
 
 li.close > h4 > span.interactionStatus:after {
   /*content: "\2191"; */
-  content: url(../img/button-a-up.svg); 
+  content: url(../img/button-a-down.svg); 
   float: right;
   cursor: default;
   padding-right: 15px;
