@@ -7814,9 +7814,10 @@ ion-button {
   color: #007AFF !important;
   font-size: 0.75em !important;
 }
-body#homeImages .hydrated h4 {
-  font-size: 1.6em !important;
+body#homeImages .hydrated h4 {  
+  font-size: 1.2em !important;
   color: black !important;
+  padding-left: 0;
 }
 body#home-landing.hydrated h3 {
   margin-top: 30px;
