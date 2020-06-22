@@ -290,8 +290,13 @@ button {
 }
 
 .tablePresentation table td a:hover {  
-  background-color: black;
-  color: white
+  background-color: #606d78;
+  color: white;
+}
+
+.tablePresentation table td a:active {  
+  background-color: #033f72;
+  color: white;
 }
 
 .tablePresentation table td:hover {  
