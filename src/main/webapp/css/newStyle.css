@@ -1963,7 +1963,7 @@ a#advancedSearchButton {
   color: #1c75c0;
   margin-right: 0 !important;
   border: 1px solid #1c75c0;
-  transition: background-color 0.5s ease 0s;
+  /*transition: background-color 0.5s ease 0s;*/
   color: #1c75c0;
   font-size: 1.25em;
 }
@@ -2000,7 +2000,7 @@ a#PageButton {
   margin-right: 6px !important;
   color: #1c75c0 !important;
   background-color: none !important;
-  transition: background-color 0.5s ease 0s;
+  /*transition: background-color 0.5s ease 0s;*/
   border: 1px solid #1c75c0;
 }
 .selected-button {
@@ -3866,7 +3866,7 @@ body#homeImages .dateModal, body#home-search .dateModal, body#homeImages .dateMo
   color: #1c75c0;
   margin-right: 0;
   border: 1px solid #1c75c0;
-  transition: background-color 0.5s ease 0s;
+  /*transition: background-color 0.5s ease 0s;*/
   color: #1c75c0;
   font-size: 13px;
   border-radius: 5px;
@@ -9010,7 +9010,7 @@ top: 14px
     color: #1c75c0;
     background-color: transparent !important;
     font-size: 22px !important;
-    transition: color 0.5s ease 0s;
+    /*transition: color 0.5s ease 0s;*/
     font-weight: normal !important;
     position: absolute !important;
   }
@@ -9515,7 +9515,7 @@ top: 14px
     border-radius: 5px !important;
     text-decoration: none !important;
     padding: 6px 0 !important;
-    transition: background-color 0.5s ease 0s;      
+   /* transition: background-color 0.5s ease 0s;*/    
     float: left;
     width: 100px;   
     text-decoration: none !important;
@@ -9588,7 +9588,7 @@ top: 14px
   #resultados-lista > ul > li:nth-child(odd) {
     background: white !important;
     /* box-shadow: none !important;*/
-    transition: background-color 0.5s;
+    /*transition: background-color 0.5s;*/
   }
   #resultados-lista > ul > li:nth-child(even) {
     background: white !important;
@@ -10070,11 +10070,12 @@ body#homeImages .dateModal, body#home-search .dateModal, body#homeImages .dateMo
   color: #1c75c0;
   margin-right: 0;
   border: 1px solid transparent;
-  transition: background-color 0.5s ease 0s;
+  /*transition: background-color 0.5s ease 0s;*/
   color: white;
   font-size: 13px;
   border-radius: 5px;
   padding: 4px 10px 5px 10px;
+  outline: none
 }
 .dateModalButtons button:hover {
   background-color: white;
