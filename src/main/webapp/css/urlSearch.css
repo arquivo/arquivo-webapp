@@ -273,10 +273,12 @@ button {
   background-color: white;
 }
 .tablePresentation table th {
-  color: black;
-  font-weight: bold;
-  font-size: 0.9em;
-  margin-top: 10px
+    color: black;
+    font-weight: bold;
+    font-size: 0.9em;
+    margin-top: 10px;
+    background: white;
+    padding-top: 5px
 }
 .tablePresentation table td {
   min-width: 50px;
