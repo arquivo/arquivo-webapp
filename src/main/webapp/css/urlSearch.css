@@ -284,7 +284,18 @@ button {
   border-bottom: 1px solid #9b9b9b;
 }
 .tablePresentation table td a {
-  color: black
+  color: black;
+  background-color: #e3ecf3;
+  transition: 0.2s;
+}
+
+.tablePresentation table td a:hover {  
+  background-color: black;
+  color: white
+}
+
+.tablePresentation table td:hover {  
+  background-color: #ebebeb;
 }
 .tablePresentation table thead {
   background-color: white;
