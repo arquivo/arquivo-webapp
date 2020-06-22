@@ -834,7 +834,7 @@ legend.scheduler-border {
 .expandable-div {
   background-color: #000;
   color: grey;
-  border-bottom: 1px solid #dfe1e5;
+  /*border-bottom: 1px solid #dfe1e5;*/
 }
 .expandable-div legend:active {
   background-color: #007AFF;
@@ -6907,7 +6907,7 @@ legend.scheduler-border {
 .expandable-div {
   background-color: #000;
   color: grey;
-  border-bottom: 1px solid #dfe1e5;
+  /*border-bottom: 1px solid #dfe1e5;*/
 }
 .expandable-div legend:active {
   background-color: #007AFF;
@@ -8453,7 +8453,7 @@ body#advanced .formatTypeDropdown, body#advanced-images .formatTypeDropdown {
   border-radius: 5px !important;
   height: 46px !important;
   padding-left: 14px !important;
-  padding-top: 09px !important;
+  padding-top: 0px !important;
   font-size: 17px;
   color: black;
   margin: 7px;
@@ -12798,3 +12798,18 @@ background:  #104877 url(../img/export-results-hover.svg) no-repeat 20px 13px !i
 color:#104877 !important;
 }
 
+/* Advanced buttons */
+.topActionsOnAdvancedSearch { 
+ display: block;
+ float: left;
+ height: auto;
+ margin: 20px 0 20px -20px
+ } 
+ 
+ body#advanced .topActionsOnAdvancedSearch a#PageButton, body#advanced-images .topActionsOnAdvancedSearch a#PageButton  { 
+ display: block;
+ float: left;
+ height: auto;
+ margin: 20px 0 20px -20px;
+ background-color: #033f72;
+ } 

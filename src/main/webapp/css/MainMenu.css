@@ -341,7 +341,7 @@ body#advanced .myButtonStyle:active, body#advanced-images .myButtonStyle:active 
 .expandable-div {
   background-color: transparent;
   color: grey;
-  border-bottom: 1px solid #dfe1e5;
+  /*border-bottom: 1px solid #dfe1e5;*/
   padding-bottom: 10px !important;
 }
 body#advanced .glyphicon-search:before, body#advanced-images .glyphicon-search:before {
@@ -380,7 +380,7 @@ span#buttonSearch {
     background-color: #1c75c0 !important;
     border-top-right-radius: 10px !important;
     border-bottom-right-radius: 10px !important;
-    transition: 0.5s;
+    /*transition: 0.5s;*/
 }
 
 span#buttonSearch:hover {   
@@ -436,7 +436,7 @@ span#buttonSearch:active {
   }
   #bottom-submit {
     padding: 20px 8px;
-    margin: 10px 6px;
+    margin: 10px 15px;
   }
   .button-advanced {
     background-color: white;
