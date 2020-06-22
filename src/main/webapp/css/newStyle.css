@@ -2450,6 +2450,16 @@ body#homepage-landing .fa-caret-up:before, body#homepage-landing .fa-caret-up:be
   right: -4px;
  /* background-color: #c0c0c024;
   color: white !important;*/
+  content: "\f0d7";
+    font-size: 1.1em;
+    /* border: 1px solid #e3e3e32e; */
+    padding: /*5px 8px;*/3px 7px 3px 7px;
+    border-radius: 50px;
+    margin-top: 3px !important;
+    position: relative;
+    top: 0px;
+    right: -4px;
+    right: 0 !important;
 }
 #imagesMenu .fa-caret-up:before {
   /*border: 1px solid #e3e3e32e;*/
@@ -8073,7 +8083,7 @@ a#advancedSearchButton {
   color: #fff !important;
   margin-right: 0 !important;
   border: 1px solid #1c75c0;
-  transition: background-color 0.5s ease 0s;
+  /*transition: background-color 0.5s ease 0s;*/
   color: #1c75c0;
   font-size: 1.25em;
 }

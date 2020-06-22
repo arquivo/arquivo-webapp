@@ -14,7 +14,7 @@ a.ui-state-default {
     font-weight: normal;
     color: white !important;
     border-radius: 3px !important;
-    transition: 0.2s    
+    /*transition: 0.2s*/  
 }
 a.ui-state-default:hover {
     border: 1px solid #1b72ba;
