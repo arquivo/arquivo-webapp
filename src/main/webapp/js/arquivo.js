@@ -381,17 +381,24 @@ var ARQUIVO = ARQUIVO || (function(){
         exportSERP: function(type) {
             var fileContent = _exportSERPInfo;
             // prepend file with a UTF-8 BOM character so Ms Excel detect that it's UTF-8 encoded.
-            var bb = new Blob([
-                    new Uint8Array([0xEF, 0xBB, 0xBF]), // UTF-8 BOM
+            var blob = new Blob([
+                    '\ufeff' + // UTF-8 BOM
                     fileContent 
                 ], 
                 { type: 'text/csv;charset=utf-8' });
-            var a = document.createElement('a');
-            const now = new Date();
-            const timestamp = this.jsDateToTimetamp(now);
-            a.download = "arquivo_pt_"+type+"_"+timestamp+".csv";
-            a.href = window.URL.createObjectURL(bb);
-            a.click();
+            const filename = "arquivo_pt_"+type+"_"+this.jsDateToTimetamp(new Date())+".csv";
+            if(window.navigator.msSaveOrOpenBlob) {
+                window.navigator.msSaveBlob(blob, filename);
+            }
+            else{
+                var elem = window.document.createElement('a');
+                elem.id ="exportSERP222";
+                elem.href = window.URL.createObjectURL(blob);
+                elem.download = filename;        
+                document.body.appendChild(elem);
+                elem.click();        
+                //document.body.removeChild(elem);
+            }
         },
 
         // Generate random string/characters
