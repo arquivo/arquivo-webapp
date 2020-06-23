@@ -9545,7 +9545,7 @@ top: 14px
   body#homeImages p#estimated-results {
     width: 915px;
     margin: 36px auto -16px auto;
-    padding-left: 9px;
+    padding-left: 7px;
     display: flex;
     width: 100%;
     max-width: /*915px*/ 970px;
