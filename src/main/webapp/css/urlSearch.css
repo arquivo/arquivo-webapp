@@ -196,7 +196,7 @@ div.urlSearchContainer .list button {
   padding: 4px 10px 5px 10px !important;
   border-radius: 5px;
   color: white;
-  border: 1px solid #eceff0;
+  /*border: 1px solid #eceff0;*/
 }
 
 /* Table buttons */
@@ -207,7 +207,7 @@ div.urlSearchContainer .list button {
   border-radius: 5px;
   background: #1c75c0 url(../img/table-icon.svg) no-repeat 11px 5px;
   color: white;
-  border: 1px solid #eceff0;
+  border: 1px solid transparent;
 }
 
 .showHasTableButton:hover {  
@@ -221,9 +221,9 @@ div.urlSearchContainer .list button {
   margin: 0 6px !important;
   padding: 4px 10px 5px 29px !important;
   border-radius: 5px;
-  background: white url(../img/table-icon-hover.svg) no-repeat 11px 5px;
+  background: transparent url(../img/table-icon.svg) no-repeat 11px 5px;
   color: white;
-  border: 1px solid #eceff0;
+  border: 1px solid transparent;
 }
 
 /* List buttons */
@@ -234,26 +234,40 @@ div.urlSearchContainer .list button {
   border-radius: 5px;
   background: #1c75c0 url(../img/list-icon.svg) no-repeat 11px 6px;
   color: white;
-  border: 1px solid #eceff0;
+  border: 1px solid transparent;
 }
 
 .showHasListButton:hover {
   background: white url(../img/list-icon-hover.svg) no-repeat 11px 6px;
   color: #033f72;
-  border: 1px solid #eceff0;
+  border: 1px solid transparent;
 }
 
 .showHasListButton:active {  
   background: #033f72 url(../img/list-icon.svg) no-repeat 11px 6px;
   color: white;
-  border: 1px solid #eceff0;
+  border: 1px solid transparent;
 }
 
 
 
 .list .showHasListButton, .table .showHasTableButton {
-  opacity: 0.5
+  background-color: transparent;
+  border: 1px solid transparent;  
 }
+
+.list .showHasListButton:hover {
+  background: transparent url(../img/list-icon.svg) no-repeat 11px 6px;
+  color: white;
+  border: 1px solid transparent;
+}
+
+.table .showHasTableButton:hover {
+  background: transparent url(../img/table-icon.svg) no-repeat 11px 5px;
+  color: white;
+  border: 1px solid transparent;  
+}
+
 button {
   border: none;
   outline: none;
@@ -332,7 +346,9 @@ button {
   position: relative;
   width: 100%;
   max-width: 957px;
-  margin: 0 auto
+  margin: 0 auto;
+  /* force container to give more spacein height */
+  height: 100vh;
 }
 .list .previous, .list .next {
   display: none;
@@ -362,6 +378,9 @@ button {
 @media (max-width: 200px) {
   .urlSearchEstimatedResultsContainer, .resultsHeader {
     display: none;
+  }
+  .versionsCount {
+  display: none;
   }
 }
 /*

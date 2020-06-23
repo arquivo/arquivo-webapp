@@ -104,7 +104,7 @@ body#home-search .content {
   padding-bottom: /*15px*/ 20px;
   margin-top: 0px;
   padding-left: 20px;
-  font-size: /*17px*/ 17px;
+  font-size: /*17px*/ 14px;
   cursor: pointer;
   text-decoration: none;
   /*transition: 0.1s;*/
@@ -420,7 +420,7 @@ span#buttonSearch:active {
     color: #fff !important;
     text-decoration: none !important;
     font-size: 13px;
-    transition: background-color 0.5s ease 0s;
+    /*transition: background-color 0.5s ease 0s;*/
     width: auto !important;
     padding: 4px 10px 5px 10px !important;
   }
@@ -540,10 +540,10 @@ span#buttonSearch {
     font-size: 13px !important;
     padding: 0px 10px;   
     border-radius: 5px;
-    margin: 7px -8px 0 0;
-    transition: 0.5s;
+    margin: 8px -8px 0 0;
+    /*transition: 0.5s;*/
     color: white;   
-    border: 1px solid white;
+    /*border: 1px solid white;*/
     background-color: #1c75c0;
   }
   .headerOptionsText {
@@ -558,7 +558,7 @@ span#buttonSearch {
 }
 .headerMenuText:hover, .headerOptionsText:hover {
   color: #1c75c0;
-  border: 1px solid white;
+  /*border: 1px solid white;*/
   background-color: white;
 }
 .headerMenuText:active, .headerOptionsText:active {
