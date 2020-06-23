@@ -380,7 +380,12 @@ var ARQUIVO = ARQUIVO || (function(){
 
         exportSERP: function(type) {
             var fileContent = _exportSERPInfo;
-            var bb = new Blob([fileContent ], { /*encoding:"UTF-8",*/ type: 'text/csv;charset=utf-8' });
+            // prepend file with a UTF-8 BOM character so Ms Excel detect that it's UTF-8 encoded.
+            var bb = new Blob([
+                    new Uint8Array([0xEF, 0xBB, 0xBF]), // UTF-8 BOM
+                    fileContent 
+                ], 
+                { type: 'text/csv;charset=utf-8' });
             var a = document.createElement('a');
             const now = new Date();
             const timestamp = this.jsDateToTimetamp(now);
