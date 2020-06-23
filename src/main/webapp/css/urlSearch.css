@@ -31,6 +31,8 @@ div {
   background-color: #033f72;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
 }
 li {
   margin: 0;
@@ -279,7 +281,11 @@ button {
 .tablePresentation {
   display: block;
   overflow-x: /*auto*/ hidden;
-  white-space: nowrap;
+  white-space: nowrap;  
+  position: relative;
+  z-index: 3;
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
 }
 .tablePresentation table {
   margin: 0 auto;
