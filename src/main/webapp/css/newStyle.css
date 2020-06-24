@@ -6082,6 +6082,13 @@ p#estimated-results {
 input {
   -webkit-user-select: text;
 }
+
+body#advanced #ionSlider, body#advanced-images #ionSlider {
+  margin-left: -20px;
+  margin-bottom: 0px;
+
+}
+
 #ionSlider {
   float: left;
   width: 100%;
@@ -6281,14 +6288,13 @@ ion-item {
   --pin-display: none !important;
 }
 body#advanced #searchForm {
-  margin-top: 0 !important;
-  
-    margin: 0 21px;
+  margin-top: 0 !important;  
+  margin: 0 /*21px*/-8px;
 }
 
 body#advanced-images #searchForm {
   margin-top: 0px;  
-  padding: 0 21px;
+  margin: 0 /*21px*/-8px;
 }
 
 #searchForm {
@@ -12781,7 +12787,7 @@ margin: -35px auto 0 auto !important;
   padding-bottom: /*15px*/ 20px;
   margin-top: 0px;
   padding-left: 20px;
-  font-size: /*17px*/14px    ;
+  font-size: /*17px*/13px    ;
   cursor: pointer;
   text-decoration: none;
   font-weight: 500 !important;
@@ -12800,7 +12806,7 @@ margin: -35px auto 0 auto !important;
 
 /* Export results */
 #exportSERPOptionsMenuButton h4 {
-background: transparent url(../img/export-results.svg) no-repeat 20px 13px;
+background: transparent url(../img/export-results.svg) no-repeat 20px 17px;
 padding-left: 45px;
 }
 
@@ -12822,7 +12828,7 @@ color:#104877 !important;
  margin: 20px 0 20px -20px
  } 
  
- body#advanced .topActionsOnAdvancedSearch a#PageButton, body#advanced-images .topActionsOnAdvancedSearch a#PageButton  { 
+ body#advanced .topActionsOnAdvancedSearch a#PageButton, body#advanced-images .topActionsOnAdvancedSearch a#ImageButton  { 
  display: block;
  float: left;
  height: auto;

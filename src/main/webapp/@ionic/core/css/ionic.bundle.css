@@ -118,7 +118,7 @@ ion-range {
 
 body#advanced ion-item, body#advanced-images ion-item { 
    --padding-start: 0px !important;  
-   --inner-padding-end: 22px/*13px*/ !important;
+   --inner-padding-end: /*22px/*13px*/0 !important;
 }
 
 ion-item { 
