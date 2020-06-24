@@ -334,7 +334,7 @@ body#advanced .myButtonStyle:active, body#advanced-images .myButtonStyle:active 
   border-radius: 5px !important;
   text-decoration: none !important;
   padding: 9px !important;
-  transition: background-color 0.5s ease 0s;
+  /*transition: background-color 0.5s ease 0s;*/
   color: #fff;
   width: 100% !important;
   font-size: 16px;

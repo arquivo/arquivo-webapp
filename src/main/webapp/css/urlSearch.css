@@ -239,6 +239,7 @@ div.urlSearchContainer .list button {
   background: #1c75c0 url(../img/list-icon.svg) no-repeat 11px 6px;
   color: white;
   border: 1px solid transparent;
+  cursor: pointer;
 }
 
 .showHasListButton:hover {
