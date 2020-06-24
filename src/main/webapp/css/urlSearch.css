@@ -57,6 +57,7 @@ h4.yearHeader:hover .versionsCount, h4.monthHeader:hover .versionsCount {
 }
 h4.monthHeader {
   padding-left: 20px;
+  background-color: #052f54;
 }
 /* buttons  states */
 h4:hover, h4:hover span, h4:hover a, li.version:hover a {
@@ -86,6 +87,7 @@ a {
   text-align: center;
   text-decoration: none;
   font-size: 0.7em;
+  background-color: #06233c;
 }
 li.version:hover {
   background: white;
@@ -353,8 +355,8 @@ button {
   width: 100%;
   max-width: 957px;
   margin: 0 auto;
-  /* force container to give more spacein height */
-  height: 100vh;
+  /* force container to give more spacein height 
+  height: 100vh;*/
 }
 .list .previous, .list .next {
   display: none;
