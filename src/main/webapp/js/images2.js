@@ -659,14 +659,10 @@ function searchImagesJS(dateStartWithSlashes, dateEndWithSlashes, safeSearchOpti
                   currentDocument.pageLinkToArchive,
                   currentDocument.pageTitle
                 );
-
             }
-
-            document.getElementById("estimated-results-value").innerHTML = totalResults.toLocaleString(language);
-            document.getElementById("estimated-results").style.display = totalResults > 0 ? 'block' : 'hidden';
+            ARQUIVO.displayEstimatedResults(totalResults);
         }
-        document.getElementById("replayMenuButton").style.display = totalResults > 0 ? 'block' : 'none';
-        document.getElementById("exportSERPOptionsMenuButton").onclick = function () {ARQUIVO.exportSERP('image_search'); return false; };
+        ARQUIVO.exportSERPFinishSearch('image_search', totalResults);
        },
        type: 'GET'
     });
