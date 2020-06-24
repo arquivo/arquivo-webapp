@@ -169,6 +169,7 @@ div.urlSearchContainer .list button {
 
 .resultsHeader button.previous:hover {
   background: transparent url(../img/table-left-arrow-hover.svg) no-repeat 0 0;
+  cursor: pointer;
  }
  .resultsHeader button.previous:active {
   background: transparent url(../img/table-left-arrow-active.svg) no-repeat 0 0;

@@ -191,6 +191,7 @@ body#advanced .logo-main-div, body#advanced-images .logo-main-div {
 .logo-main-div-fixed {
   position: fixed !important;
   width: 102% !important;
+  cursor: pointer;
 }
 .logo-main {
   position: absolute;
