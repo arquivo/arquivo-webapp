@@ -333,7 +333,7 @@ button {
   font-weight: bold;
   padding: 13px 0px 13px 0px;
   display: block;
-  background-color: #1c75c0;
+  background-color: /*#1c75c0*/#041422;
   font-size: 0.75em
 }
 .viewingVersion a {
