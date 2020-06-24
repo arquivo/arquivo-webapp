@@ -406,6 +406,20 @@ var ARQUIVO = ARQUIVO || (function(){
             });
         },
 
+        // To be called after a search have been finished.
+        exportSERPFinishSearch : function(type, totalResults) {
+            document.getElementById("replayMenuButton").style.display = totalResults > 0 ? 'block' : 'none';
+            document.getElementById("exportSERPOptionsMenuButtonXLSX").onclick = function () { ARQUIVO.exportSERP(type, 'xlsx'); return false; };
+            document.getElementById("exportSERPOptionsMenuButtonCSV").onclick = function () { ARQUIVO.exportSERP(type, 'csv'); return false; };
+            document.getElementById("exportSERPOptionsMenuButtonTXT").onclick = function () { ARQUIVO.exportSERP(type, 'txt'); return false; };
+        },
+
+        // Show the estimated results of the search
+        displayEstimatedResults : function(totalResults) {
+            document.getElementById("estimated-results-value").innerHTML = totalResults.toLocaleString(language);
+            document.getElementById("estimated-results").style.display = totalResults > 0 ? 'block' : 'none';
+        },
+
         // Generate random string/characters
         // len is optional
         generateId : function (len) {
