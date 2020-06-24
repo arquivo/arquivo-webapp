@@ -57,7 +57,9 @@ var MENU = MENU || (function(){
                         '<h4>&nbsp;</h4>'+
                         '<button href="#" onclick="MENU.goToContent()" class="close-functions clean-button-no-fill">&#10005;</button>' +
                     '</div>'+
-                    '<a id="exportSERPOptionsMenuButton" alt="Export para CSV" href="javascript:void(0)"><h4><i class="export-serp-icon"></i>'+Content.topbar.optionsMenu.exportSERP+'</h4></a>'+
+                    '<a class="exportSERPOptionsMenuButton" id="exportSERPOptionsMenuButtonXLSX" href="javascript:void(0)"><h4><i class="export-serp-icon"></i>'+Content.topbar.optionsMenu.exportSERPXLSX+'</h4></a>'+
+                    '<a class="exportSERPOptionsMenuButton" id="exportSERPOptionsMenuButtonCSV" href="javascript:void(0)"><h4><i class="export-serp-icon"></i>'+Content.topbar.optionsMenu.exportSERPCSV+'</h4></a>'+
+                    '<a class="exportSERPOptionsMenuButton" id="exportSERPOptionsMenuButtonTXT" href="javascript:void(0)"><h4><i class="export-serp-icon"></i>'+Content.topbar.optionsMenu.exportSERPTXT+'</h4></a>'+
                 '</div>'
             );
 

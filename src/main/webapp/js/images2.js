@@ -666,7 +666,9 @@ function searchImagesJS(dateStartWithSlashes, dateEndWithSlashes, safeSearchOpti
             document.getElementById("estimated-results").style.display = totalResults > 0 ? 'block' : 'hidden';
         }
         document.getElementById("replayMenuButton").style.display = totalResults > 0 ? 'block' : 'none';
-        document.getElementById("exportSERPOptionsMenuButton").onclick = function () {ARQUIVO.exportSERP('image_search'); return false; };
+        document.getElementById("exportSERPOptionsMenuButtonXLSX").onclick = function () {ARQUIVO.exportSERP('image_search', 'xlsx'); return false; };
+        document.getElementById("exportSERPOptionsMenuButtonCSV").onclick = function () {ARQUIVO.exportSERP('image_search', 'csv'); return false; };
+        document.getElementById("exportSERPOptionsMenuButtonTXT").onclick = function () {ARQUIVO.exportSERP('image_search', 'txt'); return false; };
        },
        type: 'GET'
     });

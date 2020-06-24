@@ -148,6 +148,8 @@ Content = {
         },
         optionsMenu: {
             exportSERP: "Export to CSV",
+            exportSERPXLSX: "Export to XLSX",
+            exportSERPTXT: "Exportar to TXT",
         },
     },
     header: {

@@ -147,7 +147,9 @@ Content = {
             images: "Imagens",
         },
         optionsMenu: {
-            exportSERP: "Exportar para CSV",
+            exportSERPCSV: "Exportar para CSV",
+            exportSERPXLSX: "Exportar para XLSX",
+            exportSERPTXT: "Exportar para TXT",
         },
     },
     header: {

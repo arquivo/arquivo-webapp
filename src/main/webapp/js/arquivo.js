@@ -12,7 +12,8 @@ var ARQUIVO = ARQUIVO || (function(){
     // variable to store the export search engine result page information
     // initialized with information that tells the Ms excel that the file use
     // the TAB char has column separator.
-    var _exportSERPInfo = "sep=," + _exportSERPNewLine;
+    //var _exportSERPInfo = "sep=," + _exportSERPNewLine;
+    var _exportSERPInfo = [];
 
     // private methods
     function _inputmaskConfiguration () {
@@ -333,29 +334,12 @@ var ARQUIVO = ARQUIVO || (function(){
 
         // pass any size of arguments
         exportSERPSaveLine: function() {
-            var cleanColumnRegExp = new RegExp("("+_exportSERPColumnSeparator+"|"+_exportSERPNewLine+")", 'g');
-            var cleanTextSepRegExp = null;
-            if (_exportSERPTextSeparator == "\"") {
-                cleanTextSepRegExp = new RegExp(_exportSERPTextSeparator, 'g');
-                cleanTextSepNewValue = "\"\"";
-            }
-            let line = "";
+            let line = [];
             for (var i=0; i < arguments.length; i++) {
-                if (i != 0) {
-                    line += _exportSERPColumnSeparator;
-                }
-                line += _exportSERPTextSeparator;
                 var a = arguments[i];
-                if (a && cleanTextSepRegExp) {
-                    a = a.toString().replace(cleanTextSepRegExp, cleanTextSepNewValue);
-                }
-                if (a && cleanColumnRegExp) {
-                    a = a.toString().replace(cleanColumnRegExp, '    ');
-                }
-                line += a;
-                line += _exportSERPTextSeparator;
+                line.push( a );
             }
-            _exportSERPInfo += ( line + _exportSERPNewLine );
+            _exportSERPInfo.push( line );
             return line;
         },
 
@@ -378,27 +362,48 @@ var ARQUIVO = ARQUIVO || (function(){
             return sdate;
         },
 
-        exportSERP: function(type) {
-            var fileContent = _exportSERPInfo;
-            // prepend file with a UTF-8 BOM character so Ms Excel detect that it's UTF-8 encoded.
-            var blob = new Blob([
-                    '\ufeff' + // UTF-8 BOM
-                    fileContent 
-                ], 
-                { type: 'text/csv;charset=utf-8' });
-            const filename = "arquivo_pt_"+type+"_"+this.jsDateToTimetamp(new Date())+".csv";
-            if(window.navigator.msSaveOrOpenBlob) {
-                window.navigator.msSaveBlob(blob, filename);
-            }
-            else{
-                var elem = window.document.createElement('a');
-                elem.id ="exportSERP222";
-                elem.href = window.URL.createObjectURL(blob);
-                elem.download = filename;        
-                document.body.appendChild(elem);
-                elem.click();        
-                //document.body.removeChild(elem);
-            }
+        // Load a JavaScript file from the server using a GET HTTP request, then execute it.
+        // Also use cache it.
+        // adaptaion of cachedScript jQuery example on getScript
+        // https://api.jquery.com/jquery.getscript/
+        cachedScript : function(url, callback, options) {
+
+            // Allow user to set any option except for dataType, cache, and url
+            options = $.extend( options || {}, {
+                dataType: "script",
+                cache: true,
+                url: url
+            });
+
+            // Use $.ajax() since it is more flexible than $.getScript
+            // Return the jqXHR object so we can chain callbacks
+            jQuery.ajax( options ).done(function( script, textStatus ) {
+                jQuery.globalEval(script);
+                callback();
+            });
+        },
+
+        // Export the search engine result page.
+        // type: image or page
+        // outputFileExtension: csv or xlsx
+        exportSERP: function(type, outputFileExtension) {
+            this.cachedScript("https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.2/xlsx.full.min.js", function() {
+                const wb = XLSX.utils.book_new();
+                wb.Props = {
+                    Title: "Arquivo.pt search "+type+" export",
+                    Subject: "Arquivo.pt search "+type+" export",
+                    Author: "Arquivo.pt",
+                    CreatedDate: new Date()
+                };
+                const sheetName = type+" export";
+                wb.SheetNames.push(sheetName);
+                const ws = XLSX.utils.aoa_to_sheet(_exportSERPInfo);
+                wb.Sheets[sheetName] = ws;
+                const filename = "arquivo_pt_"+type+"_"+ARQUIVO.jsDateToTimetamp(new Date())+"."+outputFileExtension;
+                XLSX.writeFile(wb, filename);
+
+                ARQUIVO.sendEventToAnalytics('exportSERP', type, outputFileExtension);
+            });
         },
 
         // Generate random string/characters
@@ -469,6 +474,15 @@ var ARQUIVO = ARQUIVO || (function(){
           }
 
           return html;
-        }
+        },
+
+        /**
+         * Send event to google analytics where the eventLabel by default is like arquivo.pt/<timestamp>/<url>
+         */
+        sendEventToAnalytics: function(eventCategory, eventAction, eventLabel) {
+            eventLabel = eventLabel || ( _ts && _url ? "arquivo.pt/" + _ts + '/' +_url : '' );
+            ga("send", "event", eventCategory, eventAction, eventLabel );
+        },
+
     };
 }());
