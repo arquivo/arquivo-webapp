@@ -166,10 +166,10 @@ color: #ccc !important;*/
   width: 100%;
   height: 100%;
 }
-body#advanced .logo-main-div, body#advanced-images .logo-main-div {
+/*body#advanced .logo-main-div, body#advanced-images .logo-main-div {
   padding-bottom: 20px;
   padding-left: 45px;
-}
+}*/
 .curve-background {
   background-color: #033f72 !important;
   z-index: 9;
@@ -456,6 +456,13 @@ span#buttonSearch {
 }
 #resultados-lista ul li h2 {
     font-size: 18px;
+}
+}
+
+@media screen and (max-width:759px) {
+body#advanced-images .logo-main-div {
+    padding-bottom: 20px;
+    padding-left: 45px;
 }
 }
 
