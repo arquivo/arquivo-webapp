@@ -459,13 +459,6 @@ span#buttonSearch {
 }
 }
 
-@media screen and (max-width:759px) {
-body#advanced-images .logo-main-div {
-    padding-bottom: 20px;
-    padding-left: 45px;
-}
-}
-
 /* iPad landscape */
 @media (device-width:1024px) and (device-height:768px) {
 span#buttonSearch {   
@@ -529,7 +522,8 @@ span#buttonSearch {
   line-height: 30px;
 }
 
-@media screen and (max-width:960px) {
+
+@media screen and (max-width:959px) {
   .headerMenuText {
     display: none;
   }
@@ -542,6 +536,11 @@ span#buttonSearch {
   .menu-button {
     display: block
   }
+ 
+body#advanced .logo-main-div, body#advanced-images .logo-main-div {
+    padding-bottom: 20px;
+    padding-left: 45px;
+}
 }
 
 @media screen and (min-width:960px) {
