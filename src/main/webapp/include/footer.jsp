@@ -98,6 +98,7 @@
             <aside id="wp_editor_widget-11" class="widget inner-padding WP_Editor_Widget">
               <h4 class="widget-title"><fmt:message key="footer.section.collaboration"/></h4>
               <ul>
+                <li><fmt:message key="footer.section.collaboration.awards"/></li>
                 <li><fmt:message key="footer.section.collaboration.suggest-website"/></li>
                 <li><fmt:message key="footer.section.collaboration.divulgation"/></li>
                 <li><fmt:message key="footer.section.collaboration.recommendations"/></li>
