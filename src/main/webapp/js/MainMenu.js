@@ -18,6 +18,17 @@ var MENU = MENU || (function(){
         }
         return -1
     }
+    function menuNewAdvancedSearch(path) {
+        var newURL = path;
+        var txtSearchInput = document.getElementById('txtSearch');
+        if (txtSearchInput) {
+            var searchValue = txtSearchInput.value.toString();
+            if(searchValue !='' && searchValue != undefined){
+                newURL += "&query="+ARQUIVO.encodeHtmlEntities( searchValue );
+            }
+        }
+        window.location.href = newURL;
+    }
 
     return {
         init : function() {
@@ -93,26 +104,10 @@ var MENU = MENU || (function(){
                     return false; 
         },
         advancedPagesClick: function(){
-                var txtSearch = document.getElementById('txtSearch').value.toString();
-                var newURL = "";
-                if(txtSearch !='' && txtSearch != undefined){
-                    newURL = "/page/advanced/search?l="+language+"&query="+ARQUIVO.encodeHtmlEntities( document.getElementById( 'txtSearch' ).value.toString( ) );
-                    console.log( 'newURL => ' + newURL );
-                } else {
-                    newURL = "/page/advanced/search?l=" + language;
-                }
-                window.location.href = newURL;
-
-        },  
+            menuNewAdvancedSearch("/page/advanced/search?l=" + language);
+        },
         advancedImagesClick: function(){
-                var txtSearch = document.getElementById('txtSearch').value.toString();
-                var newURL = "";
-                if(txtSearch !='' && txtSearch != undefined){
-                    newURL = "/image/advanced/search?l="+language+"&query="+ARQUIVO.encodeHtmlEntities( document.getElementById( 'txtSearch' ).value.toString( ) );
-                } else {
-                    newURL = "/image/advanced/search?l="+language;
-                }
-                window.location.href = newURL;
+            menuNewAdvancedSearch("/image/advanced/search?l=" + language);
         },          
         reportBug: function(){
                 window.location = Content.topbar.menu.bug + replaceAll(window.location.href, '&', '%26');

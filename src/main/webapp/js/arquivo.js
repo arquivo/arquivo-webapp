@@ -30,6 +30,21 @@ var ARQUIVO = ARQUIVO || (function(){
         return array;
     }
 
+    function defineReplaceAllOnString() {
+        String.prototype.replaceAll = function(searchStr, replaceStr) {
+            var str = this;
+
+            // no match exists in string?
+            if(str.indexOf(searchStr) === -1) {
+                // return string
+                return str;
+            }
+
+            // replace and remove first match, and do another recursirve search/replace
+            return (str.replace(searchStr, replaceStr)).replaceAll(searchStr, replaceStr);
+        }
+    }
+
     // public methods
     return {
         removeZeroInDay: function(dayStr) {
@@ -103,9 +118,12 @@ var ARQUIVO = ARQUIVO || (function(){
         },
         // encode some char of str has html
         encodeHtmlEntities: function(str) {
-            str = str.replaceAll('ç','%26ccedil%3B')
+            defineReplaceAllOnString();
+
+            return str.toString()
+                     .replaceAll('ç','%26ccedil%3B')
                      .replaceAll('Á','%26Aacute%3B')
-                      .replaceAll('á','%26aacute%3B')
+                     .replaceAll('á','%26aacute%3B')
                      .replaceAll('À','%26Agrave%3B')
                      .replaceAll('Â','%26Acirc%3B')
                      .replaceAll('à','%26agrave%3B')
@@ -194,7 +212,6 @@ var ARQUIVO = ARQUIVO || (function(){
                      .replaceAll('β','%26beta%3B')
                      .replaceAll('∞','%26infin%3B')
                      .replaceAll(' ','+');
-            return str;
         },
 
         inputMaskAnInput: function(input) {
