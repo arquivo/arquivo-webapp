@@ -8970,14 +8970,19 @@ top: 14px
   .call-to-actions {
     height: 300px !important;
   }
+  #searchForm .form-control {  
+    font-size: 15px !important;   
 }
 /****  Landscape ********/
 @media screen and (device-width:534px) and (device-height: 320px) and (-webkit-device-pixel-ratio: 1.5) {
   #award-pt, #award-en, #pagesPreserved-pt, #pagesPreserved-en, #exhibitions-pt, #exhibitions-en {
     height: 400px !important;
   }
+    #searchForm .form-control {  
+    font-size: 15px !important;   
 }
-/* Responsivo Portrait and Landscape */
+}
+/* Responsive Portrait and Landscape */
 @media only screen and (min-device-width : 1024px) {
   span#buttonSearch button span {
     color: #1c75c0;
@@ -9006,6 +9011,9 @@ top: 14px
   a#ImageButton {
     font-size: 0.8em;
   }
+    #searchForm .form-control {  
+    font-size: 15px !important;   
+}
 }
 /* Portrait */
 @media (device-width: 360px) (device-height: 640px) {
@@ -9024,6 +9032,9 @@ top: 14px
   #award-pt, #award-en, #pagesPreserved-pt, #pagesPreserved-en, #exhibitions-pt, #exhibitions-en {
     height: 400px !important;
   }
+    #searchForm .form-control {  
+    font-size: 15px !important;   
+}
 }
 /**********  Samsung S5 portrait  ************/
 @media (device-width:360px) and (device-height:640px) {
@@ -9039,7 +9050,10 @@ top: 14px
   }
   body#home-search #conteudo-pesquisa-erro {
     margin-top: -12px;
-  }
+  }  
+    #searchForm .form-control {  
+    font-size: 15px !important;   
+}
 }
 /* Portrait */
 @media only screen and (min-device-width: 320px) and (max-device-height: 480px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {
@@ -9063,6 +9077,9 @@ top: 14px
     margin-bottom: 11px !important;
     width: /*94.79%*/100% !important;
   }
+    #searchForm .form-control {  
+    font-size: 15px !important;   
+}
   /* body#home-search .topcontainer {
     padding-left: 0px;
 }*/
@@ -9095,6 +9112,9 @@ top: 14px
   /*body#home-search .topcontainer {
     padding-left: 0px;
 }*/
+  #searchForm .form-control {  
+    font-size: 15px !important;   
+}
 }
 /* Landscape */
 @media (device-width: 568px) and (device-height: 320px) {
@@ -9108,6 +9128,9 @@ top: 14px
   #award-pt, #award-en, #pagesPreserved-pt, #pagesPreserved-en, #exhibitions-pt, #exhibitions-en {
     height: 230px !important;
   }
+    #searchForm .form-control {  
+    font-size: 15px !important;   
+}
 }
 /* Landscape */
 @media (device-width: 667px) and (device-height: 375px) {
