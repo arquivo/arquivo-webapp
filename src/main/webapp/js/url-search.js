@@ -78,7 +78,7 @@ function createMatrixTable(waybackURL, versions, insertOnElementId){
     var pos = getYearPosition(firstVersionYear, timestampStr);
     var dateFormated = getDateSpaceFormated(timestampStr);
     var shortDateFormated= getShortDateSpaceFormated(timestampStr);
-    var tdtoInsert = '<td><a id="'+timestampStr+'" onclick="if(inIframe()) { callUrlSearchClickOnVersionOnParent(this.href); return false;}" href="'+waybackURL+'/'+timestampStr+'/'+url+'" title="'+dateFormated+'">'+shortDateFormated+'</a></td>';
+    var tdtoInsert = '<td><a id="'+timestampStr+'" onclick="return callUrlSearchClickOnVersionOnParent(this);" href="'+waybackURL+'/'+timestampStr+'/'+url+'" title="'+dateFormated+'">'+shortDateFormated+'</a></td>';
     matrix[pos].push(tdtoInsert);
   }
 
@@ -182,12 +182,21 @@ function inIframe () {
 }
 
 // Send message 'urlSearchClickOnVersion' meaning the user have selected/clicked one of the versions.
-function callUrlSearchClickOnVersionOnParent(waybackURLClicked) {
+function callUrlSearchClickOnVersionOnParent(anchorClickedOfArchivedVersion) {
   if (inIframe()) {
+    const waybackURLClicked = anchorClickedOfArchivedVersion.getAttribute('href');
+
     window.parent.postMessage({
         'func': 'urlSearchClickOnVersion',
         'message': waybackURLClicked
     }, "*");
+
+    const timestamp = anchorClickedOfArchivedVersion.getAttribute('id'); // id is also the timestamp
+    openTimestamp(timestamp);
+
+    return false; // prevent the change page of the anchor
+  } else {
+    return true;
   }
 }
 
@@ -277,7 +286,7 @@ function createMatrixList(waybackURL, versions){
         var dateFormated = getDateSpaceFormated(timestamp);
         var versionWaybackUrl = waybackURL+'/'+timestamp+'/'+url;
         h += 
-              '<li class="version"><a onclick="if(inIframe()) { callUrlSearchClickOnVersionOnParent(this.href); return false;} " id="'+timestamp+'" href="'+versionWaybackUrl+'" title="'+dateFormated+'">'+getDateSpaceFormatedWithoutYear(timestamp)+'</a></li>';
+              '<li class="version"><a onclick="return callUrlSearchClickOnVersionOnParent(this);" id="'+timestamp+'" href="'+versionWaybackUrl+'" title="'+dateFormated+'">'+getDateSpaceFormatedWithoutYear(timestamp)+'</a></li>';
       }
       h +=
             '</ul>'+ // close versions
