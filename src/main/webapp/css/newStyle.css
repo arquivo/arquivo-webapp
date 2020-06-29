@@ -1,6 +1,8 @@
+/* scrollbar */
+
 html {
-  --scrollbarBG: #1c75c0;
-  --thumbBG: #0b497f;
+  --scrollbarBG: #033f72;
+  --thumbBG: #1c75c0;
 }
 body::-webkit-scrollbar {
   width: 11px;
@@ -17,7 +19,6 @@ body::-webkit-scrollbar-thumb {
   border-radius: 0px;
   border: 3px solid var(--scrollbarBG);
 }
-
 
 #uglipop_content_fixed::-webkit-scrollbar {
   width: 1em !important;
@@ -68,26 +69,7 @@ body#home-search .urlBlock a:visited {
   margin-top: 4px;
   padding-right: 13% !important;
 }
-/* scrollbar */
-html {
-  --scrollbarBG: #1c75c0;
-  --thumbBG: #0b497f;
-}
-body::-webkit-scrollbar {
-  width: 11px;
-}
-body {
-  scrollbar-width: thin;
-  scrollbar-color: var(--thumbBG) var(--scrollbarBG);
-}
-body::-webkit-scrollbar-track {
-  background: var(--scrollbarBG);
-}
-body::-webkit-scrollbar-thumb {
-  background-color: var(--thumbBG);
-  border-radius: 0px;
-  border: 3px solid var(--scrollbarBG);
-}
+
 /* NEW STYLE: Hover search bar effect*/
 #searchForm .form-control:focus {
   -webkit-box-shadow: 0px 4px 5px -2px rgba(0, 0, 0, 0.35);
@@ -338,7 +320,7 @@ body#advanced #searchForm {
   line-height: normal;
 }
 #resultados-lista ul li a:visited h2 {
-  color: #9c27b0 !important;
+  color: #609 !important;
 }
 #resultados-lista > ul > li {
   padding-bottom: 16px;
@@ -5968,7 +5950,7 @@ margin-top: 5px !important;
   /*padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);*/
 }
 body#home-search .urlBlock a:visited {
-  color: #8b14d5 !important;
+  color: #609 !important;
 }
 .stylish-input-group button {
   border: 0;
@@ -5999,26 +5981,7 @@ body#home-search .urlBlock a:visited {
   margin-top: 4px;
   padding-right: 13% !important;
 }
-/* scrollbar */
-html {
-  --scrollbarBG: #033f72 !important;
-  --thumbBG: #1c75c0;
-}
-body::-webkit-scrollbar {
-  width: 11px;
-}
-body {
-  scrollbar-width: thin;
-  scrollbar-color: var(--thumbBG) var(--scrollbarBG);
-}
-body::-webkit-scrollbar-track {
-  background: var(--scrollbarBG);
-}
-body::-webkit-scrollbar-thumb {
-  background-color: var(--thumbBG);
-  border-radius: 0px;
-  border: 3px solid var(--scrollbarBG);
-}
+
 /* NEW STYLE: Hover search bar effect*/
 #searchForm .form-control:focus {
   -webkit-box-shadow: 0px 4px 5px -2px rgba(0, 0, 0, 0.35);
@@ -6299,6 +6262,7 @@ body#advanced-images #searchForm {
 
 #searchForm {
   margin-top: 25px;
+  /*position: relative;*/
 }
 /* NEW STYLE: Change placeholder */ ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
   color: #777 !important;
@@ -6369,7 +6333,7 @@ body#advanced-images #searchForm {
   line-height: normal;  
 }
 
-#resultados-lista ul li a:hover {
+#resultados-lista ul li a:hover h2 {
  text-decoration: underline
 }
 
@@ -6389,9 +6353,9 @@ body#advanced-images #searchForm {
   padding-top: 0px;
   margin-top: 0px;
 }
-#resultados-lista ul li h2 a {
+/*#resultados-lista ul li h2 a {
   color: #1c75c0;
-}
+}*/
 #resultados-lista > ul > li {
   padding-bottom: 16px;
   border-top: solid 1px lightgrey;
@@ -9006,14 +8970,19 @@ top: 14px
   .call-to-actions {
     height: 300px !important;
   }
+  #searchForm .form-control {  
+    font-size: 15px !important;   
 }
 /****  Landscape ********/
 @media screen and (device-width:534px) and (device-height: 320px) and (-webkit-device-pixel-ratio: 1.5) {
   #award-pt, #award-en, #pagesPreserved-pt, #pagesPreserved-en, #exhibitions-pt, #exhibitions-en {
     height: 400px !important;
   }
+    #searchForm .form-control {  
+    font-size: 15px !important;   
 }
-/* Responsivo Portrait and Landscape */
+}
+/* Responsive Portrait and Landscape */
 @media only screen and (min-device-width : 1024px) {
   span#buttonSearch button span {
     color: #1c75c0;
@@ -9042,6 +9011,9 @@ top: 14px
   a#ImageButton {
     font-size: 0.8em;
   }
+    #searchForm .form-control {  
+    font-size: 15px !important;   
+}
 }
 /* Portrait */
 @media (device-width: 360px) (device-height: 640px) {
@@ -9060,6 +9032,9 @@ top: 14px
   #award-pt, #award-en, #pagesPreserved-pt, #pagesPreserved-en, #exhibitions-pt, #exhibitions-en {
     height: 400px !important;
   }
+    #searchForm .form-control {  
+    font-size: 15px !important;   
+}
 }
 /**********  Samsung S5 portrait  ************/
 @media (device-width:360px) and (device-height:640px) {
@@ -9075,7 +9050,10 @@ top: 14px
   }
   body#home-search #conteudo-pesquisa-erro {
     margin-top: -12px;
-  }
+  }  
+    #searchForm .form-control {  
+    font-size: 15px !important;   
+}
 }
 /* Portrait */
 @media only screen and (min-device-width: 320px) and (max-device-height: 480px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {
@@ -9099,6 +9077,9 @@ top: 14px
     margin-bottom: 11px !important;
     width: /*94.79%*/100% !important;
   }
+    #searchForm .form-control {  
+    font-size: 15px !important;   
+}
   /* body#home-search .topcontainer {
     padding-left: 0px;
 }*/
@@ -9131,6 +9112,9 @@ top: 14px
   /*body#home-search .topcontainer {
     padding-left: 0px;
 }*/
+  #searchForm .form-control {  
+    font-size: 15px !important;   
+}
 }
 /* Landscape */
 @media (device-width: 568px) and (device-height: 320px) {
@@ -9144,6 +9128,9 @@ top: 14px
   #award-pt, #award-en, #pagesPreserved-pt, #pagesPreserved-en, #exhibitions-pt, #exhibitions-en {
     height: 230px !important;
   }
+    #searchForm .form-control {  
+    font-size: 15px !important;   
+}
 }
 /* Landscape */
 @media (device-width: 667px) and (device-height: 375px) {
@@ -12805,18 +12792,18 @@ margin: -35px auto 0 auto !important;
 }
 
 /* Export results */
-#exportSERPOptionsMenuButton h4 {
+.exportSERPOptionsMenuButton h4 {
 background: transparent url(../img/export-results.svg) no-repeat 20px 17px;
 padding-left: 45px;
 }
 
-#exportSERPOptionsMenuButton h4:hover {
-background:  #fff url(../img/export-results-hover.svg) no-repeat 20px 13px !important;
+.exportSERPOptionsMenuButton h4:hover {
+background:  #fff url(../img/export-results-hover.svg) no-repeat 20px 17px !important;
 color:#104877 !important;
 }
 
-#exportSERPOptionsMenuButton h4:active {
-background:  #104877 url(../img/export-results-hover.svg) no-repeat 20px 13px !important;
+.exportSERPOptionsMenuButton h4:active {
+background:  #104877 url(../img/export-results-hover.svg) no-repeat 20px 17px !important;
 color:#104877 !important;
 }
 
@@ -12834,4 +12821,4 @@ color:#104877 !important;
  height: auto;
  margin: 20px 0 20px -20px;
  background-color: #033f72;
- } 
+ }
