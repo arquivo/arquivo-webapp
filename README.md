@@ -34,14 +34,9 @@ To prepare you IDE you can download sources and javadocs of the dependencies, us
 mvn eclipse:eclipse -DdownloadSources=true -DdownloadJavadocs=true
 ```
 
-## Dependencies
-Some specific dependencies haven't been found on the central maven repository. The solution, for now, is to install locally on **my-repo** folder.
-
-Commands used to install those files:
+## Docker for production
 
 ```bash
-
-mvn install:install-file -Dfile=/home/ibranco/projects/arquivo/pwa-technologies-mobile/PwaArchive-access/projects/nutchwax/nutchwax-thirdparty/nutch/lib/taglibs-i18n-1.0.jar -DgroupId=org.apache.taglibs -DartifactId=taglibs-i18n -Dversion=1.0 -Dpackaging=jar -DlocalRepositoryPath=./mvn-repo
-
-mvn install:install-file -Dfile=/home/ibranco/projects/arquivo/pwa-technologies-mobile/PwaArchive-access/projects/nutchwax/nutchwax-thirdparty/nutch/lib/taglibs-log-1.0.jar -DgroupId=org.apache.taglibs -DartifactId=taglibs-log -Dversion=1.0 -Dpackaging=jar -DlocalRepositoryPath=./mvn-repo
+docker build . -t arquivo-webapp
+docker run -p 127.0.0.1:8080:8080 arquivo-webapp
 ```
