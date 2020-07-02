@@ -2,7 +2,9 @@
 FROM maven:3.6.3-openjdk-11 AS builder
 
 WORKDIR /tmp/build
-COPY . .
+COPY mvn-repo mvn-repo
+COPY pom.xml pom.xml
+COPY src src
 RUN mvn verify
 
 # Container to run
