@@ -160,7 +160,7 @@ Content = {
         pageSearch: {
             queryArgument: "Argumento",
             queryValue: "Valor",
-            query: "Temos de pesquisa",
+            query: "Termos de pesquisa",
             from: "De",
             to: "Até",
             offset: "Resultado a partir de",
