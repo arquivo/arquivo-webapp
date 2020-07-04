@@ -386,12 +386,13 @@ button {
   text-align: center;
   border-bottom: 1px solid #ffffff26;
 }
+.versionsCount {
+  display: none;
+}
+
 @media (max-width: 200px) {
   .urlSearchEstimatedResultsContainer, .resultsHeader {
     display: none;
-  }
-  .versionsCount {
-  display: none;
   }
 }
 /*
