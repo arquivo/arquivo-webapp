@@ -27,7 +27,6 @@
 
   <link rel="stylesheet" href="/css/urlSearch.css?build=<c:out value='${initParam.buildTimeStamp}'  />" media="none" onload="if(media!='all')media='all'" /><%-- Lazy load css download --%>
   
-  <%@ include file="/include/dates.jsp" %>
   <%@ include file="/include/i18njs.jsp" %>
 
   <script type="text/javascript">
@@ -41,8 +40,10 @@
     <p class="urlSearchEstimatedResults" id="estimatedResults" style="display: none;">
       <fmt:message key="search.results.estimated.results.1"/>
       <span id="estimatedResultsValue"></span> 
-      <fmt:message key="search.results.estimated.results.2"/>
-      <%= dateStartYear %>
+      <fmt:message key="search.results.estimated.results.2">
+        <fmt:param value="<%= startTs.substring(0, 4) %>"/>
+        <fmt:param value="<%= endTs.substring(0, 4) %>"/>
+      </fmt:message>
     </p>
   </div>
 

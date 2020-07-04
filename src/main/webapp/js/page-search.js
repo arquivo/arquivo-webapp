@@ -226,8 +226,7 @@ function searchPages(startIndex){
 	        	previousPageSearch.style.display = start > 0 ? 'block' : 'none';
 	        }
 
-	        document.getElementById("estimated-results-value").innerHTML = totalResults.toLocaleString(language);
-	        document.getElementById("estimated-results").style.display = totalResults > 0 ? 'block' : 'none';
+	        ARQUIVO.displayEstimatedResults(totalResults);
 	        document.getElementById("loadingDiv").style.display='none';
 		}
 	});

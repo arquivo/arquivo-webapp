@@ -477,7 +477,7 @@ String[] queryString_splitted=null;
       
       <div id="loadingDiv" class="loader"><div></div></div>
 
-      <p id="estimated-results" style="display: none;"><fmt:message key="search.results.estimated.results.1"/> <span id="estimated-results-value"></span> <fmt:message key="search.results.estimated.results.2"/> <%= dateStartYear %></p>
+      <%@ include file="/include/estimatedResults.jsp" %>
 
       <%-- Show search tip if the showTip option is active --%>
       <% if (showTip != null) { %>

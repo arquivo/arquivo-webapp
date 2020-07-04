@@ -274,11 +274,10 @@ function searchImages(startIndex){
   %>
   <%@ include file="/include/searchForm.jsp" %>
 
-
   <script type="text/javascript">$('#imagesTab').addClass('selected');$('#imagesTab').addClass('primary-underline');</script>
 
   <div class="spell hidden"><fmt:message key="search.spellchecker"/> <span class="suggestion"></span></div>
-  <p id="estimated-results" style="display: none;"><fmt:message key="search.results.estimated.results.1"/> <span id="estimated-results-value"></span> <fmt:message key="search.results.estimated.results.2"/> <%= dateStartYear %></p>
+  <%@ include file="/include/estimatedResults.jsp" %>
 
   <div class="row image-container">
     <div id="loadingDiv" class="loader"><div></div></div>
