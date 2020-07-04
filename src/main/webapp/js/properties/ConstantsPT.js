@@ -89,7 +89,7 @@ Content = {
             header: "A partir de:",
         },
         end: {
-            header: "Até:",
+            header: "At&eacute;:",
         },
     },
     images: {
@@ -154,7 +154,7 @@ Content = {
     },
     header: {
         menu: "Menu",
-        options: "Opções",
+        options: "Op&ccedil;&otilde;es",
     },
     exportSERP: {
         pageSearch: {
@@ -210,6 +210,6 @@ Content = {
             pageTitle: "Título da página",
         }
     },
-    pageSearchButton: "Páginas",
+    pageSearchButton: "P&aacute;ginas",
     imageSearchButton: "Imagens",
 };

@@ -12,15 +12,16 @@
 					<div class="bar"></div>
 					<div class="bar"></div>
 				</div>
-				<span class="headerMenuText"></span>
-				<script type="text/javascript">$('.headerMenuText').text(Content.header.menu)</script>
+				<span class="headerMenuText">
+					<script type="text/javascript">document.write(Content.header.menu);</script>
+				</span>
 			</a>
 			<a href="/?l=<%=language%>"><img src="/img/arquivo-logo-white.svg" id="arquivoLogo" alt="Arquivo.pt logo" class="text-center logo-main" /></a>
 
 			<button id="replayMenuButton" class="replay-menu-button" title="Options menu" style="display: none;">
 				<span class="headerOptionsText">
+					<script type="text/javascript">document.write(Content.header.options);</script>
 				</span>
-				<script type="text/javascript">$('.headerOptionsText').text(Content.header.options)</script>
 				<span class="headerOptionsTextDots">...</span>
 			</button>
 
