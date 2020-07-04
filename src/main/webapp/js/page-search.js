@@ -217,7 +217,7 @@ function searchPages(startIndex){
 
 	        }
 
-			ARQUIVO.exportSERPFinishSearch('image_search', totalResults);
+			ARQUIVO.exportSERPFinishSearch('page_search', totalResults);
 
 	        document.getElementById("nextPageSearch").style.display = totalResults > (start + hitsPerPage) ? 'block' : 'none';
 
