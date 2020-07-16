@@ -455,25 +455,24 @@ button {
   margin: auto;
   width: 97%;
   max-width: 940px;
-}
-.noResultsFound {
+  font-size: 13px;
   margin-top: 10px;
-  background-color: #fbf2f2;
   padding: 10px;
   border-radius: 5px;
+}
+.noResultsFound {
+  background-color: #fbf2f2;
   color: #d05289;
 }
 .noResultsFound > p::before {
   content: " → ";
 }
 .noResultsFoundSuggestions {
-  margin-top: 10px;
   background-color: #f6f6f6;
-  padding: 10px;
-  border-radius: 5px;
 }
 .noResultsFoundSuggestions > p::before {
   content: " → ";
+  color: #1c75c0;
 }
 .urlQuery, .suggestions {
   font-weight: bold; 

@@ -9,7 +9,7 @@
 })();
 
 function createErrorPage(){
-  ARQUIVO.getSearchNoResultsHtml().insertBefore("#resultados-lista");
+  $(ARQUIVO.getSearchNoResultsHtml()).insertBefore("#resultados-lista");
     //$( window ).resize(function() {$('#conteudo-pesquisa-erro').css('margin-left', $('#search-dateStart_top').offset().left)}); /*dirty hack to keep message aligned with not responsive searchbox*/$( window ).resize(function() {$('.spell').css('margin-left', $('#search-dateStart_top').offset().left)}); /*dirty hack to keep message aligned with not responsive searchbox*/
 }
 

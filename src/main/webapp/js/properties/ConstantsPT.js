@@ -112,10 +112,9 @@ Content = {
             title: "N&atilde;o foram encontrados resultados para a sua pesquisa:",
             suggestions: {
                 intro: "Sugerimos que:",
-                wellWritten: "Verifique que todas as palavras est&atilde;o escritas corretamente.",
-                timeInterval: "Aumente o intervalo de tempo sobre o qual est&aacute; a pesquisar.",
-                genericWords: "Tente palavras mais gerais.",
-                keywords: "Tente utilizar outras palavras-chave.",
+                timeInterval: "Aumente o intervalo de tempo",
+                genericWords: "Pesquise outras palavras",
+                advancedSearch: "Experimente a <a href=\"javascript:void(0)\" onclick=\"$('#advancedSearchButton').click();\">Pesquisa avan&ccedil;ada</a>",
             },
         },
         viewMoreForSameSite: "Ver mais resultados de",

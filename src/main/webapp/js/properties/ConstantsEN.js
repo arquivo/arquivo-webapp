@@ -112,10 +112,9 @@ Content = {
             title: "No results were found for the query:",
             suggestions: {
                 intro : "We suggest that you:",
-                wellWritten: "Make sure all words are spelled correctly.",
-                timeInterval: "Widen the time interval of your query.",
-                keywords: "Try different keywords.",
-                genericWords: "Try more general words.",
+                timeInterval: "Widen the time interval",
+                genericWords: "Try more general words",
+                advancedSearch: "Try the <a href=\"javascript:void(0)\" onclick=\"$('#advancedSearchButton').click();\">Advanced search</a>",
             },
         },
         viewMoreForSameSite: "View more results of",

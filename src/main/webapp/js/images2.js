@@ -694,7 +694,7 @@ $(document).ready(function() {
 });
 
 function createErrorPage(){
-  ARQUIVO.getSearchNoResultsHtml().insertBefore("#photos");    
+  $(ARQUIVO.getSearchNoResultsHtml()).insertBefore("#photos");    
 }
 
 document.addEventListener('keydown', function(evt) {

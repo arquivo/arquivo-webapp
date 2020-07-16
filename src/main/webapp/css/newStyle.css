@@ -1,5 +1,3 @@
-/* scrollbar */
-
 html {
   --scrollbarBG: #033f72;
   --thumbBG: #1c75c0;
@@ -1254,18 +1252,6 @@ body#homeImages #conteudo-pesquisa-erro {}
 }
 #sugerimos-que {
   margin-top: -12px;
-}
-.spell {
-  color: #9C27B0;
-  font-size: 1.2em;
-  width: 91%;
-  margin: 9px auto 11px auto;
-  max-width: 914px;
-  position: relative;
-  /*top: -25px;
-  left: -14px;*/
-  top: 0px !important;
-  left: -12px;
 }
 .url-search-container #years {
   /*  margin: -9px 28px 0 28px !important;*/
@@ -3505,15 +3491,6 @@ top: 16px
     background: transparent url(../img/homepage-premio-card-en-desktop.jpg) no-repeat center center !important;
     background-size: cover !important;
   }
-}
-.spell {
-  top: -25px;
-  left: -12px;
-}
-
-body#home-search .spell {
-  top: -25px;
-  left: -20px;
 }
 body#home-search #conteudo-pesquisa-erro {
   margin-top: 16px !important;
@@ -7319,18 +7296,6 @@ body#homeImages #conteudo-pesquisa-erro {}
 #sugerimos-que {
   margin-top: -12px;
 }
-.spell {
-  color: #9C27B0;
-  font-size: 1.1em;
-  width: 91%;
-  margin: 9px auto 11px auto;
-  max-width: 914px;
-  position: relative;
-  /*top: -25px;
-  left: -14px;*/
-  top: 0px !important;
-  left: -12px;
-}
 .url-search-container #years {
   /*  margin: -9px 28px 0 28px !important;*/
   padding-top: 2px;
@@ -9678,20 +9643,6 @@ top: 14px
     background-size: cover !important;
   }
 }
-.spell {
-  top: -25px;
-  left: /*-2px*/-22px;
-}
-
-body#home-search .spell {
-  top: -25px;
-  left: -41px !important;
-}
-
-body#home-search .spell:before {
-  content:"→ ";  
-}
-
 
 body#home-search #conteudo-pesquisa-erro {
   margin-top: 33px !important;
@@ -10499,12 +10450,6 @@ body#home-search .plt-desktop #urlSearchContainer {
 
 
 @media (max-width: 767px) {
-  
-  body#home-search .spell {
-    top: 2px !important;
-    left: -13px !important;
-    margin-bottom: 2px !important;
-}
   
   #newFooterWrapper [class*="mobile-push-"], #newFooterWrapper [class*="mobile-pull-"] {
     position: relative;
@@ -12249,15 +12194,6 @@ body#home-search div#flex-container {
     padding: 20px 17px;
     margin: 10px 6px;
 }
-body#homeImages .spell {    
-    left: -13px !important;
-    margin: 9px auto 7px auto;
-}
-
-body#home-search .spell {
-    top: -25px;
-    left: -22px !important;
-}
 #homeImages #conteudo-pesquisa-erro {
     width: 100%; 
     max-width: 733px;
@@ -12372,13 +12308,6 @@ body#homeImages p#estimated-results {
 body#home-search p#estimated-results {
     padding-left: 15px;    
 }
-body#home-search.spell {   
-    left: 11px !important;
-}
-body#homeImages .spell {    
-    left: -11px !important;
-    margin: 9px auto 7px auto;
-}
 body#home-search #resultados-lista > ul > li.grouped {
     margin-left: 29px !important;
 }
@@ -12465,13 +12394,6 @@ div#flex-container div:nth-child(2), div#flex-container div:nth-child(3), div#fl
 body#home-search #conteudo-resultado, body#homeImages #conteudo-pesquisa-erro {
     max-width: 925px !important;
 }
-body#home-search .spell {   
-    left: -30px !important;
-}
-body#homeImages .spell {    
-    left: 11px !important;
-    margin: 9px auto 7px auto;
-}
 #layoutTV {
     max-width: 914px !important;
 }
@@ -12551,14 +12473,6 @@ body#home-search #conteudo-resultado {
 body#homeImages #conteudo-pesquisa-erro, 
 body#home-search #conteudo-pesquisa-erro {
     max-width: 930px !important;
-}
-body#home-search .spell {
-    top: -25px;
-    left: -15px !important;
-    padding-bottom: 3px;
-}
-body#homeImages .spell {    
-    left: 3px !important;   
 }
 #searchForm .form-control {
     margin-top: 10px;
@@ -12788,3 +12702,37 @@ color:#104877 !important;
  margin: 20px 0 20px -20px;
  background-color: #033f72;
  }
+
+.noResultsFound, .noResultsFoundSuggestions, .spell{
+  margin: auto;
+  width: 100%;
+  max-width: 955px;
+  font-size: 13px;
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 5px;
+}
+.noResultsFound {
+  background-color: #fbf2f2;
+  color: #d05289;
+}
+.noResultsFound > p::before {
+  content: " → ";
+}
+.noResultsFoundSuggestions {
+  background-color: #f6f6f6;
+}
+.noResultsFoundSuggestions > p::before {
+  content: " → ";
+  color: #1c75c0;
+}
+.urlQuery, .suggestions {
+  font-weight: bold; 
+}
+.spell {
+  background-color: #f2fbf6;
+}
+.spell::before {
+  content: " → ";
+  color: green;
+}
