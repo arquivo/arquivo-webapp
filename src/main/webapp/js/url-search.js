@@ -300,24 +300,17 @@ function createMatrixList(waybackURL, versions){
 }
 
 function createErrorPage(urlQuery){
-  return 
-    '<div id="conteudo-resultado-url" class="container-fluid col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8 col-lg-offset-3 col-lg-6 col-xl-offset-4 col-xl-4">'+
-    '  <div id="first-column">&nbsp;</div>'+
-    '  <div id="second-column">'+
-    '    <div id="search_stats"></div>'+
-    '    <div id="conteudo-pesquisa-erro">'+
-    '<div class="alert alert-danger col-xs-12 my-alert break-word"><p>'+Content.noResultsFound+' <span class="text-bold">'+urlQuery+'</span></p></div>'+
-    '<div id="sugerimos-que" class="col-xs-12 no-padding-left suggestions-no-results">'+
-    '<p class="text-bold">'+Content.suggestions+'</p>'+
+  return ''+
+    '<div class="noResultsFound"><p>'+Content.noResultsFound+' <span class="urlQuery">'+urlQuery+'</span></p></div>'+
+    '<div class="noResultsFoundSuggestions">'+
+    '<p class="suggestions">'+Content.suggestions+'</p>'+
     '<ul>'+
     '<li>'+Content.checkSpelling+'</li>'+
     '<li><a class="no-padding-left" target="_top" href="'+Content.suggestUrl+urlQuery+'">'+Content.suggest+'</a> '+Content.suggestSiteArchived+'</li>'+
     '<li><a class="no-padding-left" target="_top" href="http://timetravel.mementoweb.org/list/1996/'+urlQuery+'">'+Content.mementoFind+'</a>.</li>'+
     '</ul>'+
-    '</div>'+
-    '</div>'+
-    '</div>'+
-    '</div>';
+    '</div>'
+  ;
 }
 
 // Global variables
@@ -438,9 +431,9 @@ function startUrlSearch(waybackURL, urlQuery, startTs, endTs, insertOnElementId,
       insertOn.append(createErrorPage(urlQuery));
     },
     success: function(data) {
-      versions = []
+      var versions = []
       if( data ) {
-        var tokens = data.split('\n')
+        var tokens = data.split('\n');
 
         var previousVersion = null;
         const deltaToRemoveDuplicatedEntries = 3600; // remo
@@ -474,8 +467,9 @@ function startUrlSearch(waybackURL, urlQuery, startTs, endTs, insertOnElementId,
           insertOn.append(createMatrixTable(waybackURL, versions));
           insertOn.removeClass('list').addClass('table');
         }
-      
-      } else {
+      }
+
+      if (versions.length == 0) {
         insertOn.append(createErrorPage(urlQuery));
       }
       

@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /* Wayback versions CSS */
 body {
   margin: 0 auto;
@@ -14,6 +15,7 @@ body::-webkit-scrollbar {
 body {
   scrollbar-width: thin;
   scrollbar-color: var(--thumbBG) var(--scrollbarBG);
+  font-family: roboto, arial, sans-serif;
 }
 body::-webkit-scrollbar-track {
   background: var(--scrollbarBG);
@@ -23,9 +25,8 @@ body::-webkit-scrollbar-thumb {
   border-radius: 0px;
   border: 3px solid var(--scrollbarBG);
 }
-div {
+.resultsHeader, .tablePresentation, .listPresentation {
   padding-left: 0px;
-  font-family: roboto, arial, sans-serif;
   color: white;
   margin: 0;
   background-color: #033f72;
@@ -34,11 +35,11 @@ div {
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
 }
-li {
+.resultsHeader li, .tablePresentation li, .listPresentation li {
   margin: 0;
   padding: 0 5px
 }
-ul {
+.resultsHeader ul, .tablePresentation ul, .listPresentation ul {
   list-style-type: none;
   padding: 0
 }
@@ -69,7 +70,8 @@ h4:active, h4:active span, h4:active a {
   background-color: #033f72;
   color: white
 }
-span, a {
+.resultsHeader span, .tablePresentation span, .listPresentation span, 
+.resultsHeader a, .tablePresentation a, .listPresentation a {
   font-size: 13px;
   font-weight: 400;
   color: white;
@@ -79,7 +81,7 @@ p a {
   font-weight: 400;
   color: black;
 }
-a {
+.resultsHeader a, .tablePresentation a, .listPresentation a {
   font-weight: 400;
   padding: 13px 0px 13px 0px;
   display: block;
@@ -429,4 +431,50 @@ button {
   border: 10px solid transparent;
   border-color: #1c75c0 #1c75c0 transparent transparent;
   animation: load8 .6s infinite;
+}
+.suggestionsNoResults ul {
+  list-style-type: disc;
+  padding: 0px 0px 0px 40px;
+}
+.suggestionsNoResults a {
+  background-color:rgba(0, 0, 0, 0);
+  color:rgb(0, 0, 238);
+  cursor:pointer;
+  display:inline;
+  font-family:roboto, arial, sans-serif;
+  font-size:16px;
+  font-weight:400;
+  height:auto;
+  list-style-type:disc;
+  text-align:left;
+  text-decoration-color:rgb(0, 0, 238);
+  text-decoration-line:underline;
+  text-decoration-style:solid;
+}
+.noResultsFound, .noResultsFoundSuggestions {
+  margin: auto;
+  width: 97%;
+  max-width: 940px;
+}
+.noResultsFound {
+  margin-top: 10px;
+  background-color: #fbf2f2;
+  padding: 10px;
+  border-radius: 5px;
+  color: #d05289;
+}
+.noResultsFound > p::before {
+  content: " → ";
+}
+.noResultsFoundSuggestions {
+  margin-top: 10px;
+  background-color: #f6f6f6;
+  padding: 10px;
+  border-radius: 5px;
+}
+.noResultsFoundSuggestions > p::before {
+  content: " → ";
+}
+.urlQuery, .suggestions {
+  font-weight: bold; 
 }
