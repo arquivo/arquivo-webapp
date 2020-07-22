@@ -385,10 +385,6 @@ span#buttonSearch {
     /*transition: 0.5s;*/
 }
 
-span#buttonSearch:hover {   
-    color: #ffffff ;    
-    background-color: #075ba2 !important;   
-}
 span#buttonSearch:active {   
     color: #ffffff ; 
     background-color: #033f72 !important;   
