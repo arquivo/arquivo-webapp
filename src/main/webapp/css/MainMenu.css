@@ -160,6 +160,8 @@ color: #ccc !important;*/
 #menuButton {
   cursor: pointer;
   margin-top: 7px;
+  width: 19px;
+  height: 17px;
 }
 /*.clean-button {outline:1px solid red;}*/
 .main-content {
