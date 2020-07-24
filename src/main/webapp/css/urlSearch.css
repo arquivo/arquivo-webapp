@@ -35,11 +35,11 @@ body::-webkit-scrollbar-thumb {
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
 }
-.resultsHeader li, .tablePresentation li, .listPresentation li {
+li {
   margin: 0;
   padding: 0 5px
 }
-.resultsHeader ul, .tablePresentation ul, .listPresentation ul {
+ul {
   list-style-type: none;
   padding: 0
 }
@@ -476,4 +476,18 @@ button {
 }
 .urlQuery, .suggestions {
   font-weight: bold; 
+}
+
+.noResultsFoundSuggestions > ul {
+  display: block;
+  list-style-type: disc;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  padding-inline-start: 40px;
+}
+
+.noResultsFoundSuggestions > ul > li {
+  display: list-item;
 }
