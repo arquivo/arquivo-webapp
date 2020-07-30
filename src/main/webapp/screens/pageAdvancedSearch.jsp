@@ -133,7 +133,7 @@
                             <div>
                                 <select id="num-result" interface="action-sheet" placeholder="<fmt:message key='advanced.select.one'/>" class="row  col-xs-10 no-padding-left formatTypeDropdown" id="num-result" name="hitsPerPage">
                                 <%
-                                int[] hitsPerPageValues = {10, 20, 30, 50, 100};
+                                int[] hitsPerPageValues = {10, 20, 30, 50, 100, 500, 1000, 2000};
                                 for (int i=0; i < hitsPerPageValues.length; i++) {
                                     if (hitsPerPage == hitsPerPageValues[i]) {
                                         out.print("<option selected>"+ hitsPerPageValues[i] +"</option>");
