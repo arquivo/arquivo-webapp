@@ -425,6 +425,7 @@ var ARQUIVO = ARQUIVO || (function(){
             document.getElementById("replayMenuButton").style.display = totalResults > 0 ? 'block' : 'none';
             document.getElementById("exportSERPOptionsMenuButtonXLSX").onclick = function () { ARQUIVO.exportSERP(type, 'xlsx'); return false; };
             document.getElementById("exportSERPOptionsMenuButtonCSV").onclick = function () { ARQUIVO.exportSERP(type, 'csv'); return false; };
+            document.getElementById("exportSERPOptionsMenuButtonODS").onclick = function () { ARQUIVO.exportSERP(type, 'ods'); return false; };
             document.getElementById("exportSERPOptionsMenuButtonTXT").onclick = function () { ARQUIVO.exportSERP(type, 'txt'); return false; };
         },
 

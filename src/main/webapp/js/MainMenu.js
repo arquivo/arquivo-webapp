@@ -70,6 +70,7 @@ var MENU = MENU || (function(){
                     '</div>'+
                     '<a class="exportSERPOptionsMenuButton" id="exportSERPOptionsMenuButtonXLSX" href="javascript:void(0)"><h4><i class="export-serp-icon"></i>'+Content.topbar.optionsMenu.exportSERPXLSX+'</h4></a>'+
                     '<a class="exportSERPOptionsMenuButton" id="exportSERPOptionsMenuButtonCSV" href="javascript:void(0)"><h4><i class="export-serp-icon"></i>'+Content.topbar.optionsMenu.exportSERPCSV+'</h4></a>'+
+                    '<a class="exportSERPOptionsMenuButton" id="exportSERPOptionsMenuButtonODS" href="javascript:void(0)"><h4><i class="export-serp-icon"></i>'+Content.topbar.optionsMenu.exportSERPODS+'</h4></a>'+
                     '<a class="exportSERPOptionsMenuButton" id="exportSERPOptionsMenuButtonTXT" href="javascript:void(0)"><h4><i class="export-serp-icon"></i>'+Content.topbar.optionsMenu.exportSERPTXT+'</h4></a>'+
                 '</div>'
             );

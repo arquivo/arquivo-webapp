@@ -148,6 +148,7 @@ Content = {
         optionsMenu: {
             exportSERPCSV: "Exportar resultados (CSV)",
             exportSERPXLSX: "Exportar resultados (XLSX)",
+            exportSERPODS: "Exportar resultados (ODS)",
             exportSERPTXT: "Exportar resultados (TXT)",
         },
     },
