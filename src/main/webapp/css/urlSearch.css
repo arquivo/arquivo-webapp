@@ -396,6 +396,12 @@ button {
   .versionsCount {
     display: none;
   }
+  .noResultsFound {
+    display: none;
+  }
+  .noResultsFoundSuggestions {
+    display: none;
+  }
 }
 /*
  * Loading spinner
