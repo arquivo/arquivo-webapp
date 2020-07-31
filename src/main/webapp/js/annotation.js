@@ -62,7 +62,7 @@ function prepareAnnotator(type, div){
             metadata["position"] = position
         } else if (type == 'image'){
             position = $( this ).attr("position")
-            id = $( this ).find("img").attr("data-src")
+            id = $( "#insert-card-" + position ).find("img").attr("data-src")
             metadata["url"] = id.split("/").slice(1).join('/')
             metadata["timestamp"] = id.split("/")[0].substring(0,"20081029060647".length)
             //id = metadata["timestamp"] + '/' + metadata["url"]
