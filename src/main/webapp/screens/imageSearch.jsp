@@ -435,6 +435,8 @@ function searchImages(startIndex){
     $('#showSlides').hide();
   </script>
 
+  <script type="text/javascript" src="/js/annotation.js?build=<c:out value='${initParam.buildTimeStamp}'/>"></script>
+
 <%@include file="/include/analytics.jsp" %>
 <%@include file="/include/footer.jsp" %>
 </body>
