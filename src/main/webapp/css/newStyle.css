@@ -3457,7 +3457,7 @@ top: 16px
 }
 @media screen and (min-width:328px) and (max-width:813px) {
   #award-pt {
-    background: transparent url(../img/homepage-premio-card-pt-desktop-transition-mobile.jpg) no-repeat center center;
+    background: transparent url(../img/homepage-premio-card-pt-desktop-transition.jpg) no-repeat center center;
     background-size: cover;
   }
 }
@@ -3476,7 +3476,7 @@ top: 16px
 /* English */
 @media screen and (min-width:328px) and (max-width:813px) {
   #award-en {
-    background: transparent url(../img/homepage-premio-card-en-desktop-transition-mobile.jpg) no-repeat center center !important;
+    background: transparent url(../img/homepage-premio-card-en-desktop-transition.jpg) no-repeat center center !important;
     background-size: cover !important;
   }
 }
@@ -3488,7 +3488,7 @@ top: 16px
 }
 @media screen and (min-width:961px) {
   #award-en {
-    background: transparent url(../img/homepage-premio-card-en-desktop.jpg) no-repeat center center !important;
+    background: transparent url(../img/homepage-premio-card-en.jpg) no-repeat center center !important;
     background-size: cover !important;
   }
 }
@@ -9608,7 +9608,7 @@ top: 14px
 }
 @media screen and (min-width:328px) and (max-width:813px) {
   #award-pt {
-    background: transparent url(../img/homepage-premio-card-pt-desktop-transition-mobile.jpg) no-repeat center center;
+    background: transparent url(../img/homepage-premio-card-pt-desktop-transition.jpg) no-repeat center center;
     background-size: cover;
   }
 }
@@ -9627,19 +9627,19 @@ top: 14px
 /* English */
 @media screen and (min-width:328px) and (max-width:813px) {
   #award-en {
-    background: transparent url(../img/homepage-premio-card-en-desktop-transition-mobile.jpg) no-repeat center center !important;
+    background: transparent url(../img/homepage-premio-card-en.jpg) no-repeat center center !important;
     background-size: cover !important;
   }
 }
 @media screen and (min-width:814px) and (max-width:960px) {
   #award-en {
-    background: transparent url(../img/homepage-premio-card-en-desktop-transition.jpg) no-repeat center center !important;
+    background: transparent url(../img/homepage-premio-card-en.jpg) no-repeat center center !important;
     background-size: cover !important;
   }
 }
 @media screen and (min-width:961px) {
   #award-en {
-    background: transparent url(../img/homepage-premio-card-en-desktop.jpg) no-repeat center center !important;
+    background: transparent url(../img/homepage-premio-card-en.jpg) no-repeat center center !important;
     background-size: cover !important;
   }
 }
