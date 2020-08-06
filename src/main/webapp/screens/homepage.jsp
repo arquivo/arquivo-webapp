@@ -27,6 +27,8 @@
 
 <%---------------------- Start of HTML ---------------------------%>
 
+<!-- test HM -->
+
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<c:out value='${locale}' />" lang="<c:out value='${locale}' />">
 <head>
   <title><fmt:message key='home.meta.title'/></title>
