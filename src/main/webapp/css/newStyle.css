@@ -1445,7 +1445,6 @@ div.call-to-actions span {
   padding-left: 5px;
 }
 #award-pt a, #award-en a, #pagesPreserved-pt a, #pagesPreserved-en a, #exhibitions-pt a, #exhibitions-en a {
-  display: block;
   width: 100%;
   height: 430px;
   text-indent: -999999px;
@@ -1455,6 +1454,7 @@ div.call-to-actions span {
   cursor: pointer;
 }
 .call-to-actions div {
+  /* Remove display block */
   margin: 5px 0;
   padding: 0;
   color: inherit;
@@ -7488,11 +7488,14 @@ div.call-to-actions span {
   padding-left: 5px;
 }
 #award-pt a, #award-en a, #pagesPreserved-pt a, #pagesPreserved-en a, #exhibitions-pt a, #exhibitions-en a {
-  display: block;
   width: 100%;
   height: 430px;
   text-indent: -999999px;
   box-shadow: none !important;
+}
+
+#award-pt a, #award-en a {
+color: transparent;
 }
 .call-to-actions:hover {
   cursor: pointer;
@@ -12735,4 +12738,12 @@ color:#104877 !important;
 .spell::before {
   content: " → ";
   color: green;
+}
+/* Issue #1000: image list are now vertical aligned */
+.imageContent:last-child { margin-bottom: 11px; }
+/* Issue #941: change cursor type to pointer */
+span.interactionStatus { cursor: pointer; }
+
+.imageList .image-mobile-expanded-div {
+color:#000 !important;
 }
