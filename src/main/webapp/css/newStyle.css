@@ -12735,3 +12735,11 @@ color:#104877 !important;
   content: " → ";
   color: green;
 }
+/* Issue #1000: image list are now vertical aligned */
+.imageContent:last-child { margin-bottom: 11px; }
+/* Issue #941: change cursor type to pointer */
+span.interactionStatus { cursor: pointer; }
+
+.imageList .image-mobile-expanded-div {
+color:#000 !important;
+}
