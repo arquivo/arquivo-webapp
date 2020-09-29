@@ -2,8 +2,7 @@
 	<div id="intro-award">
 		<h3><fmt:message key='home.intro.award'/></h3>
 		<div id="award-<%=language%>" class="call-to-actions">
-			<a href="<fmt:message key='home.intro.award.href'/>" title="<fmt:message key='home.intro.award'/>">
-			<fmt:message key='home.intro.award'/></a>
+			<a href="<fmt:message key='home.intro.award.href'/>" title="<fmt:message key='home.intro.award'/>"></a>
 		</div>
 	</div>
 	<div>
