@@ -1454,6 +1454,7 @@ div.call-to-actions span {
   cursor: pointer;
 }
 .call-to-actions div {
+  /* Removed display block */
   margin: 5px 0;
   padding: 0;
   color: inherit;
