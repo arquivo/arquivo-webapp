@@ -37,7 +37,14 @@ public class ImageViewTracking extends HttpServlet {
 		if (matcher != null && matcher.find()) {
 			String trackingId = matcher.group(1);
 			String timestamp = matcher.group(2);
-			String archivedUrl = matcher.group(3);
+			String archivedUrlWithoutQueryString = matcher.group(3);
+
+			String archivedUrl = archivedUrlWithoutQueryString;
+			String queryString = request.getQueryString();
+			if (queryString != null && queryString.length() > 0) {
+				archivedUrl += "?" + queryString;
+			}
+
 
 			logger.info("Image view tracking with trackingId: '{}', timestamp: '{}', archivedURL: '{}'", trackingId, timestamp, archivedUrl);
 			response.setStatus(200);
