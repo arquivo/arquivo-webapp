@@ -9610,20 +9610,20 @@ top: 14px
   }
 }
 @media screen and (min-width:328px) and (max-width:813px) {
-  #award-pt {
-    background: transparent url(../img/homepage-premio-card-pt-desktop-transition.jpg) no-repeat center center;
+  #award-pt {    
+    background: transparent url(../img/homepage-premio-card-pt.jpg) no-repeat center center;
     background-size: cover;
   }
 }
 @media screen and (min-width:814px) and (max-width:960px) {
   #award-pt {
-    background: transparent url(../img/homepage-premio-card-pt-desktop-transition.jpg) no-repeat center center;
+    background: transparent url(../img/homepage-premio-card-pt.jpg) no-repeat center center;
     background-size: cover;
   }
 }
 @media screen and (min-width:961px) {
   #award-pt {
-    background: transparent url(../img/homepage-premio-card-pt-desktop.jpg) no-repeat center center;
+    background: transparent url(../img/homepage-premio-card-pt.jpg) no-repeat center center;
     background-size: cover;
   }
 }
