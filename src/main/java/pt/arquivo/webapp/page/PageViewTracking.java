@@ -40,14 +40,22 @@ public class PageViewTracking extends HttpServlet {
 		if (matcher != null && matcher.find()) {
 			String trackingId = matcher.group(1);
 			String timestamp = matcher.group(2);
-			String archivedUrl = matcher.group(3);
+			String archivedUrlWithoutQueryString = matcher.group(3);
 
 			StringBuilder sb = new StringBuilder();
 			sb.append(Configuration.get("wayback.url", "examples.com"));
 			sb.append("/");
 			sb.append(timestamp);
 			sb.append("/");
-			sb.append(archivedUrl);
+			sb.append(archivedUrlWithoutQueryString);
+
+			String archivedUrl = archivedUrlWithoutQueryString;
+			String queryString = request.getQueryString();
+			if (queryString != null && queryString.length() > 0) {
+				sb.append("?");
+				sb.append(queryString);
+				archivedUrl += "?" + queryString;
+			}
 
 			redirectTo = sb.toString();
 
