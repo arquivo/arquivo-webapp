@@ -10,9 +10,7 @@
 
 
 imageObjs = []; /*Global array containing images*/
-imageDigests = []; /*Global array unique image digests*/
 noMoreResults = false; /*Global variable control if there are no more results*/
-hashBase64Img = "";
 
 function convertImgToDataURLviaCanvas(url, callback, outputFormat) {
     var img = new Image();
@@ -556,14 +554,6 @@ function searchImagesJS(dateStartWithSlashes, dateEndWithSlashes, safeSearchOpti
                 var currentImageURL = waybackURL +'/' + currentDocument.imgTstamp +'im_/'+currentDocument.imgSrc;
                 var imageDigest = currentDocument.imgDigest;
                 
-                if(imageDigests.indexOf(imageDigest) > -1){ 
-                    resultsToLoad--;                    
-                    continue; 
-                }
-                else{
-                    imageDigests.push(imageDigest);
-                }
-
                 var pageURL = currentDocument.pageURL;
                 // var thumbnail = currentImageURL;
 
@@ -604,36 +594,15 @@ function searchImagesJS(dateStartWithSlashes, dateEndWithSlashes, safeSearchOpti
                 imageObj.currentResultGlobalPosition = currentResultGlobalPosition;
                 imageObj.openImageTrackingURL = "/image/view/" + trackingId + "_" + (i+1) + '/' + currentDocument.imgTstamp + '/' +currentDocument.imgSrc;
 
-                imageObj.onload = function() {
-                            
-                    if( startIndex != 0 &&  totalResults == responseJson.totalResults){
-                        $('#loadingDiv').remove();
-                    }
-                    totalResults --;
-                    resultsToLoad --;
-                       
-                    var insertPosition = (parseInt(this.position)+parseInt(currentStart));   
+                totalResults --;
+                resultsToLoad --;
 
-                    insertInPosition(insertPosition, this, this.height, this.expandedHeight, this.expandedWidth, this.currentResultGlobalPosition);
-               
-                    if(resultsToLoad <= 0){
-                        loadingFinished(showNextPageButton);
-                    }
-                    
-                }
-               
-                imageObj.onerror = function() {
-                    // image did not load
-                    if( startIndex != 0 &&  totalResults == responseJson.totalResults){
-                        $('#loadingDiv').remove();
-                    }                
-                    totalResults --;
-                    resultsToLoad --;
-                    
-                    
-                    if(resultsToLoad <= 0){
-                        loadingFinished(showNextPageButton);
-                    }
+                var insertPosition = (parseInt(imageObj.position)+parseInt(currentStart));
+
+                insertInPosition(insertPosition, imageObj, imageObj.height, imageObj.expandedHeight, imageObj.expandedWidth, imageObj.currentResultGlobalPosition);
+
+                if(resultsToLoad <= 0){
+                    loadingFinished(showNextPageButton);
                 }
 
                 // append result so it can be exported
