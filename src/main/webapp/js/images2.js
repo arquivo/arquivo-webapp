@@ -551,6 +551,10 @@ function searchImagesJS(dateStartWithSlashes, dateEndWithSlashes, safeSearchOpti
                 }
                 var currentResultGlobalPosition = parseInt(startIndex) + i + 1;
 
+                // check https://github.com/arquivo/pwa-technologies/issues/978
+                var fixedImgSrc = new URL(currentDocument.imgSrc)
+                currentDocument.imgSrc = fixedImgSrc.href
+
                 var currentImageURL = waybackURL +'/' + currentDocument.imgTstamp +'im_/'+currentDocument.imgSrc;
                 var imageDigest = currentDocument.imgDigest;
                 
@@ -590,7 +594,12 @@ function searchImagesJS(dateStartWithSlashes, dateEndWithSlashes, safeSearchOpti
 
                 totalPosition = totalPosition + 1;
 
-                imageObj.src = "data:"+currentDocument.imgMimeType+";base64," + currentDocument.imgThumbnailBase64;
+                if(currentDocument.imgThumbnailBase64){
+                  imageObj.src = "data:"+currentDocument.imgMimeType+";base64," + currentDocument.imgThumbnailBase64;
+                } else {
+                  imageObj.src = currentImageURL;
+                }
+
                 imageObj.currentResultGlobalPosition = currentResultGlobalPosition;
                 imageObj.openImageTrackingURL = "/image/view/" + trackingId + "_" + (i+1) + '/' + currentDocument.imgTstamp + '/' +currentDocument.imgSrc;
 
