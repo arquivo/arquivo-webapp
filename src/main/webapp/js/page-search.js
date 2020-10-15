@@ -172,7 +172,7 @@ function searchPages(startIndex){
 	                }
 
 	                var currentResultCode = 
-	                	'<li '+liAttributes+' onclick="ga(\'send\', \'event\', \'Search result\', \'Page search\', \'Result position\', '+currentResultGlobalPosition+'); window.location=\''+linkToArchive+'\'; ">'+
+	                	'<li '+liAttributes+' onclick="ga(\'send\', \'event\', \'Search result\', \'Page search\', \'Result position\', '+currentResultGlobalPosition+'); window.location=\''+linkToArchiveWithTracking+'\'; ">'+
 							'<div class="urlBlock">'+
 								'<p class="url" title="'+urlPresentation+'">→ '+urlPresentation+'</p>'+
 								'<a href="'+linkToArchiveWithTracking+'">'+
