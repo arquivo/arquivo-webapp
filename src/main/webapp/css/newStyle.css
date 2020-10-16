@@ -12547,6 +12547,7 @@ span.interactionStatus {
 #pageIsNotArchived .myButtonStyle {
   transition: none !important;
 }
+
 #pageIsNotArchived .myButtonStyle a {
   font-size: 13px;
 }
@@ -12559,3 +12560,5 @@ span.interactionStatus {
 #pageIsNotArchived .myButtonStyle:hover a {
   color: #1c75c0 !important;
 }
+
+.image-mobile-expanded-div ion-list ion-item { color: #000 !important; }
