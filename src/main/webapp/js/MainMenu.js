@@ -58,7 +58,7 @@ var MENU = MENU || (function(){
                                     '<a href="/image/search?l='+language+'" onclick=""><h4 class="submenu"><i class="fa fa-search padding-right-menu-icon" aria-hidden="true"></i> '+Content.topbar.menu.home+'</h4></a>' +
                                     '<button class="clean-button" id="advancedImages" onclick="MENU.advancedImagesClick();"><h4 class="submenu"><i class="fa fa-search-plus padding-right-menu-icon" aria-hidden="true"></i> '+Content.topbar.menu.advanced+'</h4></button>' +             
                                 '</div>'+                                                                               
-                                '<a href="//sobre.arquivo.pt/'+language+'" onclick=""><h4><i class="fa fa-info-circle padding-right-menu-icon" aria-hidden="true"></i> '+Content.topbar.menu.about+'</h4></a>'+                           
+                                '<a href="//sobre.arquivo.pt/'+language+'" target="_blank" onclick=""><h4><i class="fa fa-info-circle padding-right-menu-icon" aria-hidden="true"></i> '+Content.topbar.menu.about+'</h4></a>'+                           
                             '</div>');
             this.attachKeyBoardEvent();
 
