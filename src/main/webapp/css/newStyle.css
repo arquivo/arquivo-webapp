@@ -7388,6 +7388,7 @@ div.call-to-actions span {
 }
 #award-pt a, #award-en a {
   color: transparent;
+  display: block;
 }
 .call-to-actions:hover {
   cursor: pointer;
