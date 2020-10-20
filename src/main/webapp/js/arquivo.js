@@ -484,6 +484,39 @@ var ARQUIVO = ARQUIVO || (function(){
           $('#searchForm').attr('action', action).submit();
         },
 
+        getContameHistoriasLink : function () {
+            var queryStringCleaned = $("#txtSearch")[0].value
+            return 'http://contamehistorias.pt/arquivopt/search?query='+queryStringCleaned;
+        },
+        attachClosePopup: function(){
+          $('#cancelPopup').on('click', function(e){
+            ARQUIVO.closeUglipop();
+          });
+        },
+        closeUglipop: function(){
+          $('#uglipop_content_fixed').fadeOut();
+          $('#uglipop_overlay').fadeOut('fast');
+        },
+        submitSearchContameHistorias: function() {
+            var queryStringCleaned = $("#txtSearch")[0].value
+            ARQUIVO.sendEventToAnalytics('contameHistorias', 'Pressed', queryStringCleaned ? queryStringCleaned: "<empty>");
+            uglipop({
+              class:'modalReplay noprint', //styling class for Modal
+              source:'html',
+              content: '<h4 class="modalTitleReplayWithOldBrowsers">'+Content.leavingArquivoToSearchContameHistorias+'</h4>' +
+                      '<div class="row"><a id="okReplayWithOldBrowsers" class="col-xs-6 text-center leftAnchor modalOptions">OK</a><a id="cancelPopup" class="col-xs-6 text-center modalOptions">'+Content.cancel+'</a></div>'});
+            this.attachSearchContameHistorias();
+            this.attachClosePopup();
+        },
+        attachSearchContameHistorias: function() {
+            var queryStringCleaned = $("#txtSearch")[0].value
+            $('#okReplayWithOldBrowsers').on('click', function(e) {
+                ARQUIVO.sendEventToAnalytics('contameHistorias', 'Searched', queryStringCleaned ? queryStringCleaned: "<empty>");
+                window.open( ARQUIVO.getContameHistoriasLink() );
+                ARQUIVO.closeUglipop();
+            });
+        },
+
         // Get the search buttons HTML and optionally the advanced search button if its action is passed as argument
         // advancedSearchAction : optional
         getSearchButtonsHTML : function(advancedSearchAction) {
@@ -494,8 +527,9 @@ var ARQUIVO = ARQUIVO || (function(){
           var additionalClassForImage = window.location.pathname.startsWith("/image") ? 'selected-button' : '';
 
           var html =
-            '<a id="PageButton" class="pageLink advancedSearch '+additionalClassForPage+'" href="/page/search'+queryStringCleaned+'" onclick="ARQUIVO.submitSearchFormTo(\'/page/search\'); return false;"><span>'+Content.pageSearchButton+'</span></a>'+
-            '<a id="ImageButton" class="imageLink advancedSearch '+additionalClassForImage+'" href="/image/search'+queryStringCleaned+'" onclick="ARQUIVO.submitSearchFormTo(\'/image/search\'); return false;"><span>'+Content.imageSearchButton+'</span></a>';
+            '<a id="PageButton" class="pageLink advancedSearch" href="/page/search'+queryStringCleaned+'" onclick="ARQUIVO.submitSearchFormTo(\'/page/search\'); return false;"><span>'+Content.pageSearchButton+'</span></a>'+
+            '<a id="ImageButton" class="imageLink advancedSearch" href="/image/search'+queryStringCleaned+'" onclick="ARQUIVO.submitSearchFormTo(\'/image/search\'); return false;"><span>'+Content.imageSearchButton+'</span></a>'+
+            '<a id="ContameHistoriasButton" class="contameHistoriasLink advancedSearch" href="'+ARQUIVO.getContameHistoriasLink()+'" onclick="ARQUIVO.submitSearchContameHistorias(); return false;"><span>'+Content.contameHistoriasButton+'</span></a>';
           
           if (advancedSearchAction) {
             html +=
