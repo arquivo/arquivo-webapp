@@ -12563,3 +12563,4 @@ span.interactionStatus {
 }
 
 .image-mobile-expanded-div ion-list ion-item { color: #000 !important; }
+.sc-ion-picker-md-h { position: fixed; bottom: 0; }
