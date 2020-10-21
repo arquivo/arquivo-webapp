@@ -503,14 +503,14 @@ var ARQUIVO = ARQUIVO || (function(){
             uglipop({
               class:'modalReplay noprint', //styling class for Modal
               source:'html',
-              content: '<h4 class="modalTitleReplayWithOldBrowsers">'+Content.leavingArquivoToSearchContameHistorias+'</h4>' +
-                      '<div class="row"><a id="okReplayWithOldBrowsers" class="col-xs-6 text-center leftAnchor modalOptions">OK</a><a id="cancelPopup" class="col-xs-6 text-center modalOptions">'+Content.cancel+'</a></div>'});
+              content: '<h4 class="modalTitleLinkToContameHistorias">'+Content.leavingArquivoToSearchContameHistorias+'</h4>' +
+                      '<div class="row"><a id="okLinkToContameHistorias" class="col-xs-6 text-center leftAnchor modalOptions">OK</a><a id="cancelPopup" class="col-xs-6 text-center modalOptions">'+Content.cancel+'</a></div>'});
             this.attachSearchContameHistorias();
             this.attachClosePopup();
         },
         attachSearchContameHistorias: function() {
             var queryStringCleaned = $("#txtSearch")[0].value
-            $('#okReplayWithOldBrowsers').on('click', function(e) {
+            $('#okLinkToContameHistorias').on('click', function(e) {
                 ARQUIVO.sendEventToAnalytics('contameHistorias', 'Searched', queryStringCleaned ? queryStringCleaned: "<empty>");
                 window.open( ARQUIVO.getContameHistoriasLink() );
                 ARQUIVO.closeUglipop();

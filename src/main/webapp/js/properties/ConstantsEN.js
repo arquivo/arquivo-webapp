@@ -212,7 +212,7 @@ Content = {
     },
     pageSearchButton: "Pages",
     imageSearchButton: "Images",
-    contameHistoriasButton: "Conta-me H&iacutest&oacuterias",
+    contameHistoriasButton: "Temporal Narrative",
     leavingArquivoToSearchContameHistorias: "You are leaving Arquivo.pt to contamehistorias.pt service",
     cancel: "Cancel",
 };
