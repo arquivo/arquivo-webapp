@@ -12565,3 +12565,13 @@ span.interactionStatus {
 .image-mobile-expanded-div ion-list ion-item { color: #000 !important; }
 .sc-ion-picker-md-h { position: fixed; bottom: 0; }
 .closeIt { right: calc(5vw + 8px); }
+
+.modalTitleLinkToContameHistorias {
+  text-align: center;
+  font-size: 13px;
+  background-size: 17px;
+  padding-bottom: 8px;
+  padding-left: 39px;
+  padding-top: 8px;
+  padding-right: 20px;
+}
