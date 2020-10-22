@@ -262,19 +262,20 @@ div.urlSearchContainer .list button {
 
 
 .list .showHasListButton, .table .showHasTableButton {
+  /*
   background-color: transparent;
-  border: 1px solid transparent;  
+  border: 1px solid transparent;  */
 }
 
 .list .showHasListButton:hover {
-  background: transparent url(../img/list-icon.svg) no-repeat 11px 6px;
-  color: white;
+  /* background: transparent url(../img/list-icon.svg) no-repeat 11px 6px;
+  color: white; */
   border: 1px solid transparent;
 }
 
 .table .showHasTableButton:hover {
-  background: transparent url(../img/table-icon.svg) no-repeat 11px 5px;
-  color: white;
+  /* background: transparent url(../img/table-icon.svg) no-repeat 11px 5px;
+  color: white; */
   border: 1px solid transparent;  
 }
 
