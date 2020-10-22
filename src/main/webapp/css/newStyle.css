@@ -12589,3 +12589,10 @@ a.contameHistoriasLink { text-decoration: none !important;
   color: #1c75c0 !important;
   border: 1px solid #1c75c0 !important;
   text-decoration: none !important; }
+
+body#home-search a#PageButton,
+body#home-search a#ImageButton { background-color: #1c75c0 !important; }
+body#home-search a#PageButton:hover,
+body#home-search a#PageButton:active,
+body#home-search a#ImageButton:hover,
+body#home-search a#ImageButton:active { color: #1c75c0 !important; background-color: #fff !important; }
