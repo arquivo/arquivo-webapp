@@ -58,7 +58,7 @@ h4.yearHeader:hover .versionsCount, h4.monthHeader:hover .versionsCount {
 }
 h4.monthHeader {
   padding-left: 20px;
-  background-color: #052f54;
+  background-color: #033f72;
 }
 /* buttons  states */
 h4:hover, h4:hover span, h4:hover a, li.version:hover a {
