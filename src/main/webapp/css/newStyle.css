@@ -12575,3 +12575,17 @@ span.interactionStatus {
   padding-top: 8px;
   padding-right: 20px;
 }
+
+a.contameHistoriasLink { text-decoration: none !important;
+  color: #fff !important;
+  border: 1px solid #1c75c0 !important;
+  border-radius: 5px !important;
+  background-color: #1c75c0;
+  margin: 0 8px 0 6px !important;
+  font-size: 13px !important; }
+  
+  a.contameHistoriasLink:hover, a.contameHistoriasLink:active {
+  background-color: transparent !important;
+  color: #1c75c0 !important;
+  border: 1px solid #1c75c0 !important;
+  text-decoration: none !important; }
