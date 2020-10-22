@@ -213,6 +213,6 @@ Content = {
     pageSearchButton: "Pages",
     imageSearchButton: "Images",
     contameHistoriasButton: "Temporal narrative",
-    leavingArquivoToSearchContameHistorias: "You are leaving Arquivo.pt to <a id=\"ContaMeHistoriasModalOutlink\" href=\"http://contamehistorias.pt/\">ContaMeHistorias.pt</a>",
+    leavingArquivoToSearchContameHistorias: "You are leaving Arquivo.pt to <a id=\"ContaMeHistoriasModalOutlink\" href=\"http://contamehistorias.pt/\" target=\"_blank\">ContaMeHistorias.pt</a>",
     cancel: "Cancel",
 };
