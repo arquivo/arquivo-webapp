@@ -89,8 +89,11 @@ p a {
   text-align: center;
   text-decoration: none;
   font-size: 0.7em;
-  background-color: #06233c;
+  background-color: transparent;
 }
+
+.viewingVersion { background-color: rgba(0,0,0, 0.3) !important; }
+
 li.version:hover {
   background: white;
 }
