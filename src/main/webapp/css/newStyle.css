@@ -12590,11 +12590,14 @@ a.contameHistoriasLink { text-decoration: none !important;
   border: 1px solid #1c75c0 !important;
   text-decoration: none !important; }
 
-  @media (max-width: 497px) {
+  @media (max-width: 480px) {
     a#advancedSearchButton {
       float: left !important ;
       margin-top: 7px !important;
     }
+    div#flex-container {
+      margin: 50px auto 0 auto !important;
+  }
   }
 
 body#home-search a#PageButton,
