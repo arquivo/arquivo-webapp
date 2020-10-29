@@ -12600,7 +12600,12 @@ a.contameHistoriasLink { text-decoration: none !important;
   text-decoration: none !important;
  }
 
- a#okLinkToContameHistorias:hover, a#cancelPopup:hover {
+ a#okLinkToContameHistorias, a#cancelPopup {  
+  border: 1px solid #1c75c0 !important;
+  text-decoration: none !important;  
+ }
+
+  a#okLinkToContameHistorias:hover, a#cancelPopup:hover {
   background-color: transparent !important;
   color: #1c75c0 !important;
   border: 1px solid #1c75c0 !important;
