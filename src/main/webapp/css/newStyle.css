@@ -5362,7 +5362,7 @@ body#home-search .plt-desktop #urlSearchContainer {
   box-shadow: 0 0 10px #719ECE;
 }
 #newFooterWrapper #footer-widgets {
-  background-color: /*#1c75c0;*/ #4b555d
+  background-color: #033f72 !important;
 }
 #newFooterWrapper #footer-widgets .widget-title {
   color: #ffffff;
@@ -12563,3 +12563,38 @@ span.interactionStatus {
 }
 
 .image-mobile-expanded-div ion-list ion-item { color: #000 !important; }
+.sc-ion-picker-md-h { position: fixed; bottom: 0; }
+.closeIt { right: calc(5vw + 8px); }
+
+.modalTitleLinkToContameHistorias {
+  text-align: center;
+  font-size: 13px;
+  background-size: 17px;
+  padding-bottom: 8px;
+  padding-left: 39px;
+  padding-top: 8px;
+  padding-right: 20px;
+}
+
+a.contameHistoriasLink { text-decoration: none !important;
+  color: #fff !important;
+  border: 1px solid #1c75c0 !important;
+  border-radius: 5px !important;
+  background-color: #1c75c0;
+  margin: 0 8px 0 6px !important;
+  font-size: 13px !important; }
+  
+  a.contameHistoriasLink:hover, a.contameHistoriasLink:active {
+  background-color: transparent !important;
+  color: #1c75c0 !important;
+  border: 1px solid #1c75c0 !important;
+  text-decoration: none !important; }
+
+body#home-search a#PageButton,
+body#home-search a#ImageButton { background-color: #1c75c0 !important; }
+body#home-search a#PageButton:hover,
+body#home-search a#PageButton:active,
+body#home-search a#ImageButton:hover,
+body#home-search a#ImageButton:active { color: #1c75c0 !important; background-color: #fff !important; }
+
+.footer-widgets h4 { font-size: 20px !important; font-weight: normal !important; }

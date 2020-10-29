@@ -58,7 +58,7 @@ h4.yearHeader:hover .versionsCount, h4.monthHeader:hover .versionsCount {
 }
 h4.monthHeader {
   padding-left: 20px;
-  background-color: #052f54;
+  background-color: #033f72;
 }
 /* buttons  states */
 h4:hover, h4:hover span, h4:hover a, li.version:hover a {
@@ -89,8 +89,11 @@ p a {
   text-align: center;
   text-decoration: none;
   font-size: 0.7em;
-  background-color: #06233c;
+  background-color: transparent;
 }
+
+.viewingVersion { background-color: rgba(0,0,0, 0.3) !important; }
+
 li.version:hover {
   background: white;
 }
@@ -262,19 +265,20 @@ div.urlSearchContainer .list button {
 
 
 .list .showHasListButton, .table .showHasTableButton {
+  /*
   background-color: transparent;
-  border: 1px solid transparent;  
+  border: 1px solid transparent;  */
 }
 
 .list .showHasListButton:hover {
-  background: transparent url(../img/list-icon.svg) no-repeat 11px 6px;
-  color: white;
+  /* background: transparent url(../img/list-icon.svg) no-repeat 11px 6px;
+  color: white; */
   border: 1px solid transparent;
 }
 
 .table .showHasTableButton:hover {
-  background: transparent url(../img/table-icon.svg) no-repeat 11px 5px;
-  color: white;
+  /* background: transparent url(../img/table-icon.svg) no-repeat 11px 5px;
+  color: white; */
   border: 1px solid transparent;  
 }
 
