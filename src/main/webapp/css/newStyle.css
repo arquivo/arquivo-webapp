@@ -12591,7 +12591,7 @@ a.contameHistoriasLink { text-decoration: none !important;
   text-decoration: none !important; }
 
   @media (max-width: 497px) {
-    a.contameHistoriasLink {
+    a#advancedSearchButton {
       float: none !important;
     }
   }
