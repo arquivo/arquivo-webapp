@@ -12633,6 +12633,12 @@ a.contameHistoriasLink { text-decoration: none !important;
   body#homeImages p#estimated-results {
     margin-top: 70px !important;
   }
+  body#homeImages div#flex-container {
+    margin-top: 0px !important;
+}
+body#home-search div#flex-container {
+  margin-top: 0px !important;
+}
  
 }
 
