@@ -12593,7 +12593,7 @@ a.contameHistoriasLink { text-decoration: none !important;
   @media (max-width: 497px) {
     a#advancedSearchButton {
       float: left !important ;
-      margin-top: 7px;
+      margin-top: 7px !important;
     }
   }
 
