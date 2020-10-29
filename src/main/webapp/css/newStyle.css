@@ -12578,10 +12578,11 @@ span.interactionStatus {
   text-align: center;
   font-size: 13px;
   background-size: 17px;
-  padding-bottom: 8px;
-  padding-left: 15px;
+  padding-bottom: 17px;
+  padding-left: 17px;
   padding-top: 3px;
   padding-right: 20px;
+  padding: 8px 10px 25px 10px;
 }
 
 a.contameHistoriasLink { text-decoration: none !important;
@@ -12596,7 +12597,22 @@ a.contameHistoriasLink { text-decoration: none !important;
   background-color: transparent !important;
   color: #1c75c0 !important;
   border: 1px solid #1c75c0 !important;
-  text-decoration: none !important; }
+  text-decoration: none !important;
+ }
+
+ a#okLinkToContameHistorias:hover, a#cancelPopup:hover {
+  background-color: transparent !important;
+  color: #1c75c0 !important;
+  border: 1px solid #1c75c0 !important;
+  text-decoration: none !important;
+ }
+
+ a#okLinkToContameHistorias:active, a#cancelPopup:active {
+  background-color: #033f72 !important;
+  color: white !important;
+  border: 1px solid #033f72 !important;
+  text-decoration: none !important;
+ }
 
   @media (max-width: 481px) {
     a#advancedSearchButton {
@@ -12612,6 +12628,7 @@ a.contameHistoriasLink { text-decoration: none !important;
   body#homeImages p#estimated-results {
     margin-top: 70px !important;
   }
+ 
 }
 
 body#home-search a#PageButton,
