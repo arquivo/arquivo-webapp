@@ -2439,6 +2439,14 @@ body#homepage-landing .fa-caret-up:before, body#homepage-landing .fa-caret-up:be
   cursor: pointer;
   border-top: 1px solid #3E3E3E;
 }
+
+/* Link to external website contamehistorias.pt */
+a#ContaMeHistoriasModalOutlink {
+  text-decoration: none;
+  color: black;
+  border: none !important;
+}
+
 #uglipop_overlay {
   opacity: 0.6 !important;
   z-index: 1;
