@@ -2442,8 +2442,8 @@ body#homepage-landing .fa-caret-up:before, body#homepage-landing .fa-caret-up:be
 
 /* Link to external website contamehistorias.pt */
 a#ContaMeHistoriasModalOutlink {
-  text-decoration: none;
-  color: black;
+  text-decoration: none !important;
+  color: black !important;
   border: none !important;
 }
 
