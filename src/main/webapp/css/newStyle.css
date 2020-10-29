@@ -12590,7 +12590,13 @@ a.contameHistoriasLink { text-decoration: none !important;
   border: 1px solid #1c75c0 !important;
   text-decoration: none !important; }
 
- 
+  @media (max-width: 497px) {
+    a.contameHistoriasLink {
+      float: left !important ;
+      margin-top: 7px;
+    }
+  }
+
 body#home-search a#PageButton,
 body#home-search a#ImageButton { background-color: #1c75c0 !important; }
 body#home-search a#PageButton:hover,
