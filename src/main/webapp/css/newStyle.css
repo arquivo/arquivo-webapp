@@ -1962,15 +1962,23 @@ body#homeImages a#PageButton:active {
   transition: background-color 0.5s ease 0s;
   color: #1c75c0 !important;
 }
-body#homeImages a#ImageButton, body#homeImages a#ImageButton:active {
+body#homeImages a#ImageButton {
   color: #1c75c0 !important;
   border: 1px solid #1c75c0;
   /*transition: background-color 0.5s ease 0s;*/
   text-decoration: none !important;
-  color:/* white*/#033f72 !important;
+  color: white !important;
+  font-size: 1.25em;
+  background-color: #1c75c0 !important;*/
+}
+
+body#homeImages a#ImageButton:active {
+  border: 1px solid #1c75c0;  
+  text-decoration: none !important;
+  color: white#033f72 !important;
   border: 1px solid #1c75c0;
   font-size: 1.25em;
-  /*background-color: #033f72 !important;*/
+  background-color: #033f72 !important;*/
 }
 a#ImageButton, a#ImageButton:active {
   color: white !important;
