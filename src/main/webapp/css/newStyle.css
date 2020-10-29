@@ -5693,8 +5693,8 @@ body#home-search .plt-desktop #urlSearchContainer {
     font-size: 14px !important;
   }
   body#home-search p#estimated-results {
-    margin-top: /*0*/ 30px !important;
-    margin-left: 12px !important;
+    margin-top: /*0*/ 30px !important;    
+    margin-left: 4px !important;
     margin-bottom: -27px;
   }
 }
@@ -12611,7 +12611,7 @@ a.contameHistoriasLink { text-decoration: none !important;
   background-color: #033f72 !important;
   color: white !important;
   border: 1px solid #033f72 !important;
-  text-decoration: none !important;
+  text-decoration: none !important; 
  }
 
   @media (max-width: 481px) {
