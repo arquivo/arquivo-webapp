@@ -1965,12 +1965,12 @@ body#homeImages a#PageButton:active {
 body#homeImages a#ImageButton, body#homeImages a#ImageButton:active {
   color: #1c75c0 !important;
   border: 1px solid #1c75c0;
-  transition: background-color 0.5s ease 0s;
+  /*transition: background-color 0.5s ease 0s;*/
   text-decoration: none !important;
-  color: white !important;
+  color:/* white*/#033f72 !important;
   border: 1px solid #1c75c0;
   font-size: 1.25em;
-  background-color: #033f72 !important;
+  /*background-color: #033f72 !important;*/
 }
 a#ImageButton, a#ImageButton:active {
   color: white !important;
