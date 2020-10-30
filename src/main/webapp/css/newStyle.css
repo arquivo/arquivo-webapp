@@ -12636,6 +12636,8 @@ a.contameHistoriasLink { text-decoration: none !important;
   text-decoration: none !important; 
  }
 
+/*****************************************************
+ NEW CSS READY FOR CONTA-ME HISTORIAS BUTTON 
   @media (max-width: 497px) {
     a#advancedSearchButton {
       float: left !important ;
@@ -12655,9 +12657,9 @@ a.contameHistoriasLink { text-decoration: none !important;
 }
 body#home-search div#flex-container {
   margin-top: 51px !important;
+} 
 }
- 
-}
+*************************************************/
 
 body#home-search a#PageButton,
 body#home-search a#ImageButton { background-color: #1c75c0 !important; }
