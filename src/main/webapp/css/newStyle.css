@@ -7257,8 +7257,8 @@ body#homepage-landing div#flex-container {
   width: 97% !important;
 }
 body#homeImages div#flex-container {
-  /* margin: -62px auto 0 auto !important;
-  width: 96% !important;*/
+  margin: -62px auto 0 auto !important;
+  /*width: 96% !important;*/
 }
 div#flex-container div:first-child {
   margin-bottom: 12px !important;
