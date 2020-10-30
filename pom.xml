@@ -36,6 +36,7 @@
 		<text.search.server>${backend.url}</text.search.server>
 		<text.search.api>${text.search.server}/textsearch</text.search.api>
 
+		<webapp.showContameHistoriasButton>false</webapp.showContameHistoriasButton>
 	</properties>
 	<dependencies>
 		<dependency>
