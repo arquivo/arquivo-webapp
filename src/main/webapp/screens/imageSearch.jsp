@@ -49,8 +49,7 @@ response.setHeader("Cache-Control","public, max-age=600");
   String waybackURL = pt.arquivo.webapp.Configuration.get("wayback.url", "examples.com");
   pageContext.setAttribute("waybackURL", waybackURL);
 
-  showContameHistoriasButton = "<%= pt.arquivo.webapp.Configuration.get("webapp.showContameHistoriasButton", "false") %>";
-  String showContameHistoriasButton = (String(showContameHistoriasButton).toLowerCase() == "true")
+  String showContameHistoriasButton = pt.arquivo.webapp.Configuration.get("webapp.showContameHistoriasButton", "false");
   pageContext.setAttribute("showContameHistoriasButton", showContameHistoriasButton);
 %>
 
@@ -231,10 +230,10 @@ response.setHeader("Cache-Control","public, max-age=600");
   <%@ include file="/include/dates.jsp" %>
   <%@ include file="/include/i18njs.jsp" %>
 
-	<script type="text/javascript">
-		imageSearchAPI = "<%= pt.arquivo.webapp.Configuration.get("image.search.api", "https://arquivo.pt/imagesearch") %>";
-	</script>
-	<% if (pt.arquivo.webapp.Configuration.get("query.suggestion.api") != null) { %>
+  <script type="text/javascript">
+    imageSearchAPI = "<%= pt.arquivo.webapp.Configuration.get("image.search.api", "https://arquivo.pt/imagesearch") %>";
+  </script>
+  <% if (pt.arquivo.webapp.Configuration.get("query.suggestion.api") != null) { %>
     <script type="text/javascript">
       querySuggestionAPI = '<%= pt.arquivo.webapp.Configuration.get("query.suggestion.api", request.getContextPath()+"/spellchecker/checker") %>';
     </script>
@@ -268,6 +267,7 @@ function searchImages(startIndex){
   numrows ="<%=numrows%>"; /*Number of Images to show by default*/
   waybackURL = "<%=waybackURL%>";
   showContameHistoriasButton = "<%=showContameHistoriasButton%>";
+  showContameHistoriasButton = (String(showContameHistoriasButton).toLowerCase() == "true");
 </script>
 
   <%@ include file="/include/topbar.jsp" %>
