@@ -528,9 +528,13 @@ var ARQUIVO = ARQUIVO || (function(){
 
           var html =
             '<a id="PageButton" class="pageLink advancedSearch" href="/page/search'+queryStringCleaned+'" onclick="ARQUIVO.submitSearchFormTo(\'/page/search\'); return false;"><span>'+Content.pageSearchButton+'</span></a>'+
-            '<a id="ImageButton" class="imageLink advancedSearch" href="/image/search'+queryStringCleaned+'" onclick="ARQUIVO.submitSearchFormTo(\'/image/search\'); return false;"><span>'+Content.imageSearchButton+'</span></a>'+
-            '<a id="ContameHistoriasButton" class="contameHistoriasLink advancedSearch" href="'+ARQUIVO.getContameHistoriasLink()+'" onclick="ARQUIVO.submitSearchContameHistorias(); return false;"><span>'+Content.contameHistoriasButton+'</span></a>';
-          
+            '<a id="ImageButton" class="imageLink advancedSearch" href="/image/search'+queryStringCleaned+'" onclick="ARQUIVO.submitSearchFormTo(\'/image/search\'); return false;"><span>'+Content.imageSearchButton+'</span></a>';
+
+          if (showContameHistoriasButton) {
+            html +=
+              '<a id="ContameHistoriasButton" class="contameHistoriasLink advancedSearch" href="'+ARQUIVO.getContameHistoriasLink()+'" onclick="ARQUIVO.submitSearchContameHistorias(); return false;"><span>'+Content.contameHistoriasButton+'</span></a>';
+          }
+
           if (advancedSearchAction) {
             html +=
               '<a id="advancedSearchButton" class="advancedSearch" href="'+advancedSearchAction+queryStringCleaned+'" onclick="ARQUIVO.submitSearchFormTo(\''+advancedSearchAction+'\'); return false;"><span>'+Content.topbar.menu.advanced+'</span></a>';
