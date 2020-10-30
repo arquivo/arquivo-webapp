@@ -48,6 +48,12 @@
     })
   </script>
 
+  <script type="text/javascript">
+     showContameHistoriasButton = "<%= pt.arquivo.webapp.Configuration.get("webapp.showContameHistoriasButton", "false") %>";
+    showContameHistoriasButton = (String(showContameHistoriasButton).toLowerCase() == "true")
+  </script>
+
+
  <!-- starts closing Welcome blue div on homepage -->
  <script type="text/javascript">
  $(document).ready(function(){

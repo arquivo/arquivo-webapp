@@ -48,6 +48,10 @@ response.setHeader("Cache-Control","public, max-age=600");
   // configurations
   String waybackURL = pt.arquivo.webapp.Configuration.get("wayback.url", "examples.com");
   pageContext.setAttribute("waybackURL", waybackURL);
+
+  showContameHistoriasButton = "<%= pt.arquivo.webapp.Configuration.get("webapp.showContameHistoriasButton", "false") %>";
+  String showContameHistoriasButton = (String(showContameHistoriasButton).toLowerCase() == "true")
+  pageContext.setAttribute("showContameHistoriasButton", showContameHistoriasButton);
 %>
 
 <%
@@ -263,6 +267,7 @@ function searchImages(startIndex){
   startPosition = "<%=startPosition%>";
   numrows ="<%=numrows%>"; /*Number of Images to show by default*/
   waybackURL = "<%=waybackURL%>";
+  showContameHistoriasButton = "<%=showContameHistoriasButton%>";
 </script>
 
   <%@ include file="/include/topbar.jsp" %>

@@ -265,6 +265,9 @@ String[] queryString_splitted=null;
     hitsPerPage = <%=hitsPerPage%>;
     dateStartYear = <%=dateStartYear%>;
     waybackURL = "<%=waybackURL%>";
+
+    showContameHistoriasButton = "<%= pt.arquivo.webapp.Configuration.get("webapp.showContameHistoriasButton", "false") %>";
+    showContameHistoriasButton = (String(showContameHistoriasButton).toLowerCase() == "true")
   </script>
 
 </head>
