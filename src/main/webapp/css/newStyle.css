@@ -3582,6 +3582,7 @@ body#home-search #years {}
   #searchBarBlock {
     max-width: 728px !important;
     margin: -71px auto 0px auto !important;
+    max-width: 97% !important;
   }
   #searchForm .form-control {
     margin-bottom: 11px;
@@ -9447,7 +9448,7 @@ body#homeImages #photos {
     padding-bottom: 7px;
     background-color: white !important;
     width: 100% !important;
-    max-width: 960px !important;
+    /*max-width: 960px !important;*/
     min-width: 320px !important;
     margin: 16px auto 50px auto !important;
     display: flex;
