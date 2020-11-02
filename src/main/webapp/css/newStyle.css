@@ -3777,7 +3777,7 @@ body#home-search #years {}
 .dateModal {
   background-color: white;
   font-size: 16px;
-  padding: 20px 30px 20px 30px;
+  padding: 20px 30px 50px 30px;
 }
 body#homeImages .dateModal, body#home-search .dateModal, body#homeImages .dateModal {
   border-radius: 5px;
