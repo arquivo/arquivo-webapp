@@ -9849,7 +9849,7 @@ body#homeImages .dateModal, body#home-search .dateModal, body#homeImages .dateMo
   margin: 20px 0px 0px 0px;
 }
 .dateModalButtons {
-  margin-top: 20px;
+  margin: 0px 0 30px 0;
 }
 .dateModalButtons button {
   background-color: #1c75c0;
