@@ -12637,6 +12637,11 @@ a.contameHistoriasLink { text-decoration: none !important;
   text-decoration: none !important; 
  }
 
+ /* fixes width when increasing screen size above 100%  */
+ #searchBarBlock {
+   max-width: 97% !important;
+}
+
 /*****************************************************
  NEW CSS READY FOR CONTA-ME HISTORIAS BUTTON 
   @media (max-width: 497px) {
