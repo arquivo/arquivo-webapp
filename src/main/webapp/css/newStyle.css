@@ -9360,7 +9360,7 @@ body#homeImages #photos {
   body#home-search p#estimated-results {
     width: 915px;
     margin: 36px auto -26px auto;
-    padding-left: 3px;
+    padding-left: /*3px*/10px;
     display: flex;
     width: 100%;
     max-width: /*915px*/ 970px;
