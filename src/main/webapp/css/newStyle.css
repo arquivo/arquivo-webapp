@@ -7957,7 +7957,7 @@ a#PageButton {
   color: white !important;
 }
 a#PageButton:hover, a#ImageButton:hover, a#advancedSearchButton:hover, span#buttonSearch:hover {
-  background-color: transparent !important;
+  background-color: white !important;
   color: #1c75c0 !important;
   border: 1px solid #1c75c0 !important;
   text-decoration: none !important;
