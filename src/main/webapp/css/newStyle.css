@@ -12643,7 +12643,7 @@ a.contameHistoriasLink { text-decoration: none !important;
    max-width: 100% !important;
 }
  /* fixes search button to the right in all devices  */
- #searchBarBlock div:nth-child(2){
+ #form_container div:nth-child(2){
   position: relative;
 }
 
