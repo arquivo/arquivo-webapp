@@ -12642,6 +12642,10 @@ a.contameHistoriasLink { text-decoration: none !important;
  #searchBarBlock {
    max-width: 100% !important;
 }
+ /* fixes search button to the right in all devices  */
+ #searchBarBlock div:nth-child(2){
+  position: relative;
+}
 
 /*****************************************************
  NEW CSS READY FOR CONTA-ME HISTORIAS BUTTON 
