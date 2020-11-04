@@ -380,11 +380,12 @@ span#buttonSearch {
     top: 4px !important;
     color: white;
     position: absolute;
+    right: 0;
     z-index: 999999;
     background-color: #1c75c0 !important;
     border-top-right-radius: 10px !important;
     border-bottom-right-radius: 10px !important;
-    /*transition: 0.5s;*/
+    /*transition: 0.5s;*/    
 }
 
 span#buttonSearch:active {   
