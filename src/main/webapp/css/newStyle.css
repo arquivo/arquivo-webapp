@@ -12644,8 +12644,7 @@ a.contameHistoriasLink { text-decoration: none !important;
 }
  /* fixes search button to the right in all devices  */
  #searchForm #form_container div:last-child {
-  position: relative;
-  outline: 1px solid red;
+  position: relative;  
 }
 
 /*****************************************************
