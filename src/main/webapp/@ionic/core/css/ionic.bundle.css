@@ -122,10 +122,9 @@ body#advanced ion-item, body#advanced-images ion-item {
 }
 
 ion-item { 
-   --padding-start:13px/*0*/ !important;  
-   --inner-padding-end: 13px/*0*/ !important;
+   --padding-start:/*13px*/0 !important;  
+   --inner-padding-end:/*13px*/0 !important; 
 }
-
 ion-item{
    --ion-background-color:/*#f8f8f8*/ /*#eeeded*/white!important;
    --knob-background-color: white !important;

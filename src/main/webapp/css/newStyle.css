@@ -1155,7 +1155,7 @@ span#buttonSearch {
   border-radius: 60px;
   position: absolute !important;
   top: 0px;
-  right: /*13px*/ 19px;
+  /*right: /* 19px;*/
 }
 span#buttonSearch button span {
   color: #007AFF;
@@ -6169,8 +6169,9 @@ body#advanced-images #searchForm {
   margin: 0 /*21px*/ -8px;
 }
 #searchForm {
-  margin-top: 25px;
-  /*position: relative;*/
+   /*position: relative;*/
+  max-width: 97%;
+  margin: 25px auto 0 auto;
 }
 /* NEW STYLE: Change placeholder */ ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
   color: #777 !important;
@@ -7136,7 +7137,7 @@ span#buttonSearch {
   border-radius: 60px;
   position: absolute !important;
   top: 0px;
-  right: 13px;
+  /*right: 13px;*/
 }
 span#buttonSearch button span {
   color: #007AFF;
@@ -7912,7 +7913,7 @@ body#homeImages #searchBarButtonsDiv {
   float: left;
   margin-top: -29px;
   margin-bottom: /*3px*/ 0;
-  padding: 0 14px 0 15px;
+  padding: 0; /*14px 0 15px;*/
 }
 a#advancedSearchButton {
   float: right !important;
@@ -8166,7 +8167,7 @@ tr.trTV:nth-child(even) {
     margin-top: 9px !important;
   }
   span#buttonSearch {
-    right: 21px !important;
+    /*right: 21px !important;*/
   }
 }
 @media screen and (max-width:1023px) {
@@ -12639,7 +12640,7 @@ a.contameHistoriasLink { text-decoration: none !important;
 
  /* fixes width when increasing screen size above 100%  */
  #searchBarBlock {
-   max-width: 97% !important;
+   max-width: 100% !important;
 }
 
 /*****************************************************
