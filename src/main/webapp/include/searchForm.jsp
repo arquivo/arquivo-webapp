@@ -24,7 +24,7 @@
           <input type="hidden" id="l" name="l" value="<%=language%>">
         </div>
         <!-- starts search lupe and "x" close button -->
-        <div>
+        <div id="buttonSearchWrap">
           <span id="buttonSearch" class="input-group-addon no-radius search-button-span">
             <button class="search-button" type="submit">
               <fmt:message key="search.submit" />
