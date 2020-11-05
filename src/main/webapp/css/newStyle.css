@@ -7419,6 +7419,7 @@ div.call-to-actions span {
   text-indent: -999999px;
   box-shadow: none !important;
   color: transparent;
+  display: block;
 }
 #award-pt a, #award-en a {
   color: transparent;
