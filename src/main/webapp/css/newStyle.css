@@ -78,6 +78,7 @@ body#home-search .urlBlock a:visited {
   margin: 0 auto;
   font-family: 'Roboto', sans-serif !important;
 }
+
 #buttonSearch button {
   position: relative;
   z-index: 1000000 !important;
@@ -12661,8 +12662,8 @@ a.contameHistoriasLink { text-decoration: none !important;
  #searchBarBlock {
    max-width: 100% !important;
 }
- /* fixes search button to the right in all devices  */
- #searchForm #form_container div:last-child {
+ /* fixes search button to the right in all devices  */ 
+ #searchForm #form_container div#buttonSearchWrap {
   position: relative;  
 }
 
