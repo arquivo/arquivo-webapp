@@ -9375,7 +9375,7 @@ body#homeImages #photos {
   body#homeImages p#estimated-results {
     width: 915px;
     margin: 36px auto -16px auto;
-    padding-left: 18px;
+    padding-left: 8px;
     display: flex;
     width: 100%;
     max-width: /*915px*/ 970px;
