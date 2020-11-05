@@ -385,6 +385,7 @@ span#buttonSearch {
     background-color: #1c75c0 !important;
     border-top-right-radius: 10px !important;
     border-bottom-right-radius: 10px !important;
+    margin-right: 2px;
     /*transition: 0.5s;*/    
 }
 
