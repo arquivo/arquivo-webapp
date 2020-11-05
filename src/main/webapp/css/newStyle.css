@@ -7047,6 +7047,12 @@ body#advanced .calendar-anchor-advanced img, body#advanced-images .calendar-anch
 .no-radius {
   border-radius: 0px !important;
 }
+#home-search .topcontainer {
+  margin-top: 15px;
+  padding-right: 7px;
+  padding-left: 7px;
+  height: 120px;
+}
 .topcontainer {
   margin-top: 15px;
   padding-right: 7px;
