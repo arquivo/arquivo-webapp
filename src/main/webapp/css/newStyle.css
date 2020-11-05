@@ -7421,9 +7421,15 @@ div.call-to-actions span {
   color: transparent;
   display: block;
 }
+
+#award-pt, #award-en {  
+  height: auto;
+}
+
 #award-pt a, #award-en a {
   color: transparent;
   display: block;
+  height: auto;
 }
 .call-to-actions:hover {
   cursor: pointer;
