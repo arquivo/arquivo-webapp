@@ -7433,8 +7433,7 @@ div.call-to-actions span {
 }
 
 #award-pt a, #award-en a {
-  color: transparent;
-  display: block;
+  color: transparent; 
   height: auto;
 }
 .call-to-actions:hover {
