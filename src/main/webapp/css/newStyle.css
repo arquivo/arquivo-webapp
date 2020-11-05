@@ -6006,6 +6006,7 @@ body#advanced #ionSlider, body#advanced-images #ionSlider {
   padding-left: 36px;
   color: #1a73ba;
   z-index: -1;
+  margin-right: -2px;
   /*transition: 0.5s;*/
   display: block
 }
@@ -6051,6 +6052,7 @@ body#advanced #ionSlider, body#advanced-images #ionSlider {
   padding-left: 7px;
   color: #1a73ba;
   z-index: -1;
+  margin-left: -2px;
   /*transition: 0.5s;*/
   display: block
 }
@@ -7269,7 +7271,7 @@ div#flex-container {
   margin: 9px auto 0 auto !important
 }
 body#homepage-landing div#flex-container {
-  width: 97% !important;
+  width: 96.5% !important;
 }
 body#homeImages div#flex-container {
   /* margin: -62px auto 0 auto !important;
