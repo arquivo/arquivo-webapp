@@ -5930,7 +5930,7 @@ body#home-search .urlBlock a:visited {
   z-index: 999999;
   margin-top: -78px !important;
   display: block !important;
-  width: 95% !important;
+  width: 100% !important;
   margin: 0 auto;
   font-family: 'Roboto', sans-serif !important;
 }
@@ -5940,7 +5940,7 @@ body#home-search .urlBlock a:visited {
     z-index: 999999;
     margin-top: -78px !important;
     display: block !important;
-    width: 97% !important;
+    width: 100% !important;
     margin: 0 auto;
     font-family: 'Roboto', sans-serif !important;
   }
