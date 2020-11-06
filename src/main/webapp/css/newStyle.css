@@ -3634,6 +3634,9 @@ body#home-search #years {}
     max-width: 930px !important;
     margin: 0 auto !important;
   }
+  #conteudo-resultado {
+    max-width: 966px !important;
+}
   .pagesNextPrevious {
     max-width: 932px !important;
   }
@@ -12035,7 +12038,7 @@ body#home-search .url-search-container {
     margin: 25px auto !important;
   }
   body#home-search #conteudo-resultado {
-    max-width: 739px !important;
+    max-width: 742px !important;
   }
   body#homeImages .pagesNextPrevious {
     padding: 0 2.8px;
