@@ -12040,7 +12040,9 @@ body#home-search .url-search-container {
     padding: 0 2.8px;
     display: block;
     margin: 25px auto !important;
+    width: 100% !important;
   }
+  
   #home-search #searchBarButtonsDiv {
     margin-bottom: 0px;
   }
@@ -12235,7 +12237,7 @@ body#home-search .url-search-container {
   }
   body#homeImages #photos {
     width: 100% !important;
-    max-width: 924px !important;
+   /* max-width: 924px !important;*/
   }
   p#estimated-results {
     padding-left: 3px !important;
@@ -12302,7 +12304,7 @@ body#home-search .url-search-container {
   }
   body#homeImages #photos {
     width: 100% !important;
-    max-width: 1322px !important;
+    /*max-width: 1322px !important;*/
   }
   body#home-search .pagesNextPrevious {
     padding: 0 18px;
