@@ -3720,7 +3720,7 @@ body#home-search #years {}
     max-width: 940px !important;
     margin: 0 auto !important;
   }
-  
+
   #resultados-lista {   
     max-width: 950px !important;    
 }
@@ -6340,7 +6340,7 @@ body#home-search #conteudo-resultado {
   margin-left: /*9px*/ 0px;
   margin-right: /* 9px*/ 0px;
   padding: 0 !important;
-  max-width: /*993px*/ 958px !important;
+  max-width: /*993px*/ 954px !important;
   ;
   margin-bottom: 20px;
 }
@@ -12030,7 +12030,7 @@ body#home-search .url-search-container {
     right: -6px !important;
   }
   body#home-search p#estimated-results {
-    margin-left: 7px !important;
+    margin-left: -6px !important;  
   }
   #searchForm .form-control {
     margin-bottom: -2px;
@@ -12184,7 +12184,7 @@ body#home-search .url-search-container {
     /*padding-left: 17px;*/
   }
   body#home-search p#estimated-results {
-    padding-left: 15px;
+    padding-left: 1px;
   }
   body#home-search #resultados-lista > ul > li.grouped {
     margin-left: 29px !important;
@@ -12229,6 +12229,9 @@ body#home-search .url-search-container {
     top: 5px !important;
     right: 2px !important;
   }
+  body#home-search #conteudo-resultado {
+    max-width: 965px !important;
+}
 }
 /* iPad Pro portrait */
 @media (device-width:1024px) and (device-height:1366px) {
@@ -12243,7 +12246,7 @@ body#home-search .url-search-container {
   }
   #resultados-lista {
     width: 100%;
-    max-width: 925px !important;
+    max-width: 948px !important;
     margin: 0 auto !important;
   }
   body#homeImages #photos {
@@ -12253,8 +12256,8 @@ body#home-search .url-search-container {
   p#estimated-results {
     padding-left: 7px !important;
   }
-  body#homeImages p#estimated-results {
-    padding-left: 39px !important;
+  body#homeImages p#estimated-results {   
+      padding-left: 16px !important;  
   }
   body#homeImages .pagesNextPrevious {
     padding: 0 26px !important;
