@@ -395,7 +395,7 @@ body#homeImages .pagesNextPrevious {
   font-size: 15px;
   float: left;
   width: 100%;
-  margin-bottom: 10px !important;
+  margin-bottom: 13px !important;
 }
 .pagesNextPrevious a:hover {
   border: 1px solid #1c75c0 !important;
@@ -3584,7 +3584,7 @@ body#home-search #years {}
     max-width: 100% !important;
   }
   .pagesNextPrevious {
-    max-width: 753px !important;
+    max-width: 755px !important;
   }
   #searchBarBlock {
     max-width: 728px !important;
@@ -12004,7 +12004,7 @@ body#home-search .url-search-container {
     margin-top: 24px !important;
   }
   body#homeImages #photos {
-    max-width: 100% !important;
+    max-width: 99% !important;
     margin: 0 9px;
   }
   #resultados-lista {
@@ -12142,7 +12142,7 @@ body#home-search .url-search-container {
 /* iPad landscape */
 @media (device-width:1024px) and (device-height:768px) {
   body#homeImages #photos {
-    max-width: 968px !important;
+    /*max-width: 968px !important;*/
   }
   #searchBarBlock {
     max-width: 959px !important;
