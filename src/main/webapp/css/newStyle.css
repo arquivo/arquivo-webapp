@@ -3720,6 +3720,10 @@ body#home-search #years {}
     max-width: 940px !important;
     margin: 0 auto !important;
   }
+  
+  #resultados-lista {   
+    max-width: 950px !important;    
+}
   div#flex-container div:nth-child(2), div#flex-container div:nth-child(3), div#flex-container div:nth-child(4), div#flex-container div:nth-child(5) {
     width: 46%;
     height: 300px;
