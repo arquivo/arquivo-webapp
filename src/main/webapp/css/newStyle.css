@@ -3634,6 +3634,9 @@ body#home-search #years {}
     max-width: 930px !important;
     margin: 0 auto !important;
   }
+  p#estimated-results {
+    margin-left: 5px !important;
+}
   #conteudo-resultado {
     max-width: 966px !important;
 }
