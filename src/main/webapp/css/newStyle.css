@@ -6182,7 +6182,7 @@ body#advanced-images #searchForm {
 }
 #searchForm {
    /*position: relative;*/
-  /*max-width: 97%;*/
+  max-width: 97%;
   margin: 25px auto 0 auto;
 }
 /* NEW STYLE: Change placeholder */ ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
