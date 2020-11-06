@@ -451,7 +451,7 @@ span#buttonSearch:active {
 @media (device-width:768px) and (device-height:1024px) {
 
 span#buttonSearch {   
-    right: 30px!important;   
+    right: 0px!important;   
 }
 #resultados-lista ul li h2 {
     font-size: 18px;
@@ -461,7 +461,7 @@ span#buttonSearch {
 /* iPad landscape */
 @media (device-width:1024px) and (device-height:768px) {
 span#buttonSearch {   
-    right: 29px!important;   
+    right: 0px!important;   
 }
 #resultados-lista ul li h2 {
     font-size: 18px;

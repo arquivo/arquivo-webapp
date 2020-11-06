@@ -3584,7 +3584,7 @@ body#home-search #years {}
     max-width: 100% !important;
   }
   .pagesNextPrevious {
-    max-width: 744px !important;
+    max-width: 753px !important;
   }
   #searchBarBlock {
     max-width: 728px !important;
@@ -3638,7 +3638,7 @@ body#home-search #years {}
     max-width: 932px !important;
   }
   body#homeImages #photos {
-    max-width: 926px !important;
+   /* max-width: 926px !important;*/
   }
   .leftArrow {
     top: 16.5%;
@@ -12012,7 +12012,7 @@ body#home-search .url-search-container {
     margin: 0 0px !important;
   }
   body#homeImages p#estimated-results {
-    padding-left: 21px;
+    padding-left: 06px;
   }
   body#homeImages span#buttonSearch button span {
     top: 12px !important;
@@ -12168,7 +12168,7 @@ body#home-search .url-search-container {
     padding: 0 18px !important;
   }
   body#homeImages p#estimated-results {
-    padding-left: 17px;
+    /*padding-left: 17px;*/
   }
   body#home-search p#estimated-results {
     padding-left: 15px;
