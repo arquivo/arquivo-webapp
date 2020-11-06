@@ -6006,7 +6006,7 @@ body#advanced #ionSlider, body#advanced-images #ionSlider {
   padding-left: 36px;
   color: #1a73ba;
   z-index: -1;
-  margin-right: -2px;
+  margin-right: -1px;
   /*transition: 0.5s;*/
   display: block
 }
@@ -6052,7 +6052,7 @@ body#advanced #ionSlider, body#advanced-images #ionSlider {
   padding-left: 7px;
   color: #1a73ba;
   z-index: -1;
-  margin-left: -2px;
+  margin-left: -1px;
   /*transition: 0.5s;*/
   display: block
 }
@@ -6068,7 +6068,8 @@ body#advanced #ionSlider, body#advanced-images #ionSlider {
   padding-left: 7px;
   color: #1a73ba;
   z-index: -1;
-  display: block
+  display: block;
+  margin-left: -1px;
 }
 #sliderCircleStart:active {
   position: relative;
@@ -6082,7 +6083,8 @@ body#advanced #ionSlider, body#advanced-images #ionSlider {
   padding-left: 7px;
   color: #1a73ba;
   z-index: -1;
-  display: block
+  display: block;
+  margin-left: -1px;
 }
 /* NEW style: calendar month and day */
 #calendarDayStart {
