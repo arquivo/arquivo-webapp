@@ -12223,7 +12223,7 @@ body#home-search .url-search-container {
 @media (device-width:1024px) and (device-height:1366px) {
   div#flex-container {
     width: 100% !important;
-    max-width: 914px !important;
+    max-width: 940px !important;
     margin-bottom: 16px !important;
     display: flex;
     flex-direction: row;
@@ -12300,7 +12300,7 @@ body#home-search .url-search-container {
 /* iPad Pro lansdcape */
 @media screen and (device-width:1366px) and (device-height:1024px) {
   div#flex-container {
-    max-width: 931px !important;
+    max-width: 957px !important;
   }
   body#homeImages #photos {
     width: 100% !important;
