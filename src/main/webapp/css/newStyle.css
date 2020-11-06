@@ -9196,6 +9196,7 @@ h4.modalTitle {
   }
   body#home-search #conteudo-resultado {
     margin-bottom: 35px !important;
+    max-width: 956px !important;
   }
 }
 @media (min-width:769px) {
