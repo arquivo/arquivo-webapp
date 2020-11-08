@@ -282,7 +282,7 @@ body#advanced #searchForm {
   overflow: hidden;
   white-space: nowrap;
 }
-#resultados-lista ul li h2 {
+#resultados-lista ul li a h2 {
   font-size: 20px;
   margin-bottom: 0px;
   padding-top: 0px;
@@ -3531,7 +3531,7 @@ a#advancedSearchButton {
   font-size: 14px !important;
   white-space: normal !important;
 }
-#resultados-lista ul li h2 {
+#resultados-lista ul li a h2 {
   font-size: 18px;
   margin-bottom: 0px;
   padding-top: 0px;
@@ -5739,7 +5739,7 @@ body#home-search .plt-desktop #urlSearchContainer {
 #resultados-lista ul li .resumo {
   font-size: 16px !important;
 }
-#resultados-lista ul li h2 {
+#resultados-lista ul li a h2 {
   font-size: 20px;
 }
 body#homeImages #searchBarButtonsDiv {
@@ -6279,7 +6279,7 @@ body#advanced-images #searchForm {
   overflow: hidden;
   white-space: nowrap;
 }
-#resultados-lista ul li h2 {
+#resultados-lista ul li a h2 {
   font-size: 20px;
   margin-bottom: 0px;
   padding-top: 0px;
@@ -8822,7 +8822,7 @@ h4.modalTitle {
   div#flex-container h3 {
     font-size: 1.5em;
   }
-  #resultados-lista ul li h2 {
+  #resultados-lista ul li a h2 {
     font-size: 15px;
   }
   #resultados-lista ul li .resumo {
@@ -9599,8 +9599,8 @@ a#advancedSearchButton {
   font-size: 14px !important;
   white-space: normal !important;
 }
-#resultados-lista ul li h2 {
-  font-size: /*18px*/ 19px;
+#resultados-lista ul li a h2 {
+  font-size: 19px;
   margin-bottom: 0px;
   padding-top: 0px;
   margin-top: 0px;
@@ -11802,7 +11802,7 @@ body#home-search .plt-desktop #urlSearchContainer {
   #resultados-lista ul li .resumo {
     font-size: 16px !important;
   }
-  #resultados-lista ul li h2 {
+  #resultados-lista ul li a h2 {
     font-size: 20px;
   }
   body#homeImages #searchBarButtonsDiv {
@@ -12421,7 +12421,7 @@ body#home-search .url-search-container {
   div#flex-container h3 {
     font-size: 1.3em;
   }
-  #resultados-lista ul li h2 {
+  #resultados-lista ul li a h2 {
     font-size: 15px;
   }
   #resultados-lista ul li .resumo {
@@ -12570,6 +12570,10 @@ body#advanced .topActionsOnAdvancedSearch a#PageButton, body#advanced-images .to
 .noResultsFound {
   background-color: #fbf2f2;
   color: #d05289;
+}
+
+.noResultsFound p {
+  margin: 0;
 }
 .noResultsFound > p::before {
   content: " → ";
