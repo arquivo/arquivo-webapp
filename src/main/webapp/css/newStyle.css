@@ -295,9 +295,7 @@ body#advanced #searchForm {
   font-family: 'Roboto', sans-serif;
   line-height: normal;
 }
-#resultados-lista ul li a:visited h2 {
-  color: #609 !important;
-}
+
 #resultados-lista > ul > li {
   padding-bottom: 16px;
   border-top: solid 1px lightgrey;
@@ -321,6 +319,12 @@ body#advanced #searchForm {
   transition: box-shadow 0.5s !important;
   background: #efefef !important;
 }
+
+#resultados-lista ul li a:visited h2 {
+  color: #609 !important;
+  outline: 1+x solid red;
+}
+
 #resultados-lista > ul > li:nth-child(odd) {
   background: white !important;
   /* box-shadow: 0 3px 6px rgba(32, 33, 36, 0.18);*/
