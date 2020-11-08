@@ -20,6 +20,10 @@ body {
   /*padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);*/
 }
 
+a:visited {
+  color: #609;
+}
+
 .stylish-input-group button {
   border: 0;
   background: transparent;
@@ -292,7 +296,7 @@ body#advanced #searchForm {
   line-height: normal;
 }
 
-#resultados-lista ul li a h2 {
+#resultados-lista ul li a:visited {
   color: #1c75c0;
 }
 
@@ -6264,9 +6268,6 @@ body#advanced-images #searchForm {
 }
 
 #resultados-lista ul li a:visited h2 {
-  text-decoration: underline; 
-  color:black !important;
-  background-color:red !important
 }
 .url {
   word-wrap: break-word;
@@ -6284,9 +6285,6 @@ body#advanced-images #searchForm {
   padding-top: 0px;
   margin-top: 0px;
 }
-/*#resultados-lista ul li h2 a {
-  color: #1c75c0;
-}*/
 #resultados-lista > ul > li {
   padding-bottom: 16px;
   border-top: solid 1px lightgrey;
