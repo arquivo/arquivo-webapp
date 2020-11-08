@@ -3809,26 +3809,25 @@ body#homeImages .dateModal, body#home-search .dateModal {
   margin-top: 20px;
 }
 .dateModalButtons button {
-  background-color: transparent;
+  background-color: #1c75c0;
   margin-right: none;
-  color: #1c75c0;
+  color: #fff;
   margin-right: 0;
   border: 1px solid #1c75c0;
-  /*transition: background-color 0.5s ease 0s;*/
-  color: #1c75c0;
+  /*transition: background-color 0.5s ease 0s;*/  
   font-size: 13px;
   border-radius: 5px;
   padding: 4px 10px 5px 10px;
 }
 .dateModalButtons button:hover {
-  background-color: #1c75c0;
-  color: white;
-  border: 1px solid transparent;
+  background-color: #fff;
+  color: #1c75c0;
+  border: 1px solid #1c75c0;
   text-decoration: none;
 }
 .dateModalButtons button:active {
-  background-color: #1c75c0;
-  border: 1px solid #1c75c0;
+  background-color: #033f72 !important;
+  border: 1px solid #033f72;
   color: #fff;
 }
 .dateModalButtonsOk {
