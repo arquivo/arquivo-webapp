@@ -5894,9 +5894,9 @@ body {
   background-color: white !important;
   /*padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);*/
 }
-body#home-search .urlBlock a:visited {
+/*body#home-search .urlBlock a:visited h2 {
   color: #609 !important;
-}
+}*/
 .stylish-input-group button {
   border: 0;
   background: transparent;
