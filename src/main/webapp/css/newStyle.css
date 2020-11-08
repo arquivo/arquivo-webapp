@@ -19,9 +19,7 @@ body {
   background-color: white !important;
   /*padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);*/
 }
-body#home-search .urlBlock a:visited {
-  color: #8b14d5 !important;
-}
+
 .stylish-input-group button {
   border: 0;
   background: transparent;
@@ -297,11 +295,9 @@ body#advanced #searchForm {
 #resultados-lista ul li a h2 {
   color: #1c75c0;
 }
-
 #resultados-lista ul li a:visited h2 {
   color: #c01c45 !important; 
 }
-
 
 #resultados-lista > ul > li {
   padding-bottom: 16px;
