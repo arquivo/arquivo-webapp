@@ -9597,7 +9597,7 @@ a#advancedSearchButton {
   display: block;
 }
 #resultados-lista ul li .resumo {
-  line-height: 20px !important;
+  line-height: 22px !important;
   font-size: 14px !important;
   white-space: normal !important;
 }
