@@ -6183,12 +6183,10 @@ ion-item {
   --pin-display: none !important;
 }
 body#advanced #searchForm {
-  margin-top: 0 !important;
-  /*margin: 0 /*21px*//* -8px;*/
+  margin-top: 0 !important;  
 }
 body#advanced-images #searchForm {
-  margin-top: 0px;
-  margin: 0 /*21px*/ -8px;
+  margin-top: 0px;  
 }
 #searchForm {
    /*position: relative;*/
