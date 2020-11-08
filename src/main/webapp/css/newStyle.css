@@ -6265,7 +6265,8 @@ body#advanced-images #searchForm {
 
 #resultados-lista ul li a:visited h2 {
   text-decoration: underline; 
-  color:red !important; 
+  color:black !important;
+  background-color:red !important
 }
 .url {
   word-wrap: break-word;
