@@ -293,7 +293,7 @@ body#advanced #searchForm {
 }
 
 #resultados-lista ul li a h2 {
-  color: #1c75c0;
+  /*color: #1c75c0;*/
 }
 
 #resultados-lista > ul > li {
@@ -6264,10 +6264,10 @@ body#advanced-images #searchForm {
 }
 
 #resultados-lista ul li a:visited h2 {
-  text-decoration: underline; 
+ /* text-decoration: underline; 
   color:black !important;
   background-color:red !important
-}
+}*/
 .url {
   word-wrap: break-word;
   color: #009688;
