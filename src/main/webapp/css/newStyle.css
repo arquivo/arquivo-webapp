@@ -6267,8 +6267,6 @@ body#advanced-images #searchForm {
   text-decoration: underline
 }
 
-#resultados-lista ul li a:visited h2 {
-}
 .url {
   word-wrap: break-word;
   color: #009688;
@@ -12725,3 +12723,7 @@ body#home-search a#ImageButton:hover,
 body#home-search a#ImageButton:active { color: #1c75c0 !important; background-color: #fff !important; }
 
 .footer-widgets h4 { font-size: 20px !important; font-weight: normal !important; }
+
+#resultados-lista ul li a:visited h2 {
+  color: #a104cf !important;
+}
