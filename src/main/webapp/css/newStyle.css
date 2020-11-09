@@ -6257,7 +6257,7 @@ body#advanced-images #searchForm {
   font-size: 16px !important;
   white-space: normal !important;
 }
-#resultados-lista ul li a {
+#resultados-lista ul li a h2 {
   color: /*#1c75c0*/ #033f72 !important;
   font-size: 1.18em !important;
   font-family: 'Roboto', sans-serif;
