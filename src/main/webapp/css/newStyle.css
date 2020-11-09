@@ -296,10 +296,6 @@ body#advanced #searchForm {
   line-height: normal;
 }
 
-#resultados-lista ul li a:visited {
-  color: #1c75c0;
-}
-
 #resultados-lista > ul > li {
   padding-bottom: 16px;
   border-top: solid 1px lightgrey;
