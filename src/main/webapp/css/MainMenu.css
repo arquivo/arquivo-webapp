@@ -389,7 +389,7 @@ span#buttonSearch {
 }
 
 span#buttonSearch:active {   
-    color: #ffffff ; 
+    color: #ffffff !important ; 
     background-color: #033f72 !important;   
 }
 }
