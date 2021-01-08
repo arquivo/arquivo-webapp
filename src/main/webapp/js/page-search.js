@@ -1,16 +1,16 @@
- jQuery.browser = {};
+jQuery.browser = {};
 (function () {
-    jQuery.browser.msie = false;
-    jQuery.browser.version = 0;
-    if (navigator.userAgent.match(/MSIE ([0-9]+)\./)) {
-        jQuery.browser.msie = true;
-        jQuery.browser.version = RegExp.$1;
-    }
+	jQuery.browser.msie = false;
+	jQuery.browser.version = 0;
+	if (navigator.userAgent.match(/MSIE ([0-9]+)\./)) {
+		jQuery.browser.msie = true;
+		jQuery.browser.version = RegExp.$1;
+	}
 })();
 
 function createErrorPage(){
-  $(ARQUIVO.getSearchNoResultsHtml()).insertBefore("#resultados-lista");
-    //$( window ).resize(function() {$('#conteudo-pesquisa-erro').css('margin-left', $('#search-dateStart_top').offset().left)}); /*dirty hack to keep message aligned with not responsive searchbox*/$( window ).resize(function() {$('.spell').css('margin-left', $('#search-dateStart_top').offset().left)}); /*dirty hack to keep message aligned with not responsive searchbox*/
+	$(ARQUIVO.getSearchNoResultsHtml()).insertBefore("#resultados-lista");
+	//$( window ).resize(function() {$('#conteudo-pesquisa-erro').css('margin-left', $('#search-dateStart_top').offset().left)}); /*dirty hack to keep message aligned with not responsive searchbox*/$( window ).resize(function() {$('.spell').css('margin-left', $('#search-dateStart_top').offset().left)}); /*dirty hack to keep message aligned with not responsive searchbox*/
 }
 
 function splitWithQuotes(emphasizeText){
@@ -32,9 +32,8 @@ function emphasizeText(textToBeEmphasized, emphasizeText) {
 	emphasizeText.forEach(function(emphasizeWord) {
 		// can not use replace text with ignore case because it will change the case of the original text
 		// this regex makes that only full words (delimited by \b) are matched with the incoming terms
-		// https://github.com/arquivo/pwa-technologies/issues/1033
-		// Removes partial matches such as "ugal" -> "Portugal" 
-		var wordDelim = new RegExp('(?!<)\\b'+emphasizeWord.toLowerCase()+'\\b(?!>)')
+		// Removes partial matches such as "ugal" -> "Portugal"
+		var wordDelim = new RegExp('(?!<)(\\b|\\/)'+emphasizeWord.toLowerCase()+'(?!>)(\\b|\\/)')
 		const from = resultText.toLowerCase().search(wordDelim);
 		const to = from + emphasizeWord.toLowerCase().length;
 		if (from >= 0) {
@@ -45,37 +44,38 @@ function emphasizeText(textToBeEmphasized, emphasizeText) {
 	return resultText;
 }
 
+
 function searchPages(startIndex){
 	var client_id = ARQUIVO.getClientId(20);
 	var search_id = ARQUIVO.generateId(20);
 	var trackingId = client_id + '_' + search_id;
 
-    var inputQuery = $('#txtSearch').val();
+	var inputQuery = $('#txtSearch').val();
 
-    var dateStart=$('#dateStart_top').val().substring($('#dateStart_top').val().length - 4) +''+  $('#dateStart_top').val().substring(3,5) +''+ $('#dateStart_top').val().substring(0,2)+ '000000' ;
+	var dateStart=$('#dateStart_top').val().substring($('#dateStart_top').val().length - 4) +''+  $('#dateStart_top').val().substring(3,5) +''+ $('#dateStart_top').val().substring(0,2)+ '000000' ;
 
-    var dateEnd= $('#dateEnd_top').val().substring($('#dateEnd_top').val().length - 4) +''+  $('#dateEnd_top').val().substring(3,5) +''+ $('#dateEnd_top').val().substring(0,2)+'235959';
+	var dateEnd= $('#dateEnd_top').val().substring($('#dateEnd_top').val().length - 4) +''+  $('#dateEnd_top').val().substring(3,5) +''+ $('#dateEnd_top').val().substring(0,2)+'235959';
 
-    var extractedQuery = ARQUIVO.extractQuerySpecialParameters(inputQuery);
+	var extractedQuery = ARQUIVO.extractQuerySpecialParameters(inputQuery);
 
-    const deduplicationPerHostname = extractedQuery.site.length == 0
+	const deduplicationPerHostname = extractedQuery.site.length == 0
 
-    // Add information to export SERP functionality with query arguments
-    ARQUIVO.exportSERPSaveLine(Content.exportSERP.pageSearch.queryArgument, Content.exportSERP.pageSearch.queryValue);
-    ARQUIVO.exportSERPSaveLine(Content.exportSERP.pageSearch.query, extractedQuery.query);
-    ARQUIVO.exportSERPSaveLine(Content.exportSERP.pageSearch.from, dateStart);
-    ARQUIVO.exportSERPSaveLine(Content.exportSERP.pageSearch.to, dateEnd);
-    ARQUIVO.exportSERPSaveLine(Content.exportSERP.pageSearch.offset, startIndex);
-    ARQUIVO.exportSERPSaveLine(Content.exportSERP.pageSearch.maxItems, hitsPerPage);
-    ARQUIVO.exportSERPSaveLine(Content.exportSERP.pageSearch.siteSearch, extractedQuery.site);
-    ARQUIVO.exportSERPSaveLine(Content.exportSERP.pageSearch.type, extractedQuery.type);
-    ARQUIVO.exportSERPSaveLine(Content.exportSERP.pageSearch.collection, extractedQuery.collection);
-    ARQUIVO.exportSERPSaveLine(); // Add an empty line after all the arguments
+	// Add information to export SERP functionality with query arguments
+	ARQUIVO.exportSERPSaveLine(Content.exportSERP.pageSearch.queryArgument, Content.exportSERP.pageSearch.queryValue);
+	ARQUIVO.exportSERPSaveLine(Content.exportSERP.pageSearch.query, extractedQuery.query);
+	ARQUIVO.exportSERPSaveLine(Content.exportSERP.pageSearch.from, dateStart);
+	ARQUIVO.exportSERPSaveLine(Content.exportSERP.pageSearch.to, dateEnd);
+	ARQUIVO.exportSERPSaveLine(Content.exportSERP.pageSearch.offset, startIndex);
+	ARQUIVO.exportSERPSaveLine(Content.exportSERP.pageSearch.maxItems, hitsPerPage);
+	ARQUIVO.exportSERPSaveLine(Content.exportSERP.pageSearch.siteSearch, extractedQuery.site);
+	ARQUIVO.exportSERPSaveLine(Content.exportSERP.pageSearch.type, extractedQuery.type);
+	ARQUIVO.exportSERPSaveLine(Content.exportSERP.pageSearch.collection, extractedQuery.collection);
+	ARQUIVO.exportSERPSaveLine(); // Add an empty line after all the arguments
 
-    $.ajax({
+	$.ajax({
 		url: textSearchAPI,
-    	dataType: 'text',
-    	type: 'GET',
+		dataType: 'text',
+		type: 'GET',
 		timeout: 300000,
 		data: {
 			q: extractedQuery.query,
@@ -103,27 +103,27 @@ function searchPages(startIndex){
 			var showNextPageButton = ((parseInt(startIndex) + hitsPerPage) >= totalResults) ? false: true;
 
 			if ( totalResults === 0){
-	            createErrorPage();
-	            noMoreResults=true;
-	            //loadingFinished(showNextPageButton);
-	        }
-	        else{
+				createErrorPage();
+				noMoreResults=true;
+				//loadingFinished(showNextPageButton);
+			}
+			else{
 
-	            var currentResults
-	            if(totalResults > hitsPerPage){
-	              currentResults = responseJson.response_items.length;
-	            }else{
-	              currentResults = totalResults;
-	              noMoreResults=true;
-	            }
-	            var resultsToLoad = currentResults;
+				var currentResults
+				if(totalResults > hitsPerPage){
+				  currentResults = responseJson.response_items.length;
+				}else{
+				  currentResults = totalResults;
+				  noMoreResults=true;
+				}
+				var resultsToLoad = currentResults;
 
-	            var previousResultHostname, previousResultURL;
+				var previousResultHostname, previousResultURL;
 
-	            // add headers to export SERP
-	            ARQUIVO.exportSERPSaveLine("Results");
-	            ARQUIVO.exportSERPSaveLine(
-	            	Content.exportSERP.pageSearch.year,
+				// add headers to export SERP
+				ARQUIVO.exportSERPSaveLine("Results");
+				ARQUIVO.exportSERPSaveLine(
+					Content.exportSERP.pageSearch.year,
 					Content.exportSERP.pageSearch.month,
 					Content.exportSERP.pageSearch.day,
 					Content.exportSERP.pageSearch.timestamp,
@@ -137,70 +137,76 @@ function searchPages(startIndex){
 					Content.exportSERP.pageSearch.snippet 
 				);
 
-	            for (var i=0; i< currentResults; i++){
-	                var currentDocument = responseJson.response_items[i];
-	                if (typeof currentDocument === 'undefined' || !currentDocument) {
-	                    continue;
-	                }
-	                var currentResultGlobalPosition = parseInt(startIndex) + i + 1;
+				for (var i=0; i< currentResults; i++){
+					var currentDocument = responseJson.response_items[i];
+					if (typeof currentDocument === 'undefined' || !currentDocument) {
+						continue;
+					}
+					var currentResultGlobalPosition = parseInt(startIndex) + i + 1;
+					var originalURL = currentDocument.originalURL;
 
-	                var title = emphasizeText(currentDocument.title, extractedQuery.query);
-	                var originalURL = currentDocument.originalURL;
-	                var url = new URL(originalURL);
-	                var hostname = url.hostname;
-	                var urlPresentation = ARQUIVO.formatURLForPresentation(currentDocument.originalURL);
-	                var linkToArchive = currentDocument.linkToArchive;
-	                var linkToArchiveWithTracking = "/page/view/" + trackingId + "_" + (i+1) + linkToArchive.substring(linkToArchive.indexOf("/wayback")+"/wayback".length);
-	                var snippet = currentDocument.snippet;
-	                var mimeType = currentDocument.mimeType;
-	                var primaryMimeType = mimeType.split('/')[0];
-	                var secondaryMimeType = mimeType.split('/')[1];
+					var title = currentDocument.title
+					if (title.trim().length == 0)  {
+						title = originalURL;
+					}
+
+					title = emphasizeText(title, extractedQuery.query);
+
+					var url = new URL(originalURL);
+					var hostname = url.hostname;
+					var urlPresentation = ARQUIVO.formatURLForPresentation(currentDocument.originalURL);
+					var linkToArchive = currentDocument.linkToArchive;
+					var linkToArchiveWithTracking = "/page/view/" + trackingId + "_" + (i+1) + linkToArchive.substring(linkToArchive.indexOf("/wayback")+"/wayback".length);
+					var snippet = currentDocument.snippet;
+					var mimeType = currentDocument.mimeType;
+					var primaryMimeType = mimeType.split('/')[0];
+					var secondaryMimeType = mimeType.split('/')[1];
 
 					var year = parseInt(currentDocument.tstamp.substring(0,4));
 					var month = Content.months[currentDocument.tstamp.substring(4,6)];
 					var day = parseInt(currentDocument.tstamp.substring(6,8));
 
 					var groupedWithPrevious = deduplicationPerHostname ? previousResultHostname === url.hostname : previousResultURL === originalURL;
-	                previousResultHostname = url.hostname;
-	                previousResultURL = originalURL;
+					previousResultHostname = url.hostname;
+					previousResultURL = originalURL;
 
-	                if (title.trim().length == 0)  {
-	                	title = originalURL;
-	                }
+					if (title.trim().length == 0)  {
+						title = originalURL;
+					}
 
-	                var mimeTypePresentation = primaryMimeType !== 'text' ? '<span class="mime">['+secondaryMimeType.toUpperCase()+']</span>' : '';
+					var mimeTypePresentation = primaryMimeType !== 'text' ? '<span class="mime">['+secondaryMimeType.toUpperCase()+']</span>' : '';
 
 					var liAttributes = '';
-	                var viewMoreForSameSiteContent = '';
+					var viewMoreForSameSiteContent = '';
 
-	                if (groupedWithPrevious) {
-	                	liAttributes = 'class="grouped"';
-	                }
-	                if (groupedWithPrevious && extractedQuery.site.length == 0) {
-	                	const newQuery = inputQuery + " site:"+ previousResultHostname;
-	                	const viewMoreForSameSiteLinkHref = ARQUIVO.replaceUrlParam(window.location.href, "query", newQuery);
+					if (groupedWithPrevious) {
+						liAttributes = 'class="grouped"';
+					}
+					if (groupedWithPrevious && extractedQuery.site.length == 0) {
+						const newQuery = inputQuery + " site:"+ previousResultHostname;
+						const viewMoreForSameSiteLinkHref = ARQUIVO.replaceUrlParam(window.location.href, "query", newQuery);
 						viewMoreForSameSiteContent = 
 							'<div class="viewMoreForSameSiteLink">'+
 								'<a href="'+viewMoreForSameSiteLinkHref+'">'+
 									Content.search.viewMoreForSameSite+' '+previousResultHostname+
 								'</a>'+
 							'</div>';
-	                }
+					}
 
-	                var currentResultCode = 
-	                	'<li '+liAttributes+' onclick="ga(\'send\', \'event\', \'Search result\', \'Page search\', \'Result position\', '+currentResultGlobalPosition+'); window.location=\''+linkToArchiveWithTracking+'\'; ">'+
+					var currentResultCode = 
+						'<li '+liAttributes+' onclick="ga(\'send\', \'event\', \'Search result\', \'Page search\', \'Result position\', '+currentResultGlobalPosition+'); window.location=\''+linkToArchiveWithTracking+'\'; ">'+
 							'<div class="urlBlock">'+
 								'<p class="url" title="'+urlPresentation+'">→ '+urlPresentation+'</p>'+
 								'<a href="'+linkToArchiveWithTracking+'">'+
-								    '<div class="border-bottom"></div>'+
-								    '<h2>'+
-								    	mimeTypePresentation+
-								    	title+
-								    '</h2>'+
-							    '</a>'+
-				                '<div class="list-versions-div">'+
-				                	'<span class="date"> '+day+' '+month+', '+year+' </span>'+
-				                '</div>'+
+									'<div class="border-bottom"></div>'+
+									'<h2>'+
+										mimeTypePresentation+
+										title+
+									'</h2>'+
+								'</a>'+
+								'<div class="list-versions-div">'+
+									'<span class="date"> '+day+' '+month+', '+year+' </span>'+
+								'</div>'+
 							'</div>'+
 							'<div class="summary">'+
 								'<span class="resumo">'+
@@ -208,12 +214,12 @@ function searchPages(startIndex){
 								'</span>'+
 							'</div>'+
 							viewMoreForSameSiteContent+
-	                	'</li>'
-	                ;
+						'</li>'
+					;
 
-	                // append result so it can be exported
-	                ARQUIVO.exportSERPSaveLine(
-	                	year,
+					// append result so it can be exported
+					ARQUIVO.exportSERPSaveLine(
+						year,
 						month,
 						day,
 						currentDocument.tstamp,
@@ -227,23 +233,23 @@ function searchPages(startIndex){
 						currentDocument.snippet 
 					);
 
-	                // append result item to ul inside the resultados-lista div
+					// append result item to ul inside the resultados-lista div
 					document.getElementById("resultados-lista").children[0].insertAdjacentHTML('beforeend', currentResultCode);
-	            }
+				}
 
-	        }
+			}
 
 			ARQUIVO.exportSERPFinishSearch('page_search', totalResults);
 
-	        document.getElementById("nextPageSearch").style.display = totalResults > (start + hitsPerPage) ? 'block' : 'none';
+			document.getElementById("nextPageSearch").style.display = totalResults > (start + hitsPerPage) ? 'block' : 'none';
 
-	        var previousPageSearch = document.getElementById("previousPageSearch");
-	        if ( typeof(previousPageSearch) != 'undefined' && previousPageSearch != null ) {
-	        	previousPageSearch.style.display = start > 0 ? 'block' : 'none';
-	        }
+			var previousPageSearch = document.getElementById("previousPageSearch");
+			if ( typeof(previousPageSearch) != 'undefined' && previousPageSearch != null ) {
+				previousPageSearch.style.display = start > 0 ? 'block' : 'none';
+			}
 
-	        ARQUIVO.displayEstimatedResults(totalResults);
-	        document.getElementById("loadingDiv").style.display='none';
+			ARQUIVO.displayEstimatedResults(totalResults);
+			document.getElementById("loadingDiv").style.display='none';
 		}
 	});
 }
