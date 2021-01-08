@@ -13,17 +13,33 @@ function createErrorPage(){
     //$( window ).resize(function() {$('#conteudo-pesquisa-erro').css('margin-left', $('#search-dateStart_top').offset().left)}); /*dirty hack to keep message aligned with not responsive searchbox*/$( window ).resize(function() {$('.spell').css('margin-left', $('#search-dateStart_top').offset().left)}); /*dirty hack to keep message aligned with not responsive searchbox*/
 }
 
+function splitWithQuotes(emphasizeText){
+	return emphasizeText.match(/\\?.|^$/g).reduce((p, c) => {
+		if(c === '"'){
+			p.quote ^= 1;
+		}else if(!p.quote && c === ' '){
+			p.a.push('');
+		}else{
+			p.a[p.a.length-1] += c.replace(/\\(.)/,"$1");
+		}
+		return  p;
+	}, {a: ['']}).a
+}
+
 function emphasizeText(textToBeEmphasized, emphasizeText) {
 	var resultText = textToBeEmphasized;
-	emphasizeText.split(' ').forEach(function(emphasizeWord) {
-		if (emphasizeWord != 'e' && emphasizeWord != 'm' && emphasizeWord != 'em') {
-			// can not use replace text with ignore case because it will change the case of the original text
-			const from = resultText.toLowerCase().indexOf(emphasizeWord.toLowerCase());
-			const to = from + emphasizeWord.toLowerCase().length;
-			if (from >= 0) {
-				const originalText = resultText.substring(from, to);
-				resultText = resultText.substring(0, from) + '<em>'+originalText+'</em>' + resultText.substring(to, resultText.length );
-			}
+	emphasizeText = splitWithQuotes(emphasizeText);
+	emphasizeText.forEach(function(emphasizeWord) {
+		// can not use replace text with ignore case because it will change the case of the original text
+		// this regex makes that only full words (delimited by \b) are matched with the incoming terms
+		// https://github.com/arquivo/pwa-technologies/issues/1033
+		// Removes partial matches such as "ugal" -> "Portugal" 
+		var wordDelim = new RegExp('(?!<)\\b'+emphasizeWord.toLowerCase()+'\\b(?!>)')
+		const from = resultText.toLowerCase().search();
+		const to = from + emphasizeWord.toLowerCase().length;
+		if (from >= 0) {
+			const originalText = resultText.substring(from, to);
+			resultText = resultText.substring(0, from) + '<em>'+originalText+'</em>' + resultText.substring(to, resultText.length );
 		}
 	});
 	return resultText;
