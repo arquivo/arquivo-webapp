@@ -503,7 +503,8 @@ function searchImagesJS(dateStartWithSlashes, dateEndWithSlashes, safeSearchOpti
 
         var responseJson = $.parseJSON(data);
 
-        totalResults = responseJson.totalItems;
+        var totalResults = responseJson.totalItems;
+        var totalResultsShowTop = responseJson.totalItems;
         var showNextPageButton = ((parseInt(startIndex) + parseInt(numrows)) >= totalResults) ? false: true;    
         
         if ( totalResults === 0){
@@ -638,9 +639,9 @@ function searchImagesJS(dateStartWithSlashes, dateEndWithSlashes, safeSearchOpti
                   currentDocument.pageTitle
                 );
             }
-            ARQUIVO.displayEstimatedResults(totalResults);
+            ARQUIVO.displayEstimatedResults(totalResultsShowTop);
         }
-        ARQUIVO.exportSERPFinishSearch('image_search', totalResults);
+        ARQUIVO.exportSERPFinishSearch('image_search', totalResultsShowTop);
        },
        type: 'GET'
     });
