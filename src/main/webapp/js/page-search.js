@@ -35,7 +35,7 @@ function emphasizeText(textToBeEmphasized, emphasizeText) {
 		// https://github.com/arquivo/pwa-technologies/issues/1033
 		// Removes partial matches such as "ugal" -> "Portugal" 
 		var wordDelim = new RegExp('(?!<)\\b'+emphasizeWord.toLowerCase()+'\\b(?!>)')
-		const from = resultText.toLowerCase().search();
+		const from = resultText.toLowerCase().search(wordDelim);
 		const to = from + emphasizeWord.toLowerCase().length;
 		if (from >= 0) {
 			const originalText = resultText.substring(from, to);
