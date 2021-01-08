@@ -374,7 +374,7 @@ body#advanced .glyphicon-search:before, body#advanced-images .glyphicon-search:b
     border-bottom-right-radius: 10px !important;*
 }*/
 span#buttonSearch {
-    width: auto;
+    width: 121px/*auto*/;
     height: 45px;
     /*right: 29px !important;*/
     top: 4px !important;
