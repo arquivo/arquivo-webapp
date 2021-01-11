@@ -5911,7 +5911,7 @@ body {
   /*background-color: #eaeaea !important;*/
   background: #ffffff url(../img/magnifier.svg) no-repeat 10px 14px !important;
   padding-left: 32px;
-  border: 1px solid #000000 !important;
+  border: 1px solid #777 !important;
   outline: none !important;
   font-size: 18 px !important;
   font-family: 'Roboto', sans-serif !important;
