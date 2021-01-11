@@ -388,6 +388,10 @@ span#buttonSearch {
     /*transition: 0.5s;*/    
 }
 
+:lang(en) span#buttonSearch {
+  width: 121px;  
+}
+
 span#buttonSearch:active {   
     color: #ffffff !important ; 
     background-color: #033f72 !important;   
