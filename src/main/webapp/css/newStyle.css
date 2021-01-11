@@ -6122,8 +6122,8 @@ body#advanced #ionSlider, body#advanced-images #ionSlider {
 }
 #calendarDayEnd, #calendarDayEnd:active {
   position: relative;
-  top: 27px;
-  left: -9px;
+  top: 26.6px;
+  left: -9.5px; 
   font-size: 1em;
   letter-spacing: -1px;
   color: #1a73ba;
