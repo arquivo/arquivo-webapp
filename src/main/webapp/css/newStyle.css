@@ -11788,6 +11788,9 @@ body#home-search .plt-desktop #urlSearchContainer {
   a#PageButton, a#ImageButton, a#advancedSearchButton, a.contameHistoriasLink {
     font-size: 14px !important;
   }
+  span#buttonSearch {
+    width: 142px;    
+}
   /*body#home-search p#estimated-results {
     margin-top: 0 !important;
     margin-left: 0 !important;
