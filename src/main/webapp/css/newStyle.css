@@ -5923,10 +5923,24 @@ body {
   margin-top: 4px;
   padding-right: 13% !important;
 }
-/* NEW STYLE: Hover search bar effect*/
+
+/* NEW STYLE: hover search bar effect*/
+
+#searchForm .form-control:hover {
+  -webkit-box-shadow: 0px 4px 5px -2px rgba(0 0 0 / 25%);
+  box-shadow: 0px 4px 5px -2px rgba(0 0 0 / 25%);
+  border-bottom: 1px solid transparent;
+  background-color: #fff !important;
+  display: block;
+  transition: 0.5s;
+  visibility: visible !important;
+  color: #222;
+}
+
+/* NEW STYLE: focus search bar effect*/
 #searchForm .form-control:focus {
-  -webkit-box-shadow: 0px 4px 5px -2px rgba(22 163 217 / 35%);
-  box-shadow: 0px 4px 5px -2px rgba(22 163 217 / 35%5);
+  -webkit-box-shadow: 0px 4px 5px -2px rgba(0 0 0 / 25%);
+  box-shadow: 0px 4px 5px -2px rgba(0 0 0 / 25%);  
   border-bottom: 1px solid transparent;
   background-color: #fff !important;
   display: block;
