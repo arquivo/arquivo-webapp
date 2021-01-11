@@ -5909,7 +5909,7 @@ body {
   transition: :-ms-input-placeholder 0.5s ease 0s;
   transition: :-moz-placeholder 0.5s ease 0s;
   /*background-color: #eaeaea !important;*/
-  background: #ffffff url(../img/magnifier.svg) no-repeat 10px 14px;
+  background: #ffffff url(../img/magnifier.svg) no-repeat 10px 14px !important;
   padding-left: 32px;
   border: 1px solid #000000 !important;
   outline: none !important;
