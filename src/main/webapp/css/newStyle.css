@@ -6112,7 +6112,7 @@ body#advanced #ionSlider, body#advanced-images #ionSlider {
 /* NEW style: calendar month and day */
 #calendarDayStart {
   position: relative;
-  top: 24.9px;
+  top: 26px;
   left: -9.5px;
   font-size: 1em;
   letter-spacing: -1px;
@@ -6136,7 +6136,7 @@ body#advanced #ionSlider, body#advanced-images #ionSlider {
 }
 #calendarDayEnd, #calendarDayEnd:active {
   position: relative;
-  top: 26.7px;
+  top: 26.6px;
   left: -9.5px; 
   font-size: 1em;
   letter-spacing: -1px;
