@@ -11874,12 +11874,14 @@ body#home-search .url-search-container {
 }
 span#buttonSearch:hover {
   width: 50px !important;  
-  background: transparent url(../img/magnifier-mobile-hover.svg) no-repeat center center !important;   
+  background: white url(../img/magnifier-mobile-hover.svg) no-repeat center center !important;  
+  background-size: 25px !important; 
 }
 
 span#buttonSearch:active {
   width: 50px !important; 
   background: transparent url(../img/magnifier-mobile-active.svg) no-repeat center center !important;
+  background-size: 25px !important;
 }
 #buttonSearch button {
   display:none;
