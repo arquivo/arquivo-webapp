@@ -19,7 +19,7 @@ boolean sortReverse = "true".equals(request.getParameter("reverse")) ? true : fa
 if (queryString != null) {		
 	Pattern regex = Pattern.compile(QUERY_REGEX);
 	Matcher match = regex.matcher(queryString);
-	
+	boolean inPhrase = false;
 	while( match.find() ) {
 		if (match.group(1) != null) {
 			String parcel = match.group(1);
@@ -37,12 +37,16 @@ if (queryString != null) {
 					}
 					not.append( parcel.substring(1));
 				}
-			} else if ( parcel.contains("\"")) {					//check for phrase
+			} else if ( parcel.contains("\"") || inPhrase) {					//check for phrase
+				if (parcel.contains("\""))
+					inPhrase = !inPhrase;
+
 				if (phrase.length() != 0) {
 					phrase.append(" ");
 				}
 				parcel = parcel.replaceAll("\"", "");
 				phrase.append(parcel);
+				
 			} else if (parcel.contains(":")) {				//check for option
 				if (parcel.startsWith("site:")) {
 					site = parcel.substring(parcel.indexOf(':')+1);
