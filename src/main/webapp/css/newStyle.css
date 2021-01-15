@@ -11880,6 +11880,15 @@ span#buttonSearch:active {
   width: 50px !important; 
   background: transparent url(../img/magnifier-mobile-active.svg) no-repeat center center;
 }
+#buttonSearch button {
+  display:none;
+}
+
+#searchForm .form-control {
+  background-image: none;  
+  padding-left: 10px;
+}
+
 }
 
 @media screen and (max-width: 400px) {
