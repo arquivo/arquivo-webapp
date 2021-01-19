@@ -42,7 +42,7 @@ a:visited {
   padding-left: 15px;
   border: 1px solid transparent !important;
   outline: none !important;
-  font-size: 19px !important;
+  font-size: 17px !important;
   font-family: 'Roboto', sans-serif !important;
   transition: box-shadow 0.5s ease 0s !important;
   transition: background-color 0.5s ease 0s !important;
@@ -5909,26 +5909,40 @@ body {
   transition: :-ms-input-placeholder 0.5s ease 0s;
   transition: :-moz-placeholder 0.5s ease 0s;
   /*background-color: #eaeaea !important;*/
-  background: #eaeaea url(../img/magnifier.svg) no-repeat 10px 14px;
+  background: #ffffff url(../img/magnifier.svg) no-repeat 10px 14px !important;
   padding-left: 32px;
-  border: 1px solid transparent !important;
+  border: 1px solid #ccc !important;
   outline: none !important;
   font-size: 18 px !important;
   font-family: 'Roboto', sans-serif !important;
   transition: box-shadow 0.5s ease 0s !important;
   transition: background-color 0.5s ease 0s !important;
-  -webkit-box-shadow: 0px 4px 5px -2px rgba(0, 0, 0, 0);
-  box-shadow: 0px 4px 5px -2px rgba(0, 0, 0, 0);
+  /*-webkit-box-shadow: 0px 4px 5px -2px rgba(255, 255, 255, 1);
+  box-shadow: 0px 4px 5px -2px rgba(255, 255, 255, 1);*/
   padding-top: 6px;
   margin-top: 4px;
   padding-right: 13% !important;
 }
-/* NEW STYLE: Hover search bar effect*/
-#searchForm .form-control:focus {
-  -webkit-box-shadow: 0px 4px 5px -2px rgba(0, 0, 0, 0.35);
-  box-shadow: 0px 4px 5px -2px rgba(0, 0, 0, 0.35);
+
+/* NEW STYLE: hover search bar effect*/
+
+#searchForm .form-control:hover {
+  -webkit-box-shadow: 0px 4px 5px -2px rgba(0 0 0 / 25%);
+  box-shadow: 0px 4px 5px -2px rgba(0 0 0 / 25%);
   border-bottom: 1px solid transparent;
-  background-color: white !important;
+  background-color: #fff !important;
+  display: block;
+  transition: 0.5s;
+  visibility: visible !important;
+  color: #222;
+}
+
+/* NEW STYLE: focus search bar effect*/
+#searchForm .form-control:focus {
+  -webkit-box-shadow: 0px 4px 5px -2px rgba(0 0 0 / 25%);
+  box-shadow: 0px 4px 5px -2px rgba(0 0 0 / 25%);  
+  border-bottom: 1px solid transparent;
+  background-color: #fff !important;
   display: block;
   visibility: visible !important;
   color: #222;
@@ -6098,8 +6112,8 @@ body#advanced #ionSlider, body#advanced-images #ionSlider {
 /* NEW style: calendar month and day */
 #calendarDayStart {
   position: relative;
-  top: 29px;
-  left: -7.5px;
+  top: 26px;
+  left: -9.5px;
   font-size: 1em;
   letter-spacing: -1px;
   color: #1a73ba;
@@ -6110,7 +6124,7 @@ body#advanced #ionSlider, body#advanced-images #ionSlider {
 #calendarMonthStart {
   position: relative;
   top: 9.2px;
-  left: 11.1px;
+  left: 9.1px;
   font-size: 0.8em;
   letter-spacing: 0px;
   color: #1a73ba;
@@ -6122,8 +6136,8 @@ body#advanced #ionSlider, body#advanced-images #ionSlider {
 }
 #calendarDayEnd, #calendarDayEnd:active {
   position: relative;
-  top: 29px;
-  left: -8px;
+  top: 26.6px;
+  left: -9.5px; 
   font-size: 1em;
   letter-spacing: -1px;
   color: #1a73ba;
@@ -6133,7 +6147,7 @@ body#advanced #ionSlider, body#advanced-images #ionSlider {
 #calendarMonthEnd {
   position: relative !important;
   top: 9.7px !important;
-  left: 11.6px !important;
+  left: 8.6px !important;
   font-size: 0.8em !important;
   letter-spacing: 0px !important;
   color: #1a73ba !important;
@@ -11788,6 +11802,12 @@ body#home-search .plt-desktop #urlSearchContainer {
   a#PageButton, a#ImageButton, a#advancedSearchButton, a.contameHistoriasLink {
     font-size: 14px !important;
   }
+  span#buttonSearch {
+    width: 142px !important;    
+}
+:lang(en) span#buttonSearch {
+  width: 127px !important;    
+}
   /*body#home-search p#estimated-results {
     margin-top: 0 !important;
     margin-left: 0 !important;
@@ -11844,6 +11864,36 @@ body#home-search .url-search-container {
     width: 45% !important;
   }
 }
+
+/* search magnifier mobile */
+@media screen and (max-width: 768px) {
+  span#buttonSearch {
+    width: 50px !important;
+    background: transparent url(../img/magnifier-mobile.svg) no-repeat center center !important;  
+    background-size: 14px !important;
+}
+span#buttonSearch:hover {
+  width: 50px !important;  
+  background: white url(../img/magnifier-mobile-hover.svg) no-repeat center center !important;  
+  background-size: 14px !important; 
+}
+
+span#buttonSearch:active {
+  width: 50px !important; 
+  background: #033f72 url(../img/magnifier-mobile-active.svg) no-repeat center center !important;
+  background-size: 14px !important;
+}
+#buttonSearch button {
+  display:none;
+}
+
+#searchForm .form-control {
+  background-image: none !important;  
+  padding-left: 10px;
+}
+
+}
+
 @media screen and (max-width: 400px) {
   /*Show search result box in search results page with max width in small screens*/
   #newFooterWrapper .resultsBox {
