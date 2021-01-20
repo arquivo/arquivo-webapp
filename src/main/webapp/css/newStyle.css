@@ -11884,7 +11884,7 @@ span#buttonSearch:active {
   background-size: 14px !important;
 }
 #buttonSearch button {
-  display:none;
+  text-indent: -99999px;
 }
 
 #searchForm .form-control {
