@@ -323,6 +323,7 @@ var ARQUIVO = ARQUIVO || (function(){
                     var value = pair[1];
                     if (key === 'site') {
                         site.push(value);
+                        site.push('*.' + value);
                         special = true;
                     } else if (key === 'type') {
                         type.push(value);
