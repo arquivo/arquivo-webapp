@@ -45,8 +45,24 @@ public class ImageViewTracking extends HttpServlet {
 				archivedUrl += "?" + queryString;
 			}
 
+			String sessionID = request.getSession().getId();
 
-			logger.info("Image view tracking with trackingId: '{}', timestamp: '{}', archivedURL: '{}'", trackingId, timestamp, archivedUrl);
+			StringBuffer requestUrl = request.getRequestURL();
+			if (request.getQueryString() != null) {
+				requestUrl.append("?");
+				requestUrl.append(request.getQueryString());
+			}
+
+			String ipAddress = request.getHeader("X-FORWARDED-FOR");
+			if (ipAddress == null) {
+				ipAddress = request.getRemoteAddr();
+			}
+
+			String userAgent = request.getHeader("User-Agent");
+			if (userAgent == null || userAgent.trim().isEmpty())
+				userAgent = "-";
+
+			logger.info("'{}'\t\"{}\"\t'{}'\t'{}'\t'{}'\t'{}'\t'{}'", ipAddress, userAgent, requestUrl.toString(), trackingId, sessionID, timestamp, archivedUrl);
 			response.setStatus(200);
 			response.getWriter().append("Ok");
 		} else {
