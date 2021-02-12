@@ -59,7 +59,20 @@ public class PageViewTracking extends HttpServlet {
 
 			redirectTo = sb.toString();
 
-			logger.info("Page view tracking with trackingId: '{}', timestamp: '{}', archivedURL: '{}'", trackingId, timestamp, archivedUrl);
+			String sessionID = request.getSession().getId();
+
+			String ipAddress = request.getHeader("X-FORWARDED-FOR");
+			if (ipAddress == null) {
+				ipAddress = request.getRemoteAddr();
+			}
+
+			String userAgent = request.getHeader("User-Agent");
+			if (userAgent == null || userAgent.trim().isEmpty())
+				userAgent = "-";
+
+			logger.info("'{}'\t\"{}\"\t'{}'\t'{}'\t'{}'\t'{}'\t'{}'", ipAddress, userAgent, trackingId, request.toString(), sessionID, timestamp, archivedUrl);
+
+
 		}
 
 		if (redirectTo == null) {
