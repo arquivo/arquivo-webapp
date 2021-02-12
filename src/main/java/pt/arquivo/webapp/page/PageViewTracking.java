@@ -70,7 +70,7 @@ public class PageViewTracking extends HttpServlet {
 			if (userAgent == null || userAgent.trim().isEmpty())
 				userAgent = "-";
 
-			logger.info("'{}'\t\"{}\"\t'{}'\t'{}'\t'{}'\t'{}'\t'{}'", ipAddress, userAgent, trackingId, request.toString(), sessionID, timestamp, archivedUrl);
+			logger.info("'{}'\t\"{}\"\t'{}'\t'{}'\t'{}'\t'{}'\t'{}'", ipAddress, userAgent, trackingId, request.getRemoteHost(), sessionID, timestamp, archivedUrl);
 
 
 		}
