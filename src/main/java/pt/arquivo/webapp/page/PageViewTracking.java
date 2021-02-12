@@ -62,10 +62,10 @@ public class PageViewTracking extends HttpServlet {
 			String sessionID = request.getSession().getId();
 
 			StringBuffer requestUrl = request.getRequestURL();
-	        if (request.getQueryString() != null) {
-	            requestUrl.append("?");
-	            requestUrl.append(request.getQueryString());
-	        }
+			if (request.getQueryString() != null) {
+				requestUrl.append("?");
+				requestUrl.append(request.getQueryString());
+			}
 
 			String ipAddress = request.getHeader("X-FORWARDED-FOR");
 			if (ipAddress == null) {
