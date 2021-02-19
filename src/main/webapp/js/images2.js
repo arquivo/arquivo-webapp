@@ -80,7 +80,9 @@ setInterval(function() {
 
 function loadingFinished(showNextPageButton){
     if(showNextPageButton){
-        $('#nextImage').css('display','inline-block');
+      $('#nextImage').css('display','inline-block');
+    } else {
+      $('#nextImage').attr("style","display:none!important");
     }
     $('#previousImage').css('display','inline-block');
 
@@ -495,7 +497,7 @@ function searchImagesJS(dateStartWithSlashes, dateEndWithSlashes, safeSearchOpti
        },
            
        timeout: 300000,
-       error: function() {         
+       error: function() {
        },
        dataType: 'text',
        success: function(data) {
@@ -503,16 +505,18 @@ function searchImagesJS(dateStartWithSlashes, dateEndWithSlashes, safeSearchOpti
 
         var responseJson = $.parseJSON(data);
 
+        startIndex = parseInt(startIndex)
+        numrows = parseInt(numrows)
         var totalResults = responseJson.totalItems;
-        var totalResultsShowTop = responseJson.totalItems;
-        var showNextPageButton = ((parseInt(startIndex) + parseInt(numrows)) >= totalResults) ? false: true;    
+        var totalResultsShowTop = totalResults;
+        var showNextPageButton = ((startIndex + numrows) >= totalResults) ? false: true;
         
-        if ( totalResults === 0){
+
+        if ( totalResults === 0 || startIndex >= totalResults){
             createErrorPage();
             noMoreResults=true;
             loadingFinished(showNextPageButton);
-        }
-        else{
+        } else{
             
             var currentResults
             if(totalResults > numrows){
