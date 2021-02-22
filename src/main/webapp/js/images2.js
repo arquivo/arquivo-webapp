@@ -286,11 +286,11 @@ return ''+
                   '</ion-row>'+
                   '<ion-card-content>'+                
                       '<ion-list class="imageList selected">'+
-      ( imageObj.title !== ""  ? ' <ion-item class="item-borderless image-viewer-img-title" lines="none" ><a class="imageHref" target="_blank" href="'+imageObj.currentImageURL+'">' +imageObj.title+'</a></ion-item>':'') +
+      ( imageObj.title !== ""  ? ' <ion-item class="item-borderless image-viewer-img-title" lines="none" ><h5><em>'+ Content.images.details.title +' </em>&nbsp;<a class="imageHref" target="_blank" href="'+imageObj.currentImageURL+'">' +imageObj.title+'</a></h5></ion-item>':'') +
       ( imageObj.imgAlt !== "" &&  imageObj.title == ""  ? ' <ion-item id="imgTitleLabel'+position+'" lines="none"><a class="imageHref" target="_blank" href="'+imageObj.currentImageURL+'">' +imageObj.imgAlt+'</a></ion-item>':'') +  
-                          '<ion-item lines="none" class="image-viewer-img-src">' +ARQUIVO.formatURLForPresentation(imageObj.imgSrc)+'</ion-item>'+
-                          '<ion-item lines="none" class="image-viewer-img-mime-type-resolution">'+imageObj.imgMimeType+' '+parseInt(imageObj.expandedWidth)+' x '+parseInt(imageObj.expandedHeight)+'</ion-item>'+
-                          '<ion-item lines="none" class="image-viewer-img-timestamp">'+ARQUIVO.formatTimestampToPresentation(imageObj.timestamp)+'</ion-item>'+             
+                          '<ion-item lines="none" class="image-viewer-img-src"><h5><em>'+ Content.images.details.url +' </em> ' +ARQUIVO.formatURLForPresentation(imageObj.imgSrc)+'</h5></ion-item>'+
+                          '<ion-item lines="none" class="image-viewer-img-mime-type-resolution"><h5><em>'+ Content.images.details.resolution +' </em> '+imageObj.imgMimeType+' '+parseInt(imageObj.expandedWidth)+' x '+parseInt(imageObj.expandedHeight)+'</h5></ion-item>'+
+                          '<ion-item lines="none" class="image-viewer-img-timestamp"><h5><em>'+ Content.images.details.timestamp +' </em> '+ARQUIVO.formatTimestampToPresentation(imageObj.timestamp)+'</h5></ion-item>'+
                       '</ion-list>'+
                   '</ion-card-content>'+  
                   '<ion-row>'+
@@ -298,9 +298,9 @@ return ''+
                   '</ion-row>'+
                   '<ion-card-content>'+                
                       '<ion-list>'+
-      '                       <ion-item class="item-borderless image-viewer-page-title" lines="none" ><a target="_blank" href="'+waybackURL+'/'+imageObj.pageTstamp+'/'+imageObj.pageURL+'">'+imageObj.pageTitle+'</a></ion-item>'+
-      '                       <ion-item lines="none" class="image-viewer-page-url">'+ARQUIVO.formatURLForPresentation(imageObj.pageURL)+'</ion-item>'+
-      '                       <ion-item lines="none" class="image-viewer-page-timestamp">'+ARQUIVO.formatTimestampToPresentation(imageObj.pageTstamp)+'</ion-item>'+          
+      '                       <ion-item class="item-borderless image-viewer-page-title" lines="none" ><h5><em>'+ Content.images.details.title +' </em>&nbsp;<a target="_blank" href="'+waybackURL+'/'+imageObj.pageTstamp+'/'+imageObj.pageURL+'">'+imageObj.pageTitle+'</a></h5></ion-item>'+
+      '                       <ion-item lines="none" class="image-viewer-page-url"><h5><em>'+ Content.images.details.url +' </em> '+ARQUIVO.formatURLForPresentation(imageObj.pageURL)+'</h5></ion-item>'+
+      '                       <ion-item lines="none" class="image-viewer-page-timestamp"><h5><em>'+ Content.images.details.timestamp +' </em> '+ARQUIVO.formatTimestampToPresentation(imageObj.pageTstamp)+'</h5></ion-item>'+
                       '</ion-list>'+
                   '</ion-card-content>'+                                
               '</ion-card> '+
@@ -326,8 +326,8 @@ function viewDetails(position){
       '</ion-row>'+      
       '<ion-card-content>'+
         '<ion-list>'+
-         '<ion-item class="item-borderless" lines="none" ><h5><em>url:</em>&nbsp;<a href="'+waybackURL+'/'+imageObj.pageTstamp+'/'+imageObj.pageURL+'">'+imageObj.pageURL+'</a></h5></ion-item>'+
-          '<ion-item lines="none" ><h5><em>timestamp:</em> '+imageObj.pageTstamp+'</h5></ion-item>'+
+         '<ion-item class="item-borderless" lines="none" ><h5><em>'+Content.images.details.url+'</em>&nbsp;<a href="'+waybackURL+'/'+imageObj.pageTstamp+'/'+imageObj.pageURL+'">'+imageObj.pageURL+'</a></h5></ion-item>'+
+          '<ion-item lines="none" ><h5><em>'+Content.images.details.timestamp+'</em> '+imageObj.pageTstamp+'</h5></ion-item>'+
           '<ion-item lines="none" ><h5><em>'+Content.images.details.title+'</em> '+imageObj.pageTitle+'</h5></ion-item>'+
         '</ion-list>'+
       '</ion-card-content>'+
@@ -336,12 +336,12 @@ function viewDetails(position){
       '</ion-row>'+      
       '<ion-card-content>'+
         '<ion-list>'+
-          '<ion-item class="item-borderless" lines="none" ><h5><em>src:</em>&nbsp;<a href="'+waybackURL+'/'+imageObj.timestamp+'im_/'+imageObj.imgSrc+'">'+imageObj.imgSrc+'</a></h5></ion-item>'+
-          '<ion-item lines="none" ><h5><em>timestamp:</em> '+imageObj.timestamp+'</h5></ion-item>'+
+          '<ion-item class="item-borderless" lines="none" ><h5><em>'+Content.images.details.url+'</em>&nbsp;<a href="'+waybackURL+'/'+imageObj.timestamp+'im_/'+imageObj.imgSrc+'">'+imageObj.imgSrc+'</a></h5></ion-item>'+
+          '<ion-item lines="none" ><h5><em>'+Content.images.details.timestamp+'</em> '+imageObj.timestamp+'</h5></ion-item>'+
           (imageObj.titleFull != "" ? '<ion-item lines="none" ><h5><em>'+Content.images.details.title+'</em> '+imageObj.titleFull+'</h5></ion-item>': '') +
-          (imageObj.imgAltFull != "" ? '<ion-item lines="none" ><h5><em>alt:</em> '+imageObj.imgAltFull+'</h5></ion-item>': '') +
+          (imageObj.imgAltFull != "" ? '<ion-item lines="none" ><h5><em>'+Content.images.details.alt+'</em> '+imageObj.imgAltFull+'</h5></ion-item>': '') +
           '<ion-item lines="none" ><h5><em>'+Content.images.details.resolution+'</em> '+parseInt(imageObj.expandedWidth)+' x '+parseInt(imageObj.expandedHeight)+' pixels</h5></ion-item>'+
-          '<ion-item lines="none" ><h5><em>mimetype:</em> '+imageObj.imgMimeType+'</h5></ion-item>'+
+          '<ion-item lines="none" ><h5><em>'+Content.images.details.mimetype+'</em> '+imageObj.imgMimeType+'</h5></ion-item>'+
           '<ion-item lines="none" ><h5><em>'+Content.images.details.safesearch+'</em> '+imageObj.safe+'</h5></ion-item>'+
         '</ion-list>'+
       '</ion-card-content>'+      
