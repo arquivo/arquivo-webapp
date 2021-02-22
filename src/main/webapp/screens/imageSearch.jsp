@@ -203,7 +203,7 @@ response.setHeader("Cache-Control","public, max-age=600");
   }
   request.setAttribute("htmlQueryString", htmlQueryString);
 
-  int numrows = 25;
+  int numrows = 24;
   String homeMessageClass= (htmlQueryString.equals("")) ? "" :  "hidden";
   String loaderDefaultClass = (homeMessageClass.equals("")) ? "hidden" : "";
 
