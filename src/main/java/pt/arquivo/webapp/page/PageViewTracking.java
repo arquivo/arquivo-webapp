@@ -29,11 +29,12 @@ public class PageViewTracking extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
 		String redirectTo = null;
-		String path = request.getPathInfo();
+		String path = request.getRequestURI().replace("/page/view", "");
+
 		Pattern pattern = Pattern.compile("/([^/]+)/([0-9]+)/(.*)");
 
 		Matcher matcher = null;
-		if (path != null) {
+		if (path != null && !path.trim().isEmpty()) {
 			matcher = pattern.matcher(path);
 		}
 
