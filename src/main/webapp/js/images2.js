@@ -489,7 +489,7 @@ function searchImagesJS(dateStartWithSlashes, dateEndWithSlashes, safeSearchOpti
           to: dateEnd,
           offset: startIndex,
           maxItems: numrows,
-          more: "imgThumbnailBase64,imgSrcURLDigest,imgDigest,pageProtocol,pageHost,pageImages,safe",
+          more: "imgDigest,pageProtocol,pageHost,pageImages,safe",
           siteSearch: extractedQuery.site,
           type: extractedQuery.type,
           collection: extractedQuery.collection,
@@ -599,8 +599,10 @@ function searchImagesJS(dateStartWithSlashes, dateEndWithSlashes, safeSearchOpti
 
                 totalPosition = totalPosition + 1;
 
-                if(currentDocument.imgThumbnailBase64){
-                  imageObj.src = "data:"+currentDocument.imgMimeType+";base64," + currentDocument.imgThumbnailBase64;
+                if(currentDocument.imgThumbnailBase64) {
+                  imageObj.src = "data:" + currentDocument.imgMimeType + ";base64," + currentDocument.imgThumbnailBase64;
+                } else if (resizeURL){
+                  imageObj.src = resizeURL + "/" + encodeURIComponent(currentImageURL)
                 } else {
                   imageObj.src = currentImageURL;
                 }
