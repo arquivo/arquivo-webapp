@@ -578,22 +578,30 @@ function searchImagesJS(dateStartWithSlashes, dateEndWithSlashes, safeSearchOpti
                 imageObj.expandedHeight = currentDocument.imgHeight;
                 imageObj.expandedWidth = currentDocument.imgWidth;
                 imageObj.imgMimeType= currentDocument.imgMimeType.substring(6,currentDocument.imgMimeType.length);
-                imageObj.imgAlt = currentDocument.imgAlt[0];
+
+                if (typeof imageObj.imgAlt === 'undefined' || !imageObj.imgAlt) {
+                  imageObj.imgAlt ='';
+                } else {
+                  imageObj.imgAlt = currentDocument.imgAlt[0];
+                }
                 imageObj.imgAltFull = imageObj.imgAlt;
-                if (typeof imageObj.imgAlt === 'undefined' || imageObj.imgAlt =='undefined' ) {imageObj.imgAlt ='';}
-                if (typeof imageObj.imgAltFull === 'undefined' || imageObj.imgAltFull =='undefined' ){imageObj.imgAltFull ='';}
                 if(imageObj.imgAlt.length > 40) {imageObj.imgAlt = imageObj.imgAlt.substring(0,37) + "...";}
-                imageObj.title = currentDocument.imgTitle[0];
-                if (typeof imageObj.title === 'undefined' || imageObj.title == 'undefined' ){imageObj.title ='';}
+
+                if (typeof imageObj.title === 'undefined' || !imageObj.title) {
+                  imageObj.title ='';
+                } else {
+                  imageObj.title = currentDocument.imgTitle[0];
+                }
                 imageObj.titleFull = imageObj.title;
-                if (typeof imageObj.titleFull === 'undefined' || imageObj.titleFull == 'undefined' ){imageObj.titleFull ='';}
-                
                 if(imageObj.title.length > 40) {imageObj.title = imageObj.title.substring(0,37) + "...";}
 
                 imageObj.safe = currentDocument.safe;
                 imageObj.pageTstamp = currentDocument.pageTstamp.toString();
                 imageObj.pageTitle = currentDocument.pageTitle;
-                if (typeof imageObj.pageTitle === 'undefined' || imageObj.pageTitle == 'undefined' ){imageObj.pageTitle ='';}
+
+                if (typeof imageObj.pageTitle === 'undefined' || !imageObj.pageTitle) {
+                  imageObj.pageTitle ='';
+                }
                 imageObj.collection = currentDocument.collection;
                 imageObj.imgSrc = currentDocument.imgSrc;
 
