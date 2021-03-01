@@ -578,14 +578,14 @@ function searchImagesJS(dateStartWithSlashes, dateEndWithSlashes, safeSearchOpti
                 imageObj.expandedHeight = currentDocument.imgHeight;
                 imageObj.expandedWidth = currentDocument.imgWidth;
                 imageObj.imgMimeType= currentDocument.imgMimeType.substring(6,currentDocument.imgMimeType.length);
-                imageObj.imgAlt = currentDocument.imgAlt;
-                imageObj.imgAltFull = currentDocument.imgAlt;
-                if (typeof imageObj.imgAlt === 'undefined' || imageObj.imgAlt =='undefined' ){imageObj.imgAlt ='';}
+                imageObj.imgAlt = currentDocument.imgAlt[0];
+                imageObj.imgAltFull = imageObj.imgAlt;
+                if (typeof imageObj.imgAlt === 'undefined' || imageObj.imgAlt =='undefined' ) {imageObj.imgAlt ='';}
                 if (typeof imageObj.imgAltFull === 'undefined' || imageObj.imgAltFull =='undefined' ){imageObj.imgAltFull ='';}
                 if(imageObj.imgAlt.length > 40) {imageObj.imgAlt = imageObj.imgAlt.substring(0,37) + "...";}
-                imageObj.title = currentDocument.imgTitle;
+                imageObj.title = currentDocument.imgTitle[0];
                 if (typeof imageObj.title === 'undefined' || imageObj.title == 'undefined' ){imageObj.title ='';}
-                imageObj.titleFull = currentDocument.imgTitle;
+                imageObj.titleFull = imageObj.title;
                 if (typeof imageObj.titleFull === 'undefined' || imageObj.titleFull == 'undefined' ){imageObj.titleFull ='';}
                 
                 if(imageObj.title.length > 40) {imageObj.title = imageObj.title.substring(0,37) + "...";}
