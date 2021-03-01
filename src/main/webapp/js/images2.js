@@ -579,7 +579,7 @@ function searchImagesJS(dateStartWithSlashes, dateEndWithSlashes, safeSearchOpti
                 imageObj.expandedWidth = currentDocument.imgWidth;
                 imageObj.imgMimeType= currentDocument.imgMimeType.substring(6,currentDocument.imgMimeType.length);
 
-                if (typeof imageObj.imgAlt === 'undefined' || !imageObj.imgAlt) {
+                if (!currentDocument.imgAlt) {
                   imageObj.imgAlt ='';
                 } else {
                   imageObj.imgAlt = currentDocument.imgAlt[0];
@@ -587,21 +587,25 @@ function searchImagesJS(dateStartWithSlashes, dateEndWithSlashes, safeSearchOpti
                 imageObj.imgAltFull = imageObj.imgAlt;
                 if(imageObj.imgAlt.length > 40) {imageObj.imgAlt = imageObj.imgAlt.substring(0,37) + "...";}
 
-                if (typeof imageObj.title === 'undefined' || !imageObj.title) {
+                if (!currentDocument.title) {
                   imageObj.title ='';
                 } else {
                   imageObj.title = currentDocument.imgTitle[0];
                 }
+
                 imageObj.titleFull = imageObj.title;
                 if(imageObj.title.length > 40) {imageObj.title = imageObj.title.substring(0,37) + "...";}
 
                 imageObj.safe = currentDocument.safe;
                 imageObj.pageTstamp = currentDocument.pageTstamp.toString();
-                imageObj.pageTitle = currentDocument.pageTitle;
 
-                if (typeof imageObj.pageTitle === 'undefined' || !imageObj.pageTitle) {
+
+                if (!currentDocument.pageTitle) {
                   imageObj.pageTitle ='';
+                } else {
+                  imageObj.pageTitle = currentDocument.pageTitle;
                 }
+
                 imageObj.collection = currentDocument.collection;
                 imageObj.imgSrc = currentDocument.imgSrc;
 
