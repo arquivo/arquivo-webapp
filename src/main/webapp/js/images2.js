@@ -587,7 +587,7 @@ function searchImagesJS(dateStartWithSlashes, dateEndWithSlashes, safeSearchOpti
                 imageObj.imgAltFull = imageObj.imgAlt;
                 if(imageObj.imgAlt.length > 40) {imageObj.imgAlt = imageObj.imgAlt.substring(0,37) + "...";}
 
-                if (!currentDocument.title) {
+                if (!currentDocument.imgTitle) {
                   imageObj.title ='';
                 } else {
                   imageObj.title = currentDocument.imgTitle[0];
