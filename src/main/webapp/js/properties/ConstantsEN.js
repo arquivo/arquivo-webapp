@@ -121,6 +121,15 @@ Content = {
                 advancedSearch: "Try the <a href=\"javascript:void(0)\" onclick=\"$('#advancedSearchButton').click();\">Advanced search</a>",
             },
         },
+        error: {
+            title: "An error occurred answering your query:",
+            suggestions: {
+                intro: "We suggest that you:",
+                tryAgain: "Try again later",
+                genericWords: "Search for other words",
+                contactUs: "Contact us <a href=\"https://sobre.arquivo.pt/en/contact/\">here</a>",
+            }
+        },
         viewMoreForSameSite: "View more results of",
     },
     topbar: {

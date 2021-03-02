@@ -275,6 +275,22 @@ var ARQUIVO = ARQUIVO || (function(){
                 '';
         },
 
+        getSearchErrorHtml: function() {
+            return ''+
+              '<div class="noResultsFound">'+
+              '<p>'+Content.search.error.title+'<span class="text-bold"> '+$('#txtSearch').attr("value")+'</span></p>'+
+              '</div>'+
+              '<div class="noResultsFoundSuggestions">'+
+              '<p class="text-bold">'+Content.search.error.suggestions.intro+'</p>'+
+              '<ul>'+
+              '<li>'+Content.search.error.suggestions.tryAgain+'</li>'+
+              '<li>'+Content.search.error.suggestions.genericWords+'</li>'+
+              '<li>'+Content.search.error.suggestions.contactUs+'</li>'+
+              '</ul>'+
+              '</div>'+
+              '';
+        },
+
         closeModalUglipop: function() {
             $('#uglipop_overlay_wrapper').fadeOut();
             $('#uglipop_overlay').fadeOut();

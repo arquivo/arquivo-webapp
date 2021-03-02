@@ -121,6 +121,15 @@ Content = {
                 advancedSearch: "Experimente a <a href=\"javascript:void(0)\" onclick=\"$('#advancedSearchButton').click();\">Pesquisa avan&ccedil;ada</a>",
             },
         },
+        error: {
+            title: "Ocurreu um erro na sua pesquisa",
+            suggestions: {
+                intro: "Sugerimos que:",
+                tryAgain: "Tente pesquisar de novo mais tarde",
+                genericWords: "Pesquise outras palavras",
+                contactUs: "Entre em contacto connosco <a href=\"https://sobre.arquivo.pt/pt/contacto/\">aqui</a>",
+            }
+        },
         viewMoreForSameSite: "Ver mais resultados de",
     },
     topbar: {
