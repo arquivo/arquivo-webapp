@@ -498,6 +498,8 @@ function searchImagesJS(dateStartWithSlashes, dateEndWithSlashes, safeSearchOpti
            
        timeout: 300000,
        error: function() {
+         createServerErrorPage();
+         loadingFinished(false);
        },
        dataType: 'text',
        success: function(data) {
@@ -693,6 +695,10 @@ $(document).ready(function() {
 function createErrorPage(){
   $(ARQUIVO.getSearchNoResultsHtml()).insertBefore("#photos");    
 }
+
+ function createServerErrorPage(){
+   $(ARQUIVO.getSearchErrorHtml()).insertBefore("#photos");
+ }
 
 document.addEventListener('keydown', function(evt) {
   evt = evt || window.event;
