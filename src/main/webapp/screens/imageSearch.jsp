@@ -51,6 +51,9 @@ response.setHeader("Cache-Control","public, max-age=600");
 
   String showContameHistoriasButton = pt.arquivo.webapp.Configuration.get("webapp.showContameHistoriasButton", "false");
   pageContext.setAttribute("showContameHistoriasButton", showContameHistoriasButton);
+
+  String resizeURL = pt.arquivo.webapp.Configuration.get("resize.url", "");
+  pageContext.setAttribute("resizeURL", resizeURL);
 %>
 
 <%
@@ -203,7 +206,7 @@ response.setHeader("Cache-Control","public, max-age=600");
   }
   request.setAttribute("htmlQueryString", htmlQueryString);
 
-  int numrows = 25;
+  int numrows = 24;
   String homeMessageClass= (htmlQueryString.equals("")) ? "" :  "hidden";
   String loaderDefaultClass = (homeMessageClass.equals("")) ? "hidden" : "";
 
@@ -266,6 +269,7 @@ function searchImages(startIndex){
   startPosition = "<%=startPosition%>";
   numrows ="<%=numrows%>"; /*Number of Images to show by default*/
   waybackURL = "<%=waybackURL%>";
+  resizeURL = "<%=resizeURL%>";
   showContameHistoriasButton = "<%=showContameHistoriasButton%>";
   showContameHistoriasButton = (String(showContameHistoriasButton).toLowerCase() == "true");
 </script>

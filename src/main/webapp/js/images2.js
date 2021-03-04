@@ -80,7 +80,9 @@ setInterval(function() {
 
 function loadingFinished(showNextPageButton){
     if(showNextPageButton){
-        $('#nextImage').css('display','inline-block');
+      $('#nextImage').css('display','inline-block');
+    } else {
+      $('#nextImage').attr("style","display:none!important");
     }
     $('#previousImage').css('display','inline-block');
 
@@ -284,11 +286,11 @@ return ''+
                   '</ion-row>'+
                   '<ion-card-content>'+                
                       '<ion-list class="imageList selected">'+
-      ( imageObj.title !== ""  ? ' <ion-item class="item-borderless image-viewer-img-title" lines="none" ><a class="imageHref" target="_blank" href="'+imageObj.currentImageURL+'">' +imageObj.title+'</a></ion-item>':'') +
+      ( imageObj.title !== ""  ? ' <ion-item class="item-borderless image-viewer-img-title" lines="none" ><h5><em>'+ Content.images.details.title +' </em>&nbsp;<a class="imageHref" target="_blank" href="'+imageObj.currentImageURL+'">' +imageObj.title+'</a></h5></ion-item>':'') +
       ( imageObj.imgAlt !== "" &&  imageObj.title == ""  ? ' <ion-item id="imgTitleLabel'+position+'" lines="none"><a class="imageHref" target="_blank" href="'+imageObj.currentImageURL+'">' +imageObj.imgAlt+'</a></ion-item>':'') +  
-                          '<ion-item lines="none" class="image-viewer-img-src">' +ARQUIVO.formatURLForPresentation(imageObj.imgSrc)+'</ion-item>'+
-                          '<ion-item lines="none" class="image-viewer-img-mime-type-resolution">'+imageObj.imgMimeType+' '+parseInt(imageObj.expandedWidth)+' x '+parseInt(imageObj.expandedHeight)+'</ion-item>'+
-                          '<ion-item lines="none" class="image-viewer-img-timestamp">'+ARQUIVO.formatTimestampToPresentation(imageObj.timestamp)+'</ion-item>'+             
+                          '<ion-item lines="none" class="image-viewer-img-src"><h5><em>'+ Content.images.details.url +' </em> ' +ARQUIVO.formatURLForPresentation(imageObj.imgSrc)+'</h5></ion-item>'+
+                          '<ion-item lines="none" class="image-viewer-img-mime-type-resolution"><h5><em>'+ Content.images.details.resolution +' </em> '+imageObj.imgMimeType+' '+parseInt(imageObj.expandedWidth)+' x '+parseInt(imageObj.expandedHeight)+'</h5></ion-item>'+
+                          '<ion-item lines="none" class="image-viewer-img-timestamp"><h5><em>'+ Content.images.details.timestamp +' </em> '+ARQUIVO.formatTimestampToPresentation(imageObj.timestamp)+'</h5></ion-item>'+
                       '</ion-list>'+
                   '</ion-card-content>'+  
                   '<ion-row>'+
@@ -296,9 +298,9 @@ return ''+
                   '</ion-row>'+
                   '<ion-card-content>'+                
                       '<ion-list>'+
-      '                       <ion-item class="item-borderless image-viewer-page-title" lines="none" ><a target="_blank" href="'+waybackURL+'/'+imageObj.pageTstamp+'/'+imageObj.pageURL+'">'+imageObj.pageTitle+'</a></ion-item>'+
-      '                       <ion-item lines="none" class="image-viewer-page-url">'+ARQUIVO.formatURLForPresentation(imageObj.pageURL)+'</ion-item>'+
-      '                       <ion-item lines="none" class="image-viewer-page-timestamp">'+ARQUIVO.formatTimestampToPresentation(imageObj.pageTstamp)+'</ion-item>'+          
+      '                       <ion-item class="item-borderless image-viewer-page-title" lines="none" ><h5><em>'+ Content.images.details.title +' </em>&nbsp;<a target="_blank" href="'+waybackURL+'/'+imageObj.pageTstamp+'/'+imageObj.pageURL+'">'+imageObj.pageTitle+'</a></h5></ion-item>'+
+      '                       <ion-item lines="none" class="image-viewer-page-url"><h5><em>'+ Content.images.details.url +' </em> '+ARQUIVO.formatURLForPresentation(imageObj.pageURL)+'</h5></ion-item>'+
+      '                       <ion-item lines="none" class="image-viewer-page-timestamp"><h5><em>'+ Content.images.details.timestamp +' </em> '+ARQUIVO.formatTimestampToPresentation(imageObj.pageTstamp)+'</h5></ion-item>'+
                       '</ion-list>'+
                   '</ion-card-content>'+                                
               '</ion-card> '+
@@ -324,8 +326,8 @@ function viewDetails(position){
       '</ion-row>'+      
       '<ion-card-content>'+
         '<ion-list>'+
-         '<ion-item class="item-borderless" lines="none" ><h5><em>url:</em>&nbsp;<a href="'+waybackURL+'/'+imageObj.pageTstamp+'/'+imageObj.pageURL+'">'+imageObj.pageURL+'</a></h5></ion-item>'+
-          '<ion-item lines="none" ><h5><em>timestamp:</em> '+imageObj.pageTstamp+'</h5></ion-item>'+
+         '<ion-item class="item-borderless" lines="none" ><h5><em>'+Content.images.details.url+'</em>&nbsp;<a href="'+waybackURL+'/'+imageObj.pageTstamp+'/'+imageObj.pageURL+'">'+imageObj.pageURL+'</a></h5></ion-item>'+
+          '<ion-item lines="none" ><h5><em>'+Content.images.details.timestamp+'</em> '+imageObj.pageTstamp+'</h5></ion-item>'+
           '<ion-item lines="none" ><h5><em>'+Content.images.details.title+'</em> '+imageObj.pageTitle+'</h5></ion-item>'+
         '</ion-list>'+
       '</ion-card-content>'+
@@ -334,12 +336,12 @@ function viewDetails(position){
       '</ion-row>'+      
       '<ion-card-content>'+
         '<ion-list>'+
-          '<ion-item class="item-borderless" lines="none" ><h5><em>src:</em>&nbsp;<a href="'+waybackURL+'/'+imageObj.timestamp+'im_/'+imageObj.imgSrc+'">'+imageObj.imgSrc+'</a></h5></ion-item>'+
-          '<ion-item lines="none" ><h5><em>timestamp:</em> '+imageObj.timestamp+'</h5></ion-item>'+
+          '<ion-item class="item-borderless" lines="none" ><h5><em>'+Content.images.details.url+'</em>&nbsp;<a href="'+waybackURL+'/'+imageObj.timestamp+'im_/'+imageObj.imgSrc+'">'+imageObj.imgSrc+'</a></h5></ion-item>'+
+          '<ion-item lines="none" ><h5><em>'+Content.images.details.timestamp+'</em> '+imageObj.timestamp+'</h5></ion-item>'+
           (imageObj.titleFull != "" ? '<ion-item lines="none" ><h5><em>'+Content.images.details.title+'</em> '+imageObj.titleFull+'</h5></ion-item>': '') +
-          (imageObj.imgAltFull != "" ? '<ion-item lines="none" ><h5><em>alt:</em> '+imageObj.imgAltFull+'</h5></ion-item>': '') +
+          (imageObj.imgAltFull != "" ? '<ion-item lines="none" ><h5><em>'+Content.images.details.alt+'</em> '+imageObj.imgAltFull+'</h5></ion-item>': '') +
           '<ion-item lines="none" ><h5><em>'+Content.images.details.resolution+'</em> '+parseInt(imageObj.expandedWidth)+' x '+parseInt(imageObj.expandedHeight)+' pixels</h5></ion-item>'+
-          '<ion-item lines="none" ><h5><em>mimetype:</em> '+imageObj.imgMimeType+'</h5></ion-item>'+
+          '<ion-item lines="none" ><h5><em>'+Content.images.details.mimetype+'</em> '+imageObj.imgMimeType+'</h5></ion-item>'+
           '<ion-item lines="none" ><h5><em>'+Content.images.details.safesearch+'</em> '+imageObj.safe+'</h5></ion-item>'+
         '</ion-list>'+
       '</ion-card-content>'+      
@@ -487,7 +489,7 @@ function searchImagesJS(dateStartWithSlashes, dateEndWithSlashes, safeSearchOpti
           to: dateEnd,
           offset: startIndex,
           maxItems: numrows,
-          more: "imgThumbnailBase64,imgSrcURLDigest,imgDigest,pageProtocol,pageHost,pageImages,safe",
+          more: "imgDigest,pageProtocol,pageHost,pageImages,safe",
           siteSearch: extractedQuery.site,
           type: extractedQuery.type,
           collection: extractedQuery.collection,
@@ -495,7 +497,9 @@ function searchImagesJS(dateStartWithSlashes, dateEndWithSlashes, safeSearchOpti
        },
            
        timeout: 300000,
-       error: function() {         
+       error: function() {
+         createServerErrorPage();
+         loadingFinished(false);
        },
        dataType: 'text',
        success: function(data) {
@@ -503,16 +507,18 @@ function searchImagesJS(dateStartWithSlashes, dateEndWithSlashes, safeSearchOpti
 
         var responseJson = $.parseJSON(data);
 
+        startIndex = parseInt(startIndex)
+        numrows = parseInt(numrows)
         var totalResults = responseJson.totalItems;
-        var totalResultsShowTop = responseJson.totalItems;
-        var showNextPageButton = ((parseInt(startIndex) + parseInt(numrows)) >= totalResults) ? false: true;    
+        var totalResultsShowTop = totalResults;
+        var showNextPageButton = ((startIndex + numrows) >= totalResults) ? false: true;
         
-        if ( totalResults === 0){
+
+        if ( totalResults === 0 || startIndex >= totalResults){
             createErrorPage();
             noMoreResults=true;
             loadingFinished(showNextPageButton);
-        }
-        else{
+        } else{
             
             var currentResults
             if(totalResults > numrows){
@@ -574,29 +580,43 @@ function searchImagesJS(dateStartWithSlashes, dateEndWithSlashes, safeSearchOpti
                 imageObj.expandedHeight = currentDocument.imgHeight;
                 imageObj.expandedWidth = currentDocument.imgWidth;
                 imageObj.imgMimeType= currentDocument.imgMimeType.substring(6,currentDocument.imgMimeType.length);
-                imageObj.imgAlt = currentDocument.imgAlt;
-                imageObj.imgAltFull = currentDocument.imgAlt;
-                if (typeof imageObj.imgAlt === 'undefined' || imageObj.imgAlt =='undefined' ){imageObj.imgAlt ='';}
-                if (typeof imageObj.imgAltFull === 'undefined' || imageObj.imgAltFull =='undefined' ){imageObj.imgAltFull ='';}
+
+                if (!currentDocument.imgAlt) {
+                  imageObj.imgAlt ='';
+                } else {
+                  imageObj.imgAlt = currentDocument.imgAlt[0];
+                }
+                imageObj.imgAltFull = imageObj.imgAlt;
                 if(imageObj.imgAlt.length > 40) {imageObj.imgAlt = imageObj.imgAlt.substring(0,37) + "...";}
-                imageObj.title = currentDocument.imgTitle;
-                if (typeof imageObj.title === 'undefined' || imageObj.title == 'undefined' ){imageObj.title ='';}
-                imageObj.titleFull = currentDocument.imgTitle;
-                if (typeof imageObj.titleFull === 'undefined' || imageObj.titleFull == 'undefined' ){imageObj.titleFull ='';}
-                
+
+                if (!currentDocument.imgTitle) {
+                  imageObj.title ='';
+                } else {
+                  imageObj.title = currentDocument.imgTitle[0];
+                }
+
+                imageObj.titleFull = imageObj.title;
                 if(imageObj.title.length > 40) {imageObj.title = imageObj.title.substring(0,37) + "...";}
 
                 imageObj.safe = currentDocument.safe;
                 imageObj.pageTstamp = currentDocument.pageTstamp.toString();
-                imageObj.pageTitle = currentDocument.pageTitle;
-                if (typeof imageObj.pageTitle === 'undefined' || imageObj.pageTitle == 'undefined' ){imageObj.pageTitle ='';}
+
+
+                if (!currentDocument.pageTitle) {
+                  imageObj.pageTitle ='';
+                } else {
+                  imageObj.pageTitle = currentDocument.pageTitle;
+                }
+
                 imageObj.collection = currentDocument.collection;
                 imageObj.imgSrc = currentDocument.imgSrc;
 
                 totalPosition = totalPosition + 1;
 
-                if(currentDocument.imgThumbnailBase64){
-                  imageObj.src = "data:"+currentDocument.imgMimeType+";base64," + currentDocument.imgThumbnailBase64;
+                if(currentDocument.imgThumbnailBase64) {
+                  imageObj.src = "data:" + currentDocument.imgMimeType + ";base64," + currentDocument.imgThumbnailBase64;
+                } else if (resizeURL){
+                  imageObj.src = resizeURL + "/" + encodeURIComponent(currentImageURL)
                 } else {
                   imageObj.src = currentImageURL;
                 }
@@ -675,6 +695,10 @@ $(document).ready(function() {
 function createErrorPage(){
   $(ARQUIVO.getSearchNoResultsHtml()).insertBefore("#photos");    
 }
+
+ function createServerErrorPage(){
+   $(ARQUIVO.getSearchErrorHtml()).insertBefore("#photos");
+ }
 
 document.addEventListener('keydown', function(evt) {
   evt = evt || window.event;
