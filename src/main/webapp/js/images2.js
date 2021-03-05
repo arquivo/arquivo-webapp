@@ -311,7 +311,7 @@ function insertImageViewer(imageObj, position) {
 }
 
 function viewDetails(position) {
-  imageObj = imageObjs[position];
+  imageObj = imageObjs[position%numrows];
 
   if ($('#detailsCard' + position).length == 0) {
     var detailsCard = '' +
@@ -662,7 +662,7 @@ function searchImagesJS(dateStartWithSlashes, dateEndWithSlashes, safeSearchOpti
 $(document).ready(function () {
   $(document).on('click', '#dButton', function () {
     var position = $(this).attr('position');
-    var imageObj = imageObjs[position]; /*get Current Image Object*/
+    var imageObj = imageObjs[position%numrows]; /*get Current Image Object*/
 
     $("#dialog").dialog('open');
 
