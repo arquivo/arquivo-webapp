@@ -105,7 +105,8 @@ Content = {
             mimetype: "Tipo de mídia:",
             url: "URL:",
             timestamp: "Data de captura:",
-            alt: "Texto alternativo:"
+            alt: "Texto alternativo:",
+            caption: "Legenda:"
         },
         viewer: {
             visit: "Visitar",

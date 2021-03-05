@@ -105,7 +105,8 @@ Content = {
             mimetype: "Mime Type:",
             url: "URL:",
             timestamp: "Capture date:",
-            alt: "Alt text:"
+            alt: "Alt text:",
+            caption: "Caption:"
         },
         viewer: {
             visit: "Visit",
