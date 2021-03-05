@@ -67,12 +67,13 @@ var ARQUIVO = ARQUIVO || (function(){
             var year = timestamp.substring(0, 4);
             var month = timestamp.substring(4, 6);
             var day = timestamp.substring(6, 8);
-            if(day.charAt(0) == '0'){
+            if(day.charAt(0) === '0'){
                 day = day.charAt(1);
             }
             var hour = timestamp.substring(8,10);
             var minute = timestamp.substring(10,12);
-            return day+" "+Content.months[month]+" "+Content.at+" "+hour+":"+minute+", "+year;
+            return day+" "+Content.months[month]+" " +year
+              + " " + Content.at+" "+hour+":"+minute;
         },
         formatJSDateToPresentation: function(date) {
             const d = new Date(date);
