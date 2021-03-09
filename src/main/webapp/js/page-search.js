@@ -205,7 +205,7 @@ function searchPages(startIndex){
 									'</h2>'+
 								'</a>'+
 								'<div class="list-versions-div">'+
-									'<span class="date"> '+day+' '+month+', '+year+' </span>'+
+									'<span class="date"> '+day+' '+month+' '+year+' </span>'+
 								'</div>'+
 							'</div>'+
 							'<div class="summary">'+
