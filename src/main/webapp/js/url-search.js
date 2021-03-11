@@ -434,20 +434,22 @@ function startUrlSearch(waybackURL, urlQuery, startTs, endTs, insertOnElementId,
       var versions = []
       if( data ) {
         var tokens = data.split('\n');
-
+        var i = 0;
         var previousVersion = null;
         const deltaToRemoveDuplicatedEntries = 3600; // remo
         $.each(tokens, function(e){
           if(this != ""){
             var version = JSON.parse(this);
-            if( version.status && ( version.status[0] === '4' || version.status[0] === '5') ){ /*Ignore 400's and 500's*/
+            if( version.status && (version.status[0] === '5') ){ /*Ignore 400's and 500's*/
               /*empty on purpose*/
             } else {
               if (previousVersion != null && isRemovePreviousVersion(previousVersion, version, deltaToRemoveDuplicatedEntries)) {
                 versions.pop();
+                i -= 1;
               } 
               if (previousVersion == null || !isRemoveCurrentVersion(previousVersion, version, deltaToRemoveDuplicatedEntries)) {
                 versions.push(version);
+                i += 1;
                 previousVersion = version;
               }
             }
@@ -458,7 +460,8 @@ function startUrlSearch(waybackURL, urlQuery, startTs, endTs, insertOnElementId,
         document.getElementById("estimatedResultsValue").innerHTML = totalResults.toLocaleString(language);
         document.getElementById("estimatedResults").style.display = totalResults > 0 ? 'block' : 'none';
 
-        insertOn.append(createResultsHeader(typeShow));
+        if (i > 0)
+          insertOn.append(createResultsHeader(typeShow));
 
         if (typeShow == 'list') {
           insertOn.append(createMatrixList(waybackURL, versions));
