@@ -37,6 +37,7 @@
 		<text.search.api>${text.search.server}/textsearch</text.search.api>
 
 		<webapp.showContameHistoriasButton>false</webapp.showContameHistoriasButton>
+		<webapp.hideImageResultsOnError>false</webapp.hideImageResultsOnError>
 	</properties>
 	<dependencies>
 		<dependency>
