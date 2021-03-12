@@ -144,7 +144,6 @@ response.setHeader("Cache-Control","public, max-age=600");
                 // site parameter should have only the host on image search
                 siteParameter = siteHost.toLowerCase();
                 htmlQueryString += siteParameter + " ";
-                query = htmlQueryString;
         }
         if (request.getParameter("type") != null && request.getParameter("type") != "" && !request.getParameter("type").toLowerCase().equals("all")) {
           htmlQueryString += "type:" + request.getParameter("type") + " " ;
@@ -159,7 +158,7 @@ response.setHeader("Cache-Control","public, max-age=600");
         if (request.getParameter("safeSearch") != null && request.getParameter("safeSearch").toLowerCase().equals("off")) {
           htmlQueryString += "safe:off ";
         }
-
+      query = htmlQueryString;
     }
   //htmlQueryString= StringEscapeUtils.escapeHtml(htmlQueryString);
   //request.setAttribute("htmlQueryString", htmlQueryString);
