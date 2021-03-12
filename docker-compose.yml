@@ -1,13 +1,13 @@
 version: "3.3"
 services:
   tomcat:
-    image: tomcat:latest
+    image: tomcat:9
     ports:
       - "8080:8080"
       - "8000:8000" # used for debug
     environment:
       # start tomcat catalina on debug mode 
-      CATALINA_OPTS: -agentlib:jdwp=transport=dt_socket,address=*:8000,server=y,suspend=n
+      CATALINA_OPTS: -agentlib:jdwp=transport=dt_socket,address=0.0.0.0:8000,server=y,suspend=n
     volumes:
       - ./src/main/webapp:/usr/local/tomcat/webapps/ROOT
       - ./target/arquivo-webapp/WEB-INF/classes:/usr/local/tomcat/webapps/ROOT/WEB-INF/classes
