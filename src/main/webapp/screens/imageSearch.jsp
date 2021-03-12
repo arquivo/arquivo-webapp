@@ -52,6 +52,9 @@ response.setHeader("Cache-Control","public, max-age=600");
   String showContameHistoriasButton = pt.arquivo.webapp.Configuration.get("webapp.showContameHistoriasButton", "false");
   pageContext.setAttribute("showContameHistoriasButton", showContameHistoriasButton);
 
+  String hideImageResultsOnError = pt.arquivo.webapp.Configuration.get("webapp.hideImageResultsOnError", "true");
+  pageContext.setAttribute("hideImageResultsOnError", hideImageResultsOnError);
+
   String resizeURL = pt.arquivo.webapp.Configuration.get("resize.url", "");
   pageContext.setAttribute("resizeURL", resizeURL);
 %>
@@ -272,6 +275,8 @@ function searchImages(startIndex){
   resizeURL = "<%=resizeURL%>";
   showContameHistoriasButton = "<%=showContameHistoriasButton%>";
   showContameHistoriasButton = (String(showContameHistoriasButton).toLowerCase() == "true");
+  hideImageResultsOnError = "<%=hideImageResultsOnError%>";
+  hideImageResultsOnError = (String(hideImageResultsOnError).toLowerCase() == "true");
 </script>
 
   <%@ include file="/include/topbar.jsp" %>

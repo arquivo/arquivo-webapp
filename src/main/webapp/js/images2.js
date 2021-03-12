@@ -311,7 +311,7 @@ function insertImageViewer(imageObj, position) {
 }
 
 function viewDetails(position) {
-  imageObj = imageObjs[position%numrows];
+  imageObj = imageObjs[position % numrows];
 
   if ($('#detailsCard' + position).length == 0) {
     var detailsCard = '' +
@@ -615,6 +615,11 @@ function searchImagesJS(dateStartWithSlashes, dateEndWithSlashes, safeSearchOpti
           imageObj.currentResultGlobalPosition = currentResultGlobalPosition;
           imageObj.openImageTrackingURL = "/image/view/" + trackingId + "_" + (i + 1) + '/' + currentDocument.imgTstamp + '/' + currentDocument.imgSrc;
 
+          if (hideImageResultsOnError)
+            imageObj.onerror = function () {
+              $("img[src$='" + this.src + "']").parent().hide()
+            }
+
           totalResults--;
           resultsToLoad--;
 
@@ -662,7 +667,7 @@ function searchImagesJS(dateStartWithSlashes, dateEndWithSlashes, safeSearchOpti
 $(document).ready(function () {
   $(document).on('click', '#dButton', function () {
     var position = $(this).attr('position');
-    var imageObj = imageObjs[position%numrows]; /*get Current Image Object*/
+    var imageObj = imageObjs[position % numrows]; /*get Current Image Object*/
 
     $("#dialog").dialog('open');
 
