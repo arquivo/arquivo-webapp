@@ -361,7 +361,6 @@ function searchImages(startIndex){
       <% } %>
 
       <%
-        if (true) { /*TODO:: add condition check if there are more results */
            long nextPageStart = startPosition + numrows;
            String nextPageUrl = "/image/search?" +
             "query=" + query +
@@ -377,7 +376,6 @@ function searchImages(startIndex){
               <fmt:message key='search.pager.next'/>
             </a>
           </li>
-      <% } %>
 
       </ul>
 
