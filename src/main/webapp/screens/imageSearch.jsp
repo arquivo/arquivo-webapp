@@ -51,6 +51,12 @@ response.setHeader("Cache-Control","public, max-age=600");
 
   String showContameHistoriasButton = pt.arquivo.webapp.Configuration.get("webapp.showContameHistoriasButton", "false");
   pageContext.setAttribute("showContameHistoriasButton", showContameHistoriasButton);
+
+  String hideImageResultsOnError = pt.arquivo.webapp.Configuration.get("webapp.hideImageResultsOnError", "true");
+  pageContext.setAttribute("hideImageResultsOnError", hideImageResultsOnError);
+
+  String resizeURL = pt.arquivo.webapp.Configuration.get("resize.url", "");
+  pageContext.setAttribute("resizeURL", resizeURL);
 %>
 
 <%
@@ -138,7 +144,6 @@ response.setHeader("Cache-Control","public, max-age=600");
                 // site parameter should have only the host on image search
                 siteParameter = siteHost.toLowerCase();
                 htmlQueryString += siteParameter + " ";
-                query = htmlQueryString;
         }
         if (request.getParameter("type") != null && request.getParameter("type") != "" && !request.getParameter("type").toLowerCase().equals("all")) {
           htmlQueryString += "type:" + request.getParameter("type") + " " ;
@@ -153,7 +158,7 @@ response.setHeader("Cache-Control","public, max-age=600");
         if (request.getParameter("safeSearch") != null && request.getParameter("safeSearch").toLowerCase().equals("off")) {
           htmlQueryString += "safe:off ";
         }
-
+      query = htmlQueryString;
     }
   //htmlQueryString= StringEscapeUtils.escapeHtml(htmlQueryString);
   //request.setAttribute("htmlQueryString", htmlQueryString);
@@ -203,7 +208,7 @@ response.setHeader("Cache-Control","public, max-age=600");
   }
   request.setAttribute("htmlQueryString", htmlQueryString);
 
-  int numrows = 25;
+  int numrows = 24;
   String homeMessageClass= (htmlQueryString.equals("")) ? "" :  "hidden";
   String loaderDefaultClass = (homeMessageClass.equals("")) ? "hidden" : "";
 
@@ -266,8 +271,11 @@ function searchImages(startIndex){
   startPosition = "<%=startPosition%>";
   numrows ="<%=numrows%>"; /*Number of Images to show by default*/
   waybackURL = "<%=waybackURL%>";
+  resizeURL = "<%=resizeURL%>";
   showContameHistoriasButton = "<%=showContameHistoriasButton%>";
   showContameHistoriasButton = (String(showContameHistoriasButton).toLowerCase() == "true");
+  hideImageResultsOnError = "<%=hideImageResultsOnError%>";
+  hideImageResultsOnError = (String(hideImageResultsOnError).toLowerCase() == "true");
 </script>
 
   <%@ include file="/include/topbar.jsp" %>
@@ -352,7 +360,6 @@ function searchImages(startIndex){
       <% } %>
 
       <%
-        if (true) { /*TODO:: add condition check if there are more results */
            long nextPageStart = startPosition + numrows;
            String nextPageUrl = "/image/search?" +
             "query=" + query +
@@ -368,7 +375,6 @@ function searchImages(startIndex){
               <fmt:message key='search.pager.next'/>
             </a>
           </li>
-      <% } %>
 
       </ul>
 
