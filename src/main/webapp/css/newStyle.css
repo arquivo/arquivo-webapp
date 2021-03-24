@@ -5978,8 +5978,8 @@ body {
   outline: none;
   border: none;
   background-color: transparent;
-  width: auto;
-  height: 27px;
+  height: 100%;
+  width: 100%; 
   font-size: 13px;
 }
 /* Estimated results */
