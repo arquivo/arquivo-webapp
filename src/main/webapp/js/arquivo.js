@@ -67,12 +67,13 @@ var ARQUIVO = ARQUIVO || (function(){
             var year = timestamp.substring(0, 4);
             var month = timestamp.substring(4, 6);
             var day = timestamp.substring(6, 8);
-            if(day.charAt(0) == '0'){
+            if(day.charAt(0) === '0'){
                 day = day.charAt(1);
             }
             var hour = timestamp.substring(8,10);
             var minute = timestamp.substring(10,12);
-            return day+" "+Content.months[month]+" "+Content.at+" "+hour+":"+minute+", "+year;
+            return day+" "+Content.months[month]+" " +year
+              + " " + Content.at+" "+hour+":"+minute;
         },
         formatJSDateToPresentation: function(date) {
             const d = new Date(date);
@@ -275,6 +276,22 @@ var ARQUIVO = ARQUIVO || (function(){
                 '';
         },
 
+        getSearchErrorHtml: function() {
+            return ''+
+              '<div class="noResultsFound">'+
+              '<p>'+Content.search.error.title+'<span class="text-bold"> '+$('#txtSearch').attr("value")+'</span></p>'+
+              '</div>'+
+              '<div class="noResultsFoundSuggestions">'+
+              '<p class="text-bold">'+Content.search.error.suggestions.intro+'</p>'+
+              '<ul>'+
+              '<li>'+Content.search.error.suggestions.tryAgain+'</li>'+
+              '<li>'+Content.search.error.suggestions.genericWords+'</li>'+
+              '<li>'+Content.search.error.suggestions.contactUs+'</li>'+
+              '</ul>'+
+              '</div>'+
+              '';
+        },
+
         closeModalUglipop: function() {
             $('#uglipop_overlay_wrapper').fadeOut();
             $('#uglipop_overlay').fadeOut();
@@ -323,6 +340,7 @@ var ARQUIVO = ARQUIVO || (function(){
                     var value = pair[1];
                     if (key === 'site') {
                         site.push(value);
+                        site.push('*.' + value);
                         special = true;
                     } else if (key === 'type') {
                         type.push(value);

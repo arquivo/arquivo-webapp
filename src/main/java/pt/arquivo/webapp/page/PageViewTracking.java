@@ -29,11 +29,12 @@ public class PageViewTracking extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
 		String redirectTo = null;
-		String path = request.getPathInfo();
+		String path = request.getRequestURI().replace("/page/view", "");
+
 		Pattern pattern = Pattern.compile("/([^/]+)/([0-9]+)/(.*)");
 
 		Matcher matcher = null;
-		if (path != null) {
+		if (path != null && !path.trim().isEmpty()) {
 			matcher = pattern.matcher(path);
 		}
 
@@ -59,7 +60,26 @@ public class PageViewTracking extends HttpServlet {
 
 			redirectTo = sb.toString();
 
-			logger.info("Page view tracking with trackingId: '{}', timestamp: '{}', archivedURL: '{}'", trackingId, timestamp, archivedUrl);
+			String sessionID = request.getSession().getId();
+
+			StringBuffer requestUrl = request.getRequestURL();
+			if (request.getQueryString() != null) {
+				requestUrl.append("?");
+				requestUrl.append(request.getQueryString());
+			}
+
+			String ipAddress = request.getHeader("X-FORWARDED-FOR");
+			if (ipAddress == null) {
+				ipAddress = request.getRemoteAddr();
+			}
+
+			String userAgent = request.getHeader("User-Agent");
+			if (userAgent == null || userAgent.trim().isEmpty())
+				userAgent = "-";
+
+			logger.info("'{}'\t\"{}\"\t'{}'\t'{}'\t'{}'\t'{}'\t'{}'", ipAddress, userAgent, requestUrl.toString(), trackingId, sessionID, timestamp, archivedUrl);
+
+
 		}
 
 		if (redirectTo == null) {
