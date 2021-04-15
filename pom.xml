@@ -1,137 +1,142 @@
 <?xml version="1.0"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
-	http://maven.apache.org/maven-v4_0_0.xsd">
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+    http://maven.apache.org/maven-v4_0_0.xsd">
 
-	<modelVersion>4.0.0</modelVersion>
-	<groupId>pt.arquivo</groupId>
-	<artifactId>arquivo-webapp</artifactId>
-	<packaging>war</packaging>
-	<version>1.0-SNAPSHOT</version>
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>pt.arquivo</groupId>
+    <artifactId>arquivo-webapp</artifactId>
+    <packaging>war</packaging>
+    <version>1.0-SNAPSHOT</version>
 
-	<name>Arquivo.pt search frontend web app</name>
-	<properties>
-	    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <name>Arquivo.pt search frontend web app</name>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-		<maven.compiler.source>1.8</maven.compiler.source>
-		<maven.compiler.target>1.8</maven.compiler.target>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
 
-		<maven.build.timestamp.format>yyyyMMddHHmm</maven.build.timestamp.format>
-		<timestamp>${maven.build.timestamp}</timestamp>
+        <maven.build.timestamp.format>yyyyMMddHHmm</maven.build.timestamp.format>
+        <timestamp>${maven.build.timestamp}</timestamp>
 
-		<backend.protocol>https</backend.protocol>
-		<backend.base.url>preprod.arquivo.pt</backend.base.url>
-		<backend.url>${backend.protocol}://${backend.base.url}</backend.url>
+        <backend.protocol>https</backend.protocol>
+        <backend.base.url>preprod.arquivo.pt</backend.base.url>
+        <backend.url>${backend.protocol}://${backend.base.url}</backend.url>
 
-		<wayback.server>${backend.protocol}://${backend.base.url}</wayback.server>
-		<wayback.url>${wayback.server}/wayback</wayback.url>
+        <wayback.server>${backend.protocol}://${backend.base.url}</wayback.server>
+        <wayback.url>${wayback.server}/wayback</wayback.url>
 
-		<image.search.server>${backend.url}</image.search.server>
-		<image.search.api>${image.search.server}/imagesearch</image.search.api>
+        <image.search.server>${backend.url}</image.search.server>
+        <image.search.api>${image.search.server}/imagesearch</image.search.api>
 
-		<query.suggestion.server>${backend.url}</query.suggestion.server>
-		<query.suggestion.api>${query.suggestion.server}/spellchecker/checker</query.suggestion.api>
+        <query.suggestion.server>${backend.url}</query.suggestion.server>
+        <query.suggestion.api>${query.suggestion.server}/spellchecker/checker</query.suggestion.api>
 
-		<text.search.server>${backend.url}</text.search.server>
-		<text.search.api>${text.search.server}/textsearch</text.search.api>
+        <text.search.server>${backend.url}</text.search.server>
+        <text.search.api>${text.search.server}/textsearch</text.search.api>
 
-		<webapp.showContameHistoriasButton>false</webapp.showContameHistoriasButton>
-		<webapp.hideImageResultsOnError>false</webapp.hideImageResultsOnError>
-	</properties>
-	<dependencies>
-		<dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>jstl</artifactId>
-			<version>1.2</version>
-		</dependency>
-		<dependency>
-			<groupId>taglibs</groupId>
-			<artifactId>standard</artifactId>
-			<version>1.1.2</version>
-		</dependency>
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-api</artifactId>
-			<version>1.7.5</version>
-		</dependency>
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-log4j12</artifactId>
-			<version>1.7.5</version>
-		</dependency>
-		<dependency>
-			<groupId>commons-lang</groupId>
-			<artifactId>commons-lang</artifactId>
-			<version>2.6</version>
-		</dependency>
-		<dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>javax.servlet-api</artifactId>
-			<version>3.1.0</version>
-			<scope>provided</scope>
-		</dependency>
+        <webapp.showContameHistoriasButton>false</webapp.showContameHistoriasButton>
+        <webapp.hideImageResultsOnError>false</webapp.hideImageResultsOnError>
 
-		<dependency>
-			<groupId>org.apache.taglibs</groupId>
-			<artifactId>taglibs-i18n</artifactId>
-			<version>1.0</version>
-		</dependency>
+        <sonar.host.url>https://sonarcloud.io</sonar.host.url>
+        <sonar.organization>arquivo-pt-fccn</sonar.organization>
+        <sonar.projectKey>arquivo-webapp</sonar.projectKey>
 
-		<dependency>
-			<groupId>org.apache.taglibs</groupId>
-			<artifactId>taglibs-log</artifactId>
-			<version>1.0</version>
-		</dependency>
+    </properties>
+    <dependencies>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>jstl</artifactId>
+            <version>1.2</version>
+        </dependency>
+        <dependency>
+            <groupId>taglibs</groupId>
+            <artifactId>standard</artifactId>
+            <version>1.1.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>1.7.5</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+            <version>1.7.5</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-lang</groupId>
+            <artifactId>commons-lang</artifactId>
+            <version>2.6</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>3.1.0</version>
+            <scope>provided</scope>
+        </dependency>
 
-	</dependencies>
-	<build>
-		<!-- Change war name -->
-		<finalName>${project.artifactId}</finalName>
+        <dependency>
+            <groupId>org.apache.taglibs</groupId>
+            <artifactId>taglibs-i18n</artifactId>
+            <version>1.0</version>
+        </dependency>
 
-		<!-- Filter maven variables when building the project -->
-		<resources>
-			<resource>
-				<directory>src/main/resources</directory>
-				<filtering>true</filtering>
-			</resource>
-		</resources>
-		<plugins>
-			<!-- Force download dependencies javadocs and sources when generating
-			eclipse's classpath -->
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-eclipse-plugin</artifactId>
-				<version>2.10</version>
-				<configuration>
-					<downloadJavadocs>true</downloadJavadocs>
-					<downloadSources>true</downloadSources>
-				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-war-plugin</artifactId>
-				<version>2.2</version>
-				<configuration>
-					<webResources>
-						<resource>
-							<filtering>true</filtering>
-							<directory>src/main/webapp</directory>
-							<includes>
-								<include>**/web.xml</include>
-							</includes>
-						</resource>
-					</webResources>
-					<warSourceDirectory>src/main/webapp</warSourceDirectory>
-					<webXml>src/main/webapp/WEB-INF/web.xml</webXml>
-				</configuration>
-			</plugin>
-		</plugins>
-	</build>
-	<repositories>
-		<repository>
-			<id>internal</id>
-			<url>file://${project.basedir}/mvn-repo</url>
-		</repository>
-	</repositories>
+        <dependency>
+            <groupId>org.apache.taglibs</groupId>
+            <artifactId>taglibs-log</artifactId>
+            <version>1.0</version>
+        </dependency>
+
+    </dependencies>
+    <build>
+        <!-- Change war name -->
+        <finalName>${project.artifactId}</finalName>
+
+        <!-- Filter maven variables when building the project -->
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+        <plugins>
+            <!-- Force download dependencies javadocs and sources when generating
+            eclipse's classpath -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-eclipse-plugin</artifactId>
+                <version>2.10</version>
+                <configuration>
+                    <downloadJavadocs>true</downloadJavadocs>
+                    <downloadSources>true</downloadSources>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>2.2</version>
+                <configuration>
+                    <webResources>
+                        <resource>
+                            <filtering>true</filtering>
+                            <directory>src/main/webapp</directory>
+                            <includes>
+                                <include>**/web.xml</include>
+                            </includes>
+                        </resource>
+                    </webResources>
+                    <warSourceDirectory>src/main/webapp</warSourceDirectory>
+                    <webXml>src/main/webapp/WEB-INF/web.xml</webXml>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+    <repositories>
+        <repository>
+            <id>internal</id>
+            <url>file://${project.basedir}/mvn-repo</url>
+        </repository>
+    </repositories>
 </project>
