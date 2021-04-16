@@ -42,7 +42,13 @@
         <sonar.host.url>https://sonarcloud.io</sonar.host.url>
         <sonar.organization>arquivo-pt-fccn</sonar.organization>
         <sonar.projectKey>arquivo-webapp</sonar.projectKey>
-
+        <sonar.exclusions>
+            src/main/webapp/@ionic/**/*, src/main/webapp/js/static/**/*, 
+            src/main/webapp/css/bootstrap*, src/main/webapp/css/swiper*,
+            src/main/webapp/js/swiper*, src/main/webapp/js/bootstrap*,
+            src/main/webapp/js/js.cookie*, src/main/webapp/js/mobiscroll*
+            src/main/webapp/js/mobiscroll*, src/main/webapp/ionicons/**/*
+        </sonar.exclusions>
     </properties>
     <dependencies>
         <dependency>
