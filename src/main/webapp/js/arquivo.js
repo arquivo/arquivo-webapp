@@ -504,7 +504,7 @@ var ARQUIVO = ARQUIVO || (function(){
 
         getContameHistoriasLink : function () {
             var queryStringCleaned = $("#txtSearch")[0].value
-            return 'http://contamehistorias.pt/arquivopt/search?query='+queryStringCleaned;
+            return 'http://contamehistorias.pt/arquivopt/search?query='+queryStringCleaned+'&'+contaQueryLanguage;
         },
         attachClosePopup: function(){
           $('#cancelPopup').on('click', function(e){
