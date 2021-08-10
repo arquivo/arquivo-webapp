@@ -49,8 +49,9 @@
   </script>
 
   <script type="text/javascript">
-     showContameHistoriasButton = "<%= pt.arquivo.webapp.Configuration.get("webapp.showContameHistoriasButton", "false") %>";
+    showContameHistoriasButton = "<%= pt.arquivo.webapp.Configuration.get("webapp.showContameHistoriasButton", "false") %>";
     showContameHistoriasButton = (String(showContameHistoriasButton).toLowerCase() == "true")
+    contaQueryLanguage = "lang=<%=language%>"
   </script>
 
 
