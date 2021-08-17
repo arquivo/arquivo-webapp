@@ -274,6 +274,7 @@ function searchImages(startIndex){
   resizeURL = "<%=resizeURL%>";
   showContameHistoriasButton = "<%=showContameHistoriasButton%>";
   showContameHistoriasButton = (String(showContameHistoriasButton).toLowerCase() == "true");
+  contaQueryLanguage = "lang=<%=language%>";
   hideImageResultsOnError = "<%=hideImageResultsOnError%>";
   hideImageResultsOnError = (String(hideImageResultsOnError).toLowerCase() == "true");
 </script>

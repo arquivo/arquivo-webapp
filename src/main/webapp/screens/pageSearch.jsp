@@ -267,7 +267,8 @@ String[] queryString_splitted=null;
     waybackURL = "<%=waybackURL%>";
 
     showContameHistoriasButton = "<%= pt.arquivo.webapp.Configuration.get("webapp.showContameHistoriasButton", "false") %>";
-    showContameHistoriasButton = (String(showContameHistoriasButton).toLowerCase() == "true")
+    showContameHistoriasButton = (String(showContameHistoriasButton).toLowerCase() == "true");
+    contaQueryLanguage = "lang=<%=language%>";
   </script>
 
 </head>
