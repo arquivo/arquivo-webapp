@@ -12786,6 +12786,8 @@ body#home-search a#ImageButton:active { color: #1c75c0 !important; background-co
   color: #a104cf !important;
 }
 
+
+
 /* Adjust search bar menu navigation buttons for mobile max-width: 320px */
 
 @media (max-width: 384px) {
@@ -12796,4 +12798,10 @@ body#home-search a#ImageButton:active { color: #1c75c0 !important; background-co
     padding: 4px 5px 5px 5px !important;
   
   }
+}
+
+/* Adjust Narrative pop-up window */
+
+#uglipop_content_fixed {
+  max-width: 300px !important;
 }
