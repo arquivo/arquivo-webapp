@@ -12788,7 +12788,7 @@ body#home-search a#ImageButton:active { color: #1c75c0 !important; background-co
 
 /* Adjust search bar menu navigation buttons for mobile max-width: 320px */
 
-@media (max-width: 320px) {
+@media (max-width: 384px) {
     #searchBarButtonsDiv .advancedSearch {
     font-size: 1em !important;
   }
