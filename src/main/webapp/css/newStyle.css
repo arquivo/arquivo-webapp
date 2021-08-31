@@ -8466,7 +8466,7 @@ body#advanced .fa-caret-down:before, body#advanced-images .fa-caret-down:before 
   text-align: center;
   font-size: 15px;
   padding-top: 8px;
-  padding-bottom: 25px;
+  padding-bottom: 20px;
 }
 .modalReplay a, .modalReplay a:hover, .modalReplay a:visited, .modalReplay a:active {
   text-decoration: underline;
@@ -12786,8 +12786,6 @@ body#home-search a#ImageButton:active { color: #1c75c0 !important; background-co
   color: #a104cf !important;
 }
 
-
-
 /* Adjust search bar menu navigation buttons for mobile max-width: 320px */
 
 @media (max-width: 384px) {
@@ -12819,6 +12817,6 @@ a#cancelPopup {
   justify-content: center;
 }
 #uglipop_content_fixed .modalReplay {
-  padding-bottom: 0px;
+  padding-bottom: 0px !important;
 }
 }
