@@ -12790,7 +12790,7 @@ body#home-search a#ImageButton:active { color: #1c75c0 !important; background-co
 
 @media (max-width: 320px) {
     #searchBarButtonsDiv .advancedSearch {
-    font-size: 1.014em !important;
+    font-size: 1em !important;
   }
   a.advancedSearch { 
     padding: 4px 5px 5px 5px !important;
