@@ -2888,8 +2888,7 @@ h4.modalTitle {
     font-size: 1em !important;
   }
   div#flex-container div:first-child {
-    margin-bottom: 11px !important;
-    /*width: 94.79% !important;*/
+    margin-bottom: 11px !important;    
   }
   #award-pt, #award-en, #pagesPreserved-pt, #pagesPreserved-en, #exhibitions-pt, #exhibitions-en {
     height: 230px !important;
@@ -2900,6 +2899,11 @@ h4.modalTitle {
     display: flex;
     width: fit-content;
     margin: 0 auto;
+  }
+
+  #searchBarButtonsDiv a {
+    display: flex;
+    align-items: center; 
   }
 }
 /* ----------- iPhone 5 and 5S ----------- */
@@ -7957,9 +7961,13 @@ body#homeImages #searchBarButtonsDiv {
   text-align: center;
   float: left;
   margin-top: -29px;
-  margin-bottom: /*3px*/ 0;
-  padding: 0; /*14px 0 15px;*/
+  margin-bottom: 0;
+  padding: 0; 
 }
+
+
+
+
 a#advancedSearchButton {
   float: right !important;
   background-color: #1c75c0 !important;
@@ -12778,4 +12786,14 @@ body#home-search a#ImageButton:active { color: #1c75c0 !important; background-co
   color: #a104cf !important;
 }
 
-/* test */
+/* Adjust search bar menu navigation buttons for mobile max-width: 320px */
+
+@media (max-width: 320px) {
+    #searchBarButtonsDiv .advancedSearch {
+    font-size: 1.014em !important;
+  }
+  a.advancedSearch { 
+    padding: 4px 5px 5px 5px !important;
+  
+  }
+}
