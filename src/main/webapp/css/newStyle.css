@@ -12798,10 +12798,24 @@ body#home-search a#ImageButton:active { color: #1c75c0 !important; background-co
     padding: 4px 5px 5px 5px !important;
   
   }
+
+  /* Adjust Narrative pop-up window */
+
+  #uglipop_content_fixed {
+    max-width: 300px !important;
+  }
+
+  .modalReplay .row {
+    display: flex;
+  }
+  #uglipop_content_fixed .modalReplay { 
+    padding-bottom: 20px;
 }
-
-/* Adjust Narrative pop-up window */
-
-#uglipop_content_fixed {
-  max-width: 300px !important;
+.modalTitleLinkToContameHistorias {
+  padding: 0px 10px 0px 10px;
+}
+a#cancelPopup {
+  display: flex;
+  justify-content: center;
+}
 }
