@@ -1,6 +1,6 @@
-# Arquivo.pt web application
+# Arquivo.pt web application (End-of-life, no longer used)
 
-This repository contains the frontend of [Arquivo.pt](https://arquivo.pt).
+This repository contains the frontend of [Arquivo.pt](https://arquivo.pt). 
 
 ## Build
 
